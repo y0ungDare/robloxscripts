@@ -16,13 +16,13 @@ local TextButton = Instance.new("TextButton")
 local fly = Instance.new("TextButton")
 local Title_2 = Instance.new("TextLabel")
 local Title_3 = Instance.new("TextLabel")
-local escape = Instance.new("TextButton")
 local AutoPilot = Instance.new("TextButton")
 local SpinBot = Instance.new("TextButton")
 local NoclipV2 = Instance.new("TextButton")
 local XRayVision = Instance.new("TextButton")
 local WallEsp = Instance.new("TextButton")
 local teleport = Instance.new("TextButton")
+local BringButton = Instance.new("TextButton")
 
 --Properties:
 
@@ -137,8 +137,8 @@ ArmoryTP.TextWrapped = true
 
 TextButton.Parent = Frame
 TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextButton.Position = UDim2.new(0.0388889499, 0, 0.503678918, 0)
+TextButton.BorderColor3 = Color3.fromRGB(255, 0, 0)
+TextButton.Position = UDim2.new(0.0237374362, 0, 0.501921415, 0)
 TextButton.Size = UDim2.new(0.893939555, 0, 0.0554658324, 0)
 TextButton.Font = Enum.Font.SourceSansBold
 TextButton.Text = "Aimbot (X)"
@@ -190,27 +190,13 @@ Title_3.TextScaled = true
 Title_3.TextSize = 40.000
 Title_3.TextWrapped = true
 
-escape.Name = "escape"
-escape.Parent = Frame
-escape.AnchorPoint = Vector2.new(0.5, 0.5)
-escape.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-escape.BorderColor3 = Color3.fromRGB(0, 0, 0)
-escape.BorderSizePixel = 2
-escape.Position = UDim2.new(0.477339625, 0, 0.582794905, 0)
-escape.Size = UDim2.new(0, 176, 0, 27)
-escape.Font = Enum.Font.SourceSansBold
-escape.Text = "escape"
-escape.TextColor3 = Color3.fromRGB(170, 0, 255)
-escape.TextSize = 25.000
-escape.TextWrapped = true
-
 AutoPilot.Name = "Auto Pilot"
 AutoPilot.Parent = Frame
 AutoPilot.AnchorPoint = Vector2.new(0.5, 0.5)
 AutoPilot.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 AutoPilot.BorderColor3 = Color3.fromRGB(0, 0, 0)
 AutoPilot.BorderSizePixel = 2
-AutoPilot.Position = UDim2.new(0.477339625, 0, 0.63024658, 0)
+AutoPilot.Position = UDim2.new(0.467238605, 0, 0.581037402, 0)
 AutoPilot.Size = UDim2.new(0, 176, 0, 27)
 AutoPilot.Font = Enum.Font.SourceSansBold
 AutoPilot.Text = "Auto Pilot"
@@ -224,7 +210,7 @@ SpinBot.AnchorPoint = Vector2.new(0.5, 0.5)
 SpinBot.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 SpinBot.BorderColor3 = Color3.fromRGB(0, 0, 0)
 SpinBot.BorderSizePixel = 2
-SpinBot.Position = UDim2.new(0.477339625, 0, 0.677698255, 0)
+SpinBot.Position = UDim2.new(0.472289115, 0, 0.626731694, 0)
 SpinBot.Size = UDim2.new(0, 176, 0, 27)
 SpinBot.Font = Enum.Font.SourceSansBold
 SpinBot.Text = "Spin Bot"
@@ -238,7 +224,7 @@ NoclipV2.AnchorPoint = Vector2.new(0.5, 0.5)
 NoclipV2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 NoclipV2.BorderColor3 = Color3.fromRGB(0, 0, 0)
 NoclipV2.BorderSizePixel = 2
-NoclipV2.Position = UDim2.new(0.477339625, 0, 0.728664815, 0)
+NoclipV2.Position = UDim2.new(0.477339625, 0, 0.677698255, 0)
 NoclipV2.Size = UDim2.new(0, 176, 0, 31)
 NoclipV2.Font = Enum.Font.SourceSansBold
 NoclipV2.Text = "Noclip V2 "
@@ -252,7 +238,7 @@ XRayVision.AnchorPoint = Vector2.new(0.5, 0.5)
 XRayVision.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 XRayVision.BorderColor3 = Color3.fromRGB(0, 0, 0)
 XRayVision.BorderSizePixel = 2
-XRayVision.Position = UDim2.new(0.477339625, 0, 0.837627947, 0)
+XRayVision.Position = UDim2.new(0.482390136, 0, 0.786661327, 0)
 XRayVision.Size = UDim2.new(0, 176, 0, 31)
 XRayVision.Font = Enum.Font.SourceSansBold
 XRayVision.Text = "X Ray Vision"
@@ -266,7 +252,7 @@ WallEsp.AnchorPoint = Vector2.new(0.5, 0.5)
 WallEsp.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 WallEsp.BorderColor3 = Color3.fromRGB(0, 0, 0)
 WallEsp.BorderSizePixel = 2
-WallEsp.Position = UDim2.new(0.477339625, 0, 0.783146381, 0)
+WallEsp.Position = UDim2.new(0.482390136, 0, 0.732179761, 0)
 WallEsp.Size = UDim2.new(0, 176, 0, 31)
 WallEsp.Font = Enum.Font.SourceSansBold
 WallEsp.Text = "Wall Esp V2"
@@ -280,17 +266,30 @@ teleport.AnchorPoint = Vector2.new(0.5, 0.5)
 teleport.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 teleport.BorderColor3 = Color3.fromRGB(0, 0, 0)
 teleport.BorderSizePixel = 2
-teleport.Position = UDim2.new(0.477339625, 0, 0.892109454, 0)
-teleport.Size = UDim2.new(0, 176, 0, 31)
+teleport.Position = UDim2.new(0.484915406, 0, 0.839385509, 0)
+teleport.Size = UDim2.new(0, 177, 0, 31)
 teleport.Font = Enum.Font.SourceSansBold
-teleport.Text = "Clone"
+teleport.Text = "teleport"
 teleport.TextColor3 = Color3.fromRGB(170, 0, 255)
 teleport.TextSize = 25.000
 teleport.TextWrapped = true
 
+BringButton.Name = "BringButton"
+BringButton.Parent = Frame
+BringButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+BringButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+BringButton.Position = UDim2.new(0.53794539, -100, 0.86587584, 0)
+BringButton.Size = UDim2.new(0, 181, 0, 25)
+BringButton.Font = Enum.Font.Unknown
+BringButton.Text = "Bring All: OFF"
+BringButton.TextColor3 = Color3.fromRGB(170, 0, 255)
+BringButton.TextScaled = true
+BringButton.TextSize = 18.000
+BringButton.TextWrapped = true
+
 -- Scripts:
 
-local function SDGFV_fake_script() -- Title.RainbowText 
+local function XUPQ_fake_script() -- Title.RainbowText 
 	local script = Instance.new('Script', Title)
 
 	
@@ -307,16 +306,16 @@ local function SDGFV_fake_script() -- Title.RainbowText
 	end
 	
 end
-coroutine.wrap(SDGFV_fake_script)()
-local function UWDXJJQ_fake_script() -- NexusTP.NexusTP_Logic 
+coroutine.wrap(XUPQ_fake_script)()
+local function KMZKKG_fake_script() -- NexusTP.NexusTP_Logic 
 	local script = Instance.new('LocalScript', NexusTP)
 
 	script.Parent.MouseButton1Down:connect(function()
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(879,99,2377)
 	end)
 end
-coroutine.wrap(UWDXJJQ_fake_script)()
-local function AJZJHZ_fake_script() -- NexusTP.RainbowText 
+coroutine.wrap(KMZKKG_fake_script)()
+local function XANSX_fake_script() -- NexusTP.RainbowText 
 	local script = Instance.new('Script', NexusTP)
 
 	
@@ -333,16 +332,16 @@ local function AJZJHZ_fake_script() -- NexusTP.RainbowText
 	end
 	
 end
-coroutine.wrap(AJZJHZ_fake_script)()
-local function UUQY_fake_script() -- BackTP.BackTP_Logic 
+coroutine.wrap(XANSX_fake_script)()
+local function SCYRGSO_fake_script() -- BackTP.BackTP_Logic 
 	local script = Instance.new('LocalScript', BackTP)
 
 	script.Parent.MouseButton1Down:connect(function()
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(980, 101, 2327)
 	end)
 end
-coroutine.wrap(UUQY_fake_script)()
-local function OWODWA_fake_script() -- BackTP.RainbowText 
+coroutine.wrap(SCYRGSO_fake_script)()
+local function DLCRH_fake_script() -- BackTP.RainbowText 
 	local script = Instance.new('Script', BackTP)
 
 	
@@ -359,16 +358,16 @@ local function OWODWA_fake_script() -- BackTP.RainbowText
 	end
 	
 end
-coroutine.wrap(OWODWA_fake_script)()
-local function TPBW_fake_script() -- YardTP.YardTP_Logic 
+coroutine.wrap(DLCRH_fake_script)()
+local function TIDVSD_fake_script() -- YardTP.YardTP_Logic 
 	local script = Instance.new('LocalScript', YardTP)
 
 	script.Parent.MouseButton1Down:connect(function()
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(779,99,2477)
 	end)
 end
-coroutine.wrap(TPBW_fake_script)()
-local function HHUDO_fake_script() -- YardTP.RainbowText 
+coroutine.wrap(TIDVSD_fake_script)()
+local function ZHHC_fake_script() -- YardTP.RainbowText 
 	local script = Instance.new('Script', YardTP)
 
 	
@@ -385,16 +384,16 @@ local function HHUDO_fake_script() -- YardTP.RainbowText
 	end
 	
 end
-coroutine.wrap(HHUDO_fake_script)()
-local function PYLETW_fake_script() -- CafeTP.CafeTP_Logic 
+coroutine.wrap(ZHHC_fake_script)()
+local function BEJNHGH_fake_script() -- CafeTP.CafeTP_Logic 
 	local script = Instance.new('LocalScript', CafeTP)
 
 	script.Parent.MouseButton1Down:connect(function()
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(879,99,2247)
 	end)
 end
-coroutine.wrap(PYLETW_fake_script)()
-local function BZKIAS_fake_script() -- CafeTP.RainbowText 
+coroutine.wrap(BEJNHGH_fake_script)()
+local function UMAA_fake_script() -- CafeTP.RainbowText 
 	local script = Instance.new('Script', CafeTP)
 
 	
@@ -411,16 +410,16 @@ local function BZKIAS_fake_script() -- CafeTP.RainbowText
 	end
 	
 end
-coroutine.wrap(BZKIAS_fake_script)()
-local function ULXDZQU_fake_script() -- CellsTP.CellsTP_Logic 
+coroutine.wrap(UMAA_fake_script)()
+local function SEMT_fake_script() -- CellsTP.CellsTP_Logic 
 	local script = Instance.new('LocalScript', CellsTP)
 
 	script.Parent.MouseButton1Down:connect(function()
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(910,99,2477)
 	end)
 end
-coroutine.wrap(ULXDZQU_fake_script)()
-local function IAJJGDO_fake_script() -- CellsTP.RainbowText 
+coroutine.wrap(SEMT_fake_script)()
+local function HTNFMGN_fake_script() -- CellsTP.RainbowText 
 	local script = Instance.new('Script', CellsTP)
 
 	
@@ -437,16 +436,16 @@ local function IAJJGDO_fake_script() -- CellsTP.RainbowText
 	end
 	
 end
-coroutine.wrap(IAJJGDO_fake_script)()
-local function GKLX_fake_script() -- ArmoryTP.ArmoryTP_Logic 
+coroutine.wrap(HTNFMGN_fake_script)()
+local function YCVP_fake_script() -- ArmoryTP.ArmoryTP_Logic 
 	local script = Instance.new('LocalScript', ArmoryTP)
 
 	script.Parent.MouseButton1Down:connect(function()
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(798,99,2260)
 	end)
 end
-coroutine.wrap(GKLX_fake_script)()
-local function QLVN_fake_script() -- ArmoryTP.RainbowText 
+coroutine.wrap(YCVP_fake_script)()
+local function VRJE_fake_script() -- ArmoryTP.RainbowText 
 	local script = Instance.new('Script', ArmoryTP)
 
 	
@@ -463,8 +462,8 @@ local function QLVN_fake_script() -- ArmoryTP.RainbowText
 	end
 	
 end
-coroutine.wrap(QLVN_fake_script)()
-local function KPLZOJP_fake_script() -- Frame.DragFrame 
+coroutine.wrap(VRJE_fake_script)()
+local function BVMT_fake_script() -- Frame.DragFrame 
 	local script = Instance.new('LocalScript', Frame)
 
 	local Frame = script.Parent
@@ -510,8 +509,8 @@ local function KPLZOJP_fake_script() -- Frame.DragFrame
 	
 	dragify(Frame)
 end
-coroutine.wrap(KPLZOJP_fake_script)()
-local function GXODTLC_fake_script() -- Frame.Aimbot 
+coroutine.wrap(BVMT_fake_script)()
+local function QAHIFGI_fake_script() -- Frame.Aimbot 
 	local script = Instance.new('LocalScript', Frame)
 
 	
@@ -663,8 +662,8 @@ local function GXODTLC_fake_script() -- Frame.Aimbot
 	textbutton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 	
 end
-coroutine.wrap(GXODTLC_fake_script)()
-local function FVMWG_fake_script() -- fly.RainbowText 
+coroutine.wrap(QAHIFGI_fake_script)()
+local function RVHDYW_fake_script() -- fly.RainbowText 
 	local script = Instance.new('Script', fly)
 
 	
@@ -681,151 +680,8 @@ local function FVMWG_fake_script() -- fly.RainbowText
 	end
 	
 end
-coroutine.wrap(FVMWG_fake_script)()
-local function YQBC_fake_script() -- escape.CrowEscapeController 
-	local script = Instance.new('LocalScript', escape)
-
-	-- Place this LocalScript inside a TextButton in StarterGui.
-	local Players = game:GetService("Players")
-	local TweenService = game:GetService("TweenService")
-	local Workspace = game:GetService("Workspace")
-	local Debris = game:GetService("Debris")
-	
-	local player = Players.LocalPlayer
-	local button = script.Parent
-	local enabled = false
-	local busy = false
-	local healthConnection
-	local HEALTH_THRESHOLD = 0.20
-	local ESCAPE_DISTANCE = 90
-	local COOLDOWN = 8
-	local lastEscape = -math.huge
-	local rng = Random.new()
-	
-	local function updateButton()
-	    button.Text = enabled and "Crow Escape: ON" or "Crow Escape: OFF"
-	    button.BackgroundColor3 = enabled and Color3.fromRGB(30, 180, 65) or Color3.fromRGB(205, 40, 40)
-	end
-	
-	local function createCrow(origin, direction)
-	    -- Tiny black wedge silhouettes, animated like a flock of crows.
-	    local crow = Instance.new("Part")
-	    crow.Name = "CrowEffect"
-	    crow.Size = Vector3.new(0.6, 0.22, 1.2)
-	    crow.Shape = Enum.PartType.Wedge
-	    crow.Color = Color3.fromRGB(8, 8, 12)
-	    crow.Material = Enum.Material.SmoothPlastic
-	    crow.Anchored = true
-	    crow.CanCollide = false
-	    crow.CanTouch = false
-	    crow.CanQuery = false
-	    crow.CFrame = CFrame.lookAt(origin, origin + direction)
-	    crow.Parent = Workspace
-	    local finish = origin + direction * rng:NextNumber(12, 27) + Vector3.new(0, rng:NextNumber(3, 13), 0)
-	    local tween = TweenService:Create(crow, TweenInfo.new(rng:NextNumber(0.55, 1.15), Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-	        CFrame = CFrame.lookAt(finish, finish + direction),
-	        Transparency = 1
-	    })
-	    tween:Play()
-	    Debris:AddItem(crow, 1.5)
-	end
-	
-	local function burstCrows(position)
-	    for i = 1, 28 do
-	        local theta = rng:NextNumber(0, math.pi * 2)
-	        local direction = Vector3.new(math.cos(theta), rng:NextNumber(-0.1, 0.7), math.sin(theta)).Unit
-	        createCrow(position + Vector3.new(rng:NextNumber(-2, 2), rng:NextNumber(0, 5), rng:NextNumber(-2, 2)), direction)
-	    end
-	end
-	
-	local function findDestination(character, origin)
-	    local rayParams = RaycastParams.new()
-	    rayParams.FilterType = Enum.RaycastFilterType.Exclude
-	    rayParams.FilterDescendantsInstances = {character}
-	    local overlap = OverlapParams.new()
-	    overlap.FilterType = Enum.RaycastFilterType.Exclude
-	    overlap.FilterDescendantsInstances = {character}
-	    for attempt = 1, 18 do
-	        local angle = rng:NextNumber(0, math.pi * 2)
-	        local distance = rng:NextNumber(ESCAPE_DISTANCE * 0.65, ESCAPE_DISTANCE)
-	        local horizontal = Vector3.new(math.cos(angle), 0, math.sin(angle)) * distance
-	        local target = origin + horizontal
-	        local hit = Workspace:Raycast(target + Vector3.new(0, 90, 0), Vector3.new(0, -190, 0), rayParams)
-	        if hit and hit.Normal.Y > 0.75 then
-	            local destination = hit.Position + Vector3.new(0, 4, 0)
-	            local blocked = false
-	            for _, part in ipairs(Workspace:GetPartBoundsInBox(CFrame.new(destination), Vector3.new(4, 6, 4), overlap)) do
-	                if part.CanCollide then blocked = true; break end
-	            end
-	            if not blocked then return destination end
-	        end
-	    end
-	    return nil
-	end
-	
-	local function crowEscape(character)
-	    if not enabled or busy or os.clock() - lastEscape < COOLDOWN then return end
-	    local humanoid = character:FindFirstChildOfClass("Humanoid")
-	    local root = character:FindFirstChild("HumanoidRootPart")
-	    if not humanoid or not root or humanoid.Health <= 0 then return end
-	    busy = true
-	    lastEscape = os.clock()
-	    local destination = findDestination(character, root.Position)
-	    if not destination then
-	        warn("Crow Escape: no safe landing location found")
-	        busy = false
-	        return
-	    end
-	
-	    local original = {}
-	    for _, descendant in ipairs(character:GetDescendants()) do
-	        if descendant:IsA("BasePart") or descendant:IsA("Decal") then
-	            original[descendant] = descendant.Transparency
-	            descendant.Transparency = 1
-	        end
-	    end
-	    burstCrows(root.Position)
-	    task.wait(0.22)
-	    if character.Parent and humanoid.Health > 0 then
-	        character:PivotTo(CFrame.new(destination) * CFrame.Angles(0, rng:NextNumber(-math.pi, math.pi), 0))
-	        root.AssemblyLinearVelocity = Vector3.zero
-	        burstCrows(destination)
-	    end
-	    task.wait(0.35)
-	    for descendant, transparency in pairs(original) do
-	        if descendant.Parent then descendant.Transparency = transparency end
-	    end
-	    busy = false
-	end
-	
-	local function setupCharacter(character)
-	    if healthConnection then healthConnection:Disconnect(); healthConnection = nil end
-	    busy = false
-	    local humanoid = character:WaitForChild("Humanoid")
-	    healthConnection = humanoid.HealthChanged:Connect(function(health)
-	        if enabled and health > 0 and health <= humanoid.MaxHealth * HEALTH_THRESHOLD then
-	            task.spawn(crowEscape, character)
-	        end
-	    end)
-	end
-	
-	button.Activated:Connect(function()
-	    enabled = not enabled
-	    updateButton()
-	    if enabled and player.Character then
-	        local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
-	        if humanoid and humanoid.Health > 0 and humanoid.Health <= humanoid.MaxHealth * HEALTH_THRESHOLD then
-	            task.spawn(crowEscape, player.Character)
-	        end
-	    end
-	end)
-	player.CharacterAdded:Connect(setupCharacter)
-	if player.Character then setupCharacter(player.Character) end
-	updateButton()
-	
-end
-coroutine.wrap(YQBC_fake_script)()
-local function OTXMG_fake_script() -- AutoPilot.AutoPilotController 
+coroutine.wrap(RVHDYW_fake_script)()
+local function BNZFXXQ_fake_script() -- AutoPilot.AutoPilotController 
 	local script = Instance.new('LocalScript', AutoPilot)
 
 	-- Auto Pilot: self-contained button + wandering controller
@@ -895,8 +751,8 @@ local function OTXMG_fake_script() -- AutoPilot.AutoPilotController
 	print("Auto Pilot GUI ready")
 	
 end
-coroutine.wrap(OTXMG_fake_script)()
-local function EIWVYX_fake_script() -- SpinBot.SpinController 
+coroutine.wrap(BNZFXXQ_fake_script)()
+local function BMPZMKO_fake_script() -- SpinBot.SpinController 
 	local script = Instance.new('LocalScript', SpinBot)
 
 	local Players = game:GetService("Players")
@@ -966,8 +822,8 @@ local function EIWVYX_fake_script() -- SpinBot.SpinController
 	updateButton()
 	
 end
-coroutine.wrap(EIWVYX_fake_script)()
-local function UZWGDJV_fake_script() -- NoclipV2.NoclipController 
+coroutine.wrap(BMPZMKO_fake_script)()
+local function TNKN_fake_script() -- NoclipV2.NoclipController 
 	local script = Instance.new('LocalScript', NoclipV2)
 
 	local Players = game:GetService("Players")
@@ -1019,8 +875,8 @@ local function UZWGDJV_fake_script() -- NoclipV2.NoclipController
 	refresh()
 	
 end
-coroutine.wrap(UZWGDJV_fake_script)()
-local function UATVTQ_fake_script() -- XRayVision.XRayController 
+coroutine.wrap(TNKN_fake_script)()
+local function FMMPASH_fake_script() -- XRayVision.XRayController 
 	local script = Instance.new('LocalScript', XRayVision)
 
 	local button = script.Parent
@@ -1089,8 +945,8 @@ local function UATVTQ_fake_script() -- XRayVision.XRayController
 	updateButton()
 	
 end
-coroutine.wrap(UATVTQ_fake_script)()
-local function BNBWJP_fake_script() -- WallEsp.WallESPController 
+coroutine.wrap(FMMPASH_fake_script)()
+local function TWEX_fake_script() -- WallEsp.WallESPController 
 	local script = Instance.new('LocalScript', WallEsp)
 
 	
@@ -1259,8 +1115,8 @@ local function BNBWJP_fake_script() -- WallEsp.WallESPController
 	updateButton()
 	
 end
-coroutine.wrap(BNBWJP_fake_script)()
-local function RWVWEBS_fake_script() -- teleport.RandomTeleportController 
+coroutine.wrap(TWEX_fake_script)()
+local function VKGZ_fake_script() -- teleport.RandomTeleportController 
 	local script = Instance.new('LocalScript', teleport)
 
 	local Players = game:GetService("Players")
@@ -1345,8 +1201,80 @@ local function RWVWEBS_fake_script() -- teleport.RandomTeleportController
 	updateButton()
 	
 end
-coroutine.wrap(RWVWEBS_fake_script)()
-local function EGKBR_fake_script() -- y0ungDareMenuv42.KeyboardShortcuts 
+coroutine.wrap(VKGZ_fake_script)()
+local function ZGWOQ_fake_script() -- Frame.GUIController 
+	local script = Instance.new('LocalScript', Frame)
+
+	-- Player Puller: single ON/OFF button
+	-- Place this LocalScript inside PullPlayersGui.
+	local Players = game:GetService("Players")
+	local RunService = game:GetService("RunService")
+	local player = Players.LocalPlayer
+	local pullBtn = script.Parent:WaitForChild("BringButton")
+	local isBringing = false
+	local bringConnection
+	
+	    local function getRootPart(character)
+	     return character:FindFirstChild("HumanoidRootPart") or character:FindFirstChild("Torso") or character:FindFirstChild("UpperTorso")
+	    end
+	    local function setCharacterCollision(character,state)
+	     for _,part in ipairs(character:GetDescendants()) do if part:IsA("BasePart") then part.CanCollide=state end end
+	    end
+	    local function isOnVehicleOrSeat(character)
+	     local humanoid=character:FindFirstChildOfClass("Humanoid")
+	     if not humanoid then return false end
+	     if humanoid.SeatPart then return true end
+	     for _,part in ipairs(character:GetChildren()) do
+	      if part:IsA("BasePart") then
+	       local ok,touching=pcall(function()return part:GetTouchingParts()end)
+	       if ok then for _,t in ipairs(touching) do if t:IsA("VehicleSeat") or t:IsA("Seat") then return true end end end
+	      end
+	     end
+	     return false
+	    end
+	    local function unseatPlayer(character)
+	     local humanoid=character:FindFirstChildOfClass("Humanoid")
+	     if humanoid then humanoid.Jump=true;pcall(function()humanoid.SeatPart=nil end)end
+	    end
+	    local function updatePullButton()
+	     pullBtn.Text = isBringing and "Bring All: ON" or "Bring All: OFF"
+	     pullBtn.BackgroundColor3 = isBringing and Color3.fromRGB(25, 190, 65) or Color3.fromRGB(205, 40, 40)
+	    end
+	    pullBtn.MouseButton1Click:Connect(function()
+	     isBringing = not isBringing
+	     updatePullButton()
+	     if isBringing then
+	      if bringConnection then bringConnection:Disconnect() end
+	      bringConnection=RunService.Heartbeat:Connect(function()
+	       if not isBringing then return end
+	       local myChar=player.Character;local myRoot=myChar and getRootPart(myChar)
+	       if not myRoot then return end
+	       local locked=myRoot.CFrame;local front=(locked*CFrame.new(0,0,-3)).Position
+	       local target=CFrame.new(front.X,locked.Position.Y,front.Z)
+	       for _,other in ipairs(Players:GetPlayers()) do
+	        if other~=player and other.Character then
+	         local otherRoot=getRootPart(other.Character)
+	         if otherRoot then
+	          if isOnVehicleOrSeat(other.Character) then unseatPlayer(other.Character) end
+	          setCharacterCollision(other.Character,false)
+	          otherRoot.CFrame=target
+	         end
+	        end
+	       end
+	       myRoot.CFrame=locked
+	      end)
+	     else
+	      if bringConnection then bringConnection:Disconnect();bringConnection=nil end
+	      for _,other in ipairs(Players:GetPlayers()) do
+	       if other~=player and other.Character then setCharacterCollision(other.Character,true) end
+	      end
+	     end
+	    end)
+	    updatePullButton()
+	
+end
+coroutine.wrap(ZGWOQ_fake_script)()
+local function RSGVXQ_fake_script() -- y0ungDareMenuv42.KeyboardShortcuts 
 	local script = Instance.new('LocalScript', y0ungDareMenuv42)
 
 	local Frame = script.Parent:WaitForChild('Frame')
@@ -1454,8 +1382,8 @@ local function EGKBR_fake_script() -- y0ungDareMenuv42.KeyboardShortcuts
 		end
 	end)
 end
-coroutine.wrap(EGKBR_fake_script)()
-local function HYUQOM_fake_script() -- y0ungDareMenuv42.MainScript 
+coroutine.wrap(RSGVXQ_fake_script)()
+local function BPCHVS_fake_script() -- y0ungDareMenuv42.MainScript 
 	local script = Instance.new('Script', y0ungDareMenuv42)
 
 	local Camera = workspace.CurrentCamera
@@ -1537,4 +1465,4 @@ local function HYUQOM_fake_script() -- y0ungDareMenuv42.MainScript
 		Human.AutoRotate = true
 	end
 end
-coroutine.wrap(HYUQOM_fake_script)()
+coroutine.wrap(BPCHVS_fake_script)()
