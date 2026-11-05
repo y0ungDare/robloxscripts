@@ -6,7 +6,7 @@
 local y0ungDareMenuv42 = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local Title = Instance.new("TextLabel")
-local NexusTP = Instance.new("TextButton")
+local SwordButton = Instance.new("TextButton")
 local BackTP = Instance.new("TextButton")
 local YardTP = Instance.new("TextButton")
 local TaseBypass = Instance.new("TextButton")
@@ -79,19 +79,19 @@ Title.TextScaled = true
 Title.TextSize = 40.000
 Title.TextWrapped = true
 
-NexusTP.Name = "NexusTP"
-NexusTP.Parent = Frame
-NexusTP.AnchorPoint = Vector2.new(0.5, 0.5)
-NexusTP.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-NexusTP.BorderColor3 = Color3.fromRGB(170, 0, 255)
-NexusTP.BorderSizePixel = 2
-NexusTP.Position = UDim2.new(0.501976132, 0, 0.488740474, 0)
-NexusTP.Size = UDim2.new(0, 260, 0, 21)
-NexusTP.Font = Enum.Font.SourceSansBold
-NexusTP.Text = "Teleport: Nexus"
-NexusTP.TextColor3 = Color3.fromRGB(170, 0, 255)
-NexusTP.TextSize = 25.000
-NexusTP.TextWrapped = true
+SwordButton.Name = "SwordButton"
+SwordButton.Parent = Frame
+SwordButton.AnchorPoint = Vector2.new(0.5, 0.5)
+SwordButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+SwordButton.BorderColor3 = Color3.fromRGB(170, 0, 255)
+SwordButton.BorderSizePixel = 2
+SwordButton.Position = UDim2.new(0.501976132, 0, 0.488740474, 0)
+SwordButton.Size = UDim2.new(0, 260, 0, 21)
+SwordButton.Font = Enum.Font.SourceSansBold
+SwordButton.Text = "Give Sword"
+SwordButton.TextColor3 = Color3.fromRGB(170, 0, 255)
+SwordButton.TextSize = 25.000
+SwordButton.TextWrapped = true
 
 BackTP.Name = "BackTP"
 BackTP.Parent = Frame
@@ -675,7 +675,7 @@ WelcomeText.TextSize = 30.000
 
 -- Scripts:
 
-local function AIVAJP_fake_script() -- Title.RainbowText 
+local function JGMPB_fake_script() -- Title.RainbowText 
 	local script = Instance.new('LocalScript', Title)
 
 		
@@ -693,18 +693,9 @@ local function AIVAJP_fake_script() -- Title.RainbowText
 		
 	
 end
-coroutine.wrap(AIVAJP_fake_script)()
-local function BHZNCC_fake_script() -- NexusTP.NexusTP_Logic 
-	local script = Instance.new('LocalScript', NexusTP)
-
-		script.Parent.MouseButton1Down:connect(function()
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(879,99,2377)
-		end)
-	
-end
-coroutine.wrap(BHZNCC_fake_script)()
-local function SPEPSP_fake_script() -- NexusTP.RainbowText 
-	local script = Instance.new('LocalScript', NexusTP)
+coroutine.wrap(JGMPB_fake_script)()
+local function EZNZOBO_fake_script() -- SwordButton.RainbowText 
+	local script = Instance.new('LocalScript', SwordButton)
 
 		
 		local title = script.Parent
@@ -721,8 +712,8 @@ local function SPEPSP_fake_script() -- NexusTP.RainbowText
 		
 	
 end
-coroutine.wrap(SPEPSP_fake_script)()
-local function PXYH_fake_script() -- BackTP.BackTP_Logic 
+coroutine.wrap(EZNZOBO_fake_script)()
+local function XAXG_fake_script() -- BackTP.BackTP_Logic 
 	local script = Instance.new('LocalScript', BackTP)
 
 		script.Parent.MouseButton1Down:connect(function()
@@ -730,8 +721,8 @@ local function PXYH_fake_script() -- BackTP.BackTP_Logic
 		end)
 	
 end
-coroutine.wrap(PXYH_fake_script)()
-local function UVSYB_fake_script() -- BackTP.RainbowText 
+coroutine.wrap(XAXG_fake_script)()
+local function YZONJU_fake_script() -- BackTP.RainbowText 
 	local script = Instance.new('LocalScript', BackTP)
 
 		
@@ -749,8 +740,8 @@ local function UVSYB_fake_script() -- BackTP.RainbowText
 		
 	
 end
-coroutine.wrap(UVSYB_fake_script)()
-local function AITEFNL_fake_script() -- YardTP.RainbowText 
+coroutine.wrap(YZONJU_fake_script)()
+local function JINVDLA_fake_script() -- YardTP.RainbowText 
 	local script = Instance.new('LocalScript', YardTP)
 
 		
@@ -768,8 +759,8 @@ local function AITEFNL_fake_script() -- YardTP.RainbowText
 		
 	
 end
-coroutine.wrap(AITEFNL_fake_script)()
-local function OAHM_fake_script() -- YardTP.yard 
+coroutine.wrap(JINVDLA_fake_script)()
+local function GWWSK_fake_script() -- YardTP.yard 
 	local script = Instance.new('LocalScript', YardTP)
 
 	-- Original PrisonBreaker V1.2 Crim Base teleport, unchanged.
@@ -778,8 +769,8 @@ local function OAHM_fake_script() -- YardTP.yard
 	end)
 	
 end
-coroutine.wrap(OAHM_fake_script)()
-local function IIQGB_fake_script() -- TaseBypass.RainbowText 
+coroutine.wrap(GWWSK_fake_script)()
+local function ENLG_fake_script() -- TaseBypass.RainbowText 
 	local script = Instance.new('LocalScript', TaseBypass)
 
 		
@@ -797,8 +788,8 @@ local function IIQGB_fake_script() -- TaseBypass.RainbowText
 		
 	
 end
-coroutine.wrap(IIQGB_fake_script)()
-local function MZAKEDT_fake_script() -- TaseBypass.TaserBypassToggleLogic 
+coroutine.wrap(ENLG_fake_script)()
+local function RYWSA_fake_script() -- TaseBypass.TaserBypassToggleLogic 
 	local script = Instance.new('LocalScript', TaseBypass)
 
 		-- Original Taser Bypass is preserved at the bottom.
@@ -911,8 +902,8 @@ local function MZAKEDT_fake_script() -- TaseBypass.TaserBypassToggleLogic
 		
 	
 end
-coroutine.wrap(MZAKEDT_fake_script)()
-local function MGETFRJ_fake_script() -- CellsTP.CellsTP_Logic 
+coroutine.wrap(RYWSA_fake_script)()
+local function FWQPA_fake_script() -- CellsTP.CellsTP_Logic 
 	local script = Instance.new('LocalScript', CellsTP)
 
 		script.Parent.MouseButton1Down:connect(function()
@@ -920,8 +911,8 @@ local function MGETFRJ_fake_script() -- CellsTP.CellsTP_Logic
 		end)
 	
 end
-coroutine.wrap(MGETFRJ_fake_script)()
-local function BZRXYNI_fake_script() -- CellsTP.RainbowText 
+coroutine.wrap(FWQPA_fake_script)()
+local function JFMZXH_fake_script() -- CellsTP.RainbowText 
 	local script = Instance.new('LocalScript', CellsTP)
 
 		
@@ -939,8 +930,8 @@ local function BZRXYNI_fake_script() -- CellsTP.RainbowText
 		
 	
 end
-coroutine.wrap(BZRXYNI_fake_script)()
-local function ZNFJKX_fake_script() -- ArmoryTP.RainbowText 
+coroutine.wrap(JFMZXH_fake_script)()
+local function UVOMJR_fake_script() -- ArmoryTP.RainbowText 
 	local script = Instance.new('LocalScript', ArmoryTP)
 
 		
@@ -958,8 +949,8 @@ local function ZNFJKX_fake_script() -- ArmoryTP.RainbowText
 		
 	
 end
-coroutine.wrap(ZNFJKX_fake_script)()
-local function JHMUO_fake_script() -- ArmoryTP.armory 
+coroutine.wrap(UVOMJR_fake_script)()
+local function TUWXGA_fake_script() -- ArmoryTP.armory 
 	local script = Instance.new('LocalScript', ArmoryTP)
 
 	-- Original PrisonBreaker V1.2 Crim Base teleport, unchanged.
@@ -968,8 +959,8 @@ local function JHMUO_fake_script() -- ArmoryTP.armory
 	end)
 	
 end
-coroutine.wrap(JHMUO_fake_script)()
-local function ZGWF_fake_script() -- TextButton.RainbowText 
+coroutine.wrap(TUWXGA_fake_script)()
+local function VYZNO_fake_script() -- TextButton.RainbowText 
 	local script = Instance.new('LocalScript', TextButton)
 
 		
@@ -987,8 +978,8 @@ local function ZGWF_fake_script() -- TextButton.RainbowText
 		
 	
 end
-coroutine.wrap(ZGWF_fake_script)()
-local function FGCFT_fake_script() -- InfoPopup.ClosePopup 
+coroutine.wrap(VYZNO_fake_script)()
+local function VKKB_fake_script() -- InfoPopup.ClosePopup 
 	local script = Instance.new('LocalScript', InfoPopup)
 
 		local popup = script.Parent
@@ -999,8 +990,8 @@ local function FGCFT_fake_script() -- InfoPopup.ClosePopup
 		
 	
 end
-coroutine.wrap(FGCFT_fake_script)()
-local function LYSU_fake_script() -- fly.RainbowText 
+coroutine.wrap(VKKB_fake_script)()
+local function MWDFNM_fake_script() -- fly.RainbowText 
 	local script = Instance.new('LocalScript', fly)
 
 		
@@ -1018,8 +1009,8 @@ local function LYSU_fake_script() -- fly.RainbowText
 		
 	
 end
-coroutine.wrap(LYSU_fake_script)()
-local function SLTMV_fake_script() -- AutoPilot.AutoPilotController 
+coroutine.wrap(MWDFNM_fake_script)()
+local function EITDAFS_fake_script() -- AutoPilot.AutoPilotController 
 	local script = Instance.new('LocalScript', AutoPilot)
 
 		-- Auto Pilot: self-contained button + wandering controller
@@ -1090,8 +1081,8 @@ local function SLTMV_fake_script() -- AutoPilot.AutoPilotController
 		
 	
 end
-coroutine.wrap(SLTMV_fake_script)()
-local function CKDVU_fake_script() -- AutoPilot.RainbowText 
+coroutine.wrap(EITDAFS_fake_script)()
+local function MJUVQ_fake_script() -- AutoPilot.RainbowText 
 	local script = Instance.new('LocalScript', AutoPilot)
 
 		
@@ -1109,8 +1100,8 @@ local function CKDVU_fake_script() -- AutoPilot.RainbowText
 		
 	
 end
-coroutine.wrap(CKDVU_fake_script)()
-local function MUZD_fake_script() -- SpinBot.SpinController 
+coroutine.wrap(MJUVQ_fake_script)()
+local function SDGJ_fake_script() -- SpinBot.SpinController 
 	local script = Instance.new('LocalScript', SpinBot)
 
 		local Players = game:GetService("Players")
@@ -1181,8 +1172,8 @@ local function MUZD_fake_script() -- SpinBot.SpinController
 		
 	
 end
-coroutine.wrap(MUZD_fake_script)()
-local function ZKLILTV_fake_script() -- SpinBot.RainbowText 
+coroutine.wrap(SDGJ_fake_script)()
+local function DCKEY_fake_script() -- SpinBot.RainbowText 
 	local script = Instance.new('LocalScript', SpinBot)
 
 		
@@ -1200,8 +1191,8 @@ local function ZKLILTV_fake_script() -- SpinBot.RainbowText
 		
 	
 end
-coroutine.wrap(ZKLILTV_fake_script)()
-local function RUCI_fake_script() -- NoclipToggle.RainbowText 
+coroutine.wrap(DCKEY_fake_script)()
+local function BSGVCMX_fake_script() -- NoclipToggle.RainbowText 
 	local script = Instance.new('LocalScript', NoclipToggle)
 
 		
@@ -1219,8 +1210,8 @@ local function RUCI_fake_script() -- NoclipToggle.RainbowText
 		
 	
 end
-coroutine.wrap(RUCI_fake_script)()
-local function JQLG_fake_script() -- XRayVision.XRayController 
+coroutine.wrap(BSGVCMX_fake_script)()
+local function XZOEVSN_fake_script() -- XRayVision.XRayController 
 	local script = Instance.new('LocalScript', XRayVision)
 
 		local button = script.Parent
@@ -1290,8 +1281,8 @@ local function JQLG_fake_script() -- XRayVision.XRayController
 		
 	
 end
-coroutine.wrap(JQLG_fake_script)()
-local function LJOSV_fake_script() -- XRayVision.RainbowText 
+coroutine.wrap(XZOEVSN_fake_script)()
+local function FONHKZB_fake_script() -- XRayVision.RainbowText 
 	local script = Instance.new('LocalScript', XRayVision)
 
 		
@@ -1309,8 +1300,8 @@ local function LJOSV_fake_script() -- XRayVision.RainbowText
 		
 	
 end
-coroutine.wrap(LJOSV_fake_script)()
-local function FEOEPO_fake_script() -- WallEsp.RainbowText 
+coroutine.wrap(FONHKZB_fake_script)()
+local function NRZHUAA_fake_script() -- WallEsp.RainbowText 
 	local script = Instance.new('LocalScript', WallEsp)
 
 		
@@ -1328,8 +1319,8 @@ local function FEOEPO_fake_script() -- WallEsp.RainbowText
 		
 	
 end
-coroutine.wrap(FEOEPO_fake_script)()
-local function NKYYLM_fake_script() -- WallEsp.client 
+coroutine.wrap(NRZHUAA_fake_script)()
+local function LKIJISN_fake_script() -- WallEsp.client 
 	local script = Instance.new('LocalScript', WallEsp)
 
 		-- Wall ESP with body-aligned 2D box and vertical health bar
@@ -1532,8 +1523,8 @@ local function NKYYLM_fake_script() -- WallEsp.client
 		
 	
 end
-coroutine.wrap(NKYYLM_fake_script)()
-local function OWRRG_fake_script() -- aurakill.AuraKillController 
+coroutine.wrap(LKIJISN_fake_script)()
+local function QKMSK_fake_script() -- aurakill.AuraKillController 
 	local script = Instance.new('LocalScript', aurakill)
 
 		-- Isolated from the uploaded Ludowig KillAura implementation.
@@ -1613,8 +1604,8 @@ local function OWRRG_fake_script() -- aurakill.AuraKillController
 		
 	
 end
-coroutine.wrap(OWRRG_fake_script)()
-local function ROMWG_fake_script() -- aurakill.RainbowText 
+coroutine.wrap(QKMSK_fake_script)()
+local function RFJRTRJ_fake_script() -- aurakill.RainbowText 
 	local script = Instance.new('LocalScript', aurakill)
 
 		
@@ -1632,8 +1623,8 @@ local function ROMWG_fake_script() -- aurakill.RainbowText
 		
 	
 end
-coroutine.wrap(ROMWG_fake_script)()
-local function WMSZYNK_fake_script() -- BringButton.RainbowText 
+coroutine.wrap(RFJRTRJ_fake_script)()
+local function BPVA_fake_script() -- BringButton.RainbowText 
 	local script = Instance.new('LocalScript', BringButton)
 
 		
@@ -1651,8 +1642,8 @@ local function WMSZYNK_fake_script() -- BringButton.RainbowText
 		
 	
 end
-coroutine.wrap(WMSZYNK_fake_script)()
-local function KGMFD_fake_script() -- CriminalBase.RainbowText 
+coroutine.wrap(BPVA_fake_script)()
+local function SXBUOQ_fake_script() -- CriminalBase.RainbowText 
 	local script = Instance.new('LocalScript', CriminalBase)
 
 		
@@ -1670,8 +1661,8 @@ local function KGMFD_fake_script() -- CriminalBase.RainbowText
 		
 	
 end
-coroutine.wrap(KGMFD_fake_script)()
-local function JWBEPTP_fake_script() -- CriminalBase.CrimBaseTeleport 
+coroutine.wrap(SXBUOQ_fake_script)()
+local function PEQBK_fake_script() -- CriminalBase.CrimBaseTeleport 
 	local script = Instance.new('LocalScript', CriminalBase)
 
 	-- Original PrisonBreaker V1.2 Crim Base teleport, unchanged.
@@ -1680,8 +1671,8 @@ local function JWBEPTP_fake_script() -- CriminalBase.CrimBaseTeleport
 	end)
 	
 end
-coroutine.wrap(JWBEPTP_fake_script)()
-local function BBLN_fake_script() -- SetSpawnPoint.RainbowText 
+coroutine.wrap(PEQBK_fake_script)()
+local function TODHLQ_fake_script() -- SetSpawnPoint.RainbowText 
 	local script = Instance.new('LocalScript', SetSpawnPoint)
 
 		
@@ -1699,8 +1690,8 @@ local function BBLN_fake_script() -- SetSpawnPoint.RainbowText
 		
 	
 end
-coroutine.wrap(BBLN_fake_script)()
-local function DUBH_fake_script() -- SetSpawnPoint.TeleportScript 
+coroutine.wrap(TODHLQ_fake_script)()
+local function WEAMQWV_fake_script() -- SetSpawnPoint.TeleportScript 
 	local script = Instance.new('LocalScript', SetSpawnPoint)
 
 		local _304df533e735 = game:GetService("Players").LocalPlayer
@@ -1722,8 +1713,8 @@ local function DUBH_fake_script() -- SetSpawnPoint.TeleportScript
 		
 	
 end
-coroutine.wrap(DUBH_fake_script)()
-local function FDVJTAA_fake_script() -- TeleportToSpawn.RainbowText 
+coroutine.wrap(WEAMQWV_fake_script)()
+local function SXLJ_fake_script() -- TeleportToSpawn.RainbowText 
 	local script = Instance.new('LocalScript', TeleportToSpawn)
 
 		
@@ -1741,8 +1732,8 @@ local function FDVJTAA_fake_script() -- TeleportToSpawn.RainbowText
 		
 	
 end
-coroutine.wrap(FDVJTAA_fake_script)()
-local function OEWFAEZ_fake_script() -- TeleportToSpawn.TeleportScript 
+coroutine.wrap(SXLJ_fake_script)()
+local function UBNSEV_fake_script() -- TeleportToSpawn.TeleportScript 
 	local script = Instance.new('LocalScript', TeleportToSpawn)
 
 		local _304df533e735 = game:GetService("Players").LocalPlayer
@@ -1765,8 +1756,8 @@ local function OEWFAEZ_fake_script() -- TeleportToSpawn.TeleportScript
 		
 	
 end
-coroutine.wrap(OEWFAEZ_fake_script)()
-local function TPARN_fake_script() -- AntiAFKToggle.RainbowText 
+coroutine.wrap(UBNSEV_fake_script)()
+local function MLLVS_fake_script() -- AntiAFKToggle.RainbowText 
 	local script = Instance.new('LocalScript', AntiAFKToggle)
 
 		
@@ -1784,8 +1775,8 @@ local function TPARN_fake_script() -- AntiAFKToggle.RainbowText
 		
 	
 end
-coroutine.wrap(TPARN_fake_script)()
-local function FMZBVP_fake_script() -- ChatToggle.RainbowText 
+coroutine.wrap(MLLVS_fake_script)()
+local function NNDZH_fake_script() -- ChatToggle.RainbowText 
 	local script = Instance.new('LocalScript', ChatToggle)
 
 		
@@ -1803,8 +1794,8 @@ local function FMZBVP_fake_script() -- ChatToggle.RainbowText
 		
 	
 end
-coroutine.wrap(FMZBVP_fake_script)()
-local function JAEHEYV_fake_script() -- InfoButton.RainbowText 
+coroutine.wrap(NNDZH_fake_script)()
+local function GONHST_fake_script() -- InfoButton.RainbowText 
 	local script = Instance.new('LocalScript', InfoButton)
 
 		
@@ -1822,8 +1813,8 @@ local function JAEHEYV_fake_script() -- InfoButton.RainbowText
 		
 	
 end
-coroutine.wrap(JAEHEYV_fake_script)()
-local function FYII_fake_script() -- FlyingCarsToggle.RainbowText 
+coroutine.wrap(GONHST_fake_script)()
+local function XZBYAFL_fake_script() -- FlyingCarsToggle.RainbowText 
 	local script = Instance.new('LocalScript', FlyingCarsToggle)
 
 		
@@ -1841,8 +1832,8 @@ local function FYII_fake_script() -- FlyingCarsToggle.RainbowText
 		
 	
 end
-coroutine.wrap(FYII_fake_script)()
-local function BZNQI_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
+coroutine.wrap(XZBYAFL_fake_script)()
+local function ZMUZD_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
 	local script = Instance.new('LocalScript', FlyingCarsToggle)
 
 		
@@ -1981,8 +1972,8 @@ local function BZNQI_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyControl
 		
 	
 end
-coroutine.wrap(BZNQI_fake_script)()
-local function GUYX_fake_script() -- removedoors.RainbowText 
+coroutine.wrap(ZMUZD_fake_script)()
+local function RSVXZ_fake_script() -- removedoors.RainbowText 
 	local script = Instance.new('LocalScript', removedoors)
 
 		
@@ -2000,8 +1991,8 @@ local function GUYX_fake_script() -- removedoors.RainbowText
 		
 	
 end
-coroutine.wrap(GUYX_fake_script)()
-local function HHXDPKP_fake_script() -- removedoors.RemoveDoorsToggle 
+coroutine.wrap(RSVXZ_fake_script)()
+local function UUSA_fake_script() -- removedoors.RemoveDoorsToggle 
 	local script = Instance.new('LocalScript', removedoors)
 
 		-- Ludowig Remove All Doors: extracted standalone toggle.
@@ -2062,8 +2053,8 @@ local function HHXDPKP_fake_script() -- removedoors.RemoveDoorsToggle
 		
 	
 end
-coroutine.wrap(HHXDPKP_fake_script)()
-local function XQBF_fake_script() -- Frame.DragFrame 
+coroutine.wrap(UUSA_fake_script)()
+local function FYNUE_fake_script() -- Frame.DragFrame 
 	local script = Instance.new('LocalScript', Frame)
 
 		local Frame = script.Parent
@@ -2110,8 +2101,8 @@ local function XQBF_fake_script() -- Frame.DragFrame
 		dragify(Frame)
 	
 end
-coroutine.wrap(XQBF_fake_script)()
-local function TZSJ_fake_script() -- Frame.GUIController 
+coroutine.wrap(FYNUE_fake_script)()
+local function UBDA_fake_script() -- Frame.GUIController 
 	local script = Instance.new('LocalScript', Frame)
 
 		-- Player Puller: single ON/OFF button
@@ -2183,8 +2174,8 @@ local function TZSJ_fake_script() -- Frame.GUIController
 		
 	
 end
-coroutine.wrap(TZSJ_fake_script)()
-local function XBPJJG_fake_script() -- Frame.AntiAFKController 
+coroutine.wrap(UBDA_fake_script)()
+local function NKTLP_fake_script() -- Frame.AntiAFKController 
 	local script = Instance.new('LocalScript', Frame)
 
 		-- Original Anti-AFK mechanism from the supplied ScriptBlox loader:
@@ -2228,8 +2219,8 @@ local function XBPJJG_fake_script() -- Frame.AntiAFKController
 		
 	
 end
-coroutine.wrap(XBPJJG_fake_script)()
-local function MVZSDW_fake_script() -- Frame.ChatController 
+coroutine.wrap(NKTLP_fake_script)()
+local function SGYXZG_fake_script() -- Frame.ChatController 
 	local script = Instance.new('LocalScript', Frame)
 
 		-- Based on the original ScriptBlox source. Rate limited for safety.
@@ -2278,8 +2269,8 @@ local function MVZSDW_fake_script() -- Frame.ChatController
 		
 	
 end
-coroutine.wrap(MVZSDW_fake_script)()
-local function JYCFSKP_fake_script() -- Frame.OriginalNoclipController 
+coroutine.wrap(SGYXZG_fake_script)()
+local function BEDO_fake_script() -- Frame.OriginalNoclipController 
 	local script = Instance.new('LocalScript', Frame)
 
 		-- Original Ludowig noclip implementation, isolated from the supplied script.
@@ -2418,8 +2409,8 @@ local function JYCFSKP_fake_script() -- Frame.OriginalNoclipController
 		
 	
 end
-coroutine.wrap(JYCFSKP_fake_script)()
-local function DSVOUSE_fake_script() -- Frame.InfoToggle 
+coroutine.wrap(BEDO_fake_script)()
+local function VVWC_fake_script() -- Frame.InfoToggle 
 	local script = Instance.new('LocalScript', Frame)
 
 		local gui = script.Parent
@@ -2435,8 +2426,8 @@ local function DSVOUSE_fake_script() -- Frame.InfoToggle
 		
 	
 end
-coroutine.wrap(DSVOUSE_fake_script)()
-local function OSHFP_fake_script() -- Frame.Aimbot 
+coroutine.wrap(VVWC_fake_script)()
+local function SFEJ_fake_script() -- Frame.Aimbot 
 	local script = Instance.new('LocalScript', Frame)
 
 		
@@ -2589,8 +2580,116 @@ local function OSHFP_fake_script() -- Frame.Aimbot
 		
 	
 end
-coroutine.wrap(OSHFP_fake_script)()
-local function YEUDYWG_fake_script() -- WelcomeBanner.WelcomeAnimation 
+coroutine.wrap(SFEJ_fake_script)()
+local function PJHLZU_fake_script() -- Frame.SwordController 
+	local script = Instance.new('LocalScript', Frame)
+
+	local Players = game:GetService("Players")
+	local plr = Players.LocalPlayer
+	local SwordButton = script.Parent:WaitForChild("SwordButton")
+	
+	SwordButton.MouseButton1Click:Connect(function()
+	    if plr.Backpack:FindFirstChild("Uctron's Sword") or (plr.Character and plr.Character:FindFirstChild("Uctron's Sword")) then return end
+	    -- Original Prison Ruiner sword creation and combat behavior
+	    local Sword = Instance.new("Tool")
+	    local Handle = Instance.new("Part")
+	    local Mesh = Instance.new("SpecialMesh")
+	    local Unsheath = Instance.new("Sound")
+	    local SwordSlash = Instance.new("Sound")
+	    Sword.Name = "Uctron's Sword"
+	    SwordSlash.Name = "SwordSlash"
+	    Unsheath.Name = "Unsheath"
+	    Unsheath.SoundId = "http://www.roblox.com/asset/?id=12222225"
+	    Unsheath.Volume = 1
+	    SwordSlash.SoundId = "http://www.roblox.com/asset/?id=12222216"
+	    SwordSlash.Volume = .7
+	    Unsheath.Parent = Handle
+	    SwordSlash.Parent = Handle
+	    Mesh.Parent = Handle
+	    Mesh.MeshId = "rbxassetid://497078148"
+	    Mesh.Scale = Vector3.new(5,5,5)
+	    Handle.Name = "Handle"
+	    Handle.Parent = Sword
+	    Sword.GripForward = Vector3.new(-1,0,0)
+	    Sword.GripPos = Vector3.new(0,0,-1.5)
+	    Sword.GripRight = Vector3.new(0,1,0)
+	    Sword.GripUp = Vector3.new(0,0,1)
+	    Sword.ToolTip = "Uctron's Sword"
+	    Sword.TextureId = "rbxasset://Textures/Sword128.png"
+	    Sword.CanBeDropped = false
+	    Sword.RequiresHandle = true
+	    Handle.Orientation = Vector3.new(-46.24, 42.14, 50.93)
+	    Handle.Position = Vector3.new(-3.174,1.57,3.04)
+	    Handle.CanCollide = true
+	    Handle.Size = Vector3.new(1,.8,4)
+	    Mesh.MeshId = "rbxasset://fonts/sword.mesh"
+	    Mesh.MeshType = "FileMesh"
+	    Mesh.Offset = Vector3.new(0,0,0)
+	    Mesh.Scale = Vector3.new(1,1,1)
+	    Mesh.TextureId = "rbxasset://textures/SwordTexture.png"
+	    Sword.Equipped:Connect(function() Unsheath:Play() end)
+	    -- One touch listener per sword, not a new listener on every swing.
+	    local SWING_COOLDOWN = 0.65
+	    local ACTIVE_WINDOW = 0.28
+	    local MAX_REACH = 7
+	    local lastSwing = -math.huge
+	    local activeUntil = 0
+	    local hitThisSwing = {}
+	    local meleeRemote = game:GetService("ReplicatedStorage"):FindFirstChild("meleeEvent")
+	
+	    Handle.Touched:Connect(function(hit)
+	        if os.clock() > activeUntil or not Sword:IsDescendantOf(plr.Character or workspace) then return end
+	        local character = hit:FindFirstAncestorOfClass("Model")
+	        if not character or character == plr.Character then return end
+	        local target = Players:GetPlayerFromCharacter(character)
+	        if not target or hitThisSwing[target] then return end
+	        local ownRoot = plr.Character and plr.Character:FindFirstChild("HumanoidRootPart")
+	        local targetRoot = character:FindFirstChild("HumanoidRootPart")
+	        local targetHumanoid = character:FindFirstChildOfClass("Humanoid")
+	        if not ownRoot or not targetRoot or not targetHumanoid or targetHumanoid.Health <= 0 then return end
+	        if (ownRoot.Position - targetRoot.Position).Magnitude > MAX_REACH then return end
+	        hitThisSwing[target] = true
+	        if meleeRemote and meleeRemote:IsA("RemoteEvent") then
+	            meleeRemote:FireServer(target)
+	        end
+	    end)
+	
+	    Sword.Activated:Connect(function()
+	        local now = os.clock()
+	        if now - lastSwing < SWING_COOLDOWN then return end
+	        lastSwing = now
+	        hitThisSwing = {}
+	        activeUntil = now + ACTIVE_WINDOW
+	        SwordSlash:Play()
+	        local oldAnim = Sword:FindFirstChild("toolanim")
+	        if oldAnim then oldAnim:Destroy() end
+	        local Anim = Instance.new("StringValue")
+	        Anim.Name = "toolanim"
+	        Anim.Value = "Slash"
+	        Anim.Parent = Sword
+	    end)
+	    local Mouse_Icon = "rbxasset://textures/GunCursor.png"
+	    local Reloading_Icon = "rbxasset://textures/GunWaitCursor.png"
+	    local Tool = Sword
+	    local Mouse = nil
+	    local function UpdateIcon()
+	        if Mouse then Mouse.Icon = Tool.Enabled and Mouse_Icon or Reloading_Icon end
+	    end
+	    local function OnEquipped(ToolMouse)
+	        Mouse = ToolMouse
+	        UpdateIcon()
+	    end
+	    local function OnChanged(Property)
+	        if Property == "Enabled" then UpdateIcon() end
+	    end
+	    Tool.Equipped:Connect(OnEquipped)
+	    Tool.Changed:Connect(OnChanged)
+	    Sword.Parent = plr.Backpack
+	end)
+	
+end
+coroutine.wrap(PJHLZU_fake_script)()
+local function LONAB_fake_script() -- WelcomeBanner.WelcomeAnimation 
 	local script = Instance.new('LocalScript', WelcomeBanner)
 
 		-- y0ungDare v4.2: original transparent welcome banner with video-style text decoding.
@@ -2674,8 +2773,8 @@ local function YEUDYWG_fake_script() -- WelcomeBanner.WelcomeAnimation
 		
 	
 end
-coroutine.wrap(YEUDYWG_fake_script)()
-local function WGJJLR_fake_script() -- y0ungDareMenuv42.KeyboardShortcuts 
+coroutine.wrap(LONAB_fake_script)()
+local function VXVBVP_fake_script() -- y0ungDareMenuv42.KeyboardShortcuts 
 	local script = Instance.new('LocalScript', y0ungDareMenuv42)
 
 		local Frame = script.Parent:WaitForChild('Frame')
@@ -2770,8 +2869,8 @@ local function WGJJLR_fake_script() -- y0ungDareMenuv42.KeyboardShortcuts
 		end)
 	
 end
-coroutine.wrap(WGJJLR_fake_script)()
-local function QZRATQM_fake_script() -- y0ungDareMenuv42.MainScript 
+coroutine.wrap(VXVBVP_fake_script)()
+local function DHOVDG_fake_script() -- y0ungDareMenuv42.MainScript 
 	local script = Instance.new('LocalScript', y0ungDareMenuv42)
 
 		local Camera = workspace.CurrentCamera
@@ -2854,4 +2953,4 @@ local function QZRATQM_fake_script() -- y0ungDareMenuv42.MainScript
 		end
 	
 end
-coroutine.wrap(QZRATQM_fake_script)()
+coroutine.wrap(DHOVDG_fake_script)()
