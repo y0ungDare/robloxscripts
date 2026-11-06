@@ -3,7 +3,7 @@
 
 -- Instances:
 
-local y0ungDareMenuv42 = Instance.new("ScreenGui")
+local y0ungDareMenuv43 = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local Title = Instance.new("TextLabel")
 local HighGraphicsToggle = Instance.new("TextButton")
@@ -55,11 +55,11 @@ local Ping = Instance.new("TextLabel")
 
 --Properties:
 
-y0ungDareMenuv42.Name = "y0ungDare Menu v4.2"
-y0ungDareMenuv42.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-y0ungDareMenuv42.ResetOnSpawn = false
+y0ungDareMenuv43.Name = "y0ungDare Menu v4.3"
+y0ungDareMenuv43.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+y0ungDareMenuv43.ResetOnSpawn = false
 
-Frame.Parent = y0ungDareMenuv42
+Frame.Parent = y0ungDareMenuv43
 Frame.AnchorPoint = Vector2.new(0.5, 0.5)
 Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Frame.BorderColor3 = Color3.fromRGB(170, 85, 255)
@@ -76,7 +76,7 @@ Title.BackgroundTransparency = 1.000
 Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Title.Position = UDim2.new(0.5, 0, 0.00468750019, 23)
 Title.Size = UDim2.new(0, 182, 0, 35)
-Title.Text = "y0ungDare Menu v4.2"
+Title.Text = "y0ungDare Menu v4.3"
 Title.TextColor3 = Color3.fromRGB(0, 0, 255)
 Title.TextScaled = true
 Title.TextSize = 40.000
@@ -702,7 +702,7 @@ removedoors.TextWrapped = true
 removedoors.TextXAlignment = Enum.TextXAlignment.Left
 
 WelcomeBanner.Name = "WelcomeBanner"
-WelcomeBanner.Parent = y0ungDareMenuv42
+WelcomeBanner.Parent = y0ungDareMenuv43
 WelcomeBanner.BackgroundColor3 = Color3.fromRGB(14, 12, 29)
 WelcomeBanner.BackgroundTransparency = 1.000
 WelcomeBanner.BorderSizePixel = 0
@@ -715,7 +715,7 @@ WelcomeText.BackgroundTransparency = 1.000
 WelcomeText.BorderSizePixel = 0
 WelcomeText.Size = UDim2.new(1, 0, 0, 60)
 WelcomeText.Font = Enum.Font.SourceSans
-WelcomeText.Text = "Hello Player, Welcome to y0ungDare Menu v4.2"
+WelcomeText.Text = "Hello Player, Welcome to y0ungDare Menu v4.3"
 WelcomeText.TextColor3 = Color3.fromRGB(255, 255, 255)
 WelcomeText.TextSize = 30.000
 
@@ -734,7 +734,7 @@ UpdatesLink.TextStrokeTransparency = 0.180
 UpdatesLink.TextWrapped = true
 
 Fps.Name = "Fps"
-Fps.Parent = y0ungDareMenuv42
+Fps.Parent = y0ungDareMenuv43
 Fps.AnchorPoint = Vector2.new(0.5, 0)
 Fps.BackgroundTransparency = 1.000
 Fps.BorderSizePixel = 0
@@ -748,7 +748,7 @@ Fps.TextScaled = true
 Fps.TextWrapped = true
 
 Ping.Name = "Ping"
-Ping.Parent = y0ungDareMenuv42
+Ping.Parent = y0ungDareMenuv43
 Ping.AnchorPoint = Vector2.new(0.5, 0)
 Ping.BackgroundTransparency = 1.000
 Ping.BorderSizePixel = 0
@@ -763,7 +763,7 @@ Ping.TextWrapped = true
 
 -- Scripts:
 
-local function UJUW_fake_script() -- Title.RainbowText 
+local function PBLP_fake_script() -- Title.RainbowText 
 	local script = Instance.new('LocalScript', Title)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -786,8 +786,8 @@ local function UJUW_fake_script() -- Title.RainbowText
 		
 	
 end
-coroutine.wrap(UJUW_fake_script)()
-local function USREG_fake_script() -- HighGraphicsToggle.RainbowText 
+coroutine.wrap(PBLP_fake_script)()
+local function ZCYHAC_fake_script() -- HighGraphicsToggle.RainbowText 
 	local script = Instance.new('LocalScript', HighGraphicsToggle)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -810,8 +810,8 @@ local function USREG_fake_script() -- HighGraphicsToggle.RainbowText
 		
 	
 end
-coroutine.wrap(USREG_fake_script)()
-local function TPHW_fake_script() -- GetAllGuns.RainbowText 
+coroutine.wrap(ZCYHAC_fake_script)()
+local function MQHXZBG_fake_script() -- GetAllGuns.RainbowText 
 	local script = Instance.new('LocalScript', GetAllGuns)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -834,8 +834,8 @@ local function TPHW_fake_script() -- GetAllGuns.RainbowText
 		
 	
 end
-coroutine.wrap(TPHW_fake_script)()
-local function FDZI_fake_script() -- YardTP.RainbowText 
+coroutine.wrap(MQHXZBG_fake_script)()
+local function TILUV_fake_script() -- YardTP.RainbowText 
 	local script = Instance.new('LocalScript', YardTP)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -858,8 +858,8 @@ local function FDZI_fake_script() -- YardTP.RainbowText
 		
 	
 end
-coroutine.wrap(FDZI_fake_script)()
-local function HMVXF_fake_script() -- YardTP.yard 
+coroutine.wrap(TILUV_fake_script)()
+local function GHRQG_fake_script() -- YardTP.yard 
 	local script = Instance.new('LocalScript', YardTP)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -873,8 +873,8 @@ local function HMVXF_fake_script() -- YardTP.yard
 		
 	
 end
-coroutine.wrap(HMVXF_fake_script)()
-local function ZBIW_fake_script() -- TaseBypass.RainbowText 
+coroutine.wrap(GHRQG_fake_script)()
+local function TXYRKL_fake_script() -- TaseBypass.RainbowText 
 	local script = Instance.new('LocalScript', TaseBypass)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -897,8 +897,8 @@ local function ZBIW_fake_script() -- TaseBypass.RainbowText
 		
 	
 end
-coroutine.wrap(ZBIW_fake_script)()
-local function BVEISAU_fake_script() -- TaseBypass.TaserBypassToggleLogic 
+coroutine.wrap(TXYRKL_fake_script)()
+local function RCJY_fake_script() -- TaseBypass.TaserBypassToggleLogic 
 	local script = Instance.new('LocalScript', TaseBypass)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1016,8 +1016,8 @@ local function BVEISAU_fake_script() -- TaseBypass.TaserBypassToggleLogic
 		
 	
 end
-coroutine.wrap(BVEISAU_fake_script)()
-local function MFTNZVZ_fake_script() -- FPSPingToggle.RainbowText 
+coroutine.wrap(RCJY_fake_script)()
+local function XVHVNN_fake_script() -- FPSPingToggle.RainbowText 
 	local script = Instance.new('LocalScript', FPSPingToggle)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1040,8 +1040,8 @@ local function MFTNZVZ_fake_script() -- FPSPingToggle.RainbowText
 		
 	
 end
-coroutine.wrap(MFTNZVZ_fake_script)()
-local function IAAS_fake_script() -- FPSPingToggle.ToggleController 
+coroutine.wrap(XVHVNN_fake_script)()
+local function SGSPZOJ_fake_script() -- FPSPingToggle.ToggleController 
 	local script = Instance.new('LocalScript', FPSPingToggle)
 
 	local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
@@ -1066,8 +1066,8 @@ local function IAAS_fake_script() -- FPSPingToggle.ToggleController
 		update()
 	
 end
-coroutine.wrap(IAAS_fake_script)()
-local function WEUHVGR_fake_script() -- ArmoryTP.RainbowText 
+coroutine.wrap(SGSPZOJ_fake_script)()
+local function DAIW_fake_script() -- ArmoryTP.RainbowText 
 	local script = Instance.new('LocalScript', ArmoryTP)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1090,8 +1090,8 @@ local function WEUHVGR_fake_script() -- ArmoryTP.RainbowText
 		
 	
 end
-coroutine.wrap(WEUHVGR_fake_script)()
-local function LVBBI_fake_script() -- ArmoryTP.armory 
+coroutine.wrap(DAIW_fake_script)()
+local function LYQYVGF_fake_script() -- ArmoryTP.armory 
 	local script = Instance.new('LocalScript', ArmoryTP)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1105,8 +1105,8 @@ local function LVBBI_fake_script() -- ArmoryTP.armory
 		
 	
 end
-coroutine.wrap(LVBBI_fake_script)()
-local function OJRKELC_fake_script() -- TextButton.RainbowText 
+coroutine.wrap(LYQYVGF_fake_script)()
+local function BKSA_fake_script() -- TextButton.RainbowText 
 	local script = Instance.new('LocalScript', TextButton)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1129,8 +1129,8 @@ local function OJRKELC_fake_script() -- TextButton.RainbowText
 		
 	
 end
-coroutine.wrap(OJRKELC_fake_script)()
-local function UIWCS_fake_script() -- InfoPopup.ClosePopup 
+coroutine.wrap(BKSA_fake_script)()
+local function GLDR_fake_script() -- InfoPopup.ClosePopup 
 	local script = Instance.new('LocalScript', InfoPopup)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1149,8 +1149,8 @@ local function UIWCS_fake_script() -- InfoPopup.ClosePopup
 		
 	
 end
-coroutine.wrap(UIWCS_fake_script)()
-local function APKHXH_fake_script() -- fly.RainbowText 
+coroutine.wrap(GLDR_fake_script)()
+local function GVADHZ_fake_script() -- fly.RainbowText 
 	local script = Instance.new('LocalScript', fly)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1173,8 +1173,8 @@ local function APKHXH_fake_script() -- fly.RainbowText
 		
 	
 end
-coroutine.wrap(APKHXH_fake_script)()
-local function ADGFU_fake_script() -- AutoPilot.AutoPilotController 
+coroutine.wrap(GVADHZ_fake_script)()
+local function POFL_fake_script() -- AutoPilot.AutoPilotController 
 	local script = Instance.new('LocalScript', AutoPilot)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1250,8 +1250,8 @@ local function ADGFU_fake_script() -- AutoPilot.AutoPilotController
 		
 	
 end
-coroutine.wrap(ADGFU_fake_script)()
-local function XLKPSCS_fake_script() -- AutoPilot.RainbowText 
+coroutine.wrap(POFL_fake_script)()
+local function QIGEAJ_fake_script() -- AutoPilot.RainbowText 
 	local script = Instance.new('LocalScript', AutoPilot)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1274,8 +1274,8 @@ local function XLKPSCS_fake_script() -- AutoPilot.RainbowText
 		
 	
 end
-coroutine.wrap(XLKPSCS_fake_script)()
-local function FBXNN_fake_script() -- SpinBot.SpinController 
+coroutine.wrap(QIGEAJ_fake_script)()
+local function SGDRFF_fake_script() -- SpinBot.SpinController 
 	local script = Instance.new('LocalScript', SpinBot)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1351,8 +1351,8 @@ local function FBXNN_fake_script() -- SpinBot.SpinController
 		
 	
 end
-coroutine.wrap(FBXNN_fake_script)()
-local function BQXIT_fake_script() -- SpinBot.RainbowText 
+coroutine.wrap(SGDRFF_fake_script)()
+local function ODYYOJ_fake_script() -- SpinBot.RainbowText 
 	local script = Instance.new('LocalScript', SpinBot)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1375,8 +1375,8 @@ local function BQXIT_fake_script() -- SpinBot.RainbowText
 		
 	
 end
-coroutine.wrap(BQXIT_fake_script)()
-local function CFRKQR_fake_script() -- NoclipToggle.RainbowText 
+coroutine.wrap(ODYYOJ_fake_script)()
+local function YZLVBV_fake_script() -- NoclipToggle.RainbowText 
 	local script = Instance.new('LocalScript', NoclipToggle)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1399,8 +1399,8 @@ local function CFRKQR_fake_script() -- NoclipToggle.RainbowText
 		
 	
 end
-coroutine.wrap(CFRKQR_fake_script)()
-local function QNEZSR_fake_script() -- XRayVision.XRayController 
+coroutine.wrap(YZLVBV_fake_script)()
+local function RZRXVYE_fake_script() -- XRayVision.XRayController 
 	local script = Instance.new('LocalScript', XRayVision)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1475,8 +1475,8 @@ local function QNEZSR_fake_script() -- XRayVision.XRayController
 		
 	
 end
-coroutine.wrap(QNEZSR_fake_script)()
-local function CDWD_fake_script() -- XRayVision.RainbowText 
+coroutine.wrap(RZRXVYE_fake_script)()
+local function TRWWUGJ_fake_script() -- XRayVision.RainbowText 
 	local script = Instance.new('LocalScript', XRayVision)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1499,8 +1499,8 @@ local function CDWD_fake_script() -- XRayVision.RainbowText
 		
 	
 end
-coroutine.wrap(CDWD_fake_script)()
-local function ZUNM_fake_script() -- WallEsp.RainbowText 
+coroutine.wrap(TRWWUGJ_fake_script)()
+local function RFZPE_fake_script() -- WallEsp.RainbowText 
 	local script = Instance.new('LocalScript', WallEsp)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1523,8 +1523,8 @@ local function ZUNM_fake_script() -- WallEsp.RainbowText
 		
 	
 end
-coroutine.wrap(ZUNM_fake_script)()
-local function MBOKKN_fake_script() -- WallEsp.client 
+coroutine.wrap(RFZPE_fake_script)()
+local function FHOCPX_fake_script() -- WallEsp.client 
 	local script = Instance.new('LocalScript', WallEsp)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1736,8 +1736,8 @@ local function MBOKKN_fake_script() -- WallEsp.client
 		
 	
 end
-coroutine.wrap(MBOKKN_fake_script)()
-local function WUBVUD_fake_script() -- aurakill.AuraKillController 
+coroutine.wrap(FHOCPX_fake_script)()
+local function KZXV_fake_script() -- aurakill.AuraKillController 
 	local script = Instance.new('LocalScript', aurakill)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1822,8 +1822,8 @@ local function WUBVUD_fake_script() -- aurakill.AuraKillController
 		
 	
 end
-coroutine.wrap(WUBVUD_fake_script)()
-local function OVTRSM_fake_script() -- aurakill.RainbowText 
+coroutine.wrap(KZXV_fake_script)()
+local function ZGQNT_fake_script() -- aurakill.RainbowText 
 	local script = Instance.new('LocalScript', aurakill)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1846,8 +1846,8 @@ local function OVTRSM_fake_script() -- aurakill.RainbowText
 		
 	
 end
-coroutine.wrap(OVTRSM_fake_script)()
-local function OVOQS_fake_script() -- BringButton.RainbowText 
+coroutine.wrap(ZGQNT_fake_script)()
+local function BSBZPW_fake_script() -- BringButton.RainbowText 
 	local script = Instance.new('LocalScript', BringButton)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1870,8 +1870,8 @@ local function OVOQS_fake_script() -- BringButton.RainbowText
 		
 	
 end
-coroutine.wrap(OVOQS_fake_script)()
-local function SKHOF_fake_script() -- CriminalBase.RainbowText 
+coroutine.wrap(BSBZPW_fake_script)()
+local function FKVION_fake_script() -- CriminalBase.RainbowText 
 	local script = Instance.new('LocalScript', CriminalBase)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1894,8 +1894,8 @@ local function SKHOF_fake_script() -- CriminalBase.RainbowText
 		
 	
 end
-coroutine.wrap(SKHOF_fake_script)()
-local function FJKWDP_fake_script() -- CriminalBase.CrimBaseTeleport 
+coroutine.wrap(FKVION_fake_script)()
+local function CNAEDG_fake_script() -- CriminalBase.CrimBaseTeleport 
 	local script = Instance.new('LocalScript', CriminalBase)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1909,8 +1909,8 @@ local function FJKWDP_fake_script() -- CriminalBase.CrimBaseTeleport
 		
 	
 end
-coroutine.wrap(FJKWDP_fake_script)()
-local function CZCVL_fake_script() -- SetSpawnPoint.RainbowText 
+coroutine.wrap(CNAEDG_fake_script)()
+local function AYGQLFR_fake_script() -- SetSpawnPoint.RainbowText 
 	local script = Instance.new('LocalScript', SetSpawnPoint)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1933,8 +1933,8 @@ local function CZCVL_fake_script() -- SetSpawnPoint.RainbowText
 		
 	
 end
-coroutine.wrap(CZCVL_fake_script)()
-local function YVVIE_fake_script() -- SetSpawnPoint.TeleportScript 
+coroutine.wrap(AYGQLFR_fake_script)()
+local function YPOKVJ_fake_script() -- SetSpawnPoint.TeleportScript 
 	local script = Instance.new('LocalScript', SetSpawnPoint)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1961,8 +1961,8 @@ local function YVVIE_fake_script() -- SetSpawnPoint.TeleportScript
 		
 	
 end
-coroutine.wrap(YVVIE_fake_script)()
-local function FPYBPPE_fake_script() -- TeleportToSpawn.RainbowText 
+coroutine.wrap(YPOKVJ_fake_script)()
+local function RZYG_fake_script() -- TeleportToSpawn.RainbowText 
 	local script = Instance.new('LocalScript', TeleportToSpawn)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1985,8 +1985,8 @@ local function FPYBPPE_fake_script() -- TeleportToSpawn.RainbowText
 		
 	
 end
-coroutine.wrap(FPYBPPE_fake_script)()
-local function VGRG_fake_script() -- TeleportToSpawn.TeleportScript 
+coroutine.wrap(RZYG_fake_script)()
+local function QTFJNN_fake_script() -- TeleportToSpawn.TeleportScript 
 	local script = Instance.new('LocalScript', TeleportToSpawn)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2014,8 +2014,8 @@ local function VGRG_fake_script() -- TeleportToSpawn.TeleportScript
 		
 	
 end
-coroutine.wrap(VGRG_fake_script)()
-local function SQMOMQ_fake_script() -- AntiAFKToggle.RainbowText 
+coroutine.wrap(QTFJNN_fake_script)()
+local function WXWFMIR_fake_script() -- AntiAFKToggle.RainbowText 
 	local script = Instance.new('LocalScript', AntiAFKToggle)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2038,8 +2038,8 @@ local function SQMOMQ_fake_script() -- AntiAFKToggle.RainbowText
 		
 	
 end
-coroutine.wrap(SQMOMQ_fake_script)()
-local function JBEFHLT_fake_script() -- ChatToggle.RainbowText 
+coroutine.wrap(WXWFMIR_fake_script)()
+local function QRZKH_fake_script() -- ChatToggle.RainbowText 
 	local script = Instance.new('LocalScript', ChatToggle)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2062,8 +2062,8 @@ local function JBEFHLT_fake_script() -- ChatToggle.RainbowText
 		
 	
 end
-coroutine.wrap(JBEFHLT_fake_script)()
-local function XHLQDEF_fake_script() -- InfoButton.RainbowText 
+coroutine.wrap(QRZKH_fake_script)()
+local function KDXHR_fake_script() -- InfoButton.RainbowText 
 	local script = Instance.new('LocalScript', InfoButton)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2086,8 +2086,8 @@ local function XHLQDEF_fake_script() -- InfoButton.RainbowText
 		
 	
 end
-coroutine.wrap(XHLQDEF_fake_script)()
-local function FQTH_fake_script() -- FlyingCarsToggle.RainbowText 
+coroutine.wrap(KDXHR_fake_script)()
+local function SNRTHPH_fake_script() -- FlyingCarsToggle.RainbowText 
 	local script = Instance.new('LocalScript', FlyingCarsToggle)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2110,8 +2110,8 @@ local function FQTH_fake_script() -- FlyingCarsToggle.RainbowText
 		
 	
 end
-coroutine.wrap(FQTH_fake_script)()
-local function HZIFQQ_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
+coroutine.wrap(SNRTHPH_fake_script)()
+local function XMDGEO_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
 	local script = Instance.new('LocalScript', FlyingCarsToggle)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2258,8 +2258,8 @@ local function HZIFQQ_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyContro
 		
 	
 end
-coroutine.wrap(HZIFQQ_fake_script)()
-local function HEHG_fake_script() -- removedoors.RainbowText 
+coroutine.wrap(XMDGEO_fake_script)()
+local function POYY_fake_script() -- removedoors.RainbowText 
 	local script = Instance.new('LocalScript', removedoors)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2282,8 +2282,8 @@ local function HEHG_fake_script() -- removedoors.RainbowText
 		
 	
 end
-coroutine.wrap(HEHG_fake_script)()
-local function HFJUC_fake_script() -- removedoors.RemoveDoorsToggle 
+coroutine.wrap(POYY_fake_script)()
+local function YJOMAVF_fake_script() -- removedoors.RemoveDoorsToggle 
 	local script = Instance.new('LocalScript', removedoors)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2349,8 +2349,8 @@ local function HFJUC_fake_script() -- removedoors.RemoveDoorsToggle
 		
 	
 end
-coroutine.wrap(HFJUC_fake_script)()
-local function HLME_fake_script() -- Frame.DragFrame 
+coroutine.wrap(YJOMAVF_fake_script)()
+local function UNPVMT_fake_script() -- Frame.DragFrame 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2402,8 +2402,8 @@ local function HLME_fake_script() -- Frame.DragFrame
 		
 	
 end
-coroutine.wrap(HLME_fake_script)()
-local function KXVRIJO_fake_script() -- Frame.GUIController 
+coroutine.wrap(UNPVMT_fake_script)()
+local function MHLONPZ_fake_script() -- Frame.GUIController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2482,8 +2482,8 @@ local function KXVRIJO_fake_script() -- Frame.GUIController
 		
 	
 end
-coroutine.wrap(KXVRIJO_fake_script)()
-local function TNJZW_fake_script() -- Frame.AntiAFKController 
+coroutine.wrap(MHLONPZ_fake_script)()
+local function CVLZXJK_fake_script() -- Frame.AntiAFKController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2534,8 +2534,8 @@ local function TNJZW_fake_script() -- Frame.AntiAFKController
 		
 	
 end
-coroutine.wrap(TNJZW_fake_script)()
-local function KSYVCKF_fake_script() -- Frame.ChatController 
+coroutine.wrap(CVLZXJK_fake_script)()
+local function AZDJ_fake_script() -- Frame.ChatController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2591,8 +2591,8 @@ local function KSYVCKF_fake_script() -- Frame.ChatController
 		
 	
 end
-coroutine.wrap(KSYVCKF_fake_script)()
-local function CDQT_fake_script() -- Frame.OriginalNoclipController 
+coroutine.wrap(AZDJ_fake_script)()
+local function GYKBBPG_fake_script() -- Frame.OriginalNoclipController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2738,8 +2738,8 @@ local function CDQT_fake_script() -- Frame.OriginalNoclipController
 		
 	
 end
-coroutine.wrap(CDQT_fake_script)()
-local function TWEIFR_fake_script() -- Frame.InfoToggle 
+coroutine.wrap(GYKBBPG_fake_script)()
+local function TOWVYLH_fake_script() -- Frame.InfoToggle 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2766,8 +2766,8 @@ local function TWEIFR_fake_script() -- Frame.InfoToggle
 		
 	
 end
-coroutine.wrap(TWEIFR_fake_script)()
-local function UTYLBU_fake_script() -- Frame.Aimbot 
+coroutine.wrap(TOWVYLH_fake_script)()
+local function IKSXCP_fake_script() -- Frame.Aimbot 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2927,8 +2927,8 @@ local function UTYLBU_fake_script() -- Frame.Aimbot
 		
 	
 end
-coroutine.wrap(UTYLBU_fake_script)()
-local function SCASINE_fake_script() -- Frame.GetAllGunsLogic 
+coroutine.wrap(IKSXCP_fake_script)()
+local function DAER_fake_script() -- Frame.GetAllGunsLogic 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -3015,8 +3015,8 @@ local function SCASINE_fake_script() -- Frame.GetAllGunsLogic
 		
 	
 end
-coroutine.wrap(SCASINE_fake_script)()
-local function EVEW_fake_script() -- Frame.HighGraphicsLogic 
+coroutine.wrap(DAER_fake_script)()
+local function XNVTTDS_fake_script() -- Frame.HighGraphicsLogic 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -3086,8 +3086,8 @@ local function EVEW_fake_script() -- Frame.HighGraphicsLogic
 		
 	
 end
-coroutine.wrap(EVEW_fake_script)()
-local function BGWJ_fake_script() -- Frame.HoverSelectionAnimation 
+coroutine.wrap(XNVTTDS_fake_script)()
+local function PAVVVXB_fake_script() -- Frame.HoverSelectionAnimation 
 	local script = Instance.new('LocalScript', Frame)
 
 	local TextButton = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('TextButton', true)
@@ -3136,8 +3136,8 @@ local function BGWJ_fake_script() -- Frame.HoverSelectionAnimation
 		
 	
 end
-coroutine.wrap(BGWJ_fake_script)()
-local function BWQMKNK_fake_script() -- WelcomeBanner.WelcomeAnimation 
+coroutine.wrap(PAVVVXB_fake_script)()
+local function FAIDKVM_fake_script() -- WelcomeBanner.WelcomeAnimation 
 	local script = Instance.new('LocalScript', WelcomeBanner)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -3159,7 +3159,7 @@ local function BWQMKNK_fake_script() -- WelcomeBanner.WelcomeAnimation
 			frame.BackgroundTransparency = 1
 			label.BackgroundTransparency = 1
 			local colors = {"#FF309F", "#00EFFF", "#A960FF", "#F759C7", "#26E8FF", "#FF5EAB"}
-			local message = "Hello " .. player.Name .. " , Welcome to y0ungDare Menu v4.2"
+			local message = "Hello " .. player.Name .. " , Welcome to y0ungDare Menu v4.3"
 			local charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 			local rng = Random.new()
 			local charColors = {}
@@ -3321,8 +3321,8 @@ local function BWQMKNK_fake_script() -- WelcomeBanner.WelcomeAnimation
 		
 	
 end
-coroutine.wrap(BWQMKNK_fake_script)()
-local function YSCAXW_fake_script() -- Fps.FpsOriginalScript 
+coroutine.wrap(FAIDKVM_fake_script)()
+local function VKKYCYM_fake_script() -- Fps.FpsOriginalScript 
 	local script = Instance.new('LocalScript', Fps)
 
 		local RunService = game:GetService("RunService")
@@ -3331,8 +3331,8 @@ local function YSCAXW_fake_script() -- Fps.FpsOriginalScript
 			end)
 	
 end
-coroutine.wrap(YSCAXW_fake_script)()
-local function ESMDP_fake_script() -- Ping.PingOriginalScript 
+coroutine.wrap(VKKYCYM_fake_script)()
+local function TLCJ_fake_script() -- Ping.PingOriginalScript 
 	local script = Instance.new('LocalScript', Ping)
 
 		local RunService = game:GetService("RunService")
@@ -3341,9 +3341,9 @@ local function ESMDP_fake_script() -- Ping.PingOriginalScript
 			end)
 	
 end
-coroutine.wrap(ESMDP_fake_script)()
-local function LHLWIX_fake_script() -- y0ungDareMenuv42.KeyboardShortcuts 
-	local script = Instance.new('LocalScript', y0ungDareMenuv42)
+coroutine.wrap(TLCJ_fake_script)()
+local function QBBELCE_fake_script() -- y0ungDareMenuv43.KeyboardShortcuts 
+	local script = Instance.new('LocalScript', y0ungDareMenuv43)
 
 	local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -3439,9 +3439,9 @@ local function LHLWIX_fake_script() -- y0ungDareMenuv42.KeyboardShortcuts
 		
 	
 end
-coroutine.wrap(LHLWIX_fake_script)()
-local function SRHGND_fake_script() -- y0ungDareMenuv42.MainScript 
-	local script = Instance.new('LocalScript', y0ungDareMenuv42)
+coroutine.wrap(QBBELCE_fake_script)()
+local function GACGXUJ_fake_script() -- y0ungDareMenuv43.MainScript 
+	local script = Instance.new('LocalScript', y0ungDareMenuv43)
 
 	local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
 	local fly = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('fly', true)
@@ -3531,9 +3531,9 @@ local function SRHGND_fake_script() -- y0ungDareMenuv42.MainScript
 		
 	
 end
-coroutine.wrap(SRHGND_fake_script)()
-local function VCYJY_fake_script() -- y0ungDareMenuv42.MenuVisibility_Q 
-	local script = Instance.new('LocalScript', y0ungDareMenuv42)
+coroutine.wrap(GACGXUJ_fake_script)()
+local function MBNLVS_fake_script() -- y0ungDareMenuv43.MenuVisibility_Q 
+	local script = Instance.new('LocalScript', y0ungDareMenuv43)
 
 	local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
 	local WelcomeBanner = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('WelcomeBanner', true)
@@ -3592,4 +3592,4 @@ local function VCYJY_fake_script() -- y0ungDareMenuv42.MenuVisibility_Q
 		
 	
 end
-coroutine.wrap(VCYJY_fake_script)()
+coroutine.wrap(MBNLVS_fake_script)()
