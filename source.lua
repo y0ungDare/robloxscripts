@@ -5,7 +5,8 @@
 
 local y0ungDareMenuv43 = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
-local Title = Instance.new("TextLabel")
+local BlueStarBottom = Instance.new("ImageLabel")
+local WhiteDashedBorderImage = Instance.new("ImageLabel")
 local HighGraphicsToggle = Instance.new("TextButton")
 local GetAllGuns = Instance.new("TextButton")
 local YardTP = Instance.new("TextButton")
@@ -14,7 +15,7 @@ local FPSPingToggle = Instance.new("TextButton")
 local ArmoryTP = Instance.new("TextButton")
 local TextButton = Instance.new("TextButton")
 local InfoPopup = Instance.new("Frame")
-local Title_2 = Instance.new("TextLabel")
+local Title = Instance.new("TextLabel")
 local Version = Instance.new("TextLabel")
 local Creator = Instance.new("TextLabel")
 local Description = Instance.new("TextLabel")
@@ -30,8 +31,7 @@ local ControlLine5 = Instance.new("TextLabel")
 local ControlLine6 = Instance.new("TextLabel")
 local ControlLine7 = Instance.new("TextLabel")
 local fly = Instance.new("TextButton")
-local Title_3 = Instance.new("TextLabel")
-local Title_4 = Instance.new("TextLabel")
+local DarkOverlay = Instance.new("Frame")
 local AutoPilot = Instance.new("TextButton")
 local SpinBot = Instance.new("TextButton")
 local NoclipToggle = Instance.new("TextButton")
@@ -47,8 +47,10 @@ local ChatToggle = Instance.new("TextButton")
 local InfoButton = Instance.new("TextButton")
 local FlyingCarsToggle = Instance.new("TextButton")
 local removedoors = Instance.new("TextButton")
-local DarkOverlay = Instance.new("Frame")
-local WhiteDashedBorderImage = Instance.new("ImageLabel")
+local Title_2 = Instance.new("TextLabel")
+local Title_3 = Instance.new("TextLabel")
+local Title_4 = Instance.new("TextLabel")
+local CTR2FBottom = Instance.new("ImageLabel")
 local WelcomeBanner = Instance.new("Frame")
 local WelcomeText = Instance.new("TextLabel")
 local UpdatesLink = Instance.new("TextButton")
@@ -70,20 +72,22 @@ Frame.Position = UDim2.new(0.809775949, 0, 0.555555582, 0)
 Frame.Size = UDim2.new(0, 280, 0, 640)
 Frame.Visible = false
 
-Title.Name = "Title"
-Title.Parent = Frame
-Title.AnchorPoint = Vector2.new(0.5, 0.5)
-Title.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Title.BackgroundTransparency = 1.000
-Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Title.Position = UDim2.new(0.5, 0, 0.0283203125, 23)
-Title.Size = UDim2.new(0, 182, 0, 31)
-Title.Font = Enum.Font.Unknown
-Title.Text = "y0ungDare Menu v4.3"
-Title.TextColor3 = Color3.fromRGB(0, 255, 255)
-Title.TextScaled = true
-Title.TextSize = 40.000
-Title.TextWrapped = true
+BlueStarBottom.Name = "BlueStarBottom"
+BlueStarBottom.Parent = Frame
+BlueStarBottom.AnchorPoint = Vector2.new(0.5, 1)
+BlueStarBottom.BackgroundTransparency = 1.000
+BlueStarBottom.BorderSizePixel = 0
+BlueStarBottom.Position = UDim2.new(0.330357134, 0, 1, -6)
+BlueStarBottom.Size = UDim2.new(0, 169, 0, 149)
+BlueStarBottom.Image = "rbxassetid://111866567983983"
+
+WhiteDashedBorderImage.Name = "WhiteDashedBorderImage"
+WhiteDashedBorderImage.Parent = Frame
+WhiteDashedBorderImage.BackgroundTransparency = 1.000
+WhiteDashedBorderImage.BorderSizePixel = 0
+WhiteDashedBorderImage.Size = UDim2.new(1, 0, 1, 0)
+WhiteDashedBorderImage.ZIndex = 3
+WhiteDashedBorderImage.Image = "rbxassetid://130381514081408"
 
 HighGraphicsToggle.Name = "HighGraphicsToggle"
 HighGraphicsToggle.Parent = Frame
@@ -96,7 +100,7 @@ HighGraphicsToggle.Position = UDim2.new(0, 140, 0, 79)
 HighGraphicsToggle.Size = UDim2.new(1, -16, 0, 20)
 HighGraphicsToggle.Font = Enum.Font.SourceSansBold
 HighGraphicsToggle.Text = "HighGraphicsToggle"
-HighGraphicsToggle.TextColor3 = Color3.fromRGB(170, 0, 255)
+HighGraphicsToggle.TextColor3 = Color3.fromRGB(0, 255, 255)
 HighGraphicsToggle.TextSize = 17.000
 HighGraphicsToggle.TextWrapped = true
 HighGraphicsToggle.TextXAlignment = Enum.TextXAlignment.Left
@@ -112,7 +116,7 @@ GetAllGuns.Position = UDim2.new(0, 140, 0, 99)
 GetAllGuns.Size = UDim2.new(1, -16, 0, 20)
 GetAllGuns.Font = Enum.Font.SourceSansBold
 GetAllGuns.Text = "Get All Guns"
-GetAllGuns.TextColor3 = Color3.fromRGB(170, 0, 255)
+GetAllGuns.TextColor3 = Color3.fromRGB(0, 255, 255)
 GetAllGuns.TextSize = 17.000
 GetAllGuns.TextWrapped = true
 GetAllGuns.TextXAlignment = Enum.TextXAlignment.Left
@@ -128,7 +132,7 @@ YardTP.Position = UDim2.new(0, 140, 0, 119)
 YardTP.Size = UDim2.new(1, -16, 0, 20)
 YardTP.Font = Enum.Font.SourceSansBold
 YardTP.Text = "Teleport: Yard"
-YardTP.TextColor3 = Color3.fromRGB(170, 0, 255)
+YardTP.TextColor3 = Color3.fromRGB(0, 255, 255)
 YardTP.TextSize = 17.000
 YardTP.TextWrapped = true
 YardTP.TextXAlignment = Enum.TextXAlignment.Left
@@ -144,7 +148,7 @@ TaseBypass.Position = UDim2.new(0, 140, 0, 139)
 TaseBypass.Size = UDim2.new(1, -16, 0, 20)
 TaseBypass.Font = Enum.Font.SourceSansBold
 TaseBypass.Text = "ANTI-TAZE"
-TaseBypass.TextColor3 = Color3.fromRGB(170, 0, 255)
+TaseBypass.TextColor3 = Color3.fromRGB(0, 255, 255)
 TaseBypass.TextSize = 17.000
 TaseBypass.TextWrapped = true
 TaseBypass.TextXAlignment = Enum.TextXAlignment.Left
@@ -160,7 +164,7 @@ FPSPingToggle.Position = UDim2.new(0, 140, 0, 159)
 FPSPingToggle.Size = UDim2.new(1, -16, 0, 20)
 FPSPingToggle.Font = Enum.Font.SourceSansBold
 FPSPingToggle.Text = "Teleport: Cells"
-FPSPingToggle.TextColor3 = Color3.fromRGB(170, 0, 255)
+FPSPingToggle.TextColor3 = Color3.fromRGB(0, 255, 255)
 FPSPingToggle.TextSize = 17.000
 FPSPingToggle.TextWrapped = true
 FPSPingToggle.TextXAlignment = Enum.TextXAlignment.Left
@@ -176,7 +180,7 @@ ArmoryTP.Position = UDim2.new(0, 140, 0, 179)
 ArmoryTP.Size = UDim2.new(1, -16, 0, 20)
 ArmoryTP.Font = Enum.Font.SourceSansBold
 ArmoryTP.Text = "Teleport: Armory"
-ArmoryTP.TextColor3 = Color3.fromRGB(170, 0, 255)
+ArmoryTP.TextColor3 = Color3.fromRGB(0, 255, 255)
 ArmoryTP.TextSize = 17.000
 ArmoryTP.TextWrapped = true
 ArmoryTP.TextXAlignment = Enum.TextXAlignment.Left
@@ -190,7 +194,7 @@ TextButton.Position = UDim2.new(0, 8, 0, 189)
 TextButton.Size = UDim2.new(1, -16, 0, 20)
 TextButton.Font = Enum.Font.SourceSansBold
 TextButton.Text = "Aimbot (X)"
-TextButton.TextColor3 = Color3.fromRGB(170, 0, 255)
+TextButton.TextColor3 = Color3.fromRGB(0, 255, 255)
 TextButton.TextSize = 17.000
 TextButton.TextWrapped = true
 TextButton.TextXAlignment = Enum.TextXAlignment.Left
@@ -206,19 +210,19 @@ InfoPopup.Size = UDim2.new(0, 420, 0, 480)
 InfoPopup.Visible = false
 InfoPopup.ZIndex = 5
 
-Title_2.Name = "Title"
-Title_2.Parent = InfoPopup
-Title_2.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
-Title_2.BackgroundTransparency = 1.000
-Title_2.BorderSizePixel = 0
-Title_2.Position = UDim2.new(0, 16, 0, 5)
-Title_2.Size = UDim2.new(1, -32, 0, 38)
-Title_2.ZIndex = 6
-Title_2.Font = Enum.Font.SourceSans
-Title_2.Text = "y0ungDare Menu"
-Title_2.TextColor3 = Color3.fromRGB(255, 91, 201)
-Title_2.TextSize = 25.000
-Title_2.TextWrapped = true
+Title.Name = "Title"
+Title.Parent = InfoPopup
+Title.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
+Title.BackgroundTransparency = 1.000
+Title.BorderSizePixel = 0
+Title.Position = UDim2.new(0, 16, 0, 5)
+Title.Size = UDim2.new(1, -32, 0, 38)
+Title.ZIndex = 6
+Title.Font = Enum.Font.SourceSans
+Title.Text = "y0ungDare Menu"
+Title.TextColor3 = Color3.fromRGB(255, 91, 201)
+Title.TextSize = 25.000
+Title.TextWrapped = true
 
 Version.Name = "Version"
 Version.Parent = InfoPopup
@@ -430,10 +434,271 @@ fly.Position = UDim2.new(0, 8, 0, 209)
 fly.Size = UDim2.new(1, -16, 0, 20)
 fly.Font = Enum.Font.SourceSansBold
 fly.Text = "Flying: Off"
-fly.TextColor3 = Color3.fromRGB(170, 0, 255)
+fly.TextColor3 = Color3.fromRGB(0, 255, 255)
 fly.TextSize = 17.000
 fly.TextWrapped = true
 fly.TextXAlignment = Enum.TextXAlignment.Left
+
+DarkOverlay.Name = "DarkOverlay"
+DarkOverlay.Parent = Frame
+DarkOverlay.BackgroundColor3 = Color3.fromRGB(12, 10, 19)
+DarkOverlay.BackgroundTransparency = 0.830
+DarkOverlay.BorderSizePixel = 0
+DarkOverlay.Size = UDim2.new(1, 0, 1, 0)
+
+AutoPilot.Name = "Auto Pilot"
+AutoPilot.Parent = Frame
+AutoPilot.AnchorPoint = Vector2.new(0.5, 0.5)
+AutoPilot.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+AutoPilot.BackgroundTransparency = 0.160
+AutoPilot.BorderColor3 = Color3.fromRGB(170, 0, 255)
+AutoPilot.BorderSizePixel = 0
+AutoPilot.Position = UDim2.new(0, 140, 0, 239)
+AutoPilot.Size = UDim2.new(1, -16, 0, 20)
+AutoPilot.Font = Enum.Font.SourceSansBold
+AutoPilot.Text = "Auto Pilot"
+AutoPilot.TextColor3 = Color3.fromRGB(0, 255, 255)
+AutoPilot.TextSize = 17.000
+AutoPilot.TextWrapped = true
+AutoPilot.TextXAlignment = Enum.TextXAlignment.Left
+
+SpinBot.Name = "Spin Bot"
+SpinBot.Parent = Frame
+SpinBot.AnchorPoint = Vector2.new(0.5, 0.5)
+SpinBot.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+SpinBot.BackgroundTransparency = 0.160
+SpinBot.BorderColor3 = Color3.fromRGB(170, 0, 255)
+SpinBot.BorderSizePixel = 0
+SpinBot.Position = UDim2.new(0, 140, 0, 259)
+SpinBot.Size = UDim2.new(1, -16, 0, 20)
+SpinBot.Font = Enum.Font.SourceSansBold
+SpinBot.Text = "Spin Bot"
+SpinBot.TextColor3 = Color3.fromRGB(0, 255, 255)
+SpinBot.TextSize = 17.000
+SpinBot.TextWrapped = true
+SpinBot.TextXAlignment = Enum.TextXAlignment.Left
+
+NoclipToggle.Name = "NoclipToggle"
+NoclipToggle.Parent = Frame
+NoclipToggle.AnchorPoint = Vector2.new(0.5, 0.5)
+NoclipToggle.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+NoclipToggle.BackgroundTransparency = 0.160
+NoclipToggle.BorderColor3 = Color3.fromRGB(170, 0, 255)
+NoclipToggle.BorderSizePixel = 0
+NoclipToggle.Position = UDim2.new(0, 140, 0, 279)
+NoclipToggle.Size = UDim2.new(1, -16, 0, 20)
+NoclipToggle.Font = Enum.Font.SourceSansBold
+NoclipToggle.Text = "Noclip V2 "
+NoclipToggle.TextColor3 = Color3.fromRGB(0, 255, 255)
+NoclipToggle.TextSize = 17.000
+NoclipToggle.TextWrapped = true
+NoclipToggle.TextXAlignment = Enum.TextXAlignment.Left
+
+XRayVision.Name = "X Ray Vision"
+XRayVision.Parent = Frame
+XRayVision.AnchorPoint = Vector2.new(0.5, 0.5)
+XRayVision.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+XRayVision.BackgroundTransparency = 0.160
+XRayVision.BorderColor3 = Color3.fromRGB(170, 0, 255)
+XRayVision.BorderSizePixel = 0
+XRayVision.Position = UDim2.new(0, 140, 0, 299)
+XRayVision.Size = UDim2.new(1, -16, 0, 20)
+XRayVision.Font = Enum.Font.SourceSansBold
+XRayVision.Text = "X Ray Vision"
+XRayVision.TextColor3 = Color3.fromRGB(0, 255, 255)
+XRayVision.TextSize = 17.000
+XRayVision.TextWrapped = true
+XRayVision.TextXAlignment = Enum.TextXAlignment.Left
+
+WallEsp.Name = "Wall Esp"
+WallEsp.Parent = Frame
+WallEsp.AnchorPoint = Vector2.new(0.5, 0.5)
+WallEsp.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+WallEsp.BackgroundTransparency = 0.160
+WallEsp.BorderColor3 = Color3.fromRGB(170, 0, 255)
+WallEsp.BorderSizePixel = 0
+WallEsp.Position = UDim2.new(0, 140, 0, 319)
+WallEsp.Size = UDim2.new(1, -16, 0, 20)
+WallEsp.Font = Enum.Font.SourceSansBold
+WallEsp.Text = "Wall Esp V2"
+WallEsp.TextColor3 = Color3.fromRGB(0, 255, 255)
+WallEsp.TextSize = 17.000
+WallEsp.TextWrapped = true
+WallEsp.TextXAlignment = Enum.TextXAlignment.Left
+
+aurakill.Name = "aura kill"
+aurakill.Parent = Frame
+aurakill.AnchorPoint = Vector2.new(0.5, 0.5)
+aurakill.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+aurakill.BackgroundTransparency = 0.160
+aurakill.BorderColor3 = Color3.fromRGB(170, 0, 255)
+aurakill.BorderSizePixel = 0
+aurakill.Position = UDim2.new(0, 140, 0, 339)
+aurakill.Size = UDim2.new(1, -16, 0, 20)
+aurakill.Font = Enum.Font.SourceSansBold
+aurakill.Text = "Aura Kill"
+aurakill.TextColor3 = Color3.fromRGB(0, 255, 255)
+aurakill.TextSize = 17.000
+aurakill.TextWrapped = true
+aurakill.TextXAlignment = Enum.TextXAlignment.Left
+
+BringButton.Name = "BringButton"
+BringButton.Parent = Frame
+BringButton.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+BringButton.BackgroundTransparency = 0.160
+BringButton.BorderColor3 = Color3.fromRGB(170, 0, 255)
+BringButton.BorderSizePixel = 0
+BringButton.Position = UDim2.new(0, 8, 0, 408)
+BringButton.Size = UDim2.new(1, -16, 0, 20)
+BringButton.Font = Enum.Font.SourceSansBold
+BringButton.Text = "Bring All: OFF"
+BringButton.TextColor3 = Color3.fromRGB(0, 255, 255)
+BringButton.TextSize = 17.000
+BringButton.TextWrapped = true
+BringButton.TextXAlignment = Enum.TextXAlignment.Left
+
+CriminalBase.Name = "Criminal Base"
+CriminalBase.Parent = Frame
+CriminalBase.AnchorPoint = Vector2.new(0.5, 0.5)
+CriminalBase.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+CriminalBase.BackgroundTransparency = 0.160
+CriminalBase.BorderColor3 = Color3.fromRGB(170, 0, 255)
+CriminalBase.BorderSizePixel = 0
+CriminalBase.Position = UDim2.new(0, 140, 0, 359)
+CriminalBase.Size = UDim2.new(1, -16, 0, 20)
+CriminalBase.Font = Enum.Font.SourceSansBold
+CriminalBase.Text = "Teleport: Criminal Base"
+CriminalBase.TextColor3 = Color3.fromRGB(0, 255, 255)
+CriminalBase.TextSize = 17.000
+CriminalBase.TextWrapped = true
+CriminalBase.TextXAlignment = Enum.TextXAlignment.Left
+
+SetSpawnPoint.Name = "Set Spawn Point"
+SetSpawnPoint.Parent = Frame
+SetSpawnPoint.AnchorPoint = Vector2.new(0.5, 0.5)
+SetSpawnPoint.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+SetSpawnPoint.BackgroundTransparency = 0.160
+SetSpawnPoint.BorderColor3 = Color3.fromRGB(170, 0, 255)
+SetSpawnPoint.BorderSizePixel = 0
+SetSpawnPoint.Position = UDim2.new(0, 140, 0, 379)
+SetSpawnPoint.Size = UDim2.new(1, -16, 0, 20)
+SetSpawnPoint.Font = Enum.Font.SourceSansBold
+SetSpawnPoint.Text = "Set Spawn Point"
+SetSpawnPoint.TextColor3 = Color3.fromRGB(0, 255, 255)
+SetSpawnPoint.TextSize = 17.000
+SetSpawnPoint.TextWrapped = true
+SetSpawnPoint.TextXAlignment = Enum.TextXAlignment.Left
+
+TeleportToSpawn.Name = "Teleport To Spawn"
+TeleportToSpawn.Parent = Frame
+TeleportToSpawn.AnchorPoint = Vector2.new(0.5, 0.5)
+TeleportToSpawn.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+TeleportToSpawn.BackgroundTransparency = 0.160
+TeleportToSpawn.BorderColor3 = Color3.fromRGB(170, 0, 255)
+TeleportToSpawn.BorderSizePixel = 0
+TeleportToSpawn.Position = UDim2.new(0, 140, 0, 398)
+TeleportToSpawn.Size = UDim2.new(1, -16, 0, 20)
+TeleportToSpawn.Font = Enum.Font.SourceSansBold
+TeleportToSpawn.Text = "Teleport To Spawn Point"
+TeleportToSpawn.TextColor3 = Color3.fromRGB(0, 255, 255)
+TeleportToSpawn.TextSize = 17.000
+TeleportToSpawn.TextWrapped = true
+TeleportToSpawn.TextXAlignment = Enum.TextXAlignment.Left
+
+AntiAFKToggle.Name = "AntiAFKToggle"
+AntiAFKToggle.Parent = Frame
+AntiAFKToggle.AnchorPoint = Vector2.new(0.5, 0.5)
+AntiAFKToggle.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+AntiAFKToggle.BackgroundTransparency = 0.160
+AntiAFKToggle.BorderColor3 = Color3.fromRGB(170, 0, 255)
+AntiAFKToggle.BorderSizePixel = 0
+AntiAFKToggle.Position = UDim2.new(0, 140, 0, 437)
+AntiAFKToggle.Size = UDim2.new(1, -16, 0, 20)
+AntiAFKToggle.Font = Enum.Font.SourceSansBold
+AntiAFKToggle.Text = "ANTI AFK"
+AntiAFKToggle.TextColor3 = Color3.fromRGB(0, 255, 255)
+AntiAFKToggle.TextSize = 17.000
+AntiAFKToggle.TextWrapped = true
+AntiAFKToggle.TextXAlignment = Enum.TextXAlignment.Left
+
+ChatToggle.Name = "ChatToggle"
+ChatToggle.Parent = Frame
+ChatToggle.AnchorPoint = Vector2.new(0.5, 0.5)
+ChatToggle.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+ChatToggle.BackgroundTransparency = 0.160
+ChatToggle.BorderColor3 = Color3.fromRGB(170, 0, 255)
+ChatToggle.BorderSizePixel = 0
+ChatToggle.Position = UDim2.new(0, 140, 0, 456)
+ChatToggle.Size = UDim2.new(1, -16, 0, 20)
+ChatToggle.Font = Enum.Font.SourceSansBold
+ChatToggle.Text = "Chat Spammer"
+ChatToggle.TextColor3 = Color3.fromRGB(0, 255, 255)
+ChatToggle.TextSize = 17.000
+ChatToggle.TextWrapped = true
+ChatToggle.TextXAlignment = Enum.TextXAlignment.Left
+
+InfoButton.Name = "InfoButton"
+InfoButton.Parent = Frame
+InfoButton.AnchorPoint = Vector2.new(0.5, 0.5)
+InfoButton.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+InfoButton.BackgroundTransparency = 0.160
+InfoButton.BorderColor3 = Color3.fromRGB(170, 0, 255)
+InfoButton.BorderSizePixel = 0
+InfoButton.Position = UDim2.new(0, 140, 0, 514)
+InfoButton.Size = UDim2.new(1, -16, 0, 20)
+InfoButton.Font = Enum.Font.SourceSansBold
+InfoButton.Text = "Info & Credits"
+InfoButton.TextColor3 = Color3.fromRGB(0, 255, 255)
+InfoButton.TextSize = 17.000
+InfoButton.TextWrapped = true
+InfoButton.TextXAlignment = Enum.TextXAlignment.Left
+
+FlyingCarsToggle.Name = "FlyingCarsToggle"
+FlyingCarsToggle.Parent = Frame
+FlyingCarsToggle.AnchorPoint = Vector2.new(0.5, 0.5)
+FlyingCarsToggle.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+FlyingCarsToggle.BackgroundTransparency = 0.160
+FlyingCarsToggle.BorderColor3 = Color3.fromRGB(170, 0, 255)
+FlyingCarsToggle.BorderSizePixel = 0
+FlyingCarsToggle.Position = UDim2.new(0, 140, 0, 475)
+FlyingCarsToggle.Size = UDim2.new(1, -16, 0, 20)
+FlyingCarsToggle.Font = Enum.Font.SourceSansBold
+FlyingCarsToggle.Text = "FlyingCarsToggle"
+FlyingCarsToggle.TextColor3 = Color3.fromRGB(0, 255, 255)
+FlyingCarsToggle.TextSize = 17.000
+FlyingCarsToggle.TextWrapped = true
+FlyingCarsToggle.TextXAlignment = Enum.TextXAlignment.Left
+
+removedoors.Name = "remove doors"
+removedoors.Parent = Frame
+removedoors.AnchorPoint = Vector2.new(0.5, 0.5)
+removedoors.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+removedoors.BackgroundTransparency = 0.160
+removedoors.BorderColor3 = Color3.fromRGB(170, 0, 255)
+removedoors.BorderSizePixel = 0
+removedoors.Position = UDim2.new(0, 140, 0, 494)
+removedoors.Size = UDim2.new(1, -16, 0, 20)
+removedoors.Font = Enum.Font.SourceSansBold
+removedoors.Text = "Remove Doors"
+removedoors.TextColor3 = Color3.fromRGB(0, 255, 255)
+removedoors.TextSize = 17.000
+removedoors.TextWrapped = true
+removedoors.TextXAlignment = Enum.TextXAlignment.Left
+
+Title_2.Name = "Title"
+Title_2.Parent = Frame
+Title_2.AnchorPoint = Vector2.new(0.5, 0.5)
+Title_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Title_2.BackgroundTransparency = 1.000
+Title_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Title_2.Position = UDim2.new(0.5, 0, 0.0283203125, 23)
+Title_2.Size = UDim2.new(0, 182, 0, 31)
+Title_2.Font = Enum.Font.Unknown
+Title_2.Text = "y0ungDare Menu v4.3"
+Title_2.TextColor3 = Color3.fromRGB(0, 255, 255)
+Title_2.TextScaled = true
+Title_2.TextSize = 40.000
+Title_2.TextWrapped = true
 
 Title_3.Name = "Title"
 Title_3.Parent = Frame
@@ -465,259 +730,15 @@ Title_4.TextScaled = true
 Title_4.TextSize = 40.000
 Title_4.TextWrapped = true
 
-AutoPilot.Name = "Auto Pilot"
-AutoPilot.Parent = Frame
-AutoPilot.AnchorPoint = Vector2.new(0.5, 0.5)
-AutoPilot.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
-AutoPilot.BackgroundTransparency = 0.160
-AutoPilot.BorderColor3 = Color3.fromRGB(170, 0, 255)
-AutoPilot.BorderSizePixel = 0
-AutoPilot.Position = UDim2.new(0, 140, 0, 239)
-AutoPilot.Size = UDim2.new(1, -16, 0, 20)
-AutoPilot.Font = Enum.Font.SourceSansBold
-AutoPilot.Text = "Auto Pilot"
-AutoPilot.TextColor3 = Color3.fromRGB(170, 0, 255)
-AutoPilot.TextSize = 17.000
-AutoPilot.TextWrapped = true
-AutoPilot.TextXAlignment = Enum.TextXAlignment.Left
-
-SpinBot.Name = "Spin Bot"
-SpinBot.Parent = Frame
-SpinBot.AnchorPoint = Vector2.new(0.5, 0.5)
-SpinBot.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
-SpinBot.BackgroundTransparency = 0.160
-SpinBot.BorderColor3 = Color3.fromRGB(170, 0, 255)
-SpinBot.BorderSizePixel = 0
-SpinBot.Position = UDim2.new(0, 140, 0, 259)
-SpinBot.Size = UDim2.new(1, -16, 0, 20)
-SpinBot.Font = Enum.Font.SourceSansBold
-SpinBot.Text = "Spin Bot"
-SpinBot.TextColor3 = Color3.fromRGB(170, 0, 255)
-SpinBot.TextSize = 17.000
-SpinBot.TextWrapped = true
-SpinBot.TextXAlignment = Enum.TextXAlignment.Left
-
-NoclipToggle.Name = "NoclipToggle"
-NoclipToggle.Parent = Frame
-NoclipToggle.AnchorPoint = Vector2.new(0.5, 0.5)
-NoclipToggle.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
-NoclipToggle.BackgroundTransparency = 0.160
-NoclipToggle.BorderColor3 = Color3.fromRGB(170, 0, 255)
-NoclipToggle.BorderSizePixel = 0
-NoclipToggle.Position = UDim2.new(0, 140, 0, 279)
-NoclipToggle.Size = UDim2.new(1, -16, 0, 20)
-NoclipToggle.Font = Enum.Font.SourceSansBold
-NoclipToggle.Text = "Noclip V2 "
-NoclipToggle.TextColor3 = Color3.fromRGB(170, 0, 255)
-NoclipToggle.TextSize = 17.000
-NoclipToggle.TextWrapped = true
-NoclipToggle.TextXAlignment = Enum.TextXAlignment.Left
-
-XRayVision.Name = "X Ray Vision"
-XRayVision.Parent = Frame
-XRayVision.AnchorPoint = Vector2.new(0.5, 0.5)
-XRayVision.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
-XRayVision.BackgroundTransparency = 0.160
-XRayVision.BorderColor3 = Color3.fromRGB(170, 0, 255)
-XRayVision.BorderSizePixel = 0
-XRayVision.Position = UDim2.new(0, 140, 0, 299)
-XRayVision.Size = UDim2.new(1, -16, 0, 20)
-XRayVision.Font = Enum.Font.SourceSansBold
-XRayVision.Text = "X Ray Vision"
-XRayVision.TextColor3 = Color3.fromRGB(170, 0, 255)
-XRayVision.TextSize = 17.000
-XRayVision.TextWrapped = true
-XRayVision.TextXAlignment = Enum.TextXAlignment.Left
-
-WallEsp.Name = "Wall Esp"
-WallEsp.Parent = Frame
-WallEsp.AnchorPoint = Vector2.new(0.5, 0.5)
-WallEsp.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
-WallEsp.BackgroundTransparency = 0.160
-WallEsp.BorderColor3 = Color3.fromRGB(170, 0, 255)
-WallEsp.BorderSizePixel = 0
-WallEsp.Position = UDim2.new(0, 140, 0, 319)
-WallEsp.Size = UDim2.new(1, -16, 0, 20)
-WallEsp.Font = Enum.Font.SourceSansBold
-WallEsp.Text = "Wall Esp V2"
-WallEsp.TextColor3 = Color3.fromRGB(170, 0, 255)
-WallEsp.TextSize = 17.000
-WallEsp.TextWrapped = true
-WallEsp.TextXAlignment = Enum.TextXAlignment.Left
-
-aurakill.Name = "aura kill"
-aurakill.Parent = Frame
-aurakill.AnchorPoint = Vector2.new(0.5, 0.5)
-aurakill.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
-aurakill.BackgroundTransparency = 0.160
-aurakill.BorderColor3 = Color3.fromRGB(170, 0, 255)
-aurakill.BorderSizePixel = 0
-aurakill.Position = UDim2.new(0, 140, 0, 339)
-aurakill.Size = UDim2.new(1, -16, 0, 20)
-aurakill.Font = Enum.Font.SourceSansBold
-aurakill.Text = "Aura Kill"
-aurakill.TextColor3 = Color3.fromRGB(170, 0, 255)
-aurakill.TextSize = 17.000
-aurakill.TextWrapped = true
-aurakill.TextXAlignment = Enum.TextXAlignment.Left
-
-BringButton.Name = "BringButton"
-BringButton.Parent = Frame
-BringButton.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
-BringButton.BackgroundTransparency = 0.160
-BringButton.BorderColor3 = Color3.fromRGB(170, 0, 255)
-BringButton.BorderSizePixel = 0
-BringButton.Position = UDim2.new(0, 8, 0, 408)
-BringButton.Size = UDim2.new(1, -16, 0, 20)
-BringButton.Font = Enum.Font.SourceSansBold
-BringButton.Text = "Bring All: OFF"
-BringButton.TextColor3 = Color3.fromRGB(170, 0, 255)
-BringButton.TextSize = 17.000
-BringButton.TextWrapped = true
-BringButton.TextXAlignment = Enum.TextXAlignment.Left
-
-CriminalBase.Name = "Criminal Base"
-CriminalBase.Parent = Frame
-CriminalBase.AnchorPoint = Vector2.new(0.5, 0.5)
-CriminalBase.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
-CriminalBase.BackgroundTransparency = 0.160
-CriminalBase.BorderColor3 = Color3.fromRGB(170, 0, 255)
-CriminalBase.BorderSizePixel = 0
-CriminalBase.Position = UDim2.new(0, 140, 0, 359)
-CriminalBase.Size = UDim2.new(1, -16, 0, 20)
-CriminalBase.Font = Enum.Font.SourceSansBold
-CriminalBase.Text = "Teleport: Criminal Base"
-CriminalBase.TextColor3 = Color3.fromRGB(170, 0, 255)
-CriminalBase.TextSize = 17.000
-CriminalBase.TextWrapped = true
-CriminalBase.TextXAlignment = Enum.TextXAlignment.Left
-
-SetSpawnPoint.Name = "Set Spawn Point"
-SetSpawnPoint.Parent = Frame
-SetSpawnPoint.AnchorPoint = Vector2.new(0.5, 0.5)
-SetSpawnPoint.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
-SetSpawnPoint.BackgroundTransparency = 0.160
-SetSpawnPoint.BorderColor3 = Color3.fromRGB(170, 0, 255)
-SetSpawnPoint.BorderSizePixel = 0
-SetSpawnPoint.Position = UDim2.new(0, 140, 0, 379)
-SetSpawnPoint.Size = UDim2.new(1, -16, 0, 20)
-SetSpawnPoint.Font = Enum.Font.SourceSansBold
-SetSpawnPoint.Text = "Set Spawn Point"
-SetSpawnPoint.TextColor3 = Color3.fromRGB(170, 0, 255)
-SetSpawnPoint.TextSize = 17.000
-SetSpawnPoint.TextWrapped = true
-SetSpawnPoint.TextXAlignment = Enum.TextXAlignment.Left
-
-TeleportToSpawn.Name = "Teleport To Spawn"
-TeleportToSpawn.Parent = Frame
-TeleportToSpawn.AnchorPoint = Vector2.new(0.5, 0.5)
-TeleportToSpawn.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
-TeleportToSpawn.BackgroundTransparency = 0.160
-TeleportToSpawn.BorderColor3 = Color3.fromRGB(170, 0, 255)
-TeleportToSpawn.BorderSizePixel = 0
-TeleportToSpawn.Position = UDim2.new(0, 140, 0, 398)
-TeleportToSpawn.Size = UDim2.new(1, -16, 0, 20)
-TeleportToSpawn.Font = Enum.Font.SourceSansBold
-TeleportToSpawn.Text = "Teleport To Spawn Point"
-TeleportToSpawn.TextColor3 = Color3.fromRGB(170, 0, 255)
-TeleportToSpawn.TextSize = 17.000
-TeleportToSpawn.TextWrapped = true
-TeleportToSpawn.TextXAlignment = Enum.TextXAlignment.Left
-
-AntiAFKToggle.Name = "AntiAFKToggle"
-AntiAFKToggle.Parent = Frame
-AntiAFKToggle.AnchorPoint = Vector2.new(0.5, 0.5)
-AntiAFKToggle.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
-AntiAFKToggle.BackgroundTransparency = 0.160
-AntiAFKToggle.BorderColor3 = Color3.fromRGB(170, 0, 255)
-AntiAFKToggle.BorderSizePixel = 0
-AntiAFKToggle.Position = UDim2.new(0, 140, 0, 437)
-AntiAFKToggle.Size = UDim2.new(1, -16, 0, 20)
-AntiAFKToggle.Font = Enum.Font.SourceSansBold
-AntiAFKToggle.Text = "ANTI AFK"
-AntiAFKToggle.TextColor3 = Color3.fromRGB(170, 0, 255)
-AntiAFKToggle.TextSize = 17.000
-AntiAFKToggle.TextWrapped = true
-AntiAFKToggle.TextXAlignment = Enum.TextXAlignment.Left
-
-ChatToggle.Name = "ChatToggle"
-ChatToggle.Parent = Frame
-ChatToggle.AnchorPoint = Vector2.new(0.5, 0.5)
-ChatToggle.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
-ChatToggle.BackgroundTransparency = 0.160
-ChatToggle.BorderColor3 = Color3.fromRGB(170, 0, 255)
-ChatToggle.BorderSizePixel = 0
-ChatToggle.Position = UDim2.new(0, 140, 0, 456)
-ChatToggle.Size = UDim2.new(1, -16, 0, 20)
-ChatToggle.Font = Enum.Font.SourceSansBold
-ChatToggle.Text = "Chat Spammer"
-ChatToggle.TextColor3 = Color3.fromRGB(170, 0, 255)
-ChatToggle.TextSize = 17.000
-ChatToggle.TextWrapped = true
-ChatToggle.TextXAlignment = Enum.TextXAlignment.Left
-
-InfoButton.Name = "InfoButton"
-InfoButton.Parent = Frame
-InfoButton.AnchorPoint = Vector2.new(0.5, 0.5)
-InfoButton.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
-InfoButton.BackgroundTransparency = 0.160
-InfoButton.BorderColor3 = Color3.fromRGB(170, 0, 255)
-InfoButton.BorderSizePixel = 0
-InfoButton.Position = UDim2.new(0, 140, 0, 514)
-InfoButton.Size = UDim2.new(1, -16, 0, 20)
-InfoButton.Font = Enum.Font.SourceSansBold
-InfoButton.Text = "Info & Credits"
-InfoButton.TextColor3 = Color3.fromRGB(170, 0, 255)
-InfoButton.TextSize = 17.000
-InfoButton.TextWrapped = true
-InfoButton.TextXAlignment = Enum.TextXAlignment.Left
-
-FlyingCarsToggle.Name = "FlyingCarsToggle"
-FlyingCarsToggle.Parent = Frame
-FlyingCarsToggle.AnchorPoint = Vector2.new(0.5, 0.5)
-FlyingCarsToggle.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
-FlyingCarsToggle.BackgroundTransparency = 0.160
-FlyingCarsToggle.BorderColor3 = Color3.fromRGB(170, 0, 255)
-FlyingCarsToggle.BorderSizePixel = 0
-FlyingCarsToggle.Position = UDim2.new(0, 140, 0, 475)
-FlyingCarsToggle.Size = UDim2.new(1, -16, 0, 20)
-FlyingCarsToggle.Font = Enum.Font.SourceSansBold
-FlyingCarsToggle.Text = "FlyingCarsToggle"
-FlyingCarsToggle.TextColor3 = Color3.fromRGB(170, 0, 255)
-FlyingCarsToggle.TextSize = 17.000
-FlyingCarsToggle.TextWrapped = true
-FlyingCarsToggle.TextXAlignment = Enum.TextXAlignment.Left
-
-removedoors.Name = "remove doors"
-removedoors.Parent = Frame
-removedoors.AnchorPoint = Vector2.new(0.5, 0.5)
-removedoors.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
-removedoors.BackgroundTransparency = 0.160
-removedoors.BorderColor3 = Color3.fromRGB(170, 0, 255)
-removedoors.BorderSizePixel = 0
-removedoors.Position = UDim2.new(0, 140, 0, 494)
-removedoors.Size = UDim2.new(1, -16, 0, 20)
-removedoors.Font = Enum.Font.SourceSansBold
-removedoors.Text = "Remove Doors"
-removedoors.TextColor3 = Color3.fromRGB(170, 0, 255)
-removedoors.TextSize = 17.000
-removedoors.TextWrapped = true
-removedoors.TextXAlignment = Enum.TextXAlignment.Left
-
-DarkOverlay.Name = "DarkOverlay"
-DarkOverlay.Parent = Frame
-DarkOverlay.BackgroundColor3 = Color3.fromRGB(12, 10, 19)
-DarkOverlay.BackgroundTransparency = 0.830
-DarkOverlay.BorderSizePixel = 0
-DarkOverlay.Size = UDim2.new(1, 0, 1, 0)
-
-WhiteDashedBorderImage.Name = "WhiteDashedBorderImage"
-WhiteDashedBorderImage.Parent = Frame
-WhiteDashedBorderImage.BackgroundTransparency = 1.000
-WhiteDashedBorderImage.BorderSizePixel = 0
-WhiteDashedBorderImage.Size = UDim2.new(1, 0, 1, 0)
-WhiteDashedBorderImage.ZIndex = 3
-WhiteDashedBorderImage.Image = "rbxassetid://130381514081408"
+CTR2FBottom.Name = "CTR2FBottom"
+CTR2FBottom.Parent = Frame
+CTR2FBottom.AnchorPoint = Vector2.new(0.5, 1)
+CTR2FBottom.BackgroundTransparency = 1.000
+CTR2FBottom.BorderSizePixel = 0
+CTR2FBottom.Position = UDim2.new(0.74000001, 0, 1, -16)
+CTR2FBottom.Size = UDim2.new(0, 120, 0, 45)
+CTR2FBottom.ZIndex = 2
+CTR2FBottom.Image = "rbxassetid://132961887168739"
 
 WelcomeBanner.Name = "WelcomeBanner"
 WelcomeBanner.Parent = y0ungDareMenuv43
@@ -781,82 +802,7 @@ Ping.TextWrapped = true
 
 -- Scripts:
 
-local function LBELO_fake_script() -- HighGraphicsToggle.RainbowText 
-	local script = Instance.new('LocalScript', HighGraphicsToggle)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(LBELO_fake_script)()
-local function FQLC_fake_script() -- GetAllGuns.RainbowText 
-	local script = Instance.new('LocalScript', GetAllGuns)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(FQLC_fake_script)()
-local function XMSMN_fake_script() -- YardTP.RainbowText 
-	local script = Instance.new('LocalScript', YardTP)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(XMSMN_fake_script)()
-local function KATWVLS_fake_script() -- YardTP.yard 
+local function PLEB_fake_script() -- YardTP.yard 
 	local script = Instance.new('LocalScript', YardTP)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -871,33 +817,8 @@ local function KATWVLS_fake_script() -- YardTP.yard
 		
 	
 end
-coroutine.wrap(KATWVLS_fake_script)()
-local function TLMRX_fake_script() -- TaseBypass.RainbowText 
-	local script = Instance.new('LocalScript', TaseBypass)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(TLMRX_fake_script)()
-local function JSBMB_fake_script() -- TaseBypass.TaserBypassToggleLogic 
+coroutine.wrap(PLEB_fake_script)()
+local function SRAQG_fake_script() -- TaseBypass.TaserBypassToggleLogic 
 	local script = Instance.new('LocalScript', TaseBypass)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1016,33 +937,8 @@ local function JSBMB_fake_script() -- TaseBypass.TaserBypassToggleLogic
 		
 	
 end
-coroutine.wrap(JSBMB_fake_script)()
-local function SKTXGLA_fake_script() -- FPSPingToggle.RainbowText 
-	local script = Instance.new('LocalScript', FPSPingToggle)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(SKTXGLA_fake_script)()
-local function SGLRR_fake_script() -- FPSPingToggle.ToggleController 
+coroutine.wrap(SRAQG_fake_script)()
+local function GLBVLE_fake_script() -- FPSPingToggle.ToggleController 
 	local script = Instance.new('LocalScript', FPSPingToggle)
 
 		local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
@@ -1068,33 +964,8 @@ local function SGLRR_fake_script() -- FPSPingToggle.ToggleController
 		
 	
 end
-coroutine.wrap(SGLRR_fake_script)()
-local function DJKEKW_fake_script() -- ArmoryTP.RainbowText 
-	local script = Instance.new('LocalScript', ArmoryTP)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(DJKEKW_fake_script)()
-local function FCKHPJN_fake_script() -- ArmoryTP.armory 
+coroutine.wrap(GLBVLE_fake_script)()
+local function HJOLDG_fake_script() -- ArmoryTP.armory 
 	local script = Instance.new('LocalScript', ArmoryTP)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1109,33 +980,8 @@ local function FCKHPJN_fake_script() -- ArmoryTP.armory
 		
 	
 end
-coroutine.wrap(FCKHPJN_fake_script)()
-local function YOTKYHK_fake_script() -- TextButton.RainbowText 
-	local script = Instance.new('LocalScript', TextButton)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(YOTKYHK_fake_script)()
-local function EKGENRA_fake_script() -- InfoPopup.ClosePopup 
+coroutine.wrap(HJOLDG_fake_script)()
+local function AMMXB_fake_script() -- InfoPopup.ClosePopup 
 	local script = Instance.new('LocalScript', InfoPopup)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1155,33 +1001,59 @@ local function EKGENRA_fake_script() -- InfoPopup.ClosePopup
 		
 	
 end
-coroutine.wrap(EKGENRA_fake_script)()
-local function WUXSNUY_fake_script() -- fly.RainbowText 
-	local script = Instance.new('LocalScript', fly)
+coroutine.wrap(AMMXB_fake_script)()
+local function QLWYB_fake_script() -- Frame.HoverSelectionAnimation 
+	local script = Instance.new('LocalScript', Frame)
 
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
+		local TextButton = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('TextButton', true)
+			-- Jiggy-style row selection. Feature scripts are not modified.
+			local TweenService = game:GetService("TweenService")
+			local menu = script.Parent
+			local info = TweenInfo.new(0.09, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+			for _, button in ipairs(menu:GetChildren()) do
+			    if button:IsA("TextButton") then
+			        button.AutoButtonColor = false
+			        local baseColor = button.BackgroundColor3
+			        local indicator = Instance.new("Frame")
+			        indicator.Name = "JiggySelectionMarker"
+			        indicator.BorderSizePixel = 0
+			        indicator.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+			        indicator.BackgroundTransparency = 1
+			        indicator.Position = UDim2.fromOffset(0, 0)
+			        indicator.Size = UDim2.new(0, 5, 1, 0)
+			        indicator.ZIndex = button.ZIndex + 1
+			        indicator.Parent = button
+			        local outline = Instance.new("UIStroke")
+			        outline.Name = "JiggySelectionOutline"
+			        outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+			        outline.Color = Color3.fromRGB(174, 70, 255)
+			        outline.Thickness = 1.5
+			        outline.Transparency = 1
+			        outline.Parent = button
+			        local function selectRow(active)
+			            TweenService:Create(button, info, {
+			                BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or baseColor
+			            }):Play()
+			            TweenService:Create(indicator, info, {
+			                BackgroundTransparency = active and 0 or 1
+			            }):Play()
+			            TweenService:Create(outline, info, {
+			                Transparency = active and 0 or 1
+			            }):Play()
+			        end
+			        button.MouseEnter:Connect(function() selectRow(true) end)
+			        button.MouseLeave:Connect(function() selectRow(false) end)
+			        menu:GetPropertyChangedSignal("Visible"):Connect(function()
+			            if not menu.Visible then selectRow(false) end
+			        end)
+			    end
+			end
 			
 		
 	
 end
-coroutine.wrap(WUXSNUY_fake_script)()
-local function MOKES_fake_script() -- AutoPilot.AutoPilotController 
+coroutine.wrap(QLWYB_fake_script)()
+local function PQHLJ_fake_script() -- AutoPilot.AutoPilotController 
 	local script = Instance.new('LocalScript', AutoPilot)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1258,33 +1130,8 @@ local function MOKES_fake_script() -- AutoPilot.AutoPilotController
 		
 	
 end
-coroutine.wrap(MOKES_fake_script)()
-local function AHWCO_fake_script() -- AutoPilot.RainbowText 
-	local script = Instance.new('LocalScript', AutoPilot)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(AHWCO_fake_script)()
-local function DQMQNHT_fake_script() -- SpinBot.SpinController 
+coroutine.wrap(PQHLJ_fake_script)()
+local function NOSLWOX_fake_script() -- SpinBot.SpinController 
 	local script = Instance.new('LocalScript', SpinBot)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1361,58 +1208,8 @@ local function DQMQNHT_fake_script() -- SpinBot.SpinController
 		
 	
 end
-coroutine.wrap(DQMQNHT_fake_script)()
-local function EMRDAW_fake_script() -- SpinBot.RainbowText 
-	local script = Instance.new('LocalScript', SpinBot)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(EMRDAW_fake_script)()
-local function PSQFYH_fake_script() -- NoclipToggle.RainbowText 
-	local script = Instance.new('LocalScript', NoclipToggle)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(PSQFYH_fake_script)()
-local function DLJFASU_fake_script() -- XRayVision.XRayController 
+coroutine.wrap(NOSLWOX_fake_script)()
+local function LCZYZL_fake_script() -- XRayVision.XRayController 
 	local script = Instance.new('LocalScript', XRayVision)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1488,58 +1285,8 @@ local function DLJFASU_fake_script() -- XRayVision.XRayController
 		
 	
 end
-coroutine.wrap(DLJFASU_fake_script)()
-local function QLOS_fake_script() -- XRayVision.RainbowText 
-	local script = Instance.new('LocalScript', XRayVision)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(QLOS_fake_script)()
-local function IYXX_fake_script() -- WallEsp.RainbowText 
-	local script = Instance.new('LocalScript', WallEsp)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(IYXX_fake_script)()
-local function BGGKG_fake_script() -- WallEsp.client 
+coroutine.wrap(LCZYZL_fake_script)()
+local function JUNAKBY_fake_script() -- WallEsp.client 
 	local script = Instance.new('LocalScript', WallEsp)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1752,8 +1499,8 @@ local function BGGKG_fake_script() -- WallEsp.client
 		
 	
 end
-coroutine.wrap(BGGKG_fake_script)()
-local function VKQWMP_fake_script() -- aurakill.AuraKillController 
+coroutine.wrap(JUNAKBY_fake_script)()
+local function YKMYX_fake_script() -- aurakill.AuraKillController 
 	local script = Instance.new('LocalScript', aurakill)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1839,83 +1586,8 @@ local function VKQWMP_fake_script() -- aurakill.AuraKillController
 		
 	
 end
-coroutine.wrap(VKQWMP_fake_script)()
-local function VBWWJMF_fake_script() -- aurakill.RainbowText 
-	local script = Instance.new('LocalScript', aurakill)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(VBWWJMF_fake_script)()
-local function SMFRPR_fake_script() -- BringButton.RainbowText 
-	local script = Instance.new('LocalScript', BringButton)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(SMFRPR_fake_script)()
-local function ABROGQ_fake_script() -- CriminalBase.RainbowText 
-	local script = Instance.new('LocalScript', CriminalBase)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(ABROGQ_fake_script)()
-local function NLPPF_fake_script() -- CriminalBase.CrimBaseTeleport 
+coroutine.wrap(YKMYX_fake_script)()
+local function MXTBDV_fake_script() -- CriminalBase.CrimBaseTeleport 
 	local script = Instance.new('LocalScript', CriminalBase)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1930,33 +1602,8 @@ local function NLPPF_fake_script() -- CriminalBase.CrimBaseTeleport
 		
 	
 end
-coroutine.wrap(NLPPF_fake_script)()
-local function KMMNHC_fake_script() -- SetSpawnPoint.RainbowText 
-	local script = Instance.new('LocalScript', SetSpawnPoint)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(KMMNHC_fake_script)()
-local function UGUJGY_fake_script() -- SetSpawnPoint.TeleportScript 
+coroutine.wrap(MXTBDV_fake_script)()
+local function DNVNN_fake_script() -- SetSpawnPoint.TeleportScript 
 	local script = Instance.new('LocalScript', SetSpawnPoint)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1984,33 +1631,8 @@ local function UGUJGY_fake_script() -- SetSpawnPoint.TeleportScript
 		
 	
 end
-coroutine.wrap(UGUJGY_fake_script)()
-local function DAOP_fake_script() -- TeleportToSpawn.RainbowText 
-	local script = Instance.new('LocalScript', TeleportToSpawn)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(DAOP_fake_script)()
-local function FSRE_fake_script() -- TeleportToSpawn.TeleportScript 
+coroutine.wrap(DNVNN_fake_script)()
+local function GWFQDDV_fake_script() -- TeleportToSpawn.TeleportScript 
 	local script = Instance.new('LocalScript', TeleportToSpawn)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2039,108 +1661,8 @@ local function FSRE_fake_script() -- TeleportToSpawn.TeleportScript
 		
 	
 end
-coroutine.wrap(FSRE_fake_script)()
-local function IBBE_fake_script() -- AntiAFKToggle.RainbowText 
-	local script = Instance.new('LocalScript', AntiAFKToggle)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(IBBE_fake_script)()
-local function RCQMX_fake_script() -- ChatToggle.RainbowText 
-	local script = Instance.new('LocalScript', ChatToggle)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(RCQMX_fake_script)()
-local function QKBPWD_fake_script() -- InfoButton.RainbowText 
-	local script = Instance.new('LocalScript', InfoButton)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(QKBPWD_fake_script)()
-local function KLJLVBD_fake_script() -- FlyingCarsToggle.RainbowText 
-	local script = Instance.new('LocalScript', FlyingCarsToggle)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(KLJLVBD_fake_script)()
-local function TINBBL_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
+coroutine.wrap(GWFQDDV_fake_script)()
+local function JCQG_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
 	local script = Instance.new('LocalScript', FlyingCarsToggle)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2288,33 +1810,8 @@ local function TINBBL_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyContro
 		
 	
 end
-coroutine.wrap(TINBBL_fake_script)()
-local function QINKWJ_fake_script() -- removedoors.RainbowText 
-	local script = Instance.new('LocalScript', removedoors)
-
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-			
-					
-					local title = script.Parent
-					
-					-- SUPER FAST RGB
-					local speed = 0.05
-					
-					while true do
-						for hue = 0, 1, 0.05 do
-							title.TextColor3 = Color3.fromHSV(hue, 1, 1)
-							task.wait(speed)
-						end
-					end
-					
-				
-			
-		
-	
-end
-coroutine.wrap(QINKWJ_fake_script)()
-local function NGYOX_fake_script() -- removedoors.RemoveDoorsToggle 
+coroutine.wrap(JCQG_fake_script)()
+local function CWYY_fake_script() -- removedoors.RemoveDoorsToggle 
 	local script = Instance.new('LocalScript', removedoors)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2381,8 +1878,8 @@ local function NGYOX_fake_script() -- removedoors.RemoveDoorsToggle
 		
 	
 end
-coroutine.wrap(NGYOX_fake_script)()
-local function XRKZPUX_fake_script() -- Frame.DragFrame 
+coroutine.wrap(CWYY_fake_script)()
+local function VAVBO_fake_script() -- Frame.DragFrame 
 	local script = Instance.new('LocalScript', Frame)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2435,8 +1932,8 @@ local function XRKZPUX_fake_script() -- Frame.DragFrame
 		
 	
 end
-coroutine.wrap(XRKZPUX_fake_script)()
-local function YWJSYOC_fake_script() -- Frame.GUIController 
+coroutine.wrap(VAVBO_fake_script)()
+local function CGRWG_fake_script() -- Frame.GUIController 
 	local script = Instance.new('LocalScript', Frame)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2516,8 +2013,8 @@ local function YWJSYOC_fake_script() -- Frame.GUIController
 		
 	
 end
-coroutine.wrap(YWJSYOC_fake_script)()
-local function DFAYRU_fake_script() -- Frame.AntiAFKController 
+coroutine.wrap(CGRWG_fake_script)()
+local function WAROFYF_fake_script() -- Frame.AntiAFKController 
 	local script = Instance.new('LocalScript', Frame)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2569,8 +2066,8 @@ local function DFAYRU_fake_script() -- Frame.AntiAFKController
 		
 	
 end
-coroutine.wrap(DFAYRU_fake_script)()
-local function BYGMNRU_fake_script() -- Frame.ChatController 
+coroutine.wrap(WAROFYF_fake_script)()
+local function GVPU_fake_script() -- Frame.ChatController 
 	local script = Instance.new('LocalScript', Frame)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2627,8 +2124,8 @@ local function BYGMNRU_fake_script() -- Frame.ChatController
 		
 	
 end
-coroutine.wrap(BYGMNRU_fake_script)()
-local function EVXBL_fake_script() -- Frame.OriginalNoclipController 
+coroutine.wrap(GVPU_fake_script)()
+local function ZKJPLTK_fake_script() -- Frame.OriginalNoclipController 
 	local script = Instance.new('LocalScript', Frame)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2775,8 +2272,8 @@ local function EVXBL_fake_script() -- Frame.OriginalNoclipController
 		
 	
 end
-coroutine.wrap(EVXBL_fake_script)()
-local function ETQJR_fake_script() -- Frame.InfoToggle 
+coroutine.wrap(ZKJPLTK_fake_script)()
+local function BJTFZFU_fake_script() -- Frame.InfoToggle 
 	local script = Instance.new('LocalScript', Frame)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2804,8 +2301,8 @@ local function ETQJR_fake_script() -- Frame.InfoToggle
 		
 	
 end
-coroutine.wrap(ETQJR_fake_script)()
-local function EGHGAWB_fake_script() -- Frame.Aimbot 
+coroutine.wrap(BJTFZFU_fake_script)()
+local function JPHZG_fake_script() -- Frame.Aimbot 
 	local script = Instance.new('LocalScript', Frame)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2966,8 +2463,8 @@ local function EGHGAWB_fake_script() -- Frame.Aimbot
 		
 	
 end
-coroutine.wrap(EGHGAWB_fake_script)()
-local function SOTU_fake_script() -- Frame.GetAllGunsLogic 
+coroutine.wrap(JPHZG_fake_script)()
+local function KBFGLCJ_fake_script() -- Frame.GetAllGunsLogic 
 	local script = Instance.new('LocalScript', Frame)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -3055,8 +2552,8 @@ local function SOTU_fake_script() -- Frame.GetAllGunsLogic
 		
 	
 end
-coroutine.wrap(SOTU_fake_script)()
-local function DFYCFBM_fake_script() -- Frame.HighGraphicsLogic 
+coroutine.wrap(KBFGLCJ_fake_script)()
+local function MBZS_fake_script() -- Frame.HighGraphicsLogic 
 	local script = Instance.new('LocalScript', Frame)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -3127,59 +2624,8 @@ local function DFYCFBM_fake_script() -- Frame.HighGraphicsLogic
 		
 	
 end
-coroutine.wrap(DFYCFBM_fake_script)()
-local function GIOIES_fake_script() -- Frame.HoverSelectionAnimation 
-	local script = Instance.new('LocalScript', Frame)
-
-		local TextButton = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('TextButton', true)
-			-- Jiggy-style row selection. Feature scripts are not modified.
-			local TweenService = game:GetService("TweenService")
-			local menu = script.Parent
-			local info = TweenInfo.new(0.09, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-			for _, button in ipairs(menu:GetChildren()) do
-			    if button:IsA("TextButton") then
-			        button.AutoButtonColor = false
-			        local baseColor = button.BackgroundColor3
-			        local indicator = Instance.new("Frame")
-			        indicator.Name = "JiggySelectionMarker"
-			        indicator.BorderSizePixel = 0
-			        indicator.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
-			        indicator.BackgroundTransparency = 1
-			        indicator.Position = UDim2.fromOffset(0, 0)
-			        indicator.Size = UDim2.new(0, 5, 1, 0)
-			        indicator.ZIndex = button.ZIndex + 1
-			        indicator.Parent = button
-			        local outline = Instance.new("UIStroke")
-			        outline.Name = "JiggySelectionOutline"
-			        outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-			        outline.Color = Color3.fromRGB(174, 70, 255)
-			        outline.Thickness = 1.5
-			        outline.Transparency = 1
-			        outline.Parent = button
-			        local function selectRow(active)
-			            TweenService:Create(button, info, {
-			                BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or baseColor
-			            }):Play()
-			            TweenService:Create(indicator, info, {
-			                BackgroundTransparency = active and 0 or 1
-			            }):Play()
-			            TweenService:Create(outline, info, {
-			                Transparency = active and 0 or 1
-			            }):Play()
-			        end
-			        button.MouseEnter:Connect(function() selectRow(true) end)
-			        button.MouseLeave:Connect(function() selectRow(false) end)
-			        menu:GetPropertyChangedSignal("Visible"):Connect(function()
-			            if not menu.Visible then selectRow(false) end
-			        end)
-			    end
-			end
-			
-		
-	
-end
-coroutine.wrap(GIOIES_fake_script)()
-local function FPNN_fake_script() -- WelcomeBanner.WelcomeAnimation 
+coroutine.wrap(MBZS_fake_script)()
+local function EWQBJ_fake_script() -- WelcomeBanner.WelcomeAnimation 
 	local script = Instance.new('LocalScript', WelcomeBanner)
 
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -3364,8 +2810,8 @@ local function FPNN_fake_script() -- WelcomeBanner.WelcomeAnimation
 		
 	
 end
-coroutine.wrap(FPNN_fake_script)()
-local function ITSZTN_fake_script() -- Fps.FpsOriginalScript 
+coroutine.wrap(EWQBJ_fake_script)()
+local function RAJP_fake_script() -- Fps.FpsOriginalScript 
 	local script = Instance.new('LocalScript', Fps)
 
 			local RunService = game:GetService("RunService")
@@ -3375,8 +2821,8 @@ local function ITSZTN_fake_script() -- Fps.FpsOriginalScript
 		
 	
 end
-coroutine.wrap(ITSZTN_fake_script)()
-local function BFLRK_fake_script() -- Ping.PingOriginalScript 
+coroutine.wrap(RAJP_fake_script)()
+local function FCLFIU_fake_script() -- Ping.PingOriginalScript 
 	local script = Instance.new('LocalScript', Ping)
 
 			local RunService = game:GetService("RunService")
@@ -3386,8 +2832,8 @@ local function BFLRK_fake_script() -- Ping.PingOriginalScript
 		
 	
 end
-coroutine.wrap(BFLRK_fake_script)()
-local function VVJFCCN_fake_script() -- y0ungDareMenuv43.KeyboardShortcuts 
+coroutine.wrap(FCLFIU_fake_script)()
+local function HNOCBL_fake_script() -- y0ungDareMenuv43.KeyboardShortcuts 
 	local script = Instance.new('LocalScript', y0ungDareMenuv43)
 
 		local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
@@ -3485,8 +2931,8 @@ local function VVJFCCN_fake_script() -- y0ungDareMenuv43.KeyboardShortcuts
 		
 	
 end
-coroutine.wrap(VVJFCCN_fake_script)()
-local function ZKRQYQ_fake_script() -- y0ungDareMenuv43.MainScript 
+coroutine.wrap(HNOCBL_fake_script)()
+local function JYGHCVG_fake_script() -- y0ungDareMenuv43.MainScript 
 	local script = Instance.new('LocalScript', y0ungDareMenuv43)
 
 		local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
@@ -3578,8 +3024,8 @@ local function ZKRQYQ_fake_script() -- y0ungDareMenuv43.MainScript
 		
 	
 end
-coroutine.wrap(ZKRQYQ_fake_script)()
-local function ZWSRN_fake_script() -- y0ungDareMenuv43.MenuVisibility_Q 
+coroutine.wrap(JYGHCVG_fake_script)()
+local function HJILT_fake_script() -- y0ungDareMenuv43.MenuVisibility_Q 
 	local script = Instance.new('LocalScript', y0ungDareMenuv43)
 
 		local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
@@ -3640,4 +3086,4 @@ local function ZWSRN_fake_script() -- y0ungDareMenuv43.MenuVisibility_Q
 		
 	
 end
-coroutine.wrap(ZWSRN_fake_script)()
+coroutine.wrap(HJILT_fake_script)()
