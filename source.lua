@@ -768,7 +768,7 @@ Ping.TextWrapped = true
 
 -- Scripts:
 
-local function GDVMTZK_fake_script() -- YardTP.yard 
+local function LCAO_fake_script() -- YardTP.yard 
 	local script = Instance.new('LocalScript', YardTP)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -783,8 +783,8 @@ local function GDVMTZK_fake_script() -- YardTP.yard
 			
 		
 end
-coroutine.wrap(GDVMTZK_fake_script)()
-local function FRLCQRY_fake_script() -- TaseBypass.TaserBypassToggleLogic 
+coroutine.wrap(LCAO_fake_script)()
+local function ANIM_fake_script() -- TaseBypass.TaserBypassToggleLogic 
 	local script = Instance.new('LocalScript', TaseBypass)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -903,8 +903,8 @@ local function FRLCQRY_fake_script() -- TaseBypass.TaserBypassToggleLogic
 			
 		
 end
-coroutine.wrap(FRLCQRY_fake_script)()
-local function GJRHA_fake_script() -- FPSPingToggle.ToggleController 
+coroutine.wrap(ANIM_fake_script)()
+local function DXYOX_fake_script() -- FPSPingToggle.ToggleController 
 	local script = Instance.new('LocalScript', FPSPingToggle)
 
 			local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
@@ -930,8 +930,8 @@ local function GJRHA_fake_script() -- FPSPingToggle.ToggleController
 			
 		
 end
-coroutine.wrap(GJRHA_fake_script)()
-local function EFWINIH_fake_script() -- ArmoryTP.armory 
+coroutine.wrap(DXYOX_fake_script)()
+local function MXQB_fake_script() -- ArmoryTP.armory 
 	local script = Instance.new('LocalScript', ArmoryTP)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -946,8 +946,8 @@ local function EFWINIH_fake_script() -- ArmoryTP.armory
 			
 		
 end
-coroutine.wrap(EFWINIH_fake_script)()
-local function TOFJSD_fake_script() -- Frame.HighGraphicsLogic 
+coroutine.wrap(MXQB_fake_script)()
+local function HTHQC_fake_script() -- Frame.HighGraphicsLogic 
 	local script = Instance.new('LocalScript', Frame)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1018,8 +1018,8 @@ local function TOFJSD_fake_script() -- Frame.HighGraphicsLogic
 			
 		
 end
-coroutine.wrap(TOFJSD_fake_script)()
-local function QQQQQKY_fake_script() -- AutoPilot.AutoPilotController 
+coroutine.wrap(HTHQC_fake_script)()
+local function RNNMUI_fake_script() -- AutoPilot.AutoPilotController 
 	local script = Instance.new('LocalScript', AutoPilot)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1096,86 +1096,101 @@ local function QQQQQKY_fake_script() -- AutoPilot.AutoPilotController
 			
 		
 end
-coroutine.wrap(QQQQQKY_fake_script)()
-local function CKHS_fake_script() -- SpinBot.SpinController 
+coroutine.wrap(RNNMUI_fake_script)()
+local function SBSR_fake_script() -- SpinBot.SpinController 
 	local script = Instance.new('LocalScript', SpinBot)
 
-			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-				local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-				
-						local Players = game:GetService("Players")
-						local RunService = game:GetService("RunService")
-						
-						local player = Players.LocalPlayer
-						local button = script.Parent
-						local enabled = false
-						local SPINS_PER_SECOND = 12 -- Increase for faster spinning
-						local connection
-						local savedAutoRotate
-						
-						local function stopSpin()
-						    if connection then
-						        connection:Disconnect()
-						        connection = nil
-						    end
-						    local character = player.Character
-						    local humanoid = character and character:FindFirstChildOfClass("Humanoid")
-						    if humanoid and savedAutoRotate ~= nil then
-						        humanoid.AutoRotate = savedAutoRotate
-						    end
-						    savedAutoRotate = nil
-						end
-						
-						local function updateButton()
-						    button.Text = enabled and "Spin Bot: ON" or "Spin Bot: OFF"
-						    button.BackgroundColor3 = enabled and Color3.fromRGB(0, 190, 70) or Color3.fromRGB(0, 0, 0)
-						end
-						
-						local function startSpin()
-						    stopSpin()
-						    local character = player.Character
-						    local humanoid = character and character:FindFirstChildOfClass("Humanoid")
-						    local root = character and character:FindFirstChild("HumanoidRootPart")
-						    if not humanoid or not root then
-						        enabled = false
-						        updateButton()
-						        return
-						    end
-						    savedAutoRotate = humanoid.AutoRotate
-						    humanoid.AutoRotate = false
-						    connection = RunService.RenderStepped:Connect(function(dt)
-						        if not enabled or not root.Parent or humanoid.Health <= 0 then
-						            enabled = false
-						            stopSpin()
-						            updateButton()
-						            return
-						        end
-						        -- Rotation only: preserves the character's position.
-						        root.CFrame = root.CFrame * CFrame.Angles(0, math.rad(360 * SPINS_PER_SECOND) * dt, 0)
-						    end)
-						end
-						
-						button.Activated:Connect(function()
-						    enabled = not enabled
-						    if enabled then startSpin() else stopSpin() end
-						    updateButton()
-						end)
-						
-						player.CharacterAdded:Connect(function()
-						    stopSpin()
-						    enabled = false
-						    updateButton()
-						end)
-						
-						updateButton()
-						
-					
-				
-			
-		
+	-- y0ungDare Spin Bot - keeps the ON/OFF setting across respawns.
+	-- Put this LocalScript inside the Spin Bot TextButton.
+	-- Set the containing ScreenGui.ResetOnSpawn to false.
+	
+	local Players = game:GetService("Players")
+	local RunService = game:GetService("RunService")
+	
+	local player = Players.LocalPlayer
+	local button = script.Parent
+	local enabled = false
+	local SPINS_PER_SECOND = 12
+	
+	local connection
+	local spinningHumanoid
+	local savedAutoRotate
+	local generation = 0
+	
+	local function updateButton()
+		button.Text = enabled and "Spin Bot: ON" or "Spin Bot: OFF"
+		button.BackgroundColor3 = enabled and Color3.fromRGB(0, 0, 0) or Color3.fromRGB(0, 0, 0)
+	end
+	
+	local function stopSpin()
+		if connection then
+			connection:Disconnect()
+			connection = nil
+		end
+		if spinningHumanoid and spinningHumanoid.Parent and savedAutoRotate ~= nil then
+			spinningHumanoid.AutoRotate = savedAutoRotate
+		end
+		spinningHumanoid = nil
+		savedAutoRotate = nil
+	end
+	
+	local function startSpin(character)
+		generation += 1
+		local thisGeneration = generation
+		stopSpin()
+		if not enabled then return end
+	
+		character = character or player.Character
+		if not character then return end
+	
+		local humanoid = character:WaitForChild("Humanoid", 10)
+		local root = character:WaitForChild("HumanoidRootPart", 10)
+		if thisGeneration ~= generation or not enabled or character ~= player.Character then return end
+		if not humanoid or not root or humanoid.Health <= 0 then return end
+	
+		spinningHumanoid = humanoid
+		savedAutoRotate = humanoid.AutoRotate
+		humanoid.AutoRotate = false
+	
+		connection = RunService.RenderStepped:Connect(function(dt)
+			if not enabled or character ~= player.Character or not root.Parent or humanoid.Health <= 0 then
+				stopSpin()
+				-- Keep enabled true so spinning resumes on the next respawn.
+				return
+			end
+			root.CFrame = root.CFrame * CFrame.Angles(0, math.rad(360 * SPINS_PER_SECOND) * dt, 0)
+		end)
+	end
+	
+	button.Activated:Connect(function()
+		enabled = not enabled
+		if enabled then
+			task.spawn(startSpin, player.Character)
+		else
+			generation += 1
+			stopSpin()
+		end
+		updateButton()
+	end)
+	
+	player.CharacterRemoving:Connect(function()
+		generation += 1
+		stopSpin()
+		-- Do not turn enabled off: preserve the user's choice.
+	end)
+	
+	player.CharacterAdded:Connect(function(character)
+		if enabled then
+			task.spawn(startSpin, character)
+		end
+		updateButton()
+	end)
+	
+	updateButton()
+	
 end
-coroutine.wrap(CKHS_fake_script)()
-local function FNCG_fake_script() -- XRayVision.XRayController 
+coroutine.wrap(SBSR_fake_script)()
+local function GCGIU_fake_script() -- XRayVision.XRayController 
 	local script = Instance.new('LocalScript', XRayVision)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1251,8 +1266,8 @@ local function FNCG_fake_script() -- XRayVision.XRayController
 			
 		
 end
-coroutine.wrap(FNCG_fake_script)()
-local function FEQTRMY_fake_script() -- WallEsp.client 
+coroutine.wrap(GCGIU_fake_script)()
+local function WWNV_fake_script() -- WallEsp.client 
 	local script = Instance.new('LocalScript', WallEsp)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1465,8 +1480,8 @@ local function FEQTRMY_fake_script() -- WallEsp.client
 			
 		
 end
-coroutine.wrap(FEQTRMY_fake_script)()
-local function BHINQ_fake_script() -- aurakill.AuraKillController 
+coroutine.wrap(WWNV_fake_script)()
+local function CSHJJX_fake_script() -- aurakill.AuraKillController 
 	local script = Instance.new('LocalScript', aurakill)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1552,8 +1567,8 @@ local function BHINQ_fake_script() -- aurakill.AuraKillController
 			
 		
 end
-coroutine.wrap(BHINQ_fake_script)()
-local function BGLW_fake_script() -- RGBTextToggle.RGBTextController 
+coroutine.wrap(CSHJJX_fake_script)()
+local function JPKWR_fake_script() -- RGBTextToggle.RGBTextController 
 	local script = Instance.new('LocalScript', RGBTextToggle)
 
 	
@@ -1633,8 +1648,8 @@ local function BGLW_fake_script() -- RGBTextToggle.RGBTextController
 	end)
 	
 end
-coroutine.wrap(BGLW_fake_script)()
-local function ZZWAHW_fake_script() -- SetSpawnPoint.TeleportScript 
+coroutine.wrap(JPKWR_fake_script)()
+local function YFIA_fake_script() -- SetSpawnPoint.TeleportScript 
 	local script = Instance.new('LocalScript', SetSpawnPoint)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1662,8 +1677,8 @@ local function ZZWAHW_fake_script() -- SetSpawnPoint.TeleportScript
 			
 		
 end
-coroutine.wrap(ZZWAHW_fake_script)()
-local function CRKQ_fake_script() -- TeleportToSpawn.TeleportScript 
+coroutine.wrap(YFIA_fake_script)()
+local function GOGW_fake_script() -- TeleportToSpawn.TeleportScript 
 	local script = Instance.new('LocalScript', TeleportToSpawn)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1692,8 +1707,8 @@ local function CRKQ_fake_script() -- TeleportToSpawn.TeleportScript
 			
 		
 end
-coroutine.wrap(CRKQ_fake_script)()
-local function TFEQ_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
+coroutine.wrap(GOGW_fake_script)()
+local function RZKILEI_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
 	local script = Instance.new('LocalScript', FlyingCarsToggle)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1841,8 +1856,8 @@ local function TFEQ_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyControll
 			
 		
 end
-coroutine.wrap(TFEQ_fake_script)()
-local function BHDPLHU_fake_script() -- removedoors.RemoveDoorsToggle 
+coroutine.wrap(RZKILEI_fake_script)()
+local function BCSFTEI_fake_script() -- removedoors.RemoveDoorsToggle 
 	local script = Instance.new('LocalScript', removedoors)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1909,8 +1924,8 @@ local function BHDPLHU_fake_script() -- removedoors.RemoveDoorsToggle
 			
 		
 end
-coroutine.wrap(BHDPLHU_fake_script)()
-local function IOQMCTL_fake_script() -- Frame.HoverSelectionAnimation 
+coroutine.wrap(BCSFTEI_fake_script)()
+local function VNZS_fake_script() -- Frame.HoverSelectionAnimation 
 	local script = Instance.new('LocalScript', Frame)
 
 			local TextButton = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('TextButton', true)
@@ -1960,8 +1975,8 @@ local function IOQMCTL_fake_script() -- Frame.HoverSelectionAnimation
 			
 		
 end
-coroutine.wrap(IOQMCTL_fake_script)()
-local function RNGTVTC_fake_script() -- Frame.DragFrame 
+coroutine.wrap(VNZS_fake_script)()
+local function CFLWS_fake_script() -- Frame.DragFrame 
 	local script = Instance.new('LocalScript', Frame)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2014,8 +2029,8 @@ local function RNGTVTC_fake_script() -- Frame.DragFrame
 			
 		
 end
-coroutine.wrap(RNGTVTC_fake_script)()
-local function WTIO_fake_script() -- Frame.GUIController 
+coroutine.wrap(CFLWS_fake_script)()
+local function SERA_fake_script() -- Frame.GUIController 
 	local script = Instance.new('LocalScript', Frame)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2095,8 +2110,8 @@ local function WTIO_fake_script() -- Frame.GUIController
 			
 		
 end
-coroutine.wrap(WTIO_fake_script)()
-local function FQJF_fake_script() -- Frame.AntiAFKController 
+coroutine.wrap(SERA_fake_script)()
+local function XFHFOW_fake_script() -- Frame.AntiAFKController 
 	local script = Instance.new('LocalScript', Frame)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2148,8 +2163,8 @@ local function FQJF_fake_script() -- Frame.AntiAFKController
 			
 		
 end
-coroutine.wrap(FQJF_fake_script)()
-local function DJWTM_fake_script() -- Frame.ChatController 
+coroutine.wrap(XFHFOW_fake_script)()
+local function JMMSC_fake_script() -- Frame.ChatController 
 	local script = Instance.new('LocalScript', Frame)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2206,8 +2221,8 @@ local function DJWTM_fake_script() -- Frame.ChatController
 			
 		
 end
-coroutine.wrap(DJWTM_fake_script)()
-local function WWXJ_fake_script() -- Frame.OriginalNoclipController 
+coroutine.wrap(JMMSC_fake_script)()
+local function TNUY_fake_script() -- Frame.OriginalNoclipController 
 	local script = Instance.new('LocalScript', Frame)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2354,8 +2369,8 @@ local function WWXJ_fake_script() -- Frame.OriginalNoclipController
 			
 		
 end
-coroutine.wrap(WWXJ_fake_script)()
-local function IWZZUG_fake_script() -- Frame.InfoToggle 
+coroutine.wrap(TNUY_fake_script)()
+local function NOLD_fake_script() -- Frame.InfoToggle 
 	local script = Instance.new('LocalScript', Frame)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2383,8 +2398,8 @@ local function IWZZUG_fake_script() -- Frame.InfoToggle
 			
 		
 end
-coroutine.wrap(IWZZUG_fake_script)()
-local function JMTXC_fake_script() -- Frame.Aimbot 
+coroutine.wrap(NOLD_fake_script)()
+local function YLHIZCX_fake_script() -- Frame.Aimbot 
 	local script = Instance.new('LocalScript', Frame)
 
 	
@@ -2534,8 +2549,8 @@ local function JMTXC_fake_script() -- Frame.Aimbot
 	textbutton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 	
 end
-coroutine.wrap(JMTXC_fake_script)()
-local function QFSSEZI_fake_script() -- Frame.GetAllGunsLogic 
+coroutine.wrap(YLHIZCX_fake_script)()
+local function SCJR_fake_script() -- Frame.GetAllGunsLogic 
 	local script = Instance.new('LocalScript', Frame)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2623,8 +2638,8 @@ local function QFSSEZI_fake_script() -- Frame.GetAllGunsLogic
 			
 		
 end
-coroutine.wrap(QFSSEZI_fake_script)()
-local function HNEVVK_fake_script() -- InfoPopup.ClosePopup 
+coroutine.wrap(SCJR_fake_script)()
+local function XQDDO_fake_script() -- InfoPopup.ClosePopup 
 	local script = Instance.new('LocalScript', InfoPopup)
 
 	local popup = script.Parent
@@ -2634,8 +2649,8 @@ local function HNEVVK_fake_script() -- InfoPopup.ClosePopup
 	end)
 	
 end
-coroutine.wrap(HNEVVK_fake_script)()
-local function BCIJIPU_fake_script() -- WelcomeBanner.WelcomeAnimation 
+coroutine.wrap(XQDDO_fake_script)()
+local function SUHN_fake_script() -- WelcomeBanner.WelcomeAnimation 
 	local script = Instance.new('LocalScript', WelcomeBanner)
 
 			local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2820,8 +2835,8 @@ local function BCIJIPU_fake_script() -- WelcomeBanner.WelcomeAnimation
 			
 		
 end
-coroutine.wrap(BCIJIPU_fake_script)()
-local function ERAJ_fake_script() -- Fps.FpsOriginalScript 
+coroutine.wrap(SUHN_fake_script)()
+local function SWGX_fake_script() -- Fps.FpsOriginalScript 
 	local script = Instance.new('LocalScript', Fps)
 
 				local RunService = game:GetService("RunService")
@@ -2831,8 +2846,8 @@ local function ERAJ_fake_script() -- Fps.FpsOriginalScript
 			
 		
 end
-coroutine.wrap(ERAJ_fake_script)()
-local function XFNNDM_fake_script() -- Ping.PingOriginalScript 
+coroutine.wrap(SWGX_fake_script)()
+local function PSJJPAS_fake_script() -- Ping.PingOriginalScript 
 	local script = Instance.new('LocalScript', Ping)
 
 				local RunService = game:GetService("RunService")
@@ -2842,8 +2857,8 @@ local function XFNNDM_fake_script() -- Ping.PingOriginalScript
 			
 		
 end
-coroutine.wrap(XFNNDM_fake_script)()
-local function CFPA_fake_script() -- y0ungDareMenuv43.KeyboardShortcuts 
+coroutine.wrap(PSJJPAS_fake_script)()
+local function KHOLLGI_fake_script() -- y0ungDareMenuv43.KeyboardShortcuts 
 	local script = Instance.new('LocalScript', y0ungDareMenuv43)
 
 			local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
@@ -2941,8 +2956,8 @@ local function CFPA_fake_script() -- y0ungDareMenuv43.KeyboardShortcuts
 			
 		
 end
-coroutine.wrap(CFPA_fake_script)()
-local function TFRAF_fake_script() -- y0ungDareMenuv43.MainScript 
+coroutine.wrap(KHOLLGI_fake_script)()
+local function WMGABEI_fake_script() -- y0ungDareMenuv43.MainScript 
 	local script = Instance.new('LocalScript', y0ungDareMenuv43)
 
 	-- y0ungDare Fly - respawn-safe LocalScript
@@ -3084,8 +3099,8 @@ local function TFRAF_fake_script() -- y0ungDareMenuv43.MainScript
 	end
 	
 end
-coroutine.wrap(TFRAF_fake_script)()
-local function LYUB_fake_script() -- y0ungDareMenuv43.MenuVisibility_Q 
+coroutine.wrap(WMGABEI_fake_script)()
+local function TUIQKRB_fake_script() -- y0ungDareMenuv43.MenuVisibility_Q 
 	local script = Instance.new('LocalScript', y0ungDareMenuv43)
 
 			local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
@@ -3146,4 +3161,4 @@ local function LYUB_fake_script() -- y0ungDareMenuv43.MenuVisibility_Q
 			
 		
 end
-coroutine.wrap(LYUB_fake_script)()
+coroutine.wrap(TUIQKRB_fake_script)()
