@@ -775,7 +775,7 @@ Ping.TextWrapped = true
 
 -- Scripts:
 
-local function LOXPSMF_fake_script() -- LanguageToggle.LanguageController_Edit_Here 
+local function SOTR_fake_script() -- LanguageToggle.LanguageController_Edit_Here 
 	local script = Instance.new('LocalScript', LanguageToggle)
 
 	
@@ -882,8 +882,8 @@ local function LOXPSMF_fake_script() -- LanguageToggle.LanguageController_Edit_H
 	
 	
 end
-coroutine.wrap(LOXPSMF_fake_script)()
-local function TUYPJ_fake_script() -- Frame.GetAllGunsLogic 
+coroutine.wrap(SOTR_fake_script)()
+local function LSNWRR_fake_script() -- Frame.GetAllGunsLogic 
 	local script = Instance.new('LocalScript', Frame)
 
 	
@@ -971,8 +971,8 @@ local function TUYPJ_fake_script() -- Frame.GetAllGunsLogic
 	
 	
 end
-coroutine.wrap(TUYPJ_fake_script)()
-local function XATPPFU_fake_script() -- SpeedRun.SpeedController 
+coroutine.wrap(LSNWRR_fake_script)()
+local function FIXJW_fake_script() -- SpeedRun.SpeedController 
 	local script = Instance.new('LocalScript', SpeedRun)
 
 	
@@ -1032,8 +1032,8 @@ local function XATPPFU_fake_script() -- SpeedRun.SpeedController
 	
 	
 end
-coroutine.wrap(XATPPFU_fake_script)()
-local function AECTMV_fake_script() -- TaseBypass.TaserBypassToggleLogic 
+coroutine.wrap(FIXJW_fake_script)()
+local function JQGJHBA_fake_script() -- TaseBypass.TaserBypassToggleLogic 
 	local script = Instance.new('LocalScript', TaseBypass)
 
 	
@@ -1151,8 +1151,8 @@ local function AECTMV_fake_script() -- TaseBypass.TaserBypassToggleLogic
 	
 	
 end
-coroutine.wrap(AECTMV_fake_script)()
-local function HKAEH_fake_script() -- FPSPingToggle.ToggleController 
+coroutine.wrap(JQGJHBA_fake_script)()
+local function LLWGCKC_fake_script() -- FPSPingToggle.ToggleController 
 	local script = Instance.new('LocalScript', FPSPingToggle)
 
 	
@@ -1180,8 +1180,8 @@ local function HKAEH_fake_script() -- FPSPingToggle.ToggleController
 	
 	
 end
-coroutine.wrap(HKAEH_fake_script)()
-local function RJLEH_fake_script() -- AutoPilot.AutoPilotController 
+coroutine.wrap(LLWGCKC_fake_script)()
+local function DLPPBW_fake_script() -- AutoPilot.AutoPilotController 
 	local script = Instance.new('LocalScript', AutoPilot)
 
 	
@@ -1257,8 +1257,8 @@ local function RJLEH_fake_script() -- AutoPilot.AutoPilotController
 	
 	
 end
-coroutine.wrap(RJLEH_fake_script)()
-local function BRKEPU_fake_script() -- SpinBot.SpinController 
+coroutine.wrap(DLPPBW_fake_script)()
+local function WKPZJD_fake_script() -- SpinBot.SpinController 
 	local script = Instance.new('LocalScript', SpinBot)
 
 	
@@ -1353,8 +1353,8 @@ local function BRKEPU_fake_script() -- SpinBot.SpinController
 	
 	
 end
-coroutine.wrap(BRKEPU_fake_script)()
-local function YWPPSUT_fake_script() -- XRayVision.XRayController 
+coroutine.wrap(WKPZJD_fake_script)()
+local function VXRVR_fake_script() -- XRayVision.XRayController 
 	local script = Instance.new('LocalScript', XRayVision)
 
 	
@@ -1429,8 +1429,8 @@ local function YWPPSUT_fake_script() -- XRayVision.XRayController
 	
 	
 end
-coroutine.wrap(YWPPSUT_fake_script)()
-local function BJQWL_fake_script() -- WallEsp.client 
+coroutine.wrap(VXRVR_fake_script)()
+local function OEPTPFG_fake_script() -- WallEsp.client 
 	local script = Instance.new('LocalScript', WallEsp)
 
 	
@@ -1757,8 +1757,8 @@ local function BJQWL_fake_script() -- WallEsp.client
 	
 	
 end
-coroutine.wrap(BJQWL_fake_script)()
-local function BJPVU_fake_script() -- aurakill.AuraKillController 
+coroutine.wrap(OEPTPFG_fake_script)()
+local function XMELEXJ_fake_script() -- aurakill.AuraKillController 
 	local script = Instance.new('LocalScript', aurakill)
 
 	
@@ -1843,8 +1843,8 @@ local function BJPVU_fake_script() -- aurakill.AuraKillController
 	
 	
 end
-coroutine.wrap(BJPVU_fake_script)()
-local function THCQ_fake_script() -- RGBTextToggle.RGBTextController 
+coroutine.wrap(XMELEXJ_fake_script)()
+local function RUVB_fake_script() -- RGBTextToggle.RGBTextController 
 	local script = Instance.new('LocalScript', RGBTextToggle)
 
 	
@@ -1926,8 +1926,8 @@ local function THCQ_fake_script() -- RGBTextToggle.RGBTextController
 	
 	
 end
-coroutine.wrap(THCQ_fake_script)()
-local function LPNXN_fake_script() -- SetSpawnPoint.TeleportScript 
+coroutine.wrap(RUVB_fake_script)()
+local function FTDWZ_fake_script() -- SetSpawnPoint.TeleportScript 
 	local script = Instance.new('LocalScript', SetSpawnPoint)
 
 	
@@ -1954,8 +1954,8 @@ local function LPNXN_fake_script() -- SetSpawnPoint.TeleportScript
 	
 	
 end
-coroutine.wrap(LPNXN_fake_script)()
-local function LLBO_fake_script() -- TeleportToSpawn.TeleportScript 
+coroutine.wrap(FTDWZ_fake_script)()
+local function ZUHZEW_fake_script() -- TeleportToSpawn.TeleportScript 
 	local script = Instance.new('LocalScript', TeleportToSpawn)
 
 	
@@ -1983,8 +1983,8 @@ local function LLBO_fake_script() -- TeleportToSpawn.TeleportScript
 	
 	
 end
-coroutine.wrap(LLBO_fake_script)()
-local function UOQH_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
+coroutine.wrap(ZUHZEW_fake_script)()
+local function KGJCZJJ_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
 	local script = Instance.new('LocalScript', FlyingCarsToggle)
 
 	
@@ -2131,8 +2131,8 @@ local function UOQH_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyControll
 	
 	
 end
-coroutine.wrap(UOQH_fake_script)()
-local function AXAZ_fake_script() -- removedoors.RemoveDoorsToggle 
+coroutine.wrap(KGJCZJJ_fake_script)()
+local function MMZGYO_fake_script() -- removedoors.RemoveDoorsToggle 
 	local script = Instance.new('LocalScript', removedoors)
 
 	
@@ -2198,8 +2198,8 @@ local function AXAZ_fake_script() -- removedoors.RemoveDoorsToggle
 	
 	
 end
-coroutine.wrap(AXAZ_fake_script)()
-local function SBHCE_fake_script() -- Frame.AimbotController 
+coroutine.wrap(MMZGYO_fake_script)()
+local function YQUZKQT_fake_script() -- Frame.AimbotController 
 	local script = Instance.new('LocalScript', Frame)
 
 	
@@ -2360,8 +2360,8 @@ local function SBHCE_fake_script() -- Frame.AimbotController
 	
 	
 end
-coroutine.wrap(SBHCE_fake_script)()
-local function UHBHRQP_fake_script() -- InfoPopup.ClosePopup 
+coroutine.wrap(YQUZKQT_fake_script)()
+local function OTJS_fake_script() -- InfoPopup.ClosePopup 
 	local script = Instance.new('LocalScript', InfoPopup)
 
 	
@@ -2374,8 +2374,8 @@ local function UHBHRQP_fake_script() -- InfoPopup.ClosePopup
 	
 	
 end
-coroutine.wrap(UHBHRQP_fake_script)()
-local function MOZVAX_fake_script() -- Frame.HighGraphicsLogic 
+coroutine.wrap(OTJS_fake_script)()
+local function WYFDVB_fake_script() -- Frame.HighGraphicsLogic 
 	local script = Instance.new('LocalScript', Frame)
 
 	
@@ -2446,8 +2446,8 @@ local function MOZVAX_fake_script() -- Frame.HighGraphicsLogic
 	
 	
 end
-coroutine.wrap(MOZVAX_fake_script)()
-local function ZJVT_fake_script() -- Frame.HoverSelectionAnimation 
+coroutine.wrap(WYFDVB_fake_script)()
+local function DJLWH_fake_script() -- Frame.HoverSelectionAnimation 
 	local script = Instance.new('LocalScript', Frame)
 
 	
@@ -2498,8 +2498,8 @@ local function ZJVT_fake_script() -- Frame.HoverSelectionAnimation
 	
 	
 end
-coroutine.wrap(ZJVT_fake_script)()
-local function ISHQPG_fake_script() -- Frame.DragFrame 
+coroutine.wrap(DJLWH_fake_script)()
+local function BRGXGTY_fake_script() -- Frame.DragFrame 
 	local script = Instance.new('LocalScript', Frame)
 
 	
@@ -2552,8 +2552,8 @@ local function ISHQPG_fake_script() -- Frame.DragFrame
 	
 	
 end
-coroutine.wrap(ISHQPG_fake_script)()
-local function PQAXGGJ_fake_script() -- Frame.GUIController 
+coroutine.wrap(BRGXGTY_fake_script)()
+local function EKJI_fake_script() -- Frame.GUIController 
 	local script = Instance.new('LocalScript', Frame)
 
 	
@@ -2632,8 +2632,8 @@ local function PQAXGGJ_fake_script() -- Frame.GUIController
 	
 	
 end
-coroutine.wrap(PQAXGGJ_fake_script)()
-local function IBEMUTY_fake_script() -- Frame.AntiAFKController 
+coroutine.wrap(EKJI_fake_script)()
+local function LVMKZO_fake_script() -- Frame.AntiAFKController 
 	local script = Instance.new('LocalScript', Frame)
 
 	
@@ -2684,8 +2684,8 @@ local function IBEMUTY_fake_script() -- Frame.AntiAFKController
 	
 	
 end
-coroutine.wrap(IBEMUTY_fake_script)()
-local function JBZCZLA_fake_script() -- Frame.ChatController 
+coroutine.wrap(LVMKZO_fake_script)()
+local function IHJLNED_fake_script() -- Frame.ChatController 
 	local script = Instance.new('LocalScript', Frame)
 
 	
@@ -2741,8 +2741,8 @@ local function JBZCZLA_fake_script() -- Frame.ChatController
 	
 	
 end
-coroutine.wrap(JBZCZLA_fake_script)()
-local function XGZZ_fake_script() -- Frame.OriginalNoclipController 
+coroutine.wrap(IHJLNED_fake_script)()
+local function DWCPCDT_fake_script() -- Frame.OriginalNoclipController 
 	local script = Instance.new('LocalScript', Frame)
 
 	
@@ -2888,8 +2888,8 @@ local function XGZZ_fake_script() -- Frame.OriginalNoclipController
 	
 	
 end
-coroutine.wrap(XGZZ_fake_script)()
-local function OXZTFP_fake_script() -- Frame.InfoToggle 
+coroutine.wrap(DWCPCDT_fake_script)()
+local function XBXDE_fake_script() -- Frame.InfoToggle 
 	local script = Instance.new('LocalScript', Frame)
 
 	
@@ -2916,8 +2916,8 @@ local function OXZTFP_fake_script() -- Frame.InfoToggle
 	
 	
 end
-coroutine.wrap(OXZTFP_fake_script)()
-local function NVND_fake_script() -- Frame.OpenDexPlusPlus 
+coroutine.wrap(XBXDE_fake_script)()
+local function DRNHS_fake_script() -- Frame.OpenDexPlusPlus 
 	local script = Instance.new('LocalScript', Frame)
 
 	
@@ -2995,8 +2995,8 @@ local function NVND_fake_script() -- Frame.OpenDexPlusPlus
 	
 	
 end
-coroutine.wrap(NVND_fake_script)()
-local function VQDUC_fake_script() -- WelcomeBanner.WelcomeAnimation 
+coroutine.wrap(DRNHS_fake_script)()
+local function QLDAY_fake_script() -- WelcomeBanner.WelcomeAnimation 
 	local script = Instance.new('LocalScript', WelcomeBanner)
 
 	
@@ -3354,8 +3354,8 @@ local function VQDUC_fake_script() -- WelcomeBanner.WelcomeAnimation
 	
 	
 end
-coroutine.wrap(VQDUC_fake_script)()
-local function ZGKPJLG_fake_script() -- Fps.FpsOriginalScript 
+coroutine.wrap(QLDAY_fake_script)()
+local function QSBN_fake_script() -- Fps.FpsOriginalScript 
 	local script = Instance.new('LocalScript', Fps)
 
 	
@@ -3367,8 +3367,8 @@ local function ZGKPJLG_fake_script() -- Fps.FpsOriginalScript
 	
 	
 end
-coroutine.wrap(ZGKPJLG_fake_script)()
-local function YEGSHT_fake_script() -- Ping.PingOriginalScript 
+coroutine.wrap(QSBN_fake_script)()
+local function IHPZWY_fake_script() -- Ping.PingOriginalScript 
 	local script = Instance.new('LocalScript', Ping)
 
 	
@@ -3380,8 +3380,8 @@ local function YEGSHT_fake_script() -- Ping.PingOriginalScript
 	
 	
 end
-coroutine.wrap(YEGSHT_fake_script)()
-local function QIDZWPT_fake_script() -- y0ungDareMenuv45.KeyboardShortcuts 
+coroutine.wrap(IHPZWY_fake_script)()
+local function YKIHLT_fake_script() -- y0ungDareMenuv45.KeyboardShortcuts 
 	local script = Instance.new('LocalScript', y0ungDareMenuv45)
 
 	
@@ -3479,8 +3479,8 @@ local function QIDZWPT_fake_script() -- y0ungDareMenuv45.KeyboardShortcuts
 	
 	
 end
-coroutine.wrap(QIDZWPT_fake_script)()
-local function JRRQBQZ_fake_script() -- y0ungDareMenuv45.MainScript 
+coroutine.wrap(YKIHLT_fake_script)()
+local function LXMH_fake_script() -- y0ungDareMenuv45.MainScript 
 	local script = Instance.new('LocalScript', y0ungDareMenuv45)
 
 	
@@ -3625,8 +3625,8 @@ local function JRRQBQZ_fake_script() -- y0ungDareMenuv45.MainScript
 	
 	
 end
-coroutine.wrap(JRRQBQZ_fake_script)()
-local function HFQKJIZ_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q 
+coroutine.wrap(LXMH_fake_script)()
+local function WQDBSQE_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q 
 	local script = Instance.new('LocalScript', y0ungDareMenuv45)
 
 	
@@ -3692,4 +3692,42 @@ local function HFQKJIZ_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q
 	
 	
 end
-coroutine.wrap(HFQKJIZ_fake_script)()
+coroutine.wrap(WQDBSQE_fake_script)()
+local function FWKUDYP_fake_script() -- y0ungDareMenuv45.ButtonSoundsController 
+	local script = Instance.new('LocalScript', y0ungDareMenuv45)
+
+	-- Editable hover/click sound controller for all menu TextButtons.
+	-- Hover and click audio objects live directly inside the ScreenGui.
+	local gui = script.Parent
+	local hoverSound = gui:WaitForChild("ButtonHoverSound")
+	local clickSound = gui:WaitForChild("ButtonClickSound")
+	local wired = {}
+	
+	local function play(sound)
+	    sound.TimePosition = 0
+	    sound:Play()
+	end
+	
+	local function attach(button)
+	    if not button:IsA("TextButton") or wired[button] then return end
+	    wired[button] = true
+	    button.MouseEnter:Connect(function()
+	        if button.Visible and button.Active then
+	            play(hoverSound)
+	        end
+	    end)
+	    button.Activated:Connect(function()
+	        play(clickSound)
+	    end)
+	    button.Destroying:Connect(function()
+	        wired[button] = nil
+	    end)
+	end
+	
+	for _, obj in ipairs(gui:GetDescendants()) do
+	    attach(obj)
+	end
+	gui.DescendantAdded:Connect(attach)
+	
+end
+coroutine.wrap(FWKUDYP_fake_script)()
