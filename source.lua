@@ -3,9 +3,9 @@
 
 -- Instances:
 
-local y0ungDareMenuv43 = Instance.new("ScreenGui")
+local y0ungDareMenuv45 = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
-local Title = Instance.new("TextLabel")
+local LanguageToggle = Instance.new("TextButton")
 local backround = Instance.new("ImageLabel")
 local HighGraphicsToggle = Instance.new("TextButton")
 local GetAllGuns = Instance.new("TextButton")
@@ -31,10 +31,10 @@ local ChatToggle = Instance.new("TextButton")
 local OpenDexPlusPlus = Instance.new("TextButton")
 local FlyingCarsToggle = Instance.new("TextButton")
 local removedoors = Instance.new("TextButton")
-local Title_2 = Instance.new("TextLabel")
-local Title_3 = Instance.new("TextLabel")
+local ShinyTealTitle_v4_5_UPLOAD_PNG_SET_IMAGE_ID = Instance.new("ImageLabel")
+local Title = Instance.new("TextLabel")
 local InfoPopup = Instance.new("Frame")
-local Title_4 = Instance.new("TextLabel")
+local Title_2 = Instance.new("TextLabel")
 local Version = Instance.new("TextLabel")
 local Creator = Instance.new("TextLabel")
 local Description = Instance.new("TextLabel")
@@ -49,7 +49,6 @@ local ControlLine5 = Instance.new("TextLabel")
 local ControlLine6 = Instance.new("TextLabel")
 local ControlLine7 = Instance.new("TextLabel")
 local InfoButton = Instance.new("TextButton")
-local LanguageToggle = Instance.new("TextButton")
 local WelcomeBanner = Instance.new("Frame")
 local WelcomeText = Instance.new("TextLabel")
 local UpdatesLink = Instance.new("TextButton")
@@ -58,11 +57,11 @@ local Ping = Instance.new("TextLabel")
 
 --Properties:
 
-y0ungDareMenuv43.Name = "y0ungDare Menu v4.3"
-y0ungDareMenuv43.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-y0ungDareMenuv43.ResetOnSpawn = false
+y0ungDareMenuv45.Name = "y0ungDare Menu v4.5"
+y0ungDareMenuv45.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+y0ungDareMenuv45.ResetOnSpawn = false
 
-Frame.Parent = y0ungDareMenuv43
+Frame.Parent = y0ungDareMenuv45
 Frame.AnchorPoint = Vector2.new(0.5, 0.5)
 Frame.BackgroundColor3 = Color3.fromRGB(12, 10, 19)
 Frame.BorderColor3 = Color3.fromRGB(170, 85, 255)
@@ -71,19 +70,21 @@ Frame.Position = UDim2.new(0.826901138, 0, 0.545833349, 0)
 Frame.Size = UDim2.new(0, 280, 0, 640)
 Frame.Visible = false
 
-Title.Name = "Title"
-Title.Parent = Frame
-Title.AnchorPoint = Vector2.new(0.5, 0.5)
-Title.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Title.BackgroundTransparency = 1.000
-Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Title.Position = UDim2.new(0.5, 0, 0.0235741623, 7)
-Title.Size = UDim2.new(0, 197, 0, 32)
-Title.Text = "------------ Prison Life ------------"
-Title.TextColor3 = Color3.fromRGB(255, 85, 0)
-Title.TextScaled = true
-Title.TextSize = 40.000
-Title.TextWrapped = true
+LanguageToggle.Name = "LanguageToggle"
+LanguageToggle.Parent = Frame
+LanguageToggle.AnchorPoint = Vector2.new(0.5, 0.5)
+LanguageToggle.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+LanguageToggle.BackgroundTransparency = 0.160
+LanguageToggle.BorderColor3 = Color3.fromRGB(170, 0, 255)
+LanguageToggle.BorderSizePixel = 0
+LanguageToggle.Position = UDim2.new(0, 140, 0, 536)
+LanguageToggle.Size = UDim2.new(1, -16, 0, 24)
+LanguageToggle.Font = Enum.Font.SourceSansBold
+LanguageToggle.Text = "Language: English"
+LanguageToggle.TextColor3 = Color3.fromRGB(0, 255, 255)
+LanguageToggle.TextSize = 17.000
+LanguageToggle.TextWrapped = true
+LanguageToggle.TextXAlignment = Enum.TextXAlignment.Left
 
 backround.Name = "backround"
 backround.Parent = Frame
@@ -467,34 +468,29 @@ removedoors.TextSize = 17.000
 removedoors.TextWrapped = true
 removedoors.TextXAlignment = Enum.TextXAlignment.Left
 
-Title_2.Name = "Title"
-Title_2.Parent = Frame
-Title_2.AnchorPoint = Vector2.new(0.5, 0.5)
-Title_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Title_2.BackgroundTransparency = 1.000
-Title_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Title_2.Position = UDim2.new(0.5, 0, 0.0283203125, 23)
-Title_2.Size = UDim2.new(0, 182, 0, 31)
-Title_2.Font = Enum.Font.Unknown
-Title_2.Text = "y0ungDare Menu v4.3"
-Title_2.TextColor3 = Color3.fromRGB(0, 255, 255)
-Title_2.TextScaled = true
-Title_2.TextSize = 40.000
-Title_2.TextWrapped = true
+ShinyTealTitle_v4_5_UPLOAD_PNG_SET_IMAGE_ID.Name = "ShinyTealTitle_v4_5_UPLOAD_PNG_SET_IMAGE_ID"
+ShinyTealTitle_v4_5_UPLOAD_PNG_SET_IMAGE_ID.Parent = Frame
+ShinyTealTitle_v4_5_UPLOAD_PNG_SET_IMAGE_ID.BackgroundTransparency = 1.000
+ShinyTealTitle_v4_5_UPLOAD_PNG_SET_IMAGE_ID.BorderSizePixel = 0
+ShinyTealTitle_v4_5_UPLOAD_PNG_SET_IMAGE_ID.Position = UDim2.new(0.0928571448, 0, 0.0181250088, 0)
+ShinyTealTitle_v4_5_UPLOAD_PNG_SET_IMAGE_ID.Size = UDim2.new(0.814285696, 0, 0.0691796914, 0)
+ShinyTealTitle_v4_5_UPLOAD_PNG_SET_IMAGE_ID.ZIndex = 10
+ShinyTealTitle_v4_5_UPLOAD_PNG_SET_IMAGE_ID.Image = "rbxassetid://125017058258823"
 
-Title_3.Name = "Title"
-Title_3.Parent = Frame
-Title_3.AnchorPoint = Vector2.new(0.5, 0.5)
-Title_3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Title_3.BackgroundTransparency = 1.000
-Title_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Title_3.Position = UDim2.new(0.5, 0, 0.0115234377, 52)
-Title_3.Size = UDim2.new(0, 116, 0, 19)
-Title_3.Text = "By @y0ungdare on instagram"
-Title_3.TextColor3 = Color3.fromRGB(0, 255, 255)
-Title_3.TextScaled = true
-Title_3.TextSize = 30.000
-Title_3.TextWrapped = true
+Title.Name = "Title"
+Title.Parent = Frame
+Title.AnchorPoint = Vector2.new(0.5, 0.5)
+Title.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Title.BackgroundTransparency = 1.000
+Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Title.Position = UDim2.new(0.487500012, 0, 0.0162330382, 52)
+Title.Size = UDim2.new(0, 125, 0, 13)
+Title.Font = Enum.Font.Unknown
+Title.Text = "By @y0ungdare"
+Title.TextColor3 = Color3.fromRGB(0, 255, 255)
+Title.TextScaled = true
+Title.TextSize = 30.000
+Title.TextWrapped = true
 
 InfoPopup.Name = "InfoPopup"
 InfoPopup.Parent = Frame
@@ -507,18 +503,18 @@ InfoPopup.Size = UDim2.new(0, 420, 0, 480)
 InfoPopup.Visible = false
 InfoPopup.ZIndex = 5
 
-Title_4.Name = "Title"
-Title_4.Parent = InfoPopup
-Title_4.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
-Title_4.BackgroundTransparency = 1.000
-Title_4.BorderSizePixel = 0
-Title_4.Position = UDim2.new(0, 16, 0, 5)
-Title_4.Size = UDim2.new(1, -32, 0, 38)
-Title_4.ZIndex = 6
-Title_4.Text = "y0ungDare Menu"
-Title_4.TextColor3 = Color3.fromRGB(255, 91, 201)
-Title_4.TextSize = 25.000
-Title_4.TextWrapped = true
+Title_2.Name = "Title"
+Title_2.Parent = InfoPopup
+Title_2.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
+Title_2.BackgroundTransparency = 1.000
+Title_2.BorderSizePixel = 0
+Title_2.Position = UDim2.new(0, 16, 0, 5)
+Title_2.Size = UDim2.new(1, -32, 0, 38)
+Title_2.ZIndex = 6
+Title_2.Text = "y0ungDare Menu"
+Title_2.TextColor3 = Color3.fromRGB(255, 91, 201)
+Title_2.TextSize = 25.000
+Title_2.TextWrapped = true
 
 Version.Name = "Version"
 Version.Parent = InfoPopup
@@ -528,7 +524,7 @@ Version.BorderSizePixel = 0
 Version.Position = UDim2.new(0, 16, 0, 39)
 Version.Size = UDim2.new(1, -32, 0, 24)
 Version.ZIndex = 6
-Version.Text = "Version 4.3"
+Version.Text = "Version 4.5"
 Version.TextColor3 = Color3.fromRGB(83, 235, 250)
 Version.TextSize = 19.000
 Version.TextWrapped = true
@@ -718,24 +714,8 @@ InfoButton.TextSize = 17.000
 InfoButton.TextWrapped = true
 InfoButton.TextXAlignment = Enum.TextXAlignment.Left
 
-LanguageToggle.Name = "LanguageToggle"
-LanguageToggle.Parent = Frame
-LanguageToggle.AnchorPoint = Vector2.new(0.5, 0.5)
-LanguageToggle.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
-LanguageToggle.BackgroundTransparency = 0.160
-LanguageToggle.BorderColor3 = Color3.fromRGB(170, 0, 255)
-LanguageToggle.BorderSizePixel = 0
-LanguageToggle.Position = UDim2.new(0, 140, 0, 536)
-LanguageToggle.Size = UDim2.new(1, -16, 0, 24)
-LanguageToggle.Font = Enum.Font.SourceSansBold
-LanguageToggle.Text = "Language: English"
-LanguageToggle.TextColor3 = Color3.fromRGB(0, 255, 255)
-LanguageToggle.TextSize = 17.000
-LanguageToggle.TextWrapped = true
-LanguageToggle.TextXAlignment = Enum.TextXAlignment.Left
-
 WelcomeBanner.Name = "WelcomeBanner"
-WelcomeBanner.Parent = y0ungDareMenuv43
+WelcomeBanner.Parent = y0ungDareMenuv45
 WelcomeBanner.BackgroundColor3 = Color3.fromRGB(14, 12, 29)
 WelcomeBanner.BackgroundTransparency = 1.000
 WelcomeBanner.BorderSizePixel = 0
@@ -748,7 +728,7 @@ WelcomeText.BackgroundTransparency = 1.000
 WelcomeText.BorderSizePixel = 0
 WelcomeText.Size = UDim2.new(1, 0, 0, 60)
 WelcomeText.Font = Enum.Font.SourceSansBold
-WelcomeText.Text = "Hello Player, Welcome to y0ungDare Menu v4.3"
+WelcomeText.Text = "Hello Player, Welcome to y0ungDare Menu v4.5"
 WelcomeText.TextColor3 = Color3.fromRGB(255, 255, 255)
 WelcomeText.TextSize = 30.000
 
@@ -767,7 +747,7 @@ UpdatesLink.TextStrokeTransparency = 0.180
 UpdatesLink.TextWrapped = true
 
 Fps.Name = "Fps"
-Fps.Parent = y0ungDareMenuv43
+Fps.Parent = y0ungDareMenuv45
 Fps.AnchorPoint = Vector2.new(0.5, 0)
 Fps.BackgroundTransparency = 1.000
 Fps.BorderSizePixel = 0
@@ -781,7 +761,7 @@ Fps.TextScaled = true
 Fps.TextWrapped = true
 
 Ping.Name = "Ping"
-Ping.Parent = y0ungDareMenuv43
+Ping.Parent = y0ungDareMenuv45
 Ping.AnchorPoint = Vector2.new(0.5, 0)
 Ping.BackgroundTransparency = 1.000
 Ping.BorderSizePixel = 0
@@ -796,7 +776,112 @@ Ping.TextWrapped = true
 
 -- Scripts:
 
-local function QVWJU_fake_script() -- SpeedRun.SpeedController 
+local function AAWROX_fake_script() -- LanguageToggle.LanguageController_Edit_Here 
+	local script = Instance.new('LocalScript', LanguageToggle)
+
+	-- Language controller: English, Spanish, French, Japanese, Simplified Chinese, German.
+	-- Original GUI objects and feature scripts are left editable.
+	local button = script.Parent
+	local gui = button:FindFirstAncestorOfClass("ScreenGui")
+	local languages = {"English", "Español", "Français", "日本語", "中文（简体）", "Deutsch"}
+	local lang = 1
+	local captions = {
+	    ["HighGraphicsToggle"] = {"High Graphics", "Gráficos altos", "Graphismes élevés", "高画質", "高画质", "Hohe Grafik"},
+	    ["GetAllGuns"] = {"Get All Guns", "Obtener armas", "Obtenir les armes", "すべての武器を入手", "获取所有武器", "Alle Waffen holen"},
+	    ["YardTP"] = {"Teleport: Yard", "Teletransporte: Patio", "Téléporter : Cour", "庭へテレポート", "传送至庭院", "Teleport: Hof"},
+	    ["TaseBypass"] = {"ANTI-TAZE", "ANTI-TASER", "ANTI-TASER", "テーザー防止", "防电击", "ANTI-TASER"},
+	    ["FPSPingToggle"] = {"FPS & Ping", "FPS y Ping", "FPS et Ping", "FPSとPing", "帧率与延迟", "FPS und Ping"},
+	    ["ArmoryTP"] = {"Teleport: Armory", "Teletransporte: Armería", "Téléporter : Armurerie", "武器庫へテレポート", "传送至军械库", "Teleport: Waffenkammer"},
+	    ["TextButton"] = {"Aimbot (X)", "Apuntado automático (X)", "Visée automatique (X)", "自動照準 (X)", "自动瞄准 (X)", "Zielhilfe (X)"},
+	    ["fly"] = {"Flying", "Volar", "Vol", "飛行", "飞行", "Fliegen"},
+	    ["Auto Pilot"] = {"Auto Pilot", "Piloto automático", "Pilote automatique", "自動操縦", "自动驾驶", "Autopilot"},
+	    ["Spin Bot"] = {"Spin Bot", "Giro automático", "Rotation auto", "自動回転", "自动旋转", "Drehmodus"},
+	    ["NoclipToggle"] = {"Noclip V2", "Atravesar paredes V2", "Traverser les murs V2", "壁抜け V2", "穿墙 V2", "Durch Wände V2"},
+	    ["X Ray Vision"] = {"X-Ray Vision", "Visión de rayos X", "Vision à rayons X", "透視モード", "透视模式", "Röntgenblick"},
+	    ["Wall Esp"] = {"Wall Esp V2", "Ver jugadores V2", "Voir les joueurs V2", "壁越し表示 V2", "透墙显示 V2", "Spieler anzeigen V2"},
+	    ["aura kill"] = {"Aura Kill", "Aura de ataque", "Aura d’attaque", "攻撃オーラ", "攻击光环", "Angriffsaura"},
+	    ["BringButton"] = {"Bring All", "Traer a todos", "Faire venir tous", "全員を呼び寄せる", "召集所有人", "Alle herholen"},
+	    ["RGBTextToggle"] = {"RGB Text", "Texto RGB", "Texte RVB", "RGB文字", "RGB文字", "RGB-Text"},
+	    ["Set Spawn Point"] = {"Set Spawn Point", "Guardar punto de aparición", "Définir le point de réapparition", "復活地点を設定", "设置重生点", "Spawnpunkt setzen"},
+	    ["Teleport To Spawn"] = {"Teleport To Spawn Point", "Ir al punto de aparición", "Aller au point de réapparition", "復活地点へ移動", "传送至重生点", "Zum Spawnpunkt teleportieren"},
+	    ["AntiAFKToggle"] = {"ANTI AFK", "ANTI INACTIVIDAD", "ANTI ABSENCE", "放置対策", "防挂机", "ANTI AFK"},
+	    ["ChatToggle"] = {"Chat Spammer", "Mensajes repetidos", "Messages répétés", "チャット連投", "聊天刷屏", "Chat-Wiederholung"},
+	    ["OpenDexPlusPlus"] = {"Dex Explorer++", "Explorador Dex++", "Explorateur Dex++", "Dex エクスプローラー++", "Dex 资源管理器++", "Dex Explorer++"},
+	    ["FlyingCarsToggle"] = {"Flying Cars", "Coches voladores", "Voitures volantes", "空飛ぶ車", "飞行汽车", "Fliegende Autos"},
+	    ["remove doors"] = {"Remove Doors", "Eliminar puertas", "Supprimer les portes", "ドアを削除", "移除门", "Türen entfernen"},
+	    ["InfoButton"] = {"Info & Credits", "Información y créditos", "Infos et crédits", "情報とクレジット", "信息与鸣谢", "Info und Mitwirkende"},
+	    ["Description"] = {"ABOUT THE MENU", "SOBRE EL MENÚ", "À PROPOS DU MENU", "メニューについて", "关于菜单", "ÜBER DAS MENÜ"},
+	    ["SocialHeading"] = {"SOCIALS", "REDES SOCIALES", "RÉSEAUX SOCIAUX", "SNS", "社交媒体", "SOZIALE NETZWERKE"},
+	    ["ControlLine1"] = {"Q  -  Open / close the menu", "Q - Abrir / cerrar menú", "Q - Ouvrir / fermer le menu", "Q - メニューを開く / 閉じる", "Q - 打开 / 关闭菜单", "Q - Menü öffnen / schließen"},
+	    ["ControlLine2"] = {"Drag  -  Move the menu around", "Arrastrar - Mover el menú", "Glisser - Déplacer le menu", "ドラッグ - メニューを移動", "拖动 - 移动菜单", "Ziehen - Menü verschieben"},
+	    ["ControlLine4"] = {"Fly Car Controls:", "Controles del coche volador:", "Commandes voiture volante :", "飛行車の操作:", "飞行汽车操作：", "Steuerung Flugauto:"},
+	    ["ControlLine5"] = {"V  -  Descend while flying", "V - Descender al volar", "V - Descendre en vol", "V - 飛行中に下降", "V - 飞行时下降", "V - Beim Fliegen sinken"},
+	    ["ControlLine6"] = {"E  -  Ascend while flying", "E - Ascender al volar", "E - Monter en vol", "E - 飛行中に上昇", "E - 飞行时上升", "E - Beim Fliegen steigen"},
+	    ["ControlLine7"] = {"W/A/S/D  -  Fly around", "W/A/S/D - Volar", "W/A/S/D - Se déplacer en vol", "W/A/S/D - 飛行中に移動", "W/A/S/D - 飞行移动", "W/A/S/D - Fliegen"},
+	}
+	local speedButton = gui:FindFirstChild("Speed Run", true)
+	local speedCaptions = {"Speed", "Velocidad", "Vitesse", "速度", "速度", "Geschwindigkeit"}
+	local onCaptions = {"ON", "ACTIVADO", "ACTIVÉ", "オン", "开启", "AN"}
+	local offCaptions = {"OFF", "DESACTIVADO", "DÉSACTIVÉ", "オフ", "关闭", "AUS"}
+	local function updateSpeedCaption()
+	    if not speedButton then return end
+	    local state = speedButton:GetAttribute("SpeedEnabled") == true
+	    speedButton.Text = speedCaptions[lang] .. ": " .. (state and onCaptions[lang] or offCaptions[lang])
+	end
+	if speedButton then
+	    speedButton:GetAttributeChangedSignal("SpeedEnabled"):Connect(updateSpeedCaption)
+	end
+	local base = {}
+	local updating = false
+	local function translate(obj)
+	    if updating or not obj:IsA("TextLabel") and not obj:IsA("TextButton") then return end
+	    if obj == button or obj == speedButton then return end
+	    local entry = captions[obj.Name]
+	    if not entry then return end
+	    local original = base[obj]
+	    if not original then return end
+	    local result = entry[lang]
+	    if original:find("ON",1,true) then result = result .. ({": ON", ": ACTIVADO", " : ACTIVÉ", ": オン", ": 开启", ": AN"})[lang]
+	    elseif original:find("OFF",1,true) or original:find("Off",1,true) then result = result .. ({": OFF", ": DESACTIVADO", " : DÉSACTIVÉ", ": オフ", ": 关闭", ": AUS"})[lang]
+	    end
+	    updating = true
+	    obj.Text = result
+	    updating = false
+	end
+	local function register(obj)
+	    if not (obj:IsA("TextButton") or obj:IsA("TextLabel")) or obj==button or obj==speedButton then return end
+	    base[obj] = obj.Text
+	    obj:GetPropertyChangedSignal("Text"):Connect(function()
+	        if updating then return end
+	        local text = obj.Text
+	        -- Preserve English state changes from the original feature scripts.
+	        if lang == 1 or text:find("ON",1,true) or text:find("OFF",1,true) or text:find("Loading",1,true) then
+	            base[obj] = text
+	        end
+	        if lang ~= 1 then translate(obj) end
+	    end)
+	end
+	for _, obj in ipairs(gui:GetDescendants()) do register(obj) end
+	gui.DescendantAdded:Connect(register)
+	button.MouseButton1Click:Connect(function()
+	    lang = lang % #languages + 1
+	    updating = true
+	    for obj, original in pairs(base) do
+	        if obj.Parent then obj.Text = original end
+	    end
+	    updating = false
+	    if lang ~= 1 then
+	        for obj in pairs(base) do if obj.Parent then translate(obj) end end
+	    end
+	    updateSpeedCaption()
+	    button.Text = "Language: " .. languages[lang]
+	end)
+	
+	updateSpeedCaption()
+	
+end
+coroutine.wrap(AAWROX_fake_script)()
+local function LKVG_fake_script() -- SpeedRun.SpeedController 
 	local script = Instance.new('LocalScript', SpeedRun)
 
 	-- Speed Run: put this LocalScript inside your existing TextButton.
@@ -853,8 +938,8 @@ local function QVWJU_fake_script() -- SpeedRun.SpeedController
 	updateButton()
 	
 end
-coroutine.wrap(QVWJU_fake_script)()
-local function HMEXM_fake_script() -- TaseBypass.TaserBypassToggleLogic 
+coroutine.wrap(LKVG_fake_script)()
+local function PQPSMNX_fake_script() -- TaseBypass.TaserBypassToggleLogic 
 	local script = Instance.new('LocalScript', TaseBypass)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -969,8 +1054,8 @@ local function HMEXM_fake_script() -- TaseBypass.TaserBypassToggleLogic
 				]]
 	
 end
-coroutine.wrap(HMEXM_fake_script)()
-local function SMUPOU_fake_script() -- FPSPingToggle.ToggleController 
+coroutine.wrap(PQPSMNX_fake_script)()
+local function MFNIND_fake_script() -- FPSPingToggle.ToggleController 
 	local script = Instance.new('LocalScript', FPSPingToggle)
 
 	local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
@@ -995,8 +1080,8 @@ local function SMUPOU_fake_script() -- FPSPingToggle.ToggleController
 		update()
 	
 end
-coroutine.wrap(SMUPOU_fake_script)()
-local function FXJIY_fake_script() -- ArmoryTP.armory 
+coroutine.wrap(MFNIND_fake_script)()
+local function CFXA_fake_script() -- ArmoryTP.armory 
 	local script = Instance.new('LocalScript', ArmoryTP)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1008,8 +1093,8 @@ local function FXJIY_fake_script() -- ArmoryTP.armory
 			end)
 	
 end
-coroutine.wrap(FXJIY_fake_script)()
-local function WIDUA_fake_script() -- AutoPilot.AutoPilotController 
+coroutine.wrap(CFXA_fake_script)()
+local function DZFPMU_fake_script() -- AutoPilot.AutoPilotController 
 	local script = Instance.new('LocalScript', AutoPilot)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1082,8 +1167,8 @@ local function WIDUA_fake_script() -- AutoPilot.AutoPilotController
 				print("Auto Pilot GUI ready")
 	
 end
-coroutine.wrap(WIDUA_fake_script)()
-local function CZWMMBA_fake_script() -- SpinBot.SpinController 
+coroutine.wrap(DZFPMU_fake_script)()
+local function ZNIUI_fake_script() -- SpinBot.SpinController 
 	local script = Instance.new('LocalScript', SpinBot)
 
 	-- y0ungDare Spin Bot - keeps the ON/OFF setting across respawns.
@@ -1175,8 +1260,8 @@ local function CZWMMBA_fake_script() -- SpinBot.SpinController
 	updateButton()
 	
 end
-coroutine.wrap(CZWMMBA_fake_script)()
-local function ZVZU_fake_script() -- XRayVision.XRayController 
+coroutine.wrap(ZNIUI_fake_script)()
+local function MZPQDQQ_fake_script() -- XRayVision.XRayController 
 	local script = Instance.new('LocalScript', XRayVision)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1248,8 +1333,8 @@ local function ZVZU_fake_script() -- XRayVision.XRayController
 				updateButton()
 	
 end
-coroutine.wrap(ZVZU_fake_script)()
-local function PVXDTBF_fake_script() -- WallEsp.client 
+coroutine.wrap(MZPQDQQ_fake_script)()
+local function AFAFQLB_fake_script() -- WallEsp.client 
 	local script = Instance.new('LocalScript', WallEsp)
 
 	-- y0ungDare Wall ESP + HugBug-style Skeleton ESP
@@ -1573,8 +1658,8 @@ local function PVXDTBF_fake_script() -- WallEsp.client
 	end)
 	
 end
-coroutine.wrap(PVXDTBF_fake_script)()
-local function UEPM_fake_script() -- aurakill.AuraKillController 
+coroutine.wrap(AFAFQLB_fake_script)()
+local function VWWJBA_fake_script() -- aurakill.AuraKillController 
 	local script = Instance.new('LocalScript', aurakill)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1656,8 +1741,8 @@ local function UEPM_fake_script() -- aurakill.AuraKillController
 				end)
 	
 end
-coroutine.wrap(UEPM_fake_script)()
-local function ODAB_fake_script() -- RGBTextToggle.RGBTextController 
+coroutine.wrap(VWWJBA_fake_script)()
+local function CYVTA_fake_script() -- RGBTextToggle.RGBTextController 
 	local script = Instance.new('LocalScript', RGBTextToggle)
 
 	-- y0ungDare RGB Text Toggle
@@ -1736,8 +1821,8 @@ local function ODAB_fake_script() -- RGBTextToggle.RGBTextController
 	end)
 	
 end
-coroutine.wrap(ODAB_fake_script)()
-local function SWDUS_fake_script() -- SetSpawnPoint.TeleportScript 
+coroutine.wrap(CYVTA_fake_script)()
+local function MPLTNXV_fake_script() -- SetSpawnPoint.TeleportScript 
 	local script = Instance.new('LocalScript', SetSpawnPoint)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1761,8 +1846,8 @@ local function SWDUS_fake_script() -- SetSpawnPoint.TeleportScript
 				end)
 	
 end
-coroutine.wrap(SWDUS_fake_script)()
-local function ELXFDE_fake_script() -- TeleportToSpawn.TeleportScript 
+coroutine.wrap(MPLTNXV_fake_script)()
+local function TOCT_fake_script() -- TeleportToSpawn.TeleportScript 
 	local script = Instance.new('LocalScript', TeleportToSpawn)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1787,8 +1872,8 @@ local function ELXFDE_fake_script() -- TeleportToSpawn.TeleportScript
 				end)
 	
 end
-coroutine.wrap(ELXFDE_fake_script)()
-local function JIPAR_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
+coroutine.wrap(TOCT_fake_script)()
+local function NAGN_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
 	local script = Instance.new('LocalScript', FlyingCarsToggle)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1932,8 +2017,8 @@ local function JIPAR_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyControl
 				script.Destroying:Connect(_95021a957be8)
 	
 end
-coroutine.wrap(JIPAR_fake_script)()
-local function SNVQKE_fake_script() -- removedoors.RemoveDoorsToggle 
+coroutine.wrap(NAGN_fake_script)()
+local function SDPDNFJ_fake_script() -- removedoors.RemoveDoorsToggle 
 	local script = Instance.new('LocalScript', removedoors)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1996,8 +2081,8 @@ local function SNVQKE_fake_script() -- removedoors.RemoveDoorsToggle
 				UpdateButton()
 	
 end
-coroutine.wrap(SNVQKE_fake_script)()
-local function KQCIBZA_fake_script() -- InfoPopup.ClosePopup 
+coroutine.wrap(SDPDNFJ_fake_script)()
+local function SLKSWF_fake_script() -- InfoPopup.ClosePopup 
 	local script = Instance.new('LocalScript', InfoPopup)
 
 	local popup = script.Parent
@@ -2007,8 +2092,8 @@ local function KQCIBZA_fake_script() -- InfoPopup.ClosePopup
 	end)
 	
 end
-coroutine.wrap(KQCIBZA_fake_script)()
-local function KTXPL_fake_script() -- Frame.HighGraphicsLogic 
+coroutine.wrap(SLKSWF_fake_script)()
+local function LJEXEL_fake_script() -- Frame.HighGraphicsLogic 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2076,8 +2161,8 @@ local function KTXPL_fake_script() -- Frame.HighGraphicsLogic
 			refresh()
 	
 end
-coroutine.wrap(KTXPL_fake_script)()
-local function XWQTT_fake_script() -- Frame.HoverSelectionAnimation 
+coroutine.wrap(LJEXEL_fake_script)()
+local function PDKXLHM_fake_script() -- Frame.HoverSelectionAnimation 
 	local script = Instance.new('LocalScript', Frame)
 
 	local TextButton = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('TextButton', true)
@@ -2125,8 +2210,8 @@ local function XWQTT_fake_script() -- Frame.HoverSelectionAnimation
 		end
 	
 end
-coroutine.wrap(XWQTT_fake_script)()
-local function SOJYZ_fake_script() -- Frame.DragFrame 
+coroutine.wrap(PDKXLHM_fake_script)()
+local function AAGII_fake_script() -- Frame.DragFrame 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2176,8 +2261,8 @@ local function SOJYZ_fake_script() -- Frame.DragFrame
 				dragify(Frame)
 	
 end
-coroutine.wrap(SOJYZ_fake_script)()
-local function LACRU_fake_script() -- Frame.GUIController 
+coroutine.wrap(AAGII_fake_script)()
+local function KRPCKHP_fake_script() -- Frame.GUIController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2253,8 +2338,8 @@ local function LACRU_fake_script() -- Frame.GUIController
 				    updatePullButton()
 	
 end
-coroutine.wrap(LACRU_fake_script)()
-local function NWXVMJQ_fake_script() -- Frame.AntiAFKController 
+coroutine.wrap(KRPCKHP_fake_script)()
+local function GJUZJLX_fake_script() -- Frame.AntiAFKController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2302,8 +2387,8 @@ local function NWXVMJQ_fake_script() -- Frame.AntiAFKController
 				updateButton()
 	
 end
-coroutine.wrap(NWXVMJQ_fake_script)()
-local function MODZEGV_fake_script() -- Frame.ChatController 
+coroutine.wrap(GJUZJLX_fake_script)()
+local function DFUQE_fake_script() -- Frame.ChatController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2356,8 +2441,8 @@ local function MODZEGV_fake_script() -- Frame.ChatController
 				refresh()
 	
 end
-coroutine.wrap(MODZEGV_fake_script)()
-local function IJQTGN_fake_script() -- Frame.OriginalNoclipController 
+coroutine.wrap(DFUQE_fake_script)()
+local function OKZN_fake_script() -- Frame.OriginalNoclipController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2500,8 +2585,8 @@ local function IJQTGN_fake_script() -- Frame.OriginalNoclipController
 				refresh()
 	
 end
-coroutine.wrap(IJQTGN_fake_script)()
-local function UXIVG_fake_script() -- Frame.InfoToggle 
+coroutine.wrap(OKZN_fake_script)()
+local function CVQKHA_fake_script() -- Frame.InfoToggle 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2525,8 +2610,8 @@ local function UXIVG_fake_script() -- Frame.InfoToggle
 				end)
 	
 end
-coroutine.wrap(UXIVG_fake_script)()
-local function GGCM_fake_script() -- Frame.Aimbot 
+coroutine.wrap(CVQKHA_fake_script)()
+local function LFEL_fake_script() -- Frame.Aimbot 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2675,8 +2760,8 @@ local function GGCM_fake_script() -- Frame.Aimbot
 	textbutton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 	
 end
-coroutine.wrap(GGCM_fake_script)()
-local function IAVRP_fake_script() -- Frame.GetAllGunsLogic 
+coroutine.wrap(LFEL_fake_script)()
+local function BBEYYAW_fake_script() -- Frame.GetAllGunsLogic 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2761,8 +2846,8 @@ local function IAVRP_fake_script() -- Frame.GetAllGunsLogic
 			end)
 	
 end
-coroutine.wrap(IAVRP_fake_script)()
-local function BEYI_fake_script() -- Frame.OpenDexPlusPlus 
+coroutine.wrap(BBEYYAW_fake_script)()
+local function OSRRR_fake_script() -- Frame.OpenDexPlusPlus 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Dex++ original release loader, launched by the editable button.
@@ -2837,113 +2922,8 @@ local function BEYI_fake_script() -- Frame.OpenDexPlusPlus
 	end)
 	
 end
-coroutine.wrap(BEYI_fake_script)()
-local function YCIE_fake_script() -- LanguageToggle.LanguageController_Edit_Here 
-	local script = Instance.new('LocalScript', LanguageToggle)
-
-	-- Language controller: English, Spanish, French, Japanese, Simplified Chinese, German.
-	-- Original GUI objects and feature scripts are left editable.
-	local button = script.Parent
-	local gui = button:FindFirstAncestorOfClass("ScreenGui")
-	local languages = {"English", "Español", "Français", "日本語", "中文（简体）", "Deutsch"}
-	local lang = 1
-	local captions = {
-	    ["HighGraphicsToggle"] = {"High Graphics", "Gráficos altos", "Graphismes élevés", "高画質", "高画质", "Hohe Grafik"},
-	    ["GetAllGuns"] = {"Get All Guns", "Obtener armas", "Obtenir les armes", "すべての武器を入手", "获取所有武器", "Alle Waffen holen"},
-	    ["YardTP"] = {"Teleport: Yard", "Teletransporte: Patio", "Téléporter : Cour", "庭へテレポート", "传送至庭院", "Teleport: Hof"},
-	    ["TaseBypass"] = {"ANTI-TAZE", "ANTI-TASER", "ANTI-TASER", "テーザー防止", "防电击", "ANTI-TASER"},
-	    ["FPSPingToggle"] = {"FPS & Ping", "FPS y Ping", "FPS et Ping", "FPSとPing", "帧率与延迟", "FPS und Ping"},
-	    ["ArmoryTP"] = {"Teleport: Armory", "Teletransporte: Armería", "Téléporter : Armurerie", "武器庫へテレポート", "传送至军械库", "Teleport: Waffenkammer"},
-	    ["TextButton"] = {"Aimbot (X)", "Apuntado automático (X)", "Visée automatique (X)", "自動照準 (X)", "自动瞄准 (X)", "Zielhilfe (X)"},
-	    ["fly"] = {"Flying", "Volar", "Vol", "飛行", "飞行", "Fliegen"},
-	    ["Auto Pilot"] = {"Auto Pilot", "Piloto automático", "Pilote automatique", "自動操縦", "自动驾驶", "Autopilot"},
-	    ["Spin Bot"] = {"Spin Bot", "Giro automático", "Rotation auto", "自動回転", "自动旋转", "Drehmodus"},
-	    ["NoclipToggle"] = {"Noclip V2", "Atravesar paredes V2", "Traverser les murs V2", "壁抜け V2", "穿墙 V2", "Durch Wände V2"},
-	    ["X Ray Vision"] = {"X-Ray Vision", "Visión de rayos X", "Vision à rayons X", "透視モード", "透视模式", "Röntgenblick"},
-	    ["Wall Esp"] = {"Wall Esp V2", "Ver jugadores V2", "Voir les joueurs V2", "壁越し表示 V2", "透墙显示 V2", "Spieler anzeigen V2"},
-	    ["aura kill"] = {"Aura Kill", "Aura de ataque", "Aura d’attaque", "攻撃オーラ", "攻击光环", "Angriffsaura"},
-	    ["BringButton"] = {"Bring All", "Traer a todos", "Faire venir tous", "全員を呼び寄せる", "召集所有人", "Alle herholen"},
-	    ["RGBTextToggle"] = {"RGB Text", "Texto RGB", "Texte RVB", "RGB文字", "RGB文字", "RGB-Text"},
-	    ["Set Spawn Point"] = {"Set Spawn Point", "Guardar punto de aparición", "Définir le point de réapparition", "復活地点を設定", "设置重生点", "Spawnpunkt setzen"},
-	    ["Teleport To Spawn"] = {"Teleport To Spawn Point", "Ir al punto de aparición", "Aller au point de réapparition", "復活地点へ移動", "传送至重生点", "Zum Spawnpunkt teleportieren"},
-	    ["AntiAFKToggle"] = {"ANTI AFK", "ANTI INACTIVIDAD", "ANTI ABSENCE", "放置対策", "防挂机", "ANTI AFK"},
-	    ["ChatToggle"] = {"Chat Spammer", "Mensajes repetidos", "Messages répétés", "チャット連投", "聊天刷屏", "Chat-Wiederholung"},
-	    ["OpenDexPlusPlus"] = {"Dex Explorer++", "Explorador Dex++", "Explorateur Dex++", "Dex エクスプローラー++", "Dex 资源管理器++", "Dex Explorer++"},
-	    ["FlyingCarsToggle"] = {"Flying Cars", "Coches voladores", "Voitures volantes", "空飛ぶ車", "飞行汽车", "Fliegende Autos"},
-	    ["remove doors"] = {"Remove Doors", "Eliminar puertas", "Supprimer les portes", "ドアを削除", "移除门", "Türen entfernen"},
-	    ["InfoButton"] = {"Info & Credits", "Información y créditos", "Infos et crédits", "情報とクレジット", "信息与鸣谢", "Info und Mitwirkende"},
-	    ["Description"] = {"ABOUT THE MENU", "SOBRE EL MENÚ", "À PROPOS DU MENU", "メニューについて", "关于菜单", "ÜBER DAS MENÜ"},
-	    ["SocialHeading"] = {"SOCIALS", "REDES SOCIALES", "RÉSEAUX SOCIAUX", "SNS", "社交媒体", "SOZIALE NETZWERKE"},
-	    ["ControlLine1"] = {"Q  -  Open / close the menu", "Q - Abrir / cerrar menú", "Q - Ouvrir / fermer le menu", "Q - メニューを開く / 閉じる", "Q - 打开 / 关闭菜单", "Q - Menü öffnen / schließen"},
-	    ["ControlLine2"] = {"Drag  -  Move the menu around", "Arrastrar - Mover el menú", "Glisser - Déplacer le menu", "ドラッグ - メニューを移動", "拖动 - 移动菜单", "Ziehen - Menü verschieben"},
-	    ["ControlLine4"] = {"Fly Car Controls:", "Controles del coche volador:", "Commandes voiture volante :", "飛行車の操作:", "飞行汽车操作：", "Steuerung Flugauto:"},
-	    ["ControlLine5"] = {"V  -  Descend while flying", "V - Descender al volar", "V - Descendre en vol", "V - 飛行中に下降", "V - 飞行时下降", "V - Beim Fliegen sinken"},
-	    ["ControlLine6"] = {"E  -  Ascend while flying", "E - Ascender al volar", "E - Monter en vol", "E - 飛行中に上昇", "E - 飞行时上升", "E - Beim Fliegen steigen"},
-	    ["ControlLine7"] = {"W/A/S/D  -  Fly around", "W/A/S/D - Volar", "W/A/S/D - Se déplacer en vol", "W/A/S/D - 飛行中に移動", "W/A/S/D - 飞行移动", "W/A/S/D - Fliegen"},
-	}
-	local speedButton = gui:FindFirstChild("Speed Run", true)
-	local speedCaptions = {"Speed", "Velocidad", "Vitesse", "速度", "速度", "Geschwindigkeit"}
-	local onCaptions = {"ON", "ACTIVADO", "ACTIVÉ", "オン", "开启", "AN"}
-	local offCaptions = {"OFF", "DESACTIVADO", "DÉSACTIVÉ", "オフ", "关闭", "AUS"}
-	local function updateSpeedCaption()
-	    if not speedButton then return end
-	    local state = speedButton:GetAttribute("SpeedEnabled") == true
-	    speedButton.Text = speedCaptions[lang] .. ": " .. (state and onCaptions[lang] or offCaptions[lang])
-	end
-	if speedButton then
-	    speedButton:GetAttributeChangedSignal("SpeedEnabled"):Connect(updateSpeedCaption)
-	end
-	local base = {}
-	local updating = false
-	local function translate(obj)
-	    if updating or not obj:IsA("TextLabel") and not obj:IsA("TextButton") then return end
-	    if obj == button or obj == speedButton then return end
-	    local entry = captions[obj.Name]
-	    if not entry then return end
-	    local original = base[obj]
-	    if not original then return end
-	    local result = entry[lang]
-	    if original:find("ON",1,true) then result = result .. ({": ON", ": ACTIVADO", " : ACTIVÉ", ": オン", ": 开启", ": AN"})[lang]
-	    elseif original:find("OFF",1,true) or original:find("Off",1,true) then result = result .. ({": OFF", ": DESACTIVADO", " : DÉSACTIVÉ", ": オフ", ": 关闭", ": AUS"})[lang]
-	    end
-	    updating = true
-	    obj.Text = result
-	    updating = false
-	end
-	local function register(obj)
-	    if not (obj:IsA("TextButton") or obj:IsA("TextLabel")) or obj==button or obj==speedButton then return end
-	    base[obj] = obj.Text
-	    obj:GetPropertyChangedSignal("Text"):Connect(function()
-	        if updating then return end
-	        local text = obj.Text
-	        -- Preserve English state changes from the original feature scripts.
-	        if lang == 1 or text:find("ON",1,true) or text:find("OFF",1,true) or text:find("Loading",1,true) then
-	            base[obj] = text
-	        end
-	        if lang ~= 1 then translate(obj) end
-	    end)
-	end
-	for _, obj in ipairs(gui:GetDescendants()) do register(obj) end
-	gui.DescendantAdded:Connect(register)
-	button.MouseButton1Click:Connect(function()
-	    lang = lang % #languages + 1
-	    updating = true
-	    for obj, original in pairs(base) do
-	        if obj.Parent then obj.Text = original end
-	    end
-	    updating = false
-	    if lang ~= 1 then
-	        for obj in pairs(base) do if obj.Parent then translate(obj) end end
-	    end
-	    updateSpeedCaption()
-	    button.Text = "Language: " .. languages[lang]
-	end)
-	
-	updateSpeedCaption()
-	
-end
-coroutine.wrap(YCIE_fake_script)()
-local function LBZDYK_fake_script() -- WelcomeBanner.WelcomeAnimation 
+coroutine.wrap(OSRRR_fake_script)()
+local function ULRRA_fake_script() -- WelcomeBanner.WelcomeAnimation 
 	local script = Instance.new('LocalScript', WelcomeBanner)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2965,7 +2945,7 @@ local function LBZDYK_fake_script() -- WelcomeBanner.WelcomeAnimation
 			frame.BackgroundTransparency = 1
 			label.BackgroundTransparency = 1
 			local colors = {"#FF309F", "#00EFFF", "#A960FF", "#F759C7", "#26E8FF", "#FF5EAB"}
-			local message = "Hello " .. player.Name .. " , Welcome to y0ungDare Menu v4.3"
+			local message = "Hello " .. player.Name .. " , Welcome to y0ungDare Menu v4.5"
 			local charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 			local rng = Random.new()
 			local charColors = {}
@@ -3125,8 +3105,8 @@ local function LBZDYK_fake_script() -- WelcomeBanner.WelcomeAnimation
 			frame:Destroy()
 	
 end
-coroutine.wrap(LBZDYK_fake_script)()
-local function RZOIZ_fake_script() -- Fps.FpsOriginalScript 
+coroutine.wrap(ULRRA_fake_script)()
+local function ZYCEFKK_fake_script() -- Fps.FpsOriginalScript 
 	local script = Instance.new('LocalScript', Fps)
 
 	local RunService = game:GetService("RunService")
@@ -3135,8 +3115,8 @@ local function RZOIZ_fake_script() -- Fps.FpsOriginalScript
 		end)
 	
 end
-coroutine.wrap(RZOIZ_fake_script)()
-local function PSVLZ_fake_script() -- Ping.PingOriginalScript 
+coroutine.wrap(ZYCEFKK_fake_script)()
+local function IGAKSWS_fake_script() -- Ping.PingOriginalScript 
 	local script = Instance.new('LocalScript', Ping)
 
 	local RunService = game:GetService("RunService")
@@ -3145,9 +3125,9 @@ local function PSVLZ_fake_script() -- Ping.PingOriginalScript
 		end)
 	
 end
-coroutine.wrap(PSVLZ_fake_script)()
-local function BLKHVO_fake_script() -- y0ungDareMenuv43.KeyboardShortcuts 
-	local script = Instance.new('LocalScript', y0ungDareMenuv43)
+coroutine.wrap(IGAKSWS_fake_script)()
+local function LEHN_fake_script() -- y0ungDareMenuv45.KeyboardShortcuts 
+	local script = Instance.new('LocalScript', y0ungDareMenuv45)
 
 	local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -3241,9 +3221,9 @@ local function BLKHVO_fake_script() -- y0ungDareMenuv43.KeyboardShortcuts
 				end)
 	
 end
-coroutine.wrap(BLKHVO_fake_script)()
-local function UTAUQ_fake_script() -- y0ungDareMenuv43.MainScript 
-	local script = Instance.new('LocalScript', y0ungDareMenuv43)
+coroutine.wrap(LEHN_fake_script)()
+local function DPGZWZN_fake_script() -- y0ungDareMenuv45.MainScript 
+	local script = Instance.new('LocalScript', y0ungDareMenuv45)
 
 	-- y0ungDare Fly - respawn-safe LocalScript
 	-- Put this LocalScript inside the ScreenGui containing Frame > fly.
@@ -3384,9 +3364,9 @@ local function UTAUQ_fake_script() -- y0ungDareMenuv43.MainScript
 	end
 	
 end
-coroutine.wrap(UTAUQ_fake_script)()
-local function EYFR_fake_script() -- y0ungDareMenuv43.MenuVisibility_Q 
-	local script = Instance.new('LocalScript', y0ungDareMenuv43)
+coroutine.wrap(DPGZWZN_fake_script)()
+local function PADJH_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q 
+	local script = Instance.new('LocalScript', y0ungDareMenuv45)
 
 	local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
 	local WelcomeBanner = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('WelcomeBanner', true)
@@ -3444,4 +3424,4 @@ local function EYFR_fake_script() -- y0ungDareMenuv43.MenuVisibility_Q
 		end)
 	
 end
-coroutine.wrap(EYFR_fake_script)()
+coroutine.wrap(PADJH_fake_script)()
