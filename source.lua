@@ -796,7 +796,7 @@ Ping.TextWrapped = true
 
 -- Scripts:
 
-local function ZTDUZVS_fake_script() -- YardTP.yard 
+local function STBVWQG_fake_script() -- YardTP.yard 
 	local script = Instance.new('LocalScript', YardTP)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -808,8 +808,8 @@ local function ZTDUZVS_fake_script() -- YardTP.yard
 			end)
 	
 end
-coroutine.wrap(ZTDUZVS_fake_script)()
-local function YYMXSC_fake_script() -- TaseBypass.TaserBypassToggleLogic 
+coroutine.wrap(STBVWQG_fake_script)()
+local function VAMW_fake_script() -- TaseBypass.TaserBypassToggleLogic 
 	local script = Instance.new('LocalScript', TaseBypass)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -924,8 +924,8 @@ local function YYMXSC_fake_script() -- TaseBypass.TaserBypassToggleLogic
 				]]
 	
 end
-coroutine.wrap(YYMXSC_fake_script)()
-local function UHGPW_fake_script() -- FPSPingToggle.ToggleController 
+coroutine.wrap(VAMW_fake_script)()
+local function NPXG_fake_script() -- FPSPingToggle.ToggleController 
 	local script = Instance.new('LocalScript', FPSPingToggle)
 
 	local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
@@ -950,8 +950,8 @@ local function UHGPW_fake_script() -- FPSPingToggle.ToggleController
 		update()
 	
 end
-coroutine.wrap(UHGPW_fake_script)()
-local function JSYS_fake_script() -- ArmoryTP.armory 
+coroutine.wrap(NPXG_fake_script)()
+local function IFHSK_fake_script() -- ArmoryTP.armory 
 	local script = Instance.new('LocalScript', ArmoryTP)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -963,8 +963,8 @@ local function JSYS_fake_script() -- ArmoryTP.armory
 			end)
 	
 end
-coroutine.wrap(JSYS_fake_script)()
-local function COSXF_fake_script() -- AutoPilot.AutoPilotController 
+coroutine.wrap(IFHSK_fake_script)()
+local function PYDQEOA_fake_script() -- AutoPilot.AutoPilotController 
 	local script = Instance.new('LocalScript', AutoPilot)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1037,8 +1037,8 @@ local function COSXF_fake_script() -- AutoPilot.AutoPilotController
 				print("Auto Pilot GUI ready")
 	
 end
-coroutine.wrap(COSXF_fake_script)()
-local function EZQWCA_fake_script() -- SpinBot.SpinController 
+coroutine.wrap(PYDQEOA_fake_script)()
+local function TMQBH_fake_script() -- SpinBot.SpinController 
 	local script = Instance.new('LocalScript', SpinBot)
 
 	-- y0ungDare Spin Bot - keeps the ON/OFF setting across respawns.
@@ -1130,8 +1130,8 @@ local function EZQWCA_fake_script() -- SpinBot.SpinController
 	updateButton()
 	
 end
-coroutine.wrap(EZQWCA_fake_script)()
-local function HQXFTB_fake_script() -- XRayVision.XRayController 
+coroutine.wrap(TMQBH_fake_script)()
+local function FZKRFDX_fake_script() -- XRayVision.XRayController 
 	local script = Instance.new('LocalScript', XRayVision)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1203,218 +1203,333 @@ local function HQXFTB_fake_script() -- XRayVision.XRayController
 				updateButton()
 	
 end
-coroutine.wrap(HQXFTB_fake_script)()
-local function XQSS_fake_script() -- WallEsp.client 
+coroutine.wrap(FZKRFDX_fake_script)()
+local function MPYUBM_fake_script() -- WallEsp.client 
 	local script = Instance.new('LocalScript', WallEsp)
 
-	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-	local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
-	local TextButton = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('TextButton', true)
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-		local Frame = y0ungDareMenuv42:WaitForChild('Frame')
-		local TextButton = y0ungDareMenuv42:WaitForChild('Frame'):WaitForChild('TextButton')
+	-- y0ungDare Wall ESP + HugBug-style Skeleton ESP
+	-- Replace the LocalScript inside your existing TextButton with this entire script.
+	-- Uses standard Roblox GUI objects (no Drawing API or external loader).
+	local Players = game:GetService("Players")
+	local RunService = game:GetService("RunService")
+	local localPlayer = Players.LocalPlayer
+	local button = script.Parent
+	assert(button:IsA("GuiButton"), "Place this LocalScript inside the ESP TextButton")
 	
-				-- Wall ESP with body-aligned 2D box and vertical health bar
-				-- Place this LocalScript inside your existing TextButton in StarterGui.
-				local Players = game:GetService("Players")
-				local RunService = game:GetService("RunService")
-				local player = Players.LocalPlayer
-				local button = script.Parent
+	local WHITE = Color3.fromRGB(255,255,255)
+	local RED = Color3.fromRGB(255,0,0)
+	local GREEN = Color3.fromRGB(0,255,70)
+	local enabled = false
+	local tracked = {}
+	local characterConnections = {}
 	
-				local enabled = false
-				local tracked = {}
-				local connections = {}
-				local WHITE = Color3.fromRGB(255,255,255)
-				local RED = Color3.fromRGB(255,0,0)
-				local GREEN = Color3.fromRGB(0,255,70)
+	-- Avoid duplicated overlays if this LocalScript is restarted.
+	local playerGui = localPlayer:WaitForChild("PlayerGui")
+	local old = playerGui:FindFirstChild("WallESP_Boxes_Local")
+	if old then old:Destroy() end
+	local gui = Instance.new("ScreenGui")
+	gui.Name = "WallESP_Boxes_Local"
+	gui.ResetOnSpawn = false
+	gui.IgnoreGuiInset = true
+	gui.DisplayOrder = 50
+	gui.Parent = playerGui
 	
-				local gui = Instance.new("ScreenGui")
-				gui.Name = "WallESP_Boxes_Local"
-				gui.ResetOnSpawn = false
-				gui.IgnoreGuiInset = true
-				gui.DisplayOrder = 50
-				gui.Parent = player:WaitForChild("PlayerGui")
+	-- HugBug original R15/R6 bone endpoints, adapted to Roblox GUI lines.
+	-- Line centers and rotation corrected to match Drawing.new("Line").
+	local R15_BONES = {
+		{"Head","UpperTorso"}, {"UpperTorso","LowerTorso"},
+		{"UpperTorso","LeftUpperArm"}, {"LeftUpperArm","LeftLowerArm"}, {"LeftLowerArm","LeftHand"},
+		{"UpperTorso","RightUpperArm"}, {"RightUpperArm","RightLowerArm"}, {"RightLowerArm","RightHand"},
+		{"LowerTorso","LeftUpperLeg"}, {"LeftUpperLeg","LeftLowerLeg"}, {"LeftLowerLeg","LeftFoot"},
+		{"LowerTorso","RightUpperLeg"}, {"RightUpperLeg","RightLowerLeg"}, {"RightLowerLeg","RightFoot"},
+	}
 	
-				local function clear(other)
-				    local entry = tracked[other]
-				    if not entry then return end
-				    if entry.highlight then entry.highlight:Destroy() end
-				    if entry.frame then entry.frame:Destroy() end
-				    tracked[other] = nil
+	local function lineFrame(parent)
+		local line = Instance.new("Frame")
+		line.Name = "SkeletonBone"
+		line.AnchorPoint = Vector2.new(0.5,0.5)
+		line.BackgroundColor3 = WHITE
+		line.BorderSizePixel = 0
+		line.Visible = false
+		line.ZIndex = 4
+		line.Parent = parent
+		return line
+	end
+	
+	local function clear(other)
+		local entry = tracked[other]
+		if not entry then return end
+		if entry.highlight then entry.highlight:Destroy() end
+		if entry.frame then entry.frame:Destroy() end
+		if entry.skeleton then entry.skeleton:Destroy() end
+		tracked[other] = nil
+	end
+	
+	local function make(other)
+		if other == localPlayer then return end
+		clear(other)
+		if not enabled then return end
+		local character = other.Character
+		local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+		if not humanoid then return end
+	
+		local highlight = Instance.new("Highlight")
+		highlight.Name = "WallESP_Local"
+		highlight.Adornee = character
+		highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+		highlight.FillColor = WHITE
+		highlight.FillTransparency = 1 -- keep HugBug skeleton unobscured
+		highlight.OutlineColor = WHITE
+		highlight.OutlineTransparency = 1 -- original HugBug has no character outline
+		highlight.Parent = character
+	
+		local frame = Instance.new("Frame")
+		frame.Name = "ESP_" .. other.UserId
+		frame.BackgroundTransparency = 1
+		frame.BorderSizePixel = 0
+		frame.Visible = false
+		frame.Parent = gui
+		local stroke = Instance.new("UIStroke")
+		stroke.Color = WHITE
+		stroke.Thickness = 1.5
+		stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+		stroke.Parent = frame
+	
+		local barBack = Instance.new("Frame")
+		barBack.Name = "HealthBackground"
+		barBack.AnchorPoint = Vector2.new(1,0)
+		barBack.Position = UDim2.fromOffset(-5,0)
+		barBack.Size = UDim2.new(0,4,1,0)
+		barBack.BackgroundColor3 = Color3.fromRGB(15,15,15)
+		barBack.BorderSizePixel = 0
+		barBack.Parent = frame
+	
+		local barFill = Instance.new("Frame")
+		barFill.Name = "HealthFill"
+		barFill.AnchorPoint = Vector2.new(0,1)
+		barFill.Position = UDim2.fromScale(0,1)
+		barFill.Size = UDim2.fromScale(1,1)
+		barFill.BackgroundColor3 = GREEN
+		barFill.BorderSizePixel = 0
+		barFill.Parent = barBack
+	
+		local skeleton = Instance.new("Frame")
+		skeleton.Name = "Skeleton_" .. other.UserId
+		skeleton.Size = UDim2.fromScale(1,1)
+		skeleton.BackgroundTransparency = 1
+		skeleton.BorderSizePixel = 0
+		skeleton.Visible = false
+		skeleton.Parent = gui
+		local bones = {}
+		local count = humanoid.RigType == Enum.HumanoidRigType.R15 and #R15_BONES or 10
+		for i = 1,count do bones[i] = lineFrame(skeleton) end
+	
+		tracked[other] = {
+			highlight = highlight, frame = frame, fill = barFill,
+			humanoid = humanoid, character = character,
+			skeleton = skeleton, bones = bones
+		}
+	end
+	
+	local function watch(other)
+		if other == localPlayer then return end
+		if characterConnections[other] then characterConnections[other]:Disconnect() end
+		characterConnections[other] = other.CharacterAdded:Connect(function(character)
+			character:WaitForChild("Humanoid",10)
+			if enabled and other.Character == character then make(other) end
+		end)
+		make(other)
+	end
+	
+	for _,other in ipairs(Players:GetPlayers()) do watch(other) end
+	local addedConnection = Players.PlayerAdded:Connect(watch)
+	local removingConnection = Players.PlayerRemoving:Connect(function(other)
+		clear(other)
+		if characterConnections[other] then
+			characterConnections[other]:Disconnect()
+			characterConnections[other] = nil
+		end
+	end)
+	
+	-- Exact body-part corners, not HumanoidRootPart or accessories.
+	local function getBodyBounds(character,camera)
+		local minX,minY = math.huge,math.huge
+		local maxX,maxY = -math.huge,-math.huge
+		local count = 0
+		local root = character:FindFirstChild("HumanoidRootPart")
+		if not root then return nil end
+		local rootPoint = camera:WorldToViewportPoint(root.Position)
+		if rootPoint.Z <= 0 then return nil end
+		for _,part in ipairs(character:GetChildren()) do
+			if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" and part.Transparency < 1 then
+				local half = part.Size * 0.5
+				for x=-1,1,2 do
+					for y=-1,1,2 do
+						for z=-1,1,2 do
+							local point = part.CFrame:PointToWorldSpace(Vector3.new(x*half.X,y*half.Y,z*half.Z))
+							local projected = camera:WorldToViewportPoint(point)
+							if projected.Z <= 0 then return nil end
+							minX = math.min(minX,projected.X)
+							minY = math.min(minY,projected.Y)
+							maxX = math.max(maxX,projected.X)
+							maxY = math.max(maxY,projected.Y)
+							count += 1
+						end
+					end
 				end
+			end
+		end
+		if count == 0 then return nil end
+		return minX,minY,maxX,maxY,rootPoint
+	end
 	
-				local function make(other)
-				    if other == player then return end
-				    clear(other)
-				    if not enabled then return end
-				    local character = other.Character
-				    local humanoid = character and character:FindFirstChildOfClass("Humanoid")
-				    if not humanoid then return end
+	-- R6 endpoint calculations follow HugBug's torso/arm/leg offset approach.
+	local function r6Point(character,partName,position)
+		local part = character:FindFirstChild(partName)
+		if not part then return nil end
+		if position == "center" then return part.Position end
+		local halfHeight = math.max(0,part.Size.Y/2-0.2)
+		return (part.CFrame * CFrame.new(0,position == "top" and halfHeight or -halfHeight,0)).Position
+	end
 	
-				    local highlight = Instance.new("Highlight")
-				    highlight.Name = "WallESP_Local"
-				    highlight.Adornee = character
-				    highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-				    highlight.FillColor = WHITE
-				    highlight.FillTransparency = 0.85
-				    highlight.OutlineColor = WHITE
-				    highlight.OutlineTransparency = 0
-				    highlight.Parent = character
+	local function skeletonSegments(character,humanoid)
+		local segments = {}
+		if humanoid.RigType == Enum.HumanoidRigType.R15 then
+			for _,pair in ipairs(R15_BONES) do
+				local a = character:FindFirstChild(pair[1])
+				local b = character:FindFirstChild(pair[2])
+				table.insert(segments,{a and a.Position,b and b.Position})
+			end
+		else
+			local head = r6Point(character,"Head","center")
+			local top = r6Point(character,"Torso","top")
+			local bottom = r6Point(character,"Torso","bottom")
+			local laTop,laBottom = r6Point(character,"Left Arm","top"),r6Point(character,"Left Arm","bottom")
+			local raTop,raBottom = r6Point(character,"Right Arm","top"),r6Point(character,"Right Arm","bottom")
+			local llTop,llBottom = r6Point(character,"Left Leg","top"),r6Point(character,"Left Leg","bottom")
+			local rlTop,rlBottom = r6Point(character,"Right Leg","top"),r6Point(character,"Right Leg","bottom")
+			segments = {
+				{head,top},{top,bottom},
+				{laTop,laBottom},{top,laTop},
+				{raTop,raBottom},{top,raTop},
+				{llTop,llBottom},{bottom,llTop},
+				{rlTop,rlBottom},{bottom,rlTop},
+			}
+		end
+		return segments
+	end
 	
-				    local frame = Instance.new("Frame")
-				    frame.Name = "ESP_" .. other.UserId
-				    frame.BackgroundTransparency = 1
-				    frame.BorderSizePixel = 0
-				    frame.Visible = false
-				    frame.Parent = gui
-				    local stroke = Instance.new("UIStroke")
-				    stroke.Color = WHITE
-				    stroke.Thickness = 1.5
-				    stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-				    stroke.Parent = frame
+	local function setBone(line,from,to,color)
+		local delta = to-from
+		local length = delta.Magnitude
+		if length < 0.5 then line.Visible = false return end
+		local midpoint = (from + to) * 0.5
+		line.Position = UDim2.fromOffset(midpoint.X,midpoint.Y)
+		line.Size = UDim2.fromOffset(length,1) -- HugBug original line thickness
+		line.Rotation = math.deg(math.atan2(delta.Y,delta.X))
+		line.BackgroundColor3 = color
+		line.Visible = true
+	end
 	
-				    local barBack = Instance.new("Frame")
-				    barBack.Name = "HealthBackground"
-				    barBack.AnchorPoint = Vector2.new(1,0)
-				    barBack.Position = UDim2.fromOffset(-5,0)
-				    barBack.Size = UDim2.new(0,4,1,0)
-				    barBack.BackgroundColor3 = Color3.fromRGB(15,15,15)
-				    barBack.BorderSizePixel = 0
-				    barBack.Parent = frame
-	
-				    local barFill = Instance.new("Frame")
-				    barFill.Name = "HealthFill"
-				    barFill.AnchorPoint = Vector2.new(0,1)
-				    barFill.Position = UDim2.fromScale(0,1)
-				    barFill.Size = UDim2.fromScale(1,1)
-				    barFill.BackgroundColor3 = GREEN
-				    barFill.BorderSizePixel = 0
-				    barFill.Parent = barBack
-	
-				    tracked[other] = {highlight=highlight, frame=frame, fill=barFill, humanoid=humanoid, character=character}
+	local function updateSkeleton(entry,camera,color)
+		local segments = skeletonSegments(entry.character,entry.humanoid)
+		for i,line in ipairs(entry.bones) do
+			local pair = segments[i]
+			if pair and pair[1] and pair[2] then
+				local a = camera:WorldToViewportPoint(pair[1])
+				local b = camera:WorldToViewportPoint(pair[2])
+				if a.Z > 0 and b.Z > 0 then
+					setBone(line,Vector2.new(a.X,a.Y),Vector2.new(b.X,b.Y),color)
+				else
+					line.Visible = false
 				end
+			else
+				line.Visible = false
+			end
+		end
+	end
 	
-				local function watch(other)
-				    if other == player then return end
-				    if connections[other] then connections[other]:Disconnect() end
-				    connections[other] = other.CharacterAdded:Connect(function(character)
-				        character:WaitForChild("Humanoid", 10)
-				        if enabled and other.Character == character then make(other) end
-				    end)
-				    make(other)
+	local function updateButton()
+		button.Text = enabled and "Wall ESP: ON" or "Wall ESP: OFF"
+		button.BackgroundColor3 = enabled and Color3.fromRGB(25,190,65) or Color3.fromRGB(0,0,0)
+	end
+	
+	local renderConnection = RunService.RenderStepped:Connect(function()
+		if not enabled then return end
+		local camera = workspace.CurrentCamera
+		if not camera then return end
+		local viewport = camera.ViewportSize
+		local center = viewport * 0.5
+		local aimedPlayer,closestDistance = nil,35
+		local bounds = {}
+		for other,entry in pairs(tracked) do
+			local humanoid,character,frame = entry.humanoid,entry.character,entry.frame
+			if not frame.Parent or not character.Parent or humanoid.Health <= 0 then
+				frame.Visible = false
+				entry.skeleton.Visible = false
+				entry.highlight.Enabled = false
+			else
+				local x1,y1,x2,y2,rootPoint = getBodyBounds(character,camera)
+				if x1 and x2 > 0 and y2 > 0 and x1 < viewport.X and y1 < viewport.Y then
+					bounds[other] = {x1,y1,x2,y2}
+					local distance = (Vector2.new(rootPoint.X,rootPoint.Y)-center).Magnitude
+					if distance < closestDistance then
+						closestDistance = distance
+						aimedPlayer = other
+					end
+				else
+					frame.Visible = false
+					entry.skeleton.Visible = false
+					entry.highlight.Enabled = true -- keep wall highlight even offscreen
 				end
+			end
+		end
+		for other,entry in pairs(tracked) do
+			local b = bounds[other]
+			local color = other == aimedPlayer and RED or WHITE
+			entry.highlight.FillColor = color
+			entry.highlight.OutlineColor = color
+			local stroke = entry.frame:FindFirstChildOfClass("UIStroke")
+			if stroke then stroke.Color = color end
+			if b then
+				local x1,y1,x2,y2 = unpack(b)
+				entry.highlight.Enabled = true
+				entry.frame.Position = UDim2.fromOffset(x1,y1)
+				entry.frame.Size = UDim2.fromOffset(math.max(1,x2-x1),math.max(1,y2-y1))
+				entry.frame.Visible = true
+				local ratio = math.clamp(entry.humanoid.Health/math.max(entry.humanoid.MaxHealth,1),0,1)
+				entry.fill.Size = UDim2.fromScale(1,ratio)
+				entry.fill.BackgroundColor3 = GREEN
+				entry.skeleton.Visible = true
+				updateSkeleton(entry,camera,color)
+			end
+		end
+	end)
 	
-				for _, other in ipairs(Players:GetPlayers()) do watch(other) end
-				Players.PlayerAdded:Connect(watch)
-				Players.PlayerRemoving:Connect(function(other)
-				    clear(other)
-				    if connections[other] then connections[other]:Disconnect(); connections[other]=nil end
-				end)
+	local activatedConnection = button.Activated:Connect(function()
+		enabled = not enabled
+		for _,other in ipairs(Players:GetPlayers()) do
+			if other ~= localPlayer then
+				if enabled then make(other) else clear(other) end
+			end
+		end
+		updateButton()
+	end)
+	updateButton()
 	
-				-- Project the eight corners of each actual body part, excluding accessories,
-				-- tools and the invisible HumanoidRootPart. This works with R6 and R15.
-				local function getBodyBounds(character, camera)
-				    local minX, minY = math.huge, math.huge
-				    local maxX, maxY = -math.huge, -math.huge
-				    local count = 0
-				    local root = character:FindFirstChild("HumanoidRootPart")
-				    if not root then return nil end
-				    local rootPoint = camera:WorldToViewportPoint(root.Position)
-				    if rootPoint.Z <= 0 then return nil end
-	
-				    for _, part in ipairs(character:GetChildren()) do
-				        if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" and part.Transparency < 1 then
-				            local half = part.Size * 0.5
-				            for x = -1,1,2 do
-				                for y = -1,1,2 do
-				                    for z = -1,1,2 do
-				                        local point = part.CFrame:PointToWorldSpace(Vector3.new(x*half.X,y*half.Y,z*half.Z))
-				                        local projected = camera:WorldToViewportPoint(point)
-				                        if projected.Z <= 0 then return nil end
-				                        minX = math.min(minX,projected.X)
-				                        minY = math.min(minY,projected.Y)
-				                        maxX = math.max(maxX,projected.X)
-				                        maxY = math.max(maxY,projected.Y)
-				                        count += 1
-				                    end
-				                end
-				            end
-				        end
-				    end
-				    if count == 0 then return nil end
-				    return minX,minY,maxX,maxY,rootPoint
-				end
-	
-				local function updateButton()
-				    button.Text = enabled and "Wall ESP: ON" or "Wall ESP: OFF"
-				    button.BackgroundColor3 = enabled and Color3.fromRGB(25,190,65) or Color3.fromRGB(0,0,0)
-				end
-	
-				RunService.RenderStepped:Connect(function()
-				    if not enabled then return end
-				    local camera = workspace.CurrentCamera
-				    if not camera then return end
-				    local viewport = camera.ViewportSize
-				    local center = viewport * 0.5
-				    local aimedPlayer, closestDistance = nil, 35
-				    local bounds = {}
-	
-				    for other, entry in pairs(tracked) do
-				        local humanoid = entry.humanoid
-				        local character = entry.character
-				        local frame = entry.frame
-				        if not frame.Parent or not character.Parent or humanoid.Health <= 0 then
-				            frame.Visible = false
-				        else
-				            local x1,y1,x2,y2,rootPoint = getBodyBounds(character,camera)
-				            if x1 and x2 > 0 and y2 > 0 and x1 < viewport.X and y1 < viewport.Y then
-				                bounds[other] = {x1,y1,x2,y2}
-				                local distance = (Vector2.new(rootPoint.X,rootPoint.Y)-center).Magnitude
-				                if distance < closestDistance then
-				                    closestDistance = distance
-				                    aimedPlayer = other
-				                end
-				            else
-				                frame.Visible = false
-				            end
-				        end
-				    end
-	
-				    for other, entry in pairs(tracked) do
-				        local b = bounds[other]
-				        local color = other == aimedPlayer and RED or WHITE
-				        entry.highlight.FillColor = color
-				        entry.highlight.OutlineColor = color
-				        local stroke = entry.frame:FindFirstChildOfClass("UIStroke")
-				        if stroke then
-				            stroke.Color = color
-				        end
-				        if b then
-				            local x1,y1,x2,y2 = unpack(b)
-				            entry.frame.Position = UDim2.fromOffset(x1,y1)
-				            entry.frame.Size = UDim2.fromOffset(math.max(1,x2-x1),math.max(1,y2-y1))
-				            entry.frame.Visible = true
-				            local ratio = math.clamp(entry.humanoid.Health/math.max(entry.humanoid.MaxHealth,1),0,1)
-				            entry.fill.Size = UDim2.fromScale(1,ratio)
-				            entry.fill.BackgroundColor3 = GREEN
-				        end
-				    end
-				end)
-	
-				button.Activated:Connect(function()
-				    enabled = not enabled
-				    for _, other in ipairs(Players:GetPlayers()) do
-				        if other ~= player then
-				            if enabled then make(other) else clear(other) end
-				        end
-				    end
-				    updateButton()
-				end)
-				updateButton()
+	script.Destroying:Connect(function()
+		renderConnection:Disconnect()
+		activatedConnection:Disconnect()
+		addedConnection:Disconnect()
+		removingConnection:Disconnect()
+		for _,connection in pairs(characterConnections) do connection:Disconnect() end
+		for other in pairs(tracked) do clear(other) end
+		gui:Destroy()
+	end)
 	
 end
-coroutine.wrap(XQSS_fake_script)()
-local function FTORSS_fake_script() -- aurakill.AuraKillController 
+coroutine.wrap(MPYUBM_fake_script)()
+local function QYGC_fake_script() -- aurakill.AuraKillController 
 	local script = Instance.new('LocalScript', aurakill)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1496,8 +1611,8 @@ local function FTORSS_fake_script() -- aurakill.AuraKillController
 				end)
 	
 end
-coroutine.wrap(FTORSS_fake_script)()
-local function DVCIHI_fake_script() -- RGBTextToggle.RGBTextController 
+coroutine.wrap(QYGC_fake_script)()
+local function CLWIV_fake_script() -- RGBTextToggle.RGBTextController 
 	local script = Instance.new('LocalScript', RGBTextToggle)
 
 	-- y0ungDare RGB Text Toggle
@@ -1576,8 +1691,8 @@ local function DVCIHI_fake_script() -- RGBTextToggle.RGBTextController
 	end)
 	
 end
-coroutine.wrap(DVCIHI_fake_script)()
-local function EHESCM_fake_script() -- SetSpawnPoint.TeleportScript 
+coroutine.wrap(CLWIV_fake_script)()
+local function FWEVTV_fake_script() -- SetSpawnPoint.TeleportScript 
 	local script = Instance.new('LocalScript', SetSpawnPoint)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1601,8 +1716,8 @@ local function EHESCM_fake_script() -- SetSpawnPoint.TeleportScript
 				end)
 	
 end
-coroutine.wrap(EHESCM_fake_script)()
-local function NWTS_fake_script() -- TeleportToSpawn.TeleportScript 
+coroutine.wrap(FWEVTV_fake_script)()
+local function NOWMRN_fake_script() -- TeleportToSpawn.TeleportScript 
 	local script = Instance.new('LocalScript', TeleportToSpawn)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1627,8 +1742,8 @@ local function NWTS_fake_script() -- TeleportToSpawn.TeleportScript
 				end)
 	
 end
-coroutine.wrap(NWTS_fake_script)()
-local function LFLQDB_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
+coroutine.wrap(NOWMRN_fake_script)()
+local function QYLY_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
 	local script = Instance.new('LocalScript', FlyingCarsToggle)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1772,8 +1887,8 @@ local function LFLQDB_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyContro
 				script.Destroying:Connect(_95021a957be8)
 	
 end
-coroutine.wrap(LFLQDB_fake_script)()
-local function DMTBS_fake_script() -- removedoors.RemoveDoorsToggle 
+coroutine.wrap(QYLY_fake_script)()
+local function TDQYU_fake_script() -- removedoors.RemoveDoorsToggle 
 	local script = Instance.new('LocalScript', removedoors)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1836,8 +1951,8 @@ local function DMTBS_fake_script() -- removedoors.RemoveDoorsToggle
 				UpdateButton()
 	
 end
-coroutine.wrap(DMTBS_fake_script)()
-local function PPNGIN_fake_script() -- InfoPopup.ClosePopup 
+coroutine.wrap(TDQYU_fake_script)()
+local function JYRLN_fake_script() -- InfoPopup.ClosePopup 
 	local script = Instance.new('LocalScript', InfoPopup)
 
 	local popup = script.Parent
@@ -1847,8 +1962,8 @@ local function PPNGIN_fake_script() -- InfoPopup.ClosePopup
 	end)
 	
 end
-coroutine.wrap(PPNGIN_fake_script)()
-local function CDIRI_fake_script() -- Frame.HighGraphicsLogic 
+coroutine.wrap(JYRLN_fake_script)()
+local function TUANOQ_fake_script() -- Frame.HighGraphicsLogic 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1916,8 +2031,8 @@ local function CDIRI_fake_script() -- Frame.HighGraphicsLogic
 			refresh()
 	
 end
-coroutine.wrap(CDIRI_fake_script)()
-local function BYHCIQ_fake_script() -- Frame.HoverSelectionAnimation 
+coroutine.wrap(TUANOQ_fake_script)()
+local function OKISJHI_fake_script() -- Frame.HoverSelectionAnimation 
 	local script = Instance.new('LocalScript', Frame)
 
 	local TextButton = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('TextButton', true)
@@ -1965,8 +2080,8 @@ local function BYHCIQ_fake_script() -- Frame.HoverSelectionAnimation
 		end
 	
 end
-coroutine.wrap(BYHCIQ_fake_script)()
-local function DPZCMZQ_fake_script() -- Frame.DragFrame 
+coroutine.wrap(OKISJHI_fake_script)()
+local function ZHMQJTT_fake_script() -- Frame.DragFrame 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2016,8 +2131,8 @@ local function DPZCMZQ_fake_script() -- Frame.DragFrame
 				dragify(Frame)
 	
 end
-coroutine.wrap(DPZCMZQ_fake_script)()
-local function OVSF_fake_script() -- Frame.GUIController 
+coroutine.wrap(ZHMQJTT_fake_script)()
+local function LLCPYM_fake_script() -- Frame.GUIController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2093,8 +2208,8 @@ local function OVSF_fake_script() -- Frame.GUIController
 				    updatePullButton()
 	
 end
-coroutine.wrap(OVSF_fake_script)()
-local function VXLP_fake_script() -- Frame.AntiAFKController 
+coroutine.wrap(LLCPYM_fake_script)()
+local function LZEW_fake_script() -- Frame.AntiAFKController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2142,8 +2257,8 @@ local function VXLP_fake_script() -- Frame.AntiAFKController
 				updateButton()
 	
 end
-coroutine.wrap(VXLP_fake_script)()
-local function PGNP_fake_script() -- Frame.ChatController 
+coroutine.wrap(LZEW_fake_script)()
+local function UKRGD_fake_script() -- Frame.ChatController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2196,8 +2311,8 @@ local function PGNP_fake_script() -- Frame.ChatController
 				refresh()
 	
 end
-coroutine.wrap(PGNP_fake_script)()
-local function YAXV_fake_script() -- Frame.OriginalNoclipController 
+coroutine.wrap(UKRGD_fake_script)()
+local function SMQVXLD_fake_script() -- Frame.OriginalNoclipController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2340,8 +2455,8 @@ local function YAXV_fake_script() -- Frame.OriginalNoclipController
 				refresh()
 	
 end
-coroutine.wrap(YAXV_fake_script)()
-local function JGTKIX_fake_script() -- Frame.InfoToggle 
+coroutine.wrap(SMQVXLD_fake_script)()
+local function FBOW_fake_script() -- Frame.InfoToggle 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2365,8 +2480,8 @@ local function JGTKIX_fake_script() -- Frame.InfoToggle
 				end)
 	
 end
-coroutine.wrap(JGTKIX_fake_script)()
-local function BIXJ_fake_script() -- Frame.Aimbot 
+coroutine.wrap(FBOW_fake_script)()
+local function DHMB_fake_script() -- Frame.Aimbot 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2515,8 +2630,8 @@ local function BIXJ_fake_script() -- Frame.Aimbot
 	textbutton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 	
 end
-coroutine.wrap(BIXJ_fake_script)()
-local function PBUKRER_fake_script() -- Frame.GetAllGunsLogic 
+coroutine.wrap(DHMB_fake_script)()
+local function KRASCBH_fake_script() -- Frame.GetAllGunsLogic 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2601,8 +2716,8 @@ local function PBUKRER_fake_script() -- Frame.GetAllGunsLogic
 			end)
 	
 end
-coroutine.wrap(PBUKRER_fake_script)()
-local function MCULAI_fake_script() -- Frame.OpenDexPlusPlus 
+coroutine.wrap(KRASCBH_fake_script)()
+local function IFNT_fake_script() -- Frame.OpenDexPlusPlus 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Dex++ original release loader, launched by the editable button.
@@ -2677,8 +2792,8 @@ local function MCULAI_fake_script() -- Frame.OpenDexPlusPlus
 	end)
 	
 end
-coroutine.wrap(MCULAI_fake_script)()
-local function HRFPU_fake_script() -- LanguageToggle.LanguageController_Edit_Here 
+coroutine.wrap(IFNT_fake_script)()
+local function MQYWXG_fake_script() -- LanguageToggle.LanguageController_Edit_Here 
 	local script = Instance.new('LocalScript', LanguageToggle)
 
 	-- Language controller: English, Spanish, French, Japanese, Simplified Chinese, German.
@@ -2767,8 +2882,8 @@ local function HRFPU_fake_script() -- LanguageToggle.LanguageController_Edit_Her
 	end)
 	
 end
-coroutine.wrap(HRFPU_fake_script)()
-local function JQJE_fake_script() -- WelcomeBanner.WelcomeAnimation 
+coroutine.wrap(MQYWXG_fake_script)()
+local function CXFL_fake_script() -- WelcomeBanner.WelcomeAnimation 
 	local script = Instance.new('LocalScript', WelcomeBanner)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2950,8 +3065,8 @@ local function JQJE_fake_script() -- WelcomeBanner.WelcomeAnimation
 			frame:Destroy()
 	
 end
-coroutine.wrap(JQJE_fake_script)()
-local function DUKMUA_fake_script() -- Fps.FpsOriginalScript 
+coroutine.wrap(CXFL_fake_script)()
+local function SVLV_fake_script() -- Fps.FpsOriginalScript 
 	local script = Instance.new('LocalScript', Fps)
 
 	local RunService = game:GetService("RunService")
@@ -2960,8 +3075,8 @@ local function DUKMUA_fake_script() -- Fps.FpsOriginalScript
 		end)
 	
 end
-coroutine.wrap(DUKMUA_fake_script)()
-local function QHHH_fake_script() -- Ping.PingOriginalScript 
+coroutine.wrap(SVLV_fake_script)()
+local function NCFF_fake_script() -- Ping.PingOriginalScript 
 	local script = Instance.new('LocalScript', Ping)
 
 	local RunService = game:GetService("RunService")
@@ -2970,8 +3085,8 @@ local function QHHH_fake_script() -- Ping.PingOriginalScript
 		end)
 	
 end
-coroutine.wrap(QHHH_fake_script)()
-local function MVORGO_fake_script() -- y0ungDareMenuv43.KeyboardShortcuts 
+coroutine.wrap(NCFF_fake_script)()
+local function VDTNJSE_fake_script() -- y0ungDareMenuv43.KeyboardShortcuts 
 	local script = Instance.new('LocalScript', y0ungDareMenuv43)
 
 	local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
@@ -3066,8 +3181,8 @@ local function MVORGO_fake_script() -- y0ungDareMenuv43.KeyboardShortcuts
 				end)
 	
 end
-coroutine.wrap(MVORGO_fake_script)()
-local function BVVKVNM_fake_script() -- y0ungDareMenuv43.MainScript 
+coroutine.wrap(VDTNJSE_fake_script)()
+local function ZFSNO_fake_script() -- y0ungDareMenuv43.MainScript 
 	local script = Instance.new('LocalScript', y0ungDareMenuv43)
 
 	-- y0ungDare Fly - respawn-safe LocalScript
@@ -3209,8 +3324,8 @@ local function BVVKVNM_fake_script() -- y0ungDareMenuv43.MainScript
 	end
 	
 end
-coroutine.wrap(BVVKVNM_fake_script)()
-local function EMCJ_fake_script() -- y0ungDareMenuv43.MenuVisibility_Q 
+coroutine.wrap(ZFSNO_fake_script)()
+local function BUHBXII_fake_script() -- y0ungDareMenuv43.MenuVisibility_Q 
 	local script = Instance.new('LocalScript', y0ungDareMenuv43)
 
 	local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
@@ -3269,4 +3384,4 @@ local function EMCJ_fake_script() -- y0ungDareMenuv43.MenuVisibility_Q
 		end)
 	
 end
-coroutine.wrap(EMCJ_fake_script)()
+coroutine.wrap(BUHBXII_fake_script)()
