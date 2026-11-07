@@ -776,7 +776,7 @@ Ping.TextWrapped = true
 
 -- Scripts:
 
-local function FDLLTO_fake_script() -- LanguageToggle.LanguageController_Edit_Here 
+local function MREH_fake_script() -- LanguageToggle.LanguageController_Edit_Here 
 	local script = Instance.new('LocalScript', LanguageToggle)
 
 	-- Language controller: English, Spanish, French, Japanese, Simplified Chinese, German.
@@ -880,8 +880,8 @@ local function FDLLTO_fake_script() -- LanguageToggle.LanguageController_Edit_He
 	updateSpeedCaption()
 	
 end
-coroutine.wrap(FDLLTO_fake_script)()
-local function TJKFG_fake_script() -- SpeedRun.SpeedController 
+coroutine.wrap(MREH_fake_script)()
+local function NWCJ_fake_script() -- SpeedRun.SpeedController 
 	local script = Instance.new('LocalScript', SpeedRun)
 
 	-- Speed Run: put this LocalScript inside your existing TextButton.
@@ -938,8 +938,8 @@ local function TJKFG_fake_script() -- SpeedRun.SpeedController
 	updateButton()
 	
 end
-coroutine.wrap(TJKFG_fake_script)()
-local function OMDMZ_fake_script() -- TaseBypass.TaserBypassToggleLogic 
+coroutine.wrap(NWCJ_fake_script)()
+local function LVRMF_fake_script() -- TaseBypass.TaserBypassToggleLogic 
 	local script = Instance.new('LocalScript', TaseBypass)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1054,8 +1054,8 @@ local function OMDMZ_fake_script() -- TaseBypass.TaserBypassToggleLogic
 				]]
 	
 end
-coroutine.wrap(OMDMZ_fake_script)()
-local function KDNFBQ_fake_script() -- FPSPingToggle.ToggleController 
+coroutine.wrap(LVRMF_fake_script)()
+local function DVADVQN_fake_script() -- FPSPingToggle.ToggleController 
 	local script = Instance.new('LocalScript', FPSPingToggle)
 
 	local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
@@ -1080,8 +1080,8 @@ local function KDNFBQ_fake_script() -- FPSPingToggle.ToggleController
 		update()
 	
 end
-coroutine.wrap(KDNFBQ_fake_script)()
-local function ABDRKO_fake_script() -- AutoPilot.AutoPilotController 
+coroutine.wrap(DVADVQN_fake_script)()
+local function MKPTO_fake_script() -- AutoPilot.AutoPilotController 
 	local script = Instance.new('LocalScript', AutoPilot)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1154,8 +1154,8 @@ local function ABDRKO_fake_script() -- AutoPilot.AutoPilotController
 				print("Auto Pilot GUI ready")
 	
 end
-coroutine.wrap(ABDRKO_fake_script)()
-local function OKNR_fake_script() -- SpinBot.SpinController 
+coroutine.wrap(MKPTO_fake_script)()
+local function AKUY_fake_script() -- SpinBot.SpinController 
 	local script = Instance.new('LocalScript', SpinBot)
 
 	-- y0ungDare Spin Bot - keeps the ON/OFF setting across respawns.
@@ -1247,8 +1247,8 @@ local function OKNR_fake_script() -- SpinBot.SpinController
 	updateButton()
 	
 end
-coroutine.wrap(OKNR_fake_script)()
-local function TPNPSQO_fake_script() -- XRayVision.XRayController 
+coroutine.wrap(AKUY_fake_script)()
+local function OEHKA_fake_script() -- XRayVision.XRayController 
 	local script = Instance.new('LocalScript', XRayVision)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1320,8 +1320,8 @@ local function TPNPSQO_fake_script() -- XRayVision.XRayController
 				updateButton()
 	
 end
-coroutine.wrap(TPNPSQO_fake_script)()
-local function DARKZR_fake_script() -- WallEsp.client 
+coroutine.wrap(OEHKA_fake_script)()
+local function EDPLXHQ_fake_script() -- WallEsp.client 
 	local script = Instance.new('LocalScript', WallEsp)
 
 	-- y0ungDare Wall ESP + HugBug-style Skeleton ESP
@@ -1645,8 +1645,8 @@ local function DARKZR_fake_script() -- WallEsp.client
 	end)
 	
 end
-coroutine.wrap(DARKZR_fake_script)()
-local function BJBBVT_fake_script() -- aurakill.AuraKillController 
+coroutine.wrap(EDPLXHQ_fake_script)()
+local function KLTI_fake_script() -- aurakill.AuraKillController 
 	local script = Instance.new('LocalScript', aurakill)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1728,8 +1728,8 @@ local function BJBBVT_fake_script() -- aurakill.AuraKillController
 				end)
 	
 end
-coroutine.wrap(BJBBVT_fake_script)()
-local function UVRA_fake_script() -- RGBTextToggle.RGBTextController 
+coroutine.wrap(KLTI_fake_script)()
+local function XWXP_fake_script() -- RGBTextToggle.RGBTextController 
 	local script = Instance.new('LocalScript', RGBTextToggle)
 
 	-- y0ungDare RGB Text Toggle
@@ -1808,8 +1808,8 @@ local function UVRA_fake_script() -- RGBTextToggle.RGBTextController
 	end)
 	
 end
-coroutine.wrap(UVRA_fake_script)()
-local function GNFVZG_fake_script() -- SetSpawnPoint.TeleportScript 
+coroutine.wrap(XWXP_fake_script)()
+local function XMLYUIN_fake_script() -- SetSpawnPoint.TeleportScript 
 	local script = Instance.new('LocalScript', SetSpawnPoint)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1833,8 +1833,8 @@ local function GNFVZG_fake_script() -- SetSpawnPoint.TeleportScript
 				end)
 	
 end
-coroutine.wrap(GNFVZG_fake_script)()
-local function SOND_fake_script() -- TeleportToSpawn.TeleportScript 
+coroutine.wrap(XMLYUIN_fake_script)()
+local function IIAUQR_fake_script() -- TeleportToSpawn.TeleportScript 
 	local script = Instance.new('LocalScript', TeleportToSpawn)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1859,8 +1859,8 @@ local function SOND_fake_script() -- TeleportToSpawn.TeleportScript
 				end)
 	
 end
-coroutine.wrap(SOND_fake_script)()
-local function ZTHQVR_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
+coroutine.wrap(IIAUQR_fake_script)()
+local function XKDCV_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
 	local script = Instance.new('LocalScript', FlyingCarsToggle)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2004,8 +2004,8 @@ local function ZTHQVR_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyContro
 				script.Destroying:Connect(_95021a957be8)
 	
 end
-coroutine.wrap(ZTHQVR_fake_script)()
-local function PXFVS_fake_script() -- removedoors.RemoveDoorsToggle 
+coroutine.wrap(XKDCV_fake_script)()
+local function EQMVTH_fake_script() -- removedoors.RemoveDoorsToggle 
 	local script = Instance.new('LocalScript', removedoors)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2068,8 +2068,8 @@ local function PXFVS_fake_script() -- removedoors.RemoveDoorsToggle
 				UpdateButton()
 	
 end
-coroutine.wrap(PXFVS_fake_script)()
-local function MAKCE_fake_script() -- InfoPopup.ClosePopup 
+coroutine.wrap(EQMVTH_fake_script)()
+local function UNEZW_fake_script() -- InfoPopup.ClosePopup 
 	local script = Instance.new('LocalScript', InfoPopup)
 
 	local popup = script.Parent
@@ -2079,8 +2079,8 @@ local function MAKCE_fake_script() -- InfoPopup.ClosePopup
 	end)
 	
 end
-coroutine.wrap(MAKCE_fake_script)()
-local function MJRVEL_fake_script() -- Frame.HighGraphicsLogic 
+coroutine.wrap(UNEZW_fake_script)()
+local function TYXQRTZ_fake_script() -- Frame.HighGraphicsLogic 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2148,8 +2148,8 @@ local function MJRVEL_fake_script() -- Frame.HighGraphicsLogic
 			refresh()
 	
 end
-coroutine.wrap(MJRVEL_fake_script)()
-local function IFYGP_fake_script() -- Frame.HoverSelectionAnimation 
+coroutine.wrap(TYXQRTZ_fake_script)()
+local function AKZOXR_fake_script() -- Frame.HoverSelectionAnimation 
 	local script = Instance.new('LocalScript', Frame)
 
 	local TextButton = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('TextButton', true)
@@ -2197,8 +2197,8 @@ local function IFYGP_fake_script() -- Frame.HoverSelectionAnimation
 		end
 	
 end
-coroutine.wrap(IFYGP_fake_script)()
-local function FENFUSZ_fake_script() -- Frame.DragFrame 
+coroutine.wrap(AKZOXR_fake_script)()
+local function NVKVF_fake_script() -- Frame.DragFrame 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2248,8 +2248,8 @@ local function FENFUSZ_fake_script() -- Frame.DragFrame
 				dragify(Frame)
 	
 end
-coroutine.wrap(FENFUSZ_fake_script)()
-local function HGWIR_fake_script() -- Frame.GUIController 
+coroutine.wrap(NVKVF_fake_script)()
+local function HRWYOVR_fake_script() -- Frame.GUIController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2325,8 +2325,8 @@ local function HGWIR_fake_script() -- Frame.GUIController
 				    updatePullButton()
 	
 end
-coroutine.wrap(HGWIR_fake_script)()
-local function WXOQFCP_fake_script() -- Frame.AntiAFKController 
+coroutine.wrap(HRWYOVR_fake_script)()
+local function AMWLHEK_fake_script() -- Frame.AntiAFKController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2374,8 +2374,8 @@ local function WXOQFCP_fake_script() -- Frame.AntiAFKController
 				updateButton()
 	
 end
-coroutine.wrap(WXOQFCP_fake_script)()
-local function MJUO_fake_script() -- Frame.ChatController 
+coroutine.wrap(AMWLHEK_fake_script)()
+local function KHGUSD_fake_script() -- Frame.ChatController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2428,8 +2428,8 @@ local function MJUO_fake_script() -- Frame.ChatController
 				refresh()
 	
 end
-coroutine.wrap(MJUO_fake_script)()
-local function NZFJYLE_fake_script() -- Frame.OriginalNoclipController 
+coroutine.wrap(KHGUSD_fake_script)()
+local function ZZPVZCD_fake_script() -- Frame.OriginalNoclipController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2572,8 +2572,8 @@ local function NZFJYLE_fake_script() -- Frame.OriginalNoclipController
 				refresh()
 	
 end
-coroutine.wrap(NZFJYLE_fake_script)()
-local function TVTQ_fake_script() -- Frame.InfoToggle 
+coroutine.wrap(ZZPVZCD_fake_script)()
+local function ERTWDJU_fake_script() -- Frame.InfoToggle 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2597,8 +2597,8 @@ local function TVTQ_fake_script() -- Frame.InfoToggle
 				end)
 	
 end
-coroutine.wrap(TVTQ_fake_script)()
-local function QHLQE_fake_script() -- Frame.OpenDexPlusPlus 
+coroutine.wrap(ERTWDJU_fake_script)()
+local function ATWAJ_fake_script() -- Frame.OpenDexPlusPlus 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Dex++ original release loader, launched by the editable button.
@@ -2673,8 +2673,8 @@ local function QHLQE_fake_script() -- Frame.OpenDexPlusPlus
 	end)
 	
 end
-coroutine.wrap(QHLQE_fake_script)()
-local function HEMHSR_fake_script() -- Frame.GetAllGunsLogic 
+coroutine.wrap(ATWAJ_fake_script)()
+local function PWTNCXZ_fake_script() -- Frame.GetAllGunsLogic 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2759,8 +2759,8 @@ local function HEMHSR_fake_script() -- Frame.GetAllGunsLogic
 			end)
 	
 end
-coroutine.wrap(HEMHSR_fake_script)()
-local function TSMN_fake_script() -- Frame.AimbotController 
+coroutine.wrap(PWTNCXZ_fake_script)()
+local function OACKUI_fake_script() -- Frame.AimbotController 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- y0ungDare Aimbot + multilingual target selector
@@ -2918,191 +2918,364 @@ local function TSMN_fake_script() -- Frame.AimbotController
 	refresh()
 	
 end
-coroutine.wrap(TSMN_fake_script)()
-local function RKFGBV_fake_script() -- WelcomeBanner.WelcomeAnimation 
+coroutine.wrap(OACKUI_fake_script)()
+local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation 
 	local script = Instance.new('LocalScript', WelcomeBanner)
 
-	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-	local WelcomeText = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('WelcomeText', true)
-	local UpdatesLink = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('UpdatesLink', true)
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-		local WelcomeText = y0ungDareMenuv42:WaitForChild('WelcomeBanner'):WaitForChild('WelcomeText')
-		local UpdatesLink = y0ungDareMenuv42:WaitForChild('WelcomeBanner'):WaitForChild('UpdatesLink')
 	
-			-- y0ungDare v4.2: original transparent welcome banner with video-style text decoding.
-			-- Original welcome animation preserved; added video-style updates line.
-			local Players = game:GetService("Players")
-			local TweenService = game:GetService("TweenService")
-			local player = Players.LocalPlayer
-			local frame = script.Parent
-			local label = frame:WaitForChild("WelcomeText")
-			local updates = frame:WaitForChild("UpdatesLink")
+	-- y0ungDare Menu v4.5
+	-- Welcome Animation + 10 Second Digital Text Sound
+	-- Text finishes decoding at 9 seconds
 	
-			frame.BackgroundTransparency = 1
-			label.BackgroundTransparency = 1
-			local colors = {"#FF309F", "#00EFFF", "#A960FF", "#F759C7", "#26E8FF", "#FF5EAB"}
-			local message = "Hello " .. player.Name .. " , Welcome to y0ungDare Menu v4.5"
-			local charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-			local rng = Random.new()
-			local charColors = {}
-			local wordNumber = 0
-			local insideWord = false
-			for i = 1, #message do
-			    local c = message:sub(i, i)
-			    if c:match("%s") then
-			        insideWord = false
-			    else
-			        if not insideWord then
-			            wordNumber += 1
-			            insideWord = true
-			        end
-			    end
-			    charColors[i] = colors[(math.max(wordNumber, 1) - 1) % #colors + 1]
-			end
-			-- Match the screenshot: alternating bright cyan and hot pink in the final title.
-			-- Only the final "y0ungDare Menu v4.2" portion is recolored.
-			local titleStart = message:find("y0ungDare Menu v4.2", 1, true)
-			if titleStart then
-			    local title = "y0ungDare Menu v4.2"
-			    local titleColors = {
-			        "#00F5FF", "#FF309F", "#00F5FF", "#FF309F",
-			        "#00F5FF", "#FF309F", "#00F5FF", "#FF309F",
-			        "#00F5FF", "#FF309F", "#00F5FF", "#FF309F",
-			        "#00F5FF", "#FF309F", "#00F5FF", "#FF309F",
-			        "#FF309F", "#FF309F", "#FF309F"
-			    }
-			    for i = 1, #title do
-			        charColors[titleStart + i - 1] = titleColors[i] or "#FF309F"
-			    end
-			end
-			local function safe(s)
-			    return s:gsub("&", "&amp;"):gsub("<", "&lt;"):gsub(">", "&gt;"):gsub('"', "&quot;")
-			end
-			local function render(revealed)
-			    local parts = {}
-			    for i = 1, #message do
-			        local original = message:sub(i, i)
-			        local shown = original
-			        if i > revealed and not original:match("%s") then
-			            local j = rng:NextInteger(1, #charset)
-			            shown = charset:sub(j, j)
-			        end
-			        parts[#parts + 1] = '<font color="' .. charColors[i] .. '">' .. safe(shown) .. '</font>'
-			    end
-			    label.Text = table.concat(parts)
-			end
+	local Players = game:GetService("Players")
+	local TweenService = game:GetService("TweenService")
 	
-			label.RichText = true
-			label.TextTransparency = 1
-			label.TextStrokeColor3 = Color3.fromRGB(36, 14, 59)
-			label.TextStrokeTransparency = 1
-			label.TextXAlignment = Enum.TextXAlignment.Center
-			label.TextYAlignment = Enum.TextYAlignment.Center
-			label.TextScaled = true
-			label.TextWrapped = false
-			frame.Position = UDim2.new(0.04, 0, 0.035, -15)
-			render(0)
-			TweenService:Create(frame, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
-			    Position = UDim2.new(0.04, 0, 0.035, 0)
-			}):Play()
-			TweenService:Create(label, TweenInfo.new(0.3), {
-			    TextTransparency = 0, TextStrokeTransparency = 0.55
-			}):Play()
+	local player = Players.LocalPlayer
+	local frame = script.Parent
+	local label = frame:WaitForChild("WelcomeText")
+	local updates = frame:WaitForChild("UpdatesLink")
 	
-			-- Updates line: same character-decoding effect, cyan/pink lettering with a soft purple glow.
-			local updatesUrl = "https://pastebin.com/vtqqsasB"
-			local updatesMessage = "All updates on pastebin.com/vtqqsasB"
-			local updatesColors = {"#00F5FF", "#FF309F", "#B87AFF", "#00EFFF", "#FF5EAB"}
-			local updatesCharColors = {}
-			local updatesWord = 0
-			local updatesInsideWord = false
-			for i = 1, #updatesMessage do
-			    local c = updatesMessage:sub(i, i)
-			    if c:match("%s") then
-			        updatesInsideWord = false
-			    elseif not updatesInsideWord then
-			        updatesWord += 1
-			        updatesInsideWord = true
-			    end
-			    updatesCharColors[i] = updatesColors[(math.max(updatesWord, 1) - 1) % #updatesColors + 1]
+	-- ANIMATION SETTINGS
+	local duration = 9
+	local holdDuration = 0.35
+	local fadeDuration = 0.6
+	
+	-- SOUND SETTINGS
+	-- Set the SoundId on the DigitalTextSound object
+	-- inside WelcomeBanner in Roblox Studio.
+	local sound = frame:FindFirstChild("DigitalTextSound")
+	
+	if sound then
+		sound.Looped = false
+	end
+	
+	-- ORIGINAL WELCOME SETTINGS
+	frame.BackgroundTransparency = 1
+	label.BackgroundTransparency = 1
+	
+	local colors = {
+		"#FF309F",
+		"#00EFFF",
+		"#A960FF",
+		"#F759C7",
+		"#26E8FF",
+		"#FF5EAB"
+	}
+	
+	local message =
+		"Hello " .. player.Name ..
+		" , Welcome to y0ungDare Menu v4.5"
+	
+	local charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	local rng = Random.new()
+	
+	local charColors = {}
+	local wordNumber = 0
+	local insideWord = false
+	
+	for i = 1, #message do
+		local c = message:sub(i, i)
+	
+		if c:match("%s") then
+			insideWord = false
+		else
+			if not insideWord then
+				wordNumber += 1
+				insideWord = true
+			end
+		end
+	
+		charColors[i] =
+			colors[(math.max(wordNumber, 1) - 1) % #colors + 1]
+	end
+	
+	-- CYAN / PINK TITLE
+	local title = "y0ungDare Menu v4.5"
+	local titleStart = message:find(title, 1, true)
+	
+	if titleStart then
+		local titleColors = {
+			"#00F5FF",
+			"#FF309F"
+		}
+	
+		for i = 1, #title do
+			charColors[titleStart + i - 1] =
+				titleColors[(i - 1) % #titleColors + 1]
+		end
+	end
+	
+	local function safe(s)
+		return s:gsub("&", "&amp;")
+			:gsub("<", "&lt;")
+			:gsub(">", "&gt;")
+			:gsub('"', "&quot;")
+	end
+	
+	local function render(revealed)
+		local parts = {}
+	
+		for i = 1, #message do
+			local original = message:sub(i, i)
+			local shown = original
+	
+			if i > revealed and not original:match("%s") then
+				local j = rng:NextInteger(1, #charset)
+				shown = charset:sub(j, j)
 			end
 	
-			local function renderUpdates(revealed)
-			    local parts = {}
-			    for i = 1, #updatesMessage do
-			        local original = updatesMessage:sub(i, i)
-			        local shown = original
-			        if i > revealed and not original:match("%s") then
-			            local j = rng:NextInteger(1, #charset)
-			            shown = charset:sub(j, j)
-			        end
-			        parts[#parts + 1] = '<font color="' .. updatesCharColors[i] .. '">' .. safe(shown) .. '</font>'
-			    end
-			    updates.Text = table.concat(parts)
+			parts[#parts + 1] =
+				'<font color="' ..
+				charColors[i] ..
+				'">' ..
+				safe(shown) ..
+				'</font>'
+		end
+	
+		label.Text = table.concat(parts)
+	end
+	
+	-- WELCOME LABEL APPEARANCE
+	label.RichText = true
+	label.TextTransparency = 1
+	label.TextStrokeColor3 = Color3.fromRGB(36, 14, 59)
+	label.TextStrokeTransparency = 1
+	label.TextXAlignment = Enum.TextXAlignment.Center
+	label.TextYAlignment = Enum.TextYAlignment.Center
+	label.TextScaled = true
+	label.TextWrapped = false
+	
+	frame.Position = UDim2.new(0.04, 0, 0.035, -15)
+	
+	render(0)
+	
+	TweenService:Create(
+		frame,
+		TweenInfo.new(
+			0.35,
+			Enum.EasingStyle.Back,
+			Enum.EasingDirection.Out
+		),
+		{
+			Position = UDim2.new(0.04, 0, 0.035, 0)
+		}
+	):Play()
+	
+	TweenService:Create(
+		label,
+		TweenInfo.new(0.3),
+		{
+			TextTransparency = 0,
+			TextStrokeTransparency = 0.55
+		}
+	):Play()
+	
+	-- UPDATES LINE
+	local updatesUrl = "https://pastebin.com/vtqqsasB"
+	local updatesMessage =
+		"All updates on pastebin.com/vtqqsasB"
+	
+	local updatesColors = {
+		"#00F5FF",
+		"#FF309F",
+		"#B87AFF",
+		"#00EFFF",
+		"#FF5EAB"
+	}
+	
+	local updatesCharColors = {}
+	local updatesWord = 0
+	local updatesInsideWord = false
+	
+	for i = 1, #updatesMessage do
+		local c = updatesMessage:sub(i, i)
+	
+		if c:match("%s") then
+			updatesInsideWord = false
+		elseif not updatesInsideWord then
+			updatesWord += 1
+			updatesInsideWord = true
+		end
+	
+		updatesCharColors[i] =
+			updatesColors[
+		(math.max(updatesWord, 1) - 1) %
+			#updatesColors + 1
+		]
+	end
+	
+	local function renderUpdates(revealed)
+		local parts = {}
+	
+		for i = 1, #updatesMessage do
+			local original = updatesMessage:sub(i, i)
+			local shown = original
+	
+			if i > revealed and not original:match("%s") then
+				local j = rng:NextInteger(1, #charset)
+				shown = charset:sub(j, j)
 			end
 	
-			updates.BackgroundTransparency = 1
-			updates.RichText = true
-			updates.TextTransparency = 1
-			updates.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
-			updates.TextStrokeTransparency = 1
-			updates.TextXAlignment = Enum.TextXAlignment.Center
-			updates.TextYAlignment = Enum.TextYAlignment.Center
-			renderUpdates(0)
-			TweenService:Create(updates, TweenInfo.new(0.35), {
-			    TextTransparency = 0,
-			    TextStrokeTransparency = 0.18
-			}):Play()
-			-- Black text outline with a subtle separate purple glow.
-			local purpleGlow = updates:FindFirstChild("PurpleGlow")
-			if not purpleGlow then
-			    purpleGlow = Instance.new("UIStroke")
-			    purpleGlow.Name = "PurpleGlow"
-			    purpleGlow.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
-			    purpleGlow.Color = Color3.fromRGB(152, 75, 220)
-			    purpleGlow.Thickness = 1.5
-			    purpleGlow.Transparency = 0.72
-			    purpleGlow.Parent = updates
-			end
-			-- Gentle purple glow pulse while the banner is visible.
-			local glowTween = TweenService:Create(purpleGlow,
-			    TweenInfo.new(1.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, -1, true),
-			    { Transparency = 0.9 }
-			)
-			glowTween:Play()
-			updates.MouseButton1Click:Connect(function()
-			    if type(setclipboard) == "function" then
-			        setclipboard(updatesUrl)
-			    else
-			        warn("Open this link in your browser: " .. updatesUrl)
-			    end
-			end)
+			parts[#parts + 1] =
+				'<font color="' ..
+				updatesCharColors[i] ..
+				'">' ..
+				safe(shown) ..
+				'</font>'
+		end
 	
-			-- Like the reference video: random characters settle into the message from left to right.
-			local duration = 7.8
-			local start = os.clock()
-			repeat
-			    local elapsed = os.clock() - start
-			    local progress = math.clamp(elapsed / duration, 0, 1)
-			    render(math.floor(progress * #message))
-			    renderUpdates(math.floor(progress * #updatesMessage))
-			    task.wait(0.07)
-			until os.clock() - start >= duration
-			render(#message)
-			renderUpdates(#updatesMessage)
-			task.wait(1.2)
-			glowTween:Cancel()
-			TweenService:Create(purpleGlow, TweenInfo.new(0.6), {Transparency = 1}):Play()
-			local vanish = TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
-			TweenService:Create(frame, vanish, {Position = UDim2.new(0.04, 0, 0.015, -12)}):Play()
-			TweenService:Create(label, vanish, {TextTransparency = 1, TextStrokeTransparency = 1}):Play()
-			TweenService:Create(updates, vanish, {TextTransparency = 1, TextStrokeTransparency = 1}):Play()
-			task.wait(0.65)
-			frame:Destroy()
+		updates.Text = table.concat(parts)
+	end
+	
+	-- UPDATES APPEARANCE
+	updates.BackgroundTransparency = 1
+	updates.RichText = true
+	updates.TextTransparency = 1
+	updates.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+	updates.TextStrokeTransparency = 1
+	updates.TextXAlignment = Enum.TextXAlignment.Center
+	updates.TextYAlignment = Enum.TextYAlignment.Center
+	
+	renderUpdates(0)
+	
+	TweenService:Create(
+		updates,
+		TweenInfo.new(0.35),
+		{
+			TextTransparency = 0,
+			TextStrokeTransparency = 0.18
+		}
+	):Play()
+	
+	-- PURPLE GLOW
+	local purpleGlow = updates:FindFirstChild("PurpleGlow")
+	
+	if not purpleGlow then
+		purpleGlow = Instance.new("UIStroke")
+		purpleGlow.Name = "PurpleGlow"
+		purpleGlow.ApplyStrokeMode =
+			Enum.ApplyStrokeMode.Contextual
+		purpleGlow.Color = Color3.fromRGB(152, 75, 220)
+		purpleGlow.Thickness = 1.5
+		purpleGlow.Transparency = 0.72
+		purpleGlow.Parent = updates
+	end
+	
+	local glowTween = TweenService:Create(
+		purpleGlow,
+		TweenInfo.new(
+			1.2,
+			Enum.EasingStyle.Sine,
+			Enum.EasingDirection.InOut,
+			-1,
+			true
+		),
+		{
+			Transparency = 0.9
+		}
+	)
+	
+	glowTween:Play()
+	
+	-- UPDATES LINK
+	updates.MouseButton1Click:Connect(function()
+		if type(setclipboard) == "function" then
+			setclipboard(updatesUrl)
+		else
+			warn("Open this link: " .. updatesUrl)
+		end
+	end)
+	
+	-- START SOUND AND TEXT ANIMATION TOGETHER
+	if sound and sound.SoundId ~= "" then
+		sound.TimePosition = 0
+		sound:Play()
+	end
+	
+	local start = os.clock()
+	
+	-- 9 SECOND CHARACTER DECODING
+	repeat
+		local elapsed = os.clock() - start
+		local progress = math.clamp(
+			elapsed / duration,
+			0,
+			1
+		)
+	
+		render(math.floor(progress * #message))
+		renderUpdates(
+			math.floor(progress * #updatesMessage)
+		)
+	
+		task.wait(0.07)
+	until os.clock() - start >= duration
+	
+	-- FULL TEXT REVEALED AT 9 SECONDS
+	render(#message)
+	renderUpdates(#updatesMessage)
+	
+	-- HOLD FINISHED TEXT BRIEFLY
+	task.wait(holdDuration)
+	
+	-- FADE OUT
+	glowTween:Cancel()
+	
+	TweenService:Create(
+		purpleGlow,
+		TweenInfo.new(fadeDuration),
+		{
+			Transparency = 1
+		}
+	):Play()
+	
+	local vanish = TweenInfo.new(
+		fadeDuration,
+		Enum.EasingStyle.Quad,
+		Enum.EasingDirection.In
+	)
+	
+	TweenService:Create(
+		frame,
+		vanish,
+		{
+			Position = UDim2.new(0.04, 0, 0.015, -12)
+		}
+	):Play()
+	
+	TweenService:Create(
+		label,
+		vanish,
+		{
+			TextTransparency = 1,
+			TextStrokeTransparency = 1
+		}
+	):Play()
+	
+	TweenService:Create(
+		updates,
+		vanish,
+		{
+			TextTransparency = 1,
+			TextStrokeTransparency = 1
+		}
+	):Play()
+	
+	task.wait(fadeDuration + 0.05)
+	
+	-- KEEP SOUND ALIVE IF IT HAS NOT FINISHED
+	if sound and sound.IsPlaying then
+		sound.Parent = game:GetService("SoundService")
+		sound.Ended:Once(function()
+			sound:Destroy()
+		end)
+	end
+	
+	frame:Destroy()
 	
 end
-coroutine.wrap(RKFGBV_fake_script)()
-local function MXFZG_fake_script() -- Fps.FpsOriginalScript 
+coroutine.wrap(UHBFFGW_fake_script)()
+local function LJCX_fake_script() -- Fps.FpsOriginalScript 
 	local script = Instance.new('LocalScript', Fps)
 
 	local RunService = game:GetService("RunService")
@@ -3111,8 +3284,8 @@ local function MXFZG_fake_script() -- Fps.FpsOriginalScript
 		end)
 	
 end
-coroutine.wrap(MXFZG_fake_script)()
-local function HVGLFWD_fake_script() -- Ping.PingOriginalScript 
+coroutine.wrap(LJCX_fake_script)()
+local function BFZBOCL_fake_script() -- Ping.PingOriginalScript 
 	local script = Instance.new('LocalScript', Ping)
 
 	local RunService = game:GetService("RunService")
@@ -3121,8 +3294,8 @@ local function HVGLFWD_fake_script() -- Ping.PingOriginalScript
 		end)
 	
 end
-coroutine.wrap(HVGLFWD_fake_script)()
-local function IFGPAM_fake_script() -- y0ungDareMenuv45.KeyboardShortcuts 
+coroutine.wrap(BFZBOCL_fake_script)()
+local function KSRFF_fake_script() -- y0ungDareMenuv45.KeyboardShortcuts 
 	local script = Instance.new('LocalScript', y0ungDareMenuv45)
 
 	local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
@@ -3217,8 +3390,8 @@ local function IFGPAM_fake_script() -- y0ungDareMenuv45.KeyboardShortcuts
 				end)
 	
 end
-coroutine.wrap(IFGPAM_fake_script)()
-local function UTLXJH_fake_script() -- y0ungDareMenuv45.MainScript 
+coroutine.wrap(KSRFF_fake_script)()
+local function DXHC_fake_script() -- y0ungDareMenuv45.MainScript 
 	local script = Instance.new('LocalScript', y0ungDareMenuv45)
 
 	-- y0ungDare Fly - respawn-safe LocalScript
@@ -3360,8 +3533,8 @@ local function UTLXJH_fake_script() -- y0ungDareMenuv45.MainScript
 	end
 	
 end
-coroutine.wrap(UTLXJH_fake_script)()
-local function RFEFTTE_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q 
+coroutine.wrap(DXHC_fake_script)()
+local function ZZPA_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q 
 	local script = Instance.new('LocalScript', y0ungDareMenuv45)
 
 	local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
@@ -3420,4 +3593,4 @@ local function RFEFTTE_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q
 		end)
 	
 end
-coroutine.wrap(RFEFTTE_fake_script)()
+coroutine.wrap(ZZPA_fake_script)()
