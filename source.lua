@@ -716,6 +716,14 @@ InfoButton.TextXAlignment = Enum.TextXAlignment.Left
 
 WelcomeBanner.Name = "WelcomeBanner"
 WelcomeBanner.Parent = y0ungDareMenuv45
+
+-- Digital typing sound for the 9-second welcome animation
+local DigitalTextSound = Instance.new("Sound")
+DigitalTextSound.Name = "DigitalTextSound"
+DigitalTextSound.SoundId = "rbxassetid://93876122474729"
+DigitalTextSound.Volume = 1
+DigitalTextSound.Looped = false
+DigitalTextSound.Parent = WelcomeBanner
 WelcomeBanner.BackgroundColor3 = Color3.fromRGB(14, 12, 29)
 WelcomeBanner.BackgroundTransparency = 1.000
 WelcomeBanner.BorderSizePixel = 0
