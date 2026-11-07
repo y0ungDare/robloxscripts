@@ -12,7 +12,7 @@ local GetAllGuns = Instance.new("TextButton")
 local SpeedRun = Instance.new("TextButton")
 local TaseBypass = Instance.new("TextButton")
 local FPSPingToggle = Instance.new("TextButton")
-local ArmoryTP = Instance.new("TextButton")
+local TargetSelector = Instance.new("TextButton")
 local TextButton = Instance.new("TextButton")
 local fly = Instance.new("TextButton")
 local DarkOverlay = Instance.new("Frame")
@@ -175,21 +175,21 @@ FPSPingToggle.TextSize = 17.000
 FPSPingToggle.TextWrapped = true
 FPSPingToggle.TextXAlignment = Enum.TextXAlignment.Left
 
-ArmoryTP.Name = "ArmoryTP"
-ArmoryTP.Parent = Frame
-ArmoryTP.AnchorPoint = Vector2.new(0.5, 0.5)
-ArmoryTP.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
-ArmoryTP.BackgroundTransparency = 0.160
-ArmoryTP.BorderColor3 = Color3.fromRGB(170, 0, 255)
-ArmoryTP.BorderSizePixel = 0
-ArmoryTP.Position = UDim2.new(0, 140, 0, 179)
-ArmoryTP.Size = UDim2.new(1, -16, 0, 20)
-ArmoryTP.Font = Enum.Font.SourceSansBold
-ArmoryTP.Text = "Teleport: Armory"
-ArmoryTP.TextColor3 = Color3.fromRGB(0, 255, 255)
-ArmoryTP.TextSize = 17.000
-ArmoryTP.TextWrapped = true
-ArmoryTP.TextXAlignment = Enum.TextXAlignment.Left
+TargetSelector.Name = "TargetSelector"
+TargetSelector.Parent = Frame
+TargetSelector.AnchorPoint = Vector2.new(0.5, 0.5)
+TargetSelector.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+TargetSelector.BackgroundTransparency = 0.160
+TargetSelector.BorderColor3 = Color3.fromRGB(170, 0, 255)
+TargetSelector.BorderSizePixel = 0
+TargetSelector.Position = UDim2.new(0, 140, 0, 179)
+TargetSelector.Size = UDim2.new(1, -16, 0, 20)
+TargetSelector.Font = Enum.Font.SourceSansBold
+TargetSelector.Text = "TargetSelector"
+TargetSelector.TextColor3 = Color3.fromRGB(0, 255, 255)
+TargetSelector.TextSize = 17.000
+TargetSelector.TextWrapped = true
+TargetSelector.TextXAlignment = Enum.TextXAlignment.Left
 
 TextButton.Parent = Frame
 TextButton.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
@@ -199,7 +199,7 @@ TextButton.BorderSizePixel = 0
 TextButton.Position = UDim2.new(0, 8, 0, 189)
 TextButton.Size = UDim2.new(1, -16, 0, 20)
 TextButton.Font = Enum.Font.SourceSansBold
-TextButton.Text = "Aimbot (X)"
+TextButton.Text = "Aimbot"
 TextButton.TextColor3 = Color3.fromRGB(0, 255, 255)
 TextButton.TextSize = 17.000
 TextButton.TextWrapped = true
@@ -776,7 +776,7 @@ Ping.TextWrapped = true
 
 -- Scripts:
 
-local function AAWROX_fake_script() -- LanguageToggle.LanguageController_Edit_Here 
+local function FDLLTO_fake_script() -- LanguageToggle.LanguageController_Edit_Here 
 	local script = Instance.new('LocalScript', LanguageToggle)
 
 	-- Language controller: English, Spanish, French, Japanese, Simplified Chinese, German.
@@ -880,8 +880,8 @@ local function AAWROX_fake_script() -- LanguageToggle.LanguageController_Edit_He
 	updateSpeedCaption()
 	
 end
-coroutine.wrap(AAWROX_fake_script)()
-local function LKVG_fake_script() -- SpeedRun.SpeedController 
+coroutine.wrap(FDLLTO_fake_script)()
+local function TJKFG_fake_script() -- SpeedRun.SpeedController 
 	local script = Instance.new('LocalScript', SpeedRun)
 
 	-- Speed Run: put this LocalScript inside your existing TextButton.
@@ -938,8 +938,8 @@ local function LKVG_fake_script() -- SpeedRun.SpeedController
 	updateButton()
 	
 end
-coroutine.wrap(LKVG_fake_script)()
-local function PQPSMNX_fake_script() -- TaseBypass.TaserBypassToggleLogic 
+coroutine.wrap(TJKFG_fake_script)()
+local function OMDMZ_fake_script() -- TaseBypass.TaserBypassToggleLogic 
 	local script = Instance.new('LocalScript', TaseBypass)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1054,8 +1054,8 @@ local function PQPSMNX_fake_script() -- TaseBypass.TaserBypassToggleLogic
 				]]
 	
 end
-coroutine.wrap(PQPSMNX_fake_script)()
-local function MFNIND_fake_script() -- FPSPingToggle.ToggleController 
+coroutine.wrap(OMDMZ_fake_script)()
+local function KDNFBQ_fake_script() -- FPSPingToggle.ToggleController 
 	local script = Instance.new('LocalScript', FPSPingToggle)
 
 	local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
@@ -1080,21 +1080,8 @@ local function MFNIND_fake_script() -- FPSPingToggle.ToggleController
 		update()
 	
 end
-coroutine.wrap(MFNIND_fake_script)()
-local function CFXA_fake_script() -- ArmoryTP.armory 
-	local script = Instance.new('LocalScript', ArmoryTP)
-
-	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-	
-			-- Original PrisonBreaker V1.2 Crim Base teleport, unchanged.
-			script.Parent.MouseButton1Down:Connect(function()
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(822.67, 99.49, 2264.41)
-			end)
-	
-end
-coroutine.wrap(CFXA_fake_script)()
-local function DZFPMU_fake_script() -- AutoPilot.AutoPilotController 
+coroutine.wrap(KDNFBQ_fake_script)()
+local function ABDRKO_fake_script() -- AutoPilot.AutoPilotController 
 	local script = Instance.new('LocalScript', AutoPilot)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1167,8 +1154,8 @@ local function DZFPMU_fake_script() -- AutoPilot.AutoPilotController
 				print("Auto Pilot GUI ready")
 	
 end
-coroutine.wrap(DZFPMU_fake_script)()
-local function ZNIUI_fake_script() -- SpinBot.SpinController 
+coroutine.wrap(ABDRKO_fake_script)()
+local function OKNR_fake_script() -- SpinBot.SpinController 
 	local script = Instance.new('LocalScript', SpinBot)
 
 	-- y0ungDare Spin Bot - keeps the ON/OFF setting across respawns.
@@ -1260,8 +1247,8 @@ local function ZNIUI_fake_script() -- SpinBot.SpinController
 	updateButton()
 	
 end
-coroutine.wrap(ZNIUI_fake_script)()
-local function MZPQDQQ_fake_script() -- XRayVision.XRayController 
+coroutine.wrap(OKNR_fake_script)()
+local function TPNPSQO_fake_script() -- XRayVision.XRayController 
 	local script = Instance.new('LocalScript', XRayVision)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1333,8 +1320,8 @@ local function MZPQDQQ_fake_script() -- XRayVision.XRayController
 				updateButton()
 	
 end
-coroutine.wrap(MZPQDQQ_fake_script)()
-local function AFAFQLB_fake_script() -- WallEsp.client 
+coroutine.wrap(TPNPSQO_fake_script)()
+local function DARKZR_fake_script() -- WallEsp.client 
 	local script = Instance.new('LocalScript', WallEsp)
 
 	-- y0ungDare Wall ESP + HugBug-style Skeleton ESP
@@ -1658,8 +1645,8 @@ local function AFAFQLB_fake_script() -- WallEsp.client
 	end)
 	
 end
-coroutine.wrap(AFAFQLB_fake_script)()
-local function VWWJBA_fake_script() -- aurakill.AuraKillController 
+coroutine.wrap(DARKZR_fake_script)()
+local function BJBBVT_fake_script() -- aurakill.AuraKillController 
 	local script = Instance.new('LocalScript', aurakill)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1741,8 +1728,8 @@ local function VWWJBA_fake_script() -- aurakill.AuraKillController
 				end)
 	
 end
-coroutine.wrap(VWWJBA_fake_script)()
-local function CYVTA_fake_script() -- RGBTextToggle.RGBTextController 
+coroutine.wrap(BJBBVT_fake_script)()
+local function UVRA_fake_script() -- RGBTextToggle.RGBTextController 
 	local script = Instance.new('LocalScript', RGBTextToggle)
 
 	-- y0ungDare RGB Text Toggle
@@ -1821,8 +1808,8 @@ local function CYVTA_fake_script() -- RGBTextToggle.RGBTextController
 	end)
 	
 end
-coroutine.wrap(CYVTA_fake_script)()
-local function MPLTNXV_fake_script() -- SetSpawnPoint.TeleportScript 
+coroutine.wrap(UVRA_fake_script)()
+local function GNFVZG_fake_script() -- SetSpawnPoint.TeleportScript 
 	local script = Instance.new('LocalScript', SetSpawnPoint)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1846,8 +1833,8 @@ local function MPLTNXV_fake_script() -- SetSpawnPoint.TeleportScript
 				end)
 	
 end
-coroutine.wrap(MPLTNXV_fake_script)()
-local function TOCT_fake_script() -- TeleportToSpawn.TeleportScript 
+coroutine.wrap(GNFVZG_fake_script)()
+local function SOND_fake_script() -- TeleportToSpawn.TeleportScript 
 	local script = Instance.new('LocalScript', TeleportToSpawn)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -1872,8 +1859,8 @@ local function TOCT_fake_script() -- TeleportToSpawn.TeleportScript
 				end)
 	
 end
-coroutine.wrap(TOCT_fake_script)()
-local function NAGN_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
+coroutine.wrap(SOND_fake_script)()
+local function ZTHQVR_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
 	local script = Instance.new('LocalScript', FlyingCarsToggle)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2017,8 +2004,8 @@ local function NAGN_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyControll
 				script.Destroying:Connect(_95021a957be8)
 	
 end
-coroutine.wrap(NAGN_fake_script)()
-local function SDPDNFJ_fake_script() -- removedoors.RemoveDoorsToggle 
+coroutine.wrap(ZTHQVR_fake_script)()
+local function PXFVS_fake_script() -- removedoors.RemoveDoorsToggle 
 	local script = Instance.new('LocalScript', removedoors)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2081,8 +2068,8 @@ local function SDPDNFJ_fake_script() -- removedoors.RemoveDoorsToggle
 				UpdateButton()
 	
 end
-coroutine.wrap(SDPDNFJ_fake_script)()
-local function SLKSWF_fake_script() -- InfoPopup.ClosePopup 
+coroutine.wrap(PXFVS_fake_script)()
+local function MAKCE_fake_script() -- InfoPopup.ClosePopup 
 	local script = Instance.new('LocalScript', InfoPopup)
 
 	local popup = script.Parent
@@ -2092,8 +2079,8 @@ local function SLKSWF_fake_script() -- InfoPopup.ClosePopup
 	end)
 	
 end
-coroutine.wrap(SLKSWF_fake_script)()
-local function LJEXEL_fake_script() -- Frame.HighGraphicsLogic 
+coroutine.wrap(MAKCE_fake_script)()
+local function MJRVEL_fake_script() -- Frame.HighGraphicsLogic 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2161,8 +2148,8 @@ local function LJEXEL_fake_script() -- Frame.HighGraphicsLogic
 			refresh()
 	
 end
-coroutine.wrap(LJEXEL_fake_script)()
-local function PDKXLHM_fake_script() -- Frame.HoverSelectionAnimation 
+coroutine.wrap(MJRVEL_fake_script)()
+local function IFYGP_fake_script() -- Frame.HoverSelectionAnimation 
 	local script = Instance.new('LocalScript', Frame)
 
 	local TextButton = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('TextButton', true)
@@ -2210,8 +2197,8 @@ local function PDKXLHM_fake_script() -- Frame.HoverSelectionAnimation
 		end
 	
 end
-coroutine.wrap(PDKXLHM_fake_script)()
-local function AAGII_fake_script() -- Frame.DragFrame 
+coroutine.wrap(IFYGP_fake_script)()
+local function FENFUSZ_fake_script() -- Frame.DragFrame 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2261,8 +2248,8 @@ local function AAGII_fake_script() -- Frame.DragFrame
 				dragify(Frame)
 	
 end
-coroutine.wrap(AAGII_fake_script)()
-local function KRPCKHP_fake_script() -- Frame.GUIController 
+coroutine.wrap(FENFUSZ_fake_script)()
+local function HGWIR_fake_script() -- Frame.GUIController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2338,8 +2325,8 @@ local function KRPCKHP_fake_script() -- Frame.GUIController
 				    updatePullButton()
 	
 end
-coroutine.wrap(KRPCKHP_fake_script)()
-local function GJUZJLX_fake_script() -- Frame.AntiAFKController 
+coroutine.wrap(HGWIR_fake_script)()
+local function WXOQFCP_fake_script() -- Frame.AntiAFKController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2387,8 +2374,8 @@ local function GJUZJLX_fake_script() -- Frame.AntiAFKController
 				updateButton()
 	
 end
-coroutine.wrap(GJUZJLX_fake_script)()
-local function DFUQE_fake_script() -- Frame.ChatController 
+coroutine.wrap(WXOQFCP_fake_script)()
+local function MJUO_fake_script() -- Frame.ChatController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2441,8 +2428,8 @@ local function DFUQE_fake_script() -- Frame.ChatController
 				refresh()
 	
 end
-coroutine.wrap(DFUQE_fake_script)()
-local function OKZN_fake_script() -- Frame.OriginalNoclipController 
+coroutine.wrap(MJUO_fake_script)()
+local function NZFJYLE_fake_script() -- Frame.OriginalNoclipController 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2585,8 +2572,8 @@ local function OKZN_fake_script() -- Frame.OriginalNoclipController
 				refresh()
 	
 end
-coroutine.wrap(OKZN_fake_script)()
-local function CVQKHA_fake_script() -- Frame.InfoToggle 
+coroutine.wrap(NZFJYLE_fake_script)()
+local function TVTQ_fake_script() -- Frame.InfoToggle 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2610,158 +2597,84 @@ local function CVQKHA_fake_script() -- Frame.InfoToggle
 				end)
 	
 end
-coroutine.wrap(CVQKHA_fake_script)()
-local function LFEL_fake_script() -- Frame.Aimbot 
+coroutine.wrap(TVTQ_fake_script)()
+local function QHLQE_fake_script() -- Frame.OpenDexPlusPlus 
 	local script = Instance.new('LocalScript', Frame)
 
-	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-	local TextButton = y0ungDareMenuv42:WaitForChild("Frame"):WaitForChild("TextButton")
+	-- Dex++ original release loader, launched by the editable button.
+	-- Requires an environment providing loadstring and game:HttpGet.
+	-- Standard Roblox Studio LocalScripts do not provide those executor APIs.
+	local button = script.Parent:WaitForChild("OpenDexPlusPlus")
+	local busy = false
 	
-	local uis = game:GetService("UserInputService")
-	local rs = game:GetService("RunService")
-	local players = game:GetService("Players")
+	-- Popup appears only when the Dex loader reports an error.
+	local gui = button:FindFirstAncestorOfClass("ScreenGui")
+	local popup = Instance.new("Frame")
+	popup.Name = "DexFailurePopup"
+	popup.AnchorPoint = Vector2.new(0.5, 0.5)
+	popup.Position = UDim2.fromScale(0.5, 0.5)
+	popup.Size = UDim2.new(0, 350, 0, 145)
+	popup.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	popup.BorderSizePixel = 2
+	popup.BorderColor3 = Color3.fromRGB(170, 85, 255)
+	popup.Visible = false
+	popup.ZIndex = 50
+	popup.Parent = gui
 	
-	local player = players.LocalPlayer
-	local mouse = player:GetMouse()
-	local camera = workspace.CurrentCamera
+	local corner = Instance.new("UICorner")
+	corner.CornerRadius = UDim.new(0, 9)
+	corner.Parent = popup
 	
-	local textbutton = script.Parent:WaitForChild("TextButton")
+	local message = Instance.new("TextLabel")
+	message.Name = "Message"
+	message.BackgroundTransparency = 1
+	message.Position = UDim2.new(0, 14, 0, 12)
+	message.Size = UDim2.new(1, -28, 0, 78)
+	message.Font = Enum.Font.SourceSansBold
+	message.TextSize = 20
+	message.TextWrapped = true
+	message.TextColor3 = Color3.fromRGB(255, 0, 0)
+	message.Text = "Failed to open Dex Explorer++\nKeep your executor open and attached for Dex to work."
+	message.ZIndex = 51
+	message.Parent = popup
 	
-	local aimbotEnabled = false
-	local go = false
-	
-	-- Automatic Team Check
-	local function isEnemy(plr)
-		if plr == player then
-			return false
-		end
-	
-		-- Ignore teammates
-		if not player.Neutral and not plr.Neutral then
-			if player.Team == plr.Team then
-				return false
-			end
-		end
-	
-		return true
-	end
-	
-	-- Toggle Aimbot (GUI Button Only)
-	local function toggle()
-		aimbotEnabled = not aimbotEnabled
-	
-		if not aimbotEnabled then
-			go = false
-		end
-	
-		textbutton.BackgroundColor3 =
-			aimbotEnabled
-			and Color3.fromRGB(0, 255, 0)
-			or Color3.fromRGB(0, 0, 0)
-	
-		textbutton.Text =
-			aimbotEnabled and "Aimbot: ON" or "Aimbot: OFF"
-	end
-	
-	-- GUI Button
-	textbutton.MouseButton1Click:Connect(toggle)
-	
-	-- Right Mouse Button Controls
-	uis.InputBegan:Connect(function(input, proc)
-		if proc then return end
-		if not aimbotEnabled then return end
-	
-		if input.UserInputType == Enum.UserInputType.MouseButton2 then
-			go = true
-		end
+	local dismiss = Instance.new("TextButton")
+	dismiss.Name = "Dismiss"
+	dismiss.Position = UDim2.new(0.5, -55, 1, -44)
+	dismiss.Size = UDim2.new(0, 110, 0, 30)
+	dismiss.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	dismiss.TextColor3 = Color3.new(1, 1, 1)
+	dismiss.Font = Enum.Font.SourceSansBold
+	dismiss.TextSize = 18
+	dismiss.Text = "OK"
+	dismiss.ZIndex = 51
+	dismiss.Parent = popup
+	dismiss.MouseButton1Click:Connect(function()
+		popup.Visible = false
 	end)
 	
-	uis.InputEnded:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton2 then
-			go = false
+	button.MouseButton1Click:Connect(function()
+		if busy then return end
+		busy = true
+		local oldText = button.Text
+		button.Text = "Loading Dex Explorer++"
+	
+		local success, err = pcall(function()
+			loadstring(game:HttpGet("https://github.com/AZYsGithub/DexPlusPlus/releases/latest/download/out.lua"))()
+		end)
+	
+		if not success then
+			warn("Dex++ could not launch: " .. tostring(err))
+			popup.Visible = true
 		end
+	
+		button.Text = oldText
+		busy = false
 	end)
-	
-	-- Main Aimbot
-	rs.RenderStepped:Connect(function()
-		if not aimbotEnabled or not go then return end
-	
-		local target = nil
-		local x = math.huge
-	
-		camera = workspace.CurrentCamera
-		if not camera then return end
-	
-		for _, plr in players:GetPlayers() do
-	
-			-- Automatically ignore teammates
-			if isEnemy(plr) then
-	
-				local character = plr.Character
-	
-				if character then
-					local humanoid = character:FindFirstChildOfClass("Humanoid")
-					local head = character:FindFirstChild("Head")
-	
-					if head and humanoid and humanoid.Health > 0 then
-	
-						local pos, screen =
-							camera:WorldToViewportPoint(head.Position)
-	
-						if screen then
-							local origin = camera.CFrame.Position
-							local direction = head.Position - origin
-	
-							local p = RaycastParams.new()
-							p.FilterType = Enum.RaycastFilterType.Exclude
-							p.FilterDescendantsInstances =
-								player.Character and {player.Character} or {}
-	
-							local result =
-								workspace:Raycast(origin, direction, p)
-	
-							-- Wall Check
-							if result and result.Instance then
-								if not result.Instance:IsDescendantOf(character) then
-									continue
-								end
-							end
-	
-							local mousePos =
-								Vector2.new(mouse.X, mouse.Y)
-	
-							local targetPos =
-								Vector2.new(pos.X, pos.Y)
-	
-							local distance =
-								(mousePos - targetPos).Magnitude
-	
-							if distance < x then
-								x = distance
-								target = head
-							end
-						end
-					end
-				end
-			end
-		end
-	
-		-- Aim at closest enemy
-		if target then
-			camera.CFrame = CFrame.lookAt(
-				camera.CFrame.Position,
-				target.Position
-			)
-		end
-	end)
-	
-	-- Starting button appearance
-	textbutton.Text = "Aimbot: OFF"
-	textbutton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 	
 end
-coroutine.wrap(LFEL_fake_script)()
-local function BBEYYAW_fake_script() -- Frame.GetAllGunsLogic 
+coroutine.wrap(QHLQE_fake_script)()
+local function HEMHSR_fake_script() -- Frame.GetAllGunsLogic 
 	local script = Instance.new('LocalScript', Frame)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -2846,84 +2759,167 @@ local function BBEYYAW_fake_script() -- Frame.GetAllGunsLogic
 			end)
 	
 end
-coroutine.wrap(BBEYYAW_fake_script)()
-local function OSRRR_fake_script() -- Frame.OpenDexPlusPlus 
+coroutine.wrap(HEMHSR_fake_script)()
+local function TSMN_fake_script() -- Frame.AimbotController 
 	local script = Instance.new('LocalScript', Frame)
 
-	-- Dex++ original release loader, launched by the editable button.
-	-- Requires an environment providing loadstring and game:HttpGet.
-	-- Standard Roblox Studio LocalScripts do not provide those executor APIs.
-	local button = script.Parent:WaitForChild("OpenDexPlusPlus")
-	local busy = false
+	-- y0ungDare Aimbot + multilingual target selector
+	-- Put this LocalScript under the ScreenGui containing Frame/TextButton,
+	-- Frame/TargetSelector and optionally Frame/LanguageToggle.
+	local Players = game:GetService("Players")
+	local UIS = game:GetService("UserInputService")
+	local RS = game:GetService("RunService")
+	local player = Players.LocalPlayer
+	local mouse = player:GetMouse()
 	
-	-- Popup appears only when the Dex loader reports an error.
-	local gui = button:FindFirstAncestorOfClass("ScreenGui")
-	local popup = Instance.new("Frame")
-	popup.Name = "DexFailurePopup"
-	popup.AnchorPoint = Vector2.new(0.5, 0.5)
-	popup.Position = UDim2.fromScale(0.5, 0.5)
-	popup.Size = UDim2.new(0, 350, 0, 145)
-	popup.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	popup.BorderSizePixel = 2
-	popup.BorderColor3 = Color3.fromRGB(170, 85, 255)
-	popup.Visible = false
-	popup.ZIndex = 50
-	popup.Parent = gui
+	local gui = script:FindFirstAncestorOfClass("ScreenGui") or script.Parent
+	local frame = gui:FindFirstChild("Frame") or gui
+	local button = frame:WaitForChild("TextButton")
+	local selector = frame:WaitForChild("TargetSelector")
+	local languageButton = frame:FindFirstChild("LanguageToggle")
 	
-	local corner = Instance.new("UICorner")
-	corner.CornerRadius = UDim.new(0, 9)
-	corner.Parent = popup
+	local enabled = false
+	local holdingRight = false
+	local modeIndex = 1
+	local languageIndex = 1
+	local modes = {"Original Aimbot", "Guards Only", "Criminals Only", "Inmates Only", "Everyone"}
 	
-	local message = Instance.new("TextLabel")
-	message.Name = "Message"
-	message.BackgroundTransparency = 1
-	message.Position = UDim2.new(0, 14, 0, 12)
-	message.Size = UDim2.new(1, -28, 0, 78)
-	message.Font = Enum.Font.SourceSansBold
-	message.TextSize = 20
-	message.TextWrapped = true
-	message.TextColor3 = Color3.fromRGB(255, 0, 0)
-	message.Text = "Failed to open Dex Explorer++\nKeep your executor open and attached for Dex to work."
-	message.ZIndex = 51
-	message.Parent = popup
+	-- Language order matches the supplied y0ungDare Menu v4.5 LanguageController.
+	local languages = {"English", "Español", "Français", "日本語", "中文（简体）", "Deutsch"}
+	local labels = {
+	    {"Original Aimbot", "Aimbot original", "Visée originale", "元の自動照準", "原版自动瞄准", "Original-Zielhilfe"},
+	    {"Guards Only", "Solo guardias", "Gardes uniquement", "警備員のみ", "仅狱警", "Nur Wachen"},
+	    {"Criminals Only", "Solo criminales", "Criminels uniquement", "犯罪者のみ", "仅罪犯", "Nur Kriminelle"},
+	    {"Inmates Only", "Solo reclusos", "Détenus uniquement", "囚人のみ", "仅囚犯", "Nur Insassen"},
+	    {"Everyone", "Todos", "Tout le monde", "全員", "所有人", "Alle"},
+	}
+	local targetPrefix = {"Target: ", "Objetivo: ", "Cible : ", "対象: ", "目标：", "Ziel: "}
+	local aimPrefix = {"Aimbot: ", "Apuntado: ", "Visée auto : ", "自動照準: ", "自动瞄准：", "Zielhilfe: "}
+	local onLabels = {"ON", "ACTIVADO", "ACTIVÉ", "オン", "开启", "AN"}
+	local offLabels = {"OFF", "DESACTIVADO", "DÉSACTIVÉ", "オフ", "关闭", "AUS"}
 	
-	local dismiss = Instance.new("TextButton")
-	dismiss.Name = "Dismiss"
-	dismiss.Position = UDim2.new(0.5, -55, 1, -44)
-	dismiss.Size = UDim2.new(0, 110, 0, 30)
-	dismiss.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-	dismiss.TextColor3 = Color3.new(1, 1, 1)
-	dismiss.Font = Enum.Font.SourceSansBold
-	dismiss.TextSize = 18
-	dismiss.Text = "OK"
-	dismiss.ZIndex = 51
-	dismiss.Parent = popup
-	dismiss.MouseButton1Click:Connect(function()
-		popup.Visible = false
-	end)
+	local function isEnemy(plr)
+	    if plr == player then return false end
+	    if not player.Neutral and not plr.Neutral then
+	        if player.Team == plr.Team then return false end
+	    end
+	    return true
+	end
+	
+	local function isTarget(plr)
+	    if plr == player then return false end
+	    local mode = modes[modeIndex]
+	    if mode == "Original Aimbot" then return isEnemy(plr) end
+	    if mode == "Everyone" then return true end
+	    local teamName = plr.Team and plr.Team.Name:lower() or ""
+	    if mode == "Guards Only" then
+	        return teamName:find("guard", 1, true) ~= nil
+	            or teamName:find("police", 1, true) ~= nil
+	            or teamName:find("cop", 1, true) ~= nil
+	    end
+	    if mode == "Criminals Only" then
+	        return teamName:find("crim", 1, true) ~= nil
+	            or teamName:find("mafia", 1, true) ~= nil
+	    end
+	    if mode == "Inmates Only" then
+	        return teamName:find("inmate", 1, true) ~= nil
+	            or teamName:find("prisoner", 1, true) ~= nil
+	    end
+	    return false
+	end
+	
+	local function refresh()
+	    button.Text = aimPrefix[languageIndex] .. (enabled and onLabels[languageIndex] or offLabels[languageIndex])
+	    button.BackgroundColor3 = enabled and Color3.fromRGB(0, 105, 50) or Color3.fromRGB(11, 8, 22)
+	    selector.Text = targetPrefix[languageIndex] .. labels[modeIndex][languageIndex] .. "  >"
+	end
 	
 	button.MouseButton1Click:Connect(function()
-		if busy then return end
-		busy = true
-		local oldText = button.Text
-		button.Text = "Loading Dex Explorer++"
-	
-		local success, err = pcall(function()
-			loadstring(game:HttpGet("https://github.com/AZYsGithub/DexPlusPlus/releases/latest/download/out.lua"))()
-		end)
-	
-		if not success then
-			warn("Dex++ could not launch: " .. tostring(err))
-			popup.Visible = true
-		end
-	
-		button.Text = oldText
-		busy = false
+	    enabled = not enabled
+	    if not enabled then holdingRight = false end
+	    refresh()
 	end)
 	
+	selector.MouseButton1Click:Connect(function()
+	    modeIndex = modeIndex % #modes + 1
+	    refresh()
+	end)
+	
+	-- Integrate with the existing v4.5 LanguageToggle button, without adding a second
+	-- MouseButton1Click handler that would cycle the language twice.
+	-- The existing language controller updates LanguageToggle.Text to "Language: <name>".
+	if languageButton then
+	    local function syncLanguage()
+	        local caption = languageButton.Text
+	        for i, name in ipairs(languages) do
+	            if caption:find(name, 1, true) then
+	                if languageIndex ~= i then
+	                    languageIndex = i
+	                    refresh()
+	                end
+	                return
+	            end
+	        end
+	    end
+	    languageButton.MouseButton1Click:Connect(function()
+	        languageIndex = languageIndex % #languages + 1
+	        languageButton.Text = "Language: " .. languages[languageIndex]
+	        refresh()
+	    end)
+	    languageButton:GetPropertyChangedSignal("Text"):Connect(syncLanguage)
+	    syncLanguage()
+	end
+	
+	UIS.InputBegan:Connect(function(input, processed)
+	    if processed or not enabled then return end
+	    if input.UserInputType == Enum.UserInputType.MouseButton2 then holdingRight = true end
+	end)
+	UIS.InputEnded:Connect(function(input)
+	    if input.UserInputType == Enum.UserInputType.MouseButton2 then holdingRight = false end
+	end)
+	
+	RS.RenderStepped:Connect(function()
+	    if not enabled or not holdingRight then return end
+	    local camera = workspace.CurrentCamera
+	    if not camera then return end
+	    local target, nearest = nil, math.huge
+	    for _, plr in ipairs(Players:GetPlayers()) do
+	        if isTarget(plr) then
+	            local character = plr.Character
+	            if character then
+	                local humanoid = character:FindFirstChildOfClass("Humanoid")
+	                local head = character:FindFirstChild("Head")
+	                if head and humanoid and humanoid.Health > 0 then
+	                    local pos, onScreen = camera:WorldToViewportPoint(head.Position)
+	                    if onScreen then
+	                        local origin = camera.CFrame.Position
+	                        local direction = head.Position - origin
+	                        local params = RaycastParams.new()
+	                        params.FilterType = Enum.RaycastFilterType.Exclude
+	                        params.FilterDescendantsInstances = player.Character and {player.Character} or {}
+	                        local hit = workspace:Raycast(origin, direction, params)
+	                        if not hit or hit.Instance:IsDescendantOf(character) then
+	                            local distance = (Vector2.new(mouse.X, mouse.Y) - Vector2.new(pos.X, pos.Y)).Magnitude
+	                            if distance < nearest then
+	                                nearest = distance
+	                                target = head
+	                            end
+	                        end
+	                    end
+	                end
+	            end
+	        end
+	    end
+	    if target then
+	        camera.CFrame = CFrame.lookAt(camera.CFrame.Position, target.Position)
+	    end
+	end)
+	
+	refresh()
+	
 end
-coroutine.wrap(OSRRR_fake_script)()
-local function ULRRA_fake_script() -- WelcomeBanner.WelcomeAnimation 
+coroutine.wrap(TSMN_fake_script)()
+local function RKFGBV_fake_script() -- WelcomeBanner.WelcomeAnimation 
 	local script = Instance.new('LocalScript', WelcomeBanner)
 
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
@@ -3105,8 +3101,8 @@ local function ULRRA_fake_script() -- WelcomeBanner.WelcomeAnimation
 			frame:Destroy()
 	
 end
-coroutine.wrap(ULRRA_fake_script)()
-local function ZYCEFKK_fake_script() -- Fps.FpsOriginalScript 
+coroutine.wrap(RKFGBV_fake_script)()
+local function MXFZG_fake_script() -- Fps.FpsOriginalScript 
 	local script = Instance.new('LocalScript', Fps)
 
 	local RunService = game:GetService("RunService")
@@ -3115,8 +3111,8 @@ local function ZYCEFKK_fake_script() -- Fps.FpsOriginalScript
 		end)
 	
 end
-coroutine.wrap(ZYCEFKK_fake_script)()
-local function IGAKSWS_fake_script() -- Ping.PingOriginalScript 
+coroutine.wrap(MXFZG_fake_script)()
+local function HVGLFWD_fake_script() -- Ping.PingOriginalScript 
 	local script = Instance.new('LocalScript', Ping)
 
 	local RunService = game:GetService("RunService")
@@ -3125,8 +3121,8 @@ local function IGAKSWS_fake_script() -- Ping.PingOriginalScript
 		end)
 	
 end
-coroutine.wrap(IGAKSWS_fake_script)()
-local function LEHN_fake_script() -- y0ungDareMenuv45.KeyboardShortcuts 
+coroutine.wrap(HVGLFWD_fake_script)()
+local function IFGPAM_fake_script() -- y0ungDareMenuv45.KeyboardShortcuts 
 	local script = Instance.new('LocalScript', y0ungDareMenuv45)
 
 	local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
@@ -3221,8 +3217,8 @@ local function LEHN_fake_script() -- y0ungDareMenuv45.KeyboardShortcuts
 				end)
 	
 end
-coroutine.wrap(LEHN_fake_script)()
-local function DPGZWZN_fake_script() -- y0ungDareMenuv45.MainScript 
+coroutine.wrap(IFGPAM_fake_script)()
+local function UTLXJH_fake_script() -- y0ungDareMenuv45.MainScript 
 	local script = Instance.new('LocalScript', y0ungDareMenuv45)
 
 	-- y0ungDare Fly - respawn-safe LocalScript
@@ -3364,8 +3360,8 @@ local function DPGZWZN_fake_script() -- y0ungDareMenuv45.MainScript
 	end
 	
 end
-coroutine.wrap(DPGZWZN_fake_script)()
-local function PADJH_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q 
+coroutine.wrap(UTLXJH_fake_script)()
+local function RFEFTTE_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q 
 	local script = Instance.new('LocalScript', y0ungDareMenuv45)
 
 	local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
@@ -3424,4 +3420,4 @@ local function PADJH_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q
 		end)
 	
 end
-coroutine.wrap(PADJH_fake_script)()
+coroutine.wrap(RFEFTTE_fake_script)()
