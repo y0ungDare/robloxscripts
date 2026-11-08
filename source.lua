@@ -61,7 +61,7 @@ y0ungDareMenuv45.Name = "y0ungDare Menu v4.5"
 y0ungDareMenuv45.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 y0ungDareMenuv45.ResetOnSpawn = false
 
--- UI sound effects: hover, click, and Q-key menu opening.
+-- UI sound effects: hover, click, and Q-key menu opening/closing.
 local SoundService = game:GetService("SoundService")
 local Debris = game:GetService("Debris")
 local function playMenuSound(assetId, volume)
@@ -3615,6 +3615,7 @@ local function ZZPA_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q
 		        tween.Completed:Wait()
 		        main.ClipsDescendants = false
 		    else
+		        playMenuSound(108567308245743, 0.85)
 		        main.ClipsDescendants = true
 		        local tween = TweenService:Create(main,
 		            TweenInfo.new(duration, Enum.EasingStyle.Quad, Enum.EasingDirection.In),
