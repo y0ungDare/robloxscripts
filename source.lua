@@ -773,6 +773,25 @@ Ping.TextColor3 = Color3.fromRGB(255, 255, 255)
 Ping.TextScaled = true
 Ping.TextWrapped = true
 
+-- Sound objects must exist before any controller starts.
+local function ensureSound(parent, name, id, volume)
+    local sound = parent:FindFirstChild(name)
+    if not sound or not sound:IsA("Sound") then
+        sound = Instance.new("Sound")
+        sound.Name = name
+        sound.Parent = parent
+    end
+    sound.SoundId = "rbxassetid://" .. id
+    sound.Volume = volume
+    sound.PlaybackSpeed = 1
+    sound.Looped = false
+    return sound
+end
+ensureSound(y0ungDareMenuv45, "ButtonClickSound", "83458378711611", 0.65)
+ensureSound(y0ungDareMenuv45, "ButtonHoverSound", "118956401981418", 0.35)
+ensureSound(y0ungDareMenuv45, "MenuOpenSound", "125165907326083", 0.7)
+ensureSound(WelcomeBanner, "DigitalTextSound", "93876122474729", 1)
+
 -- Scripts:
 
 local function XCVO_fake_script() -- LanguageToggle.LanguageController_Edit_Here 
@@ -3630,104 +3649,84 @@ local function VELAGV_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q
 	local script = Instance.new('LocalScript', y0ungDareMenuv45)
 
 	
-		local Frame = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('Frame', true)
-		local WelcomeBanner = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('WelcomeBanner', true)
-			-- Q toggles menu with a glitchy collapse / fade animation.
-			-- WelcomeBanner is deliberately untouched and remains visible.
-			local UIS = game:GetService("UserInputService")
-			local TweenService = game:GetService("TweenService")
-			local SoundService = game:GetService("SoundService")
-			local gui = script.Parent
-			local main = gui:WaitForChild("Frame")
-			local openSound = gui:WaitForChild("MenuOpenSound")
-			local originalSize = main.Size
-			local originalPosition = main.Position
-			local originalTransparency = main.BackgroundTransparency
-			local duration = 0.34
-			local busy = false
-		
-			main.Visible = false
-		
-			local function animate(open)
-			    if busy then return end
-			    busy = true
-			    if open then
-					openSound.TimePosition = 0
-					openSound:Play()
-			        main.Visible = true
-			        main.ClipsDescendants = true
-			        main.Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 0)
-			        main.Position = originalPosition + UDim2.fromOffset(0, -10)
-			        main.BackgroundTransparency = 0.45
-			        local tween = TweenService:Create(main,
-			            TweenInfo.new(duration, Enum.EasingStyle.Back, Enum.EasingDirection.Out),
-			            {Size = originalSize, Position = originalPosition,
-			             BackgroundTransparency = originalTransparency})
-			        tween:Play()
-			        tween.Completed:Wait()
-			        main.ClipsDescendants = false
-			    else
-			        main.ClipsDescendants = true
-			        local tween = TweenService:Create(main,
-			            TweenInfo.new(duration, Enum.EasingStyle.Quad, Enum.EasingDirection.In),
-			            {Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 0),
-			             Position = originalPosition + UDim2.fromOffset(0, -10),
-			             BackgroundTransparency = 0.65})
-			        tween:Play()
-			        tween.Completed:Wait()
-			        main.Visible = false
-			        main.Size = originalSize
-			        main.Position = originalPosition
-			        main.BackgroundTransparency = originalTransparency
-			        main.ClipsDescendants = false
-			    end
-			    busy = false
-			end
-		
-			UIS.InputBegan:Connect(function(input, processed)
-			    if processed or input.KeyCode ~= Enum.KeyCode.Q then return end
-			    task.spawn(animate, not main.Visible)
-			end)
-		
-	
-	
+
+local UIS = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local gui = script.Parent
+local main = gui:FindFirstChild("Frame")
+if not main then warn("y0ungDare: Frame missing") return end
+local originalSize = main.Size
+local originalPosition = main.Position
+local originalTransparency = main.BackgroundTransparency
+local duration = 0.34
+local busy = false
+main.Visible = false
+local function animate(open)
+    if busy then return end
+    busy = true
+    if open then
+        -- Never block menu opening on audio loading or playback.
+        local sound = gui:FindFirstChild("MenuOpenSound")
+        if sound and sound:IsA("Sound") then
+            task.spawn(function()
+                sound.TimePosition = 0
+                sound:Play()
+            end)
+        end
+        main.Visible = true
+        main.ClipsDescendants = true
+        main.Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 0)
+        main.Position = originalPosition + UDim2.fromOffset(0, -10)
+        main.BackgroundTransparency = 0.45
+        local tween = TweenService:Create(main, TweenInfo.new(duration, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Size = originalSize, Position = originalPosition, BackgroundTransparency = originalTransparency})
+        tween:Play()
+        tween.Completed:Wait()
+        main.ClipsDescendants = false
+    else
+        main.ClipsDescendants = true
+        local tween = TweenService:Create(main, TweenInfo.new(duration, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 0), Position = originalPosition + UDim2.fromOffset(0, -10), BackgroundTransparency = 0.65})
+        tween:Play()
+        tween.Completed:Wait()
+        main.Visible = false
+        main.Size = originalSize
+        main.Position = originalPosition
+        main.BackgroundTransparency = originalTransparency
+        main.ClipsDescendants = false
+    end
+    busy = false
+end
+UIS.InputBegan:Connect(function(input, processed)
+    if input.KeyCode ~= Enum.KeyCode.Q or UIS:GetFocusedTextBox() then return end
+    task.spawn(animate, not main.Visible)
+end)
+
 end
 coroutine.wrap(VELAGV_fake_script)()
 local function QLPFPYL_fake_script() -- y0ungDareMenuv45.ButtonSoundsController 
 	local script = Instance.new('LocalScript', y0ungDareMenuv45)
 
-	-- Editable hover/click sound controller for all menu TextButtons.
-	-- Hover and click audio objects live directly inside the ScreenGui.
-	local gui = script.Parent
-	local hoverSound = gui:WaitForChild("ButtonHoverSound")
-	local clickSound = gui:WaitForChild("ButtonClickSound")
-	local wired = {}
-	
-	local function play(sound)
-	    sound.TimePosition = 0
-	    sound:Play()
-	end
-	
-	local function attach(button)
-	    if not button:IsA("TextButton") or wired[button] then return end
-	    wired[button] = true
-	    button.MouseEnter:Connect(function()
-	        if button.Visible and button.Active then
-	            play(hoverSound)
-	        end
-	    end)
-	    button.Activated:Connect(function()
-	        play(clickSound)
-	    end)
-	    button.Destroying:Connect(function()
-	        wired[button] = nil
-	    end)
-	end
-	
-	for _, obj in ipairs(gui:GetDescendants()) do
-	    attach(obj)
-	end
-	gui.DescendantAdded:Connect(attach)
-	
+
+local gui = script.Parent
+local hoverSound = gui:FindFirstChild("ButtonHoverSound")
+local clickSound = gui:FindFirstChild("ButtonClickSound")
+local wired = {}
+local function play(sound)
+    if sound and sound:IsA("Sound") then
+        sound.TimePosition = 0
+        sound:Play()
+    end
+end
+local function attach(button)
+    if not button:IsA("TextButton") or wired[button] then return end
+    wired[button] = true
+    button.MouseEnter:Connect(function()
+        if button.Visible and button.Active then play(hoverSound) end
+    end)
+    button.Activated:Connect(function() play(clickSound) end)
+    button.Destroying:Connect(function() wired[button] = nil end)
+end
+for _, obj in ipairs(gui:GetDescendants()) do attach(obj) end
+gui.DescendantAdded:Connect(attach)
+
 end
 coroutine.wrap(QLPFPYL_fake_script)()
