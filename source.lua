@@ -3653,7 +3653,7 @@ local function ZZPA_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q
 		        tween.Completed:Wait()
 		        main.ClipsDescendants = false
 		    else
-		        playMenuSound(108567308245743, 0.85)
+		        playMenuSound(129698661879918, 0.85)
 		        main.ClipsDescendants = true
 		        local tween = TweenService:Create(main,
 		            TweenInfo.new(duration, Enum.EasingStyle.Quad, Enum.EasingDirection.In),
