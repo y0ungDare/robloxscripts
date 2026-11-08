@@ -80,7 +80,7 @@ local function attachButtonSounds(object)
     connectedSoundButtons[object] = true
     object.MouseEnter:Connect(function()
         if object.Visible and object.Active then
-            playMenuSound(118956401981418, 0.6)
+            playMenuSound(95090748395766, 0.6)
         end
     end)
     object.Activated:Connect(function()
@@ -3827,7 +3827,7 @@ end
 -- Plays on loop ONLY while the menu is visible (Q to toggle).
 -- ================================================================
 do
-    local MENU_MUSIC_ID = "rbxassetid://136748325980429"
+    local MENU_MUSIC_ID = "rbxassetid://126535715489846"
     local MENU_MUSIC_VOLUME = 0.35 -- Change volume here (0 to 1)
 
     local menuMusic = Instance.new("Sound")
