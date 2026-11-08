@@ -3639,7 +3639,7 @@ local function ZZPA_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q
 		    if busy then return end
 		    busy = true
 		    if open then
-		        playMenuSound(125165907326083, 0.85)
+		        playMenuSound(128098671468387, 0.85)
 		        main.Visible = true
 		        main.ClipsDescendants = true
 		        main.Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 0)
