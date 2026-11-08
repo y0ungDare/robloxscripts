@@ -773,6 +773,25 @@ Ping.TextColor3 = Color3.fromRGB(255, 255, 255)
 Ping.TextScaled = true
 Ping.TextWrapped = true
 
+-- Audio objects (editable in Studio)
+local function createMenuSound(parent, name, assetId, volume)
+    local sound = parent:FindFirstChild(name)
+    if not sound then
+        sound = Instance.new("Sound")
+        sound.Name = name
+        sound.Parent = parent
+    end
+    sound.SoundId = "rbxassetid://" .. assetId
+    sound.Volume = volume
+    sound.PlaybackSpeed = 1
+    sound.Looped = false
+    return sound
+end
+createMenuSound(y0ungDareMenuv45, "ButtonClickSound", "83458378711611", 0.65)
+createMenuSound(y0ungDareMenuv45, "ButtonHoverSound", "118956401981418", 0.35)
+createMenuSound(y0ungDareMenuv45, "MenuOpenSound", "125165907326083", 0.7)
+createMenuSound(WelcomeBanner, "DigitalTextSound", "93876122474729", 1)
+
 -- Scripts:
 
 local function SOTR_fake_script() -- LanguageToggle.LanguageController_Edit_Here 
@@ -3712,7 +3731,7 @@ local function FWKUDYP_fake_script() -- y0ungDareMenuv45.ButtonSoundsController
 	    if not button:IsA("TextButton") or wired[button] then return end
 	    wired[button] = true
 	    button.MouseEnter:Connect(function()
-	        if button.Visible and button.Active then
+	        if button.Visible and button:IsDescendantOf(gui) then
 	            play(hoverSound)
 	        end
 	    end)
