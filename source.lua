@@ -3640,3 +3640,114 @@ local function ZZPA_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q
 	
 end
 coroutine.wrap(ZZPA_fake_script)()
+
+-- ================================================================
+-- JIGGY-STYLE ANIMATED BACKGROUND (ADDED; ORIGINAL CODE ABOVE INTACT)
+-- Edit the settings below to customize the glitch animation.
+-- ================================================================
+do
+    local RunService = game:GetService("RunService")
+    local TweenService = game:GetService("TweenService")
+    local GLITCH_INTENSITY = 0.78 -- 0.0 to 1.0
+    local GLITCH_RATE = 0.055 -- seconds between animation updates
+    local STRIP_COUNT = 16
+    local PURPLE = Color3.fromRGB(175, 37, 255)
+    local CYAN = Color3.fromRGB(0, 240, 255)
+    local MAGENTA = Color3.fromRGB(255, 38, 158)
+
+    -- This effect is a separate editable container; it does not alter
+    -- existing button handlers, menu toggle logic, or menu audio.
+    local layer = Instance.new("Frame")
+    layer.Name = "JiggyGlitchBackground_EDIT_HERE"
+    layer.BackgroundTransparency = 1
+    layer.BorderSizePixel = 0
+    layer.Position = UDim2.fromScale(0, 0)
+    layer.Size = UDim2.fromScale(1, 1)
+    layer.ClipsDescendants = true
+    layer.ZIndex = 3
+    layer.Active = false
+    layer.Parent = Frame
+
+    local tint = Instance.new("Frame")
+    tint.Name = "PulsingPurpleTint"
+    tint.BackgroundColor3 = PURPLE
+    tint.BackgroundTransparency = 0.94
+    tint.BorderSizePixel = 0
+    tint.Size = UDim2.fromScale(1, 1)
+    tint.ZIndex = 3
+    tint.Active = false
+    tint.Parent = layer
+
+    local scanlines = {}
+    for i = 1, 30 do
+        local line = Instance.new("Frame")
+        line.Name = "Scanline_" .. i
+        line.BorderSizePixel = 0
+        line.BackgroundColor3 = (i % 3 == 0) and CYAN or PURPLE
+        line.BackgroundTransparency = 0.91
+        line.Position = UDim2.new(0, 0, (i - 1) / 30, 0)
+        line.Size = UDim2.new(1, 0, 0, 1)
+        line.ZIndex = 3
+        line.Active = false
+        line.Parent = layer
+        scanlines[i] = line
+    end
+
+    local strips = {}
+    for i = 1, STRIP_COUNT do
+        local strip = Instance.new("Frame")
+        strip.Name = "GlitchStrip_" .. i
+        strip.BorderSizePixel = 0
+        strip.BackgroundColor3 = CYAN
+        strip.BackgroundTransparency = 1
+        strip.Size = UDim2.fromOffset(60, 2)
+        strip.ZIndex = 3
+        strip.Active = false
+        strip.Parent = layer
+        strips[i] = strip
+    end
+
+    local randomizer = Random.new()
+    local elapsed = 0
+    local phase = 0
+    local lastVisible = false
+    local connection
+    connection = RunService.Heartbeat:Connect(function(dt)
+        if not layer.Parent or not Frame.Parent then
+            connection:Disconnect()
+            return
+        end
+        local visible = Frame.Visible
+        layer.Visible = visible
+        if not visible then
+            if lastVisible then
+                for _, strip in ipairs(strips) do strip.BackgroundTransparency = 1 end
+            end
+            lastVisible = false
+            elapsed = 0
+            return
+        end
+        lastVisible = true
+        phase += dt
+        tint.BackgroundTransparency = 0.94 + 0.035 * math.sin(phase * 5)
+        elapsed += dt
+        if elapsed < GLITCH_RATE then return end
+        elapsed = 0
+        for _, line in ipairs(scanlines) do
+            line.BackgroundTransparency = randomizer:NextNumber(0.87, 0.97)
+        end
+        for _, strip in ipairs(strips) do
+            if randomizer:NextNumber() < GLITCH_INTENSITY * 0.52 then
+                local width = randomizer:NextInteger(18, 280)
+                local height = randomizer:NextInteger(1, 6)
+                strip.Size = UDim2.fromOffset(width, height)
+                strip.Position = UDim2.new(0, randomizer:NextInteger(-35, 245), 0, randomizer:NextInteger(0, 637))
+                local colorIndex = randomizer:NextInteger(1, 3)
+                strip.BackgroundColor3 = (colorIndex == 1 and PURPLE) or (colorIndex == 2 and CYAN) or MAGENTA
+                strip.BackgroundTransparency = randomizer:NextNumber(0.32, 0.78)
+            else
+                strip.BackgroundTransparency = 1
+            end
+        end
+    end)
+end
