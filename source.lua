@@ -800,7 +800,7 @@ local function MREH_fake_script() -- LanguageToggle.LanguageController_Edit_Here
 	    ["TaseBypass"] = {"ANTI-TAZE", "ANTI-TASER", "ANTI-TASER", "テーザー防止", "防电击", "ANTI-TASER"},
 	    ["FPSPingToggle"] = {"FPS & Ping", "FPS y Ping", "FPS et Ping", "FPSとPing", "帧率与延迟", "FPS und Ping"},
 	    ["ArmoryTP"] = {"Teleport: Armory", "Teletransporte: Armería", "Téléporter : Armurerie", "武器庫へテレポート", "传送至军械库", "Teleport: Waffenkammer"},
-	    ["TextButton"] = {"Aimbot (X)", "Apuntado automático (X)", "Visée automatique (X)", "自動照準 (X)", "自动瞄准 (X)", "Zielhilfe (X)"},
+	    ["TextButton"] = {"Aimbot", "Apuntado automático", "Visée automatique", "自動照準", "自动瞄准", "Zielhilfe"},
 	    ["fly"] = {"Flying", "Volar", "Vol", "飛行", "飞行", "Fliegen"},
 	    ["Auto Pilot"] = {"Auto Pilot", "Piloto automático", "Pilote automatique", "自動操縦", "自动驾驶", "Autopilot"},
 	    ["Spin Bot"] = {"Spin Bot", "Giro automático", "Rotation auto", "自動回転", "自动旋转", "Drehmodus"},
