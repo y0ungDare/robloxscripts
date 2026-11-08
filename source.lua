@@ -514,7 +514,7 @@ Title.AnchorPoint = Vector2.new(0.5, 0.5)
 Title.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Title.BackgroundTransparency = 1.000
 Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Title.Position = UDim2.new(0.487500012, 0, 0.0162330382, 52)
+Title.Position = UDim2.new(0.487500012, 0, 0.0162330382, 48)
 Title.Size = UDim2.new(0, 125, 0, 13)
 Title.Font = Enum.Font.Unknown
 Title.Text = "By @y0ungdare"
@@ -818,6 +818,44 @@ for _, object in ipairs(y0ungDareMenuv45:GetDescendants()) do
     attachButtonSounds(object)
 end
 
+-- ================================================================
+-- JIGGY BO2 BUTTON APPEARANCE ONLY (EDITABLE)
+-- Original feature logic, RGB toggle, glitch effect, sounds and music
+-- remain unchanged. These settings apply to main-menu TextButtons.
+-- ================================================================
+do
+    local JIGGY_FONT = Enum.Font.RobotoCondensed -- closest built-in narrow BO2-style font
+    local JIGGY_TEXT_SIZE = 13
+    local JIGGY_TEXT_COLOR = Color3.fromRGB(1, 244, 253)
+    local JIGGY_STROKE_COLOR = Color3.fromRGB(10, 5, 25)
+    local JIGGY_ROW_COLOR = Color3.fromRGB(19, 9, 49)
+
+    local function styleJiggyButton(button)
+        if not button:IsA("TextButton") or button.Parent ~= Frame then return end
+        button.Font = JIGGY_FONT
+        button.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal) -- slightly bolder, same font family
+        button.TextSize = JIGGY_TEXT_SIZE
+        button.TextScaled = false
+        button.TextColor3 = JIGGY_TEXT_COLOR
+        button.TextStrokeColor3 = JIGGY_STROKE_COLOR
+        button.TextStrokeTransparency = 0.28
+        button.TextXAlignment = Enum.TextXAlignment.Left
+        button.TextYAlignment = Enum.TextYAlignment.Center
+        button.BackgroundColor3 = JIGGY_ROW_COLOR
+        button.BackgroundTransparency = 0.82 -- subtle BO2 transparent menu rows
+        button.BorderSizePixel = 0
+        button.AutoButtonColor = false
+        -- Keep the existing menu button positions and click hitboxes.
+        -- Ensure text sits above the decorative background/glitch layers.
+        button.ZIndex = 5
+    end
+
+    for _, child in ipairs(Frame:GetChildren()) do
+        styleJiggyButton(child)
+    end
+    Frame.ChildAdded:Connect(styleJiggyButton)
+end
+
 -- Scripts:
 
 local function MREH_fake_script() -- LanguageToggle.LanguageController_Edit_Here 
@@ -943,7 +981,7 @@ local function NWCJ_fake_script() -- SpeedRun.SpeedController
 	
 	local function updateButton()
 	    button.Text = enabled and "Speed: ON" or "Speed: OFF"
-	    button.TextColor3 = enabled and Color3.fromRGB(0, 255, 255) or Color3.fromRGB(0, 255, 255)
+	    button.TextColor3 = enabled and Color3.fromRGB(1, 244, 253) or Color3.fromRGB(1, 244, 253)
 	end
 	
 	local function applySpeed()
