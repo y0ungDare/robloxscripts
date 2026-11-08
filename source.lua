@@ -3647,10 +3647,9 @@ coroutine.wrap(ZZPA_fake_script)()
 -- ================================================================
 do
     local RunService = game:GetService("RunService")
-    local TweenService = game:GetService("TweenService")
-    local GLITCH_INTENSITY = 0.78 -- 0.0 to 1.0
-    local GLITCH_RATE = 0.055 -- seconds between animation updates
-    local STRIP_COUNT = 16
+    local GLITCH_INTENSITY = 0.70 -- 0.0 to 1.0
+    local GLITCH_RATE = 0.045 -- seconds between animation updates
+    local STRIP_COUNT = 20
     local PURPLE = Color3.fromRGB(175, 37, 255)
     local CYAN = Color3.fromRGB(0, 240, 255)
     local MAGENTA = Color3.fromRGB(255, 38, 158)
@@ -3679,13 +3678,13 @@ do
     tint.Parent = layer
 
     local scanlines = {}
-    for i = 1, 30 do
+    for i = 1, 38 do
         local line = Instance.new("Frame")
         line.Name = "Scanline_" .. i
         line.BorderSizePixel = 0
         line.BackgroundColor3 = (i % 3 == 0) and CYAN or PURPLE
-        line.BackgroundTransparency = 0.91
-        line.Position = UDim2.new(0, 0, (i - 1) / 30, 0)
+        line.BackgroundTransparency = 0.95
+        line.Position = UDim2.new(0, 0, (i - 1) / 38, 0)
         line.Size = UDim2.new(1, 0, 0, 1)
         line.ZIndex = 3
         line.Active = false
@@ -3706,6 +3705,31 @@ do
         strip.Parent = layer
         strips[i] = strip
     end
+
+    -- Extra moving light bands, still based on the original glitch-strip style.
+    local bands = {}
+    for i = 1, 4 do
+        local band = Instance.new("Frame")
+        band.Name = "SoftInterferenceBand_" .. i
+        band.BorderSizePixel = 0
+        band.BackgroundColor3 = i % 2 == 0 and CYAN or PURPLE
+        band.BackgroundTransparency = 0.97
+        band.Size = UDim2.new(1, 0, 0, i == 1 and 18 or 8)
+        band.ZIndex = 3
+        band.Active = false
+        band.Parent = layer
+        bands[i] = band
+    end
+
+    local edgeGlow = Instance.new("Frame")
+    edgeGlow.Name = "SoftPurpleEdgeGlow"
+    edgeGlow.BackgroundColor3 = PURPLE
+    edgeGlow.BackgroundTransparency = 0.92
+    edgeGlow.BorderSizePixel = 0
+    edgeGlow.Size = UDim2.new(0, 2, 1, 0)
+    edgeGlow.ZIndex = 3
+    edgeGlow.Active = false
+    edgeGlow.Parent = layer
 
     local randomizer = Random.new()
     local elapsed = 0
@@ -3729,22 +3753,30 @@ do
         end
         lastVisible = true
         phase += dt
+        for i, band in ipairs(bands) do
+            local progress = (phase * (0.055 + i * 0.018) + i / #bands) % 1
+            band.Position = UDim2.fromScale(0, progress)
+            band.BackgroundTransparency = 0.965 + 0.025 * math.sin(phase * (1.3 + i * 0.3))
+        end
+        edgeGlow.BackgroundTransparency = 0.92 + 0.055 * math.sin(phase * 3.2)
         tint.BackgroundTransparency = 0.94 + 0.035 * math.sin(phase * 5)
         elapsed += dt
         if elapsed < GLITCH_RATE then return end
         elapsed = 0
         for _, line in ipairs(scanlines) do
-            line.BackgroundTransparency = randomizer:NextNumber(0.87, 0.97)
+            line.BackgroundTransparency = randomizer:NextNumber(0.90, 0.985)
         end
+        -- Short bursts of static followed by quieter moments, like the first version.
+        local burst = randomizer:NextNumber() < 0.13
         for _, strip in ipairs(strips) do
-            if randomizer:NextNumber() < GLITCH_INTENSITY * 0.52 then
+            if randomizer:NextNumber() < GLITCH_INTENSITY * (burst and 0.85 or 0.35) then
                 local width = randomizer:NextInteger(18, 280)
-                local height = randomizer:NextInteger(1, 6)
+                local height = randomizer:NextInteger(1, 4)
                 strip.Size = UDim2.fromOffset(width, height)
                 strip.Position = UDim2.new(0, randomizer:NextInteger(-35, 245), 0, randomizer:NextInteger(0, 637))
                 local colorIndex = randomizer:NextInteger(1, 3)
                 strip.BackgroundColor3 = (colorIndex == 1 and PURPLE) or (colorIndex == 2 and CYAN) or MAGENTA
-                strip.BackgroundTransparency = randomizer:NextNumber(0.32, 0.78)
+                strip.BackgroundTransparency = randomizer:NextNumber(0.48, 0.85)
             else
                 strip.BackgroundTransparency = 1
             end
