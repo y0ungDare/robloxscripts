@@ -3751,3 +3751,33 @@ do
         end
     end)
 end
+
+-- ================================================================
+-- MENU BACKGROUND MUSIC (ADDED; ORIGINAL CODE ABOVE PRESERVED)
+-- Plays on loop ONLY while the menu is visible (Q to toggle).
+-- ================================================================
+do
+    local MENU_MUSIC_ID = "rbxassetid://136748325980429"
+    local MENU_MUSIC_VOLUME = 0.35 -- Change volume here (0 to 1)
+
+    local menuMusic = Instance.new("Sound")
+    menuMusic.Name = "y0ungDare_MenuBackgroundMusic_EDIT_HERE"
+    menuMusic.SoundId = MENU_MUSIC_ID
+    menuMusic.Volume = MENU_MUSIC_VOLUME
+    menuMusic.Looped = true
+    menuMusic.Parent = y0ungDareMenuv45
+
+    local function syncMenuMusic()
+        if Frame.Visible and y0ungDareMenuv45.Enabled then
+            if not menuMusic.IsPlaying then
+                menuMusic:Play()
+            end
+        else
+            menuMusic:Stop()
+        end
+    end
+
+    Frame:GetPropertyChangedSignal("Visible"):Connect(syncMenuMusic)
+    y0ungDareMenuv45:GetPropertyChangedSignal("Enabled"):Connect(syncMenuMusic)
+    syncMenuMusic()
+end
