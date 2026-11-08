@@ -3827,7 +3827,7 @@ end
 -- Plays on loop ONLY while the menu is visible (Q to toggle).
 -- ================================================================
 do
-    local MENU_MUSIC_ID = "rbxassetid://1846617664"
+    local MENU_MUSIC_ID = "rbxassetid://84947211065711"
     local MENU_MUSIC_VOLUME = 0.35 -- Change volume here (0 to 1)
 
     local menuMusic = Instance.new("Sound")
