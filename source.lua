@@ -61,6 +61,37 @@ y0ungDareMenuv45.Name = "y0ungDare Menu v4.5"
 y0ungDareMenuv45.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 y0ungDareMenuv45.ResetOnSpawn = false
 
+-- UI sound effects: hover, click, and Q-key menu opening.
+local SoundService = game:GetService("SoundService")
+local Debris = game:GetService("Debris")
+local function playMenuSound(assetId, volume)
+    local sound = Instance.new("Sound")
+    sound.Name = "y0ungDareUISound"
+    sound.SoundId = "rbxassetid://" .. tostring(assetId)
+    sound.Volume = volume or 0.7
+    sound.Parent = SoundService
+    sound:Play()
+    Debris:AddItem(sound, 8)
+end
+
+local connectedSoundButtons = {}
+local function attachButtonSounds(object)
+    if not object:IsA("GuiButton") or connectedSoundButtons[object] then return end
+    connectedSoundButtons[object] = true
+    object.MouseEnter:Connect(function()
+        if object.Visible and object.Active then
+            playMenuSound(118956401981418, 0.6)
+        end
+    end)
+    object.Activated:Connect(function()
+        playMenuSound(83458378711611, 0.75)
+    end)
+end
+
+y0ungDareMenuv45.DescendantAdded:Connect(attachButtonSounds)
+-- Existing buttons are connected after the GUI is constructed below.
+
+
 Frame.Parent = y0ungDareMenuv45
 Frame.AnchorPoint = Vector2.new(0.5, 0.5)
 Frame.BackgroundColor3 = Color3.fromRGB(12, 10, 19)
@@ -781,6 +812,11 @@ Ping.Text = "Ping: ..."
 Ping.TextColor3 = Color3.fromRGB(255, 255, 255)
 Ping.TextScaled = true
 Ping.TextWrapped = true
+
+-- Connect hover and click sounds for every existing button (including popup buttons).
+for _, object in ipairs(y0ungDareMenuv45:GetDescendants()) do
+    attachButtonSounds(object)
+end
 
 -- Scripts:
 
@@ -3565,6 +3601,7 @@ local function ZZPA_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q
 		    if busy then return end
 		    busy = true
 		    if open then
+		        playMenuSound(125165907326083, 0.85)
 		        main.Visible = true
 		        main.ClipsDescendants = true
 		        main.Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 0)
