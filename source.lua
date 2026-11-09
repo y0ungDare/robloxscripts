@@ -3092,7 +3092,7 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 	-- WELCOME LABEL APPEARANCE
 	label.RichText = true
 	label.TextTransparency = 1
-	label.TextStrokeColor3 = Color3.fromRGB(67, 18, 68)
+	label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 	label.TextStrokeTransparency = 1
 	label.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
 	label.TextXAlignment = Enum.TextXAlignment.Center
@@ -3131,7 +3131,7 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 		TweenInfo.new(0.3),
 		{
 			TextTransparency = 0,
-			TextStrokeTransparency = 0.18
+			TextStrokeTransparency = 0.22
 		}
 	):Play()
 	
@@ -3313,14 +3313,113 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 	
 	task.wait(fadeDuration + 0.05)
 	
-	-- KEEP SOUND ALIVE IF IT HAS NOT FINISHED
+	-- HOST MESSAGE: run after the welcome message has completely disappeared.
+	-- Reuse the same frame, label, decoding timing and DigitalTextSound.
+	local hostMessage = "Your host is: " .. player.Name
+	local hostColors = {}
+	local hostPrefix = "Your host is: "
+	for i = 1, #hostMessage do
+		hostColors[i] = (i <= #hostPrefix) and "#00EDFF" or "#ED56D9"
+	end
+	local function renderHost(revealed)
+		local parts = {}
+		for i = 1, #hostMessage do
+			local original = hostMessage:sub(i, i)
+			local shown = original
+			if i > revealed and not original:match("%s") then
+				local j = rng:NextInteger(1, #charset)
+				shown = charset:sub(j, j)
+			end
+			parts[#parts + 1] = '<font color="' .. hostColors[i] .. '">' .. safe(shown) .. '</font>'
+		end
+		label.Text = table.concat(parts)
+	end
+
+	frame.Position = UDim2.new(0.04, 0, 0.035, 0)
+	label.TextTransparency = 1
+	label.TextStrokeTransparency = 1
+	welcomeGlow.Transparency = 1
+	renderHost(0)
+	TweenService:Create(label, TweenInfo.new(0.3), {
+		TextTransparency = 0,
+		TextStrokeTransparency = 0.22
+	}):Play()
+	TweenService:Create(welcomeGlow, TweenInfo.new(0.3), {Transparency = 0.22}):Play()
+
+	if sound and sound.SoundId ~= "" then
+		sound.Parent = frame
+		sound.TimePosition = 0
+		sound:Play()
+	end
+	local hostStart = os.clock()
+	repeat
+		local progress = math.clamp((os.clock() - hostStart) / duration, 0, 1)
+		renderHost(math.floor(progress * #hostMessage))
+		task.wait(0.07)
+	until os.clock() - hostStart >= duration
+	renderHost(#hostMessage)
+	task.wait(holdDuration)
+	TweenService:Create(welcomeGlow, TweenInfo.new(fadeDuration), {Transparency = 1}):Play()
+	TweenService:Create(label, TweenInfo.new(fadeDuration), {
+		TextTransparency = 1,
+		TextStrokeTransparency = 1
+	}):Play()
+	task.wait(fadeDuration + 0.05)
+
+	-- CONTROLS MESSAGE: display after the host message has fully faded out.
+	-- Same position, glitch reveal, sound, glow, and timing as the previous messages.
+	local controlsMessage = "press Q to open the menu. press Q to close the menu."
+	local controlsColor = "#39FF14" -- vivid neon green, matching the reference screenshot
+	local function renderControls(revealed)
+		local parts = {}
+		for i = 1, #controlsMessage do
+			local original = controlsMessage:sub(i, i)
+			local shown = original
+			if i > revealed and not original:match("%s") then
+				local j = rng:NextInteger(1, #charset)
+				shown = charset:sub(j, j)
+			end
+			parts[#parts + 1] = '<font color="' .. controlsColor .. '">' .. safe(shown) .. '</font>'
+		end
+		label.Text = table.concat(parts)
+	end
+
+	frame.Position = UDim2.new(0.04, 0, 0.035, 0)
+	label.TextTransparency = 1
+	label.TextStrokeTransparency = 1
+	welcomeGlow.Transparency = 1
+	renderControls(0)
+	TweenService:Create(label, TweenInfo.new(0.3), {
+		TextTransparency = 0,
+		TextStrokeTransparency = 0.22
+	}):Play()
+	TweenService:Create(welcomeGlow, TweenInfo.new(0.3), {Transparency = 0.22}):Play()
+
+	if sound and sound.SoundId ~= "" then
+		sound.Parent = frame
+		sound.TimePosition = 0
+		sound:Play()
+	end
+	local controlsStart = os.clock()
+	repeat
+		local progress = math.clamp((os.clock() - controlsStart) / duration, 0, 1)
+		renderControls(math.floor(progress * #controlsMessage))
+		task.wait(0.07)
+	until os.clock() - controlsStart >= duration
+	renderControls(#controlsMessage)
+	task.wait(holdDuration)
+	TweenService:Create(welcomeGlow, TweenInfo.new(fadeDuration), {Transparency = 1}):Play()
+	TweenService:Create(label, TweenInfo.new(fadeDuration), {
+		TextTransparency = 1,
+		TextStrokeTransparency = 1
+	}):Play()
+	task.wait(fadeDuration + 0.05)
+
+	-- Do not cut off the typing sound if its tail is still playing.
 	if sound and sound.IsPlaying then
 		sound.Parent = game:GetService("SoundService")
-		sound.Ended:Once(function()
-			sound:Destroy()
-		end)
+		sound.Ended:Once(function() sound:Destroy() end)
 	end
-	
 	frame:Destroy()
 	
 end
@@ -3856,19 +3955,22 @@ do
     end
     line(Version, 60, 23, 17, CYAN, Enum.Font.SourceSansBold)
     line(Creator, 86, 23, 15, WHITE, Enum.Font.SourceSans)
-    line(Description, 130, 22, 15, PINK, Enum.Font.SourceSansBold)
-    line(ControlLine1, 162, 23, 14, WHITE, Enum.Font.SourceSans)
-    line(ControlLine2, 190, 23, 14, WHITE, Enum.Font.SourceSans)
-    line(ControlLine4, 237, 22, 15, PINK, Enum.Font.SourceSansBold)
-    line(ControlLine5, 269, 22, 14, WHITE, Enum.Font.SourceSans)
-    line(ControlLine6, 297, 22, 14, WHITE, Enum.Font.SourceSans)
-    line(ControlLine7, 325, 22, 14, WHITE, Enum.Font.SourceSans)
-    line(SocialHeading, 384, 23, 15, PINK, Enum.Font.SourceSansBold)
-    line(Instagram, 419, 31, 13, CYAN, Enum.Font.SourceSans)
-    line(YouTube, 461, 46, 12, CYAN, Enum.Font.SourceSans)
+    -- Remove the About the Menu section and its two instruction lines.
+    Description.Visible = false
+    ControlLine1.Visible = false
+    ControlLine2.Visible = false
+
+    -- Move remaining sections upward into a clean, evenly spaced layout.
+    line(ControlLine4, 133, 24, 15, PINK, Enum.Font.SourceSansBold)
+    line(ControlLine5, 169, 23, 14, WHITE, Enum.Font.SourceSans)
+    line(ControlLine6, 199, 23, 14, WHITE, Enum.Font.SourceSans)
+    line(ControlLine7, 229, 23, 14, WHITE, Enum.Font.SourceSans)
+    line(SocialHeading, 286, 24, 15, PINK, Enum.Font.SourceSansBold)
+    line(Instagram, 324, 32, 13, CYAN, Enum.Font.SourceSans)
+    line(YouTube, 370, 48, 12, CYAN, Enum.Font.SourceSans)
 
     -- Subtle separators give the information a clear hierarchy.
-    for _, y in ipairs({49, 120, 226, 371}) do
+    for _, y in ipairs({49, 120, 273}) do
         local separator = Instance.new("Frame")
         separator.Name = "InfoSeparator"
         separator.Parent = page
