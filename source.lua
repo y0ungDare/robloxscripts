@@ -3415,6 +3415,73 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 	}):Play()
 	task.wait(fadeDuration + 0.05)
 
+	-- INSTAGRAM MESSAGE: appears after the Q instructions have disappeared.
+	-- Neon cyan/pink lettering based on the reference, with the same glitch sound and timing.
+	local instagramMessage = "@y0ungdare on IG!"
+	local instagramColors = {
+		"#FFFFFF", -- @
+		"#00EDFF", -- y
+		"#FF59DC", -- 0
+		"#00EDFF", -- u
+		"#00EDFF", -- n
+		"#FF59DC", -- g
+		"#00EDFF", -- d
+		"#FF59DC", -- a
+		"#00EDFF", -- r
+		"#FF59DC", -- e
+		"#FF59DC", -- space
+		"#FF59DC", -- o
+		"#FF59DC", -- n
+		"#FF59DC", -- space
+		"#FF59DC", -- I
+		"#FF59DC", -- G
+		"#FF59DC"  -- !
+	}
+	local function renderInstagram(revealed)
+		local parts = {}
+		for i = 1, #instagramMessage do
+			local original = instagramMessage:sub(i, i)
+			local shown = original
+			if i > revealed and not original:match("%s") then
+				local j = rng:NextInteger(1, #charset)
+				shown = charset:sub(j, j)
+			end
+			parts[#parts + 1] = '<font color="' .. (instagramColors[i] or "#FF59DC") .. '">' .. safe(shown) .. '</font>'
+		end
+		label.Text = table.concat(parts)
+	end
+
+	frame.Position = UDim2.new(0.04, 0, 0.035, 0)
+	label.TextTransparency = 1
+	label.TextStrokeTransparency = 1
+	welcomeGlow.Transparency = 1
+	renderInstagram(0)
+	TweenService:Create(label, TweenInfo.new(0.3), {
+		TextTransparency = 0,
+		TextStrokeTransparency = 0.22
+	}):Play()
+	TweenService:Create(welcomeGlow, TweenInfo.new(0.3), {Transparency = 0.22}):Play()
+
+	if sound and sound.SoundId ~= "" then
+		sound.Parent = frame
+		sound.TimePosition = 0
+		sound:Play()
+	end
+	local instagramStart = os.clock()
+	repeat
+		local progress = math.clamp((os.clock() - instagramStart) / duration, 0, 1)
+		renderInstagram(math.floor(progress * #instagramMessage))
+		task.wait(0.07)
+	until os.clock() - instagramStart >= duration
+	renderInstagram(#instagramMessage)
+	task.wait(holdDuration)
+	TweenService:Create(welcomeGlow, TweenInfo.new(fadeDuration), {Transparency = 1}):Play()
+	TweenService:Create(label, TweenInfo.new(fadeDuration), {
+		TextTransparency = 1,
+		TextStrokeTransparency = 1
+	}):Play()
+	task.wait(fadeDuration + 0.05)
+
 	-- Do not cut off the typing sound if its tail is still playing.
 	if sound and sound.IsPlaying then
 		sound.Parent = game:GetService("SoundService")
