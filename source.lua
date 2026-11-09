@@ -243,6 +243,23 @@ TargetSelector.TextSize = 17.000
 TargetSelector.TextWrapped = true
 TargetSelector.TextXAlignment = Enum.TextXAlignment.Left
 
+-- Messages occupies the unused main-menu row between FPS & Ping and Aimbot Settings.
+local MessagesButton = Instance.new("TextButton")
+MessagesButton.Name = "MessagesButton"
+MessagesButton.Parent = Frame
+MessagesButton.AnchorPoint = Vector2.new(0.5, 0.5)
+MessagesButton.Position = UDim2.new(0, 140, 0, 179)
+MessagesButton.Size = UDim2.new(1, -16, 0, 20)
+MessagesButton.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+MessagesButton.BackgroundTransparency = 0.16
+MessagesButton.BorderSizePixel = 0
+MessagesButton.Font = Enum.Font.RobotoCondensed
+MessagesButton.Text = "Messages"
+MessagesButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+MessagesButton.TextSize = 13
+MessagesButton.TextXAlignment = Enum.TextXAlignment.Left
+MessagesButton.ZIndex = 5
+
 TextButton.Parent = Frame
 TextButton.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
 TextButton.BackgroundTransparency = 0.160
@@ -251,7 +268,7 @@ TextButton.BorderSizePixel = 0
 TextButton.Position = UDim2.new(0, 8, 0, 189)
 TextButton.Size = UDim2.new(1, -16, 0, 20)
 TextButton.Font = Enum.Font.SourceSansBold
-TextButton.Text = "Aimbot"
+TextButton.Text = "Aimbot Settings"
 TextButton.TextColor3 = Color3.fromRGB(0, 255, 255)
 TextButton.TextSize = 17.000
 TextButton.TextWrapped = true
@@ -892,6 +909,153 @@ do
     Frame.ChildAdded:Connect(styleJiggyButton)
 end
 
+-- Messages page: replay the four original startup messages on demand.
+do
+    local Players = game:GetService("Players")
+    local player = Players.LocalPlayer
+    local page = Instance.new("Frame")
+    page.Name = "MessagesPage"
+    page.Parent = Frame
+    page.Size = UDim2.fromScale(1, 1)
+    page.BackgroundColor3 = Color3.fromRGB(12, 9, 22)
+    page.BorderSizePixel = 0
+    page.Visible = false
+    page.ZIndex = 50
+
+    local heading = Instance.new("TextLabel")
+    heading.Name = "MessagesHeading"
+    heading.Parent = page
+    heading.Position = UDim2.fromOffset(14, 12)
+    heading.Size = UDim2.new(1, -100, 0, 30)
+    heading.BackgroundTransparency = 1
+    heading.Text = "Messages"
+    heading.Font = Enum.Font.RobotoCondensed
+    heading.TextSize = 20
+    heading.TextColor3 = Color3.fromRGB(1, 244, 253)
+    heading.TextXAlignment = Enum.TextXAlignment.Left
+    heading.ZIndex = 52
+
+    local function makeButton(name, caption, y)
+        local b = Instance.new("TextButton")
+        b.Name = name
+        b.Parent = page
+        b.Position = UDim2.fromOffset(8, y)
+        b.Size = UDim2.new(1, -16, 0, 20)
+        b.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+        b.BackgroundTransparency = 0.82
+        b.BorderSizePixel = 0
+        b.AutoButtonColor = false
+        b.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        b.TextColor3 = Color3.fromRGB(1, 244, 253)
+        b.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+        b.TextStrokeTransparency = 0.28
+        b.TextXAlignment = Enum.TextXAlignment.Left
+        b.TextYAlignment = Enum.TextYAlignment.Center
+        b.TextSize = 13
+        b.Text = caption
+        b.ZIndex = 52
+        return b
+    end
+    local back = Instance.new("TextButton")
+    back.Name = "MessagesBack"
+    back.Parent = page
+    back.Position = UDim2.new(1, -77, 0, 14)
+    back.Size = UDim2.fromOffset(65, 26)
+    back.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
+    back.TextColor3 = Color3.fromRGB(0, 255, 255)
+    back.Font = Enum.Font.SourceSansBold
+    back.TextSize = 15
+    back.Text = "< BACK"
+    back.ZIndex = 52
+
+    -- Four compact main-menu-style rows, with the same teal hover selection marker.
+    local captions = {"Welcome Message", "Host Message", "Menu Controls", "Instagram Message"}
+    local hoverTween = game:GetService("TweenService")
+    local hoverInfo = TweenInfo.new(0.09, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+    for i, caption in ipairs(captions) do
+        local choice = makeButton("ReplayMessage" .. i, caption, 79 + (i - 1) * 20)
+        local baseColor = choice.BackgroundColor3
+        local marker = Instance.new("Frame")
+        marker.Name = "JiggySelectionMarker"
+        marker.BorderSizePixel = 0
+        marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+        marker.BackgroundTransparency = 1
+        marker.Position = UDim2.fromOffset(0, 0)
+        marker.Size = UDim2.new(0, 5, 1, 0)
+        marker.ZIndex = choice.ZIndex + 1
+        marker.Parent = choice
+        local outline = Instance.new("UIStroke")
+        outline.Name = "JiggySelectionOutline"
+        outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+        outline.Color = Color3.fromRGB(174, 70, 255)
+        outline.Thickness = 1.5
+        outline.Transparency = 1
+        outline.Parent = choice
+        local function setHover(active)
+            hoverTween:Create(choice, hoverInfo, {
+                BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or baseColor
+            }):Play()
+            hoverTween:Create(marker, hoverInfo, {
+                BackgroundTransparency = active and 0 or 1
+            }):Play()
+            hoverTween:Create(outline, hoverInfo, {
+                Transparency = active and 0 or 1
+            }):Play()
+        end
+        choice.MouseEnter:Connect(function() setHover(true) end)
+        choice.MouseLeave:Connect(function() setHover(false) end)
+        page:GetPropertyChangedSignal("Visible"):Connect(function()
+            if not page.Visible then setHover(false) end
+        end)
+        choice.Activated:Connect(function()
+            if shared.y0ungDareReplayStartupMessage then
+                shared.y0ungDareReplayStartupMessage(i)
+            end
+        end)
+    end
+
+    local previousVisibility = {}
+    local glitchLayer
+    local function moveGlitch(toPage)
+        local layer = Frame:FindFirstChild("JiggyGlitchBackground_EDIT_HERE")
+        if not layer then return end
+        glitchLayer = layer
+        layer.Parent = toPage
+        layer.ZIndex = 51
+        for _, part in ipairs(layer:GetDescendants()) do
+            if part:IsA("GuiObject") then part.ZIndex = 51 end
+        end
+    end
+    local function restoreGlitch()
+        if not glitchLayer then return end
+        glitchLayer.Parent = Frame
+        glitchLayer.ZIndex = 3
+        for _, part in ipairs(glitchLayer:GetDescendants()) do
+            if part:IsA("GuiObject") then part.ZIndex = 3 end
+        end
+        glitchLayer = nil
+    end
+    MessagesButton.Activated:Connect(function()
+        if page.Visible then return end
+        for _, child in ipairs(Frame:GetChildren()) do
+            if child ~= page and child:IsA("GuiButton") then
+                previousVisibility[child] = child.Visible
+                child.Visible = false
+            end
+        end
+        moveGlitch(page)
+        page.Visible = true
+    end)
+    back.Activated:Connect(function()
+        page.Visible = false
+        restoreGlitch()
+        for child, wasVisible in pairs(previousVisibility) do
+            if child.Parent then child.Visible = wasVisible end
+            previousVisibility[child] = nil
+        end
+    end)
+end
+
 -- Scripts:
 
 local function MREH_fake_script() -- LanguageToggle.LanguageController_Edit_Here 
@@ -910,7 +1074,7 @@ local function MREH_fake_script() -- LanguageToggle.LanguageController_Edit_Here
 	    ["TaseBypass"] = {"ANTI-TAZE", "ANTI-TASER", "ANTI-TASER", "テーザー防止", "防电击", "ANTI-TASER"},
 	    ["FPSPingToggle"] = {"FPS & Ping", "FPS y Ping", "FPS et Ping", "FPSとPing", "帧率与延迟", "FPS und Ping"},
 	    ["ArmoryTP"] = {"Teleport: Armory", "Teletransporte: Armería", "Téléporter : Armurerie", "武器庫へテレポート", "传送至军械库", "Teleport: Waffenkammer"},
-	    ["TextButton"] = {"Aimbot", "Apuntado automático", "Visée automatique", "自動照準", "自动瞄准", "Zielhilfe"},
+	    ["TextButton"] = {"Aimbot Settings", "Configuración de apuntado", "Paramètres de visée", "エイム設定", "自瞄设置", "Zielhilfe-Einstellungen"},
 	    ["fly"] = {"Flying", "Volar", "Vol", "飛行", "飞行", "Fliegen"},
 	    ["Auto Pilot"] = {"Auto Pilot", "Piloto automático", "Pilote automatique", "自動操縦", "自动驾驶", "Autopilot"},
 	    ["Spin Bot"] = {"Spin Bot", "Giro automático", "Rotation auto", "自動回転", "自动旋转", "Drehmodus"},
@@ -2963,21 +3127,191 @@ local function OACKUI_fake_script() -- Frame.AimbotController
 	local button = frame:WaitForChild("TextButton")
 	local selector = frame:WaitForChild("TargetSelector")
 	local languageButton = frame:FindFirstChild("LanguageToggle")
+
+	-- Combined Aimbot Settings page: main-menu button opens the page only.
+	local settingsPage = Instance.new("Frame")
+	settingsPage.Name = "AimbotSettingsPage"
+	settingsPage.Parent = frame
+	settingsPage.Size = UDim2.fromScale(1, 1)
+	settingsPage.Position = UDim2.fromScale(0, 0)
+	settingsPage.BackgroundColor3 = Color3.fromRGB(12, 9, 22)
+	settingsPage.BorderSizePixel = 0
+	settingsPage.ZIndex = 30
+	settingsPage.Visible = false
+
+	local settingsHeading = Instance.new("TextLabel")
+	settingsHeading.Parent = settingsPage
+	settingsHeading.BackgroundTransparency = 1
+	settingsHeading.Position = UDim2.fromOffset(12, 13)
+	settingsHeading.Size = UDim2.new(1, -100, 0, 32)
+	settingsHeading.Font = Enum.Font.RobotoCondensed
+	settingsHeading.Text = "Aimbot Settings"
+	settingsHeading.TextColor3 = Color3.fromRGB(1, 244, 253)
+	settingsHeading.TextSize = 20
+	settingsHeading.TextXAlignment = Enum.TextXAlignment.Left
+	settingsHeading.ZIndex = 33
+
+	local back = Instance.new("TextButton")
+	back.Parent = settingsPage
+	back.Name = "AimbotSettingsBack"
+	back.Position = UDim2.new(1, -78, 0, 15)
+	back.Size = UDim2.fromOffset(66, 28)
+	back.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
+	back.TextColor3 = Color3.fromRGB(0, 255, 255)
+	back.Font = Enum.Font.SourceSansBold
+	back.TextSize = 15
+	back.Text = "< BACK"
+	back.ZIndex = 33
+
+	local toggle = Instance.new("TextButton")
+	toggle.Name = "AimbotToggle"
+	toggle.Parent = settingsPage
+	toggle.Position = UDim2.fromOffset(8, 79)
+	toggle.Size = UDim2.new(1, -16, 0, 20)
+	toggle.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
+	toggle.TextColor3 = Color3.fromRGB(0, 255, 255)
+	toggle.Font = Enum.Font.SourceSansBold
+	toggle.TextSize = 17
+	toggle.ZIndex = 33
+
+	-- Independent team check switch (uses the original isEnemy team filtering).
+	local teamCheckButton = Instance.new("TextButton")
+	teamCheckButton.Name = "TeamCheckToggle"
+	teamCheckButton.Parent = settingsPage
+	teamCheckButton.Position = UDim2.fromOffset(8, 119)
+	teamCheckButton.Size = UDim2.new(1, -16, 0, 20)
+	teamCheckButton.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
+	teamCheckButton.TextColor3 = Color3.fromRGB(0, 255, 255)
+	teamCheckButton.Font = Enum.Font.SourceSansBold
+	teamCheckButton.TextSize = 17
+	teamCheckButton.ZIndex = 33
+
+	-- Reuse the original selector and its existing logic, inside the settings page.
+	selector.Parent = settingsPage
+	selector.AnchorPoint = Vector2.new(0, 0)
+	selector.Position = UDim2.fromOffset(8, 99)
+	selector.Size = UDim2.new(1, -16, 0, 20)
+	selector.ZIndex = 33
+	-- Match the main menu's compact, transparent BO2 button rows.
+	for _, rowButton in ipairs({toggle, selector, teamCheckButton}) do
+		rowButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+		rowButton.BackgroundTransparency = 0.82
+		rowButton.BorderSizePixel = 0
+		rowButton.AutoButtonColor = false
+		rowButton.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+		rowButton.TextSize = 13
+		rowButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+		rowButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+		rowButton.TextStrokeTransparency = 0.28
+		rowButton.TextXAlignment = Enum.TextXAlignment.Left
+		rowButton.TextYAlignment = Enum.TextYAlignment.Center
+	end
+
+
+	-- Give the Aimbot Settings rows the same teal hover cursor as main-menu rows.
+	-- The selector already received its cursor in Frame.HoverSelectionAnimation.
+	local hoverTween = game:GetService("TweenService")
+	local hoverInfo = TweenInfo.new(0.09, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+	for _, rowButton in ipairs({toggle, teamCheckButton}) do
+		local baseColor = rowButton.BackgroundColor3
+		local marker = Instance.new("Frame")
+		marker.Name = "JiggySelectionMarker"
+		marker.BorderSizePixel = 0
+		marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+		marker.BackgroundTransparency = 1
+		marker.Position = UDim2.fromOffset(0, 0)
+		marker.Size = UDim2.new(0, 5, 1, 0)
+		marker.ZIndex = rowButton.ZIndex + 1
+		marker.Parent = rowButton
+		local outline = Instance.new("UIStroke")
+		outline.Name = "JiggySelectionOutline"
+		outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+		outline.Color = Color3.fromRGB(174, 70, 255)
+		outline.Thickness = 1.5
+		outline.Transparency = 1
+		outline.Parent = rowButton
+		local function setHover(active)
+			hoverTween:Create(rowButton, hoverInfo, {
+				BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or baseColor
+			}):Play()
+			hoverTween:Create(marker, hoverInfo, {
+				BackgroundTransparency = active and 0 or 1
+			}):Play()
+			hoverTween:Create(outline, hoverInfo, {
+				Transparency = active and 0 or 1
+			}):Play()
+		end
+		rowButton.MouseEnter:Connect(function() setHover(true) end)
+		rowButton.MouseLeave:Connect(function() setHover(false) end)
+		settingsPage:GetPropertyChangedSignal("Visible"):Connect(function()
+			if not settingsPage.Visible then setHover(false) end
+		end)
+	end
+
+
+	local previousVisibility = {}
+	local glitchLayer
+	local function moveGlitch()
+		local layer = frame:FindFirstChild("JiggyGlitchBackground_EDIT_HERE")
+		if not layer then return end
+		glitchLayer = layer
+		layer.Parent = settingsPage
+		layer.ZIndex = 31
+		for _, part in ipairs(layer:GetDescendants()) do
+			if part:IsA("GuiObject") then part.ZIndex = 31 end
+		end
+	end
+	local function restoreGlitch()
+		if not glitchLayer then return end
+		glitchLayer.Parent = frame
+		glitchLayer.ZIndex = 3
+		for _, part in ipairs(glitchLayer:GetDescendants()) do
+			if part:IsA("GuiObject") then part.ZIndex = 3 end
+		end
+		glitchLayer = nil
+	end
+	local function openSettings()
+		if settingsPage.Visible then return end
+		for _, child in ipairs(frame:GetChildren()) do
+			if child ~= settingsPage and child:IsA("GuiButton") then
+				previousVisibility[child] = child.Visible
+				child.Visible = false
+			end
+		end
+		moveGlitch()
+		settingsPage.Visible = true
+	end
+	local function closeSettings()
+		settingsPage.Visible = false
+		restoreGlitch()
+		local playerPicker = settingsPage:FindFirstChild("PlayerTargetPicker")
+		if playerPicker then playerPicker.Visible = false end
+		for child, visible in pairs(previousVisibility) do
+			if child.Parent then child.Visible = visible end
+			previousVisibility[child] = nil
+		end
+	end
+	button.Activated:Connect(openSettings)
+	back.Activated:Connect(closeSettings)
+	-- All existing aimbot enable/disable code now operates on this inner toggle.
+	button = toggle
 	
 	local enabled = false
 	local holdingRight = false
 	local modeIndex = 1
 	local languageIndex = 1
-	local modes = {"Original Aimbot", "Guards Only", "Criminals Only", "Inmates Only", "Everyone"}
+	local selectedPlayerUserId = nil
+	local teamCheckEnabled = true
+	local modes = {"Guards Only", "Criminals Only", "Inmates Only", "Everyone", "Choose Player"}
 	
 	-- Language order matches the supplied y0ungDare Menu v4.5 LanguageController.
 	local languages = {"English", "Español", "Français", "日本語", "中文（简体）", "Deutsch"}
 	local labels = {
-	    {"Original Aimbot", "Aimbot original", "Visée originale", "元の自動照準", "原版自动瞄准", "Original-Zielhilfe"},
-	    {"Guards Only", "Solo guardias", "Gardes uniquement", "警備員のみ", "仅狱警", "Nur Wachen"},
+		    {"Guards Only", "Solo guardias", "Gardes uniquement", "警備員のみ", "仅狱警", "Nur Wachen"},
 	    {"Criminals Only", "Solo criminales", "Criminels uniquement", "犯罪者のみ", "仅罪犯", "Nur Kriminelle"},
 	    {"Inmates Only", "Solo reclusos", "Détenus uniquement", "囚人のみ", "仅囚犯", "Nur Insassen"},
 	    {"Everyone", "Todos", "Tout le monde", "全員", "所有人", "Alle"},
+	    {"Choose Player", "Elegir jugador", "Choisir un joueur", "プレイヤーを選択", "选择玩家", "Spieler wählen"},
 	}
 	local targetPrefix = {"Target: ", "Objetivo: ", "Cible : ", "対象: ", "目标：", "Ziel: "}
 	local aimPrefix = {"Aimbot: ", "Apuntado: ", "Visée auto : ", "自動照準: ", "自动瞄准：", "Zielhilfe: "}
@@ -2994,9 +3328,10 @@ local function OACKUI_fake_script() -- Frame.AimbotController
 	
 	local function isTarget(plr)
 	    if plr == player then return false end
-	    local mode = modes[modeIndex]
-	    if mode == "Original Aimbot" then return isEnemy(plr) end
-	    if mode == "Everyone" then return true end
+	    if teamCheckEnabled and not isEnemy(plr) then return false end
+    local mode = modes[modeIndex]
+		    if mode == "Everyone" then return true end
+	    if mode == "Choose Player" then return selectedPlayerUserId ~= nil and plr.UserId == selectedPlayerUserId end
 	    local teamName = plr.Team and plr.Team.Name:lower() or ""
 	    if mode == "Guards Only" then
 	        return teamName:find("guard", 1, true) ~= nil
@@ -3014,10 +3349,115 @@ local function OACKUI_fake_script() -- Frame.AimbotController
 	    return false
 	end
 	
-	local function refresh()
+	-- In-game player picker: live player list, searchable, and single-target selection.
+	local picker = Instance.new("Frame")
+	picker.Name = "PlayerTargetPicker"
+	picker.Parent = settingsPage
+	picker.AnchorPoint = Vector2.new(0, 0)
+	-- Open directly below the Team Check toggle, inside Aimbot Settings.
+	picker.Position = UDim2.fromOffset(8, 145)
+	picker.Size = UDim2.new(1, -16, 0, 350)
+	picker.BackgroundColor3 = Color3.fromRGB(17, 11, 33)
+	picker.BorderColor3 = Color3.fromRGB(170, 0, 255)
+	picker.BorderSizePixel = 2
+	picker.ZIndex = 60
+	picker.Visible = false
+
+	local heading = Instance.new("TextLabel")
+	heading.Parent = picker
+	heading.BackgroundTransparency = 1
+	heading.Position = UDim2.fromOffset(12, 8)
+	heading.Size = UDim2.new(1, -24, 0, 28)
+	heading.Font = Enum.Font.SourceSansBold
+	heading.Text = "SELECT PLAYER TARGET"
+	heading.TextColor3 = Color3.fromRGB(0, 255, 255)
+	heading.TextSize = 17
+	heading.TextXAlignment = Enum.TextXAlignment.Left
+	heading.ZIndex = 61
+
+	local search = Instance.new("TextBox")
+	search.Name = "SearchPlayer"
+	search.Parent = picker
+	search.Position = UDim2.fromOffset(10, 44)
+	search.Size = UDim2.new(1, -20, 0, 32)
+	search.BackgroundColor3 = Color3.fromRGB(30, 21, 50)
+	search.PlaceholderText = "Search username or display name..."
+	search.Text = ""
+	search.ClearTextOnFocus = false
+	search.Font = Enum.Font.SourceSans
+	search.TextSize = 16
+	search.TextColor3 = Color3.new(1, 1, 1)
+	search.ZIndex = 61
+
+	local list = Instance.new("ScrollingFrame")
+	list.Name = "PlayersInGame"
+	list.Parent = picker
+	list.Position = UDim2.fromOffset(10, 83)
+	list.Size = UDim2.new(1, -20, 1, -94)
+	list.BackgroundTransparency = 1
+	list.BorderSizePixel = 0
+	list.ScrollBarThickness = 5
+	list.CanvasSize = UDim2.fromOffset(0, 0)
+	list.ZIndex = 61
+	local layout = Instance.new("UIListLayout")
+	layout.Parent = list
+	layout.Padding = UDim.new(0, 5)
+	layout.SortOrder = Enum.SortOrder.LayoutOrder
+	layout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+	    list.CanvasSize = UDim2.fromOffset(0, layout.AbsoluteContentSize.Y + 5)
+	end)
+
+	local refresh -- declared before picker handlers so selection updates the selector
+	local function rebuildPlayers()
+	    for _, child in ipairs(list:GetChildren()) do
+	        if child:IsA("TextButton") then child:Destroy() end
+	    end
+	    local query = search.Text:lower()
+	    local online = Players:GetPlayers()
+	    table.sort(online, function(x, y) return x.Name:lower() < y.Name:lower() end)
+	    for _, plr in ipairs(online) do
+	        if plr ~= player and (query == "" or plr.Name:lower():find(query, 1, true) or plr.DisplayName:lower():find(query, 1, true)) then
+	            local entry = Instance.new("TextButton")
+	            entry.Name = "Player_" .. tostring(plr.UserId)
+	            entry.Parent = list
+	            entry.Size = UDim2.new(1, -7, 0, 32)
+	            entry.BackgroundColor3 = plr.UserId == selectedPlayerUserId and Color3.fromRGB(35, 115, 83) or Color3.fromRGB(34, 21, 57)
+	            entry.BorderSizePixel = 0
+	            entry.Font = Enum.Font.SourceSansBold
+	            entry.TextSize = 15
+	            entry.TextColor3 = Color3.fromRGB(0, 255, 255)
+	            entry.TextXAlignment = Enum.TextXAlignment.Left
+	            entry.Text = "  " .. plr.DisplayName .. " (@" .. plr.Name .. ")"
+	            entry.ZIndex = 62
+	            entry.MouseButton1Click:Connect(function()
+	                selectedPlayerUserId = plr.UserId
+	                modeIndex = #modes
+	                picker.Visible = false
+	                refresh()
+	            end)
+	        end
+	    end
+	end
+	search:GetPropertyChangedSignal("Text"):Connect(rebuildPlayers)
+	Players.PlayerAdded:Connect(rebuildPlayers)
+	Players.PlayerRemoving:Connect(function(plr)
+	    if selectedPlayerUserId == plr.UserId then
+	        selectedPlayerUserId = nil
+	        refresh()
+	    end
+	    task.defer(rebuildPlayers)
+	end)
+
+	refresh = function()
 	    button.Text = aimPrefix[languageIndex] .. (enabled and onLabels[languageIndex] or offLabels[languageIndex])
 	    button.BackgroundColor3 = enabled and Color3.fromRGB(0, 105, 50) or Color3.fromRGB(11, 8, 22)
-	    selector.Text = targetPrefix[languageIndex] .. labels[modeIndex][languageIndex] .. "  >"
+	    local caption = labels[modeIndex][languageIndex]
+	    if modes[modeIndex] == "Choose Player" then
+	        local chosen = selectedPlayerUserId and Players:GetPlayerByUserId(selectedPlayerUserId)
+	        caption = chosen and ("@" .. chosen.Name) or caption
+	    end
+	    selector.Text = targetPrefix[languageIndex] .. caption .. "  >"
+	    teamCheckButton.Text = "Team Check: " .. (teamCheckEnabled and "ON" or "OFF")
 	end
 	
 	button.MouseButton1Click:Connect(function()
@@ -3026,11 +3466,29 @@ local function OACKUI_fake_script() -- Frame.AimbotController
 	    refresh()
 	end)
 	
+	teamCheckButton.MouseButton1Click:Connect(function()
+	    teamCheckEnabled = not teamCheckEnabled
+	    refresh()
+	end)
+
 	selector.MouseButton1Click:Connect(function()
 	    modeIndex = modeIndex % #modes + 1
+	    if modes[modeIndex] == "Choose Player" then
+	        rebuildPlayers()
+	        picker.Visible = true
+	    else
+	        picker.Visible = false
+	    end
 	    refresh()
 	end)
 	
+	selector.MouseButton2Click:Connect(function()
+	    modeIndex = #modes
+	    rebuildPlayers()
+	    picker.Visible = true
+	    refresh()
+	end)
+
 	-- Integrate with the existing v4.5 LanguageToggle button, without adding a second
 	-- MouseButton1Click handler that would cycle the language twice.
 	-- The existing language controller updates LanguageToggle.Text to "Language: <name>".
@@ -3105,8 +3563,8 @@ local function OACKUI_fake_script() -- Frame.AimbotController
 	
 end
 coroutine.wrap(OACKUI_fake_script)()
-local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation 
-	local script = Instance.new('LocalScript', WelcomeBanner)
+local function UHBFFGW_fake_script(replayFrame, replayMode) -- WelcomeBanner.WelcomeAnimation 
+	local script = Instance.new('LocalScript', replayFrame or WelcomeBanner)
 
 	
 	-- y0ungDare Menu v4.5
@@ -3356,6 +3814,7 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 		end
 	end)
 	
+	if replayMode == nil or replayMode == 1 then
 	-- START SOUND AND TEXT ANIMATION TOGETHER
 	if sound and sound.SoundId ~= "" then
 		sound.TimePosition = 0
@@ -3434,6 +3893,12 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 	
 	task.wait(fadeDuration + 0.05)
 	
+	else
+		glowTween:Cancel()
+		updates.Visible = false
+	end
+
+	if replayMode == nil or replayMode == 2 then
 	-- HOST MESSAGE: run after the welcome message has completely disappeared.
 	-- Reuse the same frame, label, decoding timing and DigitalTextSound.
 	local hostMessage = "Your host is: " .. player.Name
@@ -3487,6 +3952,9 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 	}):Play()
 	task.wait(fadeDuration + 0.05)
 
+	end -- Host message
+
+	if replayMode == nil or replayMode == 3 then
 	-- CONTROLS MESSAGE: display after the host message has fully faded out.
 	-- Same position, glitch reveal, sound, glow, and timing as the previous messages.
 	-- Use a thin black outline only for this green instruction message.
@@ -3539,6 +4007,9 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 	}):Play()
 	task.wait(fadeDuration + 0.05)
 
+	end -- Controls message
+
+	if replayMode == nil or replayMode == 4 then
 	-- Restore the original light-purple outline for the Instagram message.
 	welcomeGlow.Color = Color3.fromRGB(207, 157, 255)
 	welcomeGlow.Thickness = 2.5
@@ -3609,6 +4080,8 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 	}):Play()
 	task.wait(fadeDuration + 0.05)
 
+	end -- Instagram message
+
 	-- Do not cut off the typing sound if its tail is still playing.
 	if sound and sound.IsPlaying then
 		sound.Parent = game:GetService("SoundService")
@@ -3616,6 +4089,23 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 	end
 	frame:Destroy()
 	
+end
+local startupMessageTemplate = WelcomeBanner:Clone()
+-- Replay the exact same four startup animation sections, including RichText,
+-- scramble/decode, colored glow, audio, and fade timings.
+shared.y0ungDareReplayStartupMessage = function(which)
+    if not y0ungDareMenuv45.Parent then return end
+    if type(which) ~= "number" or which < 1 or which > 4 then return end
+    local existing = y0ungDareMenuv45:FindFirstChild("ReplayStartupBanner")
+    if existing then existing:Destroy() end
+    local banner = startupMessageTemplate:Clone()
+    banner.Name = "ReplayStartupBanner"
+    banner.Parent = y0ungDareMenuv45
+    banner.Visible = true
+    banner:FindFirstChild("WelcomeText").Visible = true
+    task.spawn(function()
+        UHBFFGW_fake_script(banner, which)
+    end)
 end
 coroutine.wrap(UHBFFGW_fake_script)()
 local function LJCX_fake_script() -- Fps.FpsOriginalScript 
