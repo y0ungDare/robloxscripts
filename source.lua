@@ -925,15 +925,35 @@ do
     local heading = Instance.new("TextLabel")
     heading.Name = "MessagesHeading"
     heading.Parent = page
-    heading.Position = UDim2.fromOffset(14, 12)
-    heading.Size = UDim2.new(1, -100, 0, 30)
+    -- Screenshot-style title: flush to the upper-left, large white arcade lettering.
+    heading.Position = UDim2.fromOffset(3, 18)
+    heading.Size = UDim2.new(1, -85, 0, 32)
     heading.BackgroundTransparency = 1
     heading.Text = "Messages"
-    heading.Font = Enum.Font.RobotoCondensed
-    heading.TextSize = 20
-    heading.TextColor3 = Color3.fromRGB(1, 244, 253)
+    heading.Font = Enum.Font.Arcade
+    heading.TextSize = 27
+    heading.TextColor3 = Color3.fromRGB(245, 244, 255)
+    heading.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+    heading.TextStrokeTransparency = 0.25
     heading.TextXAlignment = Enum.TextXAlignment.Left
+    heading.TextYAlignment = Enum.TextYAlignment.Top
     heading.ZIndex = 52
+
+    -- Subtitle shown directly under the Messages heading in the reference.
+    local byline = Instance.new("TextLabel")
+    byline.Name = "MessagesByline"
+    byline.Parent = page
+    byline.Position = UDim2.fromOffset(3, 49)
+    byline.Size = UDim2.new(1, -10, 0, 23)
+    byline.BackgroundTransparency = 1
+    byline.Text = "By @y0ungdare"
+    byline.Font = Enum.Font.Arcade
+    byline.TextSize = 15
+    byline.TextColor3 = Color3.fromRGB(37, 28, 191)
+    byline.TextStrokeColor3 = Color3.fromRGB(10, 5, 40)
+    byline.TextStrokeTransparency = 0.3
+    byline.TextXAlignment = Enum.TextXAlignment.Left
+    byline.ZIndex = 52
 
     local function makeButton(name, caption, y)
         local b = Instance.new("TextButton")
@@ -3142,14 +3162,32 @@ local function OACKUI_fake_script() -- Frame.AimbotController
 	local settingsHeading = Instance.new("TextLabel")
 	settingsHeading.Parent = settingsPage
 	settingsHeading.BackgroundTransparency = 1
-	settingsHeading.Position = UDim2.fromOffset(12, 13)
-	settingsHeading.Size = UDim2.new(1, -100, 0, 32)
-	settingsHeading.Font = Enum.Font.RobotoCondensed
+	settingsHeading.Position = UDim2.fromOffset(3, 18)
+	settingsHeading.Size = UDim2.new(1, -85, 0, 32)
+	settingsHeading.Font = Enum.Font.Arcade
 	settingsHeading.Text = "Aimbot Settings"
-	settingsHeading.TextColor3 = Color3.fromRGB(1, 244, 253)
-	settingsHeading.TextSize = 20
+	settingsHeading.TextColor3 = Color3.fromRGB(245, 244, 255)
+	settingsHeading.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+	settingsHeading.TextStrokeTransparency = 0.25
+	settingsHeading.TextSize = 23
 	settingsHeading.TextXAlignment = Enum.TextXAlignment.Left
+	settingsHeading.TextYAlignment = Enum.TextYAlignment.Top
 	settingsHeading.ZIndex = 33
+
+	local aimbotByline = Instance.new("TextLabel")
+	aimbotByline.Name = "AimbotSettingsByline"
+	aimbotByline.Parent = settingsPage
+	aimbotByline.Position = UDim2.fromOffset(3, 49)
+	aimbotByline.Size = UDim2.new(1, -10, 0, 23)
+	aimbotByline.BackgroundTransparency = 1
+	aimbotByline.Font = Enum.Font.Arcade
+	aimbotByline.Text = "By @y0ungdare"
+	aimbotByline.TextSize = 15
+	aimbotByline.TextColor3 = Color3.fromRGB(37, 28, 191)
+	aimbotByline.TextStrokeColor3 = Color3.fromRGB(10, 5, 40)
+	aimbotByline.TextStrokeTransparency = 0.3
+	aimbotByline.TextXAlignment = Enum.TextXAlignment.Left
+	aimbotByline.ZIndex = 33
 
 	local back = Instance.new("TextButton")
 	back.Parent = settingsPage
@@ -4612,13 +4650,31 @@ do
 
     -- A compact single-line heading with room for the Back button.
     Title_2.Text = "Info & Credits"
-    Title_2.Font = Enum.Font.RobotoCondensed
-    Title_2.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-    Title_2.TextSize = 20
-    Title_2.TextColor3 = CYAN
+    Title_2.Font = Enum.Font.Arcade
+    Title_2.TextSize = 25
+    Title_2.TextColor3 = Color3.fromRGB(245, 244, 255)
+    Title_2.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+    Title_2.TextStrokeTransparency = 0.25
     Title_2.TextXAlignment = Enum.TextXAlignment.Left
-    Title_2.Position = UDim2.fromOffset(14, 12)
-    Title_2.Size = UDim2.new(1, -98, 0, 30)
+    Title_2.TextYAlignment = Enum.TextYAlignment.Top
+    Title_2.Position = UDim2.fromOffset(3, 18)
+    Title_2.Size = UDim2.new(1, -85, 0, 32)
+    Title_2.ZIndex = 33
+
+    local infoByline = Instance.new("TextLabel")
+    infoByline.Name = "InfoCreditsByline"
+    infoByline.Parent = page
+    infoByline.Position = UDim2.fromOffset(3, 49)
+    infoByline.Size = UDim2.new(1, -10, 0, 23)
+    infoByline.BackgroundTransparency = 1
+    infoByline.Text = "By @y0ungdare"
+    infoByline.Font = Enum.Font.Arcade
+    infoByline.TextSize = 15
+    infoByline.TextColor3 = Color3.fromRGB(37, 28, 191)
+    infoByline.TextStrokeColor3 = Color3.fromRGB(10, 5, 40)
+    infoByline.TextStrokeTransparency = 0.3
+    infoByline.TextXAlignment = Enum.TextXAlignment.Left
+    infoByline.ZIndex = 33
 
     back.Text = "< BACK"
     back.Font = Enum.Font.RobotoCondensed
@@ -4644,8 +4700,8 @@ do
         if color then obj.TextColor3 = color end
         if font then obj.Font = font end
     end
-    line(Version, 60, 23, 17, CYAN, Enum.Font.SourceSansBold)
-    line(Creator, 86, 23, 15, WHITE, Enum.Font.SourceSans)
+    line(Version, 80, 23, 17, CYAN, Enum.Font.SourceSansBold)
+    line(Creator, 105, 23, 15, WHITE, Enum.Font.SourceSans)
     -- Remove the About the Menu section and its two instruction lines.
     Description.Visible = false
     ControlLine1.Visible = false
