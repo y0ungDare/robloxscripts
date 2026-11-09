@@ -390,7 +390,7 @@ BringButton.BorderSizePixel = 0
 BringButton.Position = UDim2.new(0, 8, 0, 408)
 BringButton.Size = UDim2.new(1, -16, 0, 20)
 BringButton.Font = Enum.Font.SourceSansBold
-BringButton.Text = "Bring All: OFF"
+BringButton.Text = "Shoot Sound Changer"
 BringButton.TextColor3 = Color3.fromRGB(0, 255, 255)
 BringButton.TextSize = 17.000
 BringButton.TextWrapped = true
@@ -922,7 +922,7 @@ local function MREH_fake_script() -- LanguageToggle.LanguageController_Edit_Here
 	    ["X Ray Vision"] = {"X-Ray Vision", "Visión de rayos X", "Vision à rayons X", "透視モード", "透视模式", "Röntgenblick"},
 	    ["Wall Esp"] = {"Wall Esp V2", "Ver jugadores V2", "Voir les joueurs V2", "壁越し表示 V2", "透墙显示 V2", "Spieler anzeigen V2"},
 	    ["aura kill"] = {"Aura Kill", "Aura de ataque", "Aura d’attaque", "攻撃オーラ", "攻击光环", "Angriffsaura"},
-	    ["BringButton"] = {"Bring All", "Traer a todos", "Faire venir tous", "全員を呼び寄せる", "召集所有人", "Alle herholen"},
+	    ["BringButton"] = {"Shoot Sound Changer", "Cambiar sonido de disparo", "Changer le son de tir", "射撃音変更", "更换射击音效", "Schusssound ändern"},
 	    ["RGBTextToggle"] = {"RGB Text", "Texto RGB", "Texte RVB", "RGB文字", "RGB文字", "RGB-Text"},
 	    ["Set Spawn Point"] = {"Set Spawn Point", "Guardar punto de aparición", "Définir le point de réapparition", "復活地点を設定", "设置重生点", "Spawnpunkt setzen"},
 	    ["Teleport To Spawn"] = {"Teleport To Spawn Point", "Ir al punto de aparición", "Aller au point de réapparition", "復活地点へ移動", "传送至重生点", "Zum Spawnpunkt teleportieren"},
@@ -2361,81 +2361,183 @@ local function NVKVF_fake_script() -- Frame.DragFrame
 	
 end
 coroutine.wrap(NVKVF_fake_script)()
-local function HRWYOVR_fake_script() -- Frame.GUIController 
-	local script = Instance.new('LocalScript', Frame)
-
-	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-	local BringButton = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('BringButton', true)
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-		local BringButton = y0ungDareMenuv42:WaitForChild('Frame'):WaitForChild('BringButton')
-	
-				-- Player Puller: single ON/OFF button
-				-- Place this LocalScript inside PullPlayersGui.
-				local Players = game:GetService("Players")
-				local RunService = game:GetService("RunService")
-				local player = Players.LocalPlayer
-				local pullBtn = script.Parent:WaitForChild("BringButton")
-				local isBringing = false
-				local bringConnection
-	
-				    local function getRootPart(character)
-				     return character:FindFirstChild("HumanoidRootPart") or character:FindFirstChild("Torso") or character:FindFirstChild("UpperTorso")
-				    end
-				    local function setCharacterCollision(character,state)
-				     for _,part in ipairs(character:GetDescendants()) do if part:IsA("BasePart") then part.CanCollide=state end end
-				    end
-				    local function isOnVehicleOrSeat(character)
-				     local humanoid=character:FindFirstChildOfClass("Humanoid")
-				     if not humanoid then return false end
-				     if humanoid.SeatPart then return true end
-				     for _,part in ipairs(character:GetChildren()) do
-				      if part:IsA("BasePart") then
-				       local ok,touching=pcall(function()return part:GetTouchingParts()end)
-				       if ok then for _,t in ipairs(touching) do if t:IsA("VehicleSeat") or t:IsA("Seat") then return true end end end
-				      end
-				     end
-				     return false
-				    end
-				    local function unseatPlayer(character)
-				     local humanoid=character:FindFirstChildOfClass("Humanoid")
-				     if humanoid then humanoid.Jump=true;pcall(function()humanoid.SeatPart=nil end)end
-				    end
-				    local function updatePullButton()
-				     pullBtn.Text = isBringing and "Bring All: ON" or "Bring All: OFF"
-				     pullBtn.BackgroundColor3 = isBringing and Color3.fromRGB(25, 190, 65) or Color3.fromRGB(0, 0, 0)
-				    end
-				    pullBtn.MouseButton1Click:Connect(function()
-				     isBringing = not isBringing
-				     updatePullButton()
-				     if isBringing then
-				      if bringConnection then bringConnection:Disconnect() end
-				      bringConnection=RunService.Heartbeat:Connect(function()
-				       if not isBringing then return end
-				       local myChar=player.Character;local myRoot=myChar and getRootPart(myChar)
-				       if not myRoot then return end
-				       local locked=myRoot.CFrame;local front=(locked*CFrame.new(0,0,-3)).Position
-				       local target=CFrame.new(front.X,locked.Position.Y,front.Z)
-				       for _,other in ipairs(Players:GetPlayers()) do
-				        if other~=player and other.Character then
-				         local otherRoot=getRootPart(other.Character)
-				         if otherRoot then
-				          if isOnVehicleOrSeat(other.Character) then unseatPlayer(other.Character) end
-				          setCharacterCollision(other.Character,false)
-				          otherRoot.CFrame=target
-				         end
-				        end
-				       end
-				       myRoot.CFrame=locked
-				      end)
-				     else
-				      if bringConnection then bringConnection:Disconnect();bringConnection=nil end
-				      for _,other in ipairs(Players:GetPlayers()) do
-				       if other~=player and other.Character then setCharacterCollision(other.Character,true) end
-				      end
-				     end
-				    end)
-				    updatePullButton()
-	
+-- Shoot Sound Changer: uses the existing BringButton and menu rather than an external Library.
+local function HRWYOVR_fake_script()
+    local Players = game:GetService("Players")
+    local LocalPlayer = Players.LocalPlayer
+    local button = BringButton
+    local sounds = {
+        {"AWP", "132602247378058"},
+        {"Desert Eagle", "82286818216627"},
+        {"Glock", "6581933860"},
+        {"MP40", "103807799095792"},
+        {"Ray Gun", "131179973"},
+        {"Laser", "94084778213749"},
+        {"Anime Girl", "104321578550512"},
+        {"Galaga", "3038719943"},
+        {"Barrett Cal", "3383318550"},
+        {"Pindad SS2", "18620503407"},
+        {"Revolver", "120771468205926"},
+        {"Dart Gun", "5924183835"},
+    }
+    local enabled, selected, volume = false, 1, 1
+    local defaults = setmetatable({}, {__mode = "k"})
+    local toolDefaults = {} -- Keep the real original sound across re-equips.
+    local panel = Instance.new("Frame")
+    panel.Name = "ShootSoundChangerPanel"
+    -- Open as a full in-menu page, matching Info & Credits.
+    panel.Parent = Frame
+    panel.Size = UDim2.fromScale(1, 1)
+    panel.Position = UDim2.fromScale(0, 0)
+    panel.BackgroundColor3 = Color3.fromRGB(12, 9, 22)
+    panel.BorderSizePixel = 0
+    panel.ClipsDescendants = true
+    panel.Visible = false
+    panel.ZIndex = 30
+    local previousVisibility = {}
+    local glitchLayer -- Resolved when opening, after the glitch layer has been created.
+    local function openPanel()
+        if panel.Visible then return end
+        for _, child in ipairs(Frame:GetChildren()) do
+            if child ~= panel and child:IsA("GuiButton") then
+                previousVisibility[child] = child.Visible
+                child.Visible = false
+            end
+        end
+        glitchLayer = Frame:FindFirstChild("JiggyGlitchBackground_EDIT_HERE")
+        if glitchLayer then
+            glitchLayer.Parent = panel
+            glitchLayer.ZIndex = 31
+            for _, part in ipairs(glitchLayer:GetDescendants()) do
+                if part:IsA("GuiObject") then part.ZIndex = 31 end
+            end
+        end
+        panel.Visible = true
+    end
+    local function closePanel()
+        panel.Visible = false
+        if glitchLayer then
+            glitchLayer.Parent = Frame
+            glitchLayer.ZIndex = 3
+            for _, part in ipairs(glitchLayer:GetDescendants()) do
+                if part:IsA("GuiObject") then part.ZIndex = 3 end
+            end
+        end
+        for child, visible in pairs(previousVisibility) do
+            if child.Parent then child.Visible = visible end
+            previousVisibility[child] = nil
+        end
+    end
+    -- The Info & Credits page uses no outer border; match its presentation.
+    local function makeButton(name, text, y, height)
+        local obj = Instance.new("TextButton")
+        obj.Name = name
+        obj.Parent = panel
+        obj.Position = UDim2.fromOffset(12, y)
+        obj.Size = UDim2.new(1, -24, 0, height)
+        obj.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
+        obj.TextColor3 = Color3.fromRGB(0, 255, 255)
+        obj.Font = Enum.Font.SourceSansBold
+        obj.TextSize = 16
+        obj.Text = text
+        obj.ZIndex = 31
+        return obj
+    end
+    local title = makeButton("CloseShootSound", "< BACK", 14, 26)
+    title.Position = UDim2.new(1, -77, 0, 14)
+    title.Size = UDim2.fromOffset(65, 26)
+    local heading = Instance.new("TextLabel")
+    heading.Name = "ShootSoundHeading"
+    heading.Parent = panel
+    heading.Position = UDim2.fromOffset(14, 12)
+    heading.Size = UDim2.new(1, -98, 0, 30)
+    heading.BackgroundTransparency = 1
+    heading.Text = "Shoot Sound Changer"
+    heading.TextColor3 = Color3.fromRGB(1, 244, 253)
+    heading.Font = Enum.Font.RobotoCondensed
+    heading.TextSize = 20
+    heading.TextXAlignment = Enum.TextXAlignment.Left
+    heading.ZIndex = 33
+    local toggle = makeButton("ShootSoundToggle", "Shoot Sound Changer: OFF", 80, 29)
+    local dropdown = makeButton("ShootSoundDropdown", "Shoot Sound: " .. sounds[selected][1] .. "  ▼", 130, 29)
+    local options = Instance.new("ScrollingFrame")
+    options.Name = "ShootSoundOptions"
+    options.Parent = panel
+    options.Position = UDim2.fromOffset(12, 162)
+    options.Size = UDim2.new(1, -24, 0, 250)
+    options.BackgroundColor3 = Color3.fromRGB(20, 13, 38)
+    options.ScrollBarThickness = 5
+    options.CanvasSize = UDim2.fromOffset(0, #sounds * 25)
+    options.Visible = false
+    options.ZIndex = 40
+    for i, entry in ipairs(sounds) do
+        local choice = Instance.new("TextButton")
+        choice.Parent = options
+        choice.Position = UDim2.fromOffset(0, (i - 1) * 25)
+        choice.Size = UDim2.new(1, -7, 0, 25)
+        choice.BackgroundColor3 = Color3.fromRGB(30, 19, 54)
+        choice.TextColor3 = Color3.fromRGB(255, 255, 255)
+        choice.Font = Enum.Font.SourceSans
+        choice.TextSize = 16
+        choice.Text = entry[1]
+        choice.ZIndex = 41
+        choice.MouseButton1Click:Connect(function()
+            selected = i
+            dropdown.Text = "Shoot Sound: " .. entry[1] .. "  ▼"
+            options.Visible = false
+        end)
+    end
+    button.Activated:Connect(openPanel)
+    title.Activated:Connect(closePanel)
+    local function updateSounds()
+        local character = LocalPlayer.Character
+        local backpack = LocalPlayer:FindFirstChildOfClass("Backpack")
+        for _, container in ipairs({character, backpack}) do
+            if container then
+                for _, tool in ipairs(container:GetChildren()) do
+                    if tool:IsA("Tool") then
+                        for _, obj in ipairs(tool:GetDescendants()) do
+                            if obj:IsA("Sound") and obj.Name == "ShootSound" then
+                                -- Store originals by weapon name as well as instance, so
+                                -- new Sound instances cannot mistake our replacement for default.
+                                local original = defaults[obj]
+                                if not original then
+                                    original = toolDefaults[tool.Name]
+                                    if not original then
+                                        original = {id = obj.SoundId, volume = obj.Volume}
+                                        toolDefaults[tool.Name] = original
+                                    end
+                                    defaults[obj] = original
+                                end
+                                if enabled then
+                                    local targetId = "rbxassetid://" .. sounds[selected][2]
+                                    if obj.SoundId ~= targetId then obj.SoundId = targetId end
+                                    obj.Volume = 1
+                                else
+                                    if obj.SoundId ~= original.id then obj.SoundId = original.id end
+                                    if obj.Volume ~= original.volume then obj.Volume = original.volume end
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+    -- Capture the original weapon sounds before enabling the changer.
+    updateSounds()
+    toggle.MouseButton1Click:Connect(function()
+        enabled = not enabled
+        toggle.Text = "Shoot Sound Changer: " .. (enabled and "ON" or "OFF")
+        updateSounds() -- Restore immediately when switched OFF.
+    end)
+    dropdown.MouseButton1Click:Connect(function() options.Visible = not options.Visible end)
+    task.spawn(function()
+        while panel.Parent do
+            task.wait(0.25)
+            pcall(updateSounds)
+        end
+    end)
 end
 coroutine.wrap(HRWYOVR_fake_script)()
 local function AMWLHEK_fake_script() -- Frame.AntiAFKController 
@@ -4003,7 +4105,7 @@ do
     local page = InfoPopup
     local back = CloseButton
     local mainVisible = {}
-    local glitchLayer = menu:FindFirstChild("JiggyGlitchBackground_EDIT_HERE")
+    local glitchLayer -- Resolved when opening, after the glitch layer has been created.
 
     -- Solid in-menu page hides the old logo and menu artwork underneath.
     page.Parent = menu
@@ -4101,6 +4203,7 @@ do
         end
         -- Reuse the SAME animated glitch layer rather than creating a second effect.
         -- It stays below the Info text and Back button.
+        glitchLayer = menu:FindFirstChild("JiggyGlitchBackground_EDIT_HERE")
         if glitchLayer then
             glitchLayer.Parent = page
             glitchLayer.ZIndex = 31
