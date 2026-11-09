@@ -1,3 +1,20 @@
+-- Remove any previously running y0ungDare menu and its music before rebuilding.
+-- This prevents old menu copies from continuing to play background audio.
+do
+    local playerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+    for _, gui in ipairs(playerGui:GetChildren()) do
+        if gui:IsA("ScreenGui") and gui.Name == "y0ungDare Menu v4.5" then
+            gui:Destroy()
+        end
+    end
+    for _, obj in ipairs(game:GetService("SoundService"):GetDescendants()) do
+        if obj:IsA("Sound") and (obj.Name == "y0ungDare_MenuBackgroundMusic_EDIT_HERE" or obj.SoundId == "rbxassetid://84947211065711") then
+            obj:Stop()
+            obj:Destroy()
+        end
+    end
+end
+
 -- Gui to Lua
 -- Version: 3.2
 
@@ -2151,17 +2168,7 @@ local function EQMVTH_fake_script() -- removedoors.RemoveDoorsToggle
 	
 end
 coroutine.wrap(EQMVTH_fake_script)()
-local function UNEZW_fake_script() -- InfoPopup.ClosePopup 
-	local script = Instance.new('LocalScript', InfoPopup)
-
-	local popup = script.Parent
-	local closeButton = popup:WaitForChild("CloseButton")
-	closeButton.Activated:Connect(function()
-	    popup.Visible = false
-	end)
-	
-end
-coroutine.wrap(UNEZW_fake_script)()
+-- Original popup controller replaced by in-menu Info & Credits navigation.
 local function TYXQRTZ_fake_script() -- Frame.HighGraphicsLogic 
 	local script = Instance.new('LocalScript', Frame)
 
@@ -2655,31 +2662,7 @@ local function ZZPVZCD_fake_script() -- Frame.OriginalNoclipController
 	
 end
 coroutine.wrap(ZZPVZCD_fake_script)()
-local function ERTWDJU_fake_script() -- Frame.InfoToggle 
-	local script = Instance.new('LocalScript', Frame)
-
-	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-	local InfoPopup = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('InfoPopup', true)
-	local CloseButton = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('CloseButton', true)
-	local InfoButton = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('InfoButton', true)
-		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-		local InfoPopup = y0ungDareMenuv42:WaitForChild('Frame'):WaitForChild('InfoPopup')
-		local CloseButton = y0ungDareMenuv42:WaitForChild('Frame'):WaitForChild('InfoPopup'):WaitForChild('CloseButton')
-		local InfoButton = y0ungDareMenuv42:WaitForChild('Frame'):WaitForChild('InfoButton')
-	
-				local gui = script.Parent
-				local button = gui:WaitForChild("InfoButton")
-				local popup = gui:WaitForChild("InfoPopup")
-				local close = popup:WaitForChild("CloseButton")
-				button.Activated:Connect(function()
-				    popup.Visible = not popup.Visible
-				end)
-				close.Activated:Connect(function()
-				    popup.Visible = false
-				end)
-	
-end
-coroutine.wrap(ERTWDJU_fake_script)()
+-- Original popup controller replaced by in-menu Info & Credits navigation.
 local function ATWAJ_fake_script() -- Frame.OpenDexPlusPlus 
 	local script = Instance.new('LocalScript', Frame)
 
@@ -3820,4 +3803,120 @@ do
             end
         end
     end)
+end
+
+
+-- ================================================================
+-- JIGGY-STYLE IN-MENU INFO & CREDITS PAGE
+-- Keeps the same main menu frame, size, position and background.
+-- All original info text is retained; Back restores main menu.
+-- ================================================================
+do
+    local menu = Frame
+    local page = InfoPopup
+    local back = CloseButton
+    local mainVisible = {}
+
+    -- Solid in-menu page hides the old logo and menu artwork underneath.
+    page.Parent = menu
+    page.AnchorPoint = Vector2.new(0, 0)
+    page.Position = UDim2.fromScale(0, 0)
+    page.Size = UDim2.fromScale(1, 1)
+    page.BackgroundColor3 = Color3.fromRGB(12, 9, 22)
+    page.BackgroundTransparency = 0
+    page.BorderSizePixel = 0
+    page.ClipsDescendants = true
+    page.ZIndex = 30
+    page.Visible = false
+
+    local CYAN = Color3.fromRGB(1, 244, 253)
+    local PINK = Color3.fromRGB(255, 91, 201)
+    local MUTED = Color3.fromRGB(192, 185, 215)
+    local WHITE = Color3.fromRGB(238, 239, 246)
+
+    -- A compact single-line heading with room for the Back button.
+    Title_2.Text = "Info & Credits"
+    Title_2.Font = Enum.Font.RobotoCondensed
+    Title_2.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    Title_2.TextSize = 20
+    Title_2.TextColor3 = CYAN
+    Title_2.TextXAlignment = Enum.TextXAlignment.Left
+    Title_2.Position = UDim2.fromOffset(14, 12)
+    Title_2.Size = UDim2.new(1, -98, 0, 30)
+
+    back.Text = "< BACK"
+    back.Font = Enum.Font.RobotoCondensed
+    back.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    back.TextSize = 13
+    back.TextColor3 = CYAN
+    back.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+    back.BackgroundTransparency = 0.12
+    back.BorderSizePixel = 0
+    back.Position = UDim2.new(1, -77, 0, 14)
+    back.Size = UDim2.fromOffset(65, 26)
+
+    -- Align all existing text to a common left edge; preserve exact wording.
+    local function line(obj, y, h, size, color, font)
+        obj.Position = UDim2.fromOffset(16, y)
+        obj.Size = UDim2.new(1, -32, 0, h)
+        obj.TextSize = size
+        obj.TextScaled = false
+        obj.TextWrapped = true
+        obj.TextXAlignment = Enum.TextXAlignment.Left
+        obj.TextYAlignment = Enum.TextYAlignment.Center
+        obj.BackgroundTransparency = 1
+        if color then obj.TextColor3 = color end
+        if font then obj.Font = font end
+    end
+    line(Version, 60, 23, 17, CYAN, Enum.Font.SourceSansBold)
+    line(Creator, 86, 23, 15, WHITE, Enum.Font.SourceSans)
+    line(Description, 130, 22, 15, PINK, Enum.Font.SourceSansBold)
+    line(ControlLine1, 162, 23, 14, WHITE, Enum.Font.SourceSans)
+    line(ControlLine2, 190, 23, 14, WHITE, Enum.Font.SourceSans)
+    line(ControlLine4, 237, 22, 15, PINK, Enum.Font.SourceSansBold)
+    line(ControlLine5, 269, 22, 14, WHITE, Enum.Font.SourceSans)
+    line(ControlLine6, 297, 22, 14, WHITE, Enum.Font.SourceSans)
+    line(ControlLine7, 325, 22, 14, WHITE, Enum.Font.SourceSans)
+    line(SocialHeading, 384, 23, 15, PINK, Enum.Font.SourceSansBold)
+    line(Instagram, 419, 31, 13, CYAN, Enum.Font.SourceSans)
+    line(YouTube, 461, 46, 12, CYAN, Enum.Font.SourceSans)
+
+    -- Subtle separators give the information a clear hierarchy.
+    for _, y in ipairs({49, 120, 226, 371}) do
+        local separator = Instance.new("Frame")
+        separator.Name = "InfoSeparator"
+        separator.Parent = page
+        separator.Position = UDim2.fromOffset(14, y)
+        separator.Size = UDim2.new(1, -28, 0, 1)
+        separator.BorderSizePixel = 0
+        separator.BackgroundColor3 = Color3.fromRGB(65, 45, 94)
+        separator.ZIndex = 32
+    end
+
+    for _, obj in ipairs(page:GetDescendants()) do
+        if obj:IsA("GuiObject") and obj.Name ~= "InfoSeparator" then
+            obj.ZIndex = (obj == back) and 34 or 33
+        end
+    end
+
+    -- Preserve original menu layout by hiding, not moving or deleting, its controls.
+    local function showInfo()
+        if page.Visible then return end
+        for _, child in ipairs(menu:GetChildren()) do
+            if child ~= page and child:IsA("GuiButton") then
+                mainVisible[child] = child.Visible
+                child.Visible = false
+            end
+        end
+        page.Visible = true
+    end
+    local function showMain()
+        page.Visible = false
+        for child, wasVisible in pairs(mainVisible) do
+            if child.Parent then child.Visible = wasVisible end
+            mainVisible[child] = nil
+        end
+    end
+    InfoButton.Activated:Connect(showInfo)
+    back.Activated:Connect(showMain)
 end
