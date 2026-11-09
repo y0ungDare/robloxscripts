@@ -1,3 +1,5 @@
+-- Remove any previously running y0ungDare menu and its music before rebuilding.
+-- This prevents old menu copies from continuing to play background audio.
 do
     local playerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
     for _, gui in ipairs(playerGui:GetChildren()) do
@@ -12,6 +14,11 @@ do
         end
     end
 end
+
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
 
 local y0ungDareMenuv45 = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
