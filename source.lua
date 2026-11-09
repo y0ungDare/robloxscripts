@@ -1,19 +1,15 @@
--- Remove any previously running y0ungDare menu and its music before rebuilding.
--- This prevents old menu copies from continuing to play background audio.
-do
-    local playerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
-    for _, gui in ipairs(playerGui:GetChildren()) do
-        if gui:IsA("ScreenGui") and gui.Name == "y0ungDare Menu v4.5" then
-            gui:Destroy()
-        end
-    end
-    for _, obj in ipairs(game:GetService("SoundService"):GetDescendants()) do
-        if obj:IsA("Sound") and (obj.Name == "y0ungDare_MenuBackgroundMusic_EDIT_HERE" or obj.SoundId == "rbxassetid://84947211065711") then
-            obj:Stop()
-            obj:Destroy()
-        end
-    end
+-- y0ungDare: Prison Life only; do not run a second copy in this session.
+if game.PlaceId ~= 155615604 then
+    warn("y0ungDare only runs in Prison Life (PlaceId 155615604).")
+    return
 end
+
+local y0ungDarePlayerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+if shared.y0ungDarePrisonLifeRunning or y0ungDarePlayerGui:FindFirstChild("y0ungDare Menu v4.5") then
+    warn("y0ungDare is already injected; skipping duplicate launch.")
+    return
+end
+shared.y0ungDarePrisonLifeRunning = true
 
 -- Gui to Lua
 -- Version: 3.2
