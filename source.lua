@@ -3816,6 +3816,7 @@ do
     local page = InfoPopup
     local back = CloseButton
     local mainVisible = {}
+    local glitchLayer = menu:FindFirstChild("JiggyGlitchBackground_EDIT_HERE")
 
     -- Solid in-menu page hides the old logo and menu artwork underneath.
     page.Parent = menu
@@ -3908,10 +3909,26 @@ do
                 child.Visible = false
             end
         end
+        -- Reuse the SAME animated glitch layer rather than creating a second effect.
+        -- It stays below the Info text and Back button.
+        if glitchLayer then
+            glitchLayer.Parent = page
+            glitchLayer.ZIndex = 31
+            for _, part in ipairs(glitchLayer:GetDescendants()) do
+                if part:IsA("GuiObject") then part.ZIndex = 31 end
+            end
+        end
         page.Visible = true
     end
     local function showMain()
         page.Visible = false
+        if glitchLayer then
+            glitchLayer.Parent = menu
+            glitchLayer.ZIndex = 3
+            for _, part in ipairs(glitchLayer:GetDescendants()) do
+                if part:IsA("GuiObject") then part.ZIndex = 3 end
+            end
+        end
         for child, wasVisible in pairs(mainVisible) do
             if child.Parent then child.Visible = wasVisible end
             mainVisible[child] = nil
