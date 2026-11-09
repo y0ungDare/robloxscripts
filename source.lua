@@ -989,7 +989,7 @@ do
     back.ZIndex = 52
 
     -- Four compact main-menu-style rows, with the same teal hover selection marker.
-    local captions = {"Welcome Message", "Host Message", "Menu Controls", "Instagram Message"}
+    local captions = {"Hello message", "Your Host", "Menu tutorial", "Instagram Message"}
     local hoverTween = game:GetService("TweenService")
     local hoverInfo = TweenInfo.new(0.09, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
     for i, caption in ipairs(captions) do
@@ -4651,6 +4651,9 @@ do
     -- A compact single-line heading with room for the Back button.
     Title_2.Text = "Info & Credits"
     Title_2.Font = Enum.Font.Arcade
+    -- Scale the entire title to fit beside < BACK without clipping "Credits".
+    Title_2.TextScaled = true
+    Title_2.TextWrapped = false
     Title_2.TextSize = 25
     Title_2.TextColor3 = Color3.fromRGB(245, 244, 255)
     Title_2.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
@@ -4658,7 +4661,7 @@ do
     Title_2.TextXAlignment = Enum.TextXAlignment.Left
     Title_2.TextYAlignment = Enum.TextYAlignment.Top
     Title_2.Position = UDim2.fromOffset(3, 18)
-    Title_2.Size = UDim2.new(1, -85, 0, 32)
+    Title_2.Size = UDim2.new(1, -85, 0, 28)
     Title_2.ZIndex = 33
 
     local infoByline = Instance.new("TextLabel")
