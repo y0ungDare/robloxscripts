@@ -3368,8 +3368,11 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 
 	-- CONTROLS MESSAGE: display after the host message has fully faded out.
 	-- Same position, glitch reveal, sound, glow, and timing as the previous messages.
+	-- Use a thin black outline only for this green instruction message.
+	welcomeGlow.Color = Color3.fromRGB(0, 0, 0)
+	welcomeGlow.Thickness = 1.25
 	local controlsMessage = "press Q to open the menu. press Q to close the menu."
-	local controlsColor = "#39FF14" -- vivid neon green, matching the reference screenshot
+	local controlsColor = "#66FF00" -- brighter electric neon green
 	local function renderControls(revealed)
 		local parts = {}
 		for i = 1, #controlsMessage do
@@ -3415,6 +3418,9 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 	}):Play()
 	task.wait(fadeDuration + 0.05)
 
+	-- Restore the original light-purple outline for the Instagram message.
+	welcomeGlow.Color = Color3.fromRGB(207, 157, 255)
+	welcomeGlow.Thickness = 2.5
 	-- INSTAGRAM MESSAGE: appears after the Q instructions have disappeared.
 	-- Neon cyan/pink lettering based on the reference, with the same glitch sound and timing.
 	local instagramMessage = "@y0ungdare on IG!"
