@@ -802,33 +802,48 @@ UpdatesLink.TextSize = 16.000
 UpdatesLink.TextStrokeTransparency = 0.180
 UpdatesLink.TextWrapped = true
 
+-- BO2/Jiggy-style white pixel/monospace performance counters with dark outline.
 Fps.Name = "Fps"
 Fps.Parent = y0ungDareMenuv45
-Fps.AnchorPoint = Vector2.new(0.5, 0)
-Fps.BackgroundTransparency = 1.000
+Fps.AnchorPoint = Vector2.new(0, 0)
+Fps.BackgroundColor3 = Color3.fromRGB(5, 7, 12) -- BO2-style black backing
+Fps.BackgroundTransparency = 0.22 -- slightly see-through like the screenshot
 Fps.BorderSizePixel = 0
-Fps.Position = UDim2.new(0.00628386438, 48, -0.0833333358, 76)
-Fps.Size = UDim2.new(0, 94, 0, 31)
+Fps.Position = UDim2.new(0, 16, 0, 12)
+Fps.Size = UDim2.new(0, 230, 0, 26)
 Fps.Visible = false
-Fps.Font = Enum.Font.SourceSans
-Fps.Text = "Fps: ..."
-Fps.TextColor3 = Color3.fromRGB(255, 255, 255)
-Fps.TextScaled = true
-Fps.TextWrapped = true
+Fps.Font = Enum.Font.Code
+Fps.Text = "FPS: 60.00"
+Fps.TextColor3 = Color3.fromRGB(248, 248, 255)
+Fps.TextSize = 23
+Fps.TextScaled = false
+Fps.TextWrapped = false
+Fps.TextXAlignment = Enum.TextXAlignment.Left
+Fps.TextYAlignment = Enum.TextYAlignment.Center
+Fps.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+Fps.TextStrokeTransparency = 0.05
+Fps.ZIndex = 20
 
 Ping.Name = "Ping"
 Ping.Parent = y0ungDareMenuv45
-Ping.AnchorPoint = Vector2.new(0.5, 0)
-Ping.BackgroundTransparency = 1.000
+Ping.AnchorPoint = Vector2.new(0, 0)
+Ping.BackgroundColor3 = Color3.fromRGB(5, 7, 12) -- BO2-style black backing
+Ping.BackgroundTransparency = 0.22 -- slightly see-through like the screenshot
 Ping.BorderSizePixel = 0
-Ping.Position = UDim2.new(0.135056406, -48, -0.0812870637, 76)
-Ping.Size = UDim2.new(0, 109, 0, 30)
+Ping.Position = UDim2.new(0, 16, 0, 39)
+Ping.Size = UDim2.new(0, 230, 0, 26)
 Ping.Visible = false
-Ping.Font = Enum.Font.SourceSans
-Ping.Text = "Ping: ..."
-Ping.TextColor3 = Color3.fromRGB(255, 255, 255)
-Ping.TextScaled = true
-Ping.TextWrapped = true
+Ping.Font = Enum.Font.Code
+Ping.Text = "PING: ... ms"
+Ping.TextColor3 = Color3.fromRGB(248, 248, 255)
+Ping.TextSize = 23
+Ping.TextScaled = false
+Ping.TextWrapped = false
+Ping.TextXAlignment = Enum.TextXAlignment.Left
+Ping.TextYAlignment = Enum.TextYAlignment.Center
+Ping.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+Ping.TextStrokeTransparency = 0.05
+Ping.ZIndex = 20
 
 -- Connect hover and click sounds for every existing button (including popup buttons).
 for _, object in ipairs(y0ungDareMenuv45:GetDescendants()) do
@@ -3502,7 +3517,7 @@ local function LJCX_fake_script() -- Fps.FpsOriginalScript
 
 	local RunService = game:GetService("RunService")
 		RunService.RenderStepped:Connect(function(frame) -- This will fire every time a frame is rendered
-		    script.Parent.Text = ("FPS: "..math.round(1/frame))
+		    script.Parent.Text = string.format("FPS: %.2f", 1 / math.max(frame, 0.0001))
 		end)
 	
 end
@@ -3512,7 +3527,14 @@ local function BFZBOCL_fake_script() -- Ping.PingOriginalScript
 
 	local RunService = game:GetService("RunService")
 		RunService.RenderStepped:Connect(function(ping)
-		    script.Parent.Text = ("Ping: " ..game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString(math.round(2/ping))) -- your ping
+		    local ok, pingMs = pcall(function()
+                return game:GetService("Players").LocalPlayer:GetNetworkPing() * 1000
+            end)
+            if ok then
+                script.Parent.Text = string.format("PING: %.0f ms", pingMs)
+            else
+                script.Parent.Text = "PING: -- ms"
+            end
 		end)
 	
 end
