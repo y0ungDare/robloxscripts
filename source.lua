@@ -3018,58 +3018,47 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 	frame.BackgroundTransparency = 1
 	label.BackgroundTransparency = 1
 	
-	local colors = {
-		"#FF309F",
-		"#00EFFF",
-		"#A960FF",
-		"#F759C7",
-		"#26E8FF",
-		"#FF5EAB"
-	}
-	
-	local message =
-		"Hello " .. player.Name ..
-		" , Welcome to y0ungDare Menu v4.5"
-	
+	-- Screenshot color order, from left to right:
+	-- Hello (pink) | player name (cyan) | Welcome to (purple) |
+	-- y0ungDare (cyan) | Menu v4.5 (pink).
+	local message = "Hello " .. player.Name .. ", Welcome to y0ungDare Menu v4.5"
 	local charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 	local rng = Random.new()
-	
+	local PINK = "#FF49B5"
+	local CYAN = "#00EDFF"
+	local PURPLE = "#B34DFF"
+	local RED = "#FF2020"
+	local LIGHT_RED = "#FF2056"
 	local charColors = {}
-	local wordNumber = 0
-	local insideWord = false
-	
-	for i = 1, #message do
-		local c = message:sub(i, i)
-	
-		if c:match("%s") then
-			insideWord = false
-		else
-			if not insideWord then
-				wordNumber += 1
-				insideWord = true
-			end
-		end
-	
-		charColors[i] =
-			colors[(math.max(wordNumber, 1) - 1) % #colors + 1]
+	for i = 1, #message do charColors[i] = PINK end
+	local function paintRange(first, last, color)
+		for i = first, last do charColors[i] = color end
 	end
-	
-	-- CYAN / PINK TITLE
-	local title = "y0ungDare Menu v4.5"
-	local titleStart = message:find(title, 1, true)
-	
+	-- The username is one continuous cyan section, just like RMG Discord.
+	paintRange(7, 7 + #player.Name, CYAN) -- Include the comma after the username
+	local welcomeStart = message:find("Welcome to", 1, true)
+	if welcomeStart then
+		paintRange(welcomeStart, welcomeStart + #"Welcome to" - 1, PURPLE)
+	end
+	-- Preserve the red/pink/cyan mixed lettering of "y0ungDare Menu v4.5"
+	-- exactly as a fixed pattern, instead of recoloring the whole name cyan.
+	local titleText = "y0ungDare Menu v4.5"
+	local titleStart = message:find(titleText, 1, true)
 	if titleStart then
-		local titleColors = {
-			"#00F5FF",
-			"#FF309F"
+		local titlePattern = {
+			-- Screenshot-inspired: cyan first word with pink accents,
+			-- pink M, cyan "enu", and pink "v4.5".
+			CYAN, PURPLE, CYAN, CYAN, CYAN, PINK, CYAN, CYAN, CYAN, -- y0ungDare
+			PINK, -- space
+			LIGHT_RED, CYAN, CYAN, CYAN, -- Menu (crimson M)
+			PINK, -- space
+			LIGHT_RED, LIGHT_RED, LIGHT_RED, LIGHT_RED -- v4.5
 		}
-	
-		for i = 1, #title do
-			charColors[titleStart + i - 1] =
-				titleColors[(i - 1) % #titleColors + 1]
+		for i = 1, #titleText do
+			charColors[titleStart + i - 1] = titlePattern[i] or RED
 		end
 	end
-	
+
 	local function safe(s)
 		return s:gsub("&", "&amp;")
 			:gsub("<", "&lt;")
@@ -3103,12 +3092,23 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 	-- WELCOME LABEL APPEARANCE
 	label.RichText = true
 	label.TextTransparency = 1
-	label.TextStrokeColor3 = Color3.fromRGB(36, 14, 59)
+	label.TextStrokeColor3 = Color3.fromRGB(67, 18, 68)
 	label.TextStrokeTransparency = 1
+	label.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
 	label.TextXAlignment = Enum.TextXAlignment.Center
 	label.TextYAlignment = Enum.TextYAlignment.Center
 	label.TextScaled = true
 	label.TextWrapped = false
+	-- Soft light-purple halo around the entire welcome message.
+	-- UIStroke follows the RichText letters without changing their colors.
+	local welcomeGlow = Instance.new("UIStroke")
+	welcomeGlow.Name = "WelcomeLightPurpleGlow"
+	welcomeGlow.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
+	welcomeGlow.Color = Color3.fromRGB(207, 157, 255)
+	welcomeGlow.Thickness = 2.5
+	welcomeGlow.Transparency = 0.45
+	welcomeGlow.Parent = label
+	TweenService:Create(welcomeGlow, TweenInfo.new(0.3), {Transparency = 0.22}):Play()
 	
 	frame.Position = UDim2.new(0.04, 0, 0.035, -15)
 	
@@ -3131,7 +3131,7 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 		TweenInfo.new(0.3),
 		{
 			TextTransparency = 0,
-			TextStrokeTransparency = 0.55
+			TextStrokeTransparency = 0.18
 		}
 	):Play()
 	
@@ -3140,35 +3140,18 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 	local updatesMessage =
 		"All updates on pastebin.com/vtqqsasB"
 	
-	local updatesColors = {
-		"#00F5FF",
-		"#FF309F",
-		"#B87AFF",
-		"#00EFFF",
-		"#FF5EAB"
-	}
-	
+	-- Reference: light-colored prefix, magenta/purple site name.
 	local updatesCharColors = {}
-	local updatesWord = 0
-	local updatesInsideWord = false
-	
 	for i = 1, #updatesMessage do
-		local c = updatesMessage:sub(i, i)
-	
-		if c:match("%s") then
-			updatesInsideWord = false
-		elseif not updatesInsideWord then
-			updatesWord += 1
-			updatesInsideWord = true
-		end
-	
-		updatesCharColors[i] =
-			updatesColors[
-		(math.max(updatesWord, 1) - 1) %
-			#updatesColors + 1
-		]
+		updatesCharColors[i] = "#F2EAF9"
 	end
-	
+	local siteStart = updatesMessage:find("pastebin.com", 1, true)
+	if siteStart then
+		for i = siteStart, #updatesMessage do
+			updatesCharColors[i] = "#E765E9"
+		end
+	end
+
 	local function renderUpdates(revealed)
 		local parts = {}
 	
@@ -3196,8 +3179,9 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 	updates.BackgroundTransparency = 1
 	updates.RichText = true
 	updates.TextTransparency = 1
-	updates.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+	updates.TextStrokeColor3 = Color3.fromRGB(75, 35, 95)
 	updates.TextStrokeTransparency = 1
+	updates.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
 	updates.TextXAlignment = Enum.TextXAlignment.Center
 	updates.TextYAlignment = Enum.TextYAlignment.Center
 	
@@ -3220,7 +3204,7 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 		purpleGlow.Name = "PurpleGlow"
 		purpleGlow.ApplyStrokeMode =
 			Enum.ApplyStrokeMode.Contextual
-		purpleGlow.Color = Color3.fromRGB(152, 75, 220)
+		purpleGlow.Color = Color3.fromRGB(196, 83, 230)
 		purpleGlow.Thickness = 1.5
 		purpleGlow.Transparency = 0.72
 		purpleGlow.Parent = updates
@@ -3285,6 +3269,7 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 	
 	-- FADE OUT
 	glowTween:Cancel()
+	TweenService:Create(welcomeGlow, TweenInfo.new(fadeDuration), {Transparency = 1}):Play()
 	
 	TweenService:Create(
 		purpleGlow,
