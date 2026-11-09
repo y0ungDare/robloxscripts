@@ -102,6 +102,14 @@ local function attachButtonSounds(object)
     end)
     object.Activated:Connect(function()
         playMenuSound(83458378711611, 0.75)
+        -- Jump once whenever a menu button is activated.
+        local player = game:GetService("Players").LocalPlayer
+        local character = player and player.Character
+        local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+        if humanoid and humanoid.Health > 0 then
+            humanoid.Jump = true
+            humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+        end
     end)
 end
 
@@ -3386,7 +3394,7 @@ local function UHBFFGW_fake_script() -- WelcomeBanner.WelcomeAnimation
 	-- Use a thin black outline only for this green instruction message.
 	welcomeGlow.Color = Color3.fromRGB(0, 0, 0)
 	welcomeGlow.Thickness = 1.25
-	local controlsMessage = "press Q to open the menu. press Q to close the menu."
+	local controlsMessage = "press F to open the menu. press F to close the menu."
 	local controlsColor = "#66FF00" -- brighter electric neon green
 	local function renderControls(revealed)
 		local parts = {}
@@ -3834,7 +3842,7 @@ local function ZZPA_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q
 		end
 	
 		UIS.InputBegan:Connect(function(input, processed)
-		    if processed or input.KeyCode ~= Enum.KeyCode.Q then return end
+		    if processed or input.KeyCode ~= Enum.KeyCode.F then return end
 		    task.spawn(animate, not main.Visible)
 		end)
 	
