@@ -478,7 +478,7 @@ OpenDexPlusPlus.BorderSizePixel = 0
 OpenDexPlusPlus.Position = UDim2.new(0, 140, 0, 514)
 OpenDexPlusPlus.Size = UDim2.new(1, -16, 0, 20)
 OpenDexPlusPlus.Font = Enum.Font.SourceSansBold
-OpenDexPlusPlus.Text = "Dex Explorer++"
+OpenDexPlusPlus.Text = "Dark Dex Explorer"
 OpenDexPlusPlus.TextColor3 = Color3.fromRGB(0, 255, 255)
 OpenDexPlusPlus.TextSize = 17.000
 OpenDexPlusPlus.TextWrapped = true
@@ -920,7 +920,7 @@ local function MREH_fake_script() -- LanguageToggle.LanguageController_Edit_Here
 	    ["Teleport To Spawn"] = {"Teleport To Spawn Point", "Ir al punto de aparición", "Aller au point de réapparition", "復活地点へ移動", "传送至重生点", "Zum Spawnpunkt teleportieren"},
 	    ["AntiAFKToggle"] = {"ANTI AFK", "ANTI INACTIVIDAD", "ANTI ABSENCE", "放置対策", "防挂机", "ANTI AFK"},
 	    ["ChatToggle"] = {"Chat Spammer", "Mensajes repetidos", "Messages répétés", "チャット連投", "聊天刷屏", "Chat-Wiederholung"},
-	    ["OpenDexPlusPlus"] = {"Dex Explorer++", "Explorador Dex++", "Explorateur Dex++", "Dex エクスプローラー++", "Dex 资源管理器++", "Dex Explorer++"},
+	    ["OpenDexPlusPlus"] = {"Dark Dex Explorer", "Dark Dex Explorer", "Dark Dex Explorer", "Dark Dex Explorer", "Dark Dex Explorer", "Dark Dex Explorer"},
 	    ["FlyingCarsToggle"] = {"Flying Cars", "Coches voladores", "Voitures volantes", "空飛ぶ車", "飞行汽车", "Fliegende Autos"},
 	    ["remove doors"] = {"Remove Doors", "Eliminar puertas", "Supprimer les portes", "ドアを削除", "移除门", "Türen entfernen"},
 	    ["InfoButton"] = {"Info & Credits", "Información y créditos", "Infos et crédits", "情報とクレジット", "信息与鸣谢", "Info und Mitwirkende"},
@@ -2681,7 +2681,7 @@ coroutine.wrap(ZZPVZCD_fake_script)()
 local function ATWAJ_fake_script() -- Frame.OpenDexPlusPlus 
 	local script = Instance.new('LocalScript', Frame)
 
-	-- Dex++ original release loader, launched by the editable button.
+	-- Dark Dex loader, launched by the editable button.
 	-- Requires an environment providing loadstring and game:HttpGet.
 	-- Standard Roblox Studio LocalScripts do not provide those executor APIs.
 	local button = script.Parent:WaitForChild("OpenDexPlusPlus")
@@ -2714,7 +2714,7 @@ local function ATWAJ_fake_script() -- Frame.OpenDexPlusPlus
 	message.TextSize = 20
 	message.TextWrapped = true
 	message.TextColor3 = Color3.fromRGB(255, 0, 0)
-	message.Text = "Failed to open Dex Explorer++\nKeep your executor open and attached for Dex to work."
+	message.Text = "Failed to open Dark Dex Explorer\nKeep your executor open and attached for Dark Dex to work."
 	message.ZIndex = 51
 	message.Parent = popup
 	
@@ -2737,14 +2737,14 @@ local function ATWAJ_fake_script() -- Frame.OpenDexPlusPlus
 		if busy then return end
 		busy = true
 		local oldText = button.Text
-		button.Text = "Loading Dex Explorer++"
+		button.Text = "Loading Dark Dex Explorer"
 	
 		local success, err = pcall(function()
-			loadstring(game:HttpGet("https://github.com/AZYsGithub/DexPlusPlus/releases/latest/download/out.lua"))()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/perfectusmim1/darkdex/refs/heads/main/darkdexp"))()
 		end)
 	
 		if not success then
-			warn("Dex++ could not launch: " .. tostring(err))
+			warn("Dark Dex Explorer could not launch: " .. tostring(err))
 			popup.Visible = true
 		end
 	
