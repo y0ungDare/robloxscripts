@@ -3278,7 +3278,7 @@ local function HRWYOVR_fake_script()
     updateSounds()
     toggle.MouseButton1Click:Connect(function()
         enabled = not enabled
-        toggle.Text = "Weapons: " .. (enabled and "ON" or "OFF")
+        toggle.Text = "Gun Sound: " .. (enabled and "ON" or "OFF")
         updateSounds() -- Restore immediately when switched OFF.
     end)
     dropdown.MouseButton1Click:Connect(function() options.Visible = not options.Visible end)
