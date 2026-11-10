@@ -5221,6 +5221,267 @@ do
 end
 
 
+
+-- Gun Camos: standalone adaptation of the supplied Texture.lua module.
+-- The original module requires __CW_CORE_STATE, runModule, and filesystem helpers
+-- that are not defined in this menu. This version uses Roblox asset IDs directly.
+do
+    local Players = game:GetService("Players")
+    local RS = game:GetService("ReplicatedStorage")
+    local player = Players.LocalPlayer
+    local panel = Frame:FindFirstChild("ShootSoundChangerPanel")
+    if panel then
+        local function row(name, label, y)
+            local b = Instance.new("TextButton")
+            b.Name, b.Text, b.Parent = name, label, panel
+            b.Position, b.Size = UDim2.fromOffset(8, y), UDim2.new(1, -16, 0, 20)
+            b.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+            b.BackgroundTransparency, b.BorderSizePixel = 0.82, 0
+            b.AutoButtonColor = false
+            b.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+            b.TextSize, b.TextColor3 = 13, Color3.fromRGB(1, 244, 253)
+            b.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+            b.TextStrokeTransparency = 0.28
+            b.TextXAlignment = Enum.TextXAlignment.Left
+            b.TextYAlignment = Enum.TextYAlignment.Center
+            b.ZIndex = 38
+            -- Match the Weapons menu row hover: purple fade, cyan side marker,
+            -- and violet outline. Only visual behavior; existing click logic stays.
+            local TweenService = game:GetService("TweenService")
+            local hoverInfo = TweenInfo.new(0.13, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+            local baseColor = b.BackgroundColor3
+            local marker = Instance.new("Frame")
+            marker.Name = "JiggySelectionMarker"
+            marker.Parent = b
+            marker.BorderSizePixel = 0
+            marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+            marker.BackgroundTransparency = 1
+            marker.Position = UDim2.fromOffset(0, 0)
+            marker.Size = UDim2.new(0, 5, 1, 0)
+            marker.ZIndex = b.ZIndex + 1
+            local outline = Instance.new("UIStroke")
+            outline.Name = "JiggySelectionOutline"
+            outline.Parent = b
+            outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+            outline.Color = Color3.fromRGB(174, 70, 255)
+            outline.Thickness = 1.5
+            outline.Transparency = 1
+            local function setHover(active)
+                TweenService:Create(b, hoverInfo, {
+                    BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or baseColor
+                }):Play()
+                TweenService:Create(marker, hoverInfo, {
+                    BackgroundTransparency = active and 0 or 1
+                }):Play()
+                TweenService:Create(outline, hoverInfo, {
+                    Transparency = active and 0 or 1
+                }):Play()
+            end
+            b.MouseEnter:Connect(function() setHover(true) end)
+            b.MouseLeave:Connect(function() setHover(false) end)
+            panel:GetPropertyChangedSignal("Visible"):Connect(function()
+                if not panel.Visible then setHover(false) end
+            end)
+            return b
+        end
+        local area = Instance.new("Frame")
+        area.Name, area.Parent = "GunCamosArea", panel
+        area.Position, area.Size = UDim2.fromOffset(0, 143), UDim2.new(1, 0, 0, 69)
+        area.BackgroundColor3 = Color3.fromRGB(18, 11, 36)
+        area.BackgroundTransparency = 1
+        area.BorderSizePixel, area.ZIndex, area.Visible = 0, 36, true
+        local weapon = "AK-47"
+        local selections = {}
+        local originals = setmetatable({}, {__mode="k"})
+        local customMeshes = {
+            FAL = {meshId="rbxassetid://90772329772088", meshName="FAL/Meshes", hide={ ["Smooth Block Model"]=true, Black=true }, offset=Vector3.new(.05,.2,-.55), rotation=90, size=Vector3.new(.4,.4,.4)},
+            M700 = {meshId="rbxassetid://109235772617313", meshName="M700/Meshes", hide={ ["Smooth Block Model"]=true }, offset=Vector3.new(0,.43,-.8), rotation=90, size=Vector3.new(1,1,1)}
+        }
+        -- Save each affected instance's appearance before applying any camo.
+        -- A per-instance snapshot also survives switching weapons while equipped.
+        local savedAppearance = setmetatable({}, {__mode = "k"})
+        local createdCamoMeshes = setmetatable({}, {__mode = "k"})
+        local function remember(part)
+            if not savedAppearance[part] then
+                local snapshot = {transparency = part.Transparency}
+                if part:IsA("MeshPart") then snapshot.textureID = part.TextureID end
+                savedAppearance[part] = snapshot
+            end
+        end
+        local function restorePart(part)
+            local snapshot = savedAppearance[part]
+            if not snapshot or not part.Parent then return end
+            part.Transparency = snapshot.transparency
+            if part:IsA("MeshPart") then part.TextureID = snapshot.textureID end
+        end
+        local function apply(tool)
+            if not tool:IsA("Tool") then return end
+            local id = selections[tool.Name]
+            local cfg = customMeshes[tool.Name]
+            if cfg then
+                local mesh = createdCamoMeshes[tool]
+                if mesh and not mesh.Parent then
+                    createdCamoMeshes[tool] = nil
+                    mesh = nil
+                end
+                if id and not mesh then
+                    local handle = tool:FindFirstChild("Handle")
+                    if not handle then return end
+                    mesh = Instance.new("MeshPart")
+                    mesh.Name, mesh.MeshId, mesh.Size = cfg.meshName, cfg.meshId, cfg.size
+                    mesh.Anchored, mesh.CanCollide, mesh.CanTouch, mesh.Massless = false, false, false, true
+                    mesh.CFrame = handle.CFrame * CFrame.new(cfg.offset) * CFrame.Angles(0, math.rad(cfg.rotation), 0)
+                    mesh.Parent = tool
+                    local weld = Instance.new("WeldConstraint")
+                    weld.Part0, weld.Part1, weld.Parent = handle, mesh, mesh
+                    createdCamoMeshes[tool] = mesh
+                end
+                for _, piece in ipairs(tool:GetChildren()) do
+                    if cfg.hide[piece.Name] then
+                        local parts = {piece}
+                        for _, d in ipairs(piece:GetDescendants()) do table.insert(parts, d) end
+                        for _, part in ipairs(parts) do
+                            if part:IsA("BasePart") then
+                                if id then
+                                    remember(part)
+                                    part.Transparency = 1
+                                else
+                                    restorePart(part)
+                                end
+                            end
+                        end
+                    end
+                end
+                if mesh then
+                    if id then
+                        mesh.TextureID = id
+                    else
+                        mesh:Destroy()
+                        createdCamoMeshes[tool] = nil
+                    end
+                end
+            else
+                -- Restore ALL modified mesh parts, not only the first one found.
+                for _, part in ipairs(tool:GetDescendants()) do
+                    if part:IsA("MeshPart") then
+                        if id then
+                            remember(part)
+                            part.TextureID = id
+                        else
+                            restorePart(part)
+                        end
+                    end
+                end
+            end
+        end
+        local function refresh()
+            for _, container in ipairs({player.Character, player:FindFirstChildOfClass("Backpack")}) do
+                if container then
+                    for _, tool in ipairs(container:GetChildren()) do apply(tool) end
+                end
+            end
+        end
+        -- Keep the original per-weapon selections and apply(tool) logic.
+        -- Assign the same decal to every weapon name instead of selecting one.
+        local names = {}
+        local guns = RS:FindFirstChild("Tools")
+        guns = guns and guns:FindFirstChild("Guns")
+        if guns then
+            for _, tool in ipairs(guns:GetChildren()) do
+                if tool:IsA("Tool") then table.insert(names, tool.Name) end
+            end
+        end
+        local knownNames = {"AK-47", "M4A1", "M9", "MP5", "Remington 870", "Revolver", "FAL", "M700"}
+        local function addName(name)
+            for _, existing in ipairs(names) do if existing == name then return end end
+            table.insert(names, name)
+        end
+        for _, name in ipairs(knownNames) do addName(name) end
+        -- Preset decal selector (replaces the manual ID input).
+        local camoPresets = {
+            {name = "Ghost", id = "119529300916407"},
+            {name = "Voltage", id = "94315272730596"},
+            {name = "Gold", id = "124475509"},
+            {name = "Sliver Satin", id = "72633129496082"},
+        }
+        local selectedPreset = 1
+        local presetButton = row("GunCamoPreset", "Gun Camo: Ghost  >", 0)
+        presetButton.Parent, presetButton.ZIndex = area, 38
+        local applyButton = row("GunCamoApply", "Apply Camo", 24)
+        applyButton.Parent, applyButton.ZIndex = area, 38
+        area.Size = UDim2.new(1, -16, 0, 45)
+        -- Like Target Selector: each click advances to the next preset.
+        presetButton.Activated:Connect(function()
+            selectedPreset = selectedPreset % #camoPresets + 1
+            presetButton.Text = "Gun Camo: " .. camoPresets[selectedPreset].name .. "  >"
+        end)
+        -- Accept both Decal IDs and direct Image IDs.
+        -- Decals contain a Texture property pointing at the actual image;
+        -- image assets can be used directly as MeshPart.TextureID.
+        local textureCache = {}
+        local function resolveCamoImage(number)
+            number = tostring(number):match("%d+")
+            if not number then return nil end
+            if textureCache[number] then return textureCache[number] end
+            local directImage = "rbxassetid://" .. number
+            local resolved = directImage
+            local ok, objects = pcall(function()
+                return game:GetObjects(directImage)
+            end)
+            if ok and type(objects) == "table" then
+                for _, obj in ipairs(objects) do
+                    local decal
+                    if obj:IsA("Decal") or obj:IsA("Texture") then
+                        decal = obj
+                    else
+                        decal = obj:FindFirstChildWhichIsA("Decal", true)
+                            or obj:FindFirstChildWhichIsA("Texture", true)
+                    end
+                    if decal and decal.Texture ~= "" then
+                        resolved = decal.Texture
+                        break
+                    end
+                end
+                for _, obj in ipairs(objects) do
+                    pcall(function() obj:Destroy() end)
+                end
+            end
+            -- If GetObjects does not return a Decal, retain the supplied ID.
+            -- This is required for direct Image IDs, which do not contain Decal instances.
+            textureCache[number] = resolved
+            return resolved
+        end
+        applyButton.Activated:Connect(function()
+            local number = camoPresets[selectedPreset].id
+            if not number then return end
+            local image = resolveCamoImage(number)
+            if not image then return end
+            -- Run the original individual weapon camo path for each gun.
+            for _, name in ipairs(names) do selections[name] = image end
+            -- Also support guns currently owned whose names are absent from the registry.
+            for _, container in ipairs({player.Character, player:FindFirstChildOfClass("Backpack")}) do
+                if container then
+                    for _, tool in ipairs(container:GetChildren()) do
+                        if tool:IsA("Tool") then selections[tool.Name] = image end
+                    end
+                end
+            end
+            refresh()
+        end)
+        local function monitor(container)
+            if not container then return end
+            container.ChildAdded:Connect(function(child)
+                if child:IsA("Tool") then task.defer(function() if child.Parent then apply(child) end end) end
+            end)
+            refresh()
+        end
+        monitor(player:FindFirstChildOfClass("Backpack"))
+        if player.Character then monitor(player.Character) end
+        player.CharacterAdded:Connect(monitor)
+        player.ChildAdded:Connect(function(child) if child:IsA("Backpack") then monitor(child) end end)
+    end
+end
+
 -- Main Mods submenu: keep the existing controls and their click handlers.
 do
     local TweenService = game:GetService("TweenService")
