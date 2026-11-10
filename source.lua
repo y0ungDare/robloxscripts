@@ -3202,10 +3202,23 @@ local function HRWYOVR_fake_script()
     -- Primary Appearance: opt-in visual replacement for assault rifles only.
     local primaryAppearance = {enabled = false}
     shared.y0ungDarePrimaryAppearance = primaryAppearance
-    local primaryAppearanceButton = makeButton("PrimaryAppearanceToggle", "Primary Appearance: OFF", 231)
+    local primaryAppearanceButton = makeButton("PrimaryAppearanceToggle", "Change Gun Appearance: OFF", 231)
+    -- Small informational note beneath the toggle; not a clickable button.
+    local primaryAppearanceNote = Instance.new("TextLabel")
+    primaryAppearanceNote.Name = "PrimaryAppearanceWeaponNote"
+    primaryAppearanceNote.Parent = panel
+    primaryAppearanceNote.Position = UDim2.fromOffset(12, 252)
+    primaryAppearanceNote.Size = UDim2.new(1, -24, 0, 16)
+    primaryAppearanceNote.BackgroundTransparency = 1
+    primaryAppearanceNote.Font = Enum.Font.RobotoCondensed
+    primaryAppearanceNote.TextSize = 12
+    primaryAppearanceNote.TextColor3 = Color3.fromRGB(170, 159, 195)
+    primaryAppearanceNote.TextXAlignment = Enum.TextXAlignment.Left
+    primaryAppearanceNote.Text = "M4A1, FAL, AK-47, MP5"
+    primaryAppearanceNote.ZIndex = 33
     primaryAppearanceButton.MouseButton1Click:Connect(function()
         primaryAppearance.enabled = not primaryAppearance.enabled
-        primaryAppearanceButton.Text = "Primary Appearance: " .. (primaryAppearance.enabled and "ON" or "OFF")
+        primaryAppearanceButton.Text = "Change Gun Appearance: " .. (primaryAppearance.enabled and "ON" or "OFF")
     end)
     button.Activated:Connect(openPanel)
     title.Activated:Connect(closePanel)
