@@ -5,32 +5,9 @@ if game.PlaceId ~= 155615604 then
 end
 
 local y0ungDarePlayerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
--- Remove any Cigar GUI left behind by an older version of the menu.
--- This also runs when a previous y0ungDare menu is already open.
-do
-    local cleanup = type(shared) == "table" and shared.PLCigarCleanup
-    if type(cleanup) == "function" then pcall(cleanup) end
-    if type(shared) == "table" then shared.PLCigarCleanup = nil end
-    for _, name in ipairs({"PLCigarToggleGui", "PLCigarToggle", "PL_Cigar_GUI"}) do
-        local oldCigarGui = y0ungDarePlayerGui:FindFirstChild(name)
-        if oldCigarGui then oldCigarGui:Destroy() end
-    end
-    for _, gui in ipairs(y0ungDarePlayerGui:GetChildren()) do
-        if gui:IsA("ScreenGui") then
-            for _, item in ipairs(gui:GetDescendants()) do
-                if item:IsA("GuiButton") and
-                    (item.Name == "CigarToggle" or item.Text == "Cigar: OFF" or item.Text == "Cigar: ON" or item.Text == "CIGAR: OFF" or item.Text == "CIGAR: ON") then
-                    item:Destroy()
-                end
-            end
-        end
-    end
-end
--- Allow reinjection after an earlier version has been loaded.
--- The previous guard returned immediately and made injection appear to do nothing.
-local previousMenu = y0ungDarePlayerGui:FindFirstChild("y0ungDare Menu v4.5")
-if previousMenu then
-    previousMenu:Destroy()
+if shared.y0ungDarePrisonLifeRunning or y0ungDarePlayerGui:FindFirstChild("y0ungDare Menu v4.5") then
+    warn("y0ungDare is already injected; skipping duplicate launch.")
+    return
 end
 shared.y0ungDarePrisonLifeRunning = true
 
@@ -5028,52 +5005,6 @@ local function ZZPA_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q
 end
 coroutine.wrap(ZZPA_fake_script)()
 
--- Ctrl shift-lock cursor recovery. Does not force-unlock during first person.
-do
-    local UIS = game:GetService("UserInputService")
-    local RunService = game:GetService("RunService")
-    local player = game:GetService("Players").LocalPlayer
-    local stepName = "y0ungDareShiftLockCursorRecovery"
-    pcall(function() RunService:UnbindFromRenderStep(stepName) end)
-    local releaseUntil = 0
-    local ctrlDown = false
-    local expectedLock = UIS.MouseBehavior == Enum.MouseBehavior.LockCenter
-    local function firstPerson()
-        local camera = workspace.CurrentCamera
-        return camera and (camera.CFrame.Position - camera.Focus.Position).Magnitude < 1
-    end
-    local function onCtrl(input)
-        if input.KeyCode ~= Enum.KeyCode.LeftControl and input.KeyCode ~= Enum.KeyCode.RightControl then return end
-        if UIS:GetFocusedTextBox() or ctrlDown then return end
-        ctrlDown = true
-        -- Ctrl toggles the game's shift lock. When turning it off, recover
-        -- a cursor that the camera controller accidentally leaves centered.
-        expectedLock = not expectedLock
-        releaseUntil = expectedLock and 0 or (os.clock() + 2.5)
-    end
-    local began = UIS.InputBegan:Connect(onCtrl)
-    local ended = UIS.InputEnded:Connect(function(input)
-        if input.KeyCode == Enum.KeyCode.LeftControl or input.KeyCode == Enum.KeyCode.RightControl then
-            ctrlDown = false
-        end
-    end)
-    RunService:BindToRenderStep(stepName, Enum.RenderPriority.Camera.Value + 2, function()
-        if os.clock() >= releaseUntil or firstPerson() then return end
-        local char = player.Character
-        local humanoid = char and char:FindFirstChildOfClass("Humanoid")
-        if humanoid and humanoid.Health <= 0 then return end
-        if UIS.MouseBehavior == Enum.MouseBehavior.LockCenter then
-            UIS.MouseBehavior = Enum.MouseBehavior.Default
-        end
-        UIS.MouseIconEnabled = true
-    end)
-    y0ungDareMenuv45.Destroying:Connect(function()
-        began:Disconnect()
-        ended:Disconnect()
-        pcall(function() RunService:UnbindFromRenderStep(stepName) end)
-    end)
-end
-
 -- ================================================================
 -- JIGGY-STYLE ANIMATED BACKGROUND (ADDED; ORIGINAL CODE ABOVE INTACT)
 -- Edit the settings below to customize the glitch animation.
@@ -5350,55 +5281,8 @@ do
     end
 
     attachHover(mainModsButton)
-    -- Respawn at the last death position, integrated into Main Mods.
-    local respawnDeathButton = Instance.new("TextButton")
-    respawnDeathButton.Name = "RespawnAtDeathLocation"
-    respawnDeathButton.Text = "Respawn at Death Location: OFF"
-    local respawnDeathEnabled = false
-    local lastDeathCFrame = nil
-    local deathConnection = nil
-    local respawnGeneration = 0
-
-    local function watchDeath(character)
-        if deathConnection then deathConnection:Disconnect(); deathConnection = nil end
-        local humanoid = character:WaitForChild("Humanoid", 5)
-        if humanoid and character == game:GetService("Players").LocalPlayer.Character then
-            deathConnection = humanoid.Died:Connect(function()
-                if not respawnDeathEnabled then return end
-                local root = character:FindFirstChild("HumanoidRootPart")
-                if root then lastDeathCFrame = root.CFrame end
-            end)
-        end
-    end
-    local deathPlayer = game:GetService("Players").LocalPlayer
-    if deathPlayer.Character then task.spawn(watchDeath, deathPlayer.Character) end
-    deathPlayer.CharacterAdded:Connect(function(character)
-        respawnGeneration = respawnGeneration + 1
-        local generation = respawnGeneration
-        task.spawn(watchDeath, character)
-        if not respawnDeathEnabled or not lastDeathCFrame then return end
-        local savedPosition = lastDeathCFrame
-        task.spawn(function()
-            local root = character:WaitForChild("HumanoidRootPart", 5)
-            local humanoid = character:WaitForChild("Humanoid", 5)
-            if not root or not humanoid then return end
-            task.wait(0.5)
-            if respawnDeathEnabled and generation == respawnGeneration and deathPlayer.Character == character and humanoid.Health > 0 then
-                root.CFrame = savedPosition
-            end
-        end)
-    end)
-    respawnDeathButton.Activated:Connect(function()
-        respawnDeathEnabled = not respawnDeathEnabled
-        if not respawnDeathEnabled then
-            lastDeathCFrame = nil
-            respawnGeneration = respawnGeneration + 1
-        end
-        respawnDeathButton.Text = respawnDeathEnabled and "Respawn at Death Location: ON" or "Respawn at Death Location: OFF"
-    end)
-
     local resets = {}
-    for index, button in ipairs({SetSpawnPoint, TeleportToSpawn, NoclipToggle, WallEsp, SpeedRun, TaseBypass, AntiAFKToggle, aurakill, removedoors, respawnDeathButton}) do
+    for index, button in ipairs({SetSpawnPoint, TeleportToSpawn, NoclipToggle, WallEsp, SpeedRun, TaseBypass, AntiAFKToggle, aurakill, removedoors}) do
         button.Parent = page
         button.AnchorPoint = Vector2.new(0, 0)
         button.Position = UDim2.fromOffset(8, 79 + (index - 1) * 20)
@@ -5418,6 +5302,76 @@ do
         local marker = button:FindFirstChild("JiggySelectionMarker")
         if marker then marker.ZIndex = 34 end
     end
+
+    -- Respawn at Death Location: original saving/teleport logic, integrated toggle.
+    local respawnAtDeathButton = Instance.new("TextButton")
+    respawnAtDeathButton.Name = "RespawnAtDeathLocationToggle"
+    respawnAtDeathButton.Parent = page
+    respawnAtDeathButton.Position = UDim2.fromOffset(8, 79 + 9 * 20)
+    respawnAtDeathButton.Size = UDim2.new(1, -16, 0, 20)
+    respawnAtDeathButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+    respawnAtDeathButton.BackgroundTransparency = 0.82
+    respawnAtDeathButton.BorderSizePixel = 0
+    respawnAtDeathButton.AutoButtonColor = false
+    respawnAtDeathButton.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    respawnAtDeathButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+    respawnAtDeathButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+    respawnAtDeathButton.TextStrokeTransparency = 0.28
+    respawnAtDeathButton.TextXAlignment = Enum.TextXAlignment.Left
+    respawnAtDeathButton.TextSize = 13
+    respawnAtDeathButton.Text = "Respawn at Death Location: OFF"
+    respawnAtDeathButton.ZIndex = 33
+    attachHover(respawnAtDeathButton)
+
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local RespawnAtDeathEnabled = false
+    local lastDeathPosition = nil
+    local connections = {}
+    local function saveDeathLocation()
+        if not RespawnAtDeathEnabled then return end
+        local character = LocalPlayer.Character
+        if character then
+            local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+            if humanoidRootPart then
+                lastDeathPosition = humanoidRootPart.CFrame
+            end
+        end
+    end
+    local function teleportToDeathLocation()
+        if not RespawnAtDeathEnabled then return end
+        if not lastDeathPosition then return end
+        local character = LocalPlayer.Character
+        if not character then return end
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart", 5)
+        local humanoid = character:WaitForChild("Humanoid", 5)
+        if humanoidRootPart and humanoid then
+            task.wait(0.5)
+            if RespawnAtDeathEnabled and character == LocalPlayer.Character then
+                humanoidRootPart.CFrame = lastDeathPosition
+            end
+        end
+    end
+    local function setupCharacter(character)
+        local humanoid = character:WaitForChild("Humanoid", 5)
+        if humanoid then
+            table.insert(connections, humanoid.Died:Connect(function()
+                saveDeathLocation()
+            end))
+        end
+    end
+    if LocalPlayer.Character then
+        task.spawn(setupCharacter, LocalPlayer.Character)
+    end
+    table.insert(connections, LocalPlayer.CharacterAdded:Connect(function(character)
+        task.spawn(setupCharacter, character)
+        task.spawn(teleportToDeathLocation)
+    end))
+    table.insert(connections, respawnAtDeathButton.MouseButton1Click:Connect(function()
+        RespawnAtDeathEnabled = not RespawnAtDeathEnabled
+        if not RespawnAtDeathEnabled then lastDeathPosition = nil end
+        respawnAtDeathButton.Text = RespawnAtDeathEnabled
+            and "Respawn at Death Location: ON" or "Respawn at Death Location: OFF"
+    end))
 
     local previousVisibility = {}
     local glitchLayer
