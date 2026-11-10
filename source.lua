@@ -403,7 +403,7 @@ BringButton.BorderSizePixel = 0
 BringButton.Position = UDim2.new(0, 8, 0, 408)
 BringButton.Size = UDim2.new(1, -16, 0, 20)
 BringButton.Font = Enum.Font.SourceSansBold
-BringButton.Text = "Shoot Sound Changer"
+BringButton.Text = "Gun Sound Changer"
 BringButton.TextColor3 = Color3.fromRGB(0, 255, 255)
 BringButton.TextSize = 17.000
 BringButton.TextWrapped = true
@@ -866,6 +866,80 @@ Ping.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Ping.TextStrokeTransparency = 0.05
 Ping.ZIndex = 20
 
+-- Wi-Fi indicator: three smooth, curved bands and a centered round dot.
+-- Drawn from small rounded GUI segments, not font glyphs (which look like chevrons).
+local WifiIndicator = Instance.new("Frame")
+WifiIndicator.Name = "WifiConnectionIndicator"
+WifiIndicator.Parent = y0ungDareMenuv45
+-- The FPS/Ping HUD occupies x=16..246 and y=12..65.
+WifiIndicator.Position = UDim2.fromOffset(252, 12)
+WifiIndicator.Size = UDim2.fromOffset(54, 53)
+WifiIndicator.BackgroundColor3 = Color3.fromRGB(5, 7, 12)
+WifiIndicator.BackgroundTransparency = 0.22
+WifiIndicator.BorderSizePixel = 0
+WifiIndicator.Visible = false
+WifiIndicator.ZIndex = 20
+
+local wifiParts = {}
+local function addWifiArc(name, radius, thickness)
+    local centerX, centerY = 27, 42
+    local segments = 25
+    for i = 0, segments - 1 do
+        -- An upward-facing circular arc from 30 to 150 degrees.
+        local angle = math.rad(30 + (120 * i / (segments - 1)))
+        local x = centerX + radius * math.cos(angle)
+        local y = centerY - radius * math.sin(angle)
+        local segment = Instance.new("Frame")
+        segment.Name = name .. tostring(i + 1)
+        segment.AnchorPoint = Vector2.new(0.5, 0.5)
+        segment.Position = UDim2.fromOffset(x, y)
+        segment.Size = UDim2.fromOffset(thickness + 1, thickness + 1)
+        segment.BackgroundColor3 = Color3.fromRGB(255, 55, 55)
+        segment.BorderSizePixel = 0
+        segment.ZIndex = 21
+        segment.Parent = WifiIndicator
+        local round = Instance.new("UICorner")
+        round.CornerRadius = UDim.new(1, 0)
+        round.Parent = segment
+        table.insert(wifiParts, segment)
+    end
+end
+addWifiArc("OuterArc", 24, 4)
+addWifiArc("MiddleArc", 16, 4)
+addWifiArc("InnerArc", 8, 4)
+local wifiDot = Instance.new("Frame")
+wifiDot.Name = "SignalDot"
+wifiDot.AnchorPoint = Vector2.new(0.5, 0.5)
+wifiDot.Position = UDim2.fromOffset(27, 44)
+wifiDot.Size = UDim2.fromOffset(7, 7)
+wifiDot.BackgroundColor3 = Color3.fromRGB(255, 55, 55)
+wifiDot.BorderSizePixel = 0
+wifiDot.ZIndex = 21
+wifiDot.Parent = WifiIndicator
+local dotCorner = Instance.new("UICorner")
+dotCorner.CornerRadius = UDim.new(1, 0)
+dotCorner.Parent = wifiDot
+table.insert(wifiParts, wifiDot)
+
+local wifiLastPing = nil
+local wifiLastFps = nil
+local function updateWifiColor()
+    if not WifiIndicator.Parent then return end
+    local pingMs = wifiLastPing
+    local fps = wifiLastFps
+    local color
+    if not pingMs or pingMs >= 180 or (fps and fps < 25) then
+        color = Color3.fromRGB(255, 55, 55) -- red: weak
+    elseif pingMs >= 100 or (fps and fps < 45) then
+        color = Color3.fromRGB(255, 203, 40) -- yellow: fair
+    else
+        color = Color3.fromRGB(55, 235, 92) -- green: strong
+    end
+    for _, part in ipairs(wifiParts) do
+        part.BackgroundColor3 = color
+    end
+end
+
 -- Connect hover and click sounds for every existing button (including popup buttons).
 for _, object in ipairs(y0ungDareMenuv45:GetDescendants()) do
     attachButtonSounds(object)
@@ -1102,7 +1176,7 @@ local function MREH_fake_script() -- LanguageToggle.LanguageController_Edit_Here
 	    ["X Ray Vision"] = {"X-Ray Vision", "Visión de rayos X", "Vision à rayons X", "透視モード", "透视模式", "Röntgenblick"},
 	    ["Wall Esp"] = {"Wall Esp V2", "Ver jugadores V2", "Voir les joueurs V2", "壁越し表示 V2", "透墙显示 V2", "Spieler anzeigen V2"},
 	    ["aura kill"] = {"Aura Kill", "Aura de ataque", "Aura d’attaque", "攻撃オーラ", "攻击光环", "Angriffsaura"},
-	    ["BringButton"] = {"Shoot Sound Changer", "Cambiar sonido de disparo", "Changer le son de tir", "射撃音変更", "更换射击音效", "Schusssound ändern"},
+	    ["BringButton"] = {"Gun Sound Changer", "Cambiar sonido de disparo", "Changer le son de tir", "射撃音変更", "更换射击音效", "Schusssound ändern"},
 	    ["RGBTextToggle"] = {"RGB Text", "Texto RGB", "Texte RVB", "RGB文字", "RGB文字", "RGB-Text"},
 	    ["Set Spawn Point"] = {"Set Spawn Point", "Guardar punto de aparición", "Définir le point de réapparition", "復活地点を設定", "设置重生点", "Spawnpunkt setzen"},
 	    ["Teleport To Spawn"] = {"Teleport To Spawn Point", "Ir al punto de aparición", "Aller au point de réapparition", "復活地点へ移動", "传送至重生点", "Zum Spawnpunkt teleportieren"},
@@ -1373,6 +1447,7 @@ local function DVADVQN_fake_script() -- FPSPingToggle.ToggleController
 		local function update()
 		    fps.Visible = enabled
 		    ping.Visible = enabled
+            WifiIndicator.Visible = enabled
 		    button.Text = enabled and "FPS & Ping: ON" or "FPS & Ping: OFF"
 		end
 		button.Activated:Connect(function()
@@ -2608,59 +2683,134 @@ local function HRWYOVR_fake_script()
             previousVisibility[child] = nil
         end
     end
-    -- The Info & Credits page uses no outer border; match its presentation.
-    local function makeButton(name, text, y, height)
+    -- Compact Jiggy main-menu rows and matching cyan hover selection.
+    local TweenService = game:GetService("TweenService")
+    local hoverInfo = TweenInfo.new(0.09, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+    local function addRowHover(rowButton)
+        local baseColor = rowButton.BackgroundColor3
+        local marker = Instance.new("Frame")
+        marker.Name = "JiggySelectionMarker"
+        marker.Parent = rowButton
+        marker.BorderSizePixel = 0
+        marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+        marker.BackgroundTransparency = 1
+        marker.Position = UDim2.fromOffset(0, 0)
+        marker.Size = UDim2.new(0, 5, 1, 0)
+        marker.ZIndex = rowButton.ZIndex + 1
+        local outline = Instance.new("UIStroke")
+        outline.Name = "JiggySelectionOutline"
+        outline.Parent = rowButton
+        outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+        outline.Color = Color3.fromRGB(174, 70, 255)
+        outline.Thickness = 1.5
+        outline.Transparency = 1
+        local function setHover(active)
+            TweenService:Create(rowButton, hoverInfo, {BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or baseColor}):Play()
+            TweenService:Create(marker, hoverInfo, {BackgroundTransparency = active and 0 or 1}):Play()
+            TweenService:Create(outline, hoverInfo, {Transparency = active and 0 or 1}):Play()
+        end
+        rowButton.MouseEnter:Connect(function() setHover(true) end)
+        rowButton.MouseLeave:Connect(function() setHover(false) end)
+        panel:GetPropertyChangedSignal("Visible"):Connect(function()
+            if not panel.Visible then setHover(false) end
+        end)
+    end
+    local function makeButton(name, text, y)
         local obj = Instance.new("TextButton")
         obj.Name = name
         obj.Parent = panel
-        obj.Position = UDim2.fromOffset(12, y)
-        obj.Size = UDim2.new(1, -24, 0, height)
-        obj.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
-        obj.TextColor3 = Color3.fromRGB(0, 255, 255)
-        obj.Font = Enum.Font.SourceSansBold
-        obj.TextSize = 16
+        obj.Position = UDim2.fromOffset(8, y)
+        obj.Size = UDim2.new(1, -16, 0, 20)
+        obj.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+        obj.BackgroundTransparency = 0.82
+        obj.BorderSizePixel = 0
+        obj.AutoButtonColor = false
+        obj.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        obj.TextColor3 = Color3.fromRGB(1, 244, 253)
+        obj.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+        obj.TextStrokeTransparency = 0.28
+        obj.TextXAlignment = Enum.TextXAlignment.Left
+        obj.TextYAlignment = Enum.TextYAlignment.Center
+        obj.TextSize = 13
         obj.Text = text
-        obj.ZIndex = 31
+        obj.ZIndex = 33
+        addRowHover(obj)
         return obj
     end
-    local title = makeButton("CloseShootSound", "< BACK", 14, 26)
+    local title = Instance.new("TextButton")
+    title.Name = "CloseShootSound"
+    title.Parent = panel
     title.Position = UDim2.new(1, -77, 0, 14)
     title.Size = UDim2.fromOffset(65, 26)
+    title.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
+    title.TextColor3 = Color3.fromRGB(0, 255, 255)
+    title.Font = Enum.Font.SourceSansBold
+    title.TextSize = 15
+    title.Text = "< BACK"
+    title.ZIndex = 34
     local heading = Instance.new("TextLabel")
     heading.Name = "ShootSoundHeading"
     heading.Parent = panel
-    heading.Position = UDim2.fromOffset(14, 12)
-    heading.Size = UDim2.new(1, -98, 0, 30)
+    heading.Position = UDim2.fromOffset(3, 18)
+    heading.Size = UDim2.new(1, -85, 0, 32)
     heading.BackgroundTransparency = 1
-    heading.Text = "Shoot Sound Changer"
-    heading.TextColor3 = Color3.fromRGB(1, 244, 253)
-    heading.Font = Enum.Font.RobotoCondensed
-    heading.TextSize = 20
+    heading.Text = "Gun Sound Changer"
+    heading.Font = Enum.Font.Arcade
+    heading.TextScaled = true
+    heading.TextSize = 27
+    heading.TextColor3 = Color3.fromRGB(245, 244, 255)
+    heading.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+    heading.TextStrokeTransparency = 0.25
     heading.TextXAlignment = Enum.TextXAlignment.Left
+    heading.TextYAlignment = Enum.TextYAlignment.Top
     heading.ZIndex = 33
-    local toggle = makeButton("ShootSoundToggle", "Shoot Sound Changer: OFF", 80, 29)
-    local dropdown = makeButton("ShootSoundDropdown", "Shoot Sound: " .. sounds[selected][1] .. "  ▼", 130, 29)
+    local byline = Instance.new("TextLabel")
+    byline.Name = "ShootSoundByline"
+    byline.Parent = panel
+    byline.Position = UDim2.fromOffset(3, 49)
+    byline.Size = UDim2.new(1, -10, 0, 23)
+    byline.BackgroundTransparency = 1
+    byline.Text = "By @y0ungdare"
+    byline.Font = Enum.Font.Arcade
+    byline.TextSize = 15
+    byline.TextColor3 = Color3.fromRGB(37, 28, 191)
+    byline.TextStrokeColor3 = Color3.fromRGB(10, 5, 40)
+    byline.TextStrokeTransparency = 0.3
+    byline.TextXAlignment = Enum.TextXAlignment.Left
+    byline.ZIndex = 33
+    local toggle = makeButton("ShootSoundToggle", "Gun Sound Changer: OFF", 79)
+    local dropdown = makeButton("ShootSoundDropdown", "Shoot Sound: " .. sounds[selected][1] .. "  ▼", 99)
     local options = Instance.new("ScrollingFrame")
     options.Name = "ShootSoundOptions"
     options.Parent = panel
-    options.Position = UDim2.fromOffset(12, 162)
-    options.Size = UDim2.new(1, -24, 0, 250)
+    options.Position = UDim2.fromOffset(8, 120)
+    options.Size = UDim2.new(1, -16, 0, 260)
     options.BackgroundColor3 = Color3.fromRGB(20, 13, 38)
+    options.BackgroundTransparency = 0.3
+    options.BorderSizePixel = 0
     options.ScrollBarThickness = 5
-    options.CanvasSize = UDim2.fromOffset(0, #sounds * 25)
+    options.CanvasSize = UDim2.fromOffset(0, #sounds * 20)
     options.Visible = false
     options.ZIndex = 40
     for i, entry in ipairs(sounds) do
         local choice = Instance.new("TextButton")
+        choice.Name = "ShootSoundChoice" .. i
         choice.Parent = options
-        choice.Position = UDim2.fromOffset(0, (i - 1) * 25)
-        choice.Size = UDim2.new(1, -7, 0, 25)
-        choice.BackgroundColor3 = Color3.fromRGB(30, 19, 54)
-        choice.TextColor3 = Color3.fromRGB(255, 255, 255)
-        choice.Font = Enum.Font.SourceSans
-        choice.TextSize = 16
+        choice.Position = UDim2.fromOffset(0, (i - 1) * 20)
+        choice.Size = UDim2.new(1, -7, 0, 20)
+        choice.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+        choice.BackgroundTransparency = 0.2
+        choice.BorderSizePixel = 0
+        choice.AutoButtonColor = false
+        choice.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        choice.TextColor3 = Color3.fromRGB(1, 244, 253)
+        choice.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+        choice.TextStrokeTransparency = 0.28
+        choice.TextXAlignment = Enum.TextXAlignment.Left
+        choice.TextSize = 13
         choice.Text = entry[1]
         choice.ZIndex = 41
+        addRowHover(choice)
         choice.MouseButton1Click:Connect(function()
             selected = i
             dropdown.Text = "Shoot Sound: " .. entry[1] .. "  ▼"
@@ -2708,7 +2858,7 @@ local function HRWYOVR_fake_script()
     updateSounds()
     toggle.MouseButton1Click:Connect(function()
         enabled = not enabled
-        toggle.Text = "Shoot Sound Changer: " .. (enabled and "ON" or "OFF")
+        toggle.Text = "Gun Sound Changer: " .. (enabled and "ON" or "OFF")
         updateSounds() -- Restore immediately when switched OFF.
     end)
     dropdown.MouseButton1Click:Connect(function() options.Visible = not options.Visible end)
@@ -4151,7 +4301,8 @@ local function LJCX_fake_script() -- Fps.FpsOriginalScript
 
 	local RunService = game:GetService("RunService")
 		RunService.RenderStepped:Connect(function(frame) -- This will fire every time a frame is rendered
-		    script.Parent.Text = string.format("FPS: %.2f", 1 / math.max(frame, 0.0001))
+            wifiLastFps = 1 / math.max(frame, 0.0001)
+		    script.Parent.Text = string.format("FPS: %.2f", wifiLastFps)
 		end)
 	
 end
@@ -4165,12 +4316,20 @@ local function BFZBOCL_fake_script() -- Ping.PingOriginalScript
                 return game:GetService("Players").LocalPlayer:GetNetworkPing() * 1000
             end)
             if ok then
+                wifiLastPing = pingMs
                 script.Parent.Text = string.format("PING: %.0f ms", pingMs)
             else
+                wifiLastPing = nil
                 script.Parent.Text = "PING: -- ms"
             end
-		end)
-	
+        end)
+        task.spawn(function()
+            while WifiIndicator.Parent do
+                updateWifiColor()
+                task.wait(0.5)
+            end
+        end)
+
 end
 coroutine.wrap(BFZBOCL_fake_script)()
 local function KSRFF_fake_script() -- y0ungDareMenuv45.KeyboardShortcuts 
