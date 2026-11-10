@@ -5,6 +5,25 @@ if game.PlaceId ~= 155615604 then
 end
 
 local y0ungDarePlayerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+-- Remove any Cigar GUI left behind by an older version of the menu.
+-- This also runs when a previous y0ungDare menu is already open.
+do
+    local cleanup = type(shared) == "table" and shared.PLCigarCleanup
+    if type(cleanup) == "function" then pcall(cleanup) end
+    if type(shared) == "table" then shared.PLCigarCleanup = nil end
+    local oldCigarGui = y0ungDarePlayerGui:FindFirstChild("PLCigarToggleGui")
+    if oldCigarGui then oldCigarGui:Destroy() end
+    for _, gui in ipairs(y0ungDarePlayerGui:GetChildren()) do
+        if gui:IsA("ScreenGui") then
+            for _, item in ipairs(gui:GetDescendants()) do
+                if item:IsA("GuiButton") and
+                    (item.Name == "CigarToggle" or item.Text == "Cigar: OFF" or item.Text == "Cigar: ON" or item.Text == "CIGAR: OFF" or item.Text == "CIGAR: ON") then
+                    item:Destroy()
+                end
+            end
+        end
+    end
+end
 if shared.y0ungDarePrisonLifeRunning or y0ungDarePlayerGui:FindFirstChild("y0ungDare Menu v4.5") then
     warn("y0ungDare is already injected; skipping duplicate launch.")
     return
