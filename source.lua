@@ -568,15 +568,15 @@ local JiggyStyleHeader = Instance.new("TextLabel")
 JiggyStyleHeader.Name = "JiggyStyleHeader"
 JiggyStyleHeader.Parent = Frame
 JiggyStyleHeader.Position = UDim2.fromOffset(8, 12)
-JiggyStyleHeader.Size = UDim2.new(1, -16, 0, 27)
+JiggyStyleHeader.Size = UDim2.new(1, -16, 0, 31)
 JiggyStyleHeader.BackgroundTransparency = 1
 JiggyStyleHeader.RichText = true
 JiggyStyleHeader.Font = Enum.Font.Arcade
-JiggyStyleHeader.TextSize = 19
+JiggyStyleHeader.TextSize = 22
 JiggyStyleHeader.TextScaled = false
 JiggyStyleHeader.TextXAlignment = Enum.TextXAlignment.Left
 JiggyStyleHeader.TextYAlignment = Enum.TextYAlignment.Center
-JiggyStyleHeader.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+JiggyStyleHeader.TextStrokeColor3 = Color3.fromRGB(20, 3, 40)
 JiggyStyleHeader.TextStrokeTransparency = 0.25
 JiggyStyleHeader.Text = '<font color="#FF39DB">y</font><font color="#00EFFF">0</font><font color="#FF39DB">u</font><font color="#00EFFF">n</font><font color="#FF39DB">g</font><font color="#00EFFF">D</font><font color="#FF39DB">a</font><font color="#00EFFF">r</font><font color="#FF39DB">e</font> <font color="#00EFFF">M</font><font color="#FF39DB">e</font><font color="#00EFFF">n</font><font color="#FF39DB">u</font> <font color="#00EFFF">v</font><font color="#FF39DB">4</font><font color="#00EFFF">.</font><font color="#FF39DB">5</font>'
 JiggyStyleHeader.ZIndex = 12
@@ -589,8 +589,8 @@ JiggyStyleByline.Size = UDim2.new(1, -16, 0, 17)
 JiggyStyleByline.BackgroundTransparency = 1
 JiggyStyleByline.Font = Enum.Font.Arcade
 JiggyStyleByline.Text = "By @y0ungdare"
-JiggyStyleByline.TextSize = 15
-JiggyStyleByline.TextColor3 = Color3.fromRGB(37, 28, 191)
+JiggyStyleByline.TextSize = 12
+JiggyStyleByline.TextColor3 = Color3.fromRGB(28, 21, 188)
 JiggyStyleByline.TextStrokeColor3 = Color3.fromRGB(10, 5, 35)
 JiggyStyleByline.TextStrokeTransparency = 0.3
 JiggyStyleByline.TextXAlignment = Enum.TextXAlignment.Left
@@ -5282,7 +5282,7 @@ do
 
     attachHover(mainModsButton)
     local resets = {}
-    for index, button in ipairs({SetSpawnPoint, TeleportToSpawn, NoclipToggle, WallEsp, SpeedRun, TaseBypass, AntiAFKToggle, aurakill, removedoors}) do
+    for index, button in ipairs({SetSpawnPoint, TeleportToSpawn, NoclipToggle, WallEsp, SpeedRun, TaseBypass, AntiAFKToggle, aurakill, removedoors, OpenDexPlusPlus}) do
         button.Parent = page
         button.AnchorPoint = Vector2.new(0, 0)
         button.Position = UDim2.fromOffset(8, 79 + (index - 1) * 20)
@@ -5596,6 +5596,823 @@ do
 
     local previousVisibility = {}
     local glitchLayer
+
+    -- Christmas Theme: original local map decorations, integrated as a Fun Mods toggle.
+    local christmasButton = Instance.new("TextButton")
+    christmasButton.Name = "ChristmasThemeToggle"
+    christmasButton.Parent = page
+    christmasButton.Position = UDim2.fromOffset(8, 159)
+    christmasButton.Size = UDim2.new(1, -16, 0, 20)
+    christmasButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+    christmasButton.BackgroundTransparency = 0.82
+    christmasButton.BorderSizePixel = 0
+    christmasButton.AutoButtonColor = false
+    christmasButton.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    christmasButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+    christmasButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+    christmasButton.TextStrokeTransparency = 0.28
+    christmasButton.TextXAlignment = Enum.TextXAlignment.Left
+    christmasButton.TextSize = 13
+    christmasButton.Text = "Christmas Theme: OFF"
+    christmasButton.ZIndex = 33
+    attachHover(christmasButton)
+
+    do
+        local Players = game:GetService('Players')
+        local Lighting = game:GetService('Lighting')
+        local RunService = game:GetService('RunService')
+        local Workspace = game:GetService('Workspace')
+        local player = Players.LocalPlayer
+        local model
+        local enabled = false
+        local savedParts = {}
+        local savedLighting = {}
+        local effects = {}
+        local connections = {}
+        local generation = 0
+        local lightingProps = {'Ambient','OutdoorAmbient','Brightness','ClockTime','FogColor','FogStart','FogEnd','ExposureCompensation'}
+        local function setButton(on)
+            christmasButton.Text = on and 'Christmas Theme: ON' or 'Christmas Theme: OFF'
+        end
+        local function paint(part)
+            if not enabled or not part:IsA('BasePart') or not part.Anchored or part.Transparency > 0.65 or savedParts[part] then return end
+            if part:IsDescendantOf(Workspace.CurrentCamera) then return end
+            if model and part:IsDescendantOf(model) then return end
+            local ancestor = part.Parent
+            if part:FindFirstAncestor('LocalChristmasTree') or part:FindFirstAncestor('LocalChristmasTreeSecond') or part:FindFirstAncestor('LocalChristmasTreeThird') or part:FindFirstAncestor('LocalChristmasCampfire') or part:FindFirstAncestor('LocalChristmasStringLights') or part:FindFirstAncestor('LocalChristmasSnowman') or part:FindFirstAncestor('LocalChristmasWallDecorations') or part:FindFirstAncestor('LocalChristmasRedCarpets') then return end
+            while ancestor and ancestor ~= Workspace do
+                if ancestor:IsA('Model') and ancestor:FindFirstChildOfClass('Humanoid') then return end
+                if ancestor:IsA('Tool') then return end
+                ancestor = ancestor.Parent
+            end
+            local n = part.Name:lower()
+            if n:find('glass') or n:find('window') or n:find('light') or n:find('neon') or n:find('door') or n:find('fence') or n:find('spawn') then return end
+            local mat = part.Material
+            local outdoor = mat == Enum.Material.Grass or mat == Enum.Material.Ground or mat == Enum.Material.Sand or mat == Enum.Material.Slate or mat == Enum.Material.Mud or mat == Enum.Material.LeafyGrass
+            local named = n:find('ground') or n:find('grass') or n:find('terrain') or n:find('road') or n:find('floor') or n:find('yard') or n:find('roof') or n:find('baseplate')
+            if not outdoor and not (named and part.Size.X >= 6 and part.Size.Z >= 6) then return end
+            savedParts[part] = {Color = part.Color, Material = part.Material, Reflectance = part.Reflectance}
+            -- Snow material has actual granular surface detail, unlike flat SmoothPlastic.
+            -- Subtle deterministic shade changes prevent a featureless white map.
+            local shade = math.noise(part.Position.X * 0.018, part.Position.Z * 0.018)
+            local value = math.clamp(math.floor(229 + shade * 16), 214, 239)
+            pcall(function()
+                part.Material = Enum.Material.Snow
+                part.Color = Color3.fromRGB(value, math.min(255, value + 5), math.min(255, value + 9))
+                part.Reflectance = 0
+            end)
+        end
+        -- Ground-fitted Christmas campfire at X=752.26, Z=2435.39.
+        -- Included in the main Christmas theme toggle (no second button).
+        local center = Vector3.new(752.26, 98.00, 2435.39)
+        -- Find the real ground below each object instead of assuming Y=98 is ground level.
+        local function groundAt(x, z)
+            local params = RaycastParams.new()
+            params.FilterType = Enum.RaycastFilterType.Exclude
+            local ignore = {}
+            if player.Character then table.insert(ignore, player.Character) end
+            local previous = workspace:FindFirstChild('LocalChristmasCampfire')
+            if previous then table.insert(ignore, previous) end
+            local tree = workspace:FindFirstChild('LocalChristmasTree')
+            if tree then table.insert(ignore, tree) end
+            params.FilterDescendantsInstances = ignore
+            params.IgnoreWater = true
+            local result = workspace:Raycast(Vector3.new(x, center.Y + 120, z), Vector3.new(0, -350, 0), params)
+            return result and result.Position.Y or center.Y
+        end
+        local function part(name,size,cf,color,material,parent)
+            local p=Instance.new('Part')
+            p.Name=name; p.Size=size; p.CFrame=cf; p.Anchored=true
+            p.CanCollide=true; p.Color=color; p.Material=material
+            p.TopSurface=Enum.SurfaceType.Smooth; p.BottomSurface=Enum.SurfaceType.Smooth
+            p.Parent=parent
+            return p
+        end
+        local function makeFire()
+            if model then model:Destroy() end
+            model=Instance.new('Model')
+            model.Name='LocalChristmasCampfire'; model.Parent=workspace
+            local floorY = groundAt(center.X, center.Z)
+            local base = Vector3.new(center.X, floorY, center.Z)
+            local stone=Color3.fromRGB(110,108,104)
+            for i=1,12 do
+                local angle=2*math.pi*i/12
+                local x,z=math.cos(angle)*3.15,math.sin(angle)*3.15
+                part('FireRingStone',Vector3.new(1.5,0.9,1.1),CFrame.new(Vector3.new(base.X+x, groundAt(base.X+x, base.Z+z)+0.35, base.Z+z))*CFrame.Angles(0,-angle,0),stone,Enum.Material.Slate,model)
+            end
+            part('Embers',Vector3.new(4.8,0.18,4.8),CFrame.new(base+Vector3.new(0,0.10,0)),Color3.fromRGB(38,31,26),Enum.Material.Slate,model).CanCollide=false
+            for i=1,5 do
+                local a=i*math.pi/5
+                part('Firewood',Vector3.new(0.7,0.65,4.5),CFrame.new(base+Vector3.new(0,0.40,0))*CFrame.Angles(0,a,0),Color3.fromRGB(91,48,22),Enum.Material.Wood,model)
+            end
+            local flameAnchor=part('FlameEmitter',Vector3.new(0.3,0.3,0.3),CFrame.new(base+Vector3.new(0,0.7,0)),Color3.fromRGB(255,143,26),Enum.Material.Neon,model)
+            flameAnchor.Transparency=1; flameAnchor.CanCollide=false
+            local fire=Instance.new('Fire')
+            fire.Name='CampfireFlames'; fire.Color=Color3.fromRGB(255,177,43); fire.SecondaryColor=Color3.fromRGB(255,69,11)
+            fire.Heat=9; fire.Size=8; fire.Parent=flameAnchor
+            -- No PointLight: flames remain visible without illuminating the snow below.
+            local smoke=Instance.new('Smoke')
+            smoke.Color=Color3.fromRGB(115,115,115); smoke.Opacity=0.12; smoke.RiseVelocity=5; smoke.Size=5; smoke.Parent=flameAnchor
+            -- Four wooden log benches facing the fire, with invisible Seat instances.
+            for i=1,4 do
+                local angle=(i-1)*math.pi/2
+                local radial=Vector3.new(math.cos(angle),0,math.sin(angle))
+                local x = base.X + radial.X*8
+                local z = base.Z + radial.Z*8
+                local pos = Vector3.new(x, groundAt(x,z), z)
+                local benchCF=CFrame.lookAt(pos, Vector3.new(base.X, pos.Y, base.Z))
+                local log=part('SitLog_'..i,Vector3.new(5.6,1.25,1.55),benchCF*CFrame.new(0,0.58,0),Color3.fromRGB(103,60,30),Enum.Material.Wood,model)
+                log.Shape=Enum.PartType.Cylinder
+                -- Cylinder axis is local X; log length is along local X.
+                for side=-1,1,2 do
+                    local support=part('LogSupport_'..i..'_'..side,Vector3.new(0.9,0.65,1.4),benchCF*CFrame.new(side*2.1,0.24,0),Color3.fromRGB(73,42,23),Enum.Material.Wood,model)
+                end
+                local seat=Instance.new('Seat')
+                seat.Name='CampfireSeat_'..i; seat.Size=Vector3.new(3.8,0.3,1.25)
+                seat.CFrame=benchCF*CFrame.new(0,1.25,0)
+                seat.Transparency=1; seat.Anchored=true; seat.CanCollide=false
+                seat.Parent=model
+            end
+        end
+        
+        
+        -- Christmas tree at 753.22, 98.00, 2460.33 (reference: yard tree).
+        local treeModel
+        local secondTreeModel
+        local thirdTreeModel
+        local treeX, treeZ = 753.22, 2460.33
+        local function makeChristmasTree(x, z, name, referenceY)
+            local currentTreeModel = Instance.new('Model')
+            currentTreeModel.Name = name
+            currentTreeModel.Parent = Workspace
+            -- Find the actual walkable ground below the supplied position.
+            -- Ignore invisible triggers, non-collidable decoration and overhead objects.
+            local params = RaycastParams.new()
+            params.FilterType = Enum.RaycastFilterType.Exclude
+            local ignore = {currentTreeModel}
+            if player.Character then table.insert(ignore, player.Character) end
+            if model then table.insert(ignore, model) end
+            if treeModel then table.insert(ignore, treeModel) end
+            if secondTreeModel then table.insert(ignore, secondTreeModel) end
+            params.IgnoreWater = true
+            local floorY = nil
+            local originY = (referenceY or 98.00) + 1.5
+            for _ = 1, 35 do
+                params.FilterDescendantsInstances = ignore
+                local hit = Workspace:Raycast(Vector3.new(x, originY, z), Vector3.new(0, -160, 0), params)
+                if not hit then break end
+                local surface = hit.Instance
+                local isGround = hit.Normal.Y > 0.65 and (
+                    surface:IsA('Terrain') or
+                    (surface:IsA('BasePart') and surface.CanCollide and surface.Transparency < 0.9)
+                )
+                if isGround then
+                    floorY = hit.Position.Y
+                    break
+                end
+                table.insert(ignore, surface)
+            end
+            -- If raycasting cannot find ground, place near the expected yard elevation.
+            local base = Vector3.new(x, floorY or ((referenceY or 98.00) - 3), z)
+            -- Cylinders run along their X axis by default: rotate 90 degrees around Z
+            -- so the trunk stands upright instead of lying sideways.
+            local trunk = part('TreeTrunk', Vector3.new(5.2, 1.8, 1.8), CFrame.new(base + Vector3.new(0, 2.6, 0)) * CFrame.Angles(0, 0, math.rad(90)), Color3.fromRGB(80, 49, 30), Enum.Material.Wood, currentTreeModel)
+            trunk.Shape = Enum.PartType.Cylinder
+            local greenColors = {
+                Color3.fromRGB(15, 57, 28),
+                Color3.fromRGB(18, 67, 31),
+                Color3.fromRGB(12, 48, 25),
+            }
+            -- Layered overlapping pine boughs make a full triangular evergreen silhouette.
+            local levels = 8
+            for level = 1, levels do
+                local height = 5.1 + (level - 1) * 1.45
+                local radius = 5.0 - (level - 1) * 0.52
+                local count = 12
+                for j = 1, count do
+                    local angle = (j / count) * math.pi * 2 + (level % 2) * 0.18
+                    local r = radius * 0.52
+                    local pos = base + Vector3.new(math.cos(angle) * r, height, math.sin(angle) * r)
+                    local foliage = part('PineBough', Vector3.new(radius * 1.05, 2.6, radius * 0.85), CFrame.new(pos), greenColors[(j + level) % #greenColors + 1], Enum.Material.Grass, currentTreeModel)
+                    foliage.Shape = Enum.PartType.Ball
+                    foliage.CanCollide = false
+                end
+                local core = part('PineCenter', Vector3.new(radius * 1.35, 2.7, radius * 1.35), CFrame.new(base + Vector3.new(0, height, 0)), greenColors[level % #greenColors + 1], Enum.Material.Grass, currentTreeModel)
+                core.Shape = Enum.PartType.Ball
+                core.CanCollide = false
+            end
+            local lightColors = {
+                Color3.fromRGB(255, 43, 55), Color3.fromRGB(35, 140, 255),
+                Color3.fromRGB(255, 230, 58), Color3.fromRGB(85, 255, 70),
+                Color3.fromRGB(230, 77, 255), Color3.fromRGB(255, 255, 240),
+            }
+            for level = 1, 8 do
+                local y = 5.4 + (level - 1) * 1.45
+                local radius = 5.0 - (level - 1) * 0.52
+                local count = math.max(5, 13 - level)
+                for j = 1, count do
+                    local angle = j * (2 * math.pi / count) + level * 0.55
+                    local pos = base + Vector3.new(math.cos(angle) * radius * 0.94, y, math.sin(angle) * radius * 0.94)
+                    local bulb = part('ChristmasLight', Vector3.new(0.48, 0.48, 0.48), CFrame.new(pos), lightColors[(j + level * 2) % #lightColors + 1], Enum.Material.SmoothPlastic, currentTreeModel)
+                    bulb.Shape = Enum.PartType.Ball
+                    bulb.CanCollide = false
+                    bulb.CastShadow = false
+                    bulb.Material = Enum.Material.Neon
+                    local glow = Instance.new('PointLight')
+                    glow.Name = 'MatchingColorGlow'
+                    glow.Color = bulb.Color
+                    glow.Brightness = 0.32
+                    glow.Range = 3
+                    glow.Shadows = false
+                    glow.Parent = bulb
+                end
+            end
+            local topper = part('TreeTopLight', Vector3.new(0.9, 0.9, 0.9), CFrame.new(base + Vector3.new(0, 17.1, 0)), Color3.fromRGB(255, 242, 125), Enum.Material.SmoothPlastic, currentTreeModel)
+            topper.Shape = Enum.PartType.Ball
+            topper.CanCollide = false
+            topper.CastShadow = false
+            topper.Material = Enum.Material.Neon
+            local topperGlow = Instance.new('PointLight')
+            topperGlow.Name = 'MatchingColorGlow'
+            topperGlow.Color = topper.Color
+            topperGlow.Brightness = 0.32
+            topperGlow.Range = 3
+            topperGlow.Shadows = false
+            topperGlow.Parent = topper
+            return currentTreeModel
+        end
+        
+        
+        -- Colored glowing Christmas string lights (short-range glow, no broad ground wash).
+        local stringLightsModel
+        local function makeMapChristmasLights()
+            if stringLightsModel then stringLightsModel:Destroy() end
+            stringLightsModel = Instance.new('Model')
+            stringLightsModel.Name = 'LocalChristmasStringLights'
+            stringLightsModel.Parent = Workspace
+            local palette = {
+                Color3.fromRGB(255,55,65), Color3.fromRGB(50,225,80),
+                Color3.fromRGB(40,170,255), Color3.fromRGB(255,225,65),
+                Color3.fromRGB(240,75,255), Color3.fromRGB(255,245,225),
+            }
+            local function addColoredGlow(bulb)
+                -- The emitted light always matches the bulb's own color.
+                bulb.Material = Enum.Material.Neon
+                bulb.CastShadow = false
+                local glow = Instance.new('PointLight')
+                glow.Name = 'MatchingColorGlow'
+                glow.Color = bulb.Color
+                glow.Brightness = 0.32
+                glow.Range = 3
+                glow.Shadows = false
+                glow.Parent = bulb
+            end
+            local function makeBulb(pos, index)
+                local bulb = Instance.new('Part')
+                bulb.Name = 'ChristmasStringBulb'
+                bulb.Shape = Enum.PartType.Ball
+                bulb.Size = Vector3.new(0.48, 0.48, 0.48)
+                bulb.Color = palette[(index - 1) % #palette + 1]
+                bulb.Material = Enum.Material.SmoothPlastic
+                bulb.Anchored = true
+                bulb.CanCollide = false
+                bulb.CanTouch = false
+                bulb.CastShadow = false
+                bulb.Position = pos
+                bulb.Parent = stringLightsModel
+                addColoredGlow(bulb)
+            end
+            local function makeWire(a, b)
+                local d = b - a
+                if d.Magnitude < 0.05 then return end
+                local wire = Instance.new('Part')
+                wire.Name = 'ChristmasStringWire'
+                wire.Size = Vector3.new(0.065, 0.065, d.Magnitude)
+                wire.CFrame = CFrame.lookAt((a + b) / 2, b)
+                wire.Color = Color3.fromRGB(20, 43, 24)
+                wire.Material = Enum.Material.SmoothPlastic
+                wire.Anchored = true
+                wire.CanCollide = false
+                wire.CanTouch = false
+                wire.CastShadow = false
+                wire.Parent = stringLightsModel
+            end
+            local function stringBetween(a, b, seed)
+                local distance = (b - a).Magnitude
+                local count = math.max(2, math.floor(distance / 2.5))
+                local last = a
+                for i = 1, count do
+                    local t = i / count
+                    local pos = a:Lerp(b, t) - Vector3.new(0, math.sin(t * math.pi) * math.min(1.2, distance * 0.025), 0)
+                    makeWire(last, pos)
+                    makeBulb(pos - Vector3.new(0, 0.22, 0), seed + i)
+                    last = pos
+                end
+            end
+            -- Find broad, approximately horizontal ceilings and roof undersides in the map.
+            -- The lights are hung along their perimeter, just under the ceiling.
+            local candidates = {}
+            for _, obj in ipairs(Workspace:GetDescendants()) do
+                if obj:IsA('BasePart') and obj.Anchored and obj.Transparency < 0.65
+                    and obj.Size.X >= 18 and obj.Size.Z >= 18 and obj.Size.Y <= 12
+                    and math.abs(obj.CFrame.UpVector.Y) > 0.94
+                    and not obj:IsDescendantOf(stringLightsModel)
+                    and not (model and obj:IsDescendantOf(model))
+                    and not (treeModel and obj:IsDescendantOf(treeModel)) then
+                    local name = obj.Name:lower()
+                    local likely = name:find('ceil') or name:find('roof') or name:find('top')
+                    -- Indoor ceilings may have generic names: require a reasonably elevated underside.
+                    local bottomY = obj.Position.Y - obj.Size.Y / 2
+                    if (likely or (bottomY > 104 and bottomY < 165)) and obj.Size.X < 300 and obj.Size.Z < 300 then
+                        table.insert(candidates, obj)
+                    end
+                end
+            end
+            table.sort(candidates, function(a,b) return a.Size.X * a.Size.Z > b.Size.X * b.Size.Z end)
+            local decorated = 0
+            for _, ceiling in ipairs(candidates) do
+                if decorated >= 28 then break end
+                local cf = ceiling.CFrame
+                local y = -ceiling.Size.Y / 2 - 0.45
+                local x = ceiling.Size.X / 2 - 0.7
+                local z = ceiling.Size.Z / 2 - 0.7
+                local corners = {
+                    cf:PointToWorldSpace(Vector3.new(-x,y,-z)),
+                    cf:PointToWorldSpace(Vector3.new(x,y,-z)),
+                    cf:PointToWorldSpace(Vector3.new(x,y,z)),
+                    cf:PointToWorldSpace(Vector3.new(-x,y,z)),
+                }
+                for i = 1, 4 do
+                    stringBetween(corners[i], corners[i % 4 + 1], decorated * 11 + i * 5)
+                end
+                decorated = decorated + 1
+            end
+            -- Additional yard string lights around the campfire/tree area, suspended overhead.
+            local yard = {
+                Vector3.new(736, 111, 2422), Vector3.new(768, 111, 2422),
+                Vector3.new(768, 111, 2473), Vector3.new(736, 111, 2473),
+            }
+            for i = 1, 4 do
+                stringBetween(yard[i], yard[i % 4 + 1], 100 + i * 7)
+            end
+        end
+        
+        -- Ground-fitted snowman at X=843.08, Y=98.00, Z=2453.54.
+        local snowmanModel
+        local function makeSnowman()
+            if snowmanModel then snowmanModel:Destroy() end
+            snowmanModel = Instance.new('Model')
+            snowmanModel.Name = 'LocalChristmasSnowman'
+            snowmanModel.Parent = Workspace
+            local x, z = 843.08, 2453.54
+            local params = RaycastParams.new()
+            params.FilterType = Enum.RaycastFilterType.Exclude
+            local ignore = {snowmanModel}
+            if player.Character then table.insert(ignore, player.Character) end
+            if model then table.insert(ignore, model) end
+            if treeModel then table.insert(ignore, treeModel) end
+            params.FilterDescendantsInstances = ignore
+            params.IgnoreWater = true
+            local groundY = 98
+            -- Start near the supplied Y coordinate to avoid placing on an overhead roof.
+            for _ = 1, 25 do
+                local hit = Workspace:Raycast(Vector3.new(x, 101, z), Vector3.new(0, -100, 0), params)
+                if not hit then break end
+                if hit.Normal.Y > 0.65 and (hit.Instance:IsA('Terrain') or
+                    (hit.Instance:IsA('BasePart') and hit.Instance.CanCollide and hit.Instance.Transparency < 0.9)) then
+                    groundY = hit.Position.Y
+                    break
+                end
+                table.insert(ignore, hit.Instance)
+                params.FilterDescendantsInstances = ignore
+            end
+            local base = Vector3.new(x, groundY, z)
+            local white = Color3.fromRGB(239, 245, 248)
+            local coal = Color3.fromRGB(22, 24, 28)
+            local function ball(name, pos, size, color, material)
+                local p = part(name, size, CFrame.new(base + pos), color, material or Enum.Material.Snow, snowmanModel)
+                p.Shape = Enum.PartType.Ball
+                p.CanCollide = false
+                return p
+            end
+            ball('BottomSnowball', Vector3.new(0, 1.65, 0), Vector3.new(3.5, 3.3, 3.5), white)
+            ball('MiddleSnowball', Vector3.new(0, 4.15, 0), Vector3.new(2.75, 2.7, 2.75), white)
+            ball('HeadSnowball', Vector3.new(0, 6.22, 0), Vector3.new(2.15, 2.15, 2.15), white)
+            -- Face points toward positive Z.
+            ball('LeftCoalEye', Vector3.new(-0.42, 6.46, 0.94), Vector3.new(0.26, 0.26, 0.26), coal, Enum.Material.SmoothPlastic)
+            ball('RightCoalEye', Vector3.new(0.42, 6.46, 0.94), Vector3.new(0.26, 0.26, 0.26), coal, Enum.Material.SmoothPlastic)
+            local nose = part('CarrotNose', Vector3.new(0.38, 0.38, 1.18), CFrame.new(base + Vector3.new(0, 6.12, 1.38)), Color3.fromRGB(255, 115, 20), Enum.Material.SmoothPlastic, snowmanModel)
+            nose.CanCollide = false
+            for i = -2, 2 do
+                ball('SmileCoal' .. i, Vector3.new(i * 0.22, 5.73 + 0.065 * i * i, 0.91), Vector3.new(0.15, 0.15, 0.15), coal, Enum.Material.SmoothPlastic)
+            end
+            for i, y in ipairs({4.65, 4.05, 3.45}) do
+                ball('CoatButton' .. i, Vector3.new(0, y, 1.36), Vector3.new(0.23, 0.23, 0.23), coal, Enum.Material.SmoothPlastic)
+            end
+            -- Upright black top hat, with a red band.
+            part('HatBrim', Vector3.new(2.45, 0.22, 2.45), CFrame.new(base + Vector3.new(0, 7.25, 0)), coal, Enum.Material.SmoothPlastic, snowmanModel).CanCollide = false
+            part('HatCrown', Vector3.new(1.6, 1.25, 1.6), CFrame.new(base + Vector3.new(0, 7.93, 0)), coal, Enum.Material.SmoothPlastic, snowmanModel).CanCollide = false
+            part('HatRedBand', Vector3.new(1.66, 0.24, 1.66), CFrame.new(base + Vector3.new(0, 7.48, 0)), Color3.fromRGB(188, 35, 42), Enum.Material.Fabric, snowmanModel).CanCollide = false
+            -- Brown twig arms, angled outward.
+            for _, side in ipairs({-1, 1}) do
+                local startPos = base + Vector3.new(side * 1.12, 4.55, 0)
+                local endPos = base + Vector3.new(side * 3.1, 5.55, 0)
+                local middle = (startPos + endPos) / 2
+                local arm = part('TwigArm', Vector3.new(0.23, (endPos-startPos).Magnitude, 0.23), CFrame.lookAt(middle, endPos) * CFrame.Angles(math.rad(90), 0, 0), Color3.fromRGB(98, 62, 36), Enum.Material.Wood, snowmanModel)
+                arm.CanCollide = false
+            end
+            -- Rotate the entire snowman to face the Christmas yard/tree rather than
+            -- sideways along the wall. Keep its feet at the same exact map location.
+            local faceToward = Vector3.new(753.22, base.Y, 2460.33)
+            local direction = (faceToward - base).Unit
+            local yaw = math.atan2(direction.X, direction.Z)
+            local rotation = CFrame.Angles(0, yaw, 0)
+            for _, item in ipairs(snowmanModel:GetDescendants()) do
+                if item:IsA('BasePart') then
+                    local relative = item.CFrame - base
+                    item.CFrame = CFrame.new(base) * rotation * relative
+                end
+            end
+        end
+        
+        
+        -- Auto-detected wall decorations: wreaths and draped evergreen garlands.
+        -- All decorations are anchored, non-collidable, local, and removed on OFF.
+        local wallDecorModel
+        local function makeWallDecorations(currentGeneration)
+            if wallDecorModel then wallDecorModel:Destroy() end
+            wallDecorModel = Instance.new('Model')
+            wallDecorModel.Name = 'LocalChristmasWallDecorations'
+            wallDecorModel.Parent = Workspace
+            local root = wallDecorModel
+            local red = Color3.fromRGB(205, 32, 46)
+            local gold = Color3.fromRGB(244, 194, 57)
+            local greens = {Color3.fromRGB(17, 90, 38), Color3.fromRGB(25, 113, 48), Color3.fromRGB(12, 72, 32)}
+            local function decorPart(name, size, cf, color, shape, material)
+                local p = Instance.new('Part')
+                p.Name = name
+                p.Size = size
+                p.CFrame = cf
+                p.Color = color
+                p.Material = material or Enum.Material.SmoothPlastic
+                if shape then p.Shape = shape end
+                p.Anchored = true
+                p.CanCollide = false
+                p.CanTouch = false
+                p.CanQuery = false
+                p.CastShadow = false
+                p.Parent = root
+                return p
+            end
+            local function wreath(faceCF, radius)
+                -- faceCF local X is horizontal; local Y is vertical; local Z points out of wall.
+                local count = 14
+                for i = 1, count do
+                    local a = (i - 1) * math.pi * 2 / count
+                    local pos = Vector3.new(math.cos(a) * radius, math.sin(a) * radius, 0)
+                    decorPart('WreathEvergreen', Vector3.new(0.58, 0.58, 0.58), faceCF * CFrame.new(pos), greens[i % #greens + 1], Enum.PartType.Ball)
+                end
+                for _, i in ipairs({2, 6, 10}) do
+                    local a = (i - 1) * math.pi * 2 / count
+                    decorPart('WreathBerry', Vector3.new(0.23, 0.23, 0.23), faceCF * CFrame.new(math.cos(a)*radius, math.sin(a)*radius, 0.37), red, Enum.PartType.Ball, Enum.Material.Neon)
+                end
+                decorPart('WreathBowCenter', Vector3.new(0.40, 0.36, 0.18), faceCF * CFrame.new(0, -radius - 0.08, 0.38), red, Enum.PartType.Ball)
+                for _, sign in ipairs({-1, 1}) do
+                    decorPart('WreathBowLoop', Vector3.new(0.52, 0.33, 0.18), faceCF * CFrame.new(sign*0.39, -radius + 0.05, 0.38) * CFrame.Angles(0, 0, sign*0.35), red, Enum.PartType.Ball)
+                end
+            end
+            local function garland(faceCF, halfWidth, topY, seed)
+                local length = math.min(halfWidth * 2 - 1.2, 28)
+                if length < 5 then return end
+                local steps = math.max(8, math.floor(length / 0.8))
+                for i = 0, steps do
+                    local t = i / steps
+                    local x = (t - 0.5) * length
+                    local sag = math.sin(t * math.pi) * 0.85
+                    local cf = faceCF * CFrame.new(x, topY - sag, 0)
+                    decorPart('EvergreenWallGarland', Vector3.new(0.68, 0.68, 0.68), cf, greens[(i + seed) % #greens + 1], Enum.PartType.Ball)
+                    if i % 3 == 0 then
+                        local color = (i + seed) % 2 == 0 and red or gold
+                        decorPart('GarlandOrnament', Vector3.new(0.32, 0.32, 0.32), cf * CFrame.new(0, -0.40, 0.25), color, Enum.PartType.Ball, Enum.Material.Neon)
+                    end
+                end
+            end
+            -- Extra dense wall decorations (up to 180 wall sections), with yields to reduce frame stalls.
+            local function bow(cf)
+                decorPart('ChristmasBowKnot', Vector3.new(0.45,0.42,0.22), cf, red, Enum.PartType.Ball)
+                for _, s in ipairs({-1,1}) do
+                    decorPart('ChristmasBowLoop', Vector3.new(0.72,0.44,0.20), cf * CFrame.new(s*0.43,0.07,0) * CFrame.Angles(0,0,s*0.3), red, Enum.PartType.Ball)
+                    decorPart('ChristmasBowRibbon', Vector3.new(0.25,0.85,0.13), cf * CFrame.new(s*0.19,-0.53,0) * CFrame.Angles(0,0,s*0.2), red)
+                end
+            end
+            local function ornament(cf, color, drop)
+                decorPart('HangingOrnamentString', Vector3.new(0.045,drop,0.045), cf * CFrame.new(0,-drop/2,0), gold)
+                decorPart('HangingChristmasBauble', Vector3.new(0.55,0.65,0.55), cf * CFrame.new(0,-drop-0.32,0), color, Enum.PartType.Ball, Enum.Material.Neon)
+                decorPart('BaubleCap', Vector3.new(0.18,0.13,0.18), cf * CFrame.new(0,-drop+0.04,0), gold)
+            end
+            local candidates = {}
+            for _, obj in ipairs(Workspace:GetDescendants()) do
+                if obj:IsA('BasePart') and obj.Anchored and obj.Transparency < 0.45
+                    and obj.Size.Y >= 6 and obj.Size.Y <= 90
+                    and math.abs(obj.CFrame.UpVector.Y) > 0.9
+                    and not obj:FindFirstAncestor('LocalChristmasTree')
+                    and not obj:FindFirstAncestor('LocalChristmasTreeSecond')
+                    and not obj:FindFirstAncestor('LocalChristmasTreeThird')
+                    and not obj:FindFirstAncestor('LocalChristmasSnowman')
+                    and not obj:FindFirstAncestor('LocalChristmasCampfire')
+                    and not obj:FindFirstAncestor('LocalChristmasStringLights')
+                    and not obj:IsDescendantOf(root) then
+                    local x, z = obj.Size.X, obj.Size.Z
+                    local wide, thick = math.max(x,z), math.min(x,z)
+                    local n = obj.Name:lower()
+                    local excluded = n:find('door') or n:find('window') or n:find('glass')
+                        or n:find('fence') or n:find('gate') or n:find('bar') or n:find('pillar')
+                    if not excluded and wide >= 7 and thick <= 5 and wide / math.max(thick,0.1) >= 2.6 then
+                        table.insert(candidates, {part=obj, wide=wide})
+                    end
+                end
+            end
+            table.sort(candidates, function(a,b) return a.wide > b.wide end)
+            local decorated = 0
+            for _, entry in ipairs(candidates) do
+                if not enabled or generation ~= currentGeneration or decorated >= 180 then break end
+                local wall = entry.part
+                if wall.Parent then
+                    local cf = wall.CFrame
+                    local alongX = wall.Size.X >= wall.Size.Z
+                    local half = entry.wide / 2
+                    for _, side in ipairs({-1,1}) do
+                        local faceCF
+                        if alongX then
+                            faceCF = cf * CFrame.new(0,0,side*(wall.Size.Z/2+0.55)) * CFrame.Angles(0,side == 1 and 0 or math.pi,0)
+                        else
+                            faceCF = cf * CFrame.new(side*(wall.Size.X/2+0.55),0,0) * CFrame.Angles(0,side*math.pi/2,0)
+                        end
+                        local topY = wall.Size.Y/2 - 0.95
+                        -- Multiple garland swags along long walls instead of one in the middle.
+                        local sections = math.max(1, math.min(9, math.floor(entry.wide / 7)))
+                        local sectionWidth = entry.wide / sections
+                        for section = 1, sections do
+                            local offset = -half + sectionWidth*(section-0.5)
+                            local sectionCF = faceCF * CFrame.new(offset,0,0)
+                            garland(sectionCF, sectionWidth/2, topY, decorated+section)
+                            if wall.Size.Y >= 8 then
+                                wreath(sectionCF * CFrame.new(0,math.min(1,wall.Size.Y*0.07),0), 1.05)
+                            end
+                            bow(sectionCF * CFrame.new(0,topY-0.4,0.35))
+                            if sectionWidth >= 5 then
+                                local palette = {red,gold,Color3.fromRGB(45,160,255),Color3.fromRGB(65,210,95)}
+                                ornament(sectionCF * CFrame.new(-sectionWidth*0.26,topY-0.5,0.5),palette[(section+decorated)%4+1],0.65)
+                                ornament(sectionCF * CFrame.new(sectionWidth*0.26,topY-0.5,0.5),palette[(section+decorated+2)%4+1],1.0)
+                            end
+                        end
+                    end
+                    decorated = decorated + 1
+                end
+                if decorated % 2 == 0 then task.wait() end
+            end
+        end
+        
+        -- Thin red carpet runners only on floors that are NOT covered in snow.
+        local carpetModel
+        local function makeRedCarpets(currentGeneration)
+            if carpetModel then carpetModel:Destroy() end
+            carpetModel = Instance.new('Model')
+            carpetModel.Name = 'LocalChristmasRedCarpets'
+            carpetModel.Parent = Workspace
+            local created = 0
+            local seen = {}
+            local params = RaycastParams.new()
+            params.FilterType = Enum.RaycastFilterType.Exclude
+            local ignore = {carpetModel}
+            if player.Character then table.insert(ignore, player.Character) end
+            if model then table.insert(ignore, model) end
+            if treeModel then table.insert(ignore, treeModel) end
+            if secondTreeModel then table.insert(ignore, secondTreeModel) end
+            if thirdTreeModel then table.insert(ignore, thirdTreeModel) end
+            if snowmanModel then table.insert(ignore, snowmanModel) end
+            if stringLightsModel then table.insert(ignore, stringLightsModel) end
+            if wallDecorModel then table.insert(ignore, wallDecorModel) end
+            params.FilterDescendantsInstances = ignore
+            params.IgnoreWater = true
+            for index, floor in ipairs(Workspace:GetDescendants()) do
+                if not enabled or generation ~= currentGeneration or created >= 135 then break end
+                if index % 120 == 0 then task.wait() end
+                if floor:IsA('BasePart') and floor.Anchored and floor.CanCollide and floor.Transparency < 0.45
+                    and floor.Size.X >= 7 and floor.Size.Z >= 7 and floor.Size.Y <= 8
+                    and floor.CFrame.UpVector.Y > 0.94
+                    and not floor:FindFirstAncestor('LocalChristmasRedCarpets')
+                    and not floor:FindFirstAncestor('LocalChristmasWallDecorations')
+                    and not floor:FindFirstAncestor('LocalChristmasStringLights') then
+                    local name = floor.Name:lower()
+                    local original = savedParts[floor]
+                    local material = original and original.Material or floor.Material
+                    local snow = floor.Material == Enum.Material.Snow
+                        or material == Enum.Material.Snow or material == Enum.Material.Grass
+                        or material == Enum.Material.Ground or material == Enum.Material.Sand
+                        or material == Enum.Material.Slate or material == Enum.Material.Mud
+                        or material == Enum.Material.LeafyGrass
+                    local unsuitable = name:find('roof') or name:find('ceiling') or name:find('wall')
+                        or name:find('grass') or name:find('yard') or name:find('road')
+                        or name:find('baseplate') or name:find('terrain') or name:find('snow')
+                    if not snow and not unsuitable then
+                        local top = floor.Position + floor.CFrame.UpVector * (floor.Size.Y * 0.5)
+                        params.FilterDescendantsInstances = ignore
+                        local hit = Workspace:Raycast(top + Vector3.new(0, 0.6, 0), Vector3.new(0, 32, 0), params)
+                        -- Only decorate indoor floors with a roof or ceiling overhead.
+                        if hit and hit.Instance ~= floor and hit.Position.Y > top.Y + 3 then
+                            local key = math.floor(top.X / 12) .. ':' .. math.floor(top.Z / 12) .. ':' .. math.floor(top.Y / 8)
+                            if not seen[key] then
+                                seen[key] = true
+                                local width = math.min(floor.Size.X - 1, 7)
+                                local length = math.min(floor.Size.Z - 1, 24)
+                                if width >= 3 and length >= 4 then
+                                    local carpet = Instance.new('Part')
+                                    carpet.Name = 'ChristmasRedCarpet'
+                                    carpet.Anchored = true
+                                    carpet.CanCollide = false
+                                    carpet.CanTouch = false
+                                    carpet.CanQuery = false
+                                    carpet.CastShadow = false
+                                    carpet.Material = Enum.Material.Fabric
+                                    carpet.Color = Color3.fromRGB(156, 18, 31)
+                                    carpet.Size = Vector3.new(width, 0.065, length)
+                                    carpet.CFrame = floor.CFrame * CFrame.new(0, floor.Size.Y * 0.5 + 0.038, 0)
+                                    carpet.Parent = carpetModel
+                                    -- Subtle golden edging on both long sides.
+                                    for side = -1, 1, 2 do
+                                        local trim = Instance.new('Part')
+                                        trim.Name = 'GoldCarpetTrim'
+                                        trim.Anchored = true
+                                        trim.CanCollide = false
+                                        trim.CanTouch = false
+                                        trim.CanQuery = false
+                                        trim.CastShadow = false
+                                        trim.Material = Enum.Material.Fabric
+                                        trim.Color = Color3.fromRGB(197, 145, 55)
+                                        trim.Size = Vector3.new(0.11, 0.012, length)
+                                        trim.CFrame = carpet.CFrame * CFrame.new(side * (width / 2 - 0.15), 0.04, 0)
+                                        trim.Parent = carpetModel
+                                    end
+                                    created = created + 1
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+        
+        local function start()
+            if enabled then return end
+            enabled = true
+            generation = generation + 1
+            local currentGeneration = generation
+            setButton(true) -- update immediately even if an effect cannot be applied
+            for _, prop in ipairs(lightingProps) do pcall(function() savedLighting[prop] = Lighting[prop] end) end
+            local changes = {
+                -- Keep the game's original brightness, ambient and exposure.
+                -- The campfire uses visible Fire particles without any added light source.
+            }
+            for prop, value in pairs(changes) do pcall(function() Lighting[prop] = value end) end
+            -- Visible snowfall: near-camera flurries start immediately, while broad
+            -- overhead sheets give the impression of snow across the outdoor map.
+            -- All flakes have zero LightEmission and create no ground illumination.
+            local snowRig = Instance.new('Model')
+            snowRig.Name = 'PLChristmasSnowfallRig'
+            snowRig.Parent = Workspace
+            table.insert(effects, snowRig)
+            local snowLayers = {
+                {name='CloseFlurries', width=34, height=4, depth=13, rate=260, size=0.30, fall=5},
+                {name='MidFlurries', width=78, height=13, depth=15, rate=450, size=0.25, fall=6},
+                {name='WideSnow', width=145, height=25, depth=12, rate=700, size=0.22, fall=7},
+            }
+            local snowParts = {}
+            for _, layer in ipairs(snowLayers) do
+                local holder = Instance.new('Part')
+                holder.Name = layer.name
+                holder.Size = Vector3.new(layer.width, layer.depth, layer.width)
+                holder.Transparency = 1
+                holder.Anchored = true
+                holder.CanCollide = false
+                holder.CanTouch = false
+                holder.CanQuery = false
+                holder.Parent = snowRig
+                local emitter = Instance.new('ParticleEmitter')
+                emitter.Name = 'VisibleFallingSnow'
+                emitter.Texture = 'rbxasset://textures/particles/sparkles_main.dds'
+                emitter.Color = ColorSequence.new(Color3.fromRGB(247, 250, 255))
+                emitter.Size = NumberSequence.new(layer.size)
+                emitter.Transparency = NumberSequence.new({
+                    NumberSequenceKeypoint.new(0, 0.08),
+                    NumberSequenceKeypoint.new(0.85, 0.10),
+                    NumberSequenceKeypoint.new(1, 1)
+                })
+                emitter.LightEmission = 0
+                emitter.LightInfluence = 0
+                emitter.Rate = layer.rate
+                emitter.Lifetime = NumberRange.new(4, 7)
+                emitter.Speed = NumberRange.new(layer.fall, layer.fall + 2)
+                emitter.Acceleration = Vector3.new(1.0, -3.0, 0.5)
+                emitter.Drag = 0.15
+                emitter.EmissionDirection = Enum.NormalId.Bottom
+                emitter.SpreadAngle = Vector2.new(8, 8)
+                emitter.Shape = Enum.ParticleEmitterShape.Box
+                emitter.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                emitter.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                emitter.LockedToPart = false
+                emitter.Enabled = true
+                emitter.Parent = holder
+                table.insert(snowParts, {part=holder, emitter=emitter, height=layer.height})
+            end
+            local function followSnowCamera()
+                local cam = Workspace.CurrentCamera
+                if not cam or not snowRig.Parent then return end
+                local pos = cam.CFrame.Position
+                for _, item in ipairs(snowParts) do
+                    item.part.CFrame = CFrame.new(pos + Vector3.new(0, item.height, 0))
+                end
+            end
+            followSnowCamera()
+            -- Pre-fill the volume so snow is visible as soon as ON is pressed.
+            for _, item in ipairs(snowParts) do
+                item.emitter:Emit(160)
+            end
+            table.insert(connections, RunService.RenderStepped:Connect(followSnowCamera))
+            -- Build the campfire and four log seats with independent ground raycasts.
+            -- A placement error should never prevent the theme button from switching on.
+            local ok, err = pcall(makeFire)
+            if not ok then warn('Christmas campfire placement failed:', err) end
+            local treeOK, treeErr = pcall(function()
+                treeModel = makeChristmasTree(treeX, treeZ, 'LocalChristmasTree')
+            end)
+            local secondTreeOK, secondTreeErr = pcall(function()
+                secondTreeModel = makeChristmasTree(891.11, 2394.47, 'LocalChristmasTreeSecond')
+            end)
+            if not secondTreeOK then warn('Second Christmas tree placement failed:', secondTreeErr) end
+            local thirdTreeOK, thirdTreeErr = pcall(function()
+                thirdTreeModel = makeChristmasTree(-892.30, 2076.36, 'LocalChristmasTreeThird', 94.13)
+            end)
+            if not thirdTreeOK then warn('Third Christmas tree placement failed:', thirdTreeErr) end
+            if not treeOK then warn('Christmas tree placement failed:', treeErr) end
+            local snowmanOK, snowmanErr = pcall(makeSnowman)
+            if not snowmanOK then warn('Christmas snowman placement failed:', snowmanErr) end
+            local lightsOK, lightsErr = pcall(makeMapChristmasLights)
+            if not lightsOK then warn('Christmas string lights failed:', lightsErr) end
+            task.spawn(function()
+                local wallOK, wallErr = pcall(makeWallDecorations, currentGeneration)
+                if not wallOK then warn('Christmas wall decorations failed:', wallErr) end
+            end)
+            task.spawn(function()
+                local carpetOK, carpetErr = pcall(makeRedCarpets, currentGeneration)
+                if not carpetOK then warn('Christmas red carpets failed:', carpetErr) end
+            end)
+            -- Paint the world gradually; errors on individual parts cannot interrupt the toggle.
+            task.spawn(function()
+                local count = 0
+                for _, part in ipairs(Workspace:GetDescendants()) do
+                    if not enabled or generation ~= currentGeneration then break end
+                    pcall(paint, part)
+                    count = count + 1
+                    if count % 100 == 0 then task.wait() end
+                end
+            end)
+            table.insert(connections, Workspace.DescendantAdded:Connect(function(part)
+                if enabled then task.defer(function() if enabled then pcall(paint, part) end end) end
+            end))
+        end
+        local function stop()
+            enabled = false
+            generation = generation + 1
+            setButton(false)
+            if model then pcall(function() model:Destroy() end); model = nil end
+            if treeModel then pcall(function() treeModel:Destroy() end); treeModel = nil end
+            if secondTreeModel then pcall(function() secondTreeModel:Destroy() end); secondTreeModel = nil end
+            if thirdTreeModel then pcall(function() thirdTreeModel:Destroy() end); thirdTreeModel = nil end
+            if snowmanModel then pcall(function() snowmanModel:Destroy() end); snowmanModel = nil end
+            if stringLightsModel then pcall(function() stringLightsModel:Destroy() end); stringLightsModel = nil end
+            if wallDecorModel then pcall(function() wallDecorModel:Destroy() end); wallDecorModel = nil end
+            if carpetModel then pcall(function() carpetModel:Destroy() end); carpetModel = nil end
+            for _, connection in ipairs(connections) do pcall(function() connection:Disconnect() end) end
+            table.clear(connections)
+            for _, effect in ipairs(effects) do pcall(function() effect:Destroy() end) end
+            table.clear(effects)
+            for part, properties in pairs(savedParts) do
+                pcall(function() if part.Parent then part.Color = properties.Color; part.Material = properties.Material; part.Reflectance = properties.Reflectance end end)
+            end
+            table.clear(savedParts)
+            for prop, value in pairs(savedLighting) do pcall(function() Lighting[prop] = value end) end
+            table.clear(savedLighting)
+        end
+
+        christmasButton.Activated:Connect(function()
+            if enabled then stop() else task.spawn(start) end
+        end)
+        christmasButton.Destroying:Connect(function()
+            if enabled then stop() end
+        end)
+    end
+
     funButton.Activated:Connect(function()
         if page.Visible then return end
         for _, child in ipairs(Frame:GetChildren()) do
@@ -6018,7 +6835,7 @@ do
     end
     attachHover(menuSettingsButton)
 
-    for index, button in ipairs({LanguageToggle, RGBTextToggle, FPSPingToggle, OpenDexPlusPlus}) do
+    for index, button in ipairs({LanguageToggle, RGBTextToggle, FPSPingToggle}) do
         button.Parent = page
         button.AnchorPoint = Vector2.new(0, 0)
         button.Position = UDim2.fromOffset(8, 79 + (index - 1) * 20)
