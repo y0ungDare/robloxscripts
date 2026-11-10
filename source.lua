@@ -5401,6 +5401,8 @@ do
         local camoPresets = {
             {name = "Ghost", id = "119529300916407"},
             {name = "Voltage", id = "94315272730596"},
+            {name = "Abstract", id = "126399459084902"},
+            {name = "BlackCell", id = "92442556488513"},
             {name = "Gold", id = "124475509"},
             {name = "Sliver Satin", id = "72633129496082"},
         }
