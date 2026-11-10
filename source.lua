@@ -866,6 +866,52 @@ Ping.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Ping.TextStrokeTransparency = 0.05
 Ping.ZIndex = 20
 
+-- Live player coordinates, styled like the FPS / Ping HUD.
+local PositionHUD = Instance.new("TextLabel")
+PositionHUD.Name = "LivePositionHUD"
+PositionHUD.Parent = y0ungDareMenuv45
+PositionHUD.Position = UDim2.fromOffset(16, 70)
+PositionHUD.Size = UDim2.fromOffset(290, 27)
+PositionHUD.BackgroundColor3 = Color3.fromRGB(5, 7, 12)
+PositionHUD.BackgroundTransparency = 0.22
+PositionHUD.BorderSizePixel = 0
+PositionHUD.Font = Enum.Font.Code
+PositionHUD.TextSize = 20
+PositionHUD.TextColor3 = Color3.fromRGB(248, 248, 255)
+PositionHUD.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+PositionHUD.TextStrokeTransparency = 0.05
+PositionHUD.TextXAlignment = Enum.TextXAlignment.Left
+PositionHUD.TextYAlignment = Enum.TextYAlignment.Center
+PositionHUD.Text = "XYZ: --, --, --"
+PositionHUD.ZIndex = 20
+PositionHUD.Visible = false
+
+do
+    local RunService = game:GetService("RunService")
+    local Players = game:GetService("Players")
+    local elapsed = 0
+    local positionConnection
+    positionConnection = RunService.Heartbeat:Connect(function(dt)
+        if not PositionHUD.Parent then
+            positionConnection:Disconnect()
+            return
+        end
+        if not PositionHUD.Visible then return end
+        elapsed = elapsed + dt
+        if elapsed < 0.1 then return end
+        elapsed = 0
+        local player = Players.LocalPlayer
+        local character = player and player.Character
+        local root = character and character:FindFirstChild("HumanoidRootPart")
+        if root then
+            local p = root.Position
+            PositionHUD.Text = string.format("XYZ: %.2f, %.2f, %.2f", p.X, p.Y, p.Z)
+        else
+            PositionHUD.Text = "XYZ: --, --, --"
+        end
+    end)
+end
+
 -- Wi-Fi indicator: three smooth, curved bands and a centered round dot.
 -- Drawn from small rounded GUI segments, not font glyphs (which look like chevrons).
 local WifiIndicator = Instance.new("Frame")
@@ -1166,7 +1212,7 @@ local function MREH_fake_script() -- LanguageToggle.LanguageController_Edit_Here
 	    ["GetAllGuns"] = {"Get All Guns", "Obtener armas", "Obtenir les armes", "すべての武器を入手", "获取所有武器", "Alle Waffen holen"},
 	    ["YardTP"] = {"Teleport: Yard", "Teletransporte: Patio", "Téléporter : Cour", "庭へテレポート", "传送至庭院", "Teleport: Hof"},
 	    ["TaseBypass"] = {"ANTI-TAZE", "ANTI-TASER", "ANTI-TASER", "テーザー防止", "防电击", "ANTI-TASER"},
-	    ["FPSPingToggle"] = {"FPS & Ping", "FPS y Ping", "FPS et Ping", "FPSとPing", "帧率与延迟", "FPS und Ping"},
+	    ["FPSPingToggle"] = {"Status", "Estado", "Statut", "ステータス", "状态", "Status"},
 	    ["ArmoryTP"] = {"Teleport: Armory", "Teletransporte: Armería", "Téléporter : Armurerie", "武器庫へテレポート", "传送至军械库", "Teleport: Waffenkammer"},
 	    ["TextButton"] = {"Aimbot Settings", "Configuración de apuntado", "Paramètres de visée", "エイム設定", "自瞄设置", "Zielhilfe-Einstellungen"},
 	    ["fly"] = {"Flying", "Volar", "Vol", "飛行", "飞行", "Fliegen"},
@@ -1448,7 +1494,8 @@ local function DVADVQN_fake_script() -- FPSPingToggle.ToggleController
 		    fps.Visible = enabled
 		    ping.Visible = enabled
             WifiIndicator.Visible = enabled
-		    button.Text = enabled and "FPS & Ping: ON" or "FPS & Ping: OFF"
+            PositionHUD.Visible = enabled
+		    button.Text = enabled and "Status: ON" or "Status: OFF"
 		end
 		button.Activated:Connect(function()
 		    enabled = not enabled
