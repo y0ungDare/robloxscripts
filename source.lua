@@ -545,6 +545,7 @@ ShinyTealTitle_v4_5_UPLOAD_PNG_SET_IMAGE_ID.Position = UDim2.new(0.0928571448, 0
 ShinyTealTitle_v4_5_UPLOAD_PNG_SET_IMAGE_ID.Size = UDim2.new(0.814285696, 0, 0.0691796914, 0)
 ShinyTealTitle_v4_5_UPLOAD_PNG_SET_IMAGE_ID.ZIndex = 10
 ShinyTealTitle_v4_5_UPLOAD_PNG_SET_IMAGE_ID.Image = "rbxassetid://125017058258823"
+ShinyTealTitle_v4_5_UPLOAD_PNG_SET_IMAGE_ID.Visible = false -- Hide main-menu logo
 
 Title.Name = "Title"
 Title.Parent = Frame
@@ -560,6 +561,40 @@ Title.TextColor3 = Color3.fromRGB(0, 255, 255)
 Title.TextScaled = true
 Title.TextSize = 30.000
 Title.TextWrapped = true
+Title.Visible = false -- Replaced by the compact Jiggy-style heading below.
+
+-- Compact BO2/Jiggy-style header, matching the reference while retaining this menu's identity.
+local JiggyStyleHeader = Instance.new("TextLabel")
+JiggyStyleHeader.Name = "JiggyStyleHeader"
+JiggyStyleHeader.Parent = Frame
+JiggyStyleHeader.Position = UDim2.fromOffset(8, 12)
+JiggyStyleHeader.Size = UDim2.new(1, -16, 0, 31)
+JiggyStyleHeader.BackgroundTransparency = 1
+JiggyStyleHeader.RichText = true
+JiggyStyleHeader.Font = Enum.Font.Arcade
+JiggyStyleHeader.TextSize = 22
+JiggyStyleHeader.TextScaled = false
+JiggyStyleHeader.TextXAlignment = Enum.TextXAlignment.Left
+JiggyStyleHeader.TextYAlignment = Enum.TextYAlignment.Center
+JiggyStyleHeader.TextStrokeColor3 = Color3.fromRGB(20, 3, 40)
+JiggyStyleHeader.TextStrokeTransparency = 0.25
+JiggyStyleHeader.Text = '<font color="#FF39DB">y</font><font color="#00EFFF">0</font><font color="#FF39DB">u</font><font color="#00EFFF">n</font><font color="#FF39DB">g</font><font color="#00EFFF">D</font><font color="#FF39DB">a</font><font color="#00EFFF">r</font><font color="#FF39DB">e</font> <font color="#00EFFF">M</font><font color="#FF39DB">e</font><font color="#00EFFF">n</font><font color="#FF39DB">u</font> <font color="#00EFFF">v</font><font color="#FF39DB">4</font><font color="#00EFFF">.</font><font color="#FF39DB">5</font>'
+JiggyStyleHeader.ZIndex = 12
+
+local JiggyStyleByline = Instance.new("TextLabel")
+JiggyStyleByline.Name = "JiggyStyleByline"
+JiggyStyleByline.Parent = Frame
+JiggyStyleByline.Position = UDim2.fromOffset(8, 42)
+JiggyStyleByline.Size = UDim2.new(1, -16, 0, 17)
+JiggyStyleByline.BackgroundTransparency = 1
+JiggyStyleByline.Font = Enum.Font.Arcade
+JiggyStyleByline.Text = "By @y0ungdare"
+JiggyStyleByline.TextSize = 12
+JiggyStyleByline.TextColor3 = Color3.fromRGB(28, 21, 188)
+JiggyStyleByline.TextStrokeColor3 = Color3.fromRGB(10, 5, 35)
+JiggyStyleByline.TextStrokeTransparency = 0.3
+JiggyStyleByline.TextXAlignment = Enum.TextXAlignment.Left
+JiggyStyleByline.ZIndex = 12
 
 InfoPopup.Name = "InfoPopup"
 InfoPopup.Parent = Frame
