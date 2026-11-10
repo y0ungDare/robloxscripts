@@ -3202,12 +3202,33 @@ local function HRWYOVR_fake_script()
     -- Primary Appearance: opt-in visual replacement for assault rifles only.
     local primaryAppearance = {enabled = false}
     shared.y0ungDarePrimaryAppearance = primaryAppearance
-    local primaryAppearanceButton = makeButton("PrimaryAppearanceToggle", "Change Gun Appearance: OFF", 231)
+    local primaryAppearanceButton = makeButton("PrimaryAppearanceToggle", "Change Gun Appearance: GHXST  >", 231)
+    -- Appearance selector: GHXST is the existing model; additional styles can be added later.
+    local primaryAppearanceStyles = {
+        {name = "GHXST", assetId = 106526034195206},
+        {name = "RayGun", assetId = 119080362579878},
+    }
+    primaryAppearance.style = primaryAppearanceStyles[1].name
+    primaryAppearance.assetId = primaryAppearanceStyles[1].assetId
+    local appearanceIndex = 1
+    local appearanceSelector = makeButton("PrimaryAppearanceSelector", "Gun Appearance: OFF", 252)
+    -- First row selects the gun model; second row enables/disables that model.
+    primaryAppearanceButton.MouseButton1Click:Connect(function()
+        appearanceIndex = appearanceIndex % #primaryAppearanceStyles + 1
+        local choice = primaryAppearanceStyles[appearanceIndex]
+        primaryAppearance.style = choice.name
+        primaryAppearance.assetId = choice.assetId
+        primaryAppearanceButton.Text = "Change Gun Appearance: " .. choice.name .. "  >"
+    end)
+    appearanceSelector.MouseButton1Click:Connect(function()
+        primaryAppearance.enabled = not primaryAppearance.enabled
+        appearanceSelector.Text = "Gun Appearance: " .. (primaryAppearance.enabled and "ON" or "OFF")
+    end)
     -- Small informational note beneath the toggle; not a clickable button.
     local primaryAppearanceNote = Instance.new("TextLabel")
     primaryAppearanceNote.Name = "PrimaryAppearanceWeaponNote"
     primaryAppearanceNote.Parent = panel
-    primaryAppearanceNote.Position = UDim2.fromOffset(12, 252)
+    primaryAppearanceNote.Position = UDim2.fromOffset(12, 275)
     primaryAppearanceNote.Size = UDim2.new(1, -24, 0, 16)
     primaryAppearanceNote.BackgroundTransparency = 1
     primaryAppearanceNote.Font = Enum.Font.RobotoCondensed
@@ -3216,10 +3237,6 @@ local function HRWYOVR_fake_script()
     primaryAppearanceNote.TextXAlignment = Enum.TextXAlignment.Left
     primaryAppearanceNote.Text = "M4A1, FAL, AK-47, MP5"
     primaryAppearanceNote.ZIndex = 33
-    primaryAppearanceButton.MouseButton1Click:Connect(function()
-        primaryAppearance.enabled = not primaryAppearance.enabled
-        primaryAppearanceButton.Text = "Change Gun Appearance: " .. (primaryAppearance.enabled and "ON" or "OFF")
-    end)
     button.Activated:Connect(openPanel)
     title.Activated:Connect(closePanel)
     local function updateSounds()
@@ -7630,44 +7647,49 @@ do
     local Players = game:GetService("Players")
     local ReplicatedStorage = game:GetService("ReplicatedStorage")
     local player = Players.LocalPlayer
-    local ASSET_ID = 106526034195206
-    local visualTemplate
-    local loaded, warned = false, false
+    local templates = {}
+    local failedAt = {}
     local originals = setmetatable({}, {__mode = "k"})
     local known = { ["M4A1"] = true, ["FAL"] = true, ["AK-47"] = true, ["MP5"] = true }
     local settings = shared.y0ungDarePrimaryAppearance or {enabled = false}
-    local function loadTemplate()
-        if loaded then return visualTemplate end
-        loaded = true
+    local function loadTemplate(assetId)
+        if templates[assetId] then return templates[assetId] end
+        if failedAt[assetId] and os.clock() - failedAt[assetId] < 4 then return nil end
         local ok, objects = pcall(function()
-            return game:GetObjects("rbxassetid://" .. tostring(ASSET_ID))
+            return game:GetObjects("rbxassetid://" .. tostring(assetId))
         end)
         if not ok or not objects or #objects == 0 then
-            warn("y0ungDare gun appearance: model " .. ASSET_ID .. " could not be loaded. Check asset permissions.")
+            failedAt[assetId] = os.clock()
+            warn("y0ungDare gun appearance: could not load model " .. tostring(assetId) .. ". Check permissions.")
             return nil
         end
         local source = objects[1]
         local model = Instance.new("Model")
         model.Name = "y0ungDareGunVisualTemplate"
-        if source:IsA("BasePart") then
-            source.Parent = model
+        -- Preserve contents of uploaded Tool models; deleting a Tool before
+        -- moving its children would remove the entire visible gun.
+        local root = source:IsA("Tool") and source or source:FindFirstChildWhichIsA("Tool", true) or source
+        if root:IsA("BasePart") then
+            root.Parent = model
         else
-            for _, item in ipairs(source:GetChildren()) do
+            for _, item in ipairs(root:GetChildren()) do
                 item.Parent = model
             end
-            source:Destroy()
         end
         for _, d in ipairs(model:GetDescendants()) do
-            if d:IsA("LuaSourceContainer") or d:IsA("Sound") or d:IsA("Tool") then
+            if d:IsA("LuaSourceContainer") or d:IsA("Sound") then
                 d:Destroy()
             end
         end
         if not model:FindFirstChildWhichIsA("BasePart", true) then
-            warn("y0ungDare gun appearance: uploaded model contains no physical parts.")
+            warn("y0ungDare gun appearance: model " .. tostring(assetId) .. " has no visible parts.")
             model:Destroy()
+            source:Destroy()
+            failedAt[assetId] = os.clock()
             return nil
         end
-        visualTemplate = model
+        source:Destroy()
+        templates[assetId] = model
         return model
     end
     local function applyVisual(tool)
@@ -7675,10 +7697,12 @@ do
         if tool:FindFirstChild("y0ungDareReplacementAppearance") then return end
         local handle = tool:FindFirstChild("Handle")
         if not handle or not handle:IsA("BasePart") then return end
-        local template = loadTemplate()
+        local assetId = settings.assetId or 106526034195206
+        local template = loadTemplate(assetId)
         if not template then return end
         local visual = template:Clone()
         visual.Name = "y0ungDareReplacementAppearance"
+        visual:SetAttribute("AppearanceAssetId", assetId)
         visual.Parent = tool
         -- Align the model center with the original Handle, and scale to a
         -- practical common gun length. Individual guns keep original mechanics.
@@ -7703,8 +7727,12 @@ do
         end
         -- Correct orientation relative to the original weapon Handle.
         -- Rotation/offset can be tuned here for an unusual uploaded model.
-        local GRIP_ROTATION = CFrame.Angles(0, 0, 0) -- remove sideways 90-degree yaw
-        local GRIP_OFFSET = CFrame.new(0, 0.25, 0) -- raise gun 0.35 studs from previous position
+        -- RayGun's barrel faces the opposite direction from the GHXST model.
+        -- Turn only RayGun around the vertical grip axis; leave GHXST untouched.
+        local isRayGun = assetId == 119080362579878
+        local GRIP_ROTATION = isRayGun and CFrame.Angles(0, math.rad(180), 0) or CFrame.new()
+        -- Small RayGun-specific adjustment toward the holding hand.
+        local GRIP_OFFSET = isRayGun and CFrame.new(0, 0.18, -0.12) or CFrame.new(0, 0.25, 0)
         local targetGrip = handle.CFrame * GRIP_OFFSET * GRIP_ROTATION
         visual:PivotTo(targetGrip * gripWorld:Inverse() * visual:GetPivot())
         for _, part in ipairs(visual:GetDescendants()) do
@@ -7768,9 +7796,21 @@ do
     -- The toggle lives in the menu's earlier setup block; observe its shared state.
     task.spawn(function()
         local previous = settings.enabled
+        local previousAssetId = settings.assetId
         while task.wait(0.15) do
-            if settings.enabled ~= previous then
+            if settings.enabled ~= previous or settings.assetId ~= previousAssetId then
+                local assetChanged = settings.assetId ~= previousAssetId
                 previous = settings.enabled
+                previousAssetId = settings.assetId
+                if assetChanged then
+                    for _, container in ipairs({player:FindFirstChildOfClass("Backpack"), player.Character}) do
+                        if container then
+                            for _, tool in ipairs(container:GetChildren()) do
+                                if tool:IsA("Tool") and known[tool.Name] then restoreVisual(tool) end
+                            end
+                        end
+                    end
+                end
                 refreshAll()
             end
         end
