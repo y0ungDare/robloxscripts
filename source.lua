@@ -247,8 +247,8 @@ TargetSelector.TextXAlignment = Enum.TextXAlignment.Left
 local MessagesButton = Instance.new("TextButton")
 MessagesButton.Name = "MessagesButton"
 MessagesButton.Parent = Frame
-MessagesButton.AnchorPoint = Vector2.new(0.5, 0.5)
-MessagesButton.Position = UDim2.new(0, 140, 0, 179)
+MessagesButton.AnchorPoint = Vector2.new(0, 0)
+MessagesButton.Position = UDim2.fromOffset(8, 169)
 MessagesButton.Size = UDim2.new(1, -16, 0, 20)
 MessagesButton.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
 MessagesButton.BackgroundTransparency = 0.16
@@ -265,7 +265,7 @@ TextButton.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
 TextButton.BackgroundTransparency = 0.160
 TextButton.BorderColor3 = Color3.fromRGB(170, 0, 255)
 TextButton.BorderSizePixel = 0
-TextButton.Position = UDim2.new(0, 8, 0, 189)
+TextButton.Position = UDim2.fromOffset(8, 109)
 TextButton.Size = UDim2.new(1, -16, 0, 20)
 TextButton.Font = Enum.Font.SourceSansBold
 TextButton.Text = "Aimbot Settings"
@@ -372,7 +372,7 @@ WallEsp.BorderSizePixel = 0
 WallEsp.Position = UDim2.new(0, 140, 0, 319)
 WallEsp.Size = UDim2.new(1, -16, 0, 20)
 WallEsp.Font = Enum.Font.SourceSansBold
-WallEsp.Text = "Wall Esp V2"
+WallEsp.Text = "ESP"
 WallEsp.TextColor3 = Color3.fromRGB(0, 255, 255)
 WallEsp.TextSize = 17.000
 WallEsp.TextWrapped = true
@@ -400,10 +400,10 @@ BringButton.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
 BringButton.BackgroundTransparency = 0.160
 BringButton.BorderColor3 = Color3.fromRGB(170, 0, 255)
 BringButton.BorderSizePixel = 0
-BringButton.Position = UDim2.new(0, 8, 0, 408)
+BringButton.Position = UDim2.fromOffset(8, 149)
 BringButton.Size = UDim2.new(1, -16, 0, 20)
 BringButton.Font = Enum.Font.SourceSansBold
-BringButton.Text = "Gun Sound Changer"
+BringButton.Text = "Weapons"
 BringButton.TextColor3 = Color3.fromRGB(0, 255, 255)
 BringButton.TextSize = 17.000
 BringButton.TextWrapped = true
@@ -1352,6 +1352,25 @@ do
         end)
     end
 
+    -- Move the original Chat Spammer control into Messages without replacing its handler.
+    ChatToggle.Parent = page
+    ChatToggle.AnchorPoint = Vector2.new(0, 0)
+    ChatToggle.Position = UDim2.fromOffset(8, 179)
+    ChatToggle.Size = UDim2.new(1, -16, 0, 20)
+    ChatToggle.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+    ChatToggle.BackgroundTransparency = 0.82
+    ChatToggle.BorderSizePixel = 0
+    ChatToggle.AutoButtonColor = false
+    ChatToggle.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    ChatToggle.TextColor3 = Color3.fromRGB(1, 244, 253)
+    ChatToggle.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+    ChatToggle.TextStrokeTransparency = 0.28
+    ChatToggle.TextXAlignment = Enum.TextXAlignment.Left
+    ChatToggle.TextSize = 13
+    ChatToggle.ZIndex = 52
+    local chatMarker = ChatToggle:FindFirstChild("JiggySelectionMarker")
+    if chatMarker then chatMarker.ZIndex = 53 end
+
     local previousVisibility = {}
     local glitchLayer
     local function moveGlitch(toPage)
@@ -1418,9 +1437,9 @@ local function MREH_fake_script() -- LanguageToggle.LanguageController_Edit_Here
 	    ["Spin Bot"] = {"Spin Bot", "Giro automático", "Rotation auto", "自動回転", "自动旋转", "Drehmodus"},
 	    ["NoclipToggle"] = {"Noclip V2", "Atravesar paredes V2", "Traverser les murs V2", "壁抜け V2", "穿墙 V2", "Durch Wände V2"},
 	    ["X Ray Vision"] = {"X-Ray Vision", "Visión de rayos X", "Vision à rayons X", "透視モード", "透视模式", "Röntgenblick"},
-	    ["Wall Esp"] = {"Wall Esp V2", "Ver jugadores V2", "Voir les joueurs V2", "壁越し表示 V2", "透墙显示 V2", "Spieler anzeigen V2"},
+	    ["Wall Esp"] = {"ESP", "Ver jugadores V2", "Voir les joueurs V2", "壁越し表示 V2", "透墙显示 V2", "Spieler anzeigen V2"},
 	    ["aura kill"] = {"Aura Kill", "Aura de ataque", "Aura d’attaque", "攻撃オーラ", "攻击光环", "Angriffsaura"},
-	    ["BringButton"] = {"Gun Sound Changer", "Cambiar sonido de disparo", "Changer le son de tir", "射撃音変更", "更换射击音效", "Schusssound ändern"},
+	    ["BringButton"] = {"Weapons", "Cambiar sonido de disparo", "Changer le son de tir", "射撃音変更", "更换射击音效", "Schusssound ändern"},
 	    ["RGBTextToggle"] = {"RGB Text", "Texto RGB", "Texte RVB", "RGB文字", "RGB文字", "RGB-Text"},
 	    ["Set Spawn Point"] = {"Set Spawn Point", "Guardar punto de aparición", "Définir le point de réapparition", "復活地点を設定", "设置重生点", "Spawnpunkt setzen"},
 	    ["Teleport To Spawn"] = {"Teleport To Spawn Point", "Ir al punto de aparición", "Aller au point de réapparition", "復活地点へ移動", "传送至重生点", "Zum Spawnpunkt teleportieren"},
@@ -2189,7 +2208,7 @@ local function EDPLXHQ_fake_script() -- WallEsp.client
 	end
 	
 	local function updateButton()
-		button.Text = enabled and "Wall ESP: ON" or "Wall ESP: OFF"
+		button.Text = enabled and "ESP: ON" or "ESP: OFF"
 		button.BackgroundColor3 = enabled and Color3.fromRGB(25,190,65) or Color3.fromRGB(0,0,0)
 	end
 	
@@ -2482,6 +2501,69 @@ local function IIAUQR_fake_script() -- TeleportToSpawn.TeleportScript
 	
 end
 coroutine.wrap(IIAUQR_fake_script)()
+-- Flying Cars controls banner: independent copy of the welcome-style animation.
+local flyCarsTipToken = 0
+local function showFlyingCarsControls()
+    flyCarsTipToken = flyCarsTipToken + 1
+    local token = flyCarsTipToken
+    local previous = y0ungDareMenuv45:FindFirstChild("FlyingCarsControlsBanner")
+    if previous then previous:Destroy() end
+    local banner = Instance.new("Frame")
+    banner.Name = "FlyingCarsControlsBanner"
+    banner.BackgroundTransparency = 1
+    banner.BorderSizePixel = 0
+    banner.Position = UDim2.new(0.04, 0, 0.055, 0)
+    banner.Size = UDim2.new(0.92, 0, 0, 70)
+    banner.ZIndex = 90
+    banner.Parent = y0ungDareMenuv45
+    local label = Instance.new("TextLabel")
+    label.Name = "WelcomeText"
+    label.BackgroundTransparency = 1
+    label.Size = UDim2.fromScale(1, 1)
+    label.Font = Enum.Font.SourceSansBold
+    label.TextSize = 22
+    label.TextScaled = false
+    label.TextWrapped = true
+    label.RichText = true
+    label.TextStrokeColor3 = Color3.fromRGB(18, 4, 36)
+    label.TextStrokeTransparency = 0.18
+    label.TextColor3 = Color3.fromRGB(255, 255, 255)
+    label.ZIndex = 91
+    label.Parent = banner
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://93876122474729"
+    sound.Volume = 1
+    sound.Parent = banner
+    sound:Play()
+    local message = "Press E = Up | Press V = Down | W/A/S/D = Fly Around"
+    local colors = {"#FF49B5", "#00EDFF", "#B34DFF"}
+    local rng = Random.new()
+    local charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    task.spawn(function()
+        for step = 1, #message do
+            if not banner.Parent or token ~= flyCarsTipToken then return end
+            local output = {}
+            for i = 1, #message do
+                local c = message:sub(i, i)
+                if i > step and c ~= " " and c ~= "|" and c ~= "/" and c ~= "=" then
+                    c = charset:sub(rng:NextInteger(1, #charset), rng:NextInteger(1, #charset))
+                end
+                if i > step + 7 then c = " " end
+                local color = colors[math.floor((i - 1) / 17) % #colors + 1]
+                output[#output + 1] = '<font color="' .. color .. '">' .. c .. '</font>'
+            end
+            label.Text = table.concat(output)
+            task.wait(0.045)
+        end
+        task.wait(3)
+        if banner.Parent and token == flyCarsTipToken then
+            game:GetService("TweenService"):Create(label, TweenInfo.new(0.6), {TextTransparency = 1, TextStrokeTransparency = 1}):Play()
+            task.wait(0.65)
+            if banner.Parent then banner:Destroy() end
+        end
+    end)
+end
+
 local function XKDCV_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyController 
 	local script = Instance.new('LocalScript', FlyingCarsToggle)
 
@@ -2591,6 +2673,7 @@ local function XKDCV_fake_script() -- FlyingCarsToggle.OriginalVehicleFlyControl
 				end
 				button.Activated:Connect(function()
 					_1c2d69e764e2.VehicleFly = not _1c2d69e764e2.VehicleFly
+					if _1c2d69e764e2.VehicleFly then showFlyingCarsControls() end
 					if not _1c2d69e764e2.VehicleFly then _95021a957be8() end
 					updateButton()
 				end)
@@ -2698,12 +2781,12 @@ local function TYXQRTZ_fake_script() -- Frame.HighGraphicsLogic
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
 	local HighGraphicsToggle = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('HighGraphicsToggle', true)
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-		local HighGraphicsToggle = y0ungDareMenuv42:WaitForChild('Frame'):WaitForChild('HighGraphicsToggle')
+		local HighGraphicsToggle = y0ungDareMenuv42:FindFirstChild('HighGraphicsToggle', true)
 	
 			-- High Graphics ON/OFF (LocalScript inside this ScreenGui)
 			-- Visual changes are client-side. Roblox's manual graphics-quality setting cannot be forced by a LocalScript.
 			local Lighting = game:GetService("Lighting")
-			local button = script.Parent:WaitForChild("HighGraphicsToggle")
+			local button = HighGraphicsToggle
 			local enabled = false
 			local original = {}
 			local created = {}
@@ -2999,7 +3082,7 @@ local function HRWYOVR_fake_script()
     heading.Position = UDim2.fromOffset(3, 18)
     heading.Size = UDim2.new(1, -85, 0, 32)
     heading.BackgroundTransparency = 1
-    heading.Text = "Gun Sound Changer"
+    heading.Text = "Weapons"
     heading.Font = Enum.Font.Arcade
     heading.TextScaled = true
     heading.TextSize = 27
@@ -3023,12 +3106,14 @@ local function HRWYOVR_fake_script()
     byline.TextStrokeTransparency = 0.3
     byline.TextXAlignment = Enum.TextXAlignment.Left
     byline.ZIndex = 33
-    local toggle = makeButton("ShootSoundToggle", "Gun Sound Changer: OFF", 79)
+    local toggle = makeButton("ShootSoundToggle", "Gun Sound: OFF", 79)
     local dropdown = makeButton("ShootSoundDropdown", "Gun Sound: " .. sounds[selected][1] .. "  ▼", 99)
+    -- Match the gun sound page selection marker on the moved Get All Guns button.
+    addRowHover(GetAllGuns)
     local options = Instance.new("ScrollingFrame")
     options.Name = "ShootSoundOptions"
     options.Parent = panel
-    options.Position = UDim2.fromOffset(8, 120)
+    options.Position = UDim2.fromOffset(8, 141)
     options.Size = UDim2.new(1, -16, 0, 260)
     options.BackgroundColor3 = Color3.fromRGB(20, 13, 38)
     options.BackgroundTransparency = 0.3
@@ -3103,7 +3188,7 @@ local function HRWYOVR_fake_script()
     updateSounds()
     toggle.MouseButton1Click:Connect(function()
         enabled = not enabled
-        toggle.Text = "Gun Sound Changer: " .. (enabled and "ON" or "OFF")
+        toggle.Text = "Weapons: " .. (enabled and "ON" or "OFF")
         updateSounds() -- Restore immediately when switched OFF.
     end)
     dropdown.MouseButton1Click:Connect(function() options.Visible = not options.Visible end)
@@ -3170,12 +3255,12 @@ local function KHGUSD_fake_script() -- Frame.ChatController
 	local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
 	local ChatToggle = script:FindFirstAncestorOfClass("ScreenGui"):FindFirstChild('ChatToggle', true)
 		local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("ScreenGui")
-		local ChatToggle = y0ungDareMenuv42:WaitForChild('Frame'):WaitForChild('ChatToggle')
+		local ChatToggle = y0ungDareMenuv42:WaitForChild('Frame'):WaitForChild('MessagesPage'):WaitForChild('ChatToggle')
 	
 				-- Based on the original ScriptBlox source. Rate limited for safety.
 				local TextChatService = game:GetService("TextChatService")
 				local ReplicatedStorage = game:GetService("ReplicatedStorage")
-				local button = script.Parent:WaitForChild("ChatToggle")
+				local button = ChatToggle
 				local MESSAGE = "Welcome To y0ungDare Menu!"
 				local DELAY = 3 -- Original source used 0.001; avoid flooding chat.
 				local enabled = false
@@ -3369,7 +3454,7 @@ local function ATWAJ_fake_script() -- Frame.OpenDexPlusPlus
 	-- Dark Dex loader, launched by the editable button.
 	-- Requires an environment providing loadstring and game:HttpGet.
 	-- Standard Roblox Studio LocalScripts do not provide those executor APIs.
-	local button = script.Parent:WaitForChild("OpenDexPlusPlus")
+	local button = OpenDexPlusPlus -- Button is now inside Main Mods, not directly under Frame.
 	local busy = false
 	
 	-- Popup appears only when the Dex loader reports an error.
@@ -3625,8 +3710,14 @@ local function OACKUI_fake_script() -- Frame.AimbotController
 	selector.Position = UDim2.fromOffset(8, 99)
 	selector.Size = UDim2.new(1, -16, 0, 20)
 	selector.ZIndex = 33
+	-- Move the existing Spin Bot button into Aimbot Settings; preserve its controller.
+	SpinBot.Parent = settingsPage
+	SpinBot.AnchorPoint = Vector2.new(0, 0)
+	SpinBot.Position = UDim2.fromOffset(8, 139)
+	SpinBot.Size = UDim2.new(1, -16, 0, 20)
+	SpinBot.ZIndex = 33
 	-- Match the main menu's compact, transparent BO2 button rows.
-	for _, rowButton in ipairs({toggle, selector, teamCheckButton}) do
+	for _, rowButton in ipairs({toggle, selector, teamCheckButton, SpinBot}) do
 		rowButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
 		rowButton.BackgroundTransparency = 0.82
 		rowButton.BorderSizePixel = 0
@@ -3645,7 +3736,7 @@ local function OACKUI_fake_script() -- Frame.AimbotController
 	-- The selector already received its cursor in Frame.HoverSelectionAnimation.
 	local hoverTween = game:GetService("TweenService")
 	local hoverInfo = TweenInfo.new(0.09, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-	for _, rowButton in ipairs({toggle, teamCheckButton}) do
+	for _, rowButton in ipairs({toggle, teamCheckButton, SpinBot}) do
 		local baseColor = rowButton.BackgroundColor3
 		local marker = Instance.new("Frame")
 		marker.Name = "JiggySelectionMarker"
@@ -5023,136 +5114,171 @@ do
 end
 
 
--- ================================================================
--- JIGGY-STYLE IN-MENU INFO & CREDITS PAGE
--- Keeps the same main menu frame, size, position and background.
--- All original info text is retained; Back restores main menu.
--- ================================================================
-do
-    local menu = Frame
-    local page = InfoPopup
-    local back = CloseButton
-    local mainVisible = {}
-    local glitchLayer -- Resolved when opening, after the glitch layer has been created.
+-- Info & Credits page removed.
 
-    -- Solid in-menu page hides the old logo and menu artwork underneath.
-    page.Parent = menu
-    page.AnchorPoint = Vector2.new(0, 0)
-    page.Position = UDim2.fromScale(0, 0)
+-- Move the existing Get All Guns control into Weapons.
+-- This runs after its original click handler is connected, preserving gun collection.
+do
+    local gunPage = Frame:FindFirstChild("ShootSoundChangerPanel")
+    if gunPage and GetAllGuns then
+        GetAllGuns.Parent = gunPage
+        GetAllGuns.AnchorPoint = Vector2.new(0, 0)
+        GetAllGuns.Position = UDim2.fromOffset(8, 119)
+        GetAllGuns.Size = UDim2.new(1, -16, 0, 20)
+        GetAllGuns.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+        GetAllGuns.BackgroundTransparency = 0.82
+        GetAllGuns.BorderSizePixel = 0
+        GetAllGuns.AutoButtonColor = false
+        GetAllGuns.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        GetAllGuns.TextColor3 = Color3.fromRGB(1, 244, 253)
+        GetAllGuns.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+        GetAllGuns.TextStrokeTransparency = 0.28
+        GetAllGuns.TextXAlignment = Enum.TextXAlignment.Left
+        GetAllGuns.TextYAlignment = Enum.TextYAlignment.Center
+        GetAllGuns.TextSize = 13
+        GetAllGuns.ZIndex = 33
+    end
+end
+
+
+-- Main Mods submenu: keep the existing controls and their click handlers.
+do
+    local TweenService = game:GetService("TweenService")
+    local mainModsButton = Instance.new("TextButton")
+    mainModsButton.Name = "MainModsButton"
+    mainModsButton.Parent = Frame
+    mainModsButton.Position = UDim2.fromOffset(8, 69)
+    mainModsButton.Size = UDim2.new(1, -16, 0, 20)
+    mainModsButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+    mainModsButton.BackgroundTransparency = 0.82
+    mainModsButton.BorderSizePixel = 0
+    mainModsButton.AutoButtonColor = false
+    mainModsButton.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    mainModsButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+    mainModsButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+    mainModsButton.TextStrokeTransparency = 0.28
+    mainModsButton.TextXAlignment = Enum.TextXAlignment.Left
+    mainModsButton.TextSize = 13
+    mainModsButton.Text = "Main Mods"
+    mainModsButton.ZIndex = 5
+
+    local page = Instance.new("Frame")
+    page.Name = "MainModsPage"
+    page.Parent = Frame
     page.Size = UDim2.fromScale(1, 1)
     page.BackgroundColor3 = Color3.fromRGB(12, 9, 22)
-    page.BackgroundTransparency = 0
     page.BorderSizePixel = 0
     page.ClipsDescendants = true
-    page.ZIndex = 30
     page.Visible = false
+    page.ZIndex = 30
 
-    local CYAN = Color3.fromRGB(1, 244, 253)
-    local PINK = Color3.fromRGB(255, 91, 201)
-    local MUTED = Color3.fromRGB(192, 185, 215)
-    local WHITE = Color3.fromRGB(238, 239, 246)
+    local heading = Instance.new("TextLabel")
+    heading.Name = "MainModsHeading"
+    heading.Parent = page
+    heading.Position = UDim2.fromOffset(3, 18)
+    heading.Size = UDim2.new(1, -85, 0, 32)
+    heading.BackgroundTransparency = 1
+    heading.Text = "Main Mods"
+    heading.Font = Enum.Font.Arcade
+    heading.TextSize = 27
+    heading.TextColor3 = Color3.fromRGB(245, 244, 255)
+    heading.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+    heading.TextStrokeTransparency = 0.25
+    heading.TextXAlignment = Enum.TextXAlignment.Left
+    heading.ZIndex = 33
 
-    -- A compact single-line heading with room for the Back button.
-    Title_2.Text = "Info & Credits"
-    Title_2.Font = Enum.Font.Arcade
-    -- Scale the entire title to fit beside < BACK without clipping "Credits".
-    Title_2.TextScaled = true
-    Title_2.TextWrapped = false
-    Title_2.TextSize = 25
-    Title_2.TextColor3 = Color3.fromRGB(245, 244, 255)
-    Title_2.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
-    Title_2.TextStrokeTransparency = 0.25
-    Title_2.TextXAlignment = Enum.TextXAlignment.Left
-    Title_2.TextYAlignment = Enum.TextYAlignment.Top
-    Title_2.Position = UDim2.fromOffset(3, 18)
-    Title_2.Size = UDim2.new(1, -85, 0, 28)
-    Title_2.ZIndex = 33
+    local byline = Instance.new("TextLabel")
+    byline.Name = "MainModsByline"
+    byline.Parent = page
+    byline.Position = UDim2.fromOffset(3, 49)
+    byline.Size = UDim2.new(1, -10, 0, 23)
+    byline.BackgroundTransparency = 1
+    byline.Text = "By @y0ungdare"
+    byline.Font = Enum.Font.Arcade
+    byline.TextSize = 15
+    byline.TextColor3 = Color3.fromRGB(37, 28, 191)
+    byline.TextXAlignment = Enum.TextXAlignment.Left
+    byline.ZIndex = 33
 
-    local infoByline = Instance.new("TextLabel")
-    infoByline.Name = "InfoCreditsByline"
-    infoByline.Parent = page
-    infoByline.Position = UDim2.fromOffset(3, 49)
-    infoByline.Size = UDim2.new(1, -10, 0, 23)
-    infoByline.BackgroundTransparency = 1
-    infoByline.Text = "By @y0ungdare"
-    infoByline.Font = Enum.Font.Arcade
-    infoByline.TextSize = 15
-    infoByline.TextColor3 = Color3.fromRGB(37, 28, 191)
-    infoByline.TextStrokeColor3 = Color3.fromRGB(10, 5, 40)
-    infoByline.TextStrokeTransparency = 0.3
-    infoByline.TextXAlignment = Enum.TextXAlignment.Left
-    infoByline.ZIndex = 33
-
-    back.Text = "< BACK"
-    back.Font = Enum.Font.RobotoCondensed
-    back.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-    back.TextSize = 13
-    back.TextColor3 = CYAN
-    back.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
-    back.BackgroundTransparency = 0.12
-    back.BorderSizePixel = 0
+    local back = Instance.new("TextButton")
+    back.Name = "MainModsBack"
+    back.Parent = page
     back.Position = UDim2.new(1, -77, 0, 14)
     back.Size = UDim2.fromOffset(65, 26)
+    back.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
+    back.TextColor3 = Color3.fromRGB(0, 255, 255)
+    back.Font = Enum.Font.SourceSansBold
+    back.TextSize = 15
+    back.Text = "< BACK"
+    back.ZIndex = 34
 
-    -- Align all existing text to a common left edge; preserve exact wording.
-    local function line(obj, y, h, size, color, font)
-        obj.Position = UDim2.fromOffset(16, y)
-        obj.Size = UDim2.new(1, -32, 0, h)
-        obj.TextSize = size
-        obj.TextScaled = false
-        obj.TextWrapped = true
-        obj.TextXAlignment = Enum.TextXAlignment.Left
-        obj.TextYAlignment = Enum.TextYAlignment.Center
-        obj.BackgroundTransparency = 1
-        if color then obj.TextColor3 = color end
-        if font then obj.Font = font end
-    end
-    line(Version, 80, 23, 17, CYAN, Enum.Font.SourceSansBold)
-    line(Creator, 105, 23, 15, WHITE, Enum.Font.SourceSans)
-    -- Remove the About the Menu section and its two instruction lines.
-    Description.Visible = false
-    ControlLine1.Visible = false
-    ControlLine2.Visible = false
-
-    -- Move remaining sections upward into a clean, evenly spaced layout.
-    line(ControlLine4, 133, 24, 15, PINK, Enum.Font.SourceSansBold)
-    line(ControlLine5, 169, 23, 14, WHITE, Enum.Font.SourceSans)
-    line(ControlLine6, 199, 23, 14, WHITE, Enum.Font.SourceSans)
-    line(ControlLine7, 229, 23, 14, WHITE, Enum.Font.SourceSans)
-    line(SocialHeading, 286, 24, 15, PINK, Enum.Font.SourceSansBold)
-    line(Instagram, 324, 32, 13, CYAN, Enum.Font.SourceSans)
-    line(YouTube, 370, 48, 12, CYAN, Enum.Font.SourceSans)
-
-    -- Subtle separators give the information a clear hierarchy.
-    for _, y in ipairs({49, 120, 273}) do
-        local separator = Instance.new("Frame")
-        separator.Name = "InfoSeparator"
-        separator.Parent = page
-        separator.Position = UDim2.fromOffset(14, y)
-        separator.Size = UDim2.new(1, -28, 0, 1)
-        separator.BorderSizePixel = 0
-        separator.BackgroundColor3 = Color3.fromRGB(65, 45, 94)
-        separator.ZIndex = 32
-    end
-
-    for _, obj in ipairs(page:GetDescendants()) do
-        if obj:IsA("GuiObject") and obj.Name ~= "InfoSeparator" then
-            obj.ZIndex = (obj == back) and 34 or 33
+    local function attachHover(button)
+        local marker = button:FindFirstChild("JiggySelectionMarker")
+        if not marker then
+            marker = Instance.new("Frame")
+            marker.Name = "JiggySelectionMarker"
+            marker.Parent = button
+            marker.BorderSizePixel = 0
+            marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+            marker.BackgroundTransparency = 1
+            marker.Size = UDim2.new(0, 5, 1, 0)
+            marker.ZIndex = button.ZIndex + 1
         end
+        local outline = button:FindFirstChild("JiggySelectionOutline")
+        if not outline then
+            outline = Instance.new("UIStroke")
+            outline.Name = "JiggySelectionOutline"
+            outline.Parent = button
+            outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+            outline.Color = Color3.fromRGB(174, 70, 255)
+            outline.Thickness = 1.5
+            outline.Transparency = 1
+        end
+        local normal = Color3.fromRGB(19, 9, 49)
+        local function setHover(active)
+            TweenService:Create(button, TweenInfo.new(0.09), {BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or normal}):Play()
+            TweenService:Create(marker, TweenInfo.new(0.09), {BackgroundTransparency = active and 0 or 1}):Play()
+            TweenService:Create(outline, TweenInfo.new(0.09), {Transparency = active and 0 or 1}):Play()
+        end
+        button.MouseEnter:Connect(function() setHover(true) end)
+        button.MouseLeave:Connect(function() setHover(false) end)
+        return function() setHover(false) end
     end
 
-    -- Preserve original menu layout by hiding, not moving or deleting, its controls.
-    local function showInfo()
+    attachHover(mainModsButton)
+    local resets = {}
+    for index, button in ipairs({SetSpawnPoint, TeleportToSpawn, NoclipToggle, WallEsp, SpeedRun, TaseBypass, AntiAFKToggle, aurakill, removedoors, OpenDexPlusPlus}) do
+        button.Parent = page
+        button.AnchorPoint = Vector2.new(0, 0)
+        button.Position = UDim2.fromOffset(8, 79 + (index - 1) * 20)
+        button.Size = UDim2.new(1, -16, 0, 20)
+        button.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+        button.BackgroundTransparency = 0.82
+        button.BorderSizePixel = 0
+        button.AutoButtonColor = false
+        button.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        button.TextColor3 = Color3.fromRGB(1, 244, 253)
+        button.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+        button.TextStrokeTransparency = 0.28
+        button.TextXAlignment = Enum.TextXAlignment.Left
+        button.TextSize = 13
+        button.ZIndex = 33
+        -- Their existing main-menu hover handlers remain connected.
+        local marker = button:FindFirstChild("JiggySelectionMarker")
+        if marker then marker.ZIndex = 34 end
+    end
+
+    local previousVisibility = {}
+    local glitchLayer
+    mainModsButton.Activated:Connect(function()
         if page.Visible then return end
-        for _, child in ipairs(menu:GetChildren()) do
+        for _, child in ipairs(Frame:GetChildren()) do
             if child ~= page and child:IsA("GuiButton") then
-                mainVisible[child] = child.Visible
+                previousVisibility[child] = child.Visible
                 child.Visible = false
             end
         end
-        -- Reuse the SAME animated glitch layer rather than creating a second effect.
-        -- It stays below the Info text and Back button.
-        glitchLayer = menu:FindFirstChild("JiggyGlitchBackground_EDIT_HERE")
+        glitchLayer = Frame:FindFirstChild("JiggyGlitchBackground_EDIT_HERE")
         if glitchLayer then
             glitchLayer.Parent = page
             glitchLayer.ZIndex = 31
@@ -5161,21 +5287,629 @@ do
             end
         end
         page.Visible = true
-    end
-    local function showMain()
+    end)
+    back.Activated:Connect(function()
         page.Visible = false
         if glitchLayer then
-            glitchLayer.Parent = menu
+            glitchLayer.Parent = Frame
             glitchLayer.ZIndex = 3
             for _, part in ipairs(glitchLayer:GetDescendants()) do
                 if part:IsA("GuiObject") then part.ZIndex = 3 end
             end
+            glitchLayer = nil
         end
-        for child, wasVisible in pairs(mainVisible) do
+        for child, wasVisible in pairs(previousVisibility) do
             if child.Parent then child.Visible = wasVisible end
-            mainVisible[child] = nil
+            previousVisibility[child] = nil
+        end
+    end)
+end
+
+
+-- Fun Mods submenu: move existing controls without changing their scripts.
+do
+    local TweenService = game:GetService("TweenService")
+    local funButton = Instance.new("TextButton")
+    funButton.Name = "FunModsButton"
+    funButton.Parent = Frame
+    funButton.Position = UDim2.fromOffset(8, 129)
+    funButton.Size = UDim2.new(1, -16, 0, 20)
+    funButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+    funButton.BackgroundTransparency = 0.82
+    funButton.BorderSizePixel = 0
+    funButton.AutoButtonColor = false
+    funButton.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    funButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+    funButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+    funButton.TextStrokeTransparency = 0.28
+    funButton.TextXAlignment = Enum.TextXAlignment.Left
+    funButton.TextSize = 13
+    funButton.Text = "Fun Mods"
+    funButton.ZIndex = 5
+
+    local page = Instance.new("Frame")
+    page.Name = "FunModsPage"
+    page.Parent = Frame
+    page.Size = UDim2.fromScale(1, 1)
+    page.BackgroundColor3 = Color3.fromRGB(12, 9, 22)
+    page.BorderSizePixel = 0
+    page.ClipsDescendants = true
+    page.Visible = false
+    page.ZIndex = 30
+
+    local heading = Instance.new("TextLabel")
+    heading.Name = "FunModsHeading"
+    heading.Parent = page
+    heading.Position = UDim2.fromOffset(3, 18)
+    heading.Size = UDim2.new(1, -85, 0, 32)
+    heading.BackgroundTransparency = 1
+    heading.Text = "Fun Mods"
+    heading.Font = Enum.Font.Arcade
+    heading.TextSize = 27
+    heading.TextColor3 = Color3.fromRGB(245, 244, 255)
+    heading.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+    heading.TextStrokeTransparency = 0.25
+    heading.TextXAlignment = Enum.TextXAlignment.Left
+    heading.ZIndex = 33
+
+    local byline = Instance.new("TextLabel")
+    byline.Name = "FunModsByline"
+    byline.Parent = page
+    byline.Position = UDim2.fromOffset(3, 49)
+    byline.Size = UDim2.new(1, -10, 0, 23)
+    byline.BackgroundTransparency = 1
+    byline.Text = "By @y0ungdare"
+    byline.Font = Enum.Font.Arcade
+    byline.TextSize = 15
+    byline.TextColor3 = Color3.fromRGB(37, 28, 191)
+    byline.TextXAlignment = Enum.TextXAlignment.Left
+    byline.ZIndex = 33
+
+    local back = Instance.new("TextButton")
+    back.Name = "FunModsBack"
+    back.Parent = page
+    back.Position = UDim2.new(1, -77, 0, 14)
+    back.Size = UDim2.fromOffset(65, 26)
+    back.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
+    back.TextColor3 = Color3.fromRGB(0, 255, 255)
+    back.Font = Enum.Font.SourceSansBold
+    back.TextSize = 15
+    back.Text = "< BACK"
+    back.ZIndex = 34
+
+    local function attachHover(button)
+        local marker = Instance.new("Frame")
+        marker.Name = "JiggySelectionMarker"
+        marker.Parent = button
+        marker.BorderSizePixel = 0
+        marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+        marker.BackgroundTransparency = 1
+        marker.Size = UDim2.new(0, 5, 1, 0)
+        marker.ZIndex = button.ZIndex + 1
+        local outline = Instance.new("UIStroke")
+        outline.Name = "JiggySelectionOutline"
+        outline.Parent = button
+        outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+        outline.Color = Color3.fromRGB(174, 70, 255)
+        outline.Thickness = 1.5
+        outline.Transparency = 1
+        local function setHover(active)
+            TweenService:Create(button, TweenInfo.new(0.09), {BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or Color3.fromRGB(19, 9, 49)}):Play()
+            TweenService:Create(marker, TweenInfo.new(0.09), {BackgroundTransparency = active and 0 or 1}):Play()
+            TweenService:Create(outline, TweenInfo.new(0.09), {Transparency = active and 0 or 1}):Play()
+        end
+        button.MouseEnter:Connect(function() setHover(true) end)
+        button.MouseLeave:Connect(function() setHover(false) end)
+    end
+    attachHover(funButton)
+
+    for index, button in ipairs({fly, FlyingCarsToggle, AutoPilot}) do
+        button.Parent = page
+        button.AnchorPoint = Vector2.new(0, 0)
+        button.Position = UDim2.fromOffset(8, 79 + (index - 1) * 20)
+        button.Size = UDim2.new(1, -16, 0, 20)
+        button.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+        button.BackgroundTransparency = 0.82
+        button.BorderSizePixel = 0
+        button.AutoButtonColor = false
+        button.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        button.TextColor3 = Color3.fromRGB(1, 244, 253)
+        button.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+        button.TextStrokeTransparency = 0.28
+        button.TextXAlignment = Enum.TextXAlignment.Left
+        button.TextSize = 13
+        button.ZIndex = 33
+        local marker = button:FindFirstChild("JiggySelectionMarker")
+        if marker then marker.ZIndex = 34 end
+    end
+
+    -- Debug: Blocky Gray Transformation, integrated into Fun Mods (no separate GUI).
+    local debugButton = Instance.new("TextButton")
+    debugButton.Name = "DebugMorphToggle"
+    debugButton.Parent = page
+    debugButton.Position = UDim2.fromOffset(8, 139)
+    debugButton.Size = UDim2.new(1, -16, 0, 20)
+    debugButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+    debugButton.BackgroundTransparency = 0.82
+    debugButton.BorderSizePixel = 0
+    debugButton.AutoButtonColor = false
+    debugButton.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    debugButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+    debugButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+    debugButton.TextStrokeTransparency = 0.28
+    debugButton.TextXAlignment = Enum.TextXAlignment.Left
+    debugButton.TextSize = 13
+    debugButton.Text = "Debug: OFF"
+    debugButton.ZIndex = 33
+    attachHover(debugButton)
+
+    local Players = game:GetService("Players")
+    local player = Players.LocalPlayer
+    local enabled = false
+    local morphFolder
+    local originals = {}
+
+    local function restore()
+        if morphFolder then morphFolder:Destroy(); morphFolder = nil end
+        for object, props in pairs(originals) do
+            if object and object.Parent then
+                pcall(function()
+                    if props.transparency ~= nil then
+                        if object:IsA("BasePart") then
+                            object.LocalTransparencyModifier = props.transparency
+                        else
+                            object.Transparency = props.transparency
+                        end
+                    end
+                    if props.enabled ~= nil then object.Enabled = props.enabled end
+                end)
+            end
+        end
+        table.clear(originals)
+    end
+
+    local function partFor(char, names)
+        for _, name in ipairs(names) do
+            local part = char:FindFirstChild(name)
+            if part and part:IsA("BasePart") then return part end
         end
     end
-    InfoButton.Activated:Connect(showInfo)
-    back.Activated:Connect(showMain)
+
+    local function addBlock(folder, anchor, size, offset, angle, color)
+        if not anchor then return end
+        local part = Instance.new("Part")
+        part.Name = "GrayBlock"
+        part.Size = size
+        part.Color = color or Color3.fromRGB(151, 153, 151)
+        part.Material = Enum.Material.SmoothPlastic
+        part.CanCollide = false
+        part.CanTouch = false
+        part.CanQuery = false
+        part.Massless = true
+        part.CastShadow = false
+        part.Anchored = false
+        part.CFrame = anchor.CFrame * CFrame.new(offset) * CFrame.Angles(math.rad(angle.X), math.rad(angle.Y), math.rad(angle.Z))
+        part.Parent = folder
+        local weld = Instance.new("WeldConstraint")
+        weld.Part0 = anchor
+        weld.Part1 = part
+        weld.Parent = part
+        return part
+    end
+
+    local function apply(char)
+        restore()
+        local humanoid = char:FindFirstChildOfClass("Humanoid")
+        if not humanoid then return end
+        local head = partFor(char, {"Head"})
+        local torso = partFor(char, {"UpperTorso", "Torso"})
+        local lower = partFor(char, {"LowerTorso", "Torso"})
+        local leftArm = partFor(char, {"LeftUpperArm", "Left Arm"})
+        local rightArm = partFor(char, {"RightUpperArm", "Right Arm"})
+        local leftLeg = partFor(char, {"LeftUpperLeg", "Left Leg"})
+        local rightLeg = partFor(char, {"RightUpperLeg", "Right Leg"})
+        if not (head and torso and lower and leftArm and rightArm and leftLeg and rightLeg) then return end
+        morphFolder = Instance.new("Folder")
+        morphFolder.Name = "BlockyGrayMorphParts"
+        morphFolder.Parent = char
+        for _, obj in ipairs(char:GetDescendants()) do
+            if obj:IsA("BasePart") then
+                originals[obj] = {transparency = obj.LocalTransparencyModifier}
+                obj.LocalTransparencyModifier = 1
+            elseif obj:IsA("Decal") or obj:IsA("Texture") then
+                originals[obj] = {transparency = obj.Transparency}
+                obj.Transparency = 1
+            elseif obj:IsA("ParticleEmitter") or obj:IsA("Trail") then
+                originals[obj] = {enabled = obj.Enabled}
+                obj.Enabled = false
+            end
+        end
+        local gray = Color3.fromRGB(157, 158, 155)
+        local light = Color3.fromRGB(183, 185, 181)
+        local dark = Color3.fromRGB(124, 126, 125)
+        addBlock(morphFolder, torso, Vector3.new(3.25, 2.2, 1.8), Vector3.new(0,0,0), Vector3.new(0,0,-9), gray)
+        addBlock(morphFolder, torso, Vector3.new(2.6, 1.2, 2.1), Vector3.new(0,0.25,-0.35), Vector3.new(-13,0,18), light)
+        addBlock(morphFolder, lower, Vector3.new(2.7, 1.35, 1.8), Vector3.new(0,-0.25,0), Vector3.new(0,0,10), dark)
+        addBlock(morphFolder, head, Vector3.new(1.55,1.75,1.65), Vector3.new(0,0,0), Vector3.new(0,18,20), gray)
+        addBlock(morphFolder, head, Vector3.new(1.1,0.85,0.95), Vector3.new(0,0.3,-0.3), Vector3.new(-14,20,30), light)
+        addBlock(morphFolder, leftArm, Vector3.new(1.55,2.4,1.65), Vector3.new(-0.25,-0.45,0), Vector3.new(0,0,-24), gray)
+        addBlock(morphFolder, rightArm, Vector3.new(1.6,2.4,1.65), Vector3.new(0.25,-0.45,0), Vector3.new(0,0,24), light)
+        addBlock(morphFolder, leftLeg, Vector3.new(1.35,2.75,1.5), Vector3.new(0,-0.55,0), Vector3.new(0,0,-7), dark)
+        addBlock(morphFolder, rightLeg, Vector3.new(1.4,2.8,1.5), Vector3.new(0,-0.55,0), Vector3.new(0,0,9), gray)
+        addBlock(morphFolder, torso, Vector3.new(1.7,1.0,1.2), Vector3.new(-1.0,0.65,-0.4), Vector3.new(15,-15,32), light)
+        addBlock(morphFolder, torso, Vector3.new(1.6,0.95,1.25), Vector3.new(1.1,-0.45,-0.4), Vector3.new(-20,10,-23), dark)
+    end
+
+    debugButton.Activated:Connect(function()
+        enabled = not enabled
+        debugButton.Text = enabled and "Debug: ON" or "Debug: OFF"
+        if enabled then
+            if player.Character then apply(player.Character) end
+        else
+            restore()
+        end
+    end)
+
+    player.CharacterAdded:Connect(function(char)
+        restore()
+        if enabled then
+            char:WaitForChild("Humanoid", 10)
+            task.wait(0.6)
+            if enabled and player.Character == char then apply(char) end
+        end
+    end)
+
+    local previousVisibility = {}
+    local glitchLayer
+    funButton.Activated:Connect(function()
+        if page.Visible then return end
+        for _, child in ipairs(Frame:GetChildren()) do
+            if child ~= page and child:IsA("GuiButton") then
+                previousVisibility[child] = child.Visible
+                child.Visible = false
+            end
+        end
+        glitchLayer = Frame:FindFirstChild("JiggyGlitchBackground_EDIT_HERE")
+        if glitchLayer then
+            glitchLayer.Parent = page
+            glitchLayer.ZIndex = 31
+            for _, part in ipairs(glitchLayer:GetDescendants()) do
+                if part:IsA("GuiObject") then part.ZIndex = 31 end
+            end
+        end
+        page.Visible = true
+    end)
+    back.Activated:Connect(function()
+        page.Visible = false
+        if glitchLayer then
+            glitchLayer.Parent = Frame
+            glitchLayer.ZIndex = 3
+            for _, part in ipairs(glitchLayer:GetDescendants()) do
+                if part:IsA("GuiObject") then part.ZIndex = 3 end
+            end
+            glitchLayer = nil
+        end
+        for child, wasVisible in pairs(previousVisibility) do
+            if child.Parent then child.Visible = wasVisible end
+            previousVisibility[child] = nil
+        end
+    end)
 end
+
+-- Visions submenu: move X Ray Vision and High Graphics without changing their scripts.
+do
+    local TweenService = game:GetService("TweenService")
+    local visionsButton = Instance.new("TextButton")
+    visionsButton.Name = "VisionsButton"
+    visionsButton.Parent = Frame
+    visionsButton.Position = UDim2.fromOffset(8, 189)
+    visionsButton.Size = UDim2.new(1, -16, 0, 20)
+    visionsButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+    visionsButton.BackgroundTransparency = 0.82
+    visionsButton.BorderSizePixel = 0
+    visionsButton.AutoButtonColor = false
+    visionsButton.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    visionsButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+    visionsButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+    visionsButton.TextStrokeTransparency = 0.28
+    visionsButton.TextXAlignment = Enum.TextXAlignment.Left
+    visionsButton.TextSize = 13
+    visionsButton.Text = "Visions"
+    visionsButton.ZIndex = 5
+
+    local page = Instance.new("Frame")
+    page.Name = "VisionsPage"
+    page.Parent = Frame
+    page.Size = UDim2.fromScale(1, 1)
+    page.BackgroundColor3 = Color3.fromRGB(12, 9, 22)
+    page.BorderSizePixel = 0
+    page.ClipsDescendants = true
+    page.Visible = false
+    page.ZIndex = 30
+
+    local heading = Instance.new("TextLabel")
+    heading.Name = "VisionsHeading"
+    heading.Parent = page
+    heading.Position = UDim2.fromOffset(3, 18)
+    heading.Size = UDim2.new(1, -85, 0, 32)
+    heading.BackgroundTransparency = 1
+    heading.Text = "Visions"
+    heading.Font = Enum.Font.Arcade
+    heading.TextSize = 27
+    heading.TextColor3 = Color3.fromRGB(245, 244, 255)
+    heading.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+    heading.TextStrokeTransparency = 0.25
+    heading.TextXAlignment = Enum.TextXAlignment.Left
+    heading.ZIndex = 33
+
+    local byline = Instance.new("TextLabel")
+    byline.Name = "VisionsByline"
+    byline.Parent = page
+    byline.Position = UDim2.fromOffset(3, 49)
+    byline.Size = UDim2.new(1, -10, 0, 23)
+    byline.BackgroundTransparency = 1
+    byline.Text = "By @y0ungdare"
+    byline.Font = Enum.Font.Arcade
+    byline.TextSize = 15
+    byline.TextColor3 = Color3.fromRGB(37, 28, 191)
+    byline.TextXAlignment = Enum.TextXAlignment.Left
+    byline.ZIndex = 33
+
+    local back = Instance.new("TextButton")
+    back.Name = "VisionsBack"
+    back.Parent = page
+    back.Position = UDim2.new(1, -77, 0, 14)
+    back.Size = UDim2.fromOffset(65, 26)
+    back.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
+    back.TextColor3 = Color3.fromRGB(0, 255, 255)
+    back.Font = Enum.Font.SourceSansBold
+    back.TextSize = 15
+    back.Text = "< BACK"
+    back.ZIndex = 34
+
+    local function attachHover(button)
+        local marker = Instance.new("Frame")
+        marker.Name = "JiggySelectionMarker"
+        marker.Parent = button
+        marker.BorderSizePixel = 0
+        marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+        marker.BackgroundTransparency = 1
+        marker.Size = UDim2.new(0, 5, 1, 0)
+        marker.ZIndex = button.ZIndex + 1
+        local outline = Instance.new("UIStroke")
+        outline.Name = "JiggySelectionOutline"
+        outline.Parent = button
+        outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+        outline.Color = Color3.fromRGB(174, 70, 255)
+        outline.Thickness = 1.5
+        outline.Transparency = 1
+        local function setHover(active)
+            TweenService:Create(button, TweenInfo.new(0.09), {BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or Color3.fromRGB(19, 9, 49)}):Play()
+            TweenService:Create(marker, TweenInfo.new(0.09), {BackgroundTransparency = active and 0 or 1}):Play()
+            TweenService:Create(outline, TweenInfo.new(0.09), {Transparency = active and 0 or 1}):Play()
+        end
+        button.MouseEnter:Connect(function() setHover(true) end)
+        button.MouseLeave:Connect(function() setHover(false) end)
+    end
+    attachHover(visionsButton)
+
+    for index, button in ipairs({XRayVision, HighGraphicsToggle}) do
+        button.Parent = page
+        button.AnchorPoint = Vector2.new(0, 0)
+        button.Position = UDim2.fromOffset(8, 79 + (index - 1) * 20)
+        button.Size = UDim2.new(1, -16, 0, 20)
+        button.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+        button.BackgroundTransparency = 0.82
+        button.BorderSizePixel = 0
+        button.AutoButtonColor = false
+        button.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        button.TextColor3 = Color3.fromRGB(1, 244, 253)
+        button.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+        button.TextStrokeTransparency = 0.28
+        button.TextXAlignment = Enum.TextXAlignment.Left
+        button.TextSize = 13
+        button.ZIndex = 33
+        local marker = button:FindFirstChild("JiggySelectionMarker")
+        if marker then marker.ZIndex = 34 end
+    end
+
+    local previousVisibility = {}
+    local glitchLayer
+    visionsButton.Activated:Connect(function()
+        if page.Visible then return end
+        for _, child in ipairs(Frame:GetChildren()) do
+            if child ~= page and child:IsA("GuiButton") then
+                previousVisibility[child] = child.Visible
+                child.Visible = false
+            end
+        end
+        glitchLayer = Frame:FindFirstChild("JiggyGlitchBackground_EDIT_HERE")
+        if glitchLayer then
+            glitchLayer.Parent = page
+            glitchLayer.ZIndex = 31
+            for _, part in ipairs(glitchLayer:GetDescendants()) do
+                if part:IsA("GuiObject") then part.ZIndex = 31 end
+            end
+        end
+        page.Visible = true
+    end)
+    back.Activated:Connect(function()
+        page.Visible = false
+        if glitchLayer then
+            glitchLayer.Parent = Frame
+            glitchLayer.ZIndex = 3
+            for _, part in ipairs(glitchLayer:GetDescendants()) do
+                if part:IsA("GuiObject") then part.ZIndex = 3 end
+            end
+            glitchLayer = nil
+        end
+        for child, wasVisible in pairs(previousVisibility) do
+            if child.Parent then child.Visible = wasVisible end
+            previousVisibility[child] = nil
+        end
+    end)
+end
+
+
+-- Menu Settings submenu: preserve original feature handlers by moving existing buttons.
+do
+    local TweenService = game:GetService("TweenService")
+    local menuSettingsButton = Instance.new("TextButton")
+    menuSettingsButton.Name = "MenuSettingsButton"
+    menuSettingsButton.Parent = Frame
+    menuSettingsButton.Position = UDim2.fromOffset(8, 89)
+    menuSettingsButton.Size = UDim2.new(1, -16, 0, 20)
+    menuSettingsButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+    menuSettingsButton.BackgroundTransparency = 0.82
+    menuSettingsButton.BorderSizePixel = 0
+    menuSettingsButton.AutoButtonColor = false
+    menuSettingsButton.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    menuSettingsButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+    menuSettingsButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+    menuSettingsButton.TextStrokeTransparency = 0.28
+    menuSettingsButton.TextXAlignment = Enum.TextXAlignment.Left
+    menuSettingsButton.TextSize = 13
+    menuSettingsButton.Text = "Menu Settings"
+    menuSettingsButton.ZIndex = 5
+
+    local page = Instance.new("Frame")
+    page.Name = "MenuSettingsPage"
+    page.Parent = Frame
+    page.Size = UDim2.fromScale(1, 1)
+    page.BackgroundColor3 = Color3.fromRGB(12, 9, 22)
+    page.BorderSizePixel = 0
+    page.ClipsDescendants = true
+    page.Visible = false
+    page.ZIndex = 30
+
+    local heading = Instance.new("TextLabel")
+    heading.Name = "MenuSettingsHeading"
+    heading.Parent = page
+    heading.Position = UDim2.fromOffset(3, 18)
+    heading.Size = UDim2.new(1, -85, 0, 32)
+    heading.BackgroundTransparency = 1
+    heading.Text = "Menu Settings"
+    heading.Font = Enum.Font.Arcade
+    heading.TextSize = 23
+    heading.TextColor3 = Color3.fromRGB(245, 244, 255)
+    heading.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+    heading.TextStrokeTransparency = 0.25
+    heading.TextXAlignment = Enum.TextXAlignment.Left
+    heading.ZIndex = 33
+
+    local byline = Instance.new("TextLabel")
+    byline.Name = "MenuSettingsByline"
+    byline.Parent = page
+    byline.Position = UDim2.fromOffset(3, 49)
+    byline.Size = UDim2.new(1, -10, 0, 23)
+    byline.BackgroundTransparency = 1
+    byline.Text = "By @y0ungdare"
+    byline.Font = Enum.Font.Arcade
+    byline.TextSize = 15
+    byline.TextColor3 = Color3.fromRGB(37, 28, 191)
+    byline.TextXAlignment = Enum.TextXAlignment.Left
+    byline.ZIndex = 33
+
+    local back = Instance.new("TextButton")
+    back.Name = "MenuSettingsBack"
+    back.Parent = page
+    back.Position = UDim2.new(1, -77, 0, 14)
+    back.Size = UDim2.fromOffset(65, 26)
+    back.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
+    back.TextColor3 = Color3.fromRGB(0, 255, 255)
+    back.Font = Enum.Font.SourceSansBold
+    back.TextSize = 15
+    back.Text = "< BACK"
+    back.ZIndex = 34
+
+    local function attachHover(button)
+        local marker = button:FindFirstChild("JiggySelectionMarker")
+        if not marker then
+            marker = Instance.new("Frame")
+            marker.Name = "JiggySelectionMarker"
+            marker.Parent = button
+            marker.BorderSizePixel = 0
+            marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+            marker.BackgroundTransparency = 1
+            marker.Size = UDim2.new(0, 5, 1, 0)
+        end
+        marker.ZIndex = button.ZIndex + 1
+        local outline = button:FindFirstChild("JiggySelectionOutline")
+        if not outline then
+            outline = Instance.new("UIStroke")
+            outline.Name = "JiggySelectionOutline"
+            outline.Parent = button
+            outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+            outline.Color = Color3.fromRGB(174, 70, 255)
+            outline.Thickness = 1.5
+            outline.Transparency = 1
+        end
+        local function setHover(active)
+            TweenService:Create(button, TweenInfo.new(0.09), {BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or Color3.fromRGB(19, 9, 49)}):Play()
+            TweenService:Create(marker, TweenInfo.new(0.09), {BackgroundTransparency = active and 0 or 1}):Play()
+            TweenService:Create(outline, TweenInfo.new(0.09), {Transparency = active and 0 or 1}):Play()
+        end
+        button.MouseEnter:Connect(function() setHover(true) end)
+        button.MouseLeave:Connect(function() setHover(false) end)
+    end
+    attachHover(menuSettingsButton)
+
+    for index, button in ipairs({LanguageToggle, RGBTextToggle, FPSPingToggle}) do
+        button.Parent = page
+        button.AnchorPoint = Vector2.new(0, 0)
+        button.Position = UDim2.fromOffset(8, 79 + (index - 1) * 20)
+        button.Size = UDim2.new(1, -16, 0, 20)
+        button.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+        button.BackgroundTransparency = 0.82
+        button.BorderSizePixel = 0
+        button.AutoButtonColor = false
+        button.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        button.TextColor3 = Color3.fromRGB(1, 244, 253)
+        button.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+        button.TextStrokeTransparency = 0.28
+        button.TextXAlignment = Enum.TextXAlignment.Left
+        button.TextSize = 13
+        button.ZIndex = 33
+        attachHover(button)
+    end
+
+    local previousVisibility = {}
+    local glitchLayer
+    menuSettingsButton.Activated:Connect(function()
+        if page.Visible then return end
+        for _, child in ipairs(Frame:GetChildren()) do
+            if child ~= page and child:IsA("GuiButton") then
+                previousVisibility[child] = child.Visible
+                child.Visible = false
+            end
+        end
+        glitchLayer = Frame:FindFirstChild("JiggyGlitchBackground_EDIT_HERE")
+        if glitchLayer then
+            glitchLayer.Parent = page
+            glitchLayer.ZIndex = 31
+            for _, part in ipairs(glitchLayer:GetDescendants()) do
+                if part:IsA("GuiObject") then part.ZIndex = 31 end
+            end
+        end
+        page.Visible = true
+    end)
+    back.Activated:Connect(function()
+        page.Visible = false
+        if glitchLayer then
+            glitchLayer.Parent = Frame
+            glitchLayer.ZIndex = 3
+            for _, part in ipairs(glitchLayer:GetDescendants()) do
+                if part:IsA("GuiObject") then part.ZIndex = 3 end
+            end
+            glitchLayer = nil
+        end
+        for child, wasVisible in pairs(previousVisibility) do
+            if child.Parent then child.Visible = wasVisible end
+            previousVisibility[child] = nil
+        end
+    end)
+end
+
+-- Remove the Info & Credits button and its unused page.
+InfoButton:Destroy()
+InfoPopup:Destroy()
