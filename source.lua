@@ -2826,7 +2826,7 @@ local function HRWYOVR_fake_script()
     byline.TextXAlignment = Enum.TextXAlignment.Left
     byline.ZIndex = 33
     local toggle = makeButton("ShootSoundToggle", "Gun Sound Changer: OFF", 79)
-    local dropdown = makeButton("ShootSoundDropdown", "Shoot Sound: " .. sounds[selected][1] .. "  ▼", 99)
+    local dropdown = makeButton("ShootSoundDropdown", "Gun Sound: " .. sounds[selected][1] .. "  ▼", 99)
     local options = Instance.new("ScrollingFrame")
     options.Name = "ShootSoundOptions"
     options.Parent = panel
@@ -2860,7 +2860,7 @@ local function HRWYOVR_fake_script()
         addRowHover(choice)
         choice.MouseButton1Click:Connect(function()
             selected = i
-            dropdown.Text = "Shoot Sound: " .. entry[1] .. "  ▼"
+            dropdown.Text = "Gun Sound: " .. entry[1] .. "  ▼"
             options.Visible = false
         end)
     end
