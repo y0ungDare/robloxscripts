@@ -5006,6 +5006,51 @@ end
 coroutine.wrap(ZZPA_fake_script)()
 
 -- ================================================================
+-- Shift-lock cursor recovery (Ctrl is the game's shift-lock key).
+-- Only intervene after Ctrl is used to turn shift-lock OFF; never fight
+-- normal first-person camera locking or a legitimate shift-lock state.
+do
+    local UIS = game:GetService("UserInputService")
+    local RunService = game:GetService("RunService")
+    local Players = game:GetService("Players")
+    local localPlayer = Players.LocalPlayer
+    local shiftLockExpected = UIS.MouseBehavior == Enum.MouseBehavior.LockCenter
+    local releaseUntil = 0
+    local ctrlWasDown = false
+
+    UIS.InputBegan:Connect(function(input, processed)
+        if input.KeyCode ~= Enum.KeyCode.LeftControl and input.KeyCode ~= Enum.KeyCode.RightControl then return end
+        if processed or UIS:GetFocusedTextBox() or ctrlWasDown then return end
+        ctrlWasDown = true
+        -- Track the Ctrl shift-lock toggle rather than unlocking every frame.
+        shiftLockExpected = not shiftLockExpected
+        if not shiftLockExpected then
+            releaseUntil = os.clock() + 1.5
+        else
+            releaseUntil = 0
+        end
+    end)
+    UIS.InputEnded:Connect(function(input)
+        if input.KeyCode == Enum.KeyCode.LeftControl or input.KeyCode == Enum.KeyCode.RightControl then
+            ctrlWasDown = false
+        end
+    end)
+
+    RunService:BindToRenderStep("y0ungDareShiftLockCursorRecovery", Enum.RenderPriority.Camera.Value + 2, function()
+        if releaseUntil <= os.clock() then return end
+        local camera = workspace.CurrentCamera
+        local character = localPlayer.Character
+        local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+        -- First person intentionally locks the cursor; don't override it.
+        local firstPerson = camera and (camera.CFrame.Position - camera.Focus.Position).Magnitude < 1
+        if firstPerson or (humanoid and humanoid.Health <= 0) then return end
+        if UIS.MouseBehavior == Enum.MouseBehavior.LockCenter then
+            UIS.MouseBehavior = Enum.MouseBehavior.Default
+        end
+        UIS.MouseIconEnabled = true
+    end)
+end
+
 -- JIGGY-STYLE ANIMATED BACKGROUND (ADDED; ORIGINAL CODE ABOVE INTACT)
 -- Edit the settings below to customize the glitch animation.
 -- ================================================================
