@@ -5282,7 +5282,7 @@ do
 
     attachHover(mainModsButton)
     local resets = {}
-    for index, button in ipairs({SetSpawnPoint, TeleportToSpawn, NoclipToggle, WallEsp, SpeedRun, TaseBypass, AntiAFKToggle, aurakill, removedoors, OpenDexPlusPlus}) do
+    for index, button in ipairs({SetSpawnPoint, TeleportToSpawn, NoclipToggle, WallEsp, SpeedRun, TaseBypass, AntiAFKToggle, aurakill, removedoors}) do
         button.Parent = page
         button.AnchorPoint = Vector2.new(0, 0)
         button.Position = UDim2.fromOffset(8, 79 + (index - 1) * 20)
@@ -6018,7 +6018,7 @@ do
     end
     attachHover(menuSettingsButton)
 
-    for index, button in ipairs({LanguageToggle, RGBTextToggle, FPSPingToggle}) do
+    for index, button in ipairs({LanguageToggle, RGBTextToggle, FPSPingToggle, OpenDexPlusPlus}) do
         button.Parent = page
         button.AnchorPoint = Vector2.new(0, 0)
         button.Position = UDim2.fromOffset(8, 79 + (index - 1) * 20)
