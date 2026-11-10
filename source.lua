@@ -5326,8 +5326,55 @@ do
     end
 
     attachHover(mainModsButton)
+    -- Respawn at the last death position, integrated into Main Mods.
+    local respawnDeathButton = Instance.new("TextButton")
+    respawnDeathButton.Name = "RespawnAtDeathLocation"
+    respawnDeathButton.Text = "Respawn at Death Location: OFF"
+    local respawnDeathEnabled = false
+    local lastDeathCFrame = nil
+    local deathConnection = nil
+    local respawnGeneration = 0
+
+    local function watchDeath(character)
+        if deathConnection then deathConnection:Disconnect(); deathConnection = nil end
+        local humanoid = character:WaitForChild("Humanoid", 5)
+        if humanoid and character == game:GetService("Players").LocalPlayer.Character then
+            deathConnection = humanoid.Died:Connect(function()
+                if not respawnDeathEnabled then return end
+                local root = character:FindFirstChild("HumanoidRootPart")
+                if root then lastDeathCFrame = root.CFrame end
+            end)
+        end
+    end
+    local deathPlayer = game:GetService("Players").LocalPlayer
+    if deathPlayer.Character then task.spawn(watchDeath, deathPlayer.Character) end
+    deathPlayer.CharacterAdded:Connect(function(character)
+        respawnGeneration = respawnGeneration + 1
+        local generation = respawnGeneration
+        task.spawn(watchDeath, character)
+        if not respawnDeathEnabled or not lastDeathCFrame then return end
+        local savedPosition = lastDeathCFrame
+        task.spawn(function()
+            local root = character:WaitForChild("HumanoidRootPart", 5)
+            local humanoid = character:WaitForChild("Humanoid", 5)
+            if not root or not humanoid then return end
+            task.wait(0.5)
+            if respawnDeathEnabled and generation == respawnGeneration and deathPlayer.Character == character and humanoid.Health > 0 then
+                root.CFrame = savedPosition
+            end
+        end)
+    end)
+    respawnDeathButton.Activated:Connect(function()
+        respawnDeathEnabled = not respawnDeathEnabled
+        if not respawnDeathEnabled then
+            lastDeathCFrame = nil
+            respawnGeneration = respawnGeneration + 1
+        end
+        respawnDeathButton.Text = respawnDeathEnabled and "Respawn at Death Location: ON" or "Respawn at Death Location: OFF"
+    end)
+
     local resets = {}
-    for index, button in ipairs({SetSpawnPoint, TeleportToSpawn, NoclipToggle, WallEsp, SpeedRun, TaseBypass, AntiAFKToggle, aurakill, removedoors}) do
+    for index, button in ipairs({SetSpawnPoint, TeleportToSpawn, NoclipToggle, WallEsp, SpeedRun, TaseBypass, AntiAFKToggle, aurakill, removedoors, respawnDeathButton}) do
         button.Parent = page
         button.AnchorPoint = Vector2.new(0, 0)
         button.Position = UDim2.fromOffset(8, 79 + (index - 1) * 20)
