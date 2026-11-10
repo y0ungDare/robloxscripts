@@ -11,8 +11,10 @@ do
     local cleanup = type(shared) == "table" and shared.PLCigarCleanup
     if type(cleanup) == "function" then pcall(cleanup) end
     if type(shared) == "table" then shared.PLCigarCleanup = nil end
-    local oldCigarGui = y0ungDarePlayerGui:FindFirstChild("PLCigarToggleGui")
-    if oldCigarGui then oldCigarGui:Destroy() end
+    for _, name in ipairs({"PLCigarToggleGui", "PLCigarToggle", "PL_Cigar_GUI"}) do
+        local oldCigarGui = y0ungDarePlayerGui:FindFirstChild(name)
+        if oldCigarGui then oldCigarGui:Destroy() end
+    end
     for _, gui in ipairs(y0ungDarePlayerGui:GetChildren()) do
         if gui:IsA("ScreenGui") then
             for _, item in ipairs(gui:GetDescendants()) do
@@ -24,9 +26,11 @@ do
         end
     end
 end
-if shared.y0ungDarePrisonLifeRunning or y0ungDarePlayerGui:FindFirstChild("y0ungDare Menu v4.5") then
-    warn("y0ungDare is already injected; skipping duplicate launch.")
-    return
+-- Allow reinjection after an earlier version has been loaded.
+-- The previous guard returned immediately and made injection appear to do nothing.
+local previousMenu = y0ungDarePlayerGui:FindFirstChild("y0ungDare Menu v4.5")
+if previousMenu then
+    previousMenu:Destroy()
 end
 shared.y0ungDarePrisonLifeRunning = true
 
@@ -5024,48 +5028,49 @@ local function ZZPA_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q
 end
 coroutine.wrap(ZZPA_fake_script)()
 
--- Shift-lock cursor recovery (Ctrl is the game's shift-lock key).
--- Only intervene after Ctrl is used to turn shift-lock OFF; never fight
--- normal first-person camera locking or a legitimate shift-lock state.
+-- Ctrl shift-lock cursor recovery. Does not force-unlock during first person.
 do
     local UIS = game:GetService("UserInputService")
     local RunService = game:GetService("RunService")
-    local Players = game:GetService("Players")
-    local localPlayer = Players.LocalPlayer
-    local shiftLockExpected = UIS.MouseBehavior == Enum.MouseBehavior.LockCenter
+    local player = game:GetService("Players").LocalPlayer
+    local stepName = "y0ungDareShiftLockCursorRecovery"
+    pcall(function() RunService:UnbindFromRenderStep(stepName) end)
     local releaseUntil = 0
-    local ctrlWasDown = false
-
-    UIS.InputBegan:Connect(function(input, processed)
-        if input.KeyCode ~= Enum.KeyCode.LeftControl and input.KeyCode ~= Enum.KeyCode.RightControl then return end
-        if processed or UIS:GetFocusedTextBox() or ctrlWasDown then return end
-        ctrlWasDown = true
-        -- Track the Ctrl shift-lock toggle rather than unlocking every frame.
-        shiftLockExpected = not shiftLockExpected
-        if not shiftLockExpected then
-            releaseUntil = os.clock() + 1.5
-        else
-            releaseUntil = 0
-        end
-    end)
-    UIS.InputEnded:Connect(function(input)
-        if input.KeyCode == Enum.KeyCode.LeftControl or input.KeyCode == Enum.KeyCode.RightControl then
-            ctrlWasDown = false
-        end
-    end)
-
-    RunService:BindToRenderStep("y0ungDareShiftLockCursorRecovery", Enum.RenderPriority.Camera.Value + 2, function()
-        if releaseUntil <= os.clock() then return end
+    local ctrlDown = false
+    local expectedLock = UIS.MouseBehavior == Enum.MouseBehavior.LockCenter
+    local function firstPerson()
         local camera = workspace.CurrentCamera
-        local character = localPlayer.Character
-        local humanoid = character and character:FindFirstChildOfClass("Humanoid")
-        -- First person intentionally locks the cursor; don't override it.
-        local firstPerson = camera and (camera.CFrame.Position - camera.Focus.Position).Magnitude < 1
-        if firstPerson or (humanoid and humanoid.Health <= 0) then return end
+        return camera and (camera.CFrame.Position - camera.Focus.Position).Magnitude < 1
+    end
+    local function onCtrl(input)
+        if input.KeyCode ~= Enum.KeyCode.LeftControl and input.KeyCode ~= Enum.KeyCode.RightControl then return end
+        if UIS:GetFocusedTextBox() or ctrlDown then return end
+        ctrlDown = true
+        -- Ctrl toggles the game's shift lock. When turning it off, recover
+        -- a cursor that the camera controller accidentally leaves centered.
+        expectedLock = not expectedLock
+        releaseUntil = expectedLock and 0 or (os.clock() + 2.5)
+    end
+    local began = UIS.InputBegan:Connect(onCtrl)
+    local ended = UIS.InputEnded:Connect(function(input)
+        if input.KeyCode == Enum.KeyCode.LeftControl or input.KeyCode == Enum.KeyCode.RightControl then
+            ctrlDown = false
+        end
+    end)
+    RunService:BindToRenderStep(stepName, Enum.RenderPriority.Camera.Value + 2, function()
+        if os.clock() >= releaseUntil or firstPerson() then return end
+        local char = player.Character
+        local humanoid = char and char:FindFirstChildOfClass("Humanoid")
+        if humanoid and humanoid.Health <= 0 then return end
         if UIS.MouseBehavior == Enum.MouseBehavior.LockCenter then
             UIS.MouseBehavior = Enum.MouseBehavior.Default
         end
         UIS.MouseIconEnabled = true
+    end)
+    y0ungDareMenuv45.Destroying:Connect(function()
+        began:Disconnect()
+        ended:Disconnect()
+        pcall(function() RunService:UnbindFromRenderStep(stepName) end)
     end)
 end
 
