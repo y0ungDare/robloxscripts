@@ -3220,7 +3220,7 @@ local function PWTNCXZ_fake_script() -- Frame.GetAllGunsLogic
 			}
 			local crimGuns = {
 				["Remington 870"] = Vector3.new(-938, 98, 2040),
-				["AK-47"] = Vector3.new(-931, 98, 2039),
+				["AK-47"] = Vector3.new(-931.78, 94.37, 2039.39),
 				["M700"] = Vector3.new(-920, 100, 2038),
 				["FAL"] = Vector3.new(-903, 100, 2048),
 			}
