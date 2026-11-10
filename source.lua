@@ -6413,6 +6413,185 @@ do
         end)
     end
 
+    -- Vape: original cosmetic prop, smoke and shoulder animation, integrated into Fun Mods.
+    local vapeButton = Instance.new("TextButton")
+    vapeButton.Name = "VapeToggle"
+    vapeButton.Parent = page
+    vapeButton.Position = UDim2.fromOffset(8, 179)
+    vapeButton.Size = UDim2.new(1, -16, 0, 20)
+    vapeButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+    vapeButton.BackgroundTransparency = 0.82
+    vapeButton.BorderSizePixel = 0
+    vapeButton.AutoButtonColor = false
+    vapeButton.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    vapeButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+    vapeButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+    vapeButton.TextStrokeTransparency = 0.28
+    vapeButton.TextXAlignment = Enum.TextXAlignment.Left
+    vapeButton.TextSize = 13
+    vapeButton.Text = "Vape: OFF"
+    vapeButton.ZIndex = 33
+    attachHover(vapeButton)
+
+    do
+        local Players = game:GetService("Players")
+        local TweenService = game:GetService("TweenService")
+        local player = Players.LocalPlayer
+        local active, cycleId = false, 0
+        local prop, smokeAttachment, shoulder, originalC0
+        local currentTween
+        local RunService = game:GetService("RunService")
+        local function cleanVisuals()
+            -- Cancel the active tween BEFORE restoring C0. Cancel() wakes Completed:Wait().
+            local tween = currentTween
+            currentTween = nil
+            if tween then pcall(function() tween:Cancel() end) end
+            local joint, rest = shoulder, originalC0
+            shoulder, originalC0 = nil, nil
+            if joint and joint.Parent and rest then
+                pcall(function() joint.C0 = rest end)
+                -- Reassert the resting pose after the canceled tween unwinds.
+                -- Do not overwrite a newly started vape cycle's shoulder.
+                task.defer(function()
+                    if not active and joint.Parent then
+                        pcall(function() joint.C0 = rest end)
+                    end
+                end)
+            end
+            if prop then prop:Destroy(); prop = nil end
+            if smokeAttachment then smokeAttachment:Destroy(); smokeAttachment = nil end
+        end
+        local function createVape(character, id)
+            local humanoid = character:WaitForChild("Humanoid", 12)
+            if not humanoid or not active or cycleId ~= id then return end
+            local handName = humanoid.RigType == Enum.HumanoidRigType.R15 and "RightHand" or "Right Arm"
+            local hand = character:WaitForChild(handName, 12)
+            local head = character:WaitForChild("Head", 12)
+            if not hand or not head or humanoid.Health <= 0 or not active or cycleId ~= id then return end
+            local torso = character:FindFirstChild("UpperTorso") or character:FindFirstChild("Torso")
+            shoulder = torso and (torso:FindFirstChild("RightShoulder") or torso:FindFirstChild("Right Shoulder"))
+            if shoulder and shoulder:IsA("Motor6D") then originalC0 = shoulder.C0 else shoulder = nil end
+
+            prop = Instance.new("Model")
+            prop.Name = "LocalVapeProp"
+            prop.Parent = character
+            local body = Instance.new("Part")
+            body.Name = "VapeBody"
+            body.Size = Vector3.new(.24, .85, .24)
+            body.Color = Color3.fromRGB(27, 29, 35)
+            body.Material = Enum.Material.SmoothPlastic
+            body.CanCollide = false
+            body.CanTouch = false
+            body.Massless = true
+            local offset = humanoid.RigType == Enum.HumanoidRigType.R15
+                and CFrame.new(0, -.16, -.35) * CFrame.Angles(math.rad(90), 0, 0)
+                or CFrame.new(0, -.75, -.55) * CFrame.Angles(math.rad(90), 0, 0)
+            body.CFrame = hand.CFrame * offset
+            body.Parent = prop
+            local weld = Instance.new("WeldConstraint")
+            weld.Part0 = hand; weld.Part1 = body; weld.Parent = body
+            local tip = Instance.new("Part")
+            tip.Name = "Mouthpiece"; tip.Size = Vector3.new(.15, .22, .15)
+            tip.Material = Enum.Material.Metal; tip.Color = Color3.fromRGB(160, 166, 173)
+            tip.CanCollide = false; tip.CanTouch = false; tip.Massless = true
+            tip.CFrame = body.CFrame * CFrame.new(0, .51, 0); tip.Parent = prop
+            local tipWeld = Instance.new("WeldConstraint")
+            tipWeld.Part0 = body; tipWeld.Part1 = tip; tipWeld.Parent = tip
+            local led = Instance.new("Part")
+            led.Name = "LED"; led.Shape = Enum.PartType.Ball
+            led.Size = Vector3.new(.13, .13, .13)
+            led.Material = Enum.Material.Neon; led.Color = Color3.fromRGB(70, 175, 255)
+            led.CanCollide = false; led.CanTouch = false; led.Massless = true
+            led.CFrame = body.CFrame * CFrame.new(0, -.28, -.125); led.Parent = prop
+            local ledWeld = Instance.new("WeldConstraint")
+            ledWeld.Part0 = body; ledWeld.Part1 = led; ledWeld.Parent = led
+
+            smokeAttachment = Instance.new("Attachment")
+            smokeAttachment.Name = "LocalVapeSmoke"
+            smokeAttachment.Position = Vector3.new(0, -.14, -.55)
+            smokeAttachment.Parent = head
+            local smoke = Instance.new("ParticleEmitter")
+            smoke.Name = "VapeExhale"
+            smoke.Texture = "rbxasset://textures/particles/smoke_main.dds"
+            smoke.Color = ColorSequence.new(Color3.fromRGB(230, 235, 240))
+            smoke.Transparency = NumberSequence.new({
+                NumberSequenceKeypoint.new(0, .38), NumberSequenceKeypoint.new(.4, .55), NumberSequenceKeypoint.new(1, 1)
+            })
+            smoke.Size = NumberSequence.new({
+                NumberSequenceKeypoint.new(0, .4), NumberSequenceKeypoint.new(.5, 1.2), NumberSequenceKeypoint.new(1, 2.4)
+            })
+            smoke.Lifetime = NumberRange.new(1.2, 2.2)
+            smoke.Speed = NumberRange.new(1.5, 3)
+            smoke.SpreadAngle = Vector2.new(24, 24)
+            smoke.Acceleration = Vector3.new(0, 1.5, 0)
+            smoke.Rate = 0
+            smoke.Parent = smokeAttachment
+            return smoke
+        end
+        local function playArmTween(id, target, duration)
+            if not active or cycleId ~= id or not shoulder or not shoulder.Parent then return false end
+            local joint = shoulder
+            local tween = TweenService:Create(joint, TweenInfo.new(duration, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {C0 = target})
+            currentTween = tween
+            tween:Play()
+            tween.Completed:Wait()
+            if currentTween == tween then currentTween = nil end
+            return active and cycleId == id and shoulder == joint
+        end
+        local function animateCycle(id, character)
+            if not active or cycleId ~= id or player.Character ~= character then return end
+            cleanVisuals()
+            local smoke = createVape(character, id)
+            if not smoke then return end
+            while active and cycleId == id and player.Character == character and character.Parent do
+                if shoulder and shoulder.Parent and originalC0 then
+                    local target = originalC0 * CFrame.Angles(math.rad(-75), math.rad(5), math.rad(20))
+                    if not playArmTween(id, target, .5) then break end
+                else task.wait(.5) end
+                if not active or cycleId ~= id then break end
+                task.wait(.65)
+                if not active or cycleId ~= id then break end
+                if smoke.Parent then smoke:Emit(32) end
+                if shoulder and shoulder.Parent and originalC0 then
+                    if not playArmTween(id, originalC0, .65) then break end
+                else task.wait(.65) end
+                task.wait(1.2)
+            end
+            if cycleId == id then cleanVisuals() end
+        end
+        local function launch(character)
+            cycleId = cycleId + 1
+            local id = cycleId
+            cleanVisuals()
+            task.spawn(function()
+                local ok, err = pcall(animateCycle, id, character)
+                if not ok and active and cycleId == id then
+                    warn("Vape animation:", err)
+                    cleanVisuals()
+                end
+            end)
+        end
+        local function setEnabled(value)
+            if active == value then return end
+            active = value
+            vapeButton.Text = active and "Vape: ON" or "Vape: OFF"
+            if active then
+                if player.Character then launch(player.Character) end
+            else
+                cycleId = cycleId + 1
+                cleanVisuals()
+            end
+        end
+        vapeButton.Activated:Connect(function() setEnabled(not active) end)
+        local characterConn = player.CharacterAdded:Connect(function(character)
+            if active then launch(character) end
+        end)
+        vapeButton.Destroying:Connect(function()
+            setEnabled(false)
+            characterConn:Disconnect()
+        end)
+    end
+
     funButton.Activated:Connect(function()
         if page.Visible then return end
         for _, child in ipairs(Frame:GetChildren()) do
