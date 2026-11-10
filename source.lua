@@ -3182,6 +3182,23 @@ local function HRWYOVR_fake_script()
             options.Visible = false
         end)
     end
+    -- Laser Attachment controls on the Weapons page.
+    local laserSettings = {enabled = false, color = "Purple"}
+    shared.y0ungDareLaserAttachment = laserSettings
+    local laserToggle = makeButton("LaserAttachmentToggle", "Laser Attachment: OFF", 191)
+    local laserColors = {"Purple", "Red", "Green", "Blue"}
+    -- Same selector behavior as Gun Camo: click to cycle through colors.
+    local selectedLaserColor = 1
+    local laserColorButton = makeButton("LaserAttachmentColor", "Laser Color: Purple  >", 211)
+    laserToggle.MouseButton1Click:Connect(function()
+        laserSettings.enabled = not laserSettings.enabled
+        laserToggle.Text = "Laser Attachment: " .. (laserSettings.enabled and "ON" or "OFF")
+    end)
+    laserColorButton.MouseButton1Click:Connect(function()
+        selectedLaserColor = selectedLaserColor % #laserColors + 1
+        laserSettings.color = laserColors[selectedLaserColor]
+        laserColorButton.Text = "Laser Color: " .. laserSettings.color .. "  >"
+    end)
     button.Activated:Connect(openPanel)
     title.Activated:Connect(closePanel)
     local function updateSounds()
@@ -7451,3 +7468,138 @@ end
 -- Remove the Info & Credits button and its unused page.
 InfoButton:Destroy()
 InfoPopup:Destroy()
+
+-- ================================================================
+-- PURPLE GUN LASER SIGHT (client-side visual)
+-- Automatically attaches to equipped Prison Life guns; points at aim.
+-- No changes to the gun camo selector or other menu controls.
+-- ================================================================
+do
+    local Players = game:GetService("Players")
+    local RunService = game:GetService("RunService")
+    local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    local player = Players.LocalPlayer
+    local mouse = player:GetMouse()
+    local laserPalette = {
+        Purple = Color3.fromRGB(178, 45, 255),
+        Red = Color3.fromRGB(255, 35, 45),
+        Green = Color3.fromRGB(30, 255, 85),
+        Blue = Color3.fromRGB(35, 115, 255),
+    }
+    local laserSettings = shared.y0ungDareLaserAttachment or {enabled = false, color = "Purple"}
+    local knownGuns = {
+        ["AK-47"] = true, ["M4A1"] = true, ["M9"] = true,
+        ["MP5"] = true, ["Remington 870"] = true,
+        ["Revolver"] = true, ["FAL"] = true, ["M700"] = true,
+    }
+    local gunFolder = ReplicatedStorage:FindFirstChild("Tools")
+    gunFolder = gunFolder and gunFolder:FindFirstChild("Guns")
+    if gunFolder then
+        for _, item in ipairs(gunFolder:GetChildren()) do
+            if item:IsA("Tool") then knownGuns[item.Name] = true end
+        end
+    end
+
+    local currentTool, originAttachment, endPart, beam, glow
+    local function clearLaser()
+        if originAttachment then originAttachment:Destroy() end
+        if endPart then endPart:Destroy() end
+        currentTool, originAttachment, endPart, beam, glow = nil, nil, nil, nil, nil
+    end
+
+    local function attachLaser(tool)
+        if currentTool == tool then return end
+        clearLaser()
+        if not laserSettings.enabled or not tool or not knownGuns[tool.Name] then return end
+        local handle = tool:FindFirstChild("Handle")
+        if not handle or not handle:IsA("BasePart") then return end
+        currentTool = tool
+
+        -- Laser starts slightly in front of the weapon handle.
+        originAttachment = Instance.new("Attachment")
+        originAttachment.Name = "y0ungDarePurpleLaserMuzzle"
+        originAttachment.Position = Vector3.new(0, 0, -math.max(handle.Size.Z * 0.5, 0.15))
+        originAttachment.Parent = handle
+
+        endPart = Instance.new("Part")
+        endPart.Name = "y0ungDarePurpleLaserEndpoint"
+        endPart.Size = Vector3.new(0.05, 0.05, 0.05)
+        endPart.Transparency = 1
+        endPart.Anchored = true
+        endPart.CanCollide = false
+        endPart.CanTouch = false
+        endPart.CanQuery = false
+        endPart.Parent = workspace
+        local endAttachment = Instance.new("Attachment")
+        endAttachment.Parent = endPart
+
+        beam = Instance.new("Beam")
+        beam.Name = "y0ungDarePurpleLaser"
+        beam.Attachment0 = originAttachment
+        beam.Attachment1 = endAttachment
+        beam.FaceCamera = true
+        beam.Width0 = 0.09
+        beam.Width1 = 0.055
+        beam.LightEmission = 1
+        beam.LightInfluence = 0
+        beam.Color = ColorSequence.new(laserPalette[laserSettings.color] or laserPalette.Purple)
+        beam.Transparency = NumberSequence.new(0.08)
+        beam.Parent = originAttachment
+
+        glow = Instance.new("PointLight")
+        glow.Name = "PurpleLaserGlow"
+        glow.Color = laserPalette[laserSettings.color] or laserPalette.Purple
+        glow.Brightness = 1.5
+        glow.Range = 5
+        glow.Parent = originAttachment
+    end
+
+    local function equippedGun()
+        local character = player.Character
+        if not character then return nil end
+        for _, child in ipairs(character:GetChildren()) do
+            if child:IsA("Tool") and knownGuns[child.Name] and child:FindFirstChild("Handle") then
+                return child
+            end
+        end
+        return nil
+    end
+
+    local elapsed = 0
+    local connection
+    connection = RunService.RenderStepped:Connect(function(dt)
+        if not y0ungDareMenuv45.Parent then
+            clearLaser()
+            connection:Disconnect()
+            return
+        end
+        local tool = laserSettings.enabled and equippedGun() or nil
+        if beam and glow then
+            local currentColor = laserPalette[laserSettings.color] or laserPalette.Purple
+            beam.Color = ColorSequence.new(currentColor)
+            glow.Color = currentColor
+        end
+        if tool ~= currentTool or (currentTool and not originAttachment) then
+            attachLaser(tool)
+        end
+        if not currentTool or not originAttachment or not endPart then return end
+        if not originAttachment.Parent or not currentTool.Parent then
+            clearLaser()
+            return
+        end
+        -- Mouse.Hit follows the aiming cursor; cast from the muzzle so the
+        -- laser stops on nearby walls instead of passing through them.
+        local origin = originAttachment.WorldPosition
+        local aim = mouse.Hit.Position
+        local direction = aim - origin
+        if direction.Magnitude < 0.1 then
+            direction = originAttachment.WorldCFrame.LookVector * 1000
+        end
+        direction = direction.Unit * 1000
+        local params = RaycastParams.new()
+        params.FilterType = Enum.RaycastFilterType.Exclude
+        params.FilterDescendantsInstances = {player.Character, endPart}
+        local hit = workspace:Raycast(origin, direction, params)
+        endPart.Position = hit and hit.Position or (origin + direction)
+    end)
+end
