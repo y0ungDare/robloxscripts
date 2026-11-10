@@ -5713,6 +5713,135 @@ do
         if marker then marker.ZIndex = 34 end
     end
 
+    -- Night Vision: original local visual effects and targeting reticle,
+    -- controlled directly from the Visions menu (no separate floating toggle).
+    local Lighting = game:GetService("Lighting")
+    local Players = game:GetService("Players")
+    local playerGui = Players.LocalPlayer:WaitForChild("PlayerGui")
+    local nightGui = Instance.new("ScreenGui")
+    nightGui.Name = "GreenNightVisionReticle"
+    nightGui.IgnoreGuiInset = true
+    nightGui.ResetOnSpawn = false
+    nightGui.DisplayOrder = 1000
+    nightGui.Parent = playerGui
+
+    local color = Instance.new("ColorCorrectionEffect")
+    color.Name = "GreenNightVision_Color"
+    color.TintColor = Color3.fromRGB(90, 255, 82)
+    color.Brightness = 0.17
+    color.Contrast = 0.23
+    color.Saturation = -0.28
+    color.Enabled = false
+    color.Parent = Lighting
+    local bloom = Instance.new("BloomEffect")
+    bloom.Name = "GreenNightVision_Bloom"
+    bloom.Intensity = 0.42
+    bloom.Size = 26
+    bloom.Threshold = 0.75
+    bloom.Enabled = false
+    bloom.Parent = Lighting
+
+    local overlay = Instance.new("Frame")
+    overlay.Name = "GreenOverlay"
+    overlay.Size = UDim2.fromScale(1, 1)
+    overlay.BackgroundColor3 = Color3.fromRGB(15, 130, 14)
+    overlay.BackgroundTransparency = 0.87
+    overlay.BorderSizePixel = 0
+    overlay.Visible = false
+    overlay.ZIndex = 2
+    overlay.Parent = nightGui
+
+    local function edge(name, position, size, rotation)
+        local frame = Instance.new("Frame")
+        frame.Name = name
+        frame.BackgroundColor3 = Color3.new(0, 0, 0)
+        frame.BackgroundTransparency = 0
+        frame.BorderSizePixel = 0
+        frame.Position = position
+        frame.Size = size
+        frame.ZIndex = 3
+        frame.Parent = overlay
+        local grad = Instance.new("UIGradient")
+        grad.Rotation = rotation
+        grad.Color = ColorSequence.new(Color3.new(0, 0, 0))
+        grad.Transparency = NumberSequence.new({
+            NumberSequenceKeypoint.new(0, 0.38),
+            NumberSequenceKeypoint.new(1, 1)
+        })
+        grad.Parent = frame
+    end
+    edge("LeftShade", UDim2.fromScale(0, 0), UDim2.fromScale(0.22, 1), 0)
+    edge("RightShade", UDim2.fromScale(0.78, 0), UDim2.fromScale(0.22, 1), 180)
+    edge("TopShade", UDim2.fromScale(0, 0), UDim2.fromScale(1, 0.18), 90)
+    edge("BottomShade", UDim2.fromScale(0, 0.82), UDim2.fromScale(1, 0.18), 270)
+
+    local reticle = Instance.new("Frame")
+    reticle.Name = "TargetCursor"
+    reticle.AnchorPoint = Vector2.new(0.5, 0.5)
+    reticle.Position = UDim2.fromScale(0.5, 0.5)
+    reticle.Size = UDim2.fromOffset(142, 142)
+    reticle.BackgroundTransparency = 1
+    reticle.Visible = false
+    reticle.ZIndex = 10
+    reticle.Parent = nightGui
+    local bright = Color3.fromRGB(154, 255, 153)
+    local function line(name, x, y, w, h)
+        local part = Instance.new("Frame")
+        part.Name = name
+        part.Position = UDim2.fromOffset(x, y)
+        part.Size = UDim2.fromOffset(w, h)
+        part.BackgroundColor3 = bright
+        part.BorderSizePixel = 0
+        part.ZIndex = 11
+        part.Parent = reticle
+        return part
+    end
+    line("LeftHorizontal", 17, 70, 30, 3)
+    line("LeftVertical", 45, 66, 3, 10)
+    line("RightHorizontal", 95, 70, 30, 3)
+    line("RightVertical", 94, 66, 3, 10)
+    line("TopVertical", 70, 18, 3, 30)
+    line("TopHorizontal", 66, 46, 10, 3)
+    line("BottomVertical", 70, 95, 3, 30)
+    line("BottomHorizontal", 66, 94, 10, 3)
+    local dot = line("CenterDot", 69, 69, 5, 5)
+    local dotCorner = Instance.new("UICorner")
+    dotCorner.CornerRadius = UDim.new(1, 0)
+    dotCorner.Parent = dot
+
+    local nightButton = Instance.new("TextButton")
+    nightButton.Name = "NightVisionToggle"
+    nightButton.Parent = page
+    nightButton.Position = UDim2.fromOffset(8, 119)
+    nightButton.Size = UDim2.new(1, -16, 0, 20)
+    nightButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+    nightButton.BackgroundTransparency = 0.82
+    nightButton.BorderSizePixel = 0
+    nightButton.AutoButtonColor = false
+    nightButton.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    nightButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+    nightButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+    nightButton.TextStrokeTransparency = 0.28
+    nightButton.TextXAlignment = Enum.TextXAlignment.Left
+    nightButton.TextSize = 13
+    nightButton.Text = "Night Vision: OFF"
+    nightButton.ZIndex = 33
+    attachHover(nightButton)
+
+    local nightEnabled = false
+    nightButton.Activated:Connect(function()
+        nightEnabled = not nightEnabled
+        color.Enabled = nightEnabled
+        bloom.Enabled = nightEnabled
+        overlay.Visible = nightEnabled
+        reticle.Visible = nightEnabled
+        nightButton.Text = nightEnabled and "Night Vision: ON" or "Night Vision: OFF"
+    end)
+    nightGui.Destroying:Connect(function()
+        color:Destroy()
+        bloom:Destroy()
+    end)
+
     local previousVisibility = {}
     local glitchLayer
     visionsButton.Activated:Connect(function()
