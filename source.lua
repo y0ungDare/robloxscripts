@@ -3489,7 +3489,7 @@ local function ATWAJ_fake_script() -- Frame.OpenDexPlusPlus
 	-- Dark Dex loader, launched by the editable button.
 	-- Requires an environment providing loadstring and game:HttpGet.
 	-- Standard Roblox Studio LocalScripts do not provide those executor APIs.
-	local button = OpenDexPlusPlus -- Button is now inside Main Mods, not directly under Frame.
+	local button = OpenDexPlusPlus -- Button is inside Menu Settings.
 	local busy = false
 	
 	-- Popup appears only when the Dex loader reports an error.
@@ -5005,6 +5005,51 @@ local function ZZPA_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q
 end
 coroutine.wrap(ZZPA_fake_script)()
 
+-- Shift-lock cursor recovery (Ctrl is the game's shift-lock key).
+-- Only intervene after Ctrl is used to turn shift-lock OFF; never fight
+-- normal first-person camera locking or a legitimate shift-lock state.
+do
+    local UIS = game:GetService("UserInputService")
+    local RunService = game:GetService("RunService")
+    local Players = game:GetService("Players")
+    local localPlayer = Players.LocalPlayer
+    local shiftLockExpected = UIS.MouseBehavior == Enum.MouseBehavior.LockCenter
+    local releaseUntil = 0
+    local ctrlWasDown = false
+
+    UIS.InputBegan:Connect(function(input, processed)
+        if input.KeyCode ~= Enum.KeyCode.LeftControl and input.KeyCode ~= Enum.KeyCode.RightControl then return end
+        if processed or UIS:GetFocusedTextBox() or ctrlWasDown then return end
+        ctrlWasDown = true
+        -- Track the Ctrl shift-lock toggle rather than unlocking every frame.
+        shiftLockExpected = not shiftLockExpected
+        if not shiftLockExpected then
+            releaseUntil = os.clock() + 1.5
+        else
+            releaseUntil = 0
+        end
+    end)
+    UIS.InputEnded:Connect(function(input)
+        if input.KeyCode == Enum.KeyCode.LeftControl or input.KeyCode == Enum.KeyCode.RightControl then
+            ctrlWasDown = false
+        end
+    end)
+
+    RunService:BindToRenderStep("y0ungDareShiftLockCursorRecovery", Enum.RenderPriority.Camera.Value + 2, function()
+        if releaseUntil <= os.clock() then return end
+        local camera = workspace.CurrentCamera
+        local character = localPlayer.Character
+        local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+        -- First person intentionally locks the cursor; don't override it.
+        local firstPerson = camera and (camera.CFrame.Position - camera.Focus.Position).Magnitude < 1
+        if firstPerson or (humanoid and humanoid.Health <= 0) then return end
+        if UIS.MouseBehavior == Enum.MouseBehavior.LockCenter then
+            UIS.MouseBehavior = Enum.MouseBehavior.Default
+        end
+        UIS.MouseIconEnabled = true
+    end)
+end
+
 -- ================================================================
 -- JIGGY-STYLE ANIMATED BACKGROUND (ADDED; ORIGINAL CODE ABOVE INTACT)
 -- Edit the settings below to customize the glitch animation.
@@ -5282,7 +5327,7 @@ do
 
     attachHover(mainModsButton)
     local resets = {}
-    for index, button in ipairs({SetSpawnPoint, TeleportToSpawn, NoclipToggle, WallEsp, SpeedRun, TaseBypass, AntiAFKToggle, aurakill, removedoors, OpenDexPlusPlus}) do
+    for index, button in ipairs({SetSpawnPoint, TeleportToSpawn, NoclipToggle, WallEsp, SpeedRun, TaseBypass, AntiAFKToggle, aurakill, removedoors}) do
         button.Parent = page
         button.AnchorPoint = Vector2.new(0, 0)
         button.Position = UDim2.fromOffset(8, 79 + (index - 1) * 20)
@@ -6592,6 +6637,189 @@ do
         end)
     end
 
+    -- Cigar: integrated into Fun Mods without a separate floating GUI.
+    local cigarButton = Instance.new("TextButton")
+    cigarButton.Name = "CigarToggle"
+    cigarButton.Parent = page
+    cigarButton.Position = UDim2.fromOffset(8, 199)
+    cigarButton.Size = UDim2.new(1, -16, 0, 20)
+    cigarButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+    cigarButton.BackgroundTransparency = 0.82
+    cigarButton.BorderSizePixel = 0
+    cigarButton.AutoButtonColor = false
+    cigarButton.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    cigarButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+    cigarButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+    cigarButton.TextStrokeTransparency = 0.28
+    cigarButton.TextXAlignment = Enum.TextXAlignment.Left
+    cigarButton.TextSize = 13
+    cigarButton.Text = "Cigar: OFF"
+    cigarButton.ZIndex = 33
+    attachHover(cigarButton)
+
+    do
+        local Players = game:GetService('Players')
+        local TweenService = game:GetService('TweenService')
+        local player = Players.LocalPlayer
+        local active, cycleId = false, 0
+        local prop, smokeAttachment, shoulder, originalC0, elbow, originalElbowC0
+        local currentTweens = {}
+        local characterConn
+        local function cancelTweens()
+            for _, tween in ipairs(currentTweens) do pcall(function() tween:Cancel() end) end
+            table.clear(currentTweens)
+        end
+        local function cleanVisuals()
+            cancelTweens()
+            if shoulder and shoulder.Parent and originalC0 then pcall(function() shoulder.C0 = originalC0 end) end
+            if elbow and elbow.Parent and originalElbowC0 then pcall(function() elbow.C0 = originalElbowC0 end) end
+            shoulder, originalC0, elbow, originalElbowC0 = nil, nil, nil, nil
+            if prop then prop:Destroy(); prop = nil end
+            if smokeAttachment then smokeAttachment:Destroy(); smokeAttachment = nil end
+        end
+        local function createCigar(character)
+            -- Respawned rigs can take a moment to finish loading.
+            local humanoid = character:WaitForChild('Humanoid', 12)
+            if not humanoid then return false end
+            local handName = humanoid.RigType == Enum.HumanoidRigType.R15 and 'RightHand' or 'Right Arm'
+            local hand = character:WaitForChild(handName, 12)
+            local head = character:WaitForChild('Head', 12)
+            if not hand or not head or humanoid.Health <= 0 then return false end
+            local torso = character:FindFirstChild('UpperTorso') or character:FindFirstChild('Torso')
+            shoulder = torso and (torso:FindFirstChild('RightShoulder') or torso:FindFirstChild('Right Shoulder'))
+            if shoulder and shoulder:IsA('Motor6D') then originalC0 = shoulder.C0 else shoulder = nil end
+            if humanoid.RigType == Enum.HumanoidRigType.R15 then
+                local upperArm = character:FindFirstChild('RightUpperArm')
+                elbow = upperArm and upperArm:FindFirstChild('RightElbow')
+                if elbow and elbow:IsA('Motor6D') then originalElbowC0 = elbow.C0 else elbow = nil end
+            end
+
+            prop = Instance.new('Model'); prop.Name = 'LocalCigarProp'; prop.Parent = character
+            -- Brown cigar with a dark ash tip, gold band, and ember.
+            local body = Instance.new('Part')
+            body.Name = 'CigarBody'; body.Shape = Enum.PartType.Cylinder
+            body.Size = Vector3.new(.72,.16,.16) -- cylinder's length is along local X
+            body.Color = Color3.fromRGB(105,54,25); body.Material = Enum.Material.SmoothPlastic
+            body.CanCollide = false; body.CanTouch = false; body.Massless = true
+            -- Keep the cigar nestled across the right palm rather than floating upright beside it.
+            -- R6 Right Arm is a full limb; its palm is near the bottom of the part.
+            local gripCF
+            if humanoid.RigType == Enum.HumanoidRigType.R15 then
+                gripCF = CFrame.new(0, -.13, -.20) * CFrame.Angles(0, math.rad(90), math.rad(10))
+            else
+                gripCF = CFrame.new(0, -.93, -.26) * CFrame.Angles(0, math.rad(90), math.rad(10))
+            end
+            body.CFrame = hand.CFrame * gripCF
+            body.Parent = prop
+            local weld = Instance.new('WeldConstraint'); weld.Part0 = hand; weld.Part1 = body; weld.Parent = body
+            local function addBand(name, x, length, color, material)
+                local p = Instance.new('Part'); p.Name = name; p.Shape = Enum.PartType.Cylinder
+                p.Size = Vector3.new(length,.205,.205); p.Color = color; p.Material = material
+                p.CanCollide = false; p.CanTouch = false; p.Massless = true
+                p.CFrame = body.CFrame * CFrame.new(x,0,0); p.Parent = prop
+                local w = Instance.new('WeldConstraint'); w.Part0 = body; w.Part1 = p; w.Parent = p
+                return p
+            end
+            addBand('GoldCigarBand', -.14, .10, Color3.fromRGB(217,165,55), Enum.Material.Metal)
+            addBand('AshTip', .37, .11, Color3.fromRGB(88,87,83), Enum.Material.Slate)
+            addBand('GlowingEmber', .43, .035, Color3.fromRGB(255,94,28), Enum.Material.Neon)
+
+            smokeAttachment = Instance.new('Attachment'); smokeAttachment.Name = 'LocalCigarSmoke'
+            smokeAttachment.Position = Vector3.new(0,-.14,-.55); smokeAttachment.Parent = head
+            local smoke = Instance.new('ParticleEmitter'); smoke.Name = 'CigarExhale'
+            smoke.Texture = 'rbxasset://textures/particles/smoke_main.dds'
+            smoke.Color = ColorSequence.new(Color3.fromRGB(230,235,240))
+            smoke.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0,.38),NumberSequenceKeypoint.new(.4,.55),NumberSequenceKeypoint.new(1,1)})
+            smoke.Size = NumberSequence.new({NumberSequenceKeypoint.new(0,.4),NumberSequenceKeypoint.new(.5,1.2),NumberSequenceKeypoint.new(1,2.4)})
+            smoke.Lifetime = NumberRange.new(1.2,2.2); smoke.Speed = NumberRange.new(1.5,3)
+            smoke.SpreadAngle = Vector2.new(24,24); smoke.Acceleration = Vector3.new(0,1.5,0)
+            smoke.Rate = 0; smoke.Parent = smokeAttachment
+            return true, smoke
+        end
+        local function animateCycle(id)
+            cleanVisuals()
+            local character = player.Character or player.CharacterAdded:Wait()
+            if not active or cycleId ~= id then return end
+            if not active or cycleId ~= id or player.Character ~= character then return end
+            local success, smoke = createCigar(character)
+            if not success then
+                if active and cycleId == id then
+                    warn('Cigar: character rig not ready; waiting for next respawn')
+                end
+                return
+            end
+            local humanoid = character:FindFirstChildOfClass('Humanoid')
+            local isR15 = humanoid and humanoid.RigType == Enum.HumanoidRigType.R15
+            local function pose(up, duration)
+                cancelTweens()
+                local tweens = {}
+                if shoulder and shoulder.Parent and originalC0 then
+                    -- Negative local X raises the right arm FORWARD on standard R6/R15 rigs.
+                    -- The previous positive X rotation swung it backward behind the torso.
+                    -- Lift forward and rotate inward so the cigar tip approaches the face.
+                    -- Separate values account for R6's single arm and R15's bent elbow.
+                    local lift = isR15 and -78 or -108
+                    local inward = isR15 and -30 or -42
+                    local roll = isR15 and 18 or 14
+                    local target = up and (originalC0 * CFrame.Angles(math.rad(lift), math.rad(inward), math.rad(roll))) or originalC0
+                    local tween = TweenService:Create(shoulder, TweenInfo.new(duration, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {C0 = target})
+                    table.insert(tweens, tween)
+                end
+                if elbow and elbow.Parent and originalElbowC0 then
+                    local target = up and (originalElbowC0 * CFrame.Angles(math.rad(-105), 0, math.rad(-8))) or originalElbowC0
+                    local tween = TweenService:Create(elbow, TweenInfo.new(duration, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {C0 = target})
+                    table.insert(tweens, tween)
+                end
+                currentTweens = tweens
+                for _, tween in ipairs(tweens) do tween:Play() end
+                task.wait(duration)
+            end
+            while active and cycleId == id and player.Character == character and character.Parent do
+                pose(true, .65) -- raise and turn cigar inward toward mouth
+                if not active or cycleId ~= id then break end
+                task.wait(.45) -- hold cigar near mouth to inhale
+                if not active or cycleId ~= id then break end
+                if smoke and smoke.Parent then smoke:Emit(18) end
+                pose(false, .7) -- lower hand and cigar together
+                if not active or cycleId ~= id then break end
+                task.wait(1.3)
+            end
+            -- An older animation task must never destroy a newer respawn's prop.
+            if cycleId == id then cleanVisuals() end
+        end
+        local function setEnabled(value)
+            if active == value then return end
+            active = value; cycleId = cycleId + 1
+            cigarButton.Text = active and 'CIGAR: ON' or 'CIGAR: OFF'
+            if active then
+                local id = cycleId
+                task.spawn(function()
+                    local ok, err = pcall(animateCycle,id)
+                    if not ok and cycleId == id then warn('Cigar animation:',err); cleanVisuals() end
+                end)
+            else cleanVisuals() end
+        end
+        cigarButton.Activated:Connect(function() setEnabled(not active) end)
+        characterConn = player.CharacterAdded:Connect(function(character)
+            if not active then return end
+            -- Invalidate the old animation before it can touch the new character.
+            cycleId = cycleId + 1
+            local id = cycleId
+            cleanVisuals()
+            task.spawn(function()
+                local ok, err = pcall(animateCycle, id)
+                if not ok and active and cycleId == id then
+                    warn('Cigar respawn animation:', err)
+                    cleanVisuals()
+                end
+            end)
+        end)
+        cigarButton.Destroying:Connect(function()
+            setEnabled(false)
+            if characterConn then characterConn:Disconnect() end
+        end)
+    end
+
     funButton.Activated:Connect(function()
         if page.Visible then return end
         for _, child in ipairs(Frame:GetChildren()) do
@@ -7014,7 +7242,7 @@ do
     end
     attachHover(menuSettingsButton)
 
-    for index, button in ipairs({LanguageToggle, RGBTextToggle, FPSPingToggle}) do
+    for index, button in ipairs({LanguageToggle, RGBTextToggle, FPSPingToggle, OpenDexPlusPlus}) do
         button.Parent = page
         button.AnchorPoint = Vector2.new(0, 0)
         button.Position = UDim2.fromOffset(8, 79 + (index - 1) * 20)
