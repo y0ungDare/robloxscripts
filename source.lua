@@ -3199,6 +3199,14 @@ local function HRWYOVR_fake_script()
         laserSettings.color = laserColors[selectedLaserColor]
         laserColorButton.Text = "Laser Color: " .. laserSettings.color .. "  >"
     end)
+    -- Primary Appearance: opt-in visual replacement for assault rifles only.
+    local primaryAppearance = {enabled = false}
+    shared.y0ungDarePrimaryAppearance = primaryAppearance
+    local primaryAppearanceButton = makeButton("PrimaryAppearanceToggle", "Primary Appearance: OFF", 231)
+    primaryAppearanceButton.MouseButton1Click:Connect(function()
+        primaryAppearance.enabled = not primaryAppearance.enabled
+        primaryAppearanceButton.Text = "Primary Appearance: " .. (primaryAppearance.enabled and "ON" or "OFF")
+    end)
     button.Activated:Connect(openPanel)
     title.Activated:Connect(closePanel)
     local function updateSounds()
@@ -7599,5 +7607,159 @@ do
         params.FilterDescendantsInstances = {player.Character, endPart}
         local hit = workspace:Raycast(origin, direction, params)
         endPart.Position = hit and hit.Position or (origin + direction)
+    end)
+end
+
+
+-- y0ungDare: local-only replacement appearance for M4A1, FAL, AK-47, and MP5 only.
+-- The original Tool, Handle, remotes, and weapon scripts remain intact.
+do
+    local Players = game:GetService("Players")
+    local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    local player = Players.LocalPlayer
+    local ASSET_ID = 106526034195206
+    local visualTemplate
+    local loaded, warned = false, false
+    local originals = setmetatable({}, {__mode = "k"})
+    local known = { ["M4A1"] = true, ["FAL"] = true, ["AK-47"] = true, ["MP5"] = true }
+    local settings = shared.y0ungDarePrimaryAppearance or {enabled = false}
+    local function loadTemplate()
+        if loaded then return visualTemplate end
+        loaded = true
+        local ok, objects = pcall(function()
+            return game:GetObjects("rbxassetid://" .. tostring(ASSET_ID))
+        end)
+        if not ok or not objects or #objects == 0 then
+            warn("y0ungDare gun appearance: model " .. ASSET_ID .. " could not be loaded. Check asset permissions.")
+            return nil
+        end
+        local source = objects[1]
+        local model = Instance.new("Model")
+        model.Name = "y0ungDareGunVisualTemplate"
+        if source:IsA("BasePart") then
+            source.Parent = model
+        else
+            for _, item in ipairs(source:GetChildren()) do
+                item.Parent = model
+            end
+            source:Destroy()
+        end
+        for _, d in ipairs(model:GetDescendants()) do
+            if d:IsA("LuaSourceContainer") or d:IsA("Sound") or d:IsA("Tool") then
+                d:Destroy()
+            end
+        end
+        if not model:FindFirstChildWhichIsA("BasePart", true) then
+            warn("y0ungDare gun appearance: uploaded model contains no physical parts.")
+            model:Destroy()
+            return nil
+        end
+        visualTemplate = model
+        return model
+    end
+    local function applyVisual(tool)
+        if not settings.enabled or not tool:IsA("Tool") or not known[tool.Name] then return end
+        if tool:FindFirstChild("y0ungDareReplacementAppearance") then return end
+        local handle = tool:FindFirstChild("Handle")
+        if not handle or not handle:IsA("BasePart") then return end
+        local template = loadTemplate()
+        if not template then return end
+        local visual = template:Clone()
+        visual.Name = "y0ungDareReplacementAppearance"
+        visual.Parent = tool
+        -- Align the model center with the original Handle, and scale to a
+        -- practical common gun length. Individual guns keep original mechanics.
+        local _, extents = visual:GetBoundingBox()
+        local longest = math.max(extents.X, extents.Y, extents.Z)
+        if longest > 0.01 then
+            pcall(function() visual:ScaleTo(3.5 / longest) end)
+        end
+        -- Mount the replacement by its GRIP instead of centering the whole gun
+        -- inside the player's hand. The rear of the weapon stays behind the hand,
+        -- while its barrel extends forward. These offsets are local to the gun.
+        local boxCF, boxSize = visual:GetBoundingBox()
+        local gripPart = visual:FindFirstChild("Handle", true)
+            or visual:FindFirstChild("Grip", true)
+        local gripWorld
+        if gripPart and gripPart:IsA("BasePart") then
+            gripWorld = gripPart.CFrame
+        else
+            -- Fallback: approximate the pistol grip near the rear/lower side.
+            -- The model's barrel is assumed to run along its local X axis.
+            gripWorld = boxCF * CFrame.new(boxSize.X * 0.12, -boxSize.Y * 0.20, 0)
+        end
+        -- Correct orientation relative to the original weapon Handle.
+        -- Rotation/offset can be tuned here for an unusual uploaded model.
+        local GRIP_ROTATION = CFrame.Angles(0, 0, 0) -- remove sideways 90-degree yaw
+        local GRIP_OFFSET = CFrame.new(0, 0.25, 0) -- raise gun 0.35 studs from previous position
+        local targetGrip = handle.CFrame * GRIP_OFFSET * GRIP_ROTATION
+        visual:PivotTo(targetGrip * gripWorld:Inverse() * visual:GetPivot())
+        for _, part in ipairs(visual:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.Anchored = false
+                part.CanCollide = false
+                part.CanTouch = false
+                part.CanQuery = false
+                part.Massless = true
+                local weld = Instance.new("WeldConstraint")
+                weld.Name = "y0ungDareVisualWeld"
+                weld.Part0 = handle
+                weld.Part1 = part
+                weld.Parent = part
+            end
+        end
+        local saved = {}
+        originals[tool] = saved
+        for _, part in ipairs(tool:GetDescendants()) do
+            if part:IsA("BasePart") and not part:IsDescendantOf(visual) then
+                saved[part] = part.LocalTransparencyModifier
+                part.LocalTransparencyModifier = 1
+            end
+        end
+        tool.Destroying:Connect(function() originals[tool] = nil end)
+    end
+    local function checkContainer(container)
+        if not container then return end
+        for _, child in ipairs(container:GetChildren()) do
+            if child:IsA("Tool") then task.defer(applyVisual, child) end
+        end
+        container.ChildAdded:Connect(function(child)
+            if child:IsA("Tool") then task.defer(applyVisual, child) end
+        end)
+    end
+    local function restoreVisual(tool)
+        local visual = tool:FindFirstChild("y0ungDareReplacementAppearance")
+        if visual then visual:Destroy() end
+        local saved = originals[tool]
+        if saved then
+            for part, transparency in pairs(saved) do
+                if part and part.Parent then part.LocalTransparencyModifier = transparency end
+            end
+            originals[tool] = nil
+        end
+    end
+    local function refreshAll()
+        for _, container in ipairs({player:FindFirstChildOfClass("Backpack"), player.Character}) do
+            if container then
+                for _, tool in ipairs(container:GetChildren()) do
+                    if tool:IsA("Tool") and known[tool.Name] then
+                        if settings.enabled then applyVisual(tool) else restoreVisual(tool) end
+                    end
+                end
+            end
+        end
+    end
+    checkContainer(player:WaitForChild("Backpack"))
+    if player.Character then checkContainer(player.Character) end
+    player.CharacterAdded:Connect(checkContainer)
+    -- The toggle lives in the menu's earlier setup block; observe its shared state.
+    task.spawn(function()
+        local previous = settings.enabled
+        while task.wait(0.15) do
+            if settings.enabled ~= previous then
+                previous = settings.enabled
+                refreshAll()
+            end
+        end
     end)
 end
