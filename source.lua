@@ -9878,3 +9878,372 @@ do
         end
     end)
 end
+
+-- Player Effects submenu (new empty page; existing features unchanged).
+do
+    local TweenService = game:GetService("TweenService")
+    local effectsButton = Instance.new("TextButton")
+    effectsButton.Name = "PlayerEffectsButton"
+    effectsButton.Parent = Frame
+    effectsButton.Position = UDim2.fromOffset(8, 229) -- immediately below Maps
+    effectsButton.Size = UDim2.new(1, -16, 0, 20)
+    effectsButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+    effectsButton.BackgroundTransparency = 0.82
+    effectsButton.BorderSizePixel = 0
+    effectsButton.AutoButtonColor = false
+    effectsButton.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    effectsButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+    effectsButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+    effectsButton.TextStrokeTransparency = 0.28
+    effectsButton.TextXAlignment = Enum.TextXAlignment.Left
+    effectsButton.TextSize = 13
+    effectsButton.Text = "Player Effects"
+    effectsButton.ZIndex = 5
+
+    local marker = Instance.new("Frame")
+    marker.Name = "JiggySelectionMarker"
+    marker.Parent = effectsButton
+    marker.BorderSizePixel = 0
+    marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+    marker.BackgroundTransparency = 1
+    marker.Size = UDim2.new(0, 5, 1, 0)
+    marker.ZIndex = 6
+    local outline = Instance.new("UIStroke")
+    outline.Name = "JiggySelectionOutline"
+    outline.Parent = effectsButton
+    outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    outline.Color = Color3.fromRGB(174, 70, 255)
+    outline.Thickness = 1.5
+    outline.Transparency = 1
+    local function hover(isHover)
+        TweenService:Create(effectsButton, TweenInfo.new(0.09), {BackgroundColor3 = isHover and Color3.fromRGB(63, 24, 110) or Color3.fromRGB(19, 9, 49)}):Play()
+        TweenService:Create(marker, TweenInfo.new(0.09), {BackgroundTransparency = isHover and 0 or 1}):Play()
+        TweenService:Create(outline, TweenInfo.new(0.09), {Transparency = isHover and 0 or 1}):Play()
+    end
+    effectsButton.MouseEnter:Connect(function() hover(true) end)
+    effectsButton.MouseLeave:Connect(function() hover(false) end)
+
+    local page = Instance.new("Frame")
+    page.Name = "PlayerEffectsPage"
+    page.Parent = Frame
+    page.Size = UDim2.fromScale(1, 1)
+    page.BackgroundColor3 = Color3.fromRGB(12, 9, 22)
+    page.BorderSizePixel = 0
+    page.ClipsDescendants = true
+    page.Visible = false
+    page.ZIndex = 50
+
+    local heading = Instance.new("TextLabel")
+    heading.Name = "PlayerEffectsHeading"
+    heading.Parent = page
+    heading.Position = UDim2.fromOffset(3, 18)
+    heading.Size = UDim2.new(1, -85, 0, 32)
+    heading.BackgroundTransparency = 1
+    heading.Text = "Player Effects"
+    heading.Font = Enum.Font.Arcade
+    heading.TextSize = 23
+    heading.TextColor3 = Color3.fromRGB(245, 244, 255)
+    heading.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+    heading.TextStrokeTransparency = 0.25
+    heading.TextXAlignment = Enum.TextXAlignment.Left
+    heading.ZIndex = 52
+
+    local byline = Instance.new("TextLabel")
+    byline.Name = "PlayerEffectsByline"
+    byline.Parent = page
+    byline.Position = UDim2.fromOffset(3, 49)
+    byline.Size = UDim2.new(1, -10, 0, 23)
+    byline.BackgroundTransparency = 1
+    byline.Text = "By @y0ungdare"
+    byline.Font = Enum.Font.Arcade
+    byline.TextSize = 15
+    byline.TextColor3 = Color3.fromRGB(37, 28, 191)
+    byline.TextXAlignment = Enum.TextXAlignment.Left
+    byline.ZIndex = 52
+
+    local back = Instance.new("TextButton")
+    back.Name = "PlayerEffectsBack"
+    back.Parent = page
+    back.Position = UDim2.new(1, -77, 0, 14)
+    back.Size = UDim2.fromOffset(65, 26)
+    back.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
+    back.TextColor3 = Color3.fromRGB(0, 255, 255)
+    back.Font = Enum.Font.SourceSansBold
+    back.TextSize = 15
+    back.Text = "< BACK"
+    back.ZIndex = 52
+
+    -- Player Effects options (buttons only; effect behavior can be added later).
+    local function makeEffectButton(name, caption, y)
+        local option = Instance.new("TextButton")
+        option.Name = name
+        option.Parent = page
+        option.Position = UDim2.fromOffset(8, y)
+        option.Size = UDim2.new(1, -16, 0, 20)
+        option.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+        option.BackgroundTransparency = 0.82
+        option.BorderSizePixel = 0
+        option.AutoButtonColor = false
+        option.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        option.TextColor3 = Color3.fromRGB(1, 244, 253)
+        option.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+        option.TextStrokeTransparency = 0.28
+        option.TextXAlignment = Enum.TextXAlignment.Left
+        option.TextSize = 13
+        option.Text = caption
+        option.ZIndex = 52
+        return option
+    end
+    local korbloxButton = makeEffectButton("KorbloxButton", "Korblox", 79)
+    local headlessButton = makeEffectButton("HeadlessButton", "Headless", 99)
+    local invisibleButton = makeEffectButton("InvisibleButton", "Invisible", 119)
+
+
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+
+    -- Original Spent Hub Invisible implementation, with its state wired to this menu.
+    local RunService = game:GetService("RunService")
+    local invisibleEnabled = false
+    local InvisibleRealCFrame = nil
+    local InvisibleAnimationTrack = nil
+    local InvisibleRenderKey = "y0ungDareInvisibleRender"
+    local InvisibleOriginalTransparency = {}
+    local InvisibleOriginalCanCollide = {}
+    local InvisibleOriginalRootTransparency = nil
+    local InvisibleOriginalRootLocalTransparency = nil
+    
+    local function loadInvisibleAnimation(character)
+        local humanoid = character:FindFirstChildOfClass("Humanoid")
+        if not humanoid then return nil end
+        local animator = humanoid:FindFirstChildOfClass("Animator")
+        if not animator then return nil end
+        local isR15 = humanoid.RigType == Enum.HumanoidRigType.R15
+        local animation = Instance.new("Animation")
+        animation.AnimationId = isR15 and "rbxassetid://18665825805" or "rbxassetid://215384594"
+        local track = animator:LoadAnimation(animation)
+        track.Priority = Enum.AnimationPriority.Action4
+        track:Play(0, 0.001, 0)
+        animation:Destroy()
+        task.delay(0, function() track.TimePosition = isR15 and 1.95 or 0.4 end)
+        return track
+    end
+    
+    local function stopInvisible()
+        pcall(function() RunService:UnbindFromRenderStep(InvisibleRenderKey) end)
+        if InvisibleAnimationTrack then InvisibleAnimationTrack:Stop() InvisibleAnimationTrack:Destroy() InvisibleAnimationTrack = nil end
+        local character = LocalPlayer.Character
+        local rootPart = character and character:FindFirstChild("HumanoidRootPart")
+        if rootPart and InvisibleRealCFrame then
+            rootPart.CFrame = InvisibleRealCFrame
+            local currentVelocity = rootPart.AssemblyLinearVelocity
+            rootPart.AssemblyLinearVelocity = Vector3.new(currentVelocity.X, 0, currentVelocity.Z)
+        end
+        InvisibleRealCFrame = nil
+        if character then
+            for _, part in ipairs(character:GetDescendants()) do
+                if part:IsA("BasePart") and part ~= rootPart then
+                    if InvisibleOriginalTransparency[part] ~= nil then part.Transparency = InvisibleOriginalTransparency[part] end
+                    if InvisibleOriginalCanCollide[part] ~= nil then part.CanCollide = InvisibleOriginalCanCollide[part] end
+                end
+            end
+            if rootPart then
+                if InvisibleOriginalRootTransparency ~= nil then rootPart.Transparency = InvisibleOriginalRootTransparency end
+                if InvisibleOriginalRootLocalTransparency ~= nil then rootPart.LocalTransparencyModifier = InvisibleOriginalRootLocalTransparency end
+            end
+        end
+        InvisibleOriginalRootTransparency = nil
+        InvisibleOriginalRootLocalTransparency = nil
+        table.clear(InvisibleOriginalTransparency)
+        table.clear(InvisibleOriginalCanCollide)
+    end
+    
+    local function startInvisible()
+        local character = LocalPlayer.Character
+        if not character then return end
+        local humanoid = character:FindFirstChildOfClass("Humanoid")
+        local rootPart = character:FindFirstChild("HumanoidRootPart")
+        if not humanoid or not rootPart then return end
+        InvisibleAnimationTrack = loadInvisibleAnimation(character)
+        InvisibleOriginalRootTransparency = rootPart.Transparency
+        InvisibleOriginalRootLocalTransparency = rootPart.LocalTransparencyModifier
+        InvisibleRealCFrame = nil
+        table.clear(InvisibleOriginalTransparency)
+        table.clear(InvisibleOriginalCanCollide)
+        for _, part in ipairs(character:GetDescendants()) do
+            if part:IsA("BasePart") and part ~= rootPart then
+                InvisibleOriginalTransparency[part] = part.Transparency
+                InvisibleOriginalCanCollide[part] = part.CanCollide
+                part.Transparency = 0.5
+                part.CanCollide = false
+            end
+        end
+        rootPart.Transparency = 1
+        pcall(function() RunService:UnbindFromRenderStep(InvisibleRenderKey) end)
+        RunService:BindToRenderStep(InvisibleRenderKey, Enum.RenderPriority.Camera.Value - 1, function()
+            if invisibleEnabled and InvisibleRealCFrame and rootPart.Parent then
+                rootPart.CFrame = InvisibleRealCFrame
+                if InvisibleAnimationTrack then InvisibleAnimationTrack:AdjustWeight(0.001) end
+            end
+        end)
+    end
+    
+    RunService.Heartbeat:Connect(function()
+        if not invisibleEnabled then return end
+        local character = LocalPlayer.Character
+        local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+        local rootPart = character and character:FindFirstChild("HumanoidRootPart")
+        if not humanoid or not rootPart then return end
+        local isR15 = humanoid.RigType == Enum.HumanoidRigType.R15
+        local dropOffset = humanoid.HipHeight + (rootPart.Size.Y / 2) - 1
+        InvisibleRealCFrame = rootPart.CFrame
+        rootPart.CFrame = (rootPart.CFrame - Vector3.new(0, dropOffset, 0)) * CFrame.Angles(math.rad(isR15 and 180 or 90), 0, 0)
+        local currentVelocity = rootPart.AssemblyLinearVelocity
+        rootPart.AssemblyLinearVelocity = Vector3.new(currentVelocity.X, 0, currentVelocity.Z)
+        if InvisibleAnimationTrack then InvisibleAnimationTrack:AdjustWeight(100) end
+    end)
+
+    invisibleButton.Activated:Connect(function()
+        invisibleEnabled = not invisibleEnabled
+        if invisibleEnabled then startInvisible() else stopInvisible() end
+        invisibleButton.Text = "Invisible: " .. (invisibleEnabled and "ON" or "OFF")
+    end)
+    invisibleButton.Text = "Invisible: OFF"
+
+    -- Original Spent Hub Korblox / Headless implementation (unchanged).
+    local KorbloxMeshId = "rbxassetid://101851696"
+    local KorbloxTextureId = "rbxassetid://101851254"
+    local function applyKorblox(character)
+        local rightLeg = character:FindFirstChild("Right Leg") or character:FindFirstChild("RightUpperLeg")
+        if not rightLeg then return end
+        for _, v in ipairs(rightLeg:GetChildren()) do
+            if v:IsA("SpecialMesh") or v:IsA("CharacterMesh") then v:Destroy() end
+        end
+        local mesh = Instance.new("SpecialMesh")
+        mesh.MeshType = Enum.MeshType.FileMesh
+        mesh.MeshId = KorbloxMeshId
+        mesh.TextureId = KorbloxTextureId
+        mesh.Scale = Vector3.new(1, 1, 1)
+        mesh.Parent = rightLeg
+    end
+
+    local HeadlessMeshId = "rbxassetid://1095708"
+    local function applyHeadless(character)
+        local head = character:FindFirstChild("Head")
+        if not head then return end
+        head.Transparency = 1
+        head.CanCollide = false
+        local face = head:FindFirstChildOfClass("Decal")
+        if face then face:Destroy() end
+        for _, v in ipairs(head:GetChildren()) do
+            if v:IsA("SpecialMesh") or v:IsA("CharacterMesh") then v:Destroy() end
+        end
+        local mesh = Instance.new("SpecialMesh")
+        mesh.MeshType = Enum.MeshType.FileMesh
+        mesh.MeshId = HeadlessMeshId
+        mesh.Scale = Vector3.new(0.001, 0.001, 0.001)
+        mesh.Parent = head
+    end
+
+
+    -- Keep original avatar parts for reversible menu toggles.
+    local korbloxEnabled, headlessEnabled = false, false
+    local originals = {Korblox = {}, Headless = {}}
+    local function saveOriginal(kind, part)
+        if not part or originals[kind][part] then return end
+        local snapshot = {Transparency = part.Transparency, CanCollide = part.CanCollide, children = {}}
+        for _, child in ipairs(part:GetChildren()) do
+            if child:IsA("SpecialMesh") or child:IsA("CharacterMesh") or (kind == "Headless" and child:IsA("Decal")) then
+                table.insert(snapshot.children, child:Clone())
+            end
+        end
+        originals[kind][part] = snapshot
+    end
+    local function restoreOriginal(kind)
+        for part, snapshot in pairs(originals[kind]) do
+            if part.Parent then
+                part.Transparency = snapshot.Transparency
+                part.CanCollide = snapshot.CanCollide
+                for _, child in ipairs(part:GetChildren()) do
+                    if child:IsA("SpecialMesh") or child:IsA("CharacterMesh") or (kind == "Headless" and child:IsA("Decal")) then
+                        child:Destroy()
+                    end
+                end
+                for _, child in ipairs(snapshot.children) do child:Clone().Parent = part end
+            end
+        end
+        table.clear(originals[kind])
+    end
+    local function refreshEffectButtons()
+        korbloxButton.Text = "Korblox: " .. (korbloxEnabled and "ON" or "OFF")
+        headlessButton.Text = "Headless: " .. (headlessEnabled and "ON" or "OFF")
+    end
+    local function applySelectedEffects(character)
+        if not character then return end
+        if korbloxEnabled then
+            local leg = character:FindFirstChild("Right Leg") or character:FindFirstChild("RightUpperLeg")
+            saveOriginal("Korblox", leg)
+            applyKorblox(character)
+        end
+        if headlessEnabled then
+            saveOriginal("Headless", character:FindFirstChild("Head"))
+            applyHeadless(character)
+        end
+    end
+    korbloxButton.Activated:Connect(function()
+        korbloxEnabled = not korbloxEnabled
+        if korbloxEnabled then applySelectedEffects(LocalPlayer.Character)
+        else restoreOriginal("Korblox") end
+        refreshEffectButtons()
+    end)
+    headlessButton.Activated:Connect(function()
+        headlessEnabled = not headlessEnabled
+        if headlessEnabled then applySelectedEffects(LocalPlayer.Character)
+        else restoreOriginal("Headless") end
+        refreshEffectButtons()
+    end)
+    LocalPlayer.CharacterAdded:Connect(function(character)
+        task.wait(1)
+        if not page.Parent then return end
+        table.clear(originals.Korblox)
+        table.clear(originals.Headless)
+        applySelectedEffects(character)
+        if invisibleEnabled then startInvisible() end
+    end)
+    refreshEffectButtons()
+
+    local previousVisibility = {}
+    local glitchLayer
+    effectsButton.Activated:Connect(function()
+        if page.Visible then return end
+        for _, child in ipairs(Frame:GetChildren()) do
+            if child ~= page and child:IsA("GuiButton") then
+                previousVisibility[child] = child.Visible
+                child.Visible = false
+            end
+        end
+        glitchLayer = Frame:FindFirstChild("JiggyGlitchBackground_EDIT_HERE")
+        if glitchLayer then
+            glitchLayer.Parent = page
+            glitchLayer.ZIndex = 51
+            for _, part in ipairs(glitchLayer:GetDescendants()) do
+                if part:IsA("GuiObject") then part.ZIndex = 51 end
+            end
+        end
+        page.Visible = true
+    end)
+    back.Activated:Connect(function()
+        page.Visible = false
+        if glitchLayer then
+            glitchLayer.Parent = Frame
+            glitchLayer.ZIndex = 3
+            for _, part in ipairs(glitchLayer:GetDescendants()) do
+                if part:IsA("GuiObject") then part.ZIndex = 3 end
+            end
+            glitchLayer = nil
+        end
+        for child, wasVisible in pairs(previousVisibility) do
+            if child.Parent then child.Visible = wasVisible end
+            previousVisibility[child] = nil
+        end
+    end)
+end
