@@ -3917,7 +3917,7 @@ local function OACKUI_fake_script() -- Frame.AimbotController
 	local languageIndex = 1
 	local selectedPlayerUserId = nil
 	local teamCheckEnabled = true
-	local modes = {"Guards Only", "Criminals Only", "Inmates Only", "Everyone", "Hostile Inmates", "Choose Player"}
+	local modes = {"Guards Only", "Criminals Only", "Inmates Only", "Everyone", "Hostile Inmates + Criminals", "Choose Player"}
 	
 	-- Language order matches the supplied y0ungDare Menu v4.5 LanguageController.
 	local languages = {"English", "Español", "Français", "日本語", "中文（简体）", "Deutsch"}
@@ -3926,7 +3926,7 @@ local function OACKUI_fake_script() -- Frame.AimbotController
 	    {"Criminals Only", "Solo criminales", "Criminels uniquement", "犯罪者のみ", "仅罪犯", "Nur Kriminelle"},
 	    {"Inmates Only", "Solo reclusos", "Détenus uniquement", "囚人のみ", "仅囚犯", "Nur Insassen"},
 	    {"Everyone", "Todos", "Tout le monde", "全員", "所有人", "Alle"},
-	    {"Hostile Inmates", "Comprobar hostilidad", "Vérifier hostilité", "敵対チェック", "敌对检查", "Feindlichkeitsprüfung"},
+	    {"Hostile Inmates + Criminals", "Comprobar hostilidad", "Vérifier hostilité", "敵対チェック", "敌对检查", "Feindlichkeitsprüfung"},
 	    {"Choose Player", "Elegir jugador", "Choisir un joueur", "プレイヤーを選択", "选择玩家", "Spieler wählen"},
 	}
 	local targetPrefix = {"Target: ", "Objetivo: ", "Cible : ", "対象: ", "目标：", "Ziel: "}
@@ -3946,10 +3946,15 @@ local function OACKUI_fake_script() -- Frame.AimbotController
 	    if plr == player then return false end
 	    if teamCheckEnabled and not isEnemy(plr) then return false end
     local mode = modes[modeIndex]
-		    -- Original Hostile Inmates: guards can target inmates whose character
-	    -- has the Prison Life Hostile attribute set. Other team combinations
-	    -- are not considered hostile by the original check.
-	    if mode == "Hostile Inmates" then
+		    -- Combined selector: original hostile-inmate condition OR original criminals-only condition.
+	    if mode == "Hostile Inmates + Criminals" then
+	        local teamName = plr.Team and plr.Team.Name:lower() or ""
+	        -- Preserve the original Criminals Only team matching.
+	        if teamName:find("crim", 1, true) ~= nil
+	            or teamName:find("mafia", 1, true) ~= nil then
+	            return true
+	        end
+	        -- Preserve the original Hostile Inmates check.
 	        local myTeam = player.Team
 	        local theirTeam = plr.Team
 	        if not myTeam or not theirTeam then return false end
