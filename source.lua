@@ -46,22 +46,6 @@ local FlyingCarsToggle = Instance.new("TextButton")
 local removedoors = Instance.new("TextButton")
 local ShinyTealTitle_v4_5_UPLOAD_PNG_SET_IMAGE_ID = Instance.new("ImageLabel")
 local Title = Instance.new("TextLabel")
-local InfoPopup = Instance.new("Frame")
-local Title_2 = Instance.new("TextLabel")
-local Version = Instance.new("TextLabel")
-local Creator = Instance.new("TextLabel")
-local Description = Instance.new("TextLabel")
-local CloseButton = Instance.new("TextButton")
-local SocialHeading = Instance.new("TextLabel")
-local Instagram = Instance.new("TextLabel")
-local YouTube = Instance.new("TextLabel")
-local ControlLine1 = Instance.new("TextLabel")
-local ControlLine2 = Instance.new("TextLabel")
-local ControlLine4 = Instance.new("TextLabel")
-local ControlLine5 = Instance.new("TextLabel")
-local ControlLine6 = Instance.new("TextLabel")
-local ControlLine7 = Instance.new("TextLabel")
-local InfoButton = Instance.new("TextButton")
 local WelcomeBanner = Instance.new("Frame")
 local WelcomeText = Instance.new("TextLabel")
 local UpdatesLink = Instance.new("TextButton")
@@ -596,227 +580,6 @@ JiggyStyleByline.TextStrokeTransparency = 0.3
 JiggyStyleByline.TextXAlignment = Enum.TextXAlignment.Left
 JiggyStyleByline.ZIndex = 12
 
-InfoPopup.Name = "InfoPopup"
-InfoPopup.Parent = Frame
-InfoPopup.Active = true
-InfoPopup.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-InfoPopup.BorderColor3 = Color3.fromRGB(170, 0, 255)
-InfoPopup.BorderSizePixel = 3
-InfoPopup.Position = UDim2.new(-0.923076928, -210, 0.517574668, -190)
-InfoPopup.Size = UDim2.new(0, 420, 0, 480)
-InfoPopup.Visible = false
-InfoPopup.ZIndex = 5
-
-Title_2.Name = "Title"
-Title_2.Parent = InfoPopup
-Title_2.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
-Title_2.BackgroundTransparency = 1.000
-Title_2.BorderSizePixel = 0
-Title_2.Position = UDim2.new(0, 16, 0, 5)
-Title_2.Size = UDim2.new(1, -32, 0, 38)
-Title_2.ZIndex = 6
-Title_2.Text = "y0ungDare Menu"
-Title_2.TextColor3 = Color3.fromRGB(255, 91, 201)
-Title_2.TextSize = 25.000
-Title_2.TextWrapped = true
-
-Version.Name = "Version"
-Version.Parent = InfoPopup
-Version.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
-Version.BackgroundTransparency = 1.000
-Version.BorderSizePixel = 0
-Version.Position = UDim2.new(0, 16, 0, 39)
-Version.Size = UDim2.new(1, -32, 0, 24)
-Version.ZIndex = 6
-Version.Text = "Version 4.5"
-Version.TextColor3 = Color3.fromRGB(83, 235, 250)
-Version.TextSize = 19.000
-Version.TextWrapped = true
-
-Creator.Name = "Creator"
-Creator.Parent = InfoPopup
-Creator.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
-Creator.BackgroundTransparency = 1.000
-Creator.BorderSizePixel = 0
-Creator.Position = UDim2.new(0, 16, 0, 66)
-Creator.Size = UDim2.new(1, -32, 0, 25)
-Creator.ZIndex = 6
-Creator.Text = "Created by y0ungDare"
-Creator.TextColor3 = Color3.fromRGB(255, 255, 255)
-Creator.TextSize = 18.000
-Creator.TextWrapped = true
-
-Description.Name = "Description"
-Description.Parent = InfoPopup
-Description.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
-Description.BackgroundTransparency = 1.000
-Description.BorderSizePixel = 0
-Description.Position = UDim2.new(0, 16, 0, 102)
-Description.Size = UDim2.new(1, -32, 0, 25)
-Description.ZIndex = 6
-Description.Text = "ABOUT THE MENU"
-Description.TextColor3 = Color3.fromRGB(192, 185, 215)
-Description.TextSize = 17.000
-Description.TextWrapped = true
-
-CloseButton.Name = "CloseButton"
-CloseButton.Parent = InfoPopup
-CloseButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-CloseButton.BackgroundTransparency = 1.000
-CloseButton.BorderColor3 = Color3.fromRGB(170, 85, 255)
-CloseButton.BorderSizePixel = 2
-CloseButton.Position = UDim2.new(1, -46, 0, 8)
-CloseButton.Size = UDim2.new(0, 38, 0, 38)
-CloseButton.ZIndex = 7
-CloseButton.Text = "×"
-CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-CloseButton.TextSize = 25.000
-CloseButton.TextWrapped = true
-
-SocialHeading.Name = "SocialHeading"
-SocialHeading.Parent = InfoPopup
-SocialHeading.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
-SocialHeading.BackgroundTransparency = 1.000
-SocialHeading.BorderSizePixel = 0
-SocialHeading.Position = UDim2.new(0, 16, 0, 360)
-SocialHeading.Size = UDim2.new(1, -32, 0, 25)
-SocialHeading.ZIndex = 6
-SocialHeading.Font = Enum.Font.Garamond
-SocialHeading.Text = "SOCIALS"
-SocialHeading.TextColor3 = Color3.fromRGB(255, 91, 201)
-SocialHeading.TextSize = 18.000
-SocialHeading.TextWrapped = true
-SocialHeading.TextXAlignment = Enum.TextXAlignment.Left
-
-Instagram.Name = "Instagram"
-Instagram.Parent = InfoPopup
-Instagram.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
-Instagram.BackgroundTransparency = 1.000
-Instagram.BorderSizePixel = 0
-Instagram.Position = UDim2.new(0, 16, 0, 392)
-Instagram.Size = UDim2.new(1, -32, 0, 25)
-Instagram.ZIndex = 6
-Instagram.Font = Enum.Font.Garamond
-Instagram.Text = "Instagram: instagram.com/y0ungdare"
-Instagram.TextColor3 = Color3.fromRGB(89, 234, 249)
-Instagram.TextSize = 15.000
-Instagram.TextWrapped = true
-Instagram.TextXAlignment = Enum.TextXAlignment.Left
-
-YouTube.Name = "YouTube"
-YouTube.Parent = InfoPopup
-YouTube.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
-YouTube.BackgroundTransparency = 1.000
-YouTube.BorderSizePixel = 0
-YouTube.Position = UDim2.new(0, 16, 0, 422)
-YouTube.Size = UDim2.new(1, -32, 0, 45)
-YouTube.ZIndex = 6
-YouTube.Font = Enum.Font.Garamond
-YouTube.Text = "YouTube: youtube.com/channel/UCZFDxl6C9QBs2Qp8q8NhLYA"
-YouTube.TextColor3 = Color3.fromRGB(89, 234, 249)
-YouTube.TextSize = 14.000
-YouTube.TextWrapped = true
-YouTube.TextXAlignment = Enum.TextXAlignment.Left
-
-ControlLine1.Name = "ControlLine1"
-ControlLine1.Parent = InfoPopup
-ControlLine1.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
-ControlLine1.BackgroundTransparency = 1.000
-ControlLine1.BorderSizePixel = 0
-ControlLine1.Position = UDim2.new(0, 20, 0, 137)
-ControlLine1.Size = UDim2.new(1, -40, 0, 23)
-ControlLine1.ZIndex = 6
-ControlLine1.Font = Enum.Font.Garamond
-ControlLine1.Text = "Q  -  Open / close the menu"
-ControlLine1.TextColor3 = Color3.fromRGB(255, 255, 255)
-ControlLine1.TextSize = 17.000
-ControlLine1.TextXAlignment = Enum.TextXAlignment.Left
-
-ControlLine2.Name = "ControlLine2"
-ControlLine2.Parent = InfoPopup
-ControlLine2.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
-ControlLine2.BackgroundTransparency = 1.000
-ControlLine2.BorderSizePixel = 0
-ControlLine2.Position = UDim2.new(0, 20, 0, 163)
-ControlLine2.Size = UDim2.new(1, -40, 0, 23)
-ControlLine2.ZIndex = 6
-ControlLine2.Font = Enum.Font.Garamond
-ControlLine2.Text = "Drag  -  Move the menu around"
-ControlLine2.TextColor3 = Color3.fromRGB(255, 255, 255)
-ControlLine2.TextSize = 17.000
-ControlLine2.TextXAlignment = Enum.TextXAlignment.Left
-
-ControlLine4.Name = "ControlLine4"
-ControlLine4.Parent = InfoPopup
-ControlLine4.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
-ControlLine4.BackgroundTransparency = 1.000
-ControlLine4.BorderSizePixel = 0
-ControlLine4.Position = UDim2.new(0, 20, 0, 231)
-ControlLine4.Size = UDim2.new(1, -40, 0, 26)
-ControlLine4.ZIndex = 6
-ControlLine4.Font = Enum.Font.Garamond
-ControlLine4.Text = "Fly Car Controls:"
-ControlLine4.TextColor3 = Color3.fromRGB(255, 91, 201)
-ControlLine4.TextSize = 18.000
-ControlLine4.TextXAlignment = Enum.TextXAlignment.Left
-
-ControlLine5.Name = "ControlLine5"
-ControlLine5.Parent = InfoPopup
-ControlLine5.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
-ControlLine5.BackgroundTransparency = 1.000
-ControlLine5.BorderSizePixel = 0
-ControlLine5.Position = UDim2.new(0, 20, 0, 265)
-ControlLine5.Size = UDim2.new(1, -40, 0, 23)
-ControlLine5.ZIndex = 6
-ControlLine5.Font = Enum.Font.Garamond
-ControlLine5.Text = "V  -  Descend while flying"
-ControlLine5.TextColor3 = Color3.fromRGB(255, 255, 255)
-ControlLine5.TextSize = 17.000
-ControlLine5.TextXAlignment = Enum.TextXAlignment.Left
-
-ControlLine6.Name = "ControlLine6"
-ControlLine6.Parent = InfoPopup
-ControlLine6.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
-ControlLine6.BackgroundTransparency = 1.000
-ControlLine6.BorderSizePixel = 0
-ControlLine6.Position = UDim2.new(0, 20, 0, 291)
-ControlLine6.Size = UDim2.new(1, -40, 0, 23)
-ControlLine6.ZIndex = 6
-ControlLine6.Font = Enum.Font.Garamond
-ControlLine6.Text = "E  -  Ascend while flying"
-ControlLine6.TextColor3 = Color3.fromRGB(255, 255, 255)
-ControlLine6.TextSize = 17.000
-ControlLine6.TextXAlignment = Enum.TextXAlignment.Left
-
-ControlLine7.Name = "ControlLine7"
-ControlLine7.Parent = InfoPopup
-ControlLine7.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
-ControlLine7.BackgroundTransparency = 1.000
-ControlLine7.BorderSizePixel = 0
-ControlLine7.Position = UDim2.new(0, 20, 0, 317)
-ControlLine7.Size = UDim2.new(1, -40, 0, 23)
-ControlLine7.ZIndex = 6
-ControlLine7.Font = Enum.Font.Garamond
-ControlLine7.Text = "W/A/S/D  -  Fly around"
-ControlLine7.TextColor3 = Color3.fromRGB(255, 255, 255)
-ControlLine7.TextSize = 17.000
-ControlLine7.TextXAlignment = Enum.TextXAlignment.Left
-
-InfoButton.Name = "InfoButton"
-InfoButton.Parent = Frame
-InfoButton.AnchorPoint = Vector2.new(0.5, 0.5)
-InfoButton.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
-InfoButton.BackgroundTransparency = 0.160
-InfoButton.BorderColor3 = Color3.fromRGB(170, 0, 255)
-InfoButton.BorderSizePixel = 0
-InfoButton.Position = UDim2.new(0, 140, 0, 558)
-InfoButton.Size = UDim2.new(1, -16, 0, 20)
-InfoButton.Font = Enum.Font.SourceSansBold
-InfoButton.Text = "Info & Credits"
-InfoButton.TextColor3 = Color3.fromRGB(0, 255, 255)
-InfoButton.TextSize = 17.000
-InfoButton.TextWrapped = true
-InfoButton.TextXAlignment = Enum.TextXAlignment.Left
 
 WelcomeBanner.Name = "WelcomeBanner"
 WelcomeBanner.Parent = y0ungDareMenuv45
@@ -1483,15 +1246,6 @@ local function MREH_fake_script() -- LanguageToggle.LanguageController_Edit_Here
 	    ["OpenDexPlusPlus"] = {"Dark Dex Explorer", "Dark Dex Explorer", "Dark Dex Explorer", "Dark Dex Explorer", "Dark Dex Explorer", "Dark Dex Explorer"},
 	    ["FlyingCarsToggle"] = {"Flying Cars", "Coches voladores", "Voitures volantes", "空飛ぶ車", "飞行汽车", "Fliegende Autos"},
 	    ["remove doors"] = {"Remove Doors", "Eliminar puertas", "Supprimer les portes", "ドアを削除", "移除门", "Türen entfernen"},
-	    ["InfoButton"] = {"Info & Credits", "Información y créditos", "Infos et crédits", "情報とクレジット", "信息与鸣谢", "Info und Mitwirkende"},
-	    ["Description"] = {"ABOUT THE MENU", "SOBRE EL MENÚ", "À PROPOS DU MENU", "メニューについて", "关于菜单", "ÜBER DAS MENÜ"},
-	    ["SocialHeading"] = {"SOCIALS", "REDES SOCIALES", "RÉSEAUX SOCIAUX", "SNS", "社交媒体", "SOZIALE NETZWERKE"},
-	    ["ControlLine1"] = {"Q  -  Open / close the menu", "Q - Abrir / cerrar menú", "Q - Ouvrir / fermer le menu", "Q - メニューを開く / 閉じる", "Q - 打开 / 关闭菜单", "Q - Menü öffnen / schließen"},
-	    ["ControlLine2"] = {"Drag  -  Move the menu around", "Arrastrar - Mover el menú", "Glisser - Déplacer le menu", "ドラッグ - メニューを移動", "拖动 - 移动菜单", "Ziehen - Menü verschieben"},
-	    ["ControlLine4"] = {"Fly Car Controls:", "Controles del coche volador:", "Commandes voiture volante :", "飛行車の操作:", "飞行汽车操作：", "Steuerung Flugauto:"},
-	    ["ControlLine5"] = {"V  -  Descend while flying", "V - Descender al volar", "V - Descendre en vol", "V - 飛行中に下降", "V - 飞行时下降", "V - Beim Fliegen sinken"},
-	    ["ControlLine6"] = {"E  -  Ascend while flying", "E - Ascender al volar", "E - Monter en vol", "E - 飛行中に上昇", "E - 飞行时上升", "E - Beim Fliegen steigen"},
-	    ["ControlLine7"] = {"W/A/S/D  -  Fly around", "W/A/S/D - Volar", "W/A/S/D - Se déplacer en vol", "W/A/S/D - 飛行中に移動", "W/A/S/D - 飞行移动", "W/A/S/D - Fliegen"},
 	}
 	local speedButton = gui:FindFirstChild("Speed Run", true)
 	local speedCaptions = {"Speed", "Velocidad", "Vitesse", "速度", "速度", "Geschwindigkeit"}
@@ -8290,21 +8044,21 @@ do
             local accumulator = 0
             connection = RunService.Heartbeat:Connect(function(dt)
                 accumulator += dt
-                if accumulator < .12 then return end
+                if accumulator < .25 then return end
                 accumulator = 0
                 tickCount += 1
-                animateParty(.12)
+                animateParty(.25)
                 updateClubSky()
                 local keys = {}
                 for p in pairs(originals) do
                     if p.Parent then table.insert(keys,p) end
                 end
-                for _=1,math.min(35,#keys) do
+                for _=1,math.min(12,#keys) do
                     local p=keys[rng:NextInteger(1,#keys)]
                     p.Color=palette[rng:NextInteger(1,#palette)]
                     p.Material=rng:NextNumber()<.32 and Enum.Material.Neon or Enum.Material.SmoothPlastic
                 end
-                for _=1,math.min(20,#overlays) do
+                for _=1,math.min(8,#overlays) do
                     local surface=overlays[rng:NextInteger(1,#overlays)]
                     if surface.Parent then
                         for _,child in ipairs(surface:GetDescendants()) do
@@ -8909,6 +8663,190 @@ do
         end
     end
 
+    -- Shared flooring fix for all FOUR Maps themes. This intentionally runs after
+    -- their original callbacks, so the tiled gray prison floors get the theme too.
+    -- Does not add buttons or alter the original theme handlers/music.
+    do
+        local Workspace = game:GetService("Workspace")
+        local RunService = game:GetService("RunService")
+        local themeButtons = {
+            Christmas = christmasButton,
+            Pink = page:FindFirstChild("PinkThemeToggle"),
+            Club = page:FindFirstChild("GlitchedClubThemeToggle"),
+            Halloween = page:FindFirstChild("HalloweenThemeToggle"),
+        }
+        -- Capture the untouched map BEFORE any Maps theme is enabled.
+        -- Previously this was captured after the theme callback, which saved
+        -- themed colors as the "original" and left patches behind on OFF.
+        local savedFloor = {}
+        local baselineTextures = {}
+        local floorCandidates = {}
+        for _, candidate in ipairs(Workspace:GetDescendants()) do
+            if candidate:IsA("BasePart") and candidate.Anchored then
+                savedFloor[candidate] = {Color=candidate.Color, Material=candidate.Material, Reflectance=candidate.Reflectance}
+                for _, overlay in ipairs(candidate:GetChildren()) do
+                    if overlay:IsA("Texture") or overlay:IsA("Decal") then
+                        baselineTextures[overlay] = overlay.Transparency
+                    end
+                end
+            end
+        end
+        local savedTextures = {}
+        local lastApplied = {}
+        local currentTheme = nil
+        local elapsed = 0
+        local function isPrisonFloor(p)
+            if not p:IsA("BasePart") or not p.Anchored then return false end
+            if p.Transparency >= 0.8 or p.Size.Y > 9 then return false end
+            if p.Size.X < 1.4 or p.Size.Z < 1.4 then return false end
+            if p.CFrame.UpVector.Y < 0.8 then return false end
+            if Workspace.CurrentCamera and p:IsDescendantOf(Workspace.CurrentCamera) then return false end
+            if p:FindFirstAncestorOfClass("Tool") then return false end
+            local a = p.Parent
+            while a and a ~= Workspace do
+                if a:IsA("Model") and a:FindFirstChildOfClass("Humanoid") then return false end
+                a = a.Parent
+            end
+            -- Exclude theme-generated props, carpets, trees, lights, dance tiles.
+            local name = p.Name:lower()
+            if name:find("carpet") or name:find("light") or name:find("decoration") or name:find("star") then return false end
+            local parent = p.Parent
+            while parent and parent ~= Workspace do
+                local n = parent.Name:lower()
+                if n:find("localchristmas") or n:find("hellokitty") or n:find("glitchparty") or n:find("halloween") then return false end
+                parent = parent.Parent
+            end
+            return true
+        end
+        local function restoreFloor()
+            for p in pairs(lastApplied) do
+                local props = savedFloor[p]
+                if props and p.Parent then
+                    pcall(function() p.Color=props.Color; p.Material=props.Material; p.Reflectance=props.Reflectance end)
+                end
+            end
+            for texture, transparency in pairs(savedTextures) do
+                if texture.Parent then pcall(function() texture.Transparency = transparency end) end
+            end
+            -- Retain the baseline so repeated ON/OFF cycles cannot re-save a
+            -- previously themed surface as its original appearance.
+            table.clear(savedTextures)
+            table.clear(lastApplied)
+        end
+        local function paintFloor(p, theme)
+            if not isPrisonFloor(p) then return end
+            if not savedFloor[p] then
+                savedFloor[p] = {Color=p.Color, Material=p.Material, Reflectance=p.Reflectance}
+            end
+            local h = math.floor(math.abs(p.Position.X * 2.13 + p.Position.Z * 3.17))
+            local color, material, reflectance
+            if theme == "Christmas" then
+                local v = 229 + h % 17
+                color = Color3.fromRGB(v, math.min(255,v+4), math.min(255,v+8))
+                material, reflectance = Enum.Material.Snow, 0
+            elseif theme == "Pink" then
+                color = (h % 7 == 0) and Color3.fromRGB(255,205,235)
+                    or ((h % 3 == 0) and Color3.fromRGB(255,129,194) or Color3.fromRGB(246,161,213))
+                material, reflectance = Enum.Material.SmoothPlastic, 0.08
+            elseif theme == "Club" then
+                local colors = {
+                    Color3.fromRGB(12,12,29), Color3.fromRGB(40,13,76),
+                    Color3.fromRGB(0,170,205), Color3.fromRGB(180,18,137),
+                    Color3.fromRGB(32,27,62), Color3.fromRGB(36,189,107)
+                }
+                color = colors[h % #colors + 1]
+                material, reflectance = Enum.Material.Neon, 0
+            else -- Halloween
+                local colors = {
+                    Color3.fromRGB(39,27,48), Color3.fromRGB(88,43,117),
+                    Color3.fromRGB(120,60,29), Color3.fromRGB(62,71,45),
+                    Color3.fromRGB(197,83,19)
+                }
+                color = colors[h % #colors + 1]
+                material, reflectance = Enum.Material.Slate, 0
+            end
+            local last = lastApplied[p]
+            if not last or last.theme ~= theme or p.Color ~= color or p.Material ~= material then
+                p.Color = color
+                p.Material = material
+                p.Reflectance = reflectance
+                lastApplied[p] = {theme=theme}
+            end
+            -- Existing gray floor decals/textures can hide the theme colors.
+            for _, obj in ipairs(p:GetChildren()) do
+                if obj:IsA("Texture") or obj:IsA("Decal") then
+                    if savedTextures[obj] == nil then savedTextures[obj] = baselineTextures[obj] or obj.Transparency end
+                    obj.Transparency = 1
+                end
+            end
+        end
+        -- Build a candidate list once, rather than scanning the entire Workspace every 1.2 seconds.
+        for p in pairs(savedFloor) do
+            if isPrisonFloor(p) then floorCandidates[#floorCandidates+1] = p end
+        end
+        local function refreshFloor()
+            if not currentTheme then return end
+            for _, p in ipairs(floorCandidates) do
+                if p.Parent then paintFloor(p, currentTheme) end
+            end
+        end
+        local floorAdded = Workspace.DescendantAdded:Connect(function(p)
+            if not p:IsA("BasePart") then return end
+            task.defer(function()
+                if not p.Parent or not isPrisonFloor(p) then return end
+                floorCandidates[#floorCandidates+1] = p
+                if not savedFloor[p] then savedFloor[p]={Color=p.Color,Material=p.Material,Reflectance=p.Reflectance} end
+                if currentTheme then paintFloor(p,currentTheme) end
+            end)
+        end)
+        local function activeTheme()
+            -- Prefer the most recently switched-on theme if several are enabled.
+            if currentTheme and themeButtons[currentTheme] and themeButtons[currentTheme].Text:find(": ON",1,true) then
+                return currentTheme
+            end
+            for _, name in ipairs({"Pink", "Club", "Halloween", "Christmas"}) do
+                local b = themeButtons[name]
+                if b and b.Text:find(": ON",1,true) then return name end
+            end
+            return nil
+        end
+        for name, b in pairs(themeButtons) do
+            if b then
+                b.Activated:Connect(function()
+                    task.delay(0.08, function()
+                        if not y0ungDareMenuv45.Parent then return end
+                        local newlyOn = b.Text:find(": ON",1,true) ~= nil
+                        local nextTheme = newlyOn and name or activeTheme()
+                        if nextTheme ~= currentTheme then
+                            restoreFloor()
+                            currentTheme = nextTheme
+                        end
+                        if currentTheme then refreshFloor() end
+                    end)
+                end)
+            end
+        end
+        local connection
+        connection = RunService.Heartbeat:Connect(function(dt)
+            if not y0ungDareMenuv45.Parent then connection:Disconnect(); return end
+            elapsed += dt
+            if elapsed < 2.5 then return end
+            elapsed = 0
+            local nextTheme = activeTheme()
+            if nextTheme ~= currentTheme then
+                restoreFloor()
+                currentTheme = nextTheme
+                if currentTheme then refreshFloor() end
+            end
+            -- Do not repaint the whole prison repeatedly: only on theme changes.
+        end)
+        y0ungDareMenuv45.Destroying:Connect(function()
+            if connection then connection:Disconnect() end
+            if floorAdded then floorAdded:Disconnect() end
+            restoreFloor()
+        end)
+    end
+
     local previousVisibility = {}
     local glitchLayer
     mapsButton.Activated:Connect(function()
@@ -9106,9 +9044,6 @@ do
     end)
 end
 
--- Remove the Info & Credits button and its unused page.
-InfoButton:Destroy()
-InfoPopup:Destroy()
 
 -- ================================================================
 -- PURPLE GUN LASER SIGHT (client-side visual)
