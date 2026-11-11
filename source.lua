@@ -82,14 +82,6 @@ local function attachButtonSounds(object)
     end)
     object.Activated:Connect(function()
         playMenuSound(83458378711611, 0.75)
-        -- Jump once whenever a menu button is activated.
-        local player = game:GetService("Players").LocalPlayer
-        local character = player and player.Character
-        local humanoid = character and character:FindFirstChildOfClass("Humanoid")
-        if humanoid and humanoid.Health > 0 then
-            humanoid.Jump = true
-            humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-        end
     end)
 end
 
@@ -4824,10 +4816,17 @@ local function ZZPA_fake_script() -- y0ungDareMenuv45.MenuVisibility_Q
 		    busy = false
 		end
 	
-		UIS.InputBegan:Connect(function(input, processed)
-		    if processed or input.KeyCode ~= Enum.KeyCode.F then return end
-		    task.spawn(animate, not main.Visible)
-		end)
+        -- Shared keybind survives reinjecting the menu in the same Roblox session.
+        -- Defaults to F, matching the original script.
+        if typeof(shared.y0ungDareMenuToggleKey) ~= "EnumItem" then
+            shared.y0ungDareMenuToggleKey = Enum.KeyCode.F
+        end
+        UIS.InputBegan:Connect(function(input, processed)
+            if processed or UIS:GetFocusedTextBox() or shared.y0ungDareCapturingMenuKey then return end
+            local chosen = shared.y0ungDareMenuToggleKey
+            if input.KeyCode ~= chosen and input.UserInputType ~= chosen then return end
+            task.spawn(animate, not main.Visible)
+        end)
 	
 end
 coroutine.wrap(ZZPA_fake_script)()
@@ -9006,6 +9005,65 @@ do
         button.ZIndex = 33
         attachHover(button)
     end
+
+    -- Open / Close keybind picker. Uses the existing menu toggle handler.
+    local UIS = game:GetService("UserInputService")
+    local keybindButton = Instance.new("TextButton")
+    keybindButton.Name = "OpenCloseKeybindChanger"
+    keybindButton.Parent = page
+    keybindButton.AnchorPoint = Vector2.new(0, 0)
+    keybindButton.Position = UDim2.fromOffset(8, 159)
+    keybindButton.Size = UDim2.new(1, -16, 0, 20)
+    keybindButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+    keybindButton.BackgroundTransparency = 0.82
+    keybindButton.BorderSizePixel = 0
+    keybindButton.AutoButtonColor = false
+    keybindButton.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    keybindButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+    keybindButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+    keybindButton.TextStrokeTransparency = 0.28
+    keybindButton.TextXAlignment = Enum.TextXAlignment.Left
+    keybindButton.TextSize = 13
+    keybindButton.ZIndex = 33
+    attachHover(keybindButton)
+
+    local capturing = false
+    local function currentKeyLabel()
+        local key = shared.y0ungDareMenuToggleKey or Enum.KeyCode.F
+        return key.Name
+    end
+    local function refreshKeyLabel()
+        keybindButton.Text = capturing and "Open/Close Keybind: Press a key..." or ("Open/Close Keybind: " .. currentKeyLabel())
+    end
+    refreshKeyLabel()
+    keybindButton.Activated:Connect(function()
+        capturing = true
+        shared.y0ungDareCapturingMenuKey = true
+        refreshKeyLabel()
+    end)
+    UIS.InputBegan:Connect(function(input)
+        if not capturing then return end
+        local newKey = input.KeyCode
+        if newKey == Enum.KeyCode.Unknown then
+            if input.UserInputType == Enum.UserInputType.MouseButton1
+                or input.UserInputType == Enum.UserInputType.MouseButton2
+                or input.UserInputType == Enum.UserInputType.MouseButton3 then
+                newKey = input.UserInputType
+            else
+                return
+            end
+        end
+        -- Escape cancels capture so the user cannot get stuck without a key.
+        if newKey ~= Enum.KeyCode.Escape then
+            shared.y0ungDareMenuToggleKey = newKey
+        end
+        capturing = false
+        shared.y0ungDareCapturingMenuKey = false
+        refreshKeyLabel()
+    end)
+    y0ungDareMenuv45.Destroying:Connect(function()
+        shared.y0ungDareCapturingMenuKey = false
+    end)
 
     local previousVisibility = {}
     local glitchLayer
