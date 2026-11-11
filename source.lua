@@ -8866,6 +8866,49 @@ do
         end)
     end
 
+    -- Give the three added Maps themes the same cyan selection bar,
+    -- purple outline and animated hover as the original Christmas row.
+    for _, themeName in ipairs({"PinkThemeToggle", "GlitchedClubThemeToggle", "HalloweenThemeToggle"}) do
+        local themeButton = page:FindFirstChild(themeName)
+        if themeButton then
+            themeButton.AutoButtonColor = false
+            local hoverMarker = themeButton:FindFirstChild("JiggySelectionMarker")
+            if not hoverMarker then
+                hoverMarker = Instance.new("Frame")
+                hoverMarker.Name = "JiggySelectionMarker"
+                hoverMarker.BorderSizePixel = 0
+                hoverMarker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+                hoverMarker.BackgroundTransparency = 1
+                hoverMarker.Position = UDim2.fromOffset(0, 0)
+                hoverMarker.Size = UDim2.new(0, 5, 1, 0)
+                hoverMarker.Parent = themeButton
+            end
+            hoverMarker.ZIndex = themeButton.ZIndex + 1
+            local hoverOutline = themeButton:FindFirstChild("JiggySelectionOutline")
+            if not hoverOutline then
+                hoverOutline = Instance.new("UIStroke")
+                hoverOutline.Name = "JiggySelectionOutline"
+                hoverOutline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+                hoverOutline.Color = Color3.fromRGB(174, 70, 255)
+                hoverOutline.Thickness = 1.5
+                hoverOutline.Transparency = 1
+                hoverOutline.Parent = themeButton
+            end
+            local normalColor = themeButton.BackgroundColor3
+            local function setThemeHover(isHovered)
+                local tween = TweenInfo.new(0.09, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+                TweenService:Create(themeButton, tween, {BackgroundColor3 = isHovered and Color3.fromRGB(63, 24, 110) or normalColor}):Play()
+                TweenService:Create(hoverMarker, tween, {BackgroundTransparency = isHovered and 0 or 1}):Play()
+                TweenService:Create(hoverOutline, tween, {Transparency = isHovered and 0 or 1}):Play()
+            end
+            themeButton.MouseEnter:Connect(function() setThemeHover(true) end)
+            themeButton.MouseLeave:Connect(function() setThemeHover(false) end)
+            page:GetPropertyChangedSignal("Visible"):Connect(function()
+                if not page.Visible then setThemeHover(false) end
+            end)
+        end
+    end
+
     local previousVisibility = {}
     local glitchLayer
     mapsButton.Activated:Connect(function()
