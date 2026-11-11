@@ -259,7 +259,7 @@ fly.BorderSizePixel = 0
 fly.Position = UDim2.new(0, 8, 0, 209)
 fly.Size = UDim2.new(1, -16, 0, 20)
 fly.Font = Enum.Font.SourceSansBold
-fly.Text = "Flying: Off"
+fly.Text = "Fly: Off"
 fly.TextColor3 = Color3.fromRGB(0, 255, 255)
 fly.TextSize = 17.000
 fly.TextWrapped = true
@@ -1222,7 +1222,7 @@ local function MREH_fake_script() -- LanguageToggle.LanguageController_Edit_Here
 	    ["FPSPingToggle"] = {"Status", "Estado", "Statut", "ステータス", "状态", "Status"},
 	    ["ArmoryTP"] = {"Teleport: Armory", "Teletransporte: Armería", "Téléporter : Armurerie", "武器庫へテレポート", "传送至军械库", "Teleport: Waffenkammer"},
 	    ["TextButton"] = {"Aimbot Settings", "Configuración de apuntado", "Paramètres de visée", "エイム設定", "自瞄设置", "Zielhilfe-Einstellungen"},
-	    ["fly"] = {"Flying", "Volar", "Vol", "飛行", "飞行", "Fliegen"},
+	    ["fly"] = {"Fly", "Volar", "Vol", "飛行", "飞行", "Fliegen"},
 	    ["Auto Pilot"] = {"Auto Pilot", "Piloto automático", "Pilote automatique", "自動操縦", "自动驾驶", "Autopilot"},
 	    ["Spin Bot"] = {"Spin Bot", "Giro automático", "Rotation auto", "自動回転", "自动旋转", "Drehmodus"},
 	    ["NoclipToggle"] = {"Noclip V2", "Atravesar paredes V2", "Traverser les murs V2", "壁抜け V2", "穿墙 V2", "Durch Wände V2"},
@@ -4630,7 +4630,7 @@ local function DXHC_fake_script() -- y0ungDareMenuv45.MainScript
 	
 	local player = Players.LocalPlayer
 	local gui = script:FindFirstAncestorOfClass("ScreenGui")
-	local button = gui:WaitForChild("Frame"):WaitForChild("fly")
+	local button = fly -- original Flying button, now in Main Mods
 	
 	local Speed = 1.5
 	local enabled = false
@@ -4640,7 +4640,7 @@ local function DXHC_fake_script() -- y0ungDareMenuv45.MainScript
 	local heartbeatConnection
 	
 	local function updateButton()
-		button.Text = enabled and "Flying: On" or "Flying: Off"
+		button.Text = enabled and "Fly: On" or "Fly: Off"
 	end
 	
 	local function cleanup()
@@ -5507,6 +5507,27 @@ do
     respawnAtDeathButton.ZIndex = 33
     attachHover(respawnAtDeathButton)
 
+    -- Keep Flying in Main Mods directly below Respawn at Death Location.
+    for index, button in ipairs({fly}) do
+        button.Parent = page
+        button.AnchorPoint = Vector2.new(0, 0)
+        button.Position = UDim2.fromOffset(8, 79 + (9 + index) * 20)
+        button.Size = UDim2.new(1, -16, 0, 20)
+        button.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+        button.BackgroundTransparency = 0.82
+        button.BorderSizePixel = 0
+        button.AutoButtonColor = false
+        button.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        button.TextColor3 = Color3.fromRGB(1, 244, 253)
+        button.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+        button.TextStrokeTransparency = 0.28
+        button.TextXAlignment = Enum.TextXAlignment.Left
+        button.TextSize = 13
+        button.ZIndex = 33
+        local marker = button:FindFirstChild("JiggySelectionMarker")
+        if marker then marker.ZIndex = 34 end
+    end
+
     local LocalPlayer = game:GetService("Players").LocalPlayer
     local RespawnAtDeathEnabled = false
     local lastDeathPosition = nil
@@ -5692,7 +5713,8 @@ do
     end
     attachHover(funButton)
 
-    for index, button in ipairs({fly, FlyingCarsToggle, AutoPilot}) do
+    -- Flying Cars belongs in Fun Mods, retaining its original controller.
+    for index, button in ipairs({AutoPilot, FlyingCarsToggle}) do
         button.Parent = page
         button.AnchorPoint = Vector2.new(0, 0)
         button.Position = UDim2.fromOffset(8, 79 + (index - 1) * 20)
@@ -5716,7 +5738,7 @@ do
     local debugButton = Instance.new("TextButton")
     debugButton.Name = "DebugMorphToggle"
     debugButton.Parent = page
-    debugButton.Position = UDim2.fromOffset(8, 139)
+    debugButton.Position = UDim2.fromOffset(8, 119)
     debugButton.Size = UDim2.new(1, -16, 0, 20)
     debugButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
     debugButton.BackgroundTransparency = 0.82
@@ -6682,7 +6704,7 @@ do
     local vapeButton = Instance.new("TextButton")
     vapeButton.Name = "VapeToggle"
     vapeButton.Parent = page
-    vapeButton.Position = UDim2.fromOffset(8, 179)
+    vapeButton.Position = UDim2.fromOffset(8, 139)
     vapeButton.Size = UDim2.new(1, -16, 0, 20)
     vapeButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
     vapeButton.BackgroundTransparency = 0.82
