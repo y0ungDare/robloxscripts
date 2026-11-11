@@ -8619,9 +8619,289 @@ do
         end)
     end
 
+    -- CyberPunk City Theme: embedded pathway/wall/roof LEDs, decals, sky, music.
+    do
+        local player = game:GetService("Players").LocalPlayer
+        local Lighting = game:GetService("Lighting")
+        local button = Instance.new("TextButton")
+        button.Name = "CyberPunkCityThemeToggle"
+        button.Parent = page
+        button.Position = UDim2.fromOffset(8, 159)
+        button.Size = UDim2.new(1, -16, 0, 20)
+        button.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+        button.BackgroundTransparency = 0.82
+        button.BorderSizePixel = 0
+        button.AutoButtonColor = false
+        button.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        button.TextColor3 = Color3.fromRGB(1, 244, 253)
+        button.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+        button.TextStrokeTransparency = 0.28
+        button.TextXAlignment = Enum.TextXAlignment.Left
+        button.TextSize = 13
+        button.Text = "CyberPunk City Theme: OFF"
+        button.ZIndex = 33
+        -- Theme soundtrack: only plays while the cyberpunk effect is enabled.
+        local themeSound = Instance.new('Sound')
+        themeSound.Name = 'PurpleCyberpunkThemeMusic'
+        themeSound.SoundId = 'rbxassetid://83260266651882'
+        themeSound.Volume = 0.7
+        themeSound.Looped = true
+        themeSound.Parent = y0ungDareMenuv45
+        local enabled = false
+        local originalLighting = {}
+        local originalSkies = {}
+        local originals = {}
+        local added = {}
+        local skyInstance
+        local hiddenSurfaceArt = {}
+        local busy = false
+        local faces = {'SkyboxBk','SkyboxDn','SkyboxFt','SkyboxLf','SkyboxRt','SkyboxUp'}
+        local faceNames = {'Back','Bottom','Front','Left','Right','Top'}
+        local function findSky(obj)
+            if obj:IsA('Sky') then return obj end
+            for _, descendant in ipairs(obj:GetDescendants()) do
+                if descendant:IsA('Sky') then return descendant end
+            end
+        end
+        local function loadSky()
+            if skyInstance then return skyInstance end
+            local ok, objects = pcall(function() return game:GetObjects('rbxassetid://4683026098') end)
+            if not ok or type(objects) ~= 'table' then return nil end
+            for _, obj in ipairs(objects) do
+                local sky = findSky(obj)
+                if sky then
+                    skyInstance = sky:Clone()
+                end
+                pcall(function() obj:Destroy() end)
+                if skyInstance then break end
+            end
+            return skyInstance
+        end
+        -- Tile the city image across every surface, including horizontal floors.
+        -- Decals stretch one image over a whole floor; Texture objects tile it instead.
+        local function themePart(part, image)
+            if not part:IsA('BasePart') or (player.Character and part:IsDescendantOf(player.Character)) then return end
+            if originals[part] then return end
+            originals[part] = {Color=part.Color, Material=part.Material, Reflectance=part.Reflectance}
+            part.Color = Color3.fromRGB(74, 27, 125)
+            part.Material = Enum.Material.SmoothPlastic
+            part.Reflectance = 0.06
+            -- Existing floor decals/textures can cover the new theme. Hide them while enabled.
+            for _, child in ipairs(part:GetChildren()) do
+                if (child:IsA('Decal') or child:IsA('Texture')) and child.Name ~= 'PurpleCyberpunkThemeTexture' then
+                    hiddenSurfaceArt[child] = child.Transparency
+                    child.Transparency = 1
+                end
+            end
+            for _, face in ipairs(Enum.NormalId:GetEnumItems()) do
+                local texture = Instance.new('Texture')
+                texture.Name = 'PurpleCyberpunkThemeTexture'
+                texture.Face = face
+                texture.Texture = image
+                -- Keep floors fully covered with repeating city imagery, even on huge parts.
+                texture.StudsPerTileU = 36
+                texture.StudsPerTileV = 36
+                texture.Transparency = 0
+                texture.Color3 = Color3.fromRGB(210, 150, 255)
+                texture.Parent = part
+                table.insert(added, texture)
+            end
+            -- SurfaceGui image overlay for large flat prison floors that don't show Texture decals reliably.
+            -- Only apply to upward-facing broad parts, never characters.
+            if part.Size.X >= 5 and part.Size.Z >= 5 and part.CFrame.UpVector.Y > 0.65 then
+                local surface = Instance.new('SurfaceGui')
+                surface.Name = 'PurpleCyberpunkFloorImage'
+                surface.Face = Enum.NormalId.Top
+                surface.Adornee = part
+                surface.CanvasSize = Vector2.new(math.max(128, math.floor(part.Size.X * 18)), math.max(128, math.floor(part.Size.Z * 18)))
+                surface.LightInfluence = 0
+                surface.AlwaysOnTop = false
+                surface.ZOffset = 0.1
+                local imageLabel = Instance.new('ImageLabel')
+                imageLabel.Name = 'CyberpunkFloorTile'
+                imageLabel.Size = UDim2.fromScale(1, 1)
+                imageLabel.BackgroundTransparency = 1
+                imageLabel.Image = image
+                imageLabel.ScaleType = Enum.ScaleType.Tile
+                imageLabel.TileSize = UDim2.fromOffset(648, 648)
+                imageLabel.ImageColor3 = Color3.fromRGB(235, 190, 255)
+                imageLabel.Parent = surface
+                surface.Parent = part
+                table.insert(added, surface)
+            end
+        end
+        -- Decorative purple LED strips along roof edges and indoor ceiling edges.
+        -- Purely local visual parts; removed with the theme.
+        local function addPurpleLEDs()
+            local made = 0
+            local maxStrips = 260
+            local function strip(parentPart, localOffset, length, alongX)
+                if made >= maxStrips or length < 7 then return end
+                local lightPart = Instance.new('Part')
+                lightPart.Name = 'PurpleCyberpunkLEDStrip'
+                lightPart.Anchored = true
+                lightPart.CanCollide = false
+                lightPart.CanTouch = false
+                lightPart.CanQuery = false
+                lightPart.CastShadow = false
+                lightPart.Material = Enum.Material.Neon
+                lightPart.Color = Color3.fromRGB(177, 45, 255)
+                lightPart.Transparency = 0.08
+                lightPart.Size = alongX and Vector3.new(length, 0.17, 0.22) or Vector3.new(0.22, 0.17, length)
+                lightPart.CFrame = parentPart.CFrame * CFrame.new(localOffset)
+                lightPart.Parent = workspace
+                table.insert(added, lightPart)
+                made = made + 1
+                if made % 3 == 1 then
+                    local glow = Instance.new('PointLight')
+                    glow.Name = 'PurpleCyberpunkLEDGlow'
+                    glow.Color = Color3.fromRGB(175, 55, 255)
+                    glow.Brightness = 0.75
+                    glow.Range = 12
+                    glow.Shadows = false
+                    glow.Parent = lightPart
+                end
+            end
+            local candidates = {}
+            local rayParams = RaycastParams.new()
+            rayParams.FilterType = Enum.RaycastFilterType.Exclude
+            rayParams.FilterDescendantsInstances = {player.Character or player}
+            for _, part in ipairs(workspace:GetDescendants()) do
+                if part:IsA('BasePart') and part.Anchored and part.Transparency < 0.65
+                    and not (player.Character and part:IsDescendantOf(player.Character)) then
+                    local sz = part.Size
+                    if sz.X >= 10 and sz.Z >= 10 and sz.Y <= 9 and part.CFrame.UpVector.Y > 0.9 then
+                        -- Detect an overhead slab by checking for open space beneath it.
+                        -- Floors usually have terrain or other parts directly underneath;
+                        -- ceiling/roof panels have a walkable room or open air below.
+                        local underside = (part.CFrame * CFrame.new(0, -sz.Y / 2 - 0.25, 0)).Position
+                        rayParams.FilterDescendantsInstances = {part, player.Character or player}
+                        local below = workspace:Raycast(underside, Vector3.new(0, -10, 0), rayParams)
+                        local clearance = below and below.Distance or 10
+                        if clearance >= 5 then
+                            table.insert(candidates, {part = part, clearance = clearance, area = sz.X * sz.Z})
+                        end
+                    end
+                end
+            end
+            -- Larger, clearer overhead structures first; don't cover ordinary floors.
+            table.sort(candidates, function(a,b)
+                if a.clearance ~= b.clearance then return a.clearance > b.clearance end
+                return a.area > b.area
+            end)
+            for _, candidate in ipairs(candidates) do
+                if made >= maxStrips then break end
+                local part = candidate.part
+                if part.Parent then
+                    local sz = part.Size
+                    -- Ceiling undersides plus rooftop edges, in local coordinates so
+                    -- strips follow rotated buildings and sloped structures.
+                    for _, y in ipairs({-sz.Y/2 - 0.12, sz.Y/2 + 0.12}) do
+                        strip(part, Vector3.new(0, y, sz.Z/2 - 0.3), sz.X - 0.6, true)
+                        strip(part, Vector3.new(0, y, -sz.Z/2 + 0.3), sz.X - 0.6, true)
+                        strip(part, Vector3.new(sz.X/2 - 0.3, y, 0), sz.Z - 0.6, false)
+                        strip(part, Vector3.new(-sz.X/2 + 0.3, y, 0), sz.Z - 0.6, false)
+                    end
+                end
+            end
+        end
+        local function turnOn()
+            button.Text = 'CyberPunk City Theme: LOADING IMAGE...'
+            local sky = loadSky()
+            if not sky then
+                button.Text = 'CyberPunk City Theme: RETRY'
+                warn('Neon City Sky model 4683026098 could not be loaded. Roblox may block GetObjects in this client.')
+                return false
+            end
+            local image
+            for _, property in ipairs({'SkyboxFt','SkyboxBk','SkyboxRt','SkyboxLf','SkyboxUp','SkyboxDn'}) do
+                local value = sky[property]
+                if value and value ~= '' then image = value; break end
+            end
+            if not image then
+                button.Text = 'CyberPunk City Theme: NO IMAGE'
+                return false
+            end
+            for _, prop in ipairs({'ClockTime','Brightness','Ambient','OutdoorAmbient','FogColor','FogEnd','ExposureCompensation'}) do
+                originalLighting[prop] = Lighting[prop]
+            end
+            for _, obj in ipairs(Lighting:GetChildren()) do
+                if obj:IsA('Sky') then
+                    table.insert(originalSkies, {object=obj, parent=obj.Parent})
+                    obj.Parent = nil
+                end
+            end
+            local newSky = sky:Clone()
+            newSky.Name = 'PurpleCyberpunkCitySky'
+            newSky.Parent = Lighting
+            table.insert(added, newSky)
+            Lighting.ClockTime = 0
+            Lighting.Brightness = 1.4
+            Lighting.Ambient = Color3.fromRGB(90, 30, 140)
+            Lighting.OutdoorAmbient = Color3.fromRGB(130, 60, 180)
+            Lighting.FogColor = Color3.fromRGB(57, 18, 93)
+            Lighting.FogEnd = 850
+            Lighting.ExposureCompensation = -0.2
+            local count = 0
+            for _, part in ipairs(workspace:GetDescendants()) do
+                if part:IsA('BasePart') and part.Anchored and part.Transparency < 0.9 then
+                    themePart(part, image)
+                    count = count + 1
+                    if count % 200 == 0 then task.wait() end
+                end
+            end
+            addPurpleLEDs()
+            button.Text = 'CyberPunk City Theme: ON'
+            return true
+        end
+        local function turnOff()
+            for part, state in pairs(originals) do
+                if part.Parent then
+                    pcall(function()
+                        part.Color = state.Color
+                        part.Material = state.Material
+                        part.Reflectance = state.Reflectance
+                    end)
+                end
+            end
+            table.clear(originals)
+            for art, oldTransparency in pairs(hiddenSurfaceArt) do
+                if art.Parent then pcall(function() art.Transparency = oldTransparency end) end
+            end
+            table.clear(hiddenSurfaceArt)
+            for _, obj in ipairs(added) do
+                if obj.Parent then obj:Destroy() end
+            end
+            table.clear(added)
+            for _, entry in ipairs(originalSkies) do
+                if entry.object then entry.object.Parent = entry.parent end
+            end
+            table.clear(originalSkies)
+            for prop, value in pairs(originalLighting) do Lighting[prop] = value end
+            themeSound:Stop()
+            button.Text = 'CyberPunk City Theme: OFF'
+        end
+        button.Activated:Connect(function()
+            if busy then return end
+            busy = true
+            if enabled then
+                enabled = false
+                turnOff()
+            else
+                enabled = turnOn()
+                if enabled then themeSound:Play() end
+            end
+            busy = false
+        end)
+        y0ungDareMenuv45.Destroying:Connect(function()
+            themeSound:Stop()
+            if enabled then turnOff() end
+        end)
+    end
+
     -- Give the three added Maps themes the same cyan selection bar,
     -- purple outline and animated hover as the original Christmas row.
-    for _, themeName in ipairs({"PinkThemeToggle", "GlitchedClubThemeToggle", "HalloweenThemeToggle"}) do
+    for _, themeName in ipairs({"PinkThemeToggle", "GlitchedClubThemeToggle", "HalloweenThemeToggle", "CyberPunkCityThemeToggle"}) do
         local themeButton = page:FindFirstChild(themeName)
         if themeButton then
             themeButton.AutoButtonColor = false
