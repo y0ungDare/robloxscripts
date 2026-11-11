@@ -8378,6 +8378,494 @@ do
     end
 
 
+    -- Halloween Theme: integrated supplied map decorations and looping sound.
+    do
+        -- Prison Life Halloween Map: client-side reversible visual theme
+        -- Place in a LocalScript or run in a client Lua environment.
+        local Players=game:GetService('Players')
+        local Lighting=game:GetService('Lighting')
+        local Workspace=game:GetService('Workspace')
+        local RunService=game:GetService('RunService')
+        local SoundService=game:GetService('SoundService')
+        local player=Players.LocalPlayer
+        local active=false
+        local halloweenSound=nil
+        local saved={}
+        local lightingSaved={}
+        local effectSaved={}
+        local root=nil
+        local heartbeat=nil
+        local added=nil
+        local animated={}
+        local rng=Random.new(1031)
+        local ORANGE=Color3.fromRGB(255,111,19)
+        local PURPLE=Color3.fromRGB(118,34,180)
+        local GREEN=Color3.fromRGB(94,239,72)
+        local DARK=Color3.fromRGB(37,25,48)
+        local CREAM=Color3.fromRGB(255,235,190)
+        local function eligible(p)
+         if not p:IsA('BasePart') or not p.Anchored or p.Size.Magnitude<7 then return false end
+         if root and p:IsDescendantOf(root) then return false end
+         if p:FindFirstAncestorOfClass('Tool') then return false end
+         local a=p.Parent
+         while a and a~=Workspace do
+          if a:IsA('Model') and a:FindFirstChildOfClass('Humanoid') then return false end
+          a=a.Parent
+         end
+         return true
+        end
+        local function recolor(p)
+         if not eligible(p) or saved[p] then return end
+         saved[p]={Color=p.Color,Material=p.Material,Reflectance=p.Reflectance}
+         local n=math.floor(math.abs(p.Position.X*2+p.Position.Z*3))%5
+         p.Color=({DARK,Color3.fromRGB(76,46,83),Color3.fromRGB(96,55,31),PURPLE,Color3.fromRGB(55,69,46)})[n+1]
+         p.Material=Enum.Material.SmoothPlastic
+         p.Reflectance=0
+        end
+        local function part(name,cf,size,color,shape,material)
+         local p=Instance.new('Part')
+         p.Name=name;p.CFrame=cf;p.Size=size;p.Color=color
+         p.Anchored=true;p.CanCollide=false;p.CanTouch=false;p.CanQuery=false;p.CastShadow=false
+         p.Material=material or Enum.Material.SmoothPlastic
+         if shape then p.Shape=shape end
+         p.Parent=root
+         return p
+        end
+        local function lamp(p,color,range,brightness)
+         local light=Instance.new('PointLight')
+         light.Color=color;light.Range=range or 18;light.Brightness=brightness or 1.2
+         light.Shadows=false;light.Parent=p
+         return light
+        end
+        local function surfaceText(p,face,message,color)
+         local gui=Instance.new('SurfaceGui')
+         gui.Name='HalloweenWallArtwork';gui.Face=face;gui.CanvasSize=Vector2.new(640,420)
+         gui.LightInfluence=0;gui.Parent=p
+         local bg=Instance.new('Frame');bg.Size=UDim2.fromScale(1,1);bg.BackgroundColor3=Color3.fromRGB(22,13,32);bg.BorderSizePixel=0;bg.Parent=gui
+         local stroke=Instance.new('UIStroke');stroke.Thickness=8;stroke.Color=ORANGE;stroke.Parent=bg
+         local top=Instance.new('TextLabel');top.BackgroundTransparency=1;top.Size=UDim2.fromScale(1,.62)
+         top.Text=message;top.Font=Enum.Font.GothamBlack;top.TextScaled=true;top.TextColor3=color;top.Parent=bg
+         local bottom=Instance.new('TextLabel');bottom.BackgroundTransparency=1;bottom.Position=UDim2.fromScale(0,.63);bottom.Size=UDim2.fromScale(1,.3)
+         bottom.Text='HAPPY HALLOWEEN  •  OCT 31';bottom.Font=Enum.Font.GothamBold;bottom.TextScaled=true;bottom.TextColor3=CREAM;bottom.Parent=bg
+        end
+        local function pumpkin(cf,scale)
+         local orange=Color3.fromRGB(232,100,18)
+         local body=part('3D Jack O Lantern',cf*CFrame.new(0,.95*scale,0),Vector3.new(2.1,1.8,1.7)*scale,orange,Enum.PartType.Ball)
+         for _,x in ipairs({-.53,.53}) do
+          part('Pumpkin Glowing Eye',cf*CFrame.new(x*scale,1.15*scale,-.78*scale),Vector3.new(.34,.43,.13)*scale,GREEN,nil,Enum.Material.Neon)
+         end
+         part('Pumpkin Smile',cf*CFrame.new(0,.65*scale,-.83*scale),Vector3.new(1,.16,.1)*scale,GREEN,nil,Enum.Material.Neon)
+         part('Pumpkin Stem',cf*CFrame.new(0,1.98*scale,0),Vector3.new(.3,.52,.32)*scale,Color3.fromRGB(49,124,42))
+         lamp(body,ORANGE,13*scale,1.5)
+         table.insert(animated,{obj=body,kind='pumpkin'})
+        end
+        local function ghost(cf,scale)
+         local body=part('Floating Ghost',cf,Vector3.new(1.7,2.1,1)*scale,CREAM,Enum.PartType.Ball,Enum.Material.Neon)
+         for _,x in ipairs({-.38,.38}) do
+          part('Ghost Eye',cf*CFrame.new(x*scale,.15*scale,-.46*scale),Vector3.new(.21,.4,.12)*scale,DARK,Enum.PartType.Ball)
+         end
+         part('Ghost Mouth',cf*CFrame.new(0,-.35*scale,-.49*scale),Vector3.new(.24,.36,.12)*scale,DARK,Enum.PartType.Ball)
+         table.insert(animated,{obj=body,kind='ghost',origin=body.CFrame,phase=rng:NextNumber(0,6.28)})
+        end
+        local function hanging(cf,number)
+         local length=3+(number%4)
+         part('Hanging Chain',cf*CFrame.new(0,-length/2,0),Vector3.new(.09,length,.09),Color3.fromRGB(145,142,151),nil,Enum.Material.Metal)
+         local bottom=cf*CFrame.new(0,-length-.6,0)
+         if number%3==0 then ghost(bottom,.65) else
+          local lantern=part('Hanging Halloween Lantern',bottom,Vector3.new(1.15,1.15,1.15),number%2==0 and ORANGE or PURPLE,Enum.PartType.Ball,Enum.Material.Neon)
+          lamp(lantern,lantern.Color,21,2)
+          table.insert(animated,{obj=lantern,kind='light'})
+         end
+        end
+        local function web(cf,scale)
+         local anchor=part('Spiderweb Center',cf,Vector3.new(.12,.12,.12),CREAM,Enum.PartType.Ball)
+         for i=1,8 do
+          local theta=i*math.pi/4
+          local r=scale*2.1
+          local delta=Vector3.new(math.cos(theta)*r,math.sin(theta)*r,0)
+          local start=cf.Position
+          local mid=start+delta*.5
+          local strand=part('Spiderweb Thread',CFrame.lookAt(mid,start+delta)*CFrame.Angles(math.pi/2,0,0),Vector3.new(.035,r,.035),CREAM,nil,Enum.Material.Neon)
+          strand.Transparency=.24
+         end
+         for ring=1,3 do
+          local radius=ring*scale*.57
+          for i=1,12 do
+           local a=i*math.pi/6
+           local b=(i+1)*math.pi/6
+           local v1=cf.Position+Vector3.new(math.cos(a)*radius,math.sin(a)*radius,0)
+           local v2=cf.Position+Vector3.new(math.cos(b)*radius,math.sin(b)*radius,0)
+           local d=v2-v1
+           local segment=part('Spiderweb Arc',CFrame.lookAt((v1+v2)/2,v2)*CFrame.Angles(math.pi/2,0,0),Vector3.new(.028,d.Magnitude,.028),CREAM,nil,Enum.Material.Neon)
+           segment.Transparency=.25
+          end
+         end
+        end
+        local function sign(cf,index)
+         local panel=part('Halloween Framed Painting',cf,Vector3.new(7,4.7,.24),Color3.fromRGB(80,39,23))
+         local art=part('Halloween Painting Canvas',cf*CFrame.new(0,0,-.16),Vector3.new(6.55,4.25,.07),DARK)
+         local icons={'🎃  👻  🎃','🦇  BOO!  🦇','☠  SPOOKY  ☠','🎃  TRICK OR TREAT','👻  HAUNTED  👻'}
+         surfaceText(art,Enum.NormalId.Front,icons[(index-1)%#icons+1],index%2==0 and GREEN or ORANGE)
+         local a=part('Painting Accent Light',cf*CFrame.new(0,2.55,-.6),Vector3.new(.6,.35,.6),PURPLE,Enum.PartType.Ball,Enum.Material.Neon)
+         lamp(a,PURPLE,13,1.4)
+        end
+        local function wallPositions(p)
+         local x,z,y=p.Size.X,p.Size.Z,p.Size.Y
+         if y<9 or math.max(x,z)<12 or math.min(x,z)>7 then return end
+         local wideX=x>=z
+         local length=wideX and x or z
+         local count=math.clamp(math.floor(length/12),1,7)
+         for j=1,count do
+          local u=(j-(count+1)/2)*math.min(12,length/count)
+          for _,side in ipairs({-1,1}) do
+           local localpos,rotation
+           if wideX then
+            localpos=Vector3.new(u,math.clamp(y*.08,-y*.3,y*.3),side*(z/2+.22))
+            rotation=side==1 and math.pi or 0
+           else
+            localpos=Vector3.new(side*(x/2+.22),math.clamp(y*.08,-y*.3,y*.3),u)
+            rotation=side==1 and -math.pi/2 or math.pi/2
+           end
+           local cf=p.CFrame*CFrame.new(localpos)*CFrame.Angles(0,rotation,0)
+           sign(cf,j+math.floor(p.Position.X))
+          end
+         end
+        end
+
+        -- Additional scary wall and ground decorations. All parts are non-collidable.
+        local function bone(cf,length)
+         local boneColor=Color3.fromRGB(221,213,182)
+         part('Scattered Skeleton Bone',cf,Vector3.new(.2,.2,length),boneColor,nil,Enum.Material.SmoothPlastic)
+         for _,z in ipairs({-length/2,length/2}) do
+          part('Bone Joint',cf*CFrame.new(0,0,z),Vector3.new(.35,.35,.35),boneColor,Enum.PartType.Ball)
+         end
+        end
+        local function grave(cf,index)
+         local stone=part('Haunted Gravestone',cf*CFrame.new(0,1.55,0),Vector3.new(2.3,3,.45),Color3.fromRGB(87,89,99))
+         part('Gravestone Rounded Top',cf*CFrame.new(0,3,0),Vector3.new(2.3,1,.45),Color3.fromRGB(87,89,99),Enum.PartType.Ball)
+         local face=part('Gravestone Inscription',cf*CFrame.new(0,1.65,-.25),Vector3.new(1.8,1.8,.05),DARK)
+         surfaceText(face,Enum.NormalId.Front,index%2==0 and 'RIP' or 'BEWARE',CREAM)
+         part('Grave Dirt',cf*CFrame.new(0,.12,-.65),Vector3.new(2.8,.22,2),Color3.fromRGB(67,48,38),Enum.PartType.Ball)
+        end
+        local function skull(cf,scale)
+         local head=part('Spooky Skull',cf*CFrame.new(0,.65*scale,0),Vector3.new(1.2,1.1,1)*scale,CREAM,Enum.PartType.Ball)
+         for _,x in ipairs({-.28,.28}) do
+          part('Skull Eye Socket',cf*CFrame.new(x*scale,.77*scale,-.47*scale),
+           Vector3.new(.31,.36,.08)*scale,DARK,Enum.PartType.Ball)
+         end
+         part('Skull Nose',cf*CFrame.new(0,.48*scale,-.52*scale),Vector3.new(.15,.2,.08)*scale,DARK)
+         part('Skull Teeth',cf*CFrame.new(0,.21*scale,-.43*scale),Vector3.new(.66,.14,.12)*scale,CREAM)
+        end
+        local function coffin(cf)
+         part('Haunted Coffin',cf*CFrame.new(0,.3,0),Vector3.new(2.1,.55,4.1),Color3.fromRGB(60,35,31))
+         part('Coffin Lid',cf*CFrame.new(0,.62,0),Vector3.new(2.35,.13,4.3),Color3.fromRGB(111,62,39))
+         part('Coffin Cross Vertical',cf*CFrame.new(0,.7,0),Vector3.new(.17,.05,1.5),ORANGE,nil,Enum.Material.Neon)
+         part('Coffin Cross Horizontal',cf*CFrame.new(0,.71,0),Vector3.new(.9,.05,.17),ORANGE,nil,Enum.Material.Neon)
+        end
+        local function wallHorror(cf,index)
+         local panel=part('Scary Wall Poster Frame',cf,Vector3.new(5.6,5.8,.25),Color3.fromRGB(41,31,43))
+         local canvas=part('Scary Wall Poster Canvas',cf*CFrame.new(0,0,-.16),Vector3.new(5.15,5.35,.06),DARK)
+         local icons={'☠  KEEP OUT','👁  WATCHING YOU','🦇  HAUNTED','👻  RUN!','🎃  TRICK OR TREAT','☠  DANGER','🕷  SPIDER DEN'}
+         surfaceText(canvas,Enum.NormalId.Front,icons[(index-1)%#icons+1],index%2==0 and GREEN or ORANGE)
+         if index%3==0 then
+          local drip=part('Slime Drip',cf*CFrame.new(-1.5,-3.3,-.25),Vector3.new(.2,1.5,.12),GREEN,nil,Enum.Material.Neon)
+          part('Slime Drip',cf*CFrame.new(.5,-3,-.25),Vector3.new(.2,.9,.12),GREEN,nil,Enum.Material.Neon)
+         end
+         if index%4==0 then
+          local orb=part('Cursed Wall Eye',cf*CFrame.new(0,3.5,-.4),Vector3.new(.8,.8,.4),GREEN,Enum.PartType.Ball,Enum.Material.Neon)
+          lamp(orb,GREEN,12,.8)
+         end
+        end
+        local function addHorrorToWall(p,index)
+         local x,z,y=p.Size.X,p.Size.Z,p.Size.Y
+         if y<8 or math.max(x,z)<10 or math.min(x,z)>8 then return end
+         local wideX=x>=z
+         local length=wideX and x or z
+         local count=math.clamp(math.floor(length/9),1,9)
+         for j=1,count do
+          local offset=(j-(count+1)/2)*(length/(count+1))
+          for _,side in ipairs({-1,1}) do
+           local loc,angle
+           if wideX then
+            loc=Vector3.new(offset,math.clamp(y*.05,-y*.25,y*.25),side*(z/2+.38))
+            angle=side==1 and math.pi or 0
+           else
+            loc=Vector3.new(side*(x/2+.38),math.clamp(y*.05,-y*.25,y*.25),offset)
+            angle=side==1 and -math.pi/2 or math.pi/2
+           end
+           wallHorror(p.CFrame*CFrame.new(loc)*CFrame.Angles(0,angle,0),index+j+(side==1 and 1 or 0))
+          end
+         end
+        end
+        local function decorateGround(surfaces)
+         local count=0
+         for _,p in ipairs(surfaces) do
+          if count>=110 then break end
+          -- Only broad, reasonably horizontal surfaces, avoiding vertical walls.
+          if p.Size.X>=13 and p.Size.Z>=13 and p.Size.Y<=8 and p.CFrame.UpVector.Y>.9 then
+           count+=1
+           local sx=math.min(p.Size.X*.28,12)
+           local sz=math.min(p.Size.Z*.28,12)
+           local cf=p.CFrame*CFrame.new(((count%3)-1)*sx,p.Size.Y/2+.12,((count%5)-2)*sz*.48)
+           if count%6==0 then coffin(cf*CFrame.Angles(0,count*.8,0))
+           elseif count%5==0 then grave(cf*CFrame.Angles(0,count*.7,0),count)
+           elseif count%4==0 then
+            skull(cf,1)
+            for j=1,3 do bone(cf*CFrame.new(j*.8-1.6,.2,1)*CFrame.Angles(0,j*.8,0),1.4) end
+           elseif count%3==0 then
+            ghost(cf*CFrame.new(0,3,0),.9)
+           else
+            pumpkin(cf,.85)
+            bone(cf*CFrame.new(1.8,.15,0)*CFrame.Angles(0,count,0),1.5)
+           end
+          end
+         end
+        end
+
+
+        -- Christmas campfire location, reused exactly for the Halloween gathering area.
+        local CAMPFIRE_XZ = Vector3.new(752.26,98.00,2435.39)
+        local function campGround(x,z,offset)
+         local params=RaycastParams.new()
+         params.FilterType=Enum.RaycastFilterType.Exclude
+         params.FilterDescendantsInstances=root and {root} or {}
+         params.IgnoreWater=true
+         local hit=Workspace:Raycast(Vector3.new(x,260,z),Vector3.new(0,-500,0),params)
+         return Vector3.new(x,(hit and hit.Position.Y or CAMPFIRE_XZ.Y)+(offset or 0),z)
+        end
+        local function halloweenCampfire()
+         local center=campGround(CAMPFIRE_XZ.X,CAMPFIRE_XZ.Z,.12)
+         -- Circular stone firepit, logs and glowing flame layers.
+         for i=1,16 do
+          local a=i*math.pi*2/16
+          local pos=center+Vector3.new(math.cos(a)*3.1,.38,math.sin(a)*3.1)
+          part('Halloween Firepit Stone',CFrame.new(pos)*CFrame.Angles(0,a,0),
+           Vector3.new(1.4,.75,1.1),Color3.fromRGB(79,76,83),Enum.PartType.Ball)
+         end
+         for i=1,7 do
+          local a=i*math.pi/7
+          part('Halloween Campfire Wood',CFrame.new(center+Vector3.new(0,.4,0))*CFrame.Angles(0,a,math.rad(12)),
+           Vector3.new(.55,.65,4.1),Color3.fromRGB(91,49,26),Enum.PartType.Cylinder)
+         end
+         local flameBase=part('Halloween Campfire Flame Source',CFrame.new(center+Vector3.new(0,.6,0)),
+          Vector3.new(.5,.5,.5),ORANGE,nil,Enum.Material.Neon)
+         flameBase.Transparency=1
+         local fire=Instance.new('Fire')
+         fire.Name='Halloween Campfire Flames'
+         fire.Color=ORANGE
+         fire.SecondaryColor=Color3.fromRGB(185,255,64)
+         fire.Heat=9
+         fire.Size=8
+         fire.Parent=flameBase
+         lamp(flameBase,ORANGE,35,3)
+         local smoke=Instance.new('Smoke')
+         smoke.Color=Color3.fromRGB(65,51,75)
+         smoke.Opacity=.22
+         smoke.RiseVelocity=5
+         smoke.Size=7
+         smoke.Parent=flameBase
+         local embers=Instance.new('ParticleEmitter')
+         embers.Name='Floating Halloween Embers'
+         embers.Texture='rbxasset://textures/particles/sparkles_main.dds'
+         embers.Color=ColorSequence.new(ORANGE,Color3.fromRGB(160,255,78))
+         embers.LightEmission=.9
+         embers.Rate=20
+         embers.Lifetime=NumberRange.new(1.2,3)
+         embers.Speed=NumberRange.new(2,6)
+         embers.SpreadAngle=Vector2.new(30,30)
+         embers.Size=NumberSequence.new(.23,0)
+         embers.Parent=flameBase
+         -- Four wooden seats around the fire, matching the Christmas campfire layout.
+         for i=1,4 do
+          local a=(i-1)*math.pi/2
+          local x=center.X+math.cos(a)*7.5
+          local z=center.Z+math.sin(a)*7.5
+          local ground=campGround(x,z,.7)
+          part('Halloween Campfire Log Seat',CFrame.new(ground)*CFrame.Angles(0,a+math.pi/2,math.pi/2),
+           Vector3.new(1.8,5,1.8),Color3.fromRGB(105,63,35),Enum.PartType.Cylinder)
+         end
+         -- Dense haunted decorations, distributed around the fire and grounded individually.
+         for i=1,28 do
+          local a=i*2.3999632297
+          local r=10+(i%5)*3.3
+          local x=center.X+math.cos(a)*r
+          local z=center.Z+math.sin(a)*r
+          local cf=CFrame.new(campGround(x,z,.15))*CFrame.Angles(0,a+math.pi,0)
+          if i%7==0 then
+           coffin(cf)
+          elseif i%6==0 then
+           grave(cf,i)
+          elseif i%5==0 then
+           skull(cf,1.2)
+           bone(cf*CFrame.new(1.6,.1,0)*CFrame.Angles(0,i*.4,0),2)
+          elseif i%4==0 then
+           ghost(cf*CFrame.new(0,4,0),1.4)
+          else
+           pumpkin(cf,1+(i%3)*.18)
+          end
+         end
+         -- Haunted perimeter with towering lanterns, warning signs and cobwebs.
+         for i=1,12 do
+          local a=i*math.pi/6
+          local r=25
+          local base=campGround(center.X+math.cos(a)*r,center.Z+math.sin(a)*r,.2)
+          local pole=part('Halloween Campfire Lantern Pole',CFrame.new(base+Vector3.new(0,3.3,0)),
+           Vector3.new(.35,6.6,.35),DARK)
+          local lantern=part('Halloween Campfire Lantern',CFrame.new(base+Vector3.new(0,6.9,0)),
+           Vector3.new(1.3,1.7,1.3),i%2==0 and GREEN or ORANGE,nil,Enum.Material.Neon)
+          lamp(lantern,lantern.Color,23,2)
+          if i%3==0 then
+           local board=part('Haunted Campfire Warning Sign',CFrame.new(base+Vector3.new(0,4.5,-.65)),
+            Vector3.new(4.6,2.2,.22),DARK)
+           surfaceText(board,Enum.NormalId.Front,'☠  HAUNTED CAMP  ☠',ORANGE)
+          end
+          if i%2==0 then
+           web(CFrame.new(base+Vector3.new(0,7.5,0)),1.3)
+          end
+         end
+        end
+        local function start()
+         if active then return end
+         active=true
+         if halloweenSound then halloweenSound:Destroy();halloweenSound=nil end
+         halloweenSound=Instance.new('Sound')
+         halloweenSound.Name='HalloweenMapLoopSound'
+         halloweenSound.SoundId='rbxassetid://1838592691'
+         halloweenSound.Volume=0.65
+         halloweenSound.Looped=true
+         halloweenSound.Parent=SoundService
+         halloweenSound:Play()
+         root=Instance.new('Folder');root.Name='HalloweenMapDecorations_Local';root.Parent=Workspace
+         for _,key in ipairs({'ClockTime','Ambient','OutdoorAmbient','FogColor','FogEnd','Brightness','ColorShift_Top','ColorShift_Bottom'}) do lightingSaved[key]=Lighting[key] end
+         Lighting.ClockTime=21;Lighting.Ambient=Color3.fromRGB(73,37,91)
+         Lighting.OutdoorAmbient=Color3.fromRGB(65,36,73)
+         Lighting.FogColor=Color3.fromRGB(72,30,93);Lighting.FogEnd=550
+         Lighting.Brightness=1.5;Lighting.ColorShift_Top=PURPLE;Lighting.ColorShift_Bottom=ORANGE
+         local atmosphere=Lighting:FindFirstChildOfClass('Atmosphere')
+         if atmosphere then
+          effectSaved.atmosphere=atmosphere
+          effectSaved.atmosphereOriginal={Color=atmosphere.Color,Decay=atmosphere.Decay,Density=atmosphere.Density,Haze=atmosphere.Haze,Glare=atmosphere.Glare}
+         else
+          atmosphere=Instance.new('Atmosphere');atmosphere.Name='HalloweenTemporaryAtmosphere';atmosphere.Parent=Lighting;effectSaved.ownedAtmosphere=atmosphere
+         end
+         atmosphere.Color=Color3.fromRGB(140,65,123);atmosphere.Decay=Color3.fromRGB(62,27,89);atmosphere.Density=.38;atmosphere.Haze=2.3;atmosphere.Glare=.1
+         local correction=Instance.new('ColorCorrectionEffect');correction.Name='HalloweenColorTint';correction.TintColor=Color3.fromRGB(255,190,155);correction.Contrast=.16;correction.Saturation=.15;correction.Parent=Lighting;effectSaved.correction=correction
+         local terrain=Workspace:FindFirstChildOfClass('Terrain')
+         if terrain then
+          local clouds=terrain:FindFirstChildOfClass('Clouds')
+          if clouds then effectSaved.clouds=clouds;effectSaved.cloudOriginal={Color=clouds.Color,Cover=clouds.Cover,Density=clouds.Density}
+          else clouds=Instance.new('Clouds');clouds.Name='HalloweenTemporaryClouds';clouds.Parent=terrain;effectSaved.ownedClouds=clouds end
+          clouds.Color=Color3.fromRGB(146,70,112);clouds.Cover=.65;clouds.Density=.7
+         end
+         local roofs,walls={},{}
+         for _,p in ipairs(Workspace:GetDescendants()) do
+          if eligible(p) then
+           recolor(p)
+           if p.Size.X>13 and p.Size.Z>13 and p.Size.Y<9 then table.insert(roofs,p) end
+           if p.Size.Y>9 and math.max(p.Size.X,p.Size.Z)>12 and math.min(p.Size.X,p.Size.Z)<7 then table.insert(walls,p) end
+          end
+         end
+         -- Dense decorations across detected surfaces, capped to keep FPS reasonable.
+         local paintings=0
+         local horrorWalls=0
+         for i,p in ipairs(walls) do
+          if horrorWalls>=75 then break end
+          addHorrorToWall(p,i)
+          horrorWalls+=1
+         end
+         decorateGround(roofs)
+         halloweenCampfire()
+         for i,p in ipairs(walls) do
+          if paintings>=100 then break end
+          wallPositions(p);paintings+=1
+         end
+         for i,p in ipairs(roofs) do
+          if i>95 then break end
+          local top=p.CFrame*CFrame.new(0,p.Size.Y/2+.3,0)
+          if i%2==0 then pumpkin(top*CFrame.new(0,0,0),math.clamp(math.min(p.Size.X,p.Size.Z)/22,.7,1.5)) end
+          for j=1,math.min(5,math.floor(p.Size.X/10)) do
+           local u=(j-3)*math.min(9,p.Size.X/5)
+           hanging(top*CFrame.new(u,0,-p.Size.Z*.36),i+j)
+          end
+          if i%3==0 then ghost(top*CFrame.new(3,4,0),.85) end
+          if i%5==0 then web(top*CFrame.new(-2,3,-p.Size.Z*.4),1.4) end
+         end
+         added=Workspace.DescendantAdded:Connect(function(inst)
+          if not active or not inst:IsA('BasePart') then return end
+          task.defer(function() if active and inst.Parent then recolor(inst) end end)
+         end)
+         local time=0
+         heartbeat=RunService.Heartbeat:Connect(function(dt)
+          time+=dt
+          if time<.07 then return end
+          local t=time
+          for i,item in ipairs(animated) do
+           if item.obj.Parent then
+            if item.kind=='ghost' then item.obj.CFrame=item.origin*CFrame.new(0,math.sin(t*1.8+item.phase)*.28,0)
+            else
+             local light=item.obj:FindFirstChildOfClass('PointLight')
+             if light then light.Brightness=1+math.abs(math.sin(t*2.4+i)) * 2 end
+            end
+           end
+          end
+         end)
+        end
+        local function stop()
+         if not active then return end
+         active=false
+         if halloweenSound then
+          halloweenSound:Stop()
+          halloweenSound:Destroy()
+          halloweenSound=nil
+         end
+         if heartbeat then heartbeat:Disconnect();heartbeat=nil end
+         if added then added:Disconnect();added=nil end
+         if root then root:Destroy();root=nil end
+         table.clear(animated)
+         for p,old in pairs(saved) do
+          if p.Parent then pcall(function() p.Color=old.Color;p.Material=old.Material;p.Reflectance=old.Reflectance end) end
+         end
+         table.clear(saved)
+         for key,value in pairs(lightingSaved) do pcall(function() Lighting[key]=value end) end
+         table.clear(lightingSaved)
+         if effectSaved.atmosphere and effectSaved.atmosphere.Parent then
+          for key,value in pairs(effectSaved.atmosphereOriginal) do pcall(function() effectSaved.atmosphere[key]=value end) end
+         end
+         if effectSaved.clouds and effectSaved.clouds.Parent then
+          for key,value in pairs(effectSaved.cloudOriginal) do pcall(function() effectSaved.clouds[key]=value end) end
+         end
+         for _,key in ipairs({'ownedAtmosphere','ownedClouds','correction'}) do
+          local inst=effectSaved[key];if inst and inst.Parent then inst:Destroy() end
+         end
+         table.clear(effectSaved)
+        end
+
+        local halloweenButton = Instance.new("TextButton")
+        halloweenButton.Name = "HalloweenThemeToggle"
+        halloweenButton.Parent = page
+        halloweenButton.Position = UDim2.fromOffset(8, 139)
+        halloweenButton.Size = UDim2.new(1, -16, 0, 20)
+        halloweenButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+        halloweenButton.BackgroundTransparency = 0.82
+        halloweenButton.BorderSizePixel = 0
+        halloweenButton.AutoButtonColor = false
+        halloweenButton.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        halloweenButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+        halloweenButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+        halloweenButton.TextStrokeTransparency = 0.28
+        halloweenButton.TextXAlignment = Enum.TextXAlignment.Left
+        halloweenButton.TextSize = 13
+        halloweenButton.Text = "Halloween Theme: OFF"
+        halloweenButton.ZIndex = 33
+        halloweenButton.Activated:Connect(function()
+            if active then stop() else start() end
+            halloweenButton.Text = active and "Halloween Theme: ON" or "Halloween Theme: OFF"
+        end)
+        y0ungDareMenuv45.Destroying:Connect(function()
+            if active then stop() end
+        end)
+    end
+
     local previousVisibility = {}
     local glitchLayer
     mapsButton.Activated:Connect(function()
