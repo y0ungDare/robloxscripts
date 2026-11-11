@@ -7412,6 +7412,159 @@ do
 end
 
 
+-- Maps submenu: Christmas Theme moved from Fun Mods, preserving its original handlers.
+do
+    local TweenService = game:GetService("TweenService")
+    local mapsButton = Instance.new("TextButton")
+    mapsButton.Name = "MapsButton"
+    mapsButton.Parent = Frame
+    mapsButton.Position = UDim2.fromOffset(8, 209) -- directly below Visions
+    mapsButton.Size = UDim2.new(1, -16, 0, 20)
+    mapsButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+    mapsButton.BackgroundTransparency = 0.82
+    mapsButton.BorderSizePixel = 0
+    mapsButton.AutoButtonColor = false
+    mapsButton.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    mapsButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+    mapsButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+    mapsButton.TextStrokeTransparency = 0.28
+    mapsButton.TextXAlignment = Enum.TextXAlignment.Left
+    mapsButton.TextSize = 13
+    mapsButton.Text = "Maps"
+    mapsButton.ZIndex = 5
+
+    local page = Instance.new("Frame")
+    page.Name = "MapsPage"
+    page.Parent = Frame
+    page.Size = UDim2.fromScale(1, 1)
+    page.BackgroundColor3 = Color3.fromRGB(12, 9, 22)
+    page.BorderSizePixel = 0
+    page.ClipsDescendants = true
+    page.Visible = false
+    page.ZIndex = 30
+
+    local heading = Instance.new("TextLabel")
+    heading.Name = "MapsHeading"
+    heading.Parent = page
+    heading.Position = UDim2.fromOffset(3, 18)
+    heading.Size = UDim2.new(1, -85, 0, 32)
+    heading.BackgroundTransparency = 1
+    heading.Text = "Maps"
+    heading.Font = Enum.Font.Arcade
+    heading.TextSize = 27
+    heading.TextColor3 = Color3.fromRGB(245, 244, 255)
+    heading.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+    heading.TextStrokeTransparency = 0.25
+    heading.TextXAlignment = Enum.TextXAlignment.Left
+    heading.ZIndex = 33
+
+    local byline = Instance.new("TextLabel")
+    byline.Name = "MapsByline"
+    byline.Parent = page
+    byline.Position = UDim2.fromOffset(3, 49)
+    byline.Size = UDim2.new(1, -10, 0, 23)
+    byline.BackgroundTransparency = 1
+    byline.Text = "By @y0ungdare"
+    byline.Font = Enum.Font.Arcade
+    byline.TextSize = 15
+    byline.TextColor3 = Color3.fromRGB(37, 28, 191)
+    byline.TextXAlignment = Enum.TextXAlignment.Left
+    byline.ZIndex = 33
+
+    local back = Instance.new("TextButton")
+    back.Name = "MapsBack"
+    back.Parent = page
+    back.Position = UDim2.new(1, -77, 0, 14)
+    back.Size = UDim2.fromOffset(65, 26)
+    back.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
+    back.TextColor3 = Color3.fromRGB(0, 255, 255)
+    back.Font = Enum.Font.SourceSansBold
+    back.TextSize = 15
+    back.Text = "< BACK"
+    back.ZIndex = 34
+
+    local christmasButton = Frame:WaitForChild("FunModsPage"):WaitForChild("ChristmasThemeToggle")
+    christmasButton.Parent = page
+    christmasButton.Position = UDim2.fromOffset(8, 79)
+    christmasButton.ZIndex = 33
+    local marker = christmasButton:FindFirstChild("JiggySelectionMarker")
+    if marker then marker.ZIndex = 34 end
+
+    -- Close the gap left in Fun Mods without modifying any feature callbacks.
+    local funPage = Frame:FindFirstChild("FunModsPage")
+    if funPage then
+        for _, child in ipairs(funPage:GetChildren()) do
+            if child:IsA("TextButton") and child.Position.X.Scale == 0
+                and child.Position.Y.Scale == 0 and child.Position.Y.Offset >= 179 then
+                child.Position = UDim2.fromOffset(child.Position.X.Offset, child.Position.Y.Offset - 20)
+            end
+        end
+    end
+
+    local function attachHover(button)
+        local marker = Instance.new("Frame")
+        marker.Name = "JiggySelectionMarker"
+        marker.Parent = button
+        marker.BorderSizePixel = 0
+        marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+        marker.BackgroundTransparency = 1
+        marker.Size = UDim2.new(0, 5, 1, 0)
+        marker.ZIndex = button.ZIndex + 1
+        local outline = Instance.new("UIStroke")
+        outline.Name = "JiggySelectionOutline"
+        outline.Parent = button
+        outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+        outline.Color = Color3.fromRGB(174, 70, 255)
+        outline.Thickness = 1.5
+        outline.Transparency = 1
+        local function setHover(active)
+            TweenService:Create(button, TweenInfo.new(0.09), {BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or Color3.fromRGB(19, 9, 49)}):Play()
+            TweenService:Create(marker, TweenInfo.new(0.09), {BackgroundTransparency = active and 0 or 1}):Play()
+            TweenService:Create(outline, TweenInfo.new(0.09), {Transparency = active and 0 or 1}):Play()
+        end
+        button.MouseEnter:Connect(function() setHover(true) end)
+        button.MouseLeave:Connect(function() setHover(false) end)
+    end
+    attachHover(mapsButton)
+
+    local previousVisibility = {}
+    local glitchLayer
+    mapsButton.Activated:Connect(function()
+        if page.Visible then return end
+        for _, child in ipairs(Frame:GetChildren()) do
+            if child ~= page and child:IsA("GuiButton") then
+                previousVisibility[child] = child.Visible
+                child.Visible = false
+            end
+        end
+        glitchLayer = Frame:FindFirstChild("JiggyGlitchBackground_EDIT_HERE")
+        if glitchLayer then
+            glitchLayer.Parent = page
+            glitchLayer.ZIndex = 31
+            for _, part in ipairs(glitchLayer:GetDescendants()) do
+                if part:IsA("GuiObject") then part.ZIndex = 31 end
+            end
+        end
+        page.Visible = true
+    end)
+    back.Activated:Connect(function()
+        page.Visible = false
+        if glitchLayer then
+            glitchLayer.Parent = Frame
+            glitchLayer.ZIndex = 3
+            for _, part in ipairs(glitchLayer:GetDescendants()) do
+                if part:IsA("GuiObject") then part.ZIndex = 3 end
+            end
+            glitchLayer = nil
+        end
+        for child, wasVisible in pairs(previousVisibility) do
+            if child.Parent then child.Visible = wasVisible end
+            previousVisibility[child] = nil
+        end
+    end)
+end
+
+
 -- Menu Settings submenu: preserve original feature handlers by moving existing buttons.
 do
     local TweenService = game:GetService("TweenService")
