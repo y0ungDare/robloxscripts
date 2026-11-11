@@ -3917,7 +3917,7 @@ local function OACKUI_fake_script() -- Frame.AimbotController
 	local languageIndex = 1
 	local selectedPlayerUserId = nil
 	local teamCheckEnabled = true
-	local modes = {"Guards Only", "Criminals Only", "Inmates Only", "Everyone", "Choose Player"}
+	local modes = {"Guards Only", "Criminals Only", "Inmates Only", "Everyone", "Hostile Inmates", "Choose Player"}
 	
 	-- Language order matches the supplied y0ungDare Menu v4.5 LanguageController.
 	local languages = {"English", "Español", "Français", "日本語", "中文（简体）", "Deutsch"}
@@ -3926,6 +3926,7 @@ local function OACKUI_fake_script() -- Frame.AimbotController
 	    {"Criminals Only", "Solo criminales", "Criminels uniquement", "犯罪者のみ", "仅罪犯", "Nur Kriminelle"},
 	    {"Inmates Only", "Solo reclusos", "Détenus uniquement", "囚人のみ", "仅囚犯", "Nur Insassen"},
 	    {"Everyone", "Todos", "Tout le monde", "全員", "所有人", "Alle"},
+	    {"Hostile Inmates", "Comprobar hostilidad", "Vérifier hostilité", "敵対チェック", "敌对检查", "Feindlichkeitsprüfung"},
 	    {"Choose Player", "Elegir jugador", "Choisir un joueur", "プレイヤーを選択", "选择玩家", "Spieler wählen"},
 	}
 	local targetPrefix = {"Target: ", "Objetivo: ", "Cible : ", "対象: ", "目标：", "Ziel: "}
@@ -3945,7 +3946,18 @@ local function OACKUI_fake_script() -- Frame.AimbotController
 	    if plr == player then return false end
 	    if teamCheckEnabled and not isEnemy(plr) then return false end
     local mode = modes[modeIndex]
-		    if mode == "Everyone" then return true end
+		    -- Original Hostile Inmates: guards can target inmates whose character
+	    -- has the Prison Life Hostile attribute set. Other team combinations
+	    -- are not considered hostile by the original check.
+	    if mode == "Hostile Inmates" then
+	        local myTeam = player.Team
+	        local theirTeam = plr.Team
+	        if not myTeam or not theirTeam then return false end
+	        if myTeam.Name ~= "Guards" or theirTeam.Name ~= "Inmates" then return false end
+	        local character = plr.Character
+	        return character ~= nil and character:GetAttribute("Hostile") == true
+	    end
+	    if mode == "Everyone" then return true end
 	    if mode == "Choose Player" then return selectedPlayerUserId ~= nil and plr.UserId == selectedPlayerUserId end
 	    local teamName = plr.Team and plr.Team.Name:lower() or ""
 	    if mode == "Guards Only" then
