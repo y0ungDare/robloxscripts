@@ -6123,6 +6123,13 @@ do
         local Lighting = game:GetService('Lighting')
         local RunService = game:GetService('RunService')
         local Workspace = game:GetService('Workspace')
+        local SoundService = game:GetService('SoundService')
+        local christmasMusic = Instance.new('Sound')
+        christmasMusic.Name = 'y0ungDareChristmasThemeMusic'
+        christmasMusic.SoundId = 'rbxassetid://1839945406'
+        christmasMusic.Looped = true
+        christmasMusic.Volume = 0.65
+        christmasMusic.Parent = SoundService
         local player = Players.LocalPlayer
         local model
         local enabled = false
@@ -6770,6 +6777,8 @@ do
             generation = generation + 1
             local currentGeneration = generation
             setButton(true) -- update immediately even if an effect cannot be applied
+            christmasMusic.TimePosition = 0
+            christmasMusic:Play()
             for _, prop in ipairs(lightingProps) do pcall(function() savedLighting[prop] = Lighting[prop] end) end
             local changes = {
                 -- Keep the game's original brightness, ambient and exposure.
@@ -6884,6 +6893,7 @@ do
         end
         local function stop()
             enabled = false
+            christmasMusic:Stop()
             generation = generation + 1
             setButton(false)
             if model then pcall(function() model:Destroy() end); model = nil end
@@ -6911,6 +6921,7 @@ do
         end)
         christmasButton.Destroying:Connect(function()
             if enabled then stop() end
+            christmasMusic:Destroy()
         end)
     end
 
@@ -7537,6 +7548,12 @@ do
         local LocalPlayer = Players.LocalPlayer
 
         local enabled = false
+        local pinkThemeMusic = Instance.new("Sound")
+        pinkThemeMusic.Name = "y0ungDarePinkThemeMusic"
+        pinkThemeMusic.SoundId = "rbxassetid://139891311111118"
+        pinkThemeMusic.Volume = 0.7
+        pinkThemeMusic.Looped = true
+        pinkThemeMusic.Parent = game:GetService("SoundService")
         local saved = {}
         local decorations = {}
         local addedConnection
@@ -7755,6 +7772,7 @@ do
         end
         local function enable()
             enabled = true
+            pinkThemeMusic:Play()
             oldLighting.Ambient = Lighting.Ambient
             oldLighting.OutdoorAmbient = Lighting.OutdoorAmbient
             oldLighting.ColorShift_Top = Lighting.ColorShift_Top
@@ -7782,6 +7800,7 @@ do
         end
         local function disable()
             enabled = false
+            pinkThemeMusic:Stop()
             if addedConnection then addedConnection:Disconnect(); addedConnection = nil end
             for part, original in pairs(saved) do
                 if part and part.Parent then
@@ -7833,8 +7852,531 @@ do
         end)
         y0ungDareMenuv45.Destroying:Connect(function()
             if enabled then disable() end
+            pinkThemeMusic:Destroy()
         end)
     end
+
+    -- Glitched Club Theme: integrated from the supplied standalone script.
+    do
+        local Lighting = game:GetService("Lighting")
+        local RunService = game:GetService("RunService")
+        local Workspace = game:GetService("Workspace")
+        local player = game:GetService("Players").LocalPlayer
+        local enabled = false
+        local clubMusic
+        local function stopClubMusic()
+            if clubMusic then
+                clubMusic:Stop()
+                clubMusic:Destroy()
+                clubMusic = nil
+            end
+        end
+        local function startClubMusic()
+            stopClubMusic()
+            clubMusic = Instance.new("Sound")
+            clubMusic.Name = "y0ungDareGlitchedClubLoop"
+            clubMusic.SoundId = "rbxassetid://72996759431060"
+            clubMusic.Volume = 0.8
+            clubMusic.Looped = true
+            clubMusic.Parent = game:GetService("SoundService")
+            clubMusic:Play()
+        end
+        local originals = {}
+        local overlays = {}
+        local effects = {}
+        local connection
+        local descendantConnection
+        local originalLighting = {}
+        local tickCount = 0
+        local partyFolder
+        local partyFixtures = {}
+        local danceTiles = {}
+        local partyClock = 0
+        local skyRestore = {}
+        local skyObjects = {}
+        local skyBeacons = {}
+        local rng = Random.new()
+        local palette = {
+            Color3.fromRGB(255, 0, 160), Color3.fromRGB(0, 255, 255),
+            Color3.fromRGB(128, 0, 255), Color3.fromRGB(15, 15, 25),
+            Color3.fromRGB(45, 255, 110), Color3.fromRGB(255, 255, 255)
+        }
+        local function eligible(p)
+            if not p:IsA("BasePart") or not p.Anchored then return false end
+            if p:FindFirstAncestor("GlitchPartyClubEffects") then return false end
+            if p:IsDescendantOf(Workspace.CurrentCamera or Workspace) and Workspace.CurrentCamera and p:IsDescendantOf(Workspace.CurrentCamera) then return false end
+            if p:FindFirstAncestorOfClass("Tool") then return false end
+            local ancestor = p.Parent
+            while ancestor and ancestor ~= Workspace do
+                if ancestor:IsA("Model") and ancestor:FindFirstChildOfClass("Humanoid") then return false end
+                ancestor = ancestor.Parent
+            end
+            return p.Size.Magnitude >= 9
+        end
+        local function remember(p)
+            if not originals[p] and eligible(p) then
+                originals[p] = {Color=p.Color, Material=p.Material, Reflectance=p.Reflectance}
+            end
+        end
+        local function createOverlay(p)
+            if #overlays >= 220 or not p.Parent then return end
+            local face = Enum.NormalId.Front
+            if p.Size.Y < 3 then face = Enum.NormalId.Top end
+            local surface = Instance.new("SurfaceGui")
+            surface.Name = "GlitchMapVisualOverlay"
+            surface.Face = face
+            surface.AlwaysOnTop = false
+            surface.LightInfluence = 0
+            surface.PixelsPerStud = 25
+            surface.Adornee = p
+            surface.Parent = p
+            local container = Instance.new("Frame")
+            container.BackgroundTransparency = 1
+            container.Size = UDim2.fromScale(1,1)
+            container.ClipsDescendants = true
+            container.Parent = surface
+            for i=1,5 do
+                local strip = Instance.new("Frame")
+                strip.Name = "GlitchStripe"
+                strip.BorderSizePixel = 0
+                strip.BackgroundColor3 = palette[(i%#palette)+1]
+                strip.BackgroundTransparency = .15
+                strip.Size = UDim2.new(rng:NextNumber(.18,.95),0,0,rng:NextInteger(3,11))
+                strip.Position = UDim2.fromScale(rng:NextNumber(0,.5),rng:NextNumber(0,1))
+                strip.Parent = container
+            end
+            if #overlays % 3 == 0 then
+                local label = Instance.new("TextLabel")
+                label.BackgroundTransparency = 1
+                label.Font = Enum.Font.Code
+                label.TextScaled = true
+                label.TextColor3 = palette[rng:NextInteger(1,#palette)]
+                label.TextStrokeTransparency = .4
+                label.Size = UDim2.fromScale(.7,.28)
+                label.Position = UDim2.fromScale(.1,.3)
+                label.Text = ({ "ERROR_404", "/// SYSTEM GLITCH ///", "0xDEAD", "CORRUPTED", "NO SIGNAL" })[rng:NextInteger(1,5)]
+                label.Parent = container
+            end
+            table.insert(overlays, surface)
+        end
+        
+        -- Club lighting: decorative, non-collidable, locally rendered only.
+        local function partyPart(name, size, cf, color, material)
+            local part = Instance.new("Part")
+            part.Name = name
+            part.Anchored = true
+            part.CanCollide = false
+            part.CanTouch = false
+            part.CanQuery = false
+            part.CastShadow = false
+            part.Size = size
+            part.CFrame = cf
+            part.Material = material or Enum.Material.Neon
+            part.Color = color
+            part.Parent = partyFolder
+            return part
+        end
+        
+        local function buildPartyClub()
+            partyFolder = Instance.new("Folder")
+            partyFolder.Name = "GlitchPartyClubEffects"
+            partyFolder.Parent = Workspace
+        
+            local flat, roofs = {}, {}
+            for p in pairs(originals) do
+                if p.Parent and p.Size.X > 15 and p.Size.Z > 15 and p.Size.Y < 9 then
+                    table.insert(flat,p)
+                elseif p.Parent and p.Size.Y > 10 and (p.Size.X > 16 or p.Size.Z > 16) then
+                    table.insert(roofs,p)
+                end
+            end
+            table.sort(flat,function(a,b) return a.Size.X*a.Size.Z > b.Size.X*b.Size.Z end)
+            -- Light towers, rotating beams, floating disco balls and glowing rings.
+            for i=1,math.min(42,#flat) do
+                local base=flat[i]
+                local center=base.Position+Vector3.new(0,base.Size.Y/2+7,0)
+                local orb=partyPart("DiscoBall",Vector3.new(2.6,2.6,2.6),CFrame.new(center),
+                    palette[i%#palette+1],Enum.Material.Neon)
+                orb.Shape=Enum.PartType.Ball
+                local light=Instance.new("PointLight")
+                light.Name="PartyPulse"
+                light.Range=math.clamp(math.max(base.Size.X,base.Size.Z)*.7,20,65)
+                light.Brightness=2.2
+                light.Color=orb.Color
+                light.Shadows=false
+                light.Parent=orb
+                local spotMount=partyPart("MovingSpotlight",Vector3.new(1.1,1.1,1.1),
+                    CFrame.new(center+Vector3.new(0,2.5,0)),palette[(i+2)%#palette+1])
+                local spot=Instance.new("SpotLight")
+                spot.Face=Enum.NormalId.Front
+                spot.Angle=95
+                spot.Range=85
+                spot.Brightness=5
+                spot.Color=spotMount.Color
+                spot.Shadows=false
+                spot.Parent=spotMount
+                local attachment0=Instance.new("Attachment")
+                attachment0.Parent=spotMount
+                local attachment1=Instance.new("Attachment")
+                attachment1.Position=Vector3.new(0,0,-30)
+                attachment1.Parent=spotMount
+                local beam=Instance.new("Beam")
+                beam.Name="LaserBeam"
+                beam.Attachment0=attachment0
+                beam.Attachment1=attachment1
+                beam.FaceCamera=true
+                beam.Width0=.45
+                beam.Width1=1.5
+                beam.LightEmission=1
+                beam.LightInfluence=0
+                beam.Transparency=NumberSequence.new(.2,.85)
+                beam.Color=ColorSequence.new(spot.Color)
+                beam.Parent=spotMount
+                table.insert(partyFixtures,{orb=orb,light=light,mount=spotMount,spot=spot,beam=beam,base=center,phase=i*1.7})
+                if i<=20 then
+                    local ring=partyPart("NeonDanceRing",Vector3.new(8,.18,8),
+                        CFrame.new(base.Position+Vector3.new(0,base.Size.Y/2+.2,0)),palette[i%#palette+1])
+                    ring.Transparency=.32
+                    table.insert(danceTiles,ring)
+                end
+            end
+            -- Wall-mounted color washes, like club uplights.
+            for i=1,math.min(80,#roofs) do
+                local wall=roofs[i]
+                local pos=wall.Position+Vector3.new(0,-math.min(wall.Size.Y*.25,6),0)
+                local lamp=partyPart("WallPartyLight",Vector3.new(.7,.7,.7),
+                    CFrame.new(pos),palette[(i+3)%#palette+1])
+                lamp.Shape=Enum.PartType.Ball
+                local light=Instance.new("PointLight")
+                light.Range=24
+                light.Brightness=1.8
+                light.Color=lamp.Color
+                light.Parent=lamp
+                table.insert(partyFixtures,{orb=lamp,light=light,phase=i*.9,wall=true})
+            end
+        end
+        
+        local function animateParty(dt)
+            partyClock+=dt
+            for i,fixture in ipairs(partyFixtures) do
+                local t=partyClock
+                local index=(math.floor(t*2+fixture.phase)%#palette)+1
+                local color=palette[index]
+                if fixture.orb.Parent then fixture.orb.Color=color end
+                if fixture.light.Parent then
+                    fixture.light.Color=color
+                    fixture.light.Brightness=1.4+math.abs(math.sin(t*3.5+fixture.phase))*3
+                end
+                if fixture.mount and fixture.mount.Parent then
+                    fixture.mount.CFrame=CFrame.new(fixture.base+Vector3.new(0,2.5,0))
+                        *CFrame.Angles(math.rad(65)+math.sin(t*.9+fixture.phase)*.6,t*.75+fixture.phase,0)
+                    fixture.mount.Color=color
+                    fixture.spot.Color=color
+                    fixture.beam.Color=ColorSequence.new(color)
+                end
+            end
+            for i,tile in ipairs(danceTiles) do
+                if tile.Parent then
+                    tile.Color=palette[(math.floor(partyClock*4+i*.7)%#palette)+1]
+                    tile.Transparency=.18+.22*math.abs(math.sin(partyClock*2+i))
+                end
+            end
+        end
+        
+        local function startClubSky()
+            local atmosphere=Lighting:FindFirstChildOfClass("Atmosphere")
+            if atmosphere then
+                skyRestore.atmosphere=atmosphere
+                skyRestore.atmosphereProps={
+                    Color=atmosphere.Color,Decay=atmosphere.Decay,Density=atmosphere.Density,
+                    Haze=atmosphere.Haze,Glare=atmosphere.Glare,Offset=atmosphere.Offset
+                }
+            else
+                atmosphere=Instance.new("Atmosphere")
+                atmosphere.Name="GlitchClubTemporaryAtmosphere"
+                atmosphere.Parent=Lighting
+                table.insert(skyObjects,atmosphere)
+            end
+            atmosphere.Color=Color3.fromRGB(100,25,205)
+            atmosphere.Decay=Color3.fromRGB(5,8,75)
+            atmosphere.Density=.36
+            atmosphere.Haze=2
+            atmosphere.Glare=.18
+            local terrain=Workspace:FindFirstChildOfClass("Terrain")
+            if terrain then
+                local clouds=terrain:FindFirstChildOfClass("Clouds")
+                if clouds then
+                    skyRestore.clouds=clouds
+                    skyRestore.cloudProps={Color=clouds.Color,Cover=clouds.Cover,Density=clouds.Density}
+                else
+                    clouds=Instance.new("Clouds")
+                    clouds.Name="GlitchClubTemporaryClouds"
+                    clouds.Parent=terrain
+                    table.insert(skyObjects,clouds)
+                end
+                clouds.Color=Color3.fromRGB(185,55,255)
+                clouds.Cover=.72
+                clouds.Density=.8
+                skyRestore.activeClouds=clouds
+            end
+            skyRestore.clockTime=Lighting.ClockTime
+            Lighting.ClockTime=0
+            local cc=Instance.new("ColorCorrectionEffect")
+            cc.Name="GlitchClubSkyPulse"
+            cc.TintColor=Color3.fromRGB(190,115,255)
+            cc.Contrast=.16
+            cc.Saturation=.32
+            cc.Parent=Lighting
+            table.insert(skyObjects,cc)
+            skyRestore.pulse=cc
+            -- Dense, even coverage across the full playable map. Each fixture starts
+            -- near the actual ground/roof under its grid cell, not above the tallest roof.
+            local minX,maxX,minZ,maxZ=math.huge,-math.huge,math.huge,-math.huge
+            local minY,maxY=math.huge,-math.huge
+            for part in pairs(originals) do
+                if part.Parent then
+                    local x,z=part.Position.X,part.Position.Z
+                    minX=math.min(minX,x); maxX=math.max(maxX,x)
+                    minZ=math.min(minZ,z); maxZ=math.max(maxZ,z)
+                    minY=math.min(minY,part.Position.Y-part.Size.Y/2)
+                    maxY=math.max(maxY,part.Position.Y+part.Size.Y/2)
+                end
+            end
+            if minX==math.huge then
+                minX,maxX,minZ,maxZ,minY,maxY=-300,300,-300,300,0,120
+            end
+            local centerX,centerZ=(minX+maxX)/2,(minZ+maxZ)/2
+            local spanX=math.clamp(maxX-minX+80,250,1800)
+            local spanZ=math.clamp(maxZ-minZ+80,250,1800)
+            local columns=math.clamp(math.ceil(spanX/32),13,35)
+            local rows=math.clamp(math.ceil(spanZ/32),13,35)
+            local rayParams=RaycastParams.new()
+            rayParams.FilterType=Enum.RaycastFilterType.Exclude
+            rayParams.FilterDescendantsInstances={partyFolder,player.Character}
+            rayParams.IgnoreWater=true
+            for row=1,rows do
+                for col=1,columns do
+                    local i=(row-1)*columns+col
+                    local x=centerX+((col-.5)/columns-.5)*spanX
+                    local z=centerZ+((row-.5)/rows-.5)*spanZ
+                    local result=Workspace:Raycast(Vector3.new(x,maxY+200,z),
+                        Vector3.new(0,-math.max(800,maxY-minY+400),0),rayParams)
+                    local groundY=result and result.Position.Y or minY
+                    local base=Vector3.new(x,groundY+3,z)
+                    local mount=partyPart("SkyLaserEmitter",Vector3.new(.6,.6,.6),
+                        CFrame.new(base),palette[i%#palette+1])
+                    mount.Transparency=1
+                    local a0=Instance.new("Attachment")
+                    a0.Parent=mount
+                    local a1=Instance.new("Attachment")
+                    a1.Position=Vector3.new(0,350,0)
+                    a1.Parent=mount
+                    local beam=Instance.new("Beam")
+                    beam.Name="SkyPartyLaser"
+                    beam.Attachment0=a0
+                    beam.Attachment1=a1
+                    beam.Width0=2.2
+                    beam.Width1=7
+                    beam.LightEmission=1
+                    beam.LightInfluence=0
+                    beam.FaceCamera=true
+                    beam.Transparency=NumberSequence.new(.06,.78)
+                    beam.Color=ColorSequence.new(palette[i%#palette+1])
+                    beam.Parent=mount
+                    table.insert(skyBeacons,{mount=mount,beam=beam,phase=i*.5,base=base})
+                end
+            end
+        end
+        
+        local function updateClubSky()
+            local t=partyClock
+            local paletteIndex=(math.floor(t*1.5)%#palette)+1
+            local color=palette[paletteIndex]
+            local atmosphere=skyRestore.atmosphere or Lighting:FindFirstChild("GlitchClubTemporaryAtmosphere")
+            if atmosphere and atmosphere.Parent then
+                atmosphere.Color=color:Lerp(Color3.fromRGB(75,35,140),.62)
+                atmosphere.Decay=color:Lerp(Color3.fromRGB(12,8,55),.76)
+            end
+            if skyRestore.activeClouds and skyRestore.activeClouds.Parent then
+                skyRestore.activeClouds.Color=color:Lerp(Color3.fromRGB(125,65,205),.4)
+            end
+            if skyRestore.pulse and skyRestore.pulse.Parent then
+                skyRestore.pulse.TintColor=color:Lerp(Color3.new(1,1,1),.6)
+            end
+            Lighting.FogColor=color:Lerp(Color3.fromRGB(25,0,55),.68)
+            Lighting.ColorShift_Top=color:Lerp(Color3.new(0,0,0),.3)
+            for i,laser in ipairs(skyBeacons) do
+                if laser.mount.Parent then
+                    local beamColor=palette[(math.floor(t*2+i*.7)%#palette)+1]
+                    laser.beam.Color=ColorSequence.new(beamColor)
+                    laser.mount.CFrame=CFrame.new(laser.base)
+                        *CFrame.Angles(math.sin(t*.7+laser.phase)*.3,math.sin(t*.4+laser.phase)*.5,
+                            math.cos(t*.65+laser.phase)*.3)
+                end
+            end
+        end
+        
+        local function stopClubSky()
+            local atmosphere=skyRestore.atmosphere
+            if atmosphere and atmosphere.Parent and skyRestore.atmosphereProps then
+                for prop,val in pairs(skyRestore.atmosphereProps) do
+                    pcall(function() atmosphere[prop]=val end)
+                end
+            end
+            local clouds=skyRestore.clouds
+            if clouds and clouds.Parent and skyRestore.cloudProps then
+                for prop,val in pairs(skyRestore.cloudProps) do
+                    pcall(function() clouds[prop]=val end)
+                end
+            end
+            if skyRestore.clockTime then Lighting.ClockTime=skyRestore.clockTime end
+            for _,obj in ipairs(skyObjects) do
+                if obj.Parent then obj:Destroy() end
+            end
+            table.clear(skyObjects)
+            table.clear(skyBeacons)
+            table.clear(skyRestore)
+        end
+        local function start()
+            if enabled then return end
+            enabled = true
+            startClubMusic()
+            originalLighting = {
+                Ambient=Lighting.Ambient, OutdoorAmbient=Lighting.OutdoorAmbient,
+                FogColor=Lighting.FogColor, FogEnd=Lighting.FogEnd,
+                ColorShift_Top=Lighting.ColorShift_Top, ColorShift_Bottom=Lighting.ColorShift_Bottom
+            }
+            Lighting.Ambient = Color3.fromRGB(85,0,120)
+            Lighting.OutdoorAmbient = Color3.fromRGB(0,100,120)
+            Lighting.FogColor = Color3.fromRGB(42,0,72)
+            Lighting.FogEnd = 650
+            Lighting.ColorShift_Top = Color3.fromRGB(130,0,140)
+            Lighting.ColorShift_Bottom = Color3.fromRGB(0,125,140)
+            local correction = Instance.new("ColorCorrectionEffect")
+            correction.Name = "GlitchMapColorCorrection"
+            correction.Saturation = .45
+            correction.Contrast = .25
+            correction.TintColor = Color3.fromRGB(225,180,255)
+            correction.Parent = Lighting
+            table.insert(effects,correction)
+            local bloom = Instance.new("BloomEffect")
+            bloom.Name = "GlitchMapBloom"
+            bloom.Intensity = .7
+            bloom.Size = 22
+            bloom.Threshold = 1.3
+            bloom.Parent = Lighting
+            table.insert(effects,bloom)
+            local count = 0
+            for _,p in ipairs(Workspace:GetDescendants()) do
+                if eligible(p) then
+                    remember(p)
+                    count += 1
+                    p.Color = palette[(count%#palette)+1]
+                    p.Material = count%4==0 and Enum.Material.Neon or Enum.Material.SmoothPlastic
+                    if count%5==0 then createOverlay(p) end
+                end
+            end
+            buildPartyClub()
+            startClubSky()
+            descendantConnection = Workspace.DescendantAdded:Connect(function(p)
+                if not enabled or not eligible(p) then return end
+                task.defer(function()
+                    if not enabled or not p.Parent or not eligible(p) then return end
+                    remember(p)
+                    p.Color=palette[rng:NextInteger(1,#palette)]
+                    p.Material=Enum.Material.Neon
+                end)
+            end)
+            local accumulator = 0
+            connection = RunService.Heartbeat:Connect(function(dt)
+                accumulator += dt
+                if accumulator < .12 then return end
+                accumulator = 0
+                tickCount += 1
+                animateParty(.12)
+                updateClubSky()
+                local keys = {}
+                for p in pairs(originals) do
+                    if p.Parent then table.insert(keys,p) end
+                end
+                for _=1,math.min(35,#keys) do
+                    local p=keys[rng:NextInteger(1,#keys)]
+                    p.Color=palette[rng:NextInteger(1,#palette)]
+                    p.Material=rng:NextNumber()<.32 and Enum.Material.Neon or Enum.Material.SmoothPlastic
+                end
+                for _=1,math.min(20,#overlays) do
+                    local surface=overlays[rng:NextInteger(1,#overlays)]
+                    if surface.Parent then
+                        for _,child in ipairs(surface:GetDescendants()) do
+                            if child:IsA("Frame") and child.Name=="GlitchStripe" then
+                                child.Position=UDim2.fromScale(rng:NextNumber(0,.7),rng:NextNumber(0,1))
+                                child.BackgroundColor3=palette[rng:NextInteger(1,#palette)]
+                            end
+                        end
+                    end
+                end
+                correction.Contrast = tickCount%5==0 and .55 or .25
+                correction.TintColor = tickCount%7==0 and Color3.fromRGB(160,255,255) or Color3.fromRGB(225,180,255)
+            end)
+        end
+        local function stop()
+            if not enabled then return end
+            enabled = false
+            stopClubMusic()
+            if connection then connection:Disconnect(); connection=nil end
+            if descendantConnection then descendantConnection:Disconnect(); descendantConnection=nil end
+            for p,original in pairs(originals) do
+                if p.Parent then
+                    pcall(function()
+                        p.Color=original.Color
+                        p.Material=original.Material
+                        p.Reflectance=original.Reflectance
+                    end)
+                end
+            end
+            table.clear(originals)
+            stopClubSky()
+            if partyFolder then partyFolder:Destroy(); partyFolder=nil end
+            table.clear(partyFixtures)
+            table.clear(danceTiles)
+            partyClock=0
+            for _,gui in ipairs(overlays) do if gui.Parent then gui:Destroy() end end
+            table.clear(overlays)
+            for _,effect in ipairs(effects) do if effect.Parent then effect:Destroy() end end
+            table.clear(effects)
+            for property,value in pairs(originalLighting) do
+                pcall(function() Lighting[property]=value end)
+            end
+            table.clear(originalLighting)
+        end
+
+        local glitchButton = Instance.new("TextButton")
+        glitchButton.Name = "GlitchedClubThemeToggle"
+        glitchButton.Parent = page
+        glitchButton.Position = UDim2.fromOffset(8, 119)
+        glitchButton.Size = UDim2.new(1, -16, 0, 20)
+        glitchButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+        glitchButton.BackgroundTransparency = 0.82
+        glitchButton.BorderSizePixel = 0
+        glitchButton.AutoButtonColor = false
+        glitchButton.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        glitchButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+        glitchButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+        glitchButton.TextStrokeTransparency = 0.28
+        glitchButton.TextXAlignment = Enum.TextXAlignment.Left
+        glitchButton.TextSize = 13
+        glitchButton.Text = "Glitched Club Theme: OFF"
+        glitchButton.ZIndex = 33
+        glitchButton.Activated:Connect(function()
+            if enabled then stop() else start() end
+            glitchButton.Text = enabled and "Glitched Club Theme: ON" or "Glitched Club Theme: OFF"
+        end)
+        y0ungDareMenuv45.Destroying:Connect(function()
+            stopClubMusic()
+            if enabled then stop() end
+        end)
+    end
+
 
     local previousVisibility = {}
     local glitchLayer
