@@ -8921,9 +8921,171 @@ do
         end)
     end
 
+    -- c00lkidd Theme: original standalone decal/sky/music behavior embedded in Maps.
+    do
+        local Lighting = game:GetService('Lighting')
+        local SoundService = game:GetService('SoundService')
+        local button = Instance.new('TextButton')
+        button.Name = 'c00lkiddThemeToggle'
+        button.Parent = page
+        button.Position = UDim2.fromOffset(8, 179)
+        button.Size = UDim2.new(1, -16, 0, 20)
+        button.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+        button.BackgroundTransparency = 0.82
+        button.BorderSizePixel = 0
+        button.AutoButtonColor = false
+        button.FontFace = Font.new('rbxasset://fonts/families/RobotoCondensed.json', Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        button.TextColor3 = Color3.fromRGB(1, 244, 253)
+        button.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+        button.TextStrokeTransparency = 0.28
+        button.TextXAlignment = Enum.TextXAlignment.Left
+        button.TextSize = 13
+        button.Text = 'c00lkidd Theme: OFF'
+        button.ZIndex = 33
+        local DECAL = 'rbxassetid://158118263'
+    local active = false
+    local busy = false
+    local created = {}
+    local hiddenArt = {}
+    local savedParts = {}
+    local savedLighting = nil
+    local savedSkies = {}
+    local sky = nil
+    local faces = Enum.NormalId:GetEnumItems()
+    local SOUND_NAME = 'c00lkiddThemeLoopMusic'
+    local SOUND_ID = 'rbxassetid://139063675026894'
+    local themeSound = Instance.new('Sound')
+    themeSound.Name = SOUND_NAME
+    themeSound.SoundId = SOUND_ID
+    themeSound.Looped = true
+    themeSound.Volume = 1
+    themeSound.Parent = SoundService
+    
+    local function belongsToCharacter(part)
+        local model = part:FindFirstAncestorOfClass('Model')
+        while model and model ~= workspace do
+            if model:FindFirstChildOfClass('Humanoid') then return true end
+            model = model.Parent and model.Parent:FindFirstAncestorOfClass('Model')
+        end
+        return false
+    end
+    
+    local function themePart(part)
+        if not active or not part:IsA('BasePart') or not part.Anchored or belongsToCharacter(part) then return end
+        if savedParts[part] then return end
+        savedParts[part] = {Color = part.Color, Material = part.Material}
+        part.Color = Color3.fromRGB(110, 15, 15)
+        part.Material = Enum.Material.SmoothPlastic
+        for _, child in ipairs(part:GetChildren()) do
+            if child:IsA('Decal') or child:IsA('Texture') then
+                hiddenArt[child] = child.Transparency
+                child.Transparency = 1
+            end
+        end
+        for _, face in ipairs(faces) do
+            local overlay = Instance.new('Texture')
+            overlay.Name = 'c00lkiddThemeOverlay'
+            overlay.Face = face
+            overlay.Texture = DECAL
+            overlay.StudsPerTileU = 12
+            overlay.StudsPerTileV = 12
+            overlay.Transparency = 0
+            overlay.Parent = part
+            table.insert(created, overlay)
+        end
+    end
+    
+    local function enable()
+        active = true
+        themeSound:Play()
+        savedLighting = {
+            Ambient = Lighting.Ambient,
+            OutdoorAmbient = Lighting.OutdoorAmbient,
+            Brightness = Lighting.Brightness,
+            ClockTime = Lighting.ClockTime,
+            FogColor = Lighting.FogColor,
+            FogEnd = Lighting.FogEnd,
+        }
+        for _, child in ipairs(Lighting:GetChildren()) do
+            if child:IsA('Sky') then
+                table.insert(savedSkies, {object = child, parent = child.Parent})
+                child.Parent = nil
+            end
+        end
+        sky = Instance.new('Sky')
+        sky.Name = 'c00lkiddThemeSky'
+        sky.SkyboxBk, sky.SkyboxDn, sky.SkyboxFt = DECAL, DECAL, DECAL
+        sky.SkyboxLf, sky.SkyboxRt, sky.SkyboxUp = DECAL, DECAL, DECAL
+        sky.Parent = Lighting
+        Lighting.Ambient = Color3.fromRGB(130, 10, 10)
+        Lighting.OutdoorAmbient = Color3.fromRGB(105, 10, 10)
+        Lighting.Brightness = 1
+        Lighting.ClockTime = 0
+        Lighting.FogColor = Color3.fromRGB(95, 0, 0)
+        Lighting.FogEnd = 700
+        for _, obj in ipairs(workspace:GetDescendants()) do
+            if not active then break end
+            themePart(obj)
+        end
+    end
+    
+    local function disable()
+        active = false
+        themeSound:Stop()
+        themeSound.TimePosition = 0
+        for _, obj in ipairs(created) do
+            if obj.Parent then obj:Destroy() end
+        end
+        table.clear(created)
+        for obj, transparency in pairs(hiddenArt) do
+            if obj.Parent then pcall(function() obj.Transparency = transparency end) end
+        end
+        table.clear(hiddenArt)
+        for part, props in pairs(savedParts) do
+            if part.Parent then
+                pcall(function()
+                    part.Color = props.Color
+                    part.Material = props.Material
+                end)
+            end
+        end
+        table.clear(savedParts)
+        if sky then sky:Destroy(); sky = nil end
+        for _, entry in ipairs(savedSkies) do
+            if entry.object then entry.object.Parent = entry.parent end
+        end
+        table.clear(savedSkies)
+        if savedLighting then
+            for key, value in pairs(savedLighting) do
+                pcall(function() Lighting[key] = value end)
+            end
+            savedLighting = nil
+        end
+    end
+    
+    button.Activated:Connect(function()
+        if busy then return end
+        busy = true
+        button.Text = 'Applying...'
+        local ok, err = pcall(function()
+            if active then disable() else enable() end
+        end)
+        if not ok then
+            warn('[c00lkidd Theme] ' .. tostring(err))
+            pcall(disable)
+        end
+        button.Text = active and 'c00lkidd Theme: ON' or 'c00lkidd Theme: OFF'
+        busy = false
+    end)
+        y0ungDareMenuv45.Destroying:Connect(function()
+            if active then pcall(disable) end
+            themeSound:Destroy()
+        end)
+    end
+
     -- Give the three added Maps themes the same cyan selection bar,
     -- purple outline and animated hover as the original Christmas row.
-    for _, themeName in ipairs({"PinkThemeToggle", "GlitchedClubThemeToggle", "HalloweenThemeToggle", "CyberPunkCityThemeToggle"}) do
+    for _, themeName in ipairs({"PinkThemeToggle", "GlitchedClubThemeToggle", "HalloweenThemeToggle", "CyberPunkCityThemeToggle", "c00lkiddThemeToggle"}) do
         local themeButton = page:FindFirstChild(themeName)
         if themeButton then
             themeButton.AutoButtonColor = false
