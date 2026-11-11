@@ -7527,6 +7527,315 @@ do
     end
     attachHover(mapsButton)
 
+    -- Pink Theme: integrated original Hello Kitty pink map script (no floating GUI).
+    do
+        -- Prison Life: Hello Kitty-inspired pink map theme (client-side visual toggle)
+        -- Standalone LocalScript / executor script. Does not modify the server map.
+        local Players = game:GetService('Players')
+        local Workspace = game:GetService('Workspace')
+        local Lighting = game:GetService('Lighting')
+        local LocalPlayer = Players.LocalPlayer
+
+        local enabled = false
+        local saved = {}
+        local decorations = {}
+        local addedConnection
+        local oldLighting = {}
+        local skyEffects = {}
+        local originalAtmosphere = {}
+        local originalClouds = {}
+        local terrainFloorColors = {}
+        local terrainFloorMaterials = {
+            Enum.Material.Grass, Enum.Material.Ground, Enum.Material.Concrete,
+            Enum.Material.Asphalt, Enum.Material.Sand, Enum.Material.Rock,
+            Enum.Material.Slate, Enum.Material.Mud, Enum.Material.Pavement,
+        }
+        local themeColor = Color3.fromRGB(255, 146, 202)
+        local colors = {
+            Color3.fromRGB(255, 166, 209),
+            Color3.fromRGB(255, 198, 226),
+            Color3.fromRGB(255, 115, 185),
+            Color3.fromRGB(255, 224, 239),
+        }
+        local function isCharacterObject(inst)
+            local current = inst
+            while current and current ~= Workspace do
+                if current:IsA('Model') and current:FindFirstChildOfClass('Humanoid') then return true end
+                current = current.Parent
+            end
+            return false
+        end
+        -- Recolor solid structural surfaces only. Transparent overlays, window panes,
+        -- thin decals/trim and invisible collision parts can overlap the walls and
+        -- produce flickering (z-fighting) when given opaque pink materials.
+        local function shouldTheme(part)
+            if not part:IsA('BasePart') or isCharacterObject(part) then return false end
+            local camera = Workspace.CurrentCamera
+            if camera and part:IsDescendantOf(camera) then return false end
+            if part:FindFirstAncestorOfClass('Tool') then return false end
+            local decorationsFolder = Workspace:FindFirstChild('PinkKittyThemeDecorations')
+            if decorationsFolder and part:IsDescendantOf(decorationsFolder) then return false end
+            if part.Transparency > 0.02 or part.LocalTransparencyModifier > 0.02 then return false end
+            if part.Material == Enum.Material.Glass or part.Material == Enum.Material.Neon then return false end
+            if not part.Anchored then return false end
+            local size = part.Size
+            if size.Magnitude < 10 then return false end
+            -- Include genuine horizontal floor slabs, even when thin, while
+            -- continuing to exclude thin vertical wall overlays (z-fighting).
+            local name = part.Name:lower()
+            local floorNamed = name:find('floor', 1, true) or name:find('ground', 1, true)
+                or name:find('pavement', 1, true) or name:find('sidewalk', 1, true)
+                or name:find('tile', 1, true) or name:find('concrete', 1, true)
+            local horizontal = part.CFrame.UpVector.Y > 0.92
+            local floorSlab = horizontal and size.X >= 7 and size.Z >= 7
+                and size.Y <= 5 and size.Y >= 0.05
+            if math.min(size.X, size.Y, size.Z) < 0.18 and not (floorSlab and floorNamed) then return false end
+            return true
+        end
+        local function recolor(part)
+            if saved[part] or not shouldTheme(part) then return end
+            saved[part] = {Color = part.Color, Material = part.Material, Reflectance = part.Reflectance}
+            local n = math.floor(math.abs(part.Position.X * 3 + part.Position.Z * 7 + part.Position.Y)) % #colors + 1
+            part.Color = colors[n]
+            -- Preserve the original material to avoid altering surface rendering
+            -- and exposing overlapping wall faces.
+            part.Reflectance = math.min(part.Reflectance, 0.04)
+        end
+        local function addDecoration(parent, position, text, size)
+            local anchor = Instance.new('Part')
+            anchor.Name = 'PinkKittyDecoration'
+            anchor.Anchored = true
+            anchor.CanCollide = false
+            anchor.CanTouch = false
+            anchor.CanQuery = false
+            anchor.Transparency = 1
+            anchor.Size = Vector3.new(1,1,1)
+            anchor.Position = position
+            anchor.Parent = parent
+            local board = Instance.new('BillboardGui')
+            board.AlwaysOnTop = false
+            board.Size = UDim2.fromOffset(size or 130, size or 130)
+            board.MaxDistance = 190
+            board.Adornee = anchor
+            board.Parent = anchor
+            local label = Instance.new('TextLabel')
+            label.Size = UDim2.fromScale(1,1)
+            label.BackgroundTransparency = 1
+            label.Font = Enum.Font.GothamBold
+            label.TextScaled = true
+            label.TextStrokeTransparency = 0.4
+            label.TextColor3 = Color3.fromRGB(255, 247, 251)
+            label.Text = text
+            label.Parent = board
+            table.insert(decorations, anchor)
+        end
+        -- Pink sky tint, clouds and sunset, all reversible.
+        local function themeSky()
+            for _, key in ipairs({'ClockTime', 'Brightness', 'FogColor', 'FogEnd', 'EnvironmentDiffuseScale'}) do
+                pcall(function() oldLighting[key] = Lighting[key] end)
+            end
+            Lighting.ClockTime = 17.3
+            Lighting.Brightness = 2.4
+            Lighting.FogColor = Color3.fromRGB(255, 174, 216)
+            Lighting.FogEnd = 1800
+            local atmosphere = Lighting:FindFirstChildOfClass('Atmosphere')
+            if atmosphere then
+                for _, prop in ipairs({'Color','Decay','Density','Haze','Glare','Offset'}) do
+                    originalAtmosphere[prop] = atmosphere[prop]
+                end
+            else
+                atmosphere = Instance.new('Atmosphere')
+                atmosphere.Name = 'PinkKittyTemporaryAtmosphere'
+                atmosphere.Parent = Lighting
+                table.insert(skyEffects, atmosphere)
+            end
+            atmosphere.Color = Color3.fromRGB(255, 144, 206)
+            atmosphere.Decay = Color3.fromRGB(255, 105, 175)
+            atmosphere.Density = 0.38
+            atmosphere.Haze = 2.2
+            atmosphere.Glare = 0.1
+            local cc = Instance.new('ColorCorrectionEffect')
+            cc.Name = 'PinkKittySkyTint'
+            cc.TintColor = Color3.fromRGB(255, 184, 221)
+            cc.Saturation = 0.16
+            cc.Contrast = 0.03
+            cc.Parent = Lighting
+            table.insert(skyEffects, cc)
+            local terrain = Workspace:FindFirstChildOfClass('Terrain')
+            local clouds = terrain and terrain:FindFirstChildOfClass('Clouds')
+            if terrain then
+                if clouds then
+                    originalClouds.Color = clouds.Color
+                    originalClouds.Cover = clouds.Cover
+                    originalClouds.Density = clouds.Density
+                else
+                    clouds = Instance.new('Clouds')
+                    clouds.Name = 'PinkKittyTemporaryClouds'
+                    clouds.Parent = terrain
+                    table.insert(skyEffects, clouds)
+                end
+                clouds.Color = Color3.fromRGB(255, 171, 214)
+                clouds.Cover = 0.58
+                clouds.Density = 0.65
+            end
+        end
+        local function restoreSky()
+            local atmosphere = Lighting:FindFirstChildOfClass('Atmosphere')
+            if atmosphere and atmosphere.Name ~= 'PinkKittyTemporaryAtmosphere' then
+                for prop, value in pairs(originalAtmosphere) do pcall(function() atmosphere[prop] = value end) end
+            end
+            table.clear(originalAtmosphere)
+            local terrain = Workspace:FindFirstChildOfClass('Terrain')
+            local clouds = terrain and terrain:FindFirstChildOfClass('Clouds')
+            if clouds and clouds.Name ~= 'PinkKittyTemporaryClouds' then
+                for prop, value in pairs(originalClouds) do pcall(function() clouds[prop] = value end) end
+            end
+            table.clear(originalClouds)
+            for _, effect in ipairs(skyEffects) do if effect and effect.Parent then effect:Destroy() end end
+            table.clear(skyEffects)
+        end
+
+        -- Decorative bows and hanging garlands placed on large roof/wall surfaces.
+        local function makeHangingDecor(folder, roof, index)
+            local top = roof.Position.Y + roof.Size.Y * 0.5
+            local x = roof.Position.X + (index % 3 - 1) * math.min(roof.Size.X * 0.22, 12)
+            local z = roof.Position.Z + ((index % 2 == 0) and 1 or -1) * math.min(roof.Size.Z * 0.25, 9)
+            local base = Vector3.new(x, top + 0.4, z)
+            local strand = Instance.new('Part')
+            strand.Name = 'KittyHangingRibbon'
+            strand.Anchored = true
+            strand.CanCollide = false
+            strand.CanTouch = false
+            strand.CanQuery = false
+            strand.Material = Enum.Material.Neon
+            strand.Color = Color3.fromRGB(255, 229, 244)
+            strand.Size = Vector3.new(0.09, 5.5, 0.09)
+            strand.Position = base - Vector3.new(0, 2.75, 0)
+            strand.Parent = folder
+            addDecoration(folder, base - Vector3.new(0, 5.8, 0), index % 2 == 0 and '🎀' or '♡', 100)
+        end
+        local function makeWallSign(folder, wall, index)
+            local front = wall.CFrame.LookVector
+            -- Place signs fully outside the wall instead of intersecting its surface.
+            local pos = wall.Position + front * (wall.Size.Z * 0.5 + 2.5)
+            addDecoration(folder, pos + Vector3.new(0, math.min(wall.Size.Y * 0.25, 7), 0),
+                index % 3 == 0 and 'HELLO KITTY ♡' or (index % 2 == 0 and '🎀 ♡ 🎀' or '♡ HELLO KITTY ♡'), 175)
+        end
+
+        local function decorateMap()
+            local folder = Instance.new('Folder')
+            folder.Name = 'PinkKittyThemeDecorations'
+            folder.Parent = Workspace
+            table.insert(decorations, folder)
+            local placed = 0
+            local hanging = 0
+            local signs = 0
+            for _, part in ipairs(Workspace:GetDescendants()) do
+                if shouldTheme(part) and hanging < 45 and part.Size.X > 17 and part.Size.Z > 17 and part.Size.Y < 10 then
+                    if math.floor(math.abs(part.Position.X * 7 + part.Position.Z * 3)) % 4 == 0 then
+                        hanging += 1
+                        makeHangingDecor(folder, part, hanging)
+                    end
+                end
+                if shouldTheme(part) and signs < 35 and part.Size.Y > 11 and (part.Size.X > 12 or part.Size.Z > 12) then
+                    if math.floor(math.abs(part.Position.X * 5 + part.Position.Y * 2)) % 5 == 0 then
+                        signs += 1
+                        makeWallSign(folder, part, signs)
+                    end
+                end
+                if placed < 65 and shouldTheme(part) and part.Size.X > 14 and part.Size.Z > 14 and part.Size.Y < 10 then
+                    local hash = math.floor(math.abs(part.Position.X * 11 + part.Position.Z * 13))
+                    if hash % 5 == 0 then
+                        local symbols = {'🎀', '♡', '✿', '♡  HELLO KITTY  ♡', '🎀  ♡  🎀'}
+                        addDecoration(folder, part.Position + Vector3.new(0, part.Size.Y/2 + 5, 0), symbols[placed % #symbols + 1], 100)
+                        placed += 1
+                    end
+                end
+            end
+        end
+        local function enable()
+            enabled = true
+            oldLighting.Ambient = Lighting.Ambient
+            oldLighting.OutdoorAmbient = Lighting.OutdoorAmbient
+            oldLighting.ColorShift_Top = Lighting.ColorShift_Top
+            oldLighting.ColorShift_Bottom = Lighting.ColorShift_Bottom
+            Lighting.Ambient = Color3.fromRGB(255, 165, 208)
+            Lighting.OutdoorAmbient = Color3.fromRGB(255, 190, 221)
+            Lighting.ColorShift_Top = Color3.fromRGB(255, 199, 226)
+            Lighting.ColorShift_Bottom = Color3.fromRGB(255, 167, 211)
+            themeSky()
+            -- Terrain-based floors are not BaseParts; tint their materials too.
+            local terrain = Workspace:FindFirstChildOfClass('Terrain')
+            if terrain then
+                for _, material in ipairs(terrainFloorMaterials) do
+                    pcall(function()
+                        terrainFloorColors[material] = terrain:GetMaterialColor(material)
+                        terrain:SetMaterialColor(material, Color3.fromRGB(255, 166, 209))
+                    end)
+                end
+            end
+            for _, inst in ipairs(Workspace:GetDescendants()) do recolor(inst) end
+            addedConnection = Workspace.DescendantAdded:Connect(function(inst)
+                if enabled and inst:IsA('BasePart') then task.defer(function() if enabled and inst.Parent then recolor(inst) end end) end
+            end)
+            decorateMap()
+        end
+        local function disable()
+            enabled = false
+            if addedConnection then addedConnection:Disconnect(); addedConnection = nil end
+            for part, original in pairs(saved) do
+                if part and part.Parent then
+                    pcall(function()
+                        part.Color = original.Color
+                        part.Material = original.Material
+                        part.Reflectance = original.Reflectance
+                    end)
+                end
+            end
+            table.clear(saved)
+            local terrain = Workspace:FindFirstChildOfClass('Terrain')
+            if terrain then
+                for material, color in pairs(terrainFloorColors) do
+                    pcall(function() terrain:SetMaterialColor(material, color) end)
+                end
+            end
+            table.clear(terrainFloorColors)
+            for _, decoration in ipairs(decorations) do
+                if decoration and decoration.Parent then decoration:Destroy() end
+            end
+            table.clear(decorations)
+            restoreSky()
+            for property, value in pairs(oldLighting) do pcall(function() Lighting[property] = value end) end
+            table.clear(oldLighting)
+        end
+
+
+        local pinkButton = Instance.new("TextButton")
+        pinkButton.Name = "PinkThemeToggle"
+        pinkButton.Parent = page
+        pinkButton.Position = UDim2.fromOffset(8, 99)
+        pinkButton.Size = UDim2.new(1, -16, 0, 20)
+        pinkButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+        pinkButton.BackgroundTransparency = 0.82
+        pinkButton.BorderSizePixel = 0
+        pinkButton.AutoButtonColor = false
+        pinkButton.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        pinkButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+        pinkButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+        pinkButton.TextStrokeTransparency = 0.28
+        pinkButton.TextXAlignment = Enum.TextXAlignment.Left
+        pinkButton.TextSize = 13
+        pinkButton.Text = "Pink Theme: OFF"
+        pinkButton.ZIndex = 33
+        pinkButton.Activated:Connect(function()
+            if enabled then disable() else enable() end
+            pinkButton.Text = enabled and "Pink Theme: ON" or "Pink Theme: OFF"
+        end)
+        y0ungDareMenuv45.Destroying:Connect(function()
+            if enabled then disable() end
+        end)
+    end
+
     local previousVisibility = {}
     local glitchLayer
     mapsButton.Activated:Connect(function()
