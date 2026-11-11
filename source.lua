@@ -5062,48 +5062,56 @@ end
 coroutine.wrap(ZZPA_fake_script)()
 
 -- ================================================================
--- Shift-lock cursor recovery (Ctrl is the game's shift-lock key).
--- Only intervene after Ctrl is used to turn shift-lock OFF; never fight
--- normal first-person camera locking or a legitimate shift-lock state.
+-- Shift-lock cursor recovery: keep Ctrl OFF released until Ctrl turns it ON again.
+-- The old 1.5-second timeout allowed the game camera to lock the mouse again.
 do
     local UIS = game:GetService("UserInputService")
     local RunService = game:GetService("RunService")
     local Players = game:GetService("Players")
     local localPlayer = Players.LocalPlayer
-    local shiftLockExpected = UIS.MouseBehavior == Enum.MouseBehavior.LockCenter
-    local releaseUntil = 0
-    local ctrlWasDown = false
+    local ctrlHeld = false
+    local forceUnlocked = false
+
+    local function inFirstPerson()
+        local camera = workspace.CurrentCamera
+        if not camera then return false end
+        return (camera.CFrame.Position - camera.Focus.Position).Magnitude < 1
+    end
 
     UIS.InputBegan:Connect(function(input, processed)
         if input.KeyCode ~= Enum.KeyCode.LeftControl and input.KeyCode ~= Enum.KeyCode.RightControl then return end
-        if processed or UIS:GetFocusedTextBox() or ctrlWasDown then return end
-        ctrlWasDown = true
-        -- Track the Ctrl shift-lock toggle rather than unlocking every frame.
-        shiftLockExpected = not shiftLockExpected
-        if not shiftLockExpected then
-            releaseUntil = os.clock() + 1.5
+        if processed or UIS:GetFocusedTextBox() or ctrlHeld then return end
+        ctrlHeld = true
+        -- A locked mouse means this Ctrl press is disabling shift-lock.
+        -- Otherwise it is enabling shift-lock. Do not rely on a startup guess.
+        if forceUnlocked then
+            forceUnlocked = false
         else
-            releaseUntil = 0
-        end
-    end)
-    UIS.InputEnded:Connect(function(input)
-        if input.KeyCode == Enum.KeyCode.LeftControl or input.KeyCode == Enum.KeyCode.RightControl then
-            ctrlWasDown = false
+            forceUnlocked = UIS.MouseBehavior == Enum.MouseBehavior.LockCenter
         end
     end)
 
-    RunService:BindToRenderStep("y0ungDareShiftLockCursorRecovery", Enum.RenderPriority.Camera.Value + 2, function()
-        if releaseUntil <= os.clock() then return end
-        local camera = workspace.CurrentCamera
+    UIS.InputEnded:Connect(function(input)
+        if input.KeyCode == Enum.KeyCode.LeftControl or input.KeyCode == Enum.KeyCode.RightControl then
+            ctrlHeld = UIS:IsKeyDown(Enum.KeyCode.LeftControl)
+                or UIS:IsKeyDown(Enum.KeyCode.RightControl)
+        end
+    end)
+
+    -- Run after the default camera updates; only enforce while shift-lock is OFF.
+    RunService:BindToRenderStep("y0ungDareShiftLockCursorRecovery",
+        Enum.RenderPriority.Camera.Value + 10, function()
+        if not forceUnlocked then return end
+        if UIS:GetFocusedTextBox() or inFirstPerson() then return end
         local character = localPlayer.Character
         local humanoid = character and character:FindFirstChildOfClass("Humanoid")
-        -- First person intentionally locks the cursor; don't override it.
-        local firstPerson = camera and (camera.CFrame.Position - camera.Focus.Position).Magnitude < 1
-        if firstPerson or (humanoid and humanoid.Health <= 0) then return end
+        if humanoid and humanoid.Health <= 0 then return end
         if UIS.MouseBehavior == Enum.MouseBehavior.LockCenter then
             UIS.MouseBehavior = Enum.MouseBehavior.Default
         end
-        UIS.MouseIconEnabled = true
+        if not UIS.MouseIconEnabled then
+            UIS.MouseIconEnabled = true
+        end
     end)
 end
 
