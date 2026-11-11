@@ -578,7 +578,7 @@ JiggyStyleHeader.TextXAlignment = Enum.TextXAlignment.Left
 JiggyStyleHeader.TextYAlignment = Enum.TextYAlignment.Center
 JiggyStyleHeader.TextStrokeColor3 = Color3.fromRGB(20, 3, 40)
 JiggyStyleHeader.TextStrokeTransparency = 0.25
-JiggyStyleHeader.Text = '<font color="#FF39DB">y</font><font color="#00EFFF">0</font><font color="#FF39DB">u</font><font color="#00EFFF">n</font><font color="#FF39DB">g</font><font color="#00EFFF">D</font><font color="#FF39DB">a</font><font color="#00EFFF">r</font><font color="#FF39DB">e</font> <font color="#00EFFF">M</font><font color="#FF39DB">e</font><font color="#00EFFF">n</font><font color="#FF39DB">u</font> <font color="#00EFFF">v</font><font color="#FF39DB">4</font><font color="#00EFFF">.</font><font color="#FF39DB">5</font>'
+JiggyStyleHeader.Text = '<font color="#00EFFF">y</font><font color="#00EFFF">0</font><font color="#00EFFF">u</font><font color="#00EFFF">n</font><font color="#00EFFF">g</font><font color="#00EFFF">D</font><font color="#00EFFF">a</font><font color="#00EFFF">r</font><font color="#00EFFF">e</font> <font color="#00EFFF">M</font><font color="#00EFFF">e</font><font color="#00EFFF">n</font><font color="#00EFFF">u</font> <font color="#00EFFF">v</font><font color="#00EFFF">4</font><font color="#00EFFF">.</font><font color="#00EFFF">5</font>'
 JiggyStyleHeader.ZIndex = 12
 
 local JiggyStyleByline = Instance.new("TextLabel")
