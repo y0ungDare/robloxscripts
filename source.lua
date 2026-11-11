@@ -3663,7 +3663,7 @@ local function OACKUI_fake_script() -- Frame.AimbotController
 	local languageIndex = 1
 	local selectedPlayerUserId = nil
 	local teamCheckEnabled = true
-	local modes = {"Guards Only", "Criminals Only", "Inmates Only", "Everyone", "Hostile Inmates + Criminals", "Choose Player"}
+	local modes = {"Guards Only", "Criminals Only", "Inmates Only", "Everyone", "Hostile Inmates + Criminals", "Hostile Inmates + Guards", "Choose Player"}
 	
 	-- Language order matches the supplied y0ungDare Menu v4.5 LanguageController.
 	local languages = {"English", "Español", "Français", "日本語", "中文（简体）", "Deutsch"}
@@ -3673,6 +3673,7 @@ local function OACKUI_fake_script() -- Frame.AimbotController
 	    {"Inmates Only", "Solo reclusos", "Détenus uniquement", "囚人のみ", "仅囚犯", "Nur Insassen"},
 	    {"Everyone", "Todos", "Tout le monde", "全員", "所有人", "Alle"},
 	    {"Hostile Inmates + Criminals", "Comprobar hostilidad", "Vérifier hostilité", "敵対チェック", "敌对检查", "Feindlichkeitsprüfung"},
+	    {"Hostile Inmates + Guards", "Reclusos hostiles + guardias", "Détenus hostiles + gardes", "敵対囚人＋警備員", "敌对囚犯 + 狱警", "Feindliche Insassen + Wachen"},
 	    {"Choose Player", "Elegir jugador", "Choisir un joueur", "プレイヤーを選択", "选择玩家", "Spieler wählen"},
 	}
 	local targetPrefix = {"Target: ", "Objetivo: ", "Cible : ", "対象: ", "目标：", "Ziel: "}
@@ -3690,8 +3691,10 @@ local function OACKUI_fake_script() -- Frame.AimbotController
 	
 	local function isTarget(plr)
 	    if plr == player then return false end
-	    if teamCheckEnabled and not isEnemy(plr) then return false end
     local mode = modes[modeIndex]
+    -- For the combined mode, hostile inmates must be eligible even when
+    -- the local player is not a guard or is on the inmate team.
+    if mode ~= "Hostile Inmates + Guards" and teamCheckEnabled and not isEnemy(plr) then return false end
 		    -- Combined selector: original hostile-inmate condition OR original criminals-only condition.
 	    if mode == "Hostile Inmates + Criminals" then
 	        local teamName = plr.Team and plr.Team.Name:lower() or ""
@@ -3705,6 +3708,21 @@ local function OACKUI_fake_script() -- Frame.AimbotController
 	        local theirTeam = plr.Team
 	        if not myTeam or not theirTeam then return false end
 	        if myTeam.Name ~= "Guards" or theirTeam.Name ~= "Inmates" then return false end
+	        local character = plr.Character
+	        return character ~= nil and character:GetAttribute("Hostile") == true
+	    end
+	    -- Original Guards Only matching combined with original Hostile Inmates check.
+	    if mode == "Hostile Inmates + Guards" then
+	        local teamName = plr.Team and plr.Team.Name:lower() or ""
+	        if teamName:find("guard", 1, true) ~= nil
+	            or teamName:find("police", 1, true) ~= nil
+	            or teamName:find("cop", 1, true) ~= nil then
+	            return true
+	        end
+	        -- The old Guards-team requirement excluded hostile inmates whenever
+	        -- the local player was a criminal or inmate.
+	        if teamName:find("inmate", 1, true) == nil
+	            and teamName:find("prisoner", 1, true) == nil then return false end
 	        local character = plr.Character
 	        return character ~= nil and character:GetAttribute("Hostile") == true
 	    end
