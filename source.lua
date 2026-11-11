@@ -5378,22 +5378,48 @@ do
             FAL = {meshId="rbxassetid://90772329772088", meshName="FAL/Meshes", hide={ ["Smooth Block Model"]=true, Black=true }, offset=Vector3.new(.05,.2,-.55), rotation=90, size=Vector3.new(.4,.4,.4)},
             M700 = {meshId="rbxassetid://109235772617313", meshName="M700/Meshes", hide={ ["Smooth Block Model"]=true }, offset=Vector3.new(0,.43,-.8), rotation=90, size=Vector3.new(1,1,1)}
         }
-        -- Save each affected instance's appearance before applying any camo.
-        -- A per-instance snapshot also survives switching weapons while equipped.
+        -- Keep original values per instance; use the untouched gun template as a
+        -- fallback when a weapon was already camouflaged before this script ran.
         local savedAppearance = setmetatable({}, {__mode = "k"})
         local createdCamoMeshes = setmetatable({}, {__mode = "k"})
-        local function remember(part)
-            if not savedAppearance[part] then
-                local snapshot = {transparency = part.Transparency}
-                if part:IsA("MeshPart") then snapshot.textureID = part.TextureID end
-                savedAppearance[part] = snapshot
+        local function templatePart(tool, part)
+            local folder = RS:FindFirstChild("Tools")
+            folder = folder and folder:FindFirstChild("Guns")
+            local template = folder and folder:FindFirstChild(tool.Name)
+            if not template then return nil end
+            local path = {}
+            local node = part
+            while node and node ~= tool do
+                table.insert(path, 1, node.Name)
+                node = node.Parent
             end
+            if node ~= tool then return nil end
+            node = template
+            for _, name in ipairs(path) do
+                node = node:FindFirstChild(name)
+                if not node then return nil end
+            end
+            return node
         end
-        local function restorePart(part)
+        local function remember(part)
+            if savedAppearance[part] then return end
+            local snapshot = {transparency = part.Transparency}
+            if part:IsA("MeshPart") then snapshot.textureID = part.TextureID end
+            savedAppearance[part] = snapshot
+        end
+        local function restorePart(tool, part)
+            local original = templatePart(tool, part)
             local snapshot = savedAppearance[part]
-            if not snapshot or not part.Parent then return end
-            part.Transparency = snapshot.transparency
-            if part:IsA("MeshPart") then part.TextureID = snapshot.textureID end
+            if original and original:IsA("BasePart") then
+                part.Transparency = original.Transparency
+                if part:IsA("MeshPart") and original:IsA("MeshPart") then
+                    part.TextureID = original.TextureID
+                end
+            elseif snapshot then
+                part.Transparency = snapshot.transparency
+                if part:IsA("MeshPart") then part.TextureID = snapshot.textureID end
+            end
+            savedAppearance[part] = nil
         end
         local function apply(tool)
             if not tool:IsA("Tool") then return end
@@ -5404,6 +5430,18 @@ do
                 if mesh and not mesh.Parent then
                     createdCamoMeshes[tool] = nil
                     mesh = nil
+                end
+                -- Identify camo meshes by their unique name, including ones from
+                -- an earlier script instance (not present in our local table).
+                for _, child in ipairs(tool:GetChildren()) do
+                    if child:IsA("MeshPart") and child.Name == cfg.meshName then
+                        if id and not mesh then
+                            mesh = child
+                            createdCamoMeshes[tool] = child
+                        elseif child ~= mesh or not id then
+                            child:Destroy()
+                        end
+                    end
                 end
                 if id and not mesh then
                     local handle = tool:FindFirstChild("Handle")
@@ -5427,7 +5465,7 @@ do
                                     remember(part)
                                     part.Transparency = 1
                                 else
-                                    restorePart(part)
+                                    restorePart(tool, part)
                                 end
                             end
                         end
@@ -5442,14 +5480,13 @@ do
                     end
                 end
             else
-                -- Restore ALL modified mesh parts, not only the first one found.
                 for _, part in ipairs(tool:GetDescendants()) do
                     if part:IsA("MeshPart") then
                         if id then
                             remember(part)
                             part.TextureID = id
                         else
-                            restorePart(part)
+                            restorePart(tool, part)
                         end
                     end
                 end
@@ -5480,12 +5517,13 @@ do
         for _, name in ipairs(knownNames) do addName(name) end
         -- Preset decal selector (replaces the manual ID input).
         local camoPresets = {
+            {name = "None", id = nil}, -- Apply Camo restores the original gun appearance.
             {name = "Ghost", id = "119529300916407"},
             {name = "Abstract", id = "126399459084902"},
             {name = "Gold", id = "124475509"},
             {name = "Sliver Satin", id = "72633129496082"},
         }
-        local selectedPreset = 1
+        local selectedPreset = 2
         local presetButton = row("GunCamoPreset", "Gun Camo: Ghost  >", 0)
         presetButton.Parent, presetButton.ZIndex = area, 38
         local applyButton = row("GunCamoApply", "Apply Camo", 24)
@@ -5534,7 +5572,13 @@ do
         end
         applyButton.Activated:Connect(function()
             local number = camoPresets[selectedPreset].id
-            if not number then return end
+            -- None clears all active camo selections and restores saved original textures.
+            -- For FAL/M700 this also removes the camo-only mesh and unhides original parts.
+            if not number then
+                for name in pairs(selections) do selections[name] = nil end
+                refresh()
+                return
+            end
             local image = resolveCamoImage(number)
             if not image then return end
             -- Run the original individual weapon camo path for each gun.
