@@ -898,204 +898,8 @@ do
     back.Text = "< BACK"
     back.ZIndex = 52
 
-    -- Local imitation of the Roblox disconnect overlay; no real kick occurs.
-    local Lighting = game:GetService("Lighting")
-    local UserInputService = game:GetService("UserInputService")
-    local RunService = game:GetService("RunService")
-    local TweenService = game:GetService("TweenService")
-    local ContextActionService = game:GetService("ContextActionService")
-    local fakeKickGui = Instance.new("ScreenGui")
-    fakeKickGui.Name = "y0ungDareFakeKickPrompt"
-    fakeKickGui.ResetOnSpawn = false
-    fakeKickGui.IgnoreGuiInset = true
-    fakeKickGui.DisplayOrder = 10000
-    fakeKickGui.Enabled = false
-    fakeKickGui.Parent = player:WaitForChild("PlayerGui")
-
-    local blur = Instance.new("BlurEffect")
-    blur.Name = "y0ungDareFakeDisconnectBlur"
-    blur.Size = 0
-    blur.Enabled = false
-    blur.Parent = Lighting
-
-    local shade = Instance.new("Frame")
-    shade.Name = "DimBackground"
-    shade.Size = UDim2.fromScale(1, 1)
-    shade.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    shade.BackgroundTransparency = 0.52
-    shade.BorderSizePixel = 0
-    shade.Active = true
-    shade.Parent = fakeKickGui
-
-    local dialog = Instance.new("Frame")
-    dialog.Name = "DisconnectDialog"
-    dialog.AnchorPoint = Vector2.new(0.5, 0.5)
-    dialog.Position = UDim2.fromScale(0.5, 0.5)
-    dialog.Size = UDim2.fromOffset(400, 250)
-    dialog.BackgroundTransparency = 0
-    local dialogSizeLimit = Instance.new("UISizeConstraint")
-    dialogSizeLimit.MaxSize = Vector2.new(400, 250)
-    dialogSizeLimit.Parent = dialog
-    dialog.BackgroundColor3 = Color3.fromRGB(57, 57, 57)
-    dialog.BorderSizePixel = 0
-    dialog.Parent = shade
-
-    local headingKick = Instance.new("TextLabel")
-    headingKick.Name = "Title"
-    headingKick.Size = UDim2.new(1, -40, 0, 36)
-    headingKick.Position = UDim2.fromOffset(20, 9)
-    headingKick.BackgroundTransparency = 1
-    headingKick.Text = "Disconnected"
-    headingKick.Font = Enum.Font.GothamBold
-    headingKick.TextSize = 19
-    headingKick.TextColor3 = Color3.new(1, 1, 1)
-    headingKick.TextXAlignment = Enum.TextXAlignment.Center
-    headingKick.Parent = dialog
-
-    local separator = Instance.new("Frame")
-    separator.Name = "Separator"
-    separator.Position = UDim2.fromOffset(20, 50)
-    separator.Size = UDim2.new(1, -40, 0, 1)
-    separator.BackgroundColor3 = Color3.fromRGB(185, 185, 185)
-    separator.BorderSizePixel = 0
-    separator.Parent = dialog
-
-    local explanation = Instance.new("TextLabel")
-    explanation.Name = "Explanation"
-    explanation.Position = UDim2.fromOffset(20, 69)
-    explanation.Size = UDim2.new(1, -40, 0, 115)
-    explanation.BackgroundTransparency = 1
-    explanation.Text = "You were kicked from this experience:\nevocor moderation\n\nThis server has shutdown.\n(Error Code: 267)"
-    explanation.Font = Enum.Font.Gotham
-    explanation.TextSize = 14
-    explanation.TextWrapped = true
-    explanation.TextColor3 = Color3.fromRGB(190, 190, 190)
-    explanation.TextXAlignment = Enum.TextXAlignment.Center
-    explanation.TextYAlignment = Enum.TextYAlignment.Center
-    explanation.Parent = dialog
-
-    local leaveFake = Instance.new("TextButton")
-    leaveFake.Name = "FakeLeaveButton"
-    leaveFake.Position = UDim2.fromOffset(20, 194)
-    leaveFake.Size = UDim2.new(1, -40, 0, 36)
-    leaveFake.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    leaveFake.BorderSizePixel = 0
-    leaveFake.Font = Enum.Font.Gotham
-    leaveFake.TextSize = 15
-    leaveFake.TextColor3 = Color3.fromRGB(30, 30, 30)
-    leaveFake.Text = "Leave"
-    leaveFake.Parent = dialog
-    local leaveCorner = Instance.new("UICorner")
-    leaveCorner.CornerRadius = UDim.new(0, 8)
-    leaveCorner.Parent = leaveFake
-
-    local activeFakeKick = false
-    local hiddenGuis = {}
-    local savedBlurState = {}
-    local actionName = "y0ungDareFakeKickBlockControls"
-    local function blockGameplayInput()
-        return Enum.ContextActionResult.Sink
-    end
-    local function tweenBlur(value)
-        TweenService:Create(blur, TweenInfo.new(0.17, Enum.EasingStyle.Quad), {Size = value}):Play()
-    end
-    local savedCameraType, savedCameraCFrame, savedCameraSubject
-    local savedRoot, savedAnchored
-    local freezeConnection
-    local savedControls
-
-    local function closeFakeKick()
-        if not activeFakeKick then return end
-        activeFakeKick = false
-        fakeKickGui.Enabled = false
-        tweenBlur(0)
-        task.delay(0.2, function()
-            if not activeFakeKick then blur.Enabled = false end
-        end)
-        ContextActionService:UnbindAction(actionName)
-        for gui, wasEnabled in pairs(hiddenGuis) do
-            if gui.Parent then gui.Enabled = wasEnabled end
-        end
-        table.clear(hiddenGuis)
-        for effect, state in pairs(savedBlurState) do
-            if effect.Parent then effect.Enabled = state end
-        end
-        table.clear(savedBlurState)
-        if freezeConnection then freezeConnection:Disconnect(); freezeConnection = nil end
-        if savedRoot and savedRoot.Parent then savedRoot.Anchored = savedAnchored end
-        savedRoot = nil
-        local camera = workspace.CurrentCamera
-        if camera then
-            if savedCameraType then camera.CameraType = savedCameraType end
-            if savedCameraSubject and savedCameraSubject.Parent then camera.CameraSubject = savedCameraSubject end
-        end
-        if savedControls then pcall(function() savedControls:Enable() end) end
-    end
-
-    leaveFake.Activated:Connect(closeFakeKick)
-
-    local function showFakeKickMessage()
-        if activeFakeKick then return end
-        activeFakeKick = true
-        -- Hide normal HUD/menu layers; Roblox's actual disconnect prompt sits above them.
-        for _, gui in ipairs(player.PlayerGui:GetChildren()) do
-            if gui:IsA("ScreenGui") and gui ~= fakeKickGui then
-                hiddenGuis[gui] = gui.Enabled
-                gui.Enabled = false
-            end
-        end
-        -- Keep other postprocessing from overpowering the disconnect screenshot.
-        for _, effect in ipairs(Lighting:GetChildren()) do
-            if effect:IsA("BlurEffect") and effect ~= blur then
-                savedBlurState[effect] = effect.Enabled
-                effect.Enabled = false
-            end
-        end
-        ContextActionService:BindActionAtPriority(actionName, blockGameplayInput, false, 3000,
-            Enum.PlayerActions.CharacterForward, Enum.PlayerActions.CharacterBackward,
-            Enum.PlayerActions.CharacterLeft, Enum.PlayerActions.CharacterRight,
-            Enum.PlayerActions.CharacterJump, Enum.KeyCode.W, Enum.KeyCode.A,
-            Enum.KeyCode.S, Enum.KeyCode.D, Enum.KeyCode.Space)
-        local camera = workspace.CurrentCamera
-        if camera then
-            savedCameraType = camera.CameraType
-            savedCameraCFrame = camera.CFrame
-            savedCameraSubject = camera.CameraSubject
-            camera.CameraType = Enum.CameraType.Scriptable
-            camera.CFrame = savedCameraCFrame
-        end
-        local character = player.Character
-        savedRoot = character and character:FindFirstChild("HumanoidRootPart")
-        savedAnchored = savedRoot and savedRoot.Anchored or false
-        if savedRoot then savedRoot.Anchored = true end
-        savedControls = nil
-        pcall(function()
-            local playerScripts = player:FindFirstChild("PlayerScripts")
-            local module = playerScripts and playerScripts:FindFirstChild("PlayerModule")
-            if module then
-                savedControls = require(module):GetControls()
-                savedControls:Disable()
-            end
-        end)
-        freezeConnection = RunService.RenderStepped:Connect(function()
-            if not activeFakeKick then return end
-            local currentCamera = workspace.CurrentCamera
-            if currentCamera and savedCameraCFrame then
-                currentCamera.CameraType = Enum.CameraType.Scriptable
-                currentCamera.CFrame = savedCameraCFrame
-            end
-        end)
-        blur.Size = 0
-        blur.Enabled = true
-        tweenBlur(56) -- maximum Roblox BlurEffect strength for a heavily blurred disconnect background
-        fakeKickGui.Enabled = true
-    end
-
-    fakeKickGui.Destroying:Connect(closeFakeKick)
-    y0ungDareMenuv45.Destroying:Connect(closeFakeKick)
-
     -- Four compact main-menu-style rows, with the same teal hover selection marker.
-    local captions = {"Hello message", "Your Host", "Menu tutorial", "Instagram Message", "Fake Kick Message"}
+    local captions = {"Hello message", "Your Host", "Menu tutorial", "Instagram Message"}
     local hoverTween = game:GetService("TweenService")
     local hoverInfo = TweenInfo.new(0.09, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
     for i, caption in ipairs(captions) do
@@ -1134,9 +938,7 @@ do
             if not page.Visible then setHover(false) end
         end)
         choice.Activated:Connect(function()
-            if i == 5 then
-                showFakeKickMessage()
-            elseif shared.y0ungDareReplayStartupMessage then
+            if shared.y0ungDareReplayStartupMessage then
                 shared.y0ungDareReplayStartupMessage(i)
             end
         end)
@@ -1145,7 +947,7 @@ do
     -- Move the original Chat Spammer control into Messages without replacing its handler.
     ChatToggle.Parent = page
     ChatToggle.AnchorPoint = Vector2.new(0, 0)
-    ChatToggle.Position = UDim2.fromOffset(8, 179)
+    ChatToggle.Position = UDim2.fromOffset(8, 159)
     ChatToggle.Size = UDim2.new(1, -16, 0, 20)
     ChatToggle.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
     ChatToggle.BackgroundTransparency = 0.82
