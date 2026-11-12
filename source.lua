@@ -9448,9 +9448,430 @@ do
         end)
     end
 
+    -- Tokyo Drift: built-in Roblox geometry; no external image/decal dependencies.
+    do
+        local button = Instance.new("TextButton")
+        button.Name = "TokyoDriftThemeToggle"
+        button.Parent = page
+        button.Position = UDim2.fromOffset(8, 219)
+        button.Size = UDim2.new(1, -16, 0, 20)
+        button.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+        button.BackgroundTransparency = 0.82
+        button.BorderSizePixel = 0
+        button.AutoButtonColor = false
+        button.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        button.TextColor3 = Color3.fromRGB(1, 244, 253)
+        button.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+        button.TextStrokeTransparency = 0.28
+        button.TextXAlignment = Enum.TextXAlignment.Left
+        button.TextSize = 13
+        button.Text = "Tokyo Drift: OFF"
+        button.ZIndex = 33
+
+        local Lighting = game:GetService("Lighting")
+        local Workspace = game:GetService("Workspace")
+        local Players = game:GetService("Players")
+        local SoundService = game:GetService("SoundService")
+        local active = false
+        local originals, lightOriginals, generated = {}, {}, {}
+        local hiddenFloorArt = {}
+        local connection, clockConnection
+        local sound = Instance.new("Sound")
+        sound.Name = "TokyoDriftThemeMusic"
+        sound.SoundId = "rbxassetid://129019824895316"
+        sound.Volume = 0.45
+        sound.Looped = true
+        sound.Parent = SoundService
+        local cyan = Color3.fromRGB(0, 235, 255)
+        local pink = Color3.fromRGB(255, 38, 144)
+        local amber = Color3.fromRGB(255, 173, 62)
+        local count, roads, signs, strips = 0, 0, 0, 0
+        local MAX_PARTS, MAX_ROADS, MAX_SIGNS, MAX_STRIPS = 9000, 600, 30, 180
+
+        local function savePart(part)
+            if originals[part] then return end
+            originals[part] = {Color=part.Color, Material=part.Material, Reflectance=part.Reflectance}
+        end
+        local function makeNeon(host, name, size, localCF, color, transparency)
+            local part = Instance.new("Part")
+            part.Name = name
+            part.Anchored = true
+            part.CanCollide = false
+            part.CanTouch = false
+            part.CanQuery = false
+            part.CastShadow = false
+            part.Material = Enum.Material.Neon
+            part.Color = color
+            part.Transparency = transparency or 0
+            part.Size = size
+            part.CFrame = host.CFrame * localCF
+            part.Parent = host
+            table.insert(generated, part)
+            return part
+        end
+        -- Wall-mounted SurfaceGuis: never float or render through the map.
+        -- Use two distinct signs: original cyan NIGHT DRIVE, and a pink companion.
+        local signCandidates = {}
+        -- Fixed user-supplied positions. Signs are projected onto the nearest real
+        -- architectural wall surface; no floating geometry or AlwaysOnTop GUI.
+        local signTargets = {
+            {position=Vector3.new(883.63,106.11,2405.91), title="NIGHT DRIVE", color=cyan},
+            {position=Vector3.new(953.70,110.35,2405.69), title="TOKYO DRIFT", color=pink},
+        }
+        local function makeSign(host, face, title, color, target)
+            local localPoint=host.CFrame:PointToObjectSpace(target)
+            local size=host.Size
+            local u,v
+            if face==Enum.NormalId.Front then
+                u=.5+localPoint.X/math.max(size.X,.01)
+                v=.5-localPoint.Y/math.max(size.Y,.01)
+            elseif face==Enum.NormalId.Back then
+                u=.5-localPoint.X/math.max(size.X,.01)
+                v=.5-localPoint.Y/math.max(size.Y,.01)
+            elseif face==Enum.NormalId.Right then
+                u=.5-localPoint.Z/math.max(size.Z,.01)
+                v=.5-localPoint.Y/math.max(size.Y,.01)
+            else
+                u=.5+localPoint.Z/math.max(size.Z,.01)
+                v=.5-localPoint.Y/math.max(size.Y,.01)
+            end
+            local widthStuds=math.min(19,math.max(5, (face==Enum.NormalId.Front or face==Enum.NormalId.Back) and size.X*.68 or size.Z*.68))
+            local heightStuds=math.min(4.6,math.max(2,size.Y*.4))
+            local surfaceWidth=(face==Enum.NormalId.Front or face==Enum.NormalId.Back) and size.X or size.Z
+            local wu=math.min(.92,widthStuds/math.max(surfaceWidth,.01))
+            local hv=math.min(.78,heightStuds/math.max(size.Y,.01))
+            u=math.clamp(u,wu*.5+.02,1-wu*.5-.02)
+            v=math.clamp(v,hv*.5+.02,1-hv*.5-.02)
+            local gui=Instance.new("SurfaceGui")
+            gui.Name="TokyoDriftWallSign"
+            gui.Face=face
+            gui.AlwaysOnTop=false
+            gui.LightInfluence=0
+            gui.PixelsPerStud=40
+            gui.ZOffset=.08
+            gui.Parent=host
+            local panel=Instance.new("Frame")
+            panel.AnchorPoint=Vector2.new(.5,.5)
+            panel.Position=UDim2.fromScale(u,v)
+            panel.Size=UDim2.fromScale(wu,hv)
+            panel.BackgroundColor3=Color3.fromRGB(4,5,13)
+            panel.BorderSizePixel=0
+            panel.Parent=gui
+            local outline=Instance.new("UIStroke")
+            outline.Color=color
+            outline.Thickness=3
+            outline.Parent=panel
+            local label=Instance.new("TextLabel")
+            label.Size=UDim2.fromScale(.96,.9)
+            label.Position=UDim2.fromScale(.02,.05)
+            label.BackgroundTransparency=1
+            label.Font=Enum.Font.GothamBlack
+            label.TextScaled=true
+            label.Text=title
+            label.TextColor3=color
+            label.TextStrokeColor3=color
+            label.TextStrokeTransparency=.65
+            label.Parent=panel
+            -- Matching pink neon light, mounted on the SAME wall surface as the sign.
+            -- The bar is part of the SurfaceGui, so it cannot float or shine through walls.
+            if title == "TOKYO DRIFT" then
+                local bar = Instance.new("Frame")
+                bar.Name = "PinkNeonLightAboveSign"
+                bar.AnchorPoint = Vector2.new(.5,.5)
+                bar.Position = UDim2.fromScale(u, math.max(.025, v - hv*.5 - .018))
+                bar.Size = UDim2.fromScale(math.min(.92,wu*.93), .012)
+                bar.BorderSizePixel = 0
+                bar.BackgroundColor3 = color
+                bar.Parent = gui
+                local glow = Instance.new("UIStroke")
+                glow.Color = color
+                glow.Thickness = 7
+                glow.Transparency = .52
+                glow.Parent = bar
+            end
+            table.insert(generated,gui)
+        end
+        local function mountSigns()
+            if not active then return end
+            for _,target in ipairs(signTargets) do
+                local bestWall,bestDistance=nil,math.huge
+                for _,wall in ipairs(signCandidates) do
+                    if wall.Parent and wall:IsA("BasePart") then
+                        local localPos=wall.CFrame:PointToObjectSpace(target.position)
+                        local half=wall.Size*.5
+                        local dx=math.max(math.abs(localPos.X)-half.X,0)
+                        local dy=math.max(math.abs(localPos.Y)-half.Y,0)
+                        local dz=math.max(math.abs(localPos.Z)-half.Z,0)
+                        local distance=math.sqrt(dx*dx+dy*dy+dz*dz)
+                        -- Favor a wall near the specified location, not a distant
+                        -- oversized facade whose center happens to be nearby.
+                        if distance<bestDistance then
+                            bestWall,bestDistance=wall,distance
+                        end
+                    end
+                end
+                if bestWall and bestDistance<=20 then
+                    local localPos=bestWall.CFrame:PointToObjectSpace(target.position)
+                    local front=bestWall.Size.X>=bestWall.Size.Z
+                    local first=front and Enum.NormalId.Front or Enum.NormalId.Right
+                    local second=front and Enum.NormalId.Back or Enum.NormalId.Left
+                    -- Wall-owned surface GUIs respect occlusion. Both faces make
+                    -- the lettering visible from either side of the actual wall.
+                    makeSign(bestWall,first,target.title,target.color,target.position)
+                    makeSign(bestWall,second,target.title,target.color,target.position)
+                else
+                    warn("Tokyo Drift: no suitable wall within 20 studs of sign at "..tostring(target.position))
+                end
+            end
+        end
+        local function eligible(part)
+            if not part:IsA("BasePart") or not part.Anchored or not part.Parent then return false end
+            if part.Transparency > .8 or part.Size.Magnitude < 4 then return false end
+            if part:FindFirstAncestorOfClass("Tool") or part:FindFirstAncestorOfClass("Accessory") then return false end
+            local character = Players.LocalPlayer.Character
+            if character and part:IsDescendantOf(character) then return false end
+            local model = part:FindFirstAncestorOfClass("Model")
+            if model and (model:FindFirstChildOfClass("Humanoid") or model:FindFirstChildOfClass("VehicleSeat",true)) then return false end
+            -- Generated theme geometry must never be reprocessed.
+            if part.Name:sub(1,5) == "Tokyo" then return false end
+            return true
+        end
+        local function neutralGrey(color)
+            local hi=math.max(color.R,color.G,color.B)
+            local lo=math.min(color.R,color.G,color.B)
+            return hi >= .23 and hi-lo <= .23
+        end
+        local function wallGeometry(part)
+            local sz=part.Size
+            local cf=part.CFrame
+            -- Measure the real world-space shape rather than relying on the
+            -- part's local Y axis: Prison Life uses rotated and chunky meshes.
+            local vertical=math.abs(cf.RightVector.Y)*sz.X + math.abs(cf.UpVector.Y)*sz.Y + math.abs(cf.LookVector.Y)*sz.Z
+            local horizontalX=math.abs(cf.RightVector.X)*sz.X + math.abs(cf.UpVector.X)*sz.Y + math.abs(cf.LookVector.X)*sz.Z
+            local horizontalZ=math.abs(cf.RightVector.Z)*sz.X + math.abs(cf.UpVector.Z)*sz.Y + math.abs(cf.LookVector.Z)*sz.Z
+            local span=math.max(horizontalX,horizontalZ)
+            local thickness=math.min(horizontalX,horizontalZ)
+            local name=part.Name:lower()
+            local namedArchitectural=name:find("wall") or name:find("window") or name:find("frame")
+                or name:find("pillar") or name:find("column") or name:find("beam")
+                or name:find("doorframe") or name:find("lintel") or name:find("facade")
+            local excluded=name:find("chair") or name:find("table") or name:find("seat")
+                or name:find("desk") or name:find("lamp") or name:find("light")
+                or name:find("sign") or name:find("button") or name:find("glass")
+                or name:find("door") or name:find("screen")
+            -- The grey block in the screenshot is a thick facade panel.
+            -- Previous rules rejected it because thickness was over 15 studs.
+            -- Accept large, elevated neutral-grey architectural masses too.
+            local upright=vertical>=3 and part.Position.Y>=3
+            local largeFacade=upright and neutralGrey(part.Color) and (
+                (span>=7 and vertical>=7) or
+                (span>=3 and vertical>=11) or
+                (namedArchitectural and span>=2)
+            )
+            local thinWall=upright and span>=4 and thickness<=15
+            local framePiece=upright and neutralGrey(part.Color) and span>=.6
+                and (namedArchitectural or (vertical>=6 and thickness<=9))
+            return not excluded and (largeFacade or thinWall or framePiece), vertical, span
+        end
+        local function decorate(part)
+            if not active or not eligible(part) or originals[part] or count >= MAX_PARTS then return end
+            local sz = part.Size
+            local floor = sz.Y <= 7 and sz.X >= 10 and sz.Z >= 10
+            -- Recolor the actual white prison facade, window surrounds and pillars.
+            -- Previous size-only tests missed split wall sections and horizontal lintels.
+            local wall, wallHeight, wallSpan = wallGeometry(part)
+            -- A thick vertical facade can have large X and Z dimensions too.
+            -- Do not mistake it for a floor merely because both exceed 10 studs.
+            if wall and wallHeight >= 7 and part.Position.Y >= 4 then
+                floor = false
+            end
+            -- Recolor the thin grey floor-border strips to match the pink/cyan
+            -- wall signs. Only flat, long strips near the ground qualify; furniture
+            -- and tall structural pieces are intentionally left untouched.
+            local floorTrim = sz.Y <= 2.5 and math.max(sz.X, sz.Z) >= 13
+                and math.min(sz.X, sz.Z) <= 4
+                and part.CFrame.UpVector.Y > 0.92
+                and part.Color.R > 0.28 and part.Color.G > 0.28 and part.Color.B > 0.28
+                and math.abs(part.Color.R - part.Color.G) < 0.19
+                and math.abs(part.Color.G - part.Color.B) < 0.19
+            if not floor and not wall and not floorTrim then return end
+            count += 1
+            savePart(part)
+            part.Reflectance = .08
+            if floorTrim and not floor and not wall then
+                -- Dark magenta trim makes the old grey outlines complement
+                -- NIGHT DRIVE and the surrounding cyan/pink neon.
+                part.Color = Color3.fromRGB(75, 29, 65)
+                part.Material = Enum.Material.SmoothPlastic
+                part.Reflectance = 0.12
+            elseif floor then
+                -- Dark asphalt throughout the connected walkways, including wide junctions.
+                -- The Prison Life tiled floor has image overlays in some map versions.
+                -- Hide those overlays as well as changing the actual floor material,
+                -- otherwise the original grey tiles remain visible above the black road.
+                part.Color = Color3.fromRGB(12, 11, 17)
+                part.Material = Enum.Material.SmoothPlastic
+                for _,art in ipairs(part:GetChildren()) do
+                    if (art:IsA("Texture") or art:IsA("Decal")) and hiddenFloorArt[art] == nil then
+                        hiddenFloorArt[art] = art.Transparency
+                        art.Transparency = 1
+                    end
+                end
+                local longX = sz.X >= sz.Z
+                local length = longX and sz.X or sz.Z
+                local width = longX and sz.Z or sz.X
+                local y = sz.Y / 2 + .055
+                local function laneAlongX()
+                    local edge = math.max(1.2, sz.Z / 2 - 1.25)
+                    for _,side in ipairs({-1,1}) do
+                        makeNeon(part,"TokyoLaneEdge",Vector3.new(sz.X,.055,.2),CFrame.new(0,y,side*edge),side==1 and cyan or pink,.22)
+                    end
+                    local dashCount = math.min(80,math.max(1,math.floor(sz.X/13)))
+                    for i=1,dashCount do
+                        local t=-sz.X/2+(i-.5)*sz.X/dashCount
+                        makeNeon(part,"TokyoCenterDash",Vector3.new(math.min(5,sz.X/dashCount*.55),.06,.25),CFrame.new(t,y,0),amber,.23)
+                    end
+                end
+                local function laneAlongZ()
+                    local edge = math.max(1.2, sz.X / 2 - 1.25)
+                    for _,side in ipairs({-1,1}) do
+                        makeNeon(part,"TokyoLaneEdge",Vector3.new(.2,.055,sz.Z),CFrame.new(side*edge,y,0),side==1 and cyan or pink,.22)
+                    end
+                    local dashCount = math.min(80,math.max(1,math.floor(sz.Z/13)))
+                    for i=1,dashCount do
+                        local t=-sz.Z/2+(i-.5)*sz.Z/dashCount
+                        makeNeon(part,"TokyoCenterDash",Vector3.new(.25,.06,math.min(5,sz.Z/dashCount*.55)),CFrame.new(0,y,t),amber,.23)
+                    end
+                end
+                if roads < MAX_ROADS and length >= 36 then
+                    roads += 1
+                    if length / math.max(width,1) >= 1.65 then
+                        if longX then laneAlongX() else laneAlongZ() end
+                    elseif sz.X >= 36 and sz.Z >= 36 then
+                        -- Wide intersections previously had no center markings; draw both
+                        -- axes so the left-hand middle branch joins the main road.
+                        laneAlongX()
+                        laneAlongZ()
+                    end
+                end
+            else
+                -- Uniform near-black walls to match the NIGHT DRIVE neon signs.
+                part.Color = Color3.fromRGB(9, 10, 18)
+                part.Material = Enum.Material.SmoothPlastic
+                -- Some prison walls use surface textures/decals, which otherwise
+                -- keep the old grey visible after the BasePart is recolored.
+                for _, art in ipairs(part:GetChildren()) do
+                    if (art:IsA("Texture") or art:IsA("Decal")) and hiddenFloorArt[art] == nil then
+                        hiddenFloorArt[art] = art.Transparency
+                        art.Transparency = 1
+                    end
+                end
+                -- Only broad, relatively flat vertical wall faces can host signs.
+                -- Avoid pillars, ceiling slabs, doors, and tiny wall pieces.
+                if sz.Y >= 10 and sz.Y <= 65 and math.max(sz.X,sz.Z) >= 24
+                    and math.min(sz.X,sz.Z) <= 10 and part.CFrame.UpVector.Y > .85 then
+                    table.insert(signCandidates,part)
+                end
+                -- Small wall sections are recolored but do not get oversized trim/signs.
+                if strips < MAX_STRIPS and sz.Y >= 12 and math.max(sz.X,sz.Z) >= 15 then
+                    strips += 1
+                    local front = sz.X >= sz.Z
+                    local face = front and Enum.NormalId.Front or Enum.NormalId.Right
+                    local y = math.min(sz.Y/2-1.1, 10)
+                    local col = strips%2==0 and cyan or pink
+                    if front then
+                        makeNeon(part,"TokyoBuildingTrim",Vector3.new(math.min(sz.X-1,60),.25,.13),CFrame.new(0,y,-sz.Z/2-.09),col,.07)
+                    else
+                        makeNeon(part,"TokyoBuildingTrim",Vector3.new(.13,.25,math.min(sz.Z-1,60)),CFrame.new(sz.X/2+.09,y,0),col,.07)
+                    end
+
+                end
+            end
+        end
+        local keys={"ClockTime","Brightness","Ambient","OutdoorAmbient","FogColor","FogEnd","ExposureCompensation","ColorShift_Top","ColorShift_Bottom"}
+        local function start()
+            if active then return end
+            active=true
+            count,roads,signs,strips=0,0,0,0
+            table.clear(signCandidates)
+            for _,key in ipairs(keys) do lightOriginals[key]=Lighting[key] end
+            Lighting.ClockTime=0.35
+            Lighting.Brightness=2
+            Lighting.Ambient=Color3.fromRGB(48,60,92)
+            Lighting.OutdoorAmbient=Color3.fromRGB(35,44,76)
+            Lighting.FogColor=Color3.fromRGB(18,25,48)
+            Lighting.FogEnd=1100
+            Lighting.ExposureCompensation=.05
+            Lighting.ColorShift_Top=Color3.fromRGB(26,28,65)
+            Lighting.ColorShift_Bottom=Color3.fromRGB(8,18,36)
+            clockConnection=Lighting:GetPropertyChangedSignal("ClockTime"):Connect(function()
+                if active and Lighting.ClockTime~=0.35 then Lighting.ClockTime=0.35 end
+            end)
+            local bloom=Instance.new("BloomEffect")
+            bloom.Name="TokyoDriftStreetBloom"
+            bloom.Intensity=.55
+            bloom.Size=22
+            bloom.Threshold=1.4
+            bloom.Parent=Lighting
+            table.insert(generated,bloom)
+            local correction=Instance.new("ColorCorrectionEffect")
+            correction.Name="TokyoDriftColorGrade"
+            correction.TintColor=Color3.fromRGB(224,231,255)
+            correction.Contrast=.18
+            correction.Saturation=-.08
+            correction.Parent=Lighting
+            table.insert(generated,correction)
+            -- Batch the initial scan to avoid freezing the game on large maps.
+            task.spawn(function()
+                local all=Workspace:GetDescendants()
+                for i,obj in ipairs(all) do
+                    if not active then return end
+                    if obj:IsA("BasePart") then decorate(obj) end
+                    if i%150==0 then task.wait() end
+                end
+                mountSigns()
+            end)
+            connection=Workspace.DescendantAdded:Connect(function(obj)
+                if obj:IsA("BasePart") and obj.Name~="TokyoLaneEdge" and obj.Name~="TokyoCenterDash" and obj.Name~="TokyoBuildingTrim" then
+                    task.defer(function() if active then decorate(obj) end end)
+                end
+            end)
+            pcall(function() sound:Play() end)
+        end
+        local function stop()
+            if not active then return end
+            active=false
+            if connection then connection:Disconnect(); connection=nil end
+            if clockConnection then clockConnection:Disconnect(); clockConnection=nil end
+            sound:Stop()
+            for part,old in pairs(originals) do
+                if part.Parent then pcall(function()
+                    part.Color=old.Color
+                    part.Material=old.Material
+                    part.Reflectance=old.Reflectance
+                end) end
+            end
+            table.clear(originals)
+            table.clear(signCandidates)
+            for art,oldTransparency in pairs(hiddenFloorArt) do
+                if art.Parent then pcall(function() art.Transparency = oldTransparency end) end
+            end
+            table.clear(hiddenFloorArt)
+            for _,obj in ipairs(generated) do if obj.Parent then obj:Destroy() end end
+            table.clear(generated)
+            for key,value in pairs(lightOriginals) do pcall(function() Lighting[key]=value end) end
+            table.clear(lightOriginals)
+        end
+        button.Activated:Connect(function()
+            if active then stop() else start() end
+            button.Text=active and "Tokyo Drift: ON" or "Tokyo Drift: OFF"
+        end)
+        y0ungDareMenuv45.Destroying:Connect(function() stop(); sound:Destroy() end)
+    end
+
     -- Give the three added Maps themes the same cyan selection bar,
     -- purple outline and animated hover as the original Christmas row.
-    for _, themeName in ipairs({"PinkThemeToggle", "GlitchedClubThemeToggle", "HalloweenThemeToggle", "CyberPunkCityThemeToggle", "c00lkiddThemeToggle", "DarkThemeToggle"}) do
+    for _, themeName in ipairs({"PinkThemeToggle", "GlitchedClubThemeToggle", "HalloweenThemeToggle", "CyberPunkCityThemeToggle", "c00lkiddThemeToggle", "DarkThemeToggle", "TokyoDriftThemeToggle"}) do
         local themeButton = page:FindFirstChild(themeName)
         if themeButton then
             themeButton.AutoButtonColor = false
