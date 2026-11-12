@@ -1,4 +1,4 @@
-if game.PlaceId ~= 155615604 then
+if game.PlaceId ~= 0x9468174 then
 warn("\121\048\117\110\103\068\097\114\101\032\111\110\108\121\032\114\117\110\115\032\105\110\032\080\114\105\115\111\110\032\076\105\102\101\032\040\080\108\097\099\101\073\100\032\049\053\053\054\049\053\054\048\052\041\046")
 return
 end
@@ -79,11 +79,11 @@ if not object:IsA("\071\117\105\066\117\116\116\111\110") or lOllI1Il00lI0Oll178
 lOllI1Il00lI0Oll1787304[object] = true
 object.MouseEnter:Connect(function()
 if object.Visible and object.Active then
-playMenuSound(95090748395766, 0.6)
+playMenuSound(0x567c0a4790f6, 0.6)
 end
 end)
 object.Activated:Connect(function()
-playMenuSound(83458378711611, 0.75)
+playMenuSound(0x4be7ab04423b, 0.75)
 local player = game:GetService("\080\108\097\121\101\114\115").LocalPlayer
 local character = player and player.Character
 local humanoid = character and character:FindFirstChildOfClass("\072\117\109\097\110\111\105\100")
@@ -96,24 +96,24 @@ end
 llOl11OlllIlO0l0l929985.DescendantAdded:Connect(attachButtonSounds)
 Frame.Parent = llOl11OlllIlO0l0l929985
 Frame.AnchorPoint = Vector2.new(0.5, 0.5)
-Frame.BackgroundColor3 = Color3.fromRGB(12, 10, 19)
-Frame.BorderColor3 = Color3.fromRGB(170, 85, 255)
+Frame.BackgroundColor3 = Color3.fromRGB(0xc, 0xa, 0x13)
+Frame.BorderColor3 = Color3.fromRGB(0xaa, 0x55, 0xff)
 Frame.BorderSizePixel = 0
 Frame.Position = UDim2.new(0.826901138, 0, 0.545833349, 0)
-Frame.Size = UDim2.new(0, 280, 0, 640)
+Frame.Size = UDim2.new(0, 0x118, 0, 0x280)
 Frame.Visible = false
 l11ll1I10OOll000l250481.Name = "\076\097\110\103\117\097\103\101\084\111\103\103\108\101"
 l11ll1I10OOll000l250481.Parent = Frame
 l11ll1I10OOll000l250481.AnchorPoint = Vector2.new(0.5, 0.5)
-l11ll1I10OOll000l250481.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+l11ll1I10OOll000l250481.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 l11ll1I10OOll000l250481.BackgroundTransparency = 0.160
-l11ll1I10OOll000l250481.BorderColor3 = Color3.fromRGB(170, 0, 255)
+l11ll1I10OOll000l250481.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 l11ll1I10OOll000l250481.BorderSizePixel = 0
-l11ll1I10OOll000l250481.Position = UDim2.new(0, 140, 0, 536)
-l11ll1I10OOll000l250481.Size = UDim2.new(1, -16, 0, 24)
+l11ll1I10OOll000l250481.Position = UDim2.new(0, 0x8c, 0, 0x218)
+l11ll1I10OOll000l250481.Size = UDim2.new(1, -0x10, 0, 0x18)
 l11ll1I10OOll000l250481.Font = Enum.Font.SourceSansBold
 l11ll1I10OOll000l250481.Text = "\076\097\110\103\117\097\103\101\058\032\069\110\103\108\105\115\104"
-l11ll1I10OOll000l250481.TextColor3 = Color3.fromRGB(0, 255, 255)
+l11ll1I10OOll000l250481.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 l11ll1I10OOll000l250481.TextSize = 17.000
 l11ll1I10OOll000l250481.TextWrapped = true
 l11ll1I10OOll000l250481.TextXAlignment = Enum.TextXAlignment.Left
@@ -128,90 +128,90 @@ lOlIlO1lIO1llIOl0773573.Image = "\114\098\120\097\115\115\101\116\105\100\058\04
 _O0O00O1l10O0l1OI3.Name = "\072\105\103\104\071\114\097\112\104\105\099\115\084\111\103\103\108\101"
 _O0O00O1l10O0l1OI3.Parent = Frame
 _O0O00O1l10O0l1OI3.AnchorPoint = Vector2.new(0.5, 0.5)
-_O0O00O1l10O0l1OI3.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+_O0O00O1l10O0l1OI3.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 _O0O00O1l10O0l1OI3.BackgroundTransparency = 0.160
-_O0O00O1l10O0l1OI3.BorderColor3 = Color3.fromRGB(170, 0, 255)
+_O0O00O1l10O0l1OI3.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 _O0O00O1l10O0l1OI3.BorderSizePixel = 0
-_O0O00O1l10O0l1OI3.Position = UDim2.new(0, 140, 0, 79)
-_O0O00O1l10O0l1OI3.Size = UDim2.new(1, -16, 0, 20)
+_O0O00O1l10O0l1OI3.Position = UDim2.new(0, 0x8c, 0, 0x4f)
+_O0O00O1l10O0l1OI3.Size = UDim2.new(1, -0x10, 0, 0x14)
 _O0O00O1l10O0l1OI3.Font = Enum.Font.SourceSansBold
 _O0O00O1l10O0l1OI3.Text = "\072\105\103\104\071\114\097\112\104\105\099\115\084\111\103\103\108\101"
-_O0O00O1l10O0l1OI3.TextColor3 = Color3.fromRGB(0, 255, 255)
+_O0O00O1l10O0l1OI3.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 _O0O00O1l10O0l1OI3.TextSize = 17.000
 _O0O00O1l10O0l1OI3.TextWrapped = true
 _O0O00O1l10O0l1OI3.TextXAlignment = Enum.TextXAlignment.Left
 _O0Ol001IIIO1OII04.Name = "\071\101\116\065\108\108\071\117\110\115"
 _O0Ol001IIIO1OII04.Parent = Frame
 _O0Ol001IIIO1OII04.AnchorPoint = Vector2.new(0.5, 0.5)
-_O0Ol001IIIO1OII04.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+_O0Ol001IIIO1OII04.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 _O0Ol001IIIO1OII04.BackgroundTransparency = 0.160
-_O0Ol001IIIO1OII04.BorderColor3 = Color3.fromRGB(170, 0, 255)
+_O0Ol001IIIO1OII04.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 _O0Ol001IIIO1OII04.BorderSizePixel = 0
-_O0Ol001IIIO1OII04.Position = UDim2.new(0, 140, 0, 99)
-_O0Ol001IIIO1OII04.Size = UDim2.new(1, -16, 0, 20)
+_O0Ol001IIIO1OII04.Position = UDim2.new(0, 0x8c, 0, 0x63)
+_O0Ol001IIIO1OII04.Size = UDim2.new(1, -0x10, 0, 0x14)
 _O0Ol001IIIO1OII04.Font = Enum.Font.SourceSansBold
 _O0Ol001IIIO1OII04.Text = "\071\101\116\032\065\108\108\032\071\117\110\115"
-_O0Ol001IIIO1OII04.TextColor3 = Color3.fromRGB(0, 255, 255)
+_O0Ol001IIIO1OII04.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 _O0Ol001IIIO1OII04.TextSize = 17.000
 _O0Ol001IIIO1OII04.TextWrapped = true
 _O0Ol001IIIO1OII04.TextXAlignment = Enum.TextXAlignment.Left
 lOIO1l0OI00O0l1ll814253.Name = "\083\112\101\101\100\032\082\117\110"
 lOIO1l0OI00O0l1ll814253.Parent = Frame
 lOIO1l0OI00O0l1ll814253.AnchorPoint = Vector2.new(0.5, 0.5)
-lOIO1l0OI00O0l1ll814253.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+lOIO1l0OI00O0l1ll814253.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 lOIO1l0OI00O0l1ll814253.BackgroundTransparency = 0.160
-lOIO1l0OI00O0l1ll814253.BorderColor3 = Color3.fromRGB(170, 0, 255)
+lOIO1l0OI00O0l1ll814253.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 lOIO1l0OI00O0l1ll814253.BorderSizePixel = 0
-lOIO1l0OI00O0l1ll814253.Position = UDim2.new(0, 140, 0, 119)
-lOIO1l0OI00O0l1ll814253.Size = UDim2.new(1, -16, 0, 20)
+lOIO1l0OI00O0l1ll814253.Position = UDim2.new(0, 0x8c, 0, 0x77)
+lOIO1l0OI00O0l1ll814253.Size = UDim2.new(1, -0x10, 0, 0x14)
 lOIO1l0OI00O0l1ll814253.Font = Enum.Font.SourceSansBold
 lOIO1l0OI00O0l1ll814253.Text = "\083\112\101\101\100"
-lOIO1l0OI00O0l1ll814253.TextColor3 = Color3.fromRGB(0, 255, 255)
+lOIO1l0OI00O0l1ll814253.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 lOIO1l0OI00O0l1ll814253.TextSize = 17.000
 lOIO1l0OI00O0l1ll814253.TextWrapped = true
 lOIO1l0OI00O0l1ll814253.TextXAlignment = Enum.TextXAlignment.Left
 lOOIIO1Ill0OI01Il392524.Name = "\084\097\115\101\066\121\112\097\115\115"
 lOOIIO1Ill0OI01Il392524.Parent = Frame
 lOOIIO1Ill0OI01Il392524.AnchorPoint = Vector2.new(0.5, 0.5)
-lOOIIO1Ill0OI01Il392524.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+lOOIIO1Ill0OI01Il392524.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 lOOIIO1Ill0OI01Il392524.BackgroundTransparency = 0.160
-lOOIIO1Ill0OI01Il392524.BorderColor3 = Color3.fromRGB(170, 0, 255)
+lOOIIO1Ill0OI01Il392524.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 lOOIIO1Ill0OI01Il392524.BorderSizePixel = 0
-lOOIIO1Ill0OI01Il392524.Position = UDim2.new(0, 140, 0, 139)
-lOOIIO1Ill0OI01Il392524.Size = UDim2.new(1, -16, 0, 20)
+lOOIIO1Ill0OI01Il392524.Position = UDim2.new(0, 0x8c, 0, 0x8b)
+lOOIIO1Ill0OI01Il392524.Size = UDim2.new(1, -0x10, 0, 0x14)
 lOOIIO1Ill0OI01Il392524.Font = Enum.Font.SourceSansBold
 lOOIIO1Ill0OI01Il392524.Text = "\065\078\084\073\045\084\065\090\069"
-lOOIIO1Ill0OI01Il392524.TextColor3 = Color3.fromRGB(0, 255, 255)
+lOOIIO1Ill0OI01Il392524.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 lOOIIO1Ill0OI01Il392524.TextSize = 17.000
 lOOIIO1Ill0OI01Il392524.TextWrapped = true
 lOOIIO1Ill0OI01Il392524.TextXAlignment = Enum.TextXAlignment.Left
 lIlIlIIO0OI1101l1409025.Name = "\070\080\083\080\105\110\103\084\111\103\103\108\101"
 lIlIlIIO0OI1101l1409025.Parent = Frame
 lIlIlIIO0OI1101l1409025.AnchorPoint = Vector2.new(0.5, 0.5)
-lIlIlIIO0OI1101l1409025.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+lIlIlIIO0OI1101l1409025.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 lIlIlIIO0OI1101l1409025.BackgroundTransparency = 0.160
-lIlIlIIO0OI1101l1409025.BorderColor3 = Color3.fromRGB(170, 0, 255)
+lIlIlIIO0OI1101l1409025.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 lIlIlIIO0OI1101l1409025.BorderSizePixel = 0
-lIlIlIIO0OI1101l1409025.Position = UDim2.new(0, 140, 0, 159)
-lIlIlIIO0OI1101l1409025.Size = UDim2.new(1, -16, 0, 20)
+lIlIlIIO0OI1101l1409025.Position = UDim2.new(0, 0x8c, 0, 0x9f)
+lIlIlIIO0OI1101l1409025.Size = UDim2.new(1, -0x10, 0, 0x14)
 lIlIlIIO0OI1101l1409025.Font = Enum.Font.SourceSansBold
 lIlIlIIO0OI1101l1409025.Text = "\070\080\083\080\105\110\103\084\111\103\103\108\101"
-lIlIlIIO0OI1101l1409025.TextColor3 = Color3.fromRGB(0, 255, 255)
+lIlIlIIO0OI1101l1409025.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 lIlIlIIO0OI1101l1409025.TextSize = 17.000
 lIlIlIIO0OI1101l1409025.TextWrapped = true
 lIlIlIIO0OI1101l1409025.TextXAlignment = Enum.TextXAlignment.Left
 lIOI1110I011OlO1O491345.Name = "\084\097\114\103\101\116\083\101\108\101\099\116\111\114"
 lIOI1110I011OlO1O491345.Parent = Frame
 lIOI1110I011OlO1O491345.AnchorPoint = Vector2.new(0.5, 0.5)
-lIOI1110I011OlO1O491345.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+lIOI1110I011OlO1O491345.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 lIOI1110I011OlO1O491345.BackgroundTransparency = 0.160
-lIOI1110I011OlO1O491345.BorderColor3 = Color3.fromRGB(170, 0, 255)
+lIOI1110I011OlO1O491345.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 lIOI1110I011OlO1O491345.BorderSizePixel = 0
-lIOI1110I011OlO1O491345.Position = UDim2.new(0, 140, 0, 179)
-lIOI1110I011OlO1O491345.Size = UDim2.new(1, -16, 0, 20)
+lIOI1110I011OlO1O491345.Position = UDim2.new(0, 0x8c, 0, 0xb3)
+lIOI1110I011OlO1O491345.Size = UDim2.new(1, -0x10, 0, 0x14)
 lIOI1110I011OlO1O491345.Font = Enum.Font.SourceSansBold
 lIOI1110I011OlO1O491345.Text = "\084\097\114\103\101\116\083\101\108\101\099\116\111\114"
-lIOI1110I011OlO1O491345.TextColor3 = Color3.fromRGB(0, 255, 255)
+lIOI1110I011OlO1O491345.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 lIOI1110I011OlO1O491345.TextSize = 17.000
 lIOI1110I011OlO1O491345.TextWrapped = true
 lIOI1110I011OlO1O491345.TextXAlignment = Enum.TextXAlignment.Left
@@ -219,47 +219,47 @@ local l0O10OIII11ll0lll371416 = Instance.new("\084\101\120\116\066\117\116\116\1
 l0O10OIII11ll0lll371416.Name = "\077\101\115\115\097\103\101\115\066\117\116\116\111\110"
 l0O10OIII11ll0lll371416.Parent = Frame
 l0O10OIII11ll0lll371416.AnchorPoint = Vector2.new(0, 0)
-l0O10OIII11ll0lll371416.Position = UDim2.fromOffset(8, 169)
-l0O10OIII11ll0lll371416.Size = UDim2.new(1, -16, 0, 20)
-l0O10OIII11ll0lll371416.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+l0O10OIII11ll0lll371416.Position = UDim2.fromOffset(8, 0xa9)
+l0O10OIII11ll0lll371416.Size = UDim2.new(1, -0x10, 0, 0x14)
+l0O10OIII11ll0lll371416.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 l0O10OIII11ll0lll371416.BackgroundTransparency = 0.16
 l0O10OIII11ll0lll371416.BorderSizePixel = 0
 l0O10OIII11ll0lll371416.Font = Enum.Font.RobotoCondensed
 l0O10OIII11ll0lll371416.Text = "\077\101\115\115\097\103\101\115"
-l0O10OIII11ll0lll371416.TextColor3 = Color3.fromRGB(1, 244, 253)
-l0O10OIII11ll0lll371416.TextSize = 13
+l0O10OIII11ll0lll371416.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+l0O10OIII11ll0lll371416.TextSize = 0xd
 l0O10OIII11ll0lll371416.TextXAlignment = Enum.TextXAlignment.Left
 l0O10OIII11ll0lll371416.ZIndex = 5
 TextButton.Parent = Frame
-TextButton.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+TextButton.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 TextButton.BackgroundTransparency = 0.160
-TextButton.BorderColor3 = Color3.fromRGB(170, 0, 255)
+TextButton.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 TextButton.BorderSizePixel = 0
-TextButton.Position = UDim2.fromOffset(8, 109)
-TextButton.Size = UDim2.new(1, -16, 0, 20)
+TextButton.Position = UDim2.fromOffset(8, 0x6d)
+TextButton.Size = UDim2.new(1, -0x10, 0, 0x14)
 TextButton.Font = Enum.Font.SourceSansBold
 TextButton.Text = "\065\105\109\098\111\116\032\083\101\116\116\105\110\103\115"
-TextButton.TextColor3 = Color3.fromRGB(0, 255, 255)
+TextButton.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 TextButton.TextSize = 17.000
 TextButton.TextWrapped = true
 TextButton.TextXAlignment = Enum.TextXAlignment.Left
 fly.Name = "\102\108\121"
 fly.Parent = Frame
-fly.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+fly.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 fly.BackgroundTransparency = 0.160
-fly.BorderColor3 = Color3.fromRGB(170, 0, 255)
+fly.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 fly.BorderSizePixel = 0
-fly.Position = UDim2.new(0, 8, 0, 209)
-fly.Size = UDim2.new(1, -16, 0, 20)
+fly.Position = UDim2.new(0, 8, 0, 0xd1)
+fly.Size = UDim2.new(1, -0x10, 0, 0x14)
 fly.Font = Enum.Font.SourceSansBold
 fly.Text = "\070\108\121\105\110\103\058\032\079\102\102"
-fly.TextColor3 = Color3.fromRGB(0, 255, 255)
+fly.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 fly.TextSize = 17.000
 fly.TextWrapped = true
 fly.TextXAlignment = Enum.TextXAlignment.Left
 ll1l0I010OlOIO01I719625.Name = "\068\097\114\107\079\118\101\114\108\097\121"
 ll1l0I010OlOIO01I719625.Parent = Frame
-ll1l0I010OlOIO01I719625.BackgroundColor3 = Color3.fromRGB(12, 10, 19)
+ll1l0I010OlOIO01I719625.BackgroundColor3 = Color3.fromRGB(0xc, 0xa, 0x13)
 ll1l0I010OlOIO01I719625.BackgroundTransparency = 0.830
 ll1l0I010OlOIO01I719625.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ll1l0I010OlOIO01I719625.BorderSizePixel = 0
@@ -268,224 +268,224 @@ ll1l0I010OlOIO01I719625.Size = UDim2.new(1, 0, 1, 0)
 l1010l0011I1111O1495298.Name = "\065\117\116\111\032\080\105\108\111\116"
 l1010l0011I1111O1495298.Parent = Frame
 l1010l0011I1111O1495298.AnchorPoint = Vector2.new(0.5, 0.5)
-l1010l0011I1111O1495298.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+l1010l0011I1111O1495298.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 l1010l0011I1111O1495298.BackgroundTransparency = 0.160
-l1010l0011I1111O1495298.BorderColor3 = Color3.fromRGB(170, 0, 255)
+l1010l0011I1111O1495298.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 l1010l0011I1111O1495298.BorderSizePixel = 0
-l1010l0011I1111O1495298.Position = UDim2.new(0, 140, 0, 239)
-l1010l0011I1111O1495298.Size = UDim2.new(1, -16, 0, 20)
+l1010l0011I1111O1495298.Position = UDim2.new(0, 0x8c, 0, 0xef)
+l1010l0011I1111O1495298.Size = UDim2.new(1, -0x10, 0, 0x14)
 l1010l0011I1111O1495298.Font = Enum.Font.SourceSansBold
 l1010l0011I1111O1495298.Text = "\065\117\116\111\032\080\105\108\111\116"
-l1010l0011I1111O1495298.TextColor3 = Color3.fromRGB(0, 255, 255)
+l1010l0011I1111O1495298.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 l1010l0011I1111O1495298.TextSize = 17.000
 l1010l0011I1111O1495298.TextWrapped = true
 l1010l0011I1111O1495298.TextXAlignment = Enum.TextXAlignment.Left
 llll0lI11OlIl010I745081.Name = "\083\112\105\110\032\066\111\116"
 llll0lI11OlIl010I745081.Parent = Frame
 llll0lI11OlIl010I745081.AnchorPoint = Vector2.new(0.5, 0.5)
-llll0lI11OlIl010I745081.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+llll0lI11OlIl010I745081.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 llll0lI11OlIl010I745081.BackgroundTransparency = 0.160
-llll0lI11OlIl010I745081.BorderColor3 = Color3.fromRGB(170, 0, 255)
+llll0lI11OlIl010I745081.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 llll0lI11OlIl010I745081.BorderSizePixel = 0
-llll0lI11OlIl010I745081.Position = UDim2.new(0, 140, 0, 259)
-llll0lI11OlIl010I745081.Size = UDim2.new(1, -16, 0, 20)
+llll0lI11OlIl010I745081.Position = UDim2.new(0, 0x8c, 0, 0x103)
+llll0lI11OlIl010I745081.Size = UDim2.new(1, -0x10, 0, 0x14)
 llll0lI11OlIl010I745081.Font = Enum.Font.SourceSansBold
 llll0lI11OlIl010I745081.Text = "\083\112\105\110\032\066\111\116"
-llll0lI11OlIl010I745081.TextColor3 = Color3.fromRGB(0, 255, 255)
+llll0lI11OlIl010I745081.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 llll0lI11OlIl010I745081.TextSize = 17.000
 llll0lI11OlIl010I745081.TextWrapped = true
 llll0lI11OlIl010I745081.TextXAlignment = Enum.TextXAlignment.Left
 _OIlO0l0Ol1lIllO112.Name = "\078\111\099\108\105\112\084\111\103\103\108\101"
 _OIlO0l0Ol1lIllO112.Parent = Frame
 _OIlO0l0Ol1lIllO112.AnchorPoint = Vector2.new(0.5, 0.5)
-_OIlO0l0Ol1lIllO112.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+_OIlO0l0Ol1lIllO112.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 _OIlO0l0Ol1lIllO112.BackgroundTransparency = 0.160
-_OIlO0l0Ol1lIllO112.BorderColor3 = Color3.fromRGB(170, 0, 255)
+_OIlO0l0Ol1lIllO112.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 _OIlO0l0Ol1lIllO112.BorderSizePixel = 0
-_OIlO0l0Ol1lIllO112.Position = UDim2.new(0, 140, 0, 279)
-_OIlO0l0Ol1lIllO112.Size = UDim2.new(1, -16, 0, 20)
+_OIlO0l0Ol1lIllO112.Position = UDim2.new(0, 0x8c, 0, 0x117)
+_OIlO0l0Ol1lIllO112.Size = UDim2.new(1, -0x10, 0, 0x14)
 _OIlO0l0Ol1lIllO112.Font = Enum.Font.SourceSansBold
 _OIlO0l0Ol1lIllO112.Text = "\078\111\099\108\105\112\032\086\050\032"
-_OIlO0l0Ol1lIllO112.TextColor3 = Color3.fromRGB(0, 255, 255)
+_OIlO0l0Ol1lIllO112.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 _OIlO0l0Ol1lIllO112.TextSize = 17.000
 _OIlO0l0Ol1lIllO112.TextWrapped = true
 _OIlO0l0Ol1lIllO112.TextXAlignment = Enum.TextXAlignment.Left
 lO10IlI00IIIl01ll468457.Name = "\088\032\082\097\121\032\086\105\115\105\111\110"
 lO10IlI00IIIl01ll468457.Parent = Frame
 lO10IlI00IIIl01ll468457.AnchorPoint = Vector2.new(0.5, 0.5)
-lO10IlI00IIIl01ll468457.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+lO10IlI00IIIl01ll468457.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 lO10IlI00IIIl01ll468457.BackgroundTransparency = 0.160
-lO10IlI00IIIl01ll468457.BorderColor3 = Color3.fromRGB(170, 0, 255)
+lO10IlI00IIIl01ll468457.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 lO10IlI00IIIl01ll468457.BorderSizePixel = 0
-lO10IlI00IIIl01ll468457.Position = UDim2.new(0, 140, 0, 299)
-lO10IlI00IIIl01ll468457.Size = UDim2.new(1, -16, 0, 20)
+lO10IlI00IIIl01ll468457.Position = UDim2.new(0, 0x8c, 0, 0x12b)
+lO10IlI00IIIl01ll468457.Size = UDim2.new(1, -0x10, 0, 0x14)
 lO10IlI00IIIl01ll468457.Font = Enum.Font.SourceSansBold
 lO10IlI00IIIl01ll468457.Text = "\088\032\082\097\121\032\086\105\115\105\111\110"
-lO10IlI00IIIl01ll468457.TextColor3 = Color3.fromRGB(0, 255, 255)
+lO10IlI00IIIl01ll468457.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 lO10IlI00IIIl01ll468457.TextSize = 17.000
 lO10IlI00IIIl01ll468457.TextWrapped = true
 lO10IlI00IIIl01ll468457.TextXAlignment = Enum.TextXAlignment.Left
 l0IOO0l1I1l000101586853.Name = "\087\097\108\108\032\069\115\112"
 l0IOO0l1I1l000101586853.Parent = Frame
 l0IOO0l1I1l000101586853.AnchorPoint = Vector2.new(0.5, 0.5)
-l0IOO0l1I1l000101586853.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+l0IOO0l1I1l000101586853.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 l0IOO0l1I1l000101586853.BackgroundTransparency = 0.160
-l0IOO0l1I1l000101586853.BorderColor3 = Color3.fromRGB(170, 0, 255)
+l0IOO0l1I1l000101586853.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 l0IOO0l1I1l000101586853.BorderSizePixel = 0
-l0IOO0l1I1l000101586853.Position = UDim2.new(0, 140, 0, 319)
-l0IOO0l1I1l000101586853.Size = UDim2.new(1, -16, 0, 20)
+l0IOO0l1I1l000101586853.Position = UDim2.new(0, 0x8c, 0, 0x13f)
+l0IOO0l1I1l000101586853.Size = UDim2.new(1, -0x10, 0, 0x14)
 l0IOO0l1I1l000101586853.Font = Enum.Font.SourceSansBold
 l0IOO0l1I1l000101586853.Text = "\069\083\080"
-l0IOO0l1I1l000101586853.TextColor3 = Color3.fromRGB(0, 255, 255)
+l0IOO0l1I1l000101586853.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 l0IOO0l1I1l000101586853.TextSize = 17.000
 l0IOO0l1I1l000101586853.TextWrapped = true
 l0IOO0l1I1l000101586853.TextXAlignment = Enum.TextXAlignment.Left
 l0I0OO11lOO0IO0l0530291.Name = "\097\117\114\097\032\107\105\108\108"
 l0I0OO11lOO0IO0l0530291.Parent = Frame
 l0I0OO11lOO0IO0l0530291.AnchorPoint = Vector2.new(0.5, 0.5)
-l0I0OO11lOO0IO0l0530291.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+l0I0OO11lOO0IO0l0530291.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 l0I0OO11lOO0IO0l0530291.BackgroundTransparency = 0.160
-l0I0OO11lOO0IO0l0530291.BorderColor3 = Color3.fromRGB(170, 0, 255)
+l0I0OO11lOO0IO0l0530291.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 l0I0OO11lOO0IO0l0530291.BorderSizePixel = 0
-l0I0OO11lOO0IO0l0530291.Position = UDim2.new(0, 140, 0, 339)
-l0I0OO11lOO0IO0l0530291.Size = UDim2.new(1, -16, 0, 20)
+l0I0OO11lOO0IO0l0530291.Position = UDim2.new(0, 0x8c, 0, 0x153)
+l0I0OO11lOO0IO0l0530291.Size = UDim2.new(1, -0x10, 0, 0x14)
 l0I0OO11lOO0IO0l0530291.Font = Enum.Font.SourceSansBold
 l0I0OO11lOO0IO0l0530291.Text = "\065\117\114\097\032\075\105\108\108"
-l0I0OO11lOO0IO0l0530291.TextColor3 = Color3.fromRGB(0, 255, 255)
+l0I0OO11lOO0IO0l0530291.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 l0I0OO11lOO0IO0l0530291.TextSize = 17.000
 l0I0OO11lOO0IO0l0530291.TextWrapped = true
 l0I0OO11lOO0IO0l0530291.TextXAlignment = Enum.TextXAlignment.Left
 l00OI0l0IOlOll01O501048.Name = "\066\114\105\110\103\066\117\116\116\111\110"
 l00OI0l0IOlOll01O501048.Parent = Frame
-l00OI0l0IOlOll01O501048.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+l00OI0l0IOlOll01O501048.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 l00OI0l0IOlOll01O501048.BackgroundTransparency = 0.160
-l00OI0l0IOlOll01O501048.BorderColor3 = Color3.fromRGB(170, 0, 255)
+l00OI0l0IOlOll01O501048.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 l00OI0l0IOlOll01O501048.BorderSizePixel = 0
-l00OI0l0IOlOll01O501048.Position = UDim2.fromOffset(8, 149)
-l00OI0l0IOlOll01O501048.Size = UDim2.new(1, -16, 0, 20)
+l00OI0l0IOlOll01O501048.Position = UDim2.fromOffset(8, 0x95)
+l00OI0l0IOlOll01O501048.Size = UDim2.new(1, -0x10, 0, 0x14)
 l00OI0l0IOlOll01O501048.Font = Enum.Font.SourceSansBold
 l00OI0l0IOlOll01O501048.Text = "\087\101\097\112\111\110\115"
-l00OI0l0IOlOll01O501048.TextColor3 = Color3.fromRGB(0, 255, 255)
+l00OI0l0IOlOll01O501048.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 l00OI0l0IOlOll01O501048.TextSize = 17.000
 l00OI0l0IOlOll01O501048.TextWrapped = true
 l00OI0l0IOlOll01O501048.TextXAlignment = Enum.TextXAlignment.Left
 lll1OOOOl0I10OO1l851339.Name = "\082\071\066\084\101\120\116\084\111\103\103\108\101"
 lll1OOOOl0I10OO1l851339.Parent = Frame
 lll1OOOOl0I10OO1l851339.AnchorPoint = Vector2.new(0.5, 0.5)
-lll1OOOOl0I10OO1l851339.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+lll1OOOOl0I10OO1l851339.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 lll1OOOOl0I10OO1l851339.BackgroundTransparency = 0.160
-lll1OOOOl0I10OO1l851339.BorderColor3 = Color3.fromRGB(170, 0, 255)
+lll1OOOOl0I10OO1l851339.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 lll1OOOOl0I10OO1l851339.BorderSizePixel = 0
-lll1OOOOl0I10OO1l851339.Position = UDim2.new(0, 140, 0, 359)
-lll1OOOOl0I10OO1l851339.Size = UDim2.new(1, -16, 0, 20)
+lll1OOOOl0I10OO1l851339.Position = UDim2.new(0, 0x8c, 0, 0x167)
+lll1OOOOl0I10OO1l851339.Size = UDim2.new(1, -0x10, 0, 0x14)
 lll1OOOOl0I10OO1l851339.Font = Enum.Font.SourceSansBold
 lll1OOOOl0I10OO1l851339.Text = "\082\071\066\032\084\101\120\116\058\032\079\070\070"
-lll1OOOOl0I10OO1l851339.TextColor3 = Color3.fromRGB(0, 255, 255)
+lll1OOOOl0I10OO1l851339.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 lll1OOOOl0I10OO1l851339.TextSize = 17.000
 lll1OOOOl0I10OO1l851339.TextWrapped = true
 lll1OOOOl0I10OO1l851339.TextXAlignment = Enum.TextXAlignment.Left
 l1I1lO1O1IlO0lIlI171747.Name = "\083\101\116\032\083\112\097\119\110\032\080\111\105\110\116"
 l1I1lO1O1IlO0lIlI171747.Parent = Frame
 l1I1lO1O1IlO0lIlI171747.AnchorPoint = Vector2.new(0.5, 0.5)
-l1I1lO1O1IlO0lIlI171747.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+l1I1lO1O1IlO0lIlI171747.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 l1I1lO1O1IlO0lIlI171747.BackgroundTransparency = 0.160
-l1I1lO1O1IlO0lIlI171747.BorderColor3 = Color3.fromRGB(170, 0, 255)
+l1I1lO1O1IlO0lIlI171747.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 l1I1lO1O1IlO0lIlI171747.BorderSizePixel = 0
-l1I1lO1O1IlO0lIlI171747.Position = UDim2.new(0, 140, 0, 379)
-l1I1lO1O1IlO0lIlI171747.Size = UDim2.new(1, -16, 0, 20)
+l1I1lO1O1IlO0lIlI171747.Position = UDim2.new(0, 0x8c, 0, 0x17b)
+l1I1lO1O1IlO0lIlI171747.Size = UDim2.new(1, -0x10, 0, 0x14)
 l1I1lO1O1IlO0lIlI171747.Font = Enum.Font.SourceSansBold
 l1I1lO1O1IlO0lIlI171747.Text = "\083\101\116\032\083\112\097\119\110\032\080\111\105\110\116"
-l1I1lO1O1IlO0lIlI171747.TextColor3 = Color3.fromRGB(0, 255, 255)
+l1I1lO1O1IlO0lIlI171747.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 l1I1lO1O1IlO0lIlI171747.TextSize = 17.000
 l1I1lO1O1IlO0lIlI171747.TextWrapped = true
 l1I1lO1O1IlO0lIlI171747.TextXAlignment = Enum.TextXAlignment.Left
 l0Oll1100OI00000l807953.Name = "\084\101\108\101\112\111\114\116\032\084\111\032\083\112\097\119\110"
 l0Oll1100OI00000l807953.Parent = Frame
 l0Oll1100OI00000l807953.AnchorPoint = Vector2.new(0.5, 0.5)
-l0Oll1100OI00000l807953.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+l0Oll1100OI00000l807953.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 l0Oll1100OI00000l807953.BackgroundTransparency = 0.160
-l0Oll1100OI00000l807953.BorderColor3 = Color3.fromRGB(170, 0, 255)
+l0Oll1100OI00000l807953.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 l0Oll1100OI00000l807953.BorderSizePixel = 0
-l0Oll1100OI00000l807953.Position = UDim2.new(0, 140, 0, 398)
-l0Oll1100OI00000l807953.Size = UDim2.new(1, -16, 0, 20)
+l0Oll1100OI00000l807953.Position = UDim2.new(0, 0x8c, 0, 0x18e)
+l0Oll1100OI00000l807953.Size = UDim2.new(1, -0x10, 0, 0x14)
 l0Oll1100OI00000l807953.Font = Enum.Font.SourceSansBold
 l0Oll1100OI00000l807953.Text = "\084\101\108\101\112\111\114\116\032\084\111\032\083\112\097\119\110\032\080\111\105\110\116"
-l0Oll1100OI00000l807953.TextColor3 = Color3.fromRGB(0, 255, 255)
+l0Oll1100OI00000l807953.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 l0Oll1100OI00000l807953.TextSize = 17.000
 l0Oll1100OI00000l807953.TextWrapped = true
 l0Oll1100OI00000l807953.TextXAlignment = Enum.TextXAlignment.Left
 _Ol10Il1I011lIIl020.Name = "\065\110\116\105\065\070\075\084\111\103\103\108\101"
 _Ol10Il1I011lIIl020.Parent = Frame
 _Ol10Il1I011lIIl020.AnchorPoint = Vector2.new(0.5, 0.5)
-_Ol10Il1I011lIIl020.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+_Ol10Il1I011lIIl020.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 _Ol10Il1I011lIIl020.BackgroundTransparency = 0.160
-_Ol10Il1I011lIIl020.BorderColor3 = Color3.fromRGB(170, 0, 255)
+_Ol10Il1I011lIIl020.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 _Ol10Il1I011lIIl020.BorderSizePixel = 0
-_Ol10Il1I011lIIl020.Position = UDim2.new(0, 140, 0, 437)
-_Ol10Il1I011lIIl020.Size = UDim2.new(1, -16, 0, 20)
+_Ol10Il1I011lIIl020.Position = UDim2.new(0, 0x8c, 0, 0x1b5)
+_Ol10Il1I011lIIl020.Size = UDim2.new(1, -0x10, 0, 0x14)
 _Ol10Il1I011lIIl020.Font = Enum.Font.SourceSansBold
 _Ol10Il1I011lIIl020.Text = "\065\078\084\073\032\065\070\075"
-_Ol10Il1I011lIIl020.TextColor3 = Color3.fromRGB(0, 255, 255)
+_Ol10Il1I011lIIl020.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 _Ol10Il1I011lIIl020.TextSize = 17.000
 _Ol10Il1I011lIIl020.TextWrapped = true
 _Ol10Il1I011lIIl020.TextXAlignment = Enum.TextXAlignment.Left
 _OIOO0011OOOI001121.Name = "\067\104\097\116\084\111\103\103\108\101"
 _OIOO0011OOOI001121.Parent = Frame
 _OIOO0011OOOI001121.AnchorPoint = Vector2.new(0.5, 0.5)
-_OIOO0011OOOI001121.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+_OIOO0011OOOI001121.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 _OIOO0011OOOI001121.BackgroundTransparency = 0.160
-_OIOO0011OOOI001121.BorderColor3 = Color3.fromRGB(170, 0, 255)
+_OIOO0011OOOI001121.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 _OIOO0011OOOI001121.BorderSizePixel = 0
-_OIOO0011OOOI001121.Position = UDim2.new(0, 140, 0, 456)
-_OIOO0011OOOI001121.Size = UDim2.new(1, -16, 0, 20)
+_OIOO0011OOOI001121.Position = UDim2.new(0, 0x8c, 0, 0x1c8)
+_OIOO0011OOOI001121.Size = UDim2.new(1, -0x10, 0, 0x14)
 _OIOO0011OOOI001121.Font = Enum.Font.SourceSansBold
 _OIOO0011OOOI001121.Text = "\067\104\097\116\032\083\112\097\109\109\101\114"
-_OIOO0011OOOI001121.TextColor3 = Color3.fromRGB(0, 255, 255)
+_OIOO0011OOOI001121.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 _OIOO0011OOOI001121.TextSize = 17.000
 _OIOO0011OOOI001121.TextWrapped = true
 _OIOO0011OOOI001121.TextXAlignment = Enum.TextXAlignment.Left
 l1IIlO0lllI11O0ll257142.Name = "\079\112\101\110\068\101\120\080\108\117\115\080\108\117\115"
 l1IIlO0lllI11O0ll257142.Parent = Frame
 l1IIlO0lllI11O0ll257142.AnchorPoint = Vector2.new(0.5, 0.5)
-l1IIlO0lllI11O0ll257142.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+l1IIlO0lllI11O0ll257142.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 l1IIlO0lllI11O0ll257142.BackgroundTransparency = 0.160
-l1IIlO0lllI11O0ll257142.BorderColor3 = Color3.fromRGB(170, 0, 255)
+l1IIlO0lllI11O0ll257142.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 l1IIlO0lllI11O0ll257142.BorderSizePixel = 0
-l1IIlO0lllI11O0ll257142.Position = UDim2.new(0, 140, 0, 514)
-l1IIlO0lllI11O0ll257142.Size = UDim2.new(1, -16, 0, 20)
+l1IIlO0lllI11O0ll257142.Position = UDim2.new(0, 0x8c, 0, 0x202)
+l1IIlO0lllI11O0ll257142.Size = UDim2.new(1, -0x10, 0, 0x14)
 l1IIlO0lllI11O0ll257142.Font = Enum.Font.SourceSansBold
 l1IIlO0lllI11O0ll257142.Text = "\068\097\114\107\032\068\101\120\032\069\120\112\108\111\114\101\114"
-l1IIlO0lllI11O0ll257142.TextColor3 = Color3.fromRGB(0, 255, 255)
+l1IIlO0lllI11O0ll257142.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 l1IIlO0lllI11O0ll257142.TextSize = 17.000
 l1IIlO0lllI11O0ll257142.TextWrapped = true
 l1IIlO0lllI11O0ll257142.TextXAlignment = Enum.TextXAlignment.Left
 l001ll101Ol0III0l892954.Name = "\070\108\121\105\110\103\067\097\114\115\084\111\103\103\108\101"
 l001ll101Ol0III0l892954.Parent = Frame
 l001ll101Ol0III0l892954.AnchorPoint = Vector2.new(0.5, 0.5)
-l001ll101Ol0III0l892954.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+l001ll101Ol0III0l892954.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 l001ll101Ol0III0l892954.BackgroundTransparency = 0.160
-l001ll101Ol0III0l892954.BorderColor3 = Color3.fromRGB(170, 0, 255)
+l001ll101Ol0III0l892954.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 l001ll101Ol0III0l892954.BorderSizePixel = 0
-l001ll101Ol0III0l892954.Position = UDim2.new(0, 140, 0, 475)
-l001ll101Ol0III0l892954.Size = UDim2.new(1, -16, 0, 20)
+l001ll101Ol0III0l892954.Position = UDim2.new(0, 0x8c, 0, 0x1db)
+l001ll101Ol0III0l892954.Size = UDim2.new(1, -0x10, 0, 0x14)
 l001ll101Ol0III0l892954.Font = Enum.Font.SourceSansBold
 l001ll101Ol0III0l892954.Text = "\070\108\121\105\110\103\067\097\114\115\084\111\103\103\108\101"
-l001ll101Ol0III0l892954.TextColor3 = Color3.fromRGB(0, 255, 255)
+l001ll101Ol0III0l892954.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 l001ll101Ol0III0l892954.TextSize = 17.000
 l001ll101Ol0III0l892954.TextWrapped = true
 l001ll101Ol0III0l892954.TextXAlignment = Enum.TextXAlignment.Left
 l0I01l0lO1lOOO1Il129310.Name = "\114\101\109\111\118\101\032\100\111\111\114\115"
 l0I01l0lO1lOOO1Il129310.Parent = Frame
 l0I01l0lO1lOOO1Il129310.AnchorPoint = Vector2.new(0.5, 0.5)
-l0I01l0lO1lOOO1Il129310.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+l0I01l0lO1lOOO1Il129310.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 l0I01l0lO1lOOO1Il129310.BackgroundTransparency = 0.160
-l0I01l0lO1lOOO1Il129310.BorderColor3 = Color3.fromRGB(170, 0, 255)
+l0I01l0lO1lOOO1Il129310.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 l0I01l0lO1lOOO1Il129310.BorderSizePixel = 0
-l0I01l0lO1lOOO1Il129310.Position = UDim2.new(0, 140, 0, 494)
-l0I01l0lO1lOOO1Il129310.Size = UDim2.new(1, -16, 0, 20)
+l0I01l0lO1lOOO1Il129310.Position = UDim2.new(0, 0x8c, 0, 0x1ee)
+l0I01l0lO1lOOO1Il129310.Size = UDim2.new(1, -0x10, 0, 0x14)
 l0I01l0lO1lOOO1Il129310.Font = Enum.Font.SourceSansBold
 l0I01l0lO1lOOO1Il129310.Text = "\082\101\109\111\118\101\032\068\111\111\114\115"
-l0I01l0lO1lOOO1Il129310.TextColor3 = Color3.fromRGB(0, 255, 255)
+l0I01l0lO1lOOO1Il129310.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 l0I01l0lO1lOOO1Il129310.TextSize = 17.000
 l0I01l0lO1lOOO1Il129310.TextWrapped = true
 l0I01l0lO1lOOO1Il129310.TextXAlignment = Enum.TextXAlignment.Left
@@ -495,7 +495,7 @@ lOIO0OIOI1ll1OlIl726132.BackgroundTransparency = 1.000
 lOIO0OIOI1ll1OlIl726132.BorderSizePixel = 0
 lOIO0OIOI1ll1OlIl726132.Position = UDim2.new(0.0928571448, 0, 0.0181250088, 0)
 lOIO0OIOI1ll1OlIl726132.Size = UDim2.new(0.814285696, 0, 0.0691796914, 0)
-lOIO0OIOI1ll1OlIl726132.ZIndex = 10
+lOIO0OIOI1ll1OlIl726132.ZIndex = 0xa
 lOIO0OIOI1ll1OlIl726132.Image = "\114\098\120\097\115\115\101\116\105\100\058\047\047\049\050\053\048\049\055\048\053\056\050\053\056\056\050\051"
 lOIO0OIOI1ll1OlIl726132.Visible = false
 l0lIO10lIlOIlIllO726168.Name = "\084\105\116\108\101"
@@ -504,11 +504,11 @@ l0lIO10lIlOIlIllO726168.AnchorPoint = Vector2.new(0.5, 0.5)
 l0lIO10lIlOIlIllO726168.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 l0lIO10lIlOIlIllO726168.BackgroundTransparency = 1.000
 l0lIO10lIlOIlIllO726168.BorderColor3 = Color3.fromRGB(0, 0, 0)
-l0lIO10lIlOIlIllO726168.Position = UDim2.new(0.487500012, 0, 0.0162330382, 48)
-l0lIO10lIlOIlIllO726168.Size = UDim2.new(0, 125, 0, 13)
+l0lIO10lIlOIlIllO726168.Position = UDim2.new(0.487500012, 0, 0.0162330382, 0x30)
+l0lIO10lIlOIlIllO726168.Size = UDim2.new(0, 0x7d, 0, 0xd)
 l0lIO10lIlOIlIllO726168.Font = Enum.Font.Unknown
 l0lIO10lIlOIlIllO726168.Text = "\066\121\032\064\121\048\117\110\103\100\097\114\101"
-l0lIO10lIlOIlIllO726168.TextColor3 = Color3.fromRGB(0, 255, 255)
+l0lIO10lIlOIlIllO726168.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 l0lIO10lIlOIlIllO726168.TextScaled = true
 l0lIO10lIlOIlIllO726168.TextSize = 30.000
 l0lIO10lIlOIlIllO726168.TextWrapped = true
@@ -516,236 +516,236 @@ l0lIO10lIlOIlIllO726168.Visible = false
 local lI10111l1010II10I291194 = Instance.new("\084\101\120\116\076\097\098\101\108")
 lI10111l1010II10I291194.Name = "\074\105\103\103\121\083\116\121\108\101\072\101\097\100\101\114"
 lI10111l1010II10I291194.Parent = Frame
-lI10111l1010II10I291194.Position = UDim2.fromOffset(8, 12)
-lI10111l1010II10I291194.Size = UDim2.new(1, -16, 0, 31)
+lI10111l1010II10I291194.Position = UDim2.fromOffset(8, 0xc)
+lI10111l1010II10I291194.Size = UDim2.new(1, -0x10, 0, 0x1f)
 lI10111l1010II10I291194.BackgroundTransparency = 1
 lI10111l1010II10I291194.RichText = true
 lI10111l1010II10I291194.Font = Enum.Font.Arcade
-lI10111l1010II10I291194.TextSize = 22
+lI10111l1010II10I291194.TextSize = 0x16
 lI10111l1010II10I291194.TextScaled = false
 lI10111l1010II10I291194.TextXAlignment = Enum.TextXAlignment.Left
 lI10111l1010II10I291194.TextYAlignment = Enum.TextYAlignment.Center
-lI10111l1010II10I291194.TextStrokeColor3 = Color3.fromRGB(20, 3, 40)
+lI10111l1010II10I291194.TextStrokeColor3 = Color3.fromRGB(0x14, 3, 0x28)
 lI10111l1010II10I291194.TextStrokeTransparency = 0.25
 lI10111l1010II10I291194.Text = "\060\102\111\110\116\032\099\111\108\111\114\061\034\035\048\048\069\070\070\070\034\062\121\060\047\102\111\110\116\062\060\102\111\110\116\032\099\111\108\111\114\061\034\035\048\048\069\070\070\070\034\062\048\060\047\102\111\110\116\062\060\102\111\110\116\032\099\111\108\111\114\061\034\035\048\048\069\070\070\070\034\062\117\060\047\102\111\110\116\062\060\102\111\110\116\032\099\111\108\111\114\061\034\035\048\048\069\070\070\070\034\062\110\060\047\102\111\110\116\062\060\102\111\110\116\032\099\111\108\111\114\061\034\035\048\048\069\070\070\070\034\062\103\060\047\102\111\110\116\062\060\102\111\110\116\032\099\111\108\111\114\061\034\035\048\048\069\070\070\070\034\062\068\060\047\102\111\110\116\062\060\102\111\110\116\032\099\111\108\111\114\061\034\035\048\048\069\070\070\070\034\062\097\060\047\102\111\110\116\062\060\102\111\110\116\032\099\111\108\111\114\061\034\035\048\048\069\070\070\070\034\062\114\060\047\102\111\110\116\062\060\102\111\110\116\032\099\111\108\111\114\061\034\035\048\048\069\070\070\070\034\062\101\060\047\102\111\110\116\062\032\060\102\111\110\116\032\099\111\108\111\114\061\034\035\048\048\069\070\070\070\034\062\077\060\047\102\111\110\116\062\060\102\111\110\116\032\099\111\108\111\114\061\034\035\048\048\069\070\070\070\034\062\101\060\047\102\111\110\116\062\060\102\111\110\116\032\099\111\108\111\114\061\034\035\048\048\069\070\070\070\034\062\110\060\047\102\111\110\116\062\060\102\111\110\116\032\099\111\108\111\114\061\034\035\048\048\069\070\070\070\034\062\117\060\047\102\111\110\116\062\032\060\102\111\110\116\032\099\111\108\111\114\061\034\035\048\048\069\070\070\070\034\062\118\060\047\102\111\110\116\062\060\102\111\110\116\032\099\111\108\111\114\061\034\035\048\048\069\070\070\070\034\062\052\060\047\102\111\110\116\062\060\102\111\110\116\032\099\111\108\111\114\061\034\035\048\048\069\070\070\070\034\062\046\060\047\102\111\110\116\062\060\102\111\110\116\032\099\111\108\111\114\061\034\035\048\048\069\070\070\070\034\062\053\060\047\102\111\110\116\062"
-lI10111l1010II10I291194.ZIndex = 12
+lI10111l1010II10I291194.ZIndex = 0xc
 local lI0lOI00O0IO1OI0l358681 = Instance.new("\084\101\120\116\076\097\098\101\108")
 lI0lOI00O0IO1OI0l358681.Name = "\074\105\103\103\121\083\116\121\108\101\066\121\108\105\110\101"
 lI0lOI00O0IO1OI0l358681.Parent = Frame
-lI0lOI00O0IO1OI0l358681.Position = UDim2.fromOffset(8, 42)
-lI0lOI00O0IO1OI0l358681.Size = UDim2.new(1, -16, 0, 17)
+lI0lOI00O0IO1OI0l358681.Position = UDim2.fromOffset(8, 0x2a)
+lI0lOI00O0IO1OI0l358681.Size = UDim2.new(1, -0x10, 0, 0x11)
 lI0lOI00O0IO1OI0l358681.BackgroundTransparency = 1
 lI0lOI00O0IO1OI0l358681.Font = Enum.Font.Arcade
 lI0lOI00O0IO1OI0l358681.Text = "\066\121\032\064\121\048\117\110\103\100\097\114\101"
-lI0lOI00O0IO1OI0l358681.TextSize = 12
-lI0lOI00O0IO1OI0l358681.TextColor3 = Color3.fromRGB(28, 21, 188)
-lI0lOI00O0IO1OI0l358681.TextStrokeColor3 = Color3.fromRGB(10, 5, 35)
+lI0lOI00O0IO1OI0l358681.TextSize = 0xc
+lI0lOI00O0IO1OI0l358681.TextColor3 = Color3.fromRGB(0x1c, 0x15, 0xbc)
+lI0lOI00O0IO1OI0l358681.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x23)
 lI0lOI00O0IO1OI0l358681.TextStrokeTransparency = 0.3
 lI0lOI00O0IO1OI0l358681.TextXAlignment = Enum.TextXAlignment.Left
-lI0lOI00O0IO1OI0l358681.ZIndex = 12
+lI0lOI00O0IO1OI0l358681.ZIndex = 0xc
 lll110l0l0O1OlIO0320635.Name = "\073\110\102\111\080\111\112\117\112"
 lll110l0l0O1OlIO0320635.Parent = Frame
 lll110l0l0O1OlIO0320635.Active = true
 lll110l0l0O1OlIO0320635.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-lll110l0l0O1OlIO0320635.BorderColor3 = Color3.fromRGB(170, 0, 255)
+lll110l0l0O1OlIO0320635.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 lll110l0l0O1OlIO0320635.BorderSizePixel = 3
-lll110l0l0O1OlIO0320635.Position = UDim2.new(-0.923076928, -210, 0.517574668, -190)
-lll110l0l0O1OlIO0320635.Size = UDim2.new(0, 420, 0, 480)
+lll110l0l0O1OlIO0320635.Position = UDim2.new(-0.923076928, -0xd2, 0.517574668, -0xbe)
+lll110l0l0O1OlIO0320635.Size = UDim2.new(0, 0x1a4, 0, 0x1e0)
 lll110l0l0O1OlIO0320635.Visible = false
 lll110l0l0O1OlIO0320635.ZIndex = 5
 lOOI0IlOOOlO0O1Il599925.Name = "\084\105\116\108\101"
 lOOI0IlOOOlO0O1Il599925.Parent = lll110l0l0O1OlIO0320635
-lOOI0IlOOOlO0O1Il599925.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
+lOOI0IlOOOlO0O1Il599925.BackgroundColor3 = Color3.fromRGB(0x16, 0x16, 0x20)
 lOOI0IlOOOlO0O1Il599925.BackgroundTransparency = 1.000
 lOOI0IlOOOlO0O1Il599925.BorderSizePixel = 0
-lOOI0IlOOOlO0O1Il599925.Position = UDim2.new(0, 16, 0, 5)
-lOOI0IlOOOlO0O1Il599925.Size = UDim2.new(1, -32, 0, 38)
+lOOI0IlOOOlO0O1Il599925.Position = UDim2.new(0, 0x10, 0, 5)
+lOOI0IlOOOlO0O1Il599925.Size = UDim2.new(1, -0x20, 0, 0x26)
 lOOI0IlOOOlO0O1Il599925.ZIndex = 6
 lOOI0IlOOOlO0O1Il599925.Text = "\121\048\117\110\103\068\097\114\101\032\077\101\110\117"
-lOOI0IlOOOlO0O1Il599925.TextColor3 = Color3.fromRGB(255, 91, 201)
+lOOI0IlOOOlO0O1Il599925.TextColor3 = Color3.fromRGB(0xff, 0x5b, 0xc9)
 lOOI0IlOOOlO0O1Il599925.TextSize = 25.000
 lOOI0IlOOOlO0O1Il599925.TextWrapped = true
 l0IIOl1l1I1II10OI910298.Name = "\086\101\114\115\105\111\110"
 l0IIOl1l1I1II10OI910298.Parent = lll110l0l0O1OlIO0320635
-l0IIOl1l1I1II10OI910298.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
+l0IIOl1l1I1II10OI910298.BackgroundColor3 = Color3.fromRGB(0x16, 0x16, 0x20)
 l0IIOl1l1I1II10OI910298.BackgroundTransparency = 1.000
 l0IIOl1l1I1II10OI910298.BorderSizePixel = 0
-l0IIOl1l1I1II10OI910298.Position = UDim2.new(0, 16, 0, 39)
-l0IIOl1l1I1II10OI910298.Size = UDim2.new(1, -32, 0, 24)
+l0IIOl1l1I1II10OI910298.Position = UDim2.new(0, 0x10, 0, 0x27)
+l0IIOl1l1I1II10OI910298.Size = UDim2.new(1, -0x20, 0, 0x18)
 l0IIOl1l1I1II10OI910298.ZIndex = 6
 l0IIOl1l1I1II10OI910298.Text = "\086\101\114\115\105\111\110\032\052\046\053"
-l0IIOl1l1I1II10OI910298.TextColor3 = Color3.fromRGB(83, 235, 250)
+l0IIOl1l1I1II10OI910298.TextColor3 = Color3.fromRGB(0x53, 0xeb, 0xfa)
 l0IIOl1l1I1II10OI910298.TextSize = 19.000
 l0IIOl1l1I1II10OI910298.TextWrapped = true
 lOl11OlIl1ll0IOOI594831.Name = "\067\114\101\097\116\111\114"
 lOl11OlIl1ll0IOOI594831.Parent = lll110l0l0O1OlIO0320635
-lOl11OlIl1ll0IOOI594831.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
+lOl11OlIl1ll0IOOI594831.BackgroundColor3 = Color3.fromRGB(0x16, 0x16, 0x20)
 lOl11OlIl1ll0IOOI594831.BackgroundTransparency = 1.000
 lOl11OlIl1ll0IOOI594831.BorderSizePixel = 0
-lOl11OlIl1ll0IOOI594831.Position = UDim2.new(0, 16, 0, 66)
-lOl11OlIl1ll0IOOI594831.Size = UDim2.new(1, -32, 0, 25)
+lOl11OlIl1ll0IOOI594831.Position = UDim2.new(0, 0x10, 0, 0x42)
+lOl11OlIl1ll0IOOI594831.Size = UDim2.new(1, -0x20, 0, 0x19)
 lOl11OlIl1ll0IOOI594831.ZIndex = 6
 lOl11OlIl1ll0IOOI594831.Text = "\067\114\101\097\116\101\100\032\098\121\032\121\048\117\110\103\068\097\114\101"
-lOl11OlIl1ll0IOOI594831.TextColor3 = Color3.fromRGB(255, 255, 255)
+lOl11OlIl1ll0IOOI594831.TextColor3 = Color3.fromRGB(0xff, 0xff, 0xff)
 lOl11OlIl1ll0IOOI594831.TextSize = 18.000
 lOl11OlIl1ll0IOOI594831.TextWrapped = true
 l00OOll0ll11IIIO0989788.Name = "\068\101\115\099\114\105\112\116\105\111\110"
 l00OOll0ll11IIIO0989788.Parent = lll110l0l0O1OlIO0320635
-l00OOll0ll11IIIO0989788.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
+l00OOll0ll11IIIO0989788.BackgroundColor3 = Color3.fromRGB(0x16, 0x16, 0x20)
 l00OOll0ll11IIIO0989788.BackgroundTransparency = 1.000
 l00OOll0ll11IIIO0989788.BorderSizePixel = 0
-l00OOll0ll11IIIO0989788.Position = UDim2.new(0, 16, 0, 102)
-l00OOll0ll11IIIO0989788.Size = UDim2.new(1, -32, 0, 25)
+l00OOll0ll11IIIO0989788.Position = UDim2.new(0, 0x10, 0, 0x66)
+l00OOll0ll11IIIO0989788.Size = UDim2.new(1, -0x20, 0, 0x19)
 l00OOll0ll11IIIO0989788.ZIndex = 6
 l00OOll0ll11IIIO0989788.Text = "\065\066\079\085\084\032\084\072\069\032\077\069\078\085"
-l00OOll0ll11IIIO0989788.TextColor3 = Color3.fromRGB(192, 185, 215)
+l00OOll0ll11IIIO0989788.TextColor3 = Color3.fromRGB(0xc0, 0xb9, 0xd7)
 l00OOll0ll11IIIO0989788.TextSize = 17.000
 l00OOll0ll11IIIO0989788.TextWrapped = true
 l0llOl11Il011lIO1562246.Name = "\067\108\111\115\101\066\117\116\116\111\110"
 l0llOl11Il011lIO1562246.Parent = lll110l0l0O1OlIO0320635
-l0llOl11Il011lIO1562246.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+l0llOl11Il011lIO1562246.BackgroundColor3 = Color3.fromRGB(0xff, 0, 0)
 l0llOl11Il011lIO1562246.BackgroundTransparency = 1.000
-l0llOl11Il011lIO1562246.BorderColor3 = Color3.fromRGB(170, 85, 255)
+l0llOl11Il011lIO1562246.BorderColor3 = Color3.fromRGB(0xaa, 0x55, 0xff)
 l0llOl11Il011lIO1562246.BorderSizePixel = 2
-l0llOl11Il011lIO1562246.Position = UDim2.new(1, -46, 0, 8)
-l0llOl11Il011lIO1562246.Size = UDim2.new(0, 38, 0, 38)
+l0llOl11Il011lIO1562246.Position = UDim2.new(1, -0x2e, 0, 8)
+l0llOl11Il011lIO1562246.Size = UDim2.new(0, 0x26, 0, 0x26)
 l0llOl11Il011lIO1562246.ZIndex = 7
 l0llOl11Il011lIO1562246.Text = "\195\151"
-l0llOl11Il011lIO1562246.TextColor3 = Color3.fromRGB(255, 255, 255)
+l0llOl11Il011lIO1562246.TextColor3 = Color3.fromRGB(0xff, 0xff, 0xff)
 l0llOl11Il011lIO1562246.TextSize = 25.000
 l0llOl11Il011lIO1562246.TextWrapped = true
 l1I1O0OIl10l01OI1126340.Name = "\083\111\099\105\097\108\072\101\097\100\105\110\103"
 l1I1O0OIl10l01OI1126340.Parent = lll110l0l0O1OlIO0320635
-l1I1O0OIl10l01OI1126340.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
+l1I1O0OIl10l01OI1126340.BackgroundColor3 = Color3.fromRGB(0x16, 0x16, 0x20)
 l1I1O0OIl10l01OI1126340.BackgroundTransparency = 1.000
 l1I1O0OIl10l01OI1126340.BorderSizePixel = 0
-l1I1O0OIl10l01OI1126340.Position = UDim2.new(0, 16, 0, 360)
-l1I1O0OIl10l01OI1126340.Size = UDim2.new(1, -32, 0, 25)
+l1I1O0OIl10l01OI1126340.Position = UDim2.new(0, 0x10, 0, 0x168)
+l1I1O0OIl10l01OI1126340.Size = UDim2.new(1, -0x20, 0, 0x19)
 l1I1O0OIl10l01OI1126340.ZIndex = 6
 l1I1O0OIl10l01OI1126340.Font = Enum.Font.Garamond
 l1I1O0OIl10l01OI1126340.Text = "\083\079\067\073\065\076\083"
-l1I1O0OIl10l01OI1126340.TextColor3 = Color3.fromRGB(255, 91, 201)
+l1I1O0OIl10l01OI1126340.TextColor3 = Color3.fromRGB(0xff, 0x5b, 0xc9)
 l1I1O0OIl10l01OI1126340.TextSize = 18.000
 l1I1O0OIl10l01OI1126340.TextWrapped = true
 l1I1O0OIl10l01OI1126340.TextXAlignment = Enum.TextXAlignment.Left
 lI101lIOI00Ol0110487230.Name = "\073\110\115\116\097\103\114\097\109"
 lI101lIOI00Ol0110487230.Parent = lll110l0l0O1OlIO0320635
-lI101lIOI00Ol0110487230.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
+lI101lIOI00Ol0110487230.BackgroundColor3 = Color3.fromRGB(0x16, 0x16, 0x20)
 lI101lIOI00Ol0110487230.BackgroundTransparency = 1.000
 lI101lIOI00Ol0110487230.BorderSizePixel = 0
-lI101lIOI00Ol0110487230.Position = UDim2.new(0, 16, 0, 392)
-lI101lIOI00Ol0110487230.Size = UDim2.new(1, -32, 0, 25)
+lI101lIOI00Ol0110487230.Position = UDim2.new(0, 0x10, 0, 0x188)
+lI101lIOI00Ol0110487230.Size = UDim2.new(1, -0x20, 0, 0x19)
 lI101lIOI00Ol0110487230.ZIndex = 6
 lI101lIOI00Ol0110487230.Font = Enum.Font.Garamond
 lI101lIOI00Ol0110487230.Text = "\073\110\115\116\097\103\114\097\109\058\032\105\110\115\116\097\103\114\097\109\046\099\111\109\047\121\048\117\110\103\100\097\114\101"
-lI101lIOI00Ol0110487230.TextColor3 = Color3.fromRGB(89, 234, 249)
+lI101lIOI00Ol0110487230.TextColor3 = Color3.fromRGB(0x59, 0xea, 0xf9)
 lI101lIOI00Ol0110487230.TextSize = 15.000
 lI101lIOI00Ol0110487230.TextWrapped = true
 lI101lIOI00Ol0110487230.TextXAlignment = Enum.TextXAlignment.Left
 lIO11100O01I1ll00734497.Name = "\089\111\117\084\117\098\101"
 lIO11100O01I1ll00734497.Parent = lll110l0l0O1OlIO0320635
-lIO11100O01I1ll00734497.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
+lIO11100O01I1ll00734497.BackgroundColor3 = Color3.fromRGB(0x16, 0x16, 0x20)
 lIO11100O01I1ll00734497.BackgroundTransparency = 1.000
 lIO11100O01I1ll00734497.BorderSizePixel = 0
-lIO11100O01I1ll00734497.Position = UDim2.new(0, 16, 0, 422)
-lIO11100O01I1ll00734497.Size = UDim2.new(1, -32, 0, 45)
+lIO11100O01I1ll00734497.Position = UDim2.new(0, 0x10, 0, 0x1a6)
+lIO11100O01I1ll00734497.Size = UDim2.new(1, -0x20, 0, 0x2d)
 lIO11100O01I1ll00734497.ZIndex = 6
 lIO11100O01I1ll00734497.Font = Enum.Font.Garamond
 lIO11100O01I1ll00734497.Text = "\089\111\117\084\117\098\101\058\032\121\111\117\116\117\098\101\046\099\111\109\047\099\104\097\110\110\101\108\047\085\067\090\070\068\120\108\054\067\057\081\066\115\050\081\112\056\113\056\078\104\076\089\065"
-lIO11100O01I1ll00734497.TextColor3 = Color3.fromRGB(89, 234, 249)
+lIO11100O01I1ll00734497.TextColor3 = Color3.fromRGB(0x59, 0xea, 0xf9)
 lIO11100O01I1ll00734497.TextSize = 14.000
 lIO11100O01I1ll00734497.TextWrapped = true
 lIO11100O01I1ll00734497.TextXAlignment = Enum.TextXAlignment.Left
 lO1lI10O0Ol101O01691712.Name = "\067\111\110\116\114\111\108\076\105\110\101\049"
 lO1lI10O0Ol101O01691712.Parent = lll110l0l0O1OlIO0320635
-lO1lI10O0Ol101O01691712.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
+lO1lI10O0Ol101O01691712.BackgroundColor3 = Color3.fromRGB(0x16, 0x16, 0x20)
 lO1lI10O0Ol101O01691712.BackgroundTransparency = 1.000
 lO1lI10O0Ol101O01691712.BorderSizePixel = 0
-lO1lI10O0Ol101O01691712.Position = UDim2.new(0, 20, 0, 137)
-lO1lI10O0Ol101O01691712.Size = UDim2.new(1, -40, 0, 23)
+lO1lI10O0Ol101O01691712.Position = UDim2.new(0, 0x14, 0, 0x89)
+lO1lI10O0Ol101O01691712.Size = UDim2.new(1, -0x28, 0, 0x17)
 lO1lI10O0Ol101O01691712.ZIndex = 6
 lO1lI10O0Ol101O01691712.Font = Enum.Font.Garamond
 lO1lI10O0Ol101O01691712.Text = "\081\032\032\045\032\032\079\112\101\110\032\047\032\099\108\111\115\101\032\116\104\101\032\109\101\110\117"
-lO1lI10O0Ol101O01691712.TextColor3 = Color3.fromRGB(255, 255, 255)
+lO1lI10O0Ol101O01691712.TextColor3 = Color3.fromRGB(0xff, 0xff, 0xff)
 lO1lI10O0Ol101O01691712.TextSize = 17.000
 lO1lI10O0Ol101O01691712.TextXAlignment = Enum.TextXAlignment.Left
 lllI00l1IOO0IllIO895656.Name = "\067\111\110\116\114\111\108\076\105\110\101\050"
 lllI00l1IOO0IllIO895656.Parent = lll110l0l0O1OlIO0320635
-lllI00l1IOO0IllIO895656.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
+lllI00l1IOO0IllIO895656.BackgroundColor3 = Color3.fromRGB(0x16, 0x16, 0x20)
 lllI00l1IOO0IllIO895656.BackgroundTransparency = 1.000
 lllI00l1IOO0IllIO895656.BorderSizePixel = 0
-lllI00l1IOO0IllIO895656.Position = UDim2.new(0, 20, 0, 163)
-lllI00l1IOO0IllIO895656.Size = UDim2.new(1, -40, 0, 23)
+lllI00l1IOO0IllIO895656.Position = UDim2.new(0, 0x14, 0, 0xa3)
+lllI00l1IOO0IllIO895656.Size = UDim2.new(1, -0x28, 0, 0x17)
 lllI00l1IOO0IllIO895656.ZIndex = 6
 lllI00l1IOO0IllIO895656.Font = Enum.Font.Garamond
 lllI00l1IOO0IllIO895656.Text = "\068\114\097\103\032\032\045\032\032\077\111\118\101\032\116\104\101\032\109\101\110\117\032\097\114\111\117\110\100"
-lllI00l1IOO0IllIO895656.TextColor3 = Color3.fromRGB(255, 255, 255)
+lllI00l1IOO0IllIO895656.TextColor3 = Color3.fromRGB(0xff, 0xff, 0xff)
 lllI00l1IOO0IllIO895656.TextSize = 17.000
 lllI00l1IOO0IllIO895656.TextXAlignment = Enum.TextXAlignment.Left
 l011O1IOlI1lIO10I956849.Name = "\067\111\110\116\114\111\108\076\105\110\101\052"
 l011O1IOlI1lIO10I956849.Parent = lll110l0l0O1OlIO0320635
-l011O1IOlI1lIO10I956849.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
+l011O1IOlI1lIO10I956849.BackgroundColor3 = Color3.fromRGB(0x16, 0x16, 0x20)
 l011O1IOlI1lIO10I956849.BackgroundTransparency = 1.000
 l011O1IOlI1lIO10I956849.BorderSizePixel = 0
-l011O1IOlI1lIO10I956849.Position = UDim2.new(0, 20, 0, 231)
-l011O1IOlI1lIO10I956849.Size = UDim2.new(1, -40, 0, 26)
+l011O1IOlI1lIO10I956849.Position = UDim2.new(0, 0x14, 0, 0xe7)
+l011O1IOlI1lIO10I956849.Size = UDim2.new(1, -0x28, 0, 0x1a)
 l011O1IOlI1lIO10I956849.ZIndex = 6
 l011O1IOlI1lIO10I956849.Font = Enum.Font.Garamond
 l011O1IOlI1lIO10I956849.Text = "\070\108\121\032\067\097\114\032\067\111\110\116\114\111\108\115\058"
-l011O1IOlI1lIO10I956849.TextColor3 = Color3.fromRGB(255, 91, 201)
+l011O1IOlI1lIO10I956849.TextColor3 = Color3.fromRGB(0xff, 0x5b, 0xc9)
 l011O1IOlI1lIO10I956849.TextSize = 18.000
 l011O1IOlI1lIO10I956849.TextXAlignment = Enum.TextXAlignment.Left
 lOlOOIlIO00OlI0lI184449.Name = "\067\111\110\116\114\111\108\076\105\110\101\053"
 lOlOOIlIO00OlI0lI184449.Parent = lll110l0l0O1OlIO0320635
-lOlOOIlIO00OlI0lI184449.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
+lOlOOIlIO00OlI0lI184449.BackgroundColor3 = Color3.fromRGB(0x16, 0x16, 0x20)
 lOlOOIlIO00OlI0lI184449.BackgroundTransparency = 1.000
 lOlOOIlIO00OlI0lI184449.BorderSizePixel = 0
-lOlOOIlIO00OlI0lI184449.Position = UDim2.new(0, 20, 0, 265)
-lOlOOIlIO00OlI0lI184449.Size = UDim2.new(1, -40, 0, 23)
+lOlOOIlIO00OlI0lI184449.Position = UDim2.new(0, 0x14, 0, 0x109)
+lOlOOIlIO00OlI0lI184449.Size = UDim2.new(1, -0x28, 0, 0x17)
 lOlOOIlIO00OlI0lI184449.ZIndex = 6
 lOlOOIlIO00OlI0lI184449.Font = Enum.Font.Garamond
 lOlOOIlIO00OlI0lI184449.Text = "\086\032\032\045\032\032\068\101\115\099\101\110\100\032\119\104\105\108\101\032\102\108\121\105\110\103"
-lOlOOIlIO00OlI0lI184449.TextColor3 = Color3.fromRGB(255, 255, 255)
+lOlOOIlIO00OlI0lI184449.TextColor3 = Color3.fromRGB(0xff, 0xff, 0xff)
 lOlOOIlIO00OlI0lI184449.TextSize = 17.000
 lOlOOIlIO00OlI0lI184449.TextXAlignment = Enum.TextXAlignment.Left
 l11llIllI11ll1010616222.Name = "\067\111\110\116\114\111\108\076\105\110\101\054"
 l11llIllI11ll1010616222.Parent = lll110l0l0O1OlIO0320635
-l11llIllI11ll1010616222.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
+l11llIllI11ll1010616222.BackgroundColor3 = Color3.fromRGB(0x16, 0x16, 0x20)
 l11llIllI11ll1010616222.BackgroundTransparency = 1.000
 l11llIllI11ll1010616222.BorderSizePixel = 0
-l11llIllI11ll1010616222.Position = UDim2.new(0, 20, 0, 291)
-l11llIllI11ll1010616222.Size = UDim2.new(1, -40, 0, 23)
+l11llIllI11ll1010616222.Position = UDim2.new(0, 0x14, 0, 0x123)
+l11llIllI11ll1010616222.Size = UDim2.new(1, -0x28, 0, 0x17)
 l11llIllI11ll1010616222.ZIndex = 6
 l11llIllI11ll1010616222.Font = Enum.Font.Garamond
 l11llIllI11ll1010616222.Text = "\069\032\032\045\032\032\065\115\099\101\110\100\032\119\104\105\108\101\032\102\108\121\105\110\103"
-l11llIllI11ll1010616222.TextColor3 = Color3.fromRGB(255, 255, 255)
+l11llIllI11ll1010616222.TextColor3 = Color3.fromRGB(0xff, 0xff, 0xff)
 l11llIllI11ll1010616222.TextSize = 17.000
 l11llIllI11ll1010616222.TextXAlignment = Enum.TextXAlignment.Left
 l0Ill0IO00II1I01O231611.Name = "\067\111\110\116\114\111\108\076\105\110\101\055"
 l0Ill0IO00II1I01O231611.Parent = lll110l0l0O1OlIO0320635
-l0Ill0IO00II1I01O231611.BackgroundColor3 = Color3.fromRGB(22, 22, 32)
+l0Ill0IO00II1I01O231611.BackgroundColor3 = Color3.fromRGB(0x16, 0x16, 0x20)
 l0Ill0IO00II1I01O231611.BackgroundTransparency = 1.000
 l0Ill0IO00II1I01O231611.BorderSizePixel = 0
-l0Ill0IO00II1I01O231611.Position = UDim2.new(0, 20, 0, 317)
-l0Ill0IO00II1I01O231611.Size = UDim2.new(1, -40, 0, 23)
+l0Ill0IO00II1I01O231611.Position = UDim2.new(0, 0x14, 0, 0x13d)
+l0Ill0IO00II1I01O231611.Size = UDim2.new(1, -0x28, 0, 0x17)
 l0Ill0IO00II1I01O231611.ZIndex = 6
 l0Ill0IO00II1I01O231611.Font = Enum.Font.Garamond
 l0Ill0IO00II1I01O231611.Text = "\087\047\065\047\083\047\068\032\032\045\032\032\070\108\121\032\097\114\111\117\110\100"
-l0Ill0IO00II1I01O231611.TextColor3 = Color3.fromRGB(255, 255, 255)
+l0Ill0IO00II1I01O231611.TextColor3 = Color3.fromRGB(0xff, 0xff, 0xff)
 l0Ill0IO00II1I01O231611.TextSize = 17.000
 l0Ill0IO00II1I01O231611.TextXAlignment = Enum.TextXAlignment.Left
 lOl00lO1OIl10I0ll536800.Name = "\073\110\102\111\066\117\116\116\111\110"
 lOl00lO1OIl10I0ll536800.Parent = Frame
 lOl00lO1OIl10I0ll536800.AnchorPoint = Vector2.new(0.5, 0.5)
-lOl00lO1OIl10I0ll536800.BackgroundColor3 = Color3.fromRGB(11, 8, 22)
+lOl00lO1OIl10I0ll536800.BackgroundColor3 = Color3.fromRGB(0xb, 8, 0x16)
 lOl00lO1OIl10I0ll536800.BackgroundTransparency = 0.160
-lOl00lO1OIl10I0ll536800.BorderColor3 = Color3.fromRGB(170, 0, 255)
+lOl00lO1OIl10I0ll536800.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 lOl00lO1OIl10I0ll536800.BorderSizePixel = 0
-lOl00lO1OIl10I0ll536800.Position = UDim2.new(0, 140, 0, 558)
-lOl00lO1OIl10I0ll536800.Size = UDim2.new(1, -16, 0, 20)
+lOl00lO1OIl10I0ll536800.Position = UDim2.new(0, 0x8c, 0, 0x22e)
+lOl00lO1OIl10I0ll536800.Size = UDim2.new(1, -0x10, 0, 0x14)
 lOl00lO1OIl10I0ll536800.Font = Enum.Font.SourceSansBold
 lOl00lO1OIl10I0ll536800.Text = "\073\110\102\111\032\038\032\067\114\101\100\105\116\115"
-lOl00lO1OIl10I0ll536800.TextColor3 = Color3.fromRGB(0, 255, 255)
+lOl00lO1OIl10I0ll536800.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 lOl00lO1OIl10I0ll536800.TextSize = 17.000
 lOl00lO1OIl10I0ll536800.TextWrapped = true
 lOl00lO1OIl10I0ll536800.TextXAlignment = Enum.TextXAlignment.Left
@@ -757,29 +757,29 @@ llII0lOIll1OOIO10352026.SoundId = "\114\098\120\097\115\115\101\116\105\100\058\
 llII0lOIll1OOIO10352026.Volume = 1
 llII0lOIll1OOIO10352026.Looped = false
 llII0lOIll1OOIO10352026.Parent = _O11Ill1l011O0lI136
-_O11Ill1l011O0lI136.BackgroundColor3 = Color3.fromRGB(14, 12, 29)
+_O11Ill1l011O0lI136.BackgroundColor3 = Color3.fromRGB(0xe, 0xc, 0x1d)
 _O11Ill1l011O0lI136.BackgroundTransparency = 1.000
 _O11Ill1l011O0lI136.BorderSizePixel = 0
 _O11Ill1l011O0lI136.Position = UDim2.new(0.0399999991, 0, 0.0549999997, 0)
-_O11Ill1l011O0lI136.Size = UDim2.new(0.920000017, 0, 0, 92)
+_O11Ill1l011O0lI136.Size = UDim2.new(0.920000017, 0, 0, 0x5c)
 lll11I00O01OlO11l839273.Name = "\087\101\108\099\111\109\101\084\101\120\116"
 lll11I00O01OlO11l839273.Parent = _O11Ill1l011O0lI136
 lll11I00O01OlO11l839273.BackgroundTransparency = 1.000
 lll11I00O01OlO11l839273.BorderSizePixel = 0
-lll11I00O01OlO11l839273.Size = UDim2.new(1, 0, 0, 60)
+lll11I00O01OlO11l839273.Size = UDim2.new(1, 0, 0, 0x3c)
 lll11I00O01OlO11l839273.Font = Enum.Font.SourceSansBold
 lll11I00O01OlO11l839273.Text = "\072\101\108\108\111\032\080\108\097\121\101\114\044\032\087\101\108\099\111\109\101\032\116\111\032\121\048\117\110\103\068\097\114\101\032\077\101\110\117\032\118\052\046\053"
-lll11I00O01OlO11l839273.TextColor3 = Color3.fromRGB(255, 255, 255)
+lll11I00O01OlO11l839273.TextColor3 = Color3.fromRGB(0xff, 0xff, 0xff)
 lll11I00O01OlO11l839273.TextSize = 30.000
 lOO01I10Il0O1II0O896752.Name = "\085\112\100\097\116\101\115\076\105\110\107"
 lOO01I10Il0O1II0O896752.Parent = _O11Ill1l011O0lI136
 lOO01I10Il0O1II0O896752.BackgroundTransparency = 1.000
 lOO01I10Il0O1II0O896752.BorderSizePixel = 0
-lOO01I10Il0O1II0O896752.Position = UDim2.new(0, 0, 0, 54)
-lOO01I10Il0O1II0O896752.Size = UDim2.new(1, 0, 0, 25)
+lOO01I10Il0O1II0O896752.Position = UDim2.new(0, 0, 0, 0x36)
+lOO01I10Il0O1II0O896752.Size = UDim2.new(1, 0, 0, 0x19)
 lOO01I10Il0O1II0O896752.Font = Enum.Font.SourceSansBold
 lOO01I10Il0O1II0O896752.Text = "\065\108\108\032\117\112\100\097\116\101\115\032\111\110\032\112\097\115\116\101\098\105\110\046\099\111\109\047\118\116\113\113\115\097\115\066"
-lOO01I10Il0O1II0O896752.TextColor3 = Color3.fromRGB(215, 215, 225)
+lOO01I10Il0O1II0O896752.TextColor3 = Color3.fromRGB(0xd7, 0xd7, 0xe1)
 lOO01I10Il0O1II0O896752.TextScaled = true
 lOO01I10Il0O1II0O896752.TextSize = 16.000
 lOO01I10Il0O1II0O896752.TextStrokeTransparency = 0.180
@@ -787,60 +787,60 @@ lOO01I10Il0O1II0O896752.TextWrapped = true
 Fps.Name = "\070\112\115"
 Fps.Parent = llOl11OlllIlO0l0l929985
 Fps.AnchorPoint = Vector2.new(0, 0)
-Fps.BackgroundColor3 = Color3.fromRGB(5, 7, 12)
+Fps.BackgroundColor3 = Color3.fromRGB(5, 7, 0xc)
 Fps.BackgroundTransparency = 0.22
 Fps.BorderSizePixel = 0
-Fps.Position = UDim2.new(0, 16, 0, 12)
-Fps.Size = UDim2.new(0, 230, 0, 26)
+Fps.Position = UDim2.new(0, 0x10, 0, 0xc)
+Fps.Size = UDim2.new(0, 0xe6, 0, 0x1a)
 Fps.Visible = false
 Fps.Font = Enum.Font.Code
 Fps.Text = "\070\080\083\058\032\054\048\046\048\048"
-Fps.TextColor3 = Color3.fromRGB(248, 248, 255)
-Fps.TextSize = 23
+Fps.TextColor3 = Color3.fromRGB(0xf8, 0xf8, 0xff)
+Fps.TextSize = 0x17
 Fps.TextScaled = false
 Fps.TextWrapped = false
 Fps.TextXAlignment = Enum.TextXAlignment.Left
 Fps.TextYAlignment = Enum.TextYAlignment.Center
 Fps.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Fps.TextStrokeTransparency = 0.05
-Fps.ZIndex = 20
+Fps.ZIndex = 0x14
 Ping.Name = "\080\105\110\103"
 Ping.Parent = llOl11OlllIlO0l0l929985
 Ping.AnchorPoint = Vector2.new(0, 0)
-Ping.BackgroundColor3 = Color3.fromRGB(5, 7, 12)
+Ping.BackgroundColor3 = Color3.fromRGB(5, 7, 0xc)
 Ping.BackgroundTransparency = 0.22
 Ping.BorderSizePixel = 0
-Ping.Position = UDim2.new(0, 16, 0, 39)
-Ping.Size = UDim2.new(0, 230, 0, 26)
+Ping.Position = UDim2.new(0, 0x10, 0, 0x27)
+Ping.Size = UDim2.new(0, 0xe6, 0, 0x1a)
 Ping.Visible = false
 Ping.Font = Enum.Font.Code
 Ping.Text = "\080\073\078\071\058\032\046\046\046\032\109\115"
-Ping.TextColor3 = Color3.fromRGB(248, 248, 255)
-Ping.TextSize = 23
+Ping.TextColor3 = Color3.fromRGB(0xf8, 0xf8, 0xff)
+Ping.TextSize = 0x17
 Ping.TextScaled = false
 Ping.TextWrapped = false
 Ping.TextXAlignment = Enum.TextXAlignment.Left
 Ping.TextYAlignment = Enum.TextYAlignment.Center
 Ping.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Ping.TextStrokeTransparency = 0.05
-Ping.ZIndex = 20
+Ping.ZIndex = 0x14
 local lO100Ol1OIII110OI875790 = Instance.new("\084\101\120\116\076\097\098\101\108")
 lO100Ol1OIII110OI875790.Name = "\076\105\118\101\080\111\115\105\116\105\111\110\072\085\068"
 lO100Ol1OIII110OI875790.Parent = llOl11OlllIlO0l0l929985
-lO100Ol1OIII110OI875790.Position = UDim2.fromOffset(16, 70)
-lO100Ol1OIII110OI875790.Size = UDim2.fromOffset(290, 27)
-lO100Ol1OIII110OI875790.BackgroundColor3 = Color3.fromRGB(5, 7, 12)
+lO100Ol1OIII110OI875790.Position = UDim2.fromOffset(0x10, 0x46)
+lO100Ol1OIII110OI875790.Size = UDim2.fromOffset(0x122, 0x1b)
+lO100Ol1OIII110OI875790.BackgroundColor3 = Color3.fromRGB(5, 7, 0xc)
 lO100Ol1OIII110OI875790.BackgroundTransparency = 0.22
 lO100Ol1OIII110OI875790.BorderSizePixel = 0
 lO100Ol1OIII110OI875790.Font = Enum.Font.Code
-lO100Ol1OIII110OI875790.TextSize = 20
-lO100Ol1OIII110OI875790.TextColor3 = Color3.fromRGB(248, 248, 255)
+lO100Ol1OIII110OI875790.TextSize = 0x14
+lO100Ol1OIII110OI875790.TextColor3 = Color3.fromRGB(0xf8, 0xf8, 0xff)
 lO100Ol1OIII110OI875790.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 lO100Ol1OIII110OI875790.TextStrokeTransparency = 0.05
 lO100Ol1OIII110OI875790.TextXAlignment = Enum.TextXAlignment.Left
 lO100Ol1OIII110OI875790.TextYAlignment = Enum.TextYAlignment.Center
 lO100Ol1OIII110OI875790.Text = "\088\089\090\058\032\045\045\044\032\045\045\044\032\045\045"
-lO100Ol1OIII110OI875790.ZIndex = 20
+lO100Ol1OIII110OI875790.ZIndex = 0x14
 lO100Ol1OIII110OI875790.Visible = false
 do
 local RunService = game:GetService("\082\117\110\083\101\114\118\105\099\101")
@@ -870,19 +870,19 @@ end
 local lO10I1IOO1OOIOlOl784616 = Instance.new("\070\114\097\109\101")
 lO10I1IOO1OOIOlOl784616.Name = "\087\105\102\105\067\111\110\110\101\099\116\105\111\110\073\110\100\105\099\097\116\111\114"
 lO10I1IOO1OOIOlOl784616.Parent = llOl11OlllIlO0l0l929985
-lO10I1IOO1OOIOlOl784616.Position = UDim2.fromOffset(252, 12)
-lO10I1IOO1OOIOlOl784616.Size = UDim2.fromOffset(54, 53)
-lO10I1IOO1OOIOlOl784616.BackgroundColor3 = Color3.fromRGB(5, 7, 12)
+lO10I1IOO1OOIOlOl784616.Position = UDim2.fromOffset(0xfc, 0xc)
+lO10I1IOO1OOIOlOl784616.Size = UDim2.fromOffset(0x36, 0x35)
+lO10I1IOO1OOIOlOl784616.BackgroundColor3 = Color3.fromRGB(5, 7, 0xc)
 lO10I1IOO1OOIOlOl784616.BackgroundTransparency = 0.22
 lO10I1IOO1OOIOlOl784616.BorderSizePixel = 0
 lO10I1IOO1OOIOlOl784616.Visible = false
-lO10I1IOO1OOIOlOl784616.ZIndex = 20
+lO10I1IOO1OOIOlOl784616.ZIndex = 0x14
 local l01ll0IOIIlO0OIOO673207 = {}
 local function addWifiArc(name, radius, thickness)
-local centerX, centerY = 27, 42
-local segments = 25
+local centerX, centerY = 0x1b, 0x2a
+local segments = 0x19
 for i = 0, segments - 1 do
-local angle = math.rad(30 + (120 * i / (segments - 1)))
+local angle = math.rad(0x1e + (0x78 * i / (segments - 1)))
 local x = centerX + radius * math.cos(angle)
 local y = centerY - radius * math.sin(angle)
 local lII110l0l0llOI10l769257 = Instance.new("\070\114\097\109\101")
@@ -890,9 +890,9 @@ lII110l0l0llOI10l769257.Name = name .. tostring(i + 1)
 lII110l0l0llOI10l769257.AnchorPoint = Vector2.new(0.5, 0.5)
 lII110l0l0llOI10l769257.Position = UDim2.fromOffset(x, y)
 lII110l0l0llOI10l769257.Size = UDim2.fromOffset(thickness + 1, thickness + 1)
-lII110l0l0llOI10l769257.BackgroundColor3 = Color3.fromRGB(255, 55, 55)
+lII110l0l0llOI10l769257.BackgroundColor3 = Color3.fromRGB(0xff, 0x37, 0x37)
 lII110l0l0llOI10l769257.BorderSizePixel = 0
-lII110l0l0llOI10l769257.ZIndex = 21
+lII110l0l0llOI10l769257.ZIndex = 0x15
 lII110l0l0llOI10l769257.Parent = lO10I1IOO1OOIOlOl784616
 local lI11Ol010l01OIOlI606601 = Instance.new("\085\073\067\111\114\110\101\114")
 lI11Ol010l01OIOlI606601.CornerRadius = UDim.new(1, 0)
@@ -900,17 +900,17 @@ lI11Ol010l01OIOlI606601.Parent = lII110l0l0llOI10l769257
 table.insert(l01ll0IOIIlO0OIOO673207, lII110l0l0llOI10l769257)
 end
 end
-addWifiArc("\079\117\116\101\114\065\114\099", 24, 4)
-addWifiArc("\077\105\100\100\108\101\065\114\099", 16, 4)
+addWifiArc("\079\117\116\101\114\065\114\099", 0x18, 4)
+addWifiArc("\077\105\100\100\108\101\065\114\099", 0x10, 4)
 addWifiArc("\073\110\110\101\114\065\114\099", 8, 4)
 local lIl01Il0O0I1OII0l625600 = Instance.new("\070\114\097\109\101")
 lIl01Il0O0I1OII0l625600.Name = "\083\105\103\110\097\108\068\111\116"
 lIl01Il0O0I1OII0l625600.AnchorPoint = Vector2.new(0.5, 0.5)
-lIl01Il0O0I1OII0l625600.Position = UDim2.fromOffset(27, 44)
+lIl01Il0O0I1OII0l625600.Position = UDim2.fromOffset(0x1b, 0x2c)
 lIl01Il0O0I1OII0l625600.Size = UDim2.fromOffset(7, 7)
-lIl01Il0O0I1OII0l625600.BackgroundColor3 = Color3.fromRGB(255, 55, 55)
+lIl01Il0O0I1OII0l625600.BackgroundColor3 = Color3.fromRGB(0xff, 0x37, 0x37)
 lIl01Il0O0I1OII0l625600.BorderSizePixel = 0
-lIl01Il0O0I1OII0l625600.ZIndex = 21
+lIl01Il0O0I1OII0l625600.ZIndex = 0x15
 lIl01Il0O0I1OII0l625600.Parent = lO10I1IOO1OOIOlOl784616
 local _OI0lOll110lOO11I45 = Instance.new("\085\073\067\111\114\110\101\114")
 _OI0lOll110lOO11I45.CornerRadius = UDim.new(1, 0)
@@ -923,12 +923,12 @@ if not lO10I1IOO1OOIOlOl784616.Parent then return end
 local lllI1OlOIOlOI0O0O808242 = l0I1l1l1lIOIOIOl0242493
 local fps = l0Ol11O1110III0ll110392
 local color
-if not lllI1OlOIOlOI0O0O808242 or lllI1OlOIOlOI0O0O808242 >= 180 or (fps and fps < 25) then
-color = Color3.fromRGB(255, 55, 55)
-elseif lllI1OlOIOlOI0O0O808242 >= 100 or (fps and fps < 45) then
-color = Color3.fromRGB(255, 203, 40)
+if not lllI1OlOIOlOI0O0O808242 or lllI1OlOIOlOI0O0O808242 >= 0xb4 or (fps and fps < 0x19) then
+color = Color3.fromRGB(0xff, 0x37, 0x37)
+elseif lllI1OlOIOlOI0O0O808242 >= 0x64 or (fps and fps < 0x2d) then
+color = Color3.fromRGB(0xff, 0xcb, 0x28)
 else
-color = Color3.fromRGB(55, 235, 92)
+color = Color3.fromRGB(0x37, 0xeb, 0x5c)
 end
 for _, part in ipairs(l01ll0IOIIlO0OIOO673207) do
 part.BackgroundColor3 = color
@@ -939,10 +939,10 @@ attachButtonSounds(object)
 end
 do
 local l100l0Ol0OO00I0I1329792 = Enum.Font.RobotoCondensed
-local l0OIOI1IOlIO0lO00761303 = 13
-local lIlOI1Il11lI1II11646840 = Color3.fromRGB(1, 244, 253)
-local l0I0l10O1ll01O11l769753 = Color3.fromRGB(10, 5, 25)
-local llO10IOll1I01lO1I271834 = Color3.fromRGB(19, 9, 49)
+local l0OIOI1IOlIO0lO00761303 = 0xd
+local lIlOI1Il11lI1II11646840 = Color3.fromRGB(1, 0xf4, 0xfd)
+local l0I0l10O1ll01O11l769753 = Color3.fromRGB(0xa, 5, 0x19)
+local llO10IOll1I01lO1I271834 = Color3.fromRGB(0x13, 9, 0x31)
 local function styleJiggyButton(button)
 if not button:IsA("\084\101\120\116\066\117\116\116\111\110") or button.Parent ~= Frame then return end
 button.Font = l100l0Ol0OO00I0I1329792
@@ -972,71 +972,71 @@ local page = Instance.new("\070\114\097\109\101")
 page.Name = "\077\101\115\115\097\103\101\115\080\097\103\101"
 page.Parent = Frame
 page.Size = UDim2.fromScale(1, 1)
-page.BackgroundColor3 = Color3.fromRGB(12, 9, 22)
+page.BackgroundColor3 = Color3.fromRGB(0xc, 9, 0x16)
 page.BorderSizePixel = 0
 page.Visible = false
-page.ZIndex = 50
+page.ZIndex = 0x32
 local heading = Instance.new("\084\101\120\116\076\097\098\101\108")
 heading.Name = "\077\101\115\115\097\103\101\115\072\101\097\100\105\110\103"
 heading.Parent = page
-heading.Position = UDim2.fromOffset(3, 18)
-heading.Size = UDim2.new(1, -85, 0, 32)
+heading.Position = UDim2.fromOffset(3, 0x12)
+heading.Size = UDim2.new(1, -0x55, 0, 0x20)
 heading.BackgroundTransparency = 1
 heading.Text = "\077\101\115\115\097\103\101\115"
 heading.Font = Enum.Font.Arcade
-heading.TextSize = 27
-heading.TextColor3 = Color3.fromRGB(245, 244, 255)
-heading.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+heading.TextSize = 0x1b
+heading.TextColor3 = Color3.fromRGB(0xf5, 0xf4, 0xff)
+heading.TextStrokeColor3 = Color3.fromRGB(0x40, 0x28, 0x7d)
 heading.TextStrokeTransparency = 0.25
 heading.TextXAlignment = Enum.TextXAlignment.Left
 heading.TextYAlignment = Enum.TextYAlignment.Top
-heading.ZIndex = 52
+heading.ZIndex = 0x34
 local byline = Instance.new("\084\101\120\116\076\097\098\101\108")
 byline.Name = "\077\101\115\115\097\103\101\115\066\121\108\105\110\101"
 byline.Parent = page
-byline.Position = UDim2.fromOffset(3, 49)
-byline.Size = UDim2.new(1, -10, 0, 23)
+byline.Position = UDim2.fromOffset(3, 0x31)
+byline.Size = UDim2.new(1, -0xa, 0, 0x17)
 byline.BackgroundTransparency = 1
 byline.Text = "\066\121\032\064\121\048\117\110\103\100\097\114\101"
 byline.Font = Enum.Font.Arcade
-byline.TextSize = 15
-byline.TextColor3 = Color3.fromRGB(37, 28, 191)
-byline.TextStrokeColor3 = Color3.fromRGB(10, 5, 40)
+byline.TextSize = 0xf
+byline.TextColor3 = Color3.fromRGB(0x25, 0x1c, 0xbf)
+byline.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x28)
 byline.TextStrokeTransparency = 0.3
 byline.TextXAlignment = Enum.TextXAlignment.Left
-byline.ZIndex = 52
+byline.ZIndex = 0x34
 local function makeButton(name, caption, y)
 local b = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 b.Name = name
 b.Parent = page
 b.Position = UDim2.fromOffset(8, y)
-b.Size = UDim2.new(1, -16, 0, 20)
-b.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+b.Size = UDim2.new(1, -0x10, 0, 0x14)
+b.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 b.BackgroundTransparency = 0.82
 b.BorderSizePixel = 0
 b.AutoButtonColor = false
 b.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-b.TextColor3 = Color3.fromRGB(1, 244, 253)
-b.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+b.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+b.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 b.TextStrokeTransparency = 0.28
 b.TextXAlignment = Enum.TextXAlignment.Left
 b.TextYAlignment = Enum.TextYAlignment.Center
-b.TextSize = 13
+b.TextSize = 0xd
 b.Text = caption
-b.ZIndex = 52
+b.ZIndex = 0x34
 return b
 end
 local back = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 back.Name = "\077\101\115\115\097\103\101\115\066\097\099\107"
 back.Parent = page
-back.Position = UDim2.new(1, -77, 0, 14)
-back.Size = UDim2.fromOffset(65, 26)
-back.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
-back.TextColor3 = Color3.fromRGB(0, 255, 255)
+back.Position = UDim2.new(1, -0x4d, 0, 0xe)
+back.Size = UDim2.fromOffset(0x41, 0x1a)
+back.BackgroundColor3 = Color3.fromRGB(0x20, 0x14, 0x39)
+back.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 back.Font = Enum.Font.SourceSansBold
-back.TextSize = 15
+back.TextSize = 0xf
 back.Text = "\060\032\066\065\067\075"
-back.ZIndex = 52
+back.ZIndex = 0x34
 local Lighting = game:GetService("\076\105\103\104\116\105\110\103")
 local UserInputService = game:GetService("\085\115\101\114\073\110\112\117\116\083\101\114\118\105\099\101")
 local RunService = game:GetService("\082\117\110\083\101\114\118\105\099\101")
@@ -1046,7 +1046,7 @@ local llO0010OIOI0IlllI956693 = Instance.new("\083\099\114\101\101\110\071\117\1
 llO0010OIOI0IlllI956693.Name = "\121\048\117\110\103\068\097\114\101\070\097\107\101\075\105\099\107\080\114\111\109\112\116"
 llO0010OIOI0IlllI956693.ResetOnSpawn = false
 llO0010OIOI0IlllI956693.IgnoreGuiInset = true
-llO0010OIOI0IlllI956693.DisplayOrder = 10000
+llO0010OIOI0IlllI956693.DisplayOrder = 0x2710
 llO0010OIOI0IlllI956693.Enabled = false
 llO0010OIOI0IlllI956693.Parent = player:WaitForChild("\080\108\097\121\101\114\071\117\105")
 local blur = Instance.new("\066\108\117\114\069\102\102\101\099\116")
@@ -1066,54 +1066,54 @@ local l0lI11llIIl0OOIIO221812 = Instance.new("\070\114\097\109\101")
 l0lI11llIIl0OOIIO221812.Name = "\068\105\115\099\111\110\110\101\099\116\068\105\097\108\111\103"
 l0lI11llIIl0OOIIO221812.AnchorPoint = Vector2.new(0.5, 0.5)
 l0lI11llIIl0OOIIO221812.Position = UDim2.fromScale(0.5, 0.5)
-l0lI11llIIl0OOIIO221812.Size = UDim2.fromOffset(400, 250)
+l0lI11llIIl0OOIIO221812.Size = UDim2.fromOffset(0x190, 0xfa)
 l0lI11llIIl0OOIIO221812.BackgroundTransparency = 0
 local ll10II0lOlOlI1lI1526952 = Instance.new("\085\073\083\105\122\101\067\111\110\115\116\114\097\105\110\116")
-ll10II0lOlOlI1lI1526952.MaxSize = Vector2.new(400, 250)
+ll10II0lOlOlI1lI1526952.MaxSize = Vector2.new(0x190, 0xfa)
 ll10II0lOlOlI1lI1526952.Parent = l0lI11llIIl0OOIIO221812
-l0lI11llIIl0OOIIO221812.BackgroundColor3 = Color3.fromRGB(57, 57, 57)
+l0lI11llIIl0OOIIO221812.BackgroundColor3 = Color3.fromRGB(0x39, 0x39, 0x39)
 l0lI11llIIl0OOIIO221812.BorderSizePixel = 0
 l0lI11llIIl0OOIIO221812.Parent = shade
 local l0Il1IlOO1IIOl0OI260547 = Instance.new("\084\101\120\116\076\097\098\101\108")
 l0Il1IlOO1IIOl0OI260547.Name = "\084\105\116\108\101"
-l0Il1IlOO1IIOl0OI260547.Size = UDim2.new(1, -40, 0, 36)
-l0Il1IlOO1IIOl0OI260547.Position = UDim2.fromOffset(20, 9)
+l0Il1IlOO1IIOl0OI260547.Size = UDim2.new(1, -0x28, 0, 0x24)
+l0Il1IlOO1IIOl0OI260547.Position = UDim2.fromOffset(0x14, 9)
 l0Il1IlOO1IIOl0OI260547.BackgroundTransparency = 1
 l0Il1IlOO1IIOl0OI260547.Text = "\068\105\115\099\111\110\110\101\099\116\101\100"
 l0Il1IlOO1IIOl0OI260547.Font = Enum.Font.GothamBold
-l0Il1IlOO1IIOl0OI260547.TextSize = 19
+l0Il1IlOO1IIOl0OI260547.TextSize = 0x13
 l0Il1IlOO1IIOl0OI260547.TextColor3 = Color3.new(1, 1, 1)
 l0Il1IlOO1IIOl0OI260547.TextXAlignment = Enum.TextXAlignment.Center
 l0Il1IlOO1IIOl0OI260547.Parent = l0lI11llIIl0OOIIO221812
 local l1lIOOO0O01OIOlI0367113 = Instance.new("\070\114\097\109\101")
 l1lIOOO0O01OIOlI0367113.Name = "\083\101\112\097\114\097\116\111\114"
-l1lIOOO0O01OIOlI0367113.Position = UDim2.fromOffset(20, 50)
-l1lIOOO0O01OIOlI0367113.Size = UDim2.new(1, -40, 0, 1)
-l1lIOOO0O01OIOlI0367113.BackgroundColor3 = Color3.fromRGB(185, 185, 185)
+l1lIOOO0O01OIOlI0367113.Position = UDim2.fromOffset(0x14, 0x32)
+l1lIOOO0O01OIOlI0367113.Size = UDim2.new(1, -0x28, 0, 1)
+l1lIOOO0O01OIOlI0367113.BackgroundColor3 = Color3.fromRGB(0xb9, 0xb9, 0xb9)
 l1lIOOO0O01OIOlI0367113.BorderSizePixel = 0
 l1lIOOO0O01OIOlI0367113.Parent = l0lI11llIIl0OOIIO221812
 local lOOOIOIl01Il1Illl300492 = Instance.new("\084\101\120\116\076\097\098\101\108")
 lOOOIOIl01Il1Illl300492.Name = "\069\120\112\108\097\110\097\116\105\111\110"
-lOOOIOIl01Il1Illl300492.Position = UDim2.fromOffset(20, 69)
-lOOOIOIl01Il1Illl300492.Size = UDim2.new(1, -40, 0, 115)
+lOOOIOIl01Il1Illl300492.Position = UDim2.fromOffset(0x14, 0x45)
+lOOOIOIl01Il1Illl300492.Size = UDim2.new(1, -0x28, 0, 0x73)
 lOOOIOIl01Il1Illl300492.BackgroundTransparency = 1
 lOOOIOIl01Il1Illl300492.Text = "You were kicked from this experience:\nevocor moderation\n\nThis server has shutdown.\n(Error Code: 267)"
 lOOOIOIl01Il1Illl300492.Font = Enum.Font.Gotham
-lOOOIOIl01Il1Illl300492.TextSize = 14
+lOOOIOIl01Il1Illl300492.TextSize = 0xe
 lOOOIOIl01Il1Illl300492.TextWrapped = true
-lOOOIOIl01Il1Illl300492.TextColor3 = Color3.fromRGB(190, 190, 190)
+lOOOIOIl01Il1Illl300492.TextColor3 = Color3.fromRGB(0xbe, 0xbe, 0xbe)
 lOOOIOIl01Il1Illl300492.TextXAlignment = Enum.TextXAlignment.Center
 lOOOIOIl01Il1Illl300492.TextYAlignment = Enum.TextYAlignment.Center
 lOOOIOIl01Il1Illl300492.Parent = l0lI11llIIl0OOIIO221812
 local lIOl1IlOOIlI0100I601373 = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 lIOl1IlOOIlI0100I601373.Name = "\070\097\107\101\076\101\097\118\101\066\117\116\116\111\110"
-lIOl1IlOOIlI0100I601373.Position = UDim2.fromOffset(20, 194)
-lIOl1IlOOIlI0100I601373.Size = UDim2.new(1, -40, 0, 36)
-lIOl1IlOOIlI0100I601373.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+lIOl1IlOOIlI0100I601373.Position = UDim2.fromOffset(0x14, 0xc2)
+lIOl1IlOOIlI0100I601373.Size = UDim2.new(1, -0x28, 0, 0x24)
+lIOl1IlOOIlI0100I601373.BackgroundColor3 = Color3.fromRGB(0xff, 0xff, 0xff)
 lIOl1IlOOIlI0100I601373.BorderSizePixel = 0
 lIOl1IlOOIlI0100I601373.Font = Enum.Font.Gotham
-lIOl1IlOOIlI0100I601373.TextSize = 15
-lIOl1IlOOIlI0100I601373.TextColor3 = Color3.fromRGB(30, 30, 30)
+lIOl1IlOOIlI0100I601373.TextSize = 0xf
+lIOl1IlOOIlI0100I601373.TextColor3 = Color3.fromRGB(0x1e, 0x1e, 0x1e)
 lIOl1IlOOIlI0100I601373.Text = "\076\101\097\118\101"
 lIOl1IlOOIlI0100I601373.Parent = l0lI11llIIl0OOIIO221812
 local l0OIO0IIII00II0lO580692 = Instance.new("\085\073\067\111\114\110\101\114")
@@ -1176,7 +1176,7 @@ l1O111I1lO0l0O000975977[effect] = effect.Enabled
 effect.Enabled = false
 end
 end
-ll0O0lI0l01I010I1297249:BindActionAtPriority(l001IO011OI00IIl1706882, blockGameplayInput, false, 3000,
+ll0O0lI0l01I010I1297249:BindActionAtPriority(l001IO011OI00IIl1706882, blockGameplayInput, false, 0xbb8,
 Enum.PlayerActions.CharacterForward, Enum.PlayerActions.CharacterBackward,
 Enum.PlayerActions.CharacterLeft, Enum.PlayerActions.CharacterRight,
 Enum.PlayerActions.CharacterJump, Enum.KeyCode.W, Enum.KeyCode.A,
@@ -1212,7 +1212,7 @@ end
 end)
 blur.Size = 0
 blur.Enabled = true
-tweenBlur(56)
+tweenBlur(0x38)
 llO0010OIOI0IlllI956693.Enabled = true
 end
 llO0010OIOI0IlllI956693.Destroying:Connect(closeFakeKick)
@@ -1221,12 +1221,12 @@ local captions = {"\072\101\108\108\111\032\109\101\115\115\097\103\101", "\089\
 local hoverTween = game:GetService("\084\119\101\101\110\083\101\114\118\105\099\101")
 local hoverInfo = TweenInfo.new(0.09, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
 for i, caption in ipairs(captions) do
-local choice = makeButton("\082\101\112\108\097\121\077\101\115\115\097\103\101" .. i, caption, 79 + (i - 1) * 20)
+local choice = makeButton("\082\101\112\108\097\121\077\101\115\115\097\103\101" .. i, caption, 0x4f + (i - 1) * 0x14)
 local baseColor = choice.BackgroundColor3
 local marker = Instance.new("\070\114\097\109\101")
 marker.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\077\097\114\107\101\114"
 marker.BorderSizePixel = 0
-marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+marker.BackgroundColor3 = Color3.fromRGB(0, 0xff, 0xff)
 marker.BackgroundTransparency = 1
 marker.Position = UDim2.fromOffset(0, 0)
 marker.Size = UDim2.new(0, 5, 1, 0)
@@ -1235,13 +1235,13 @@ marker.Parent = choice
 local outline = Instance.new("\085\073\083\116\114\111\107\101")
 outline.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\079\117\116\108\105\110\101"
 outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-outline.Color = Color3.fromRGB(174, 70, 255)
+outline.Color = Color3.fromRGB(0xae, 0x46, 0xff)
 outline.Thickness = 1.5
 outline.Transparency = 1
 outline.Parent = choice
 local function setHover(active)
 hoverTween:Create(choice, hoverInfo, {
-BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or baseColor
+BackgroundColor3 = active and Color3.fromRGB(0x3f, 0x18, 0x6e) or baseColor
 }):Play()
 hoverTween:Create(marker, hoverInfo, {
 BackgroundTransparency = active and 0 or 1
@@ -1265,21 +1265,21 @@ end)
 end
 _OIOO0011OOOI001121.Parent = page
 _OIOO0011OOOI001121.AnchorPoint = Vector2.new(0, 0)
-_OIOO0011OOOI001121.Position = UDim2.fromOffset(8, 179)
-_OIOO0011OOOI001121.Size = UDim2.new(1, -16, 0, 20)
-_OIOO0011OOOI001121.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+_OIOO0011OOOI001121.Position = UDim2.fromOffset(8, 0xb3)
+_OIOO0011OOOI001121.Size = UDim2.new(1, -0x10, 0, 0x14)
+_OIOO0011OOOI001121.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 _OIOO0011OOOI001121.BackgroundTransparency = 0.82
 _OIOO0011OOOI001121.BorderSizePixel = 0
 _OIOO0011OOOI001121.AutoButtonColor = false
 _OIOO0011OOOI001121.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-_OIOO0011OOOI001121.TextColor3 = Color3.fromRGB(1, 244, 253)
-_OIOO0011OOOI001121.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+_OIOO0011OOOI001121.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+_OIOO0011OOOI001121.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 _OIOO0011OOOI001121.TextStrokeTransparency = 0.28
 _OIOO0011OOOI001121.TextXAlignment = Enum.TextXAlignment.Left
-_OIOO0011OOOI001121.TextSize = 13
-_OIOO0011OOOI001121.ZIndex = 52
+_OIOO0011OOOI001121.TextSize = 0xd
+_OIOO0011OOOI001121.ZIndex = 0x34
 local lOllIIllIIl1OlOO1744158 = _OIOO0011OOOI001121:FindFirstChild("\074\105\103\103\121\083\101\108\101\099\116\105\111\110\077\097\114\107\101\114")
-if lOllIIllIIl1OlOO1744158 then lOllIIllIIl1OlOO1744158.ZIndex = 53 end
+if lOllIIllIIl1OlOO1744158 then lOllIIllIIl1OlOO1744158.ZIndex = 0x35 end
 local previousVisibility = {}
 local glitchLayer
 local function moveGlitch(toPage)
@@ -1287,9 +1287,9 @@ local layer = Frame:FindFirstChild("\074\105\103\103\121\071\108\105\116\099\104
 if not layer then return end
 glitchLayer = layer
 layer.Parent = toPage
-layer.ZIndex = 51
+layer.ZIndex = 0x33
 for _, part in ipairs(layer:GetDescendants()) do
-if part:IsA("\071\117\105\079\098\106\101\099\116") then part.ZIndex = 51 end
+if part:IsA("\071\117\105\079\098\106\101\099\116") then part.ZIndex = 0x33 end
 end
 end
 local function restoreGlitch()
@@ -1426,14 +1426,14 @@ local Players = game:GetService("\080\108\097\121\101\114\115")
 local player = Players.LocalPlayer
 local button = script.Parent
 assert(button:IsA("\084\101\120\116\066\117\116\116\111\110"), "\080\108\097\099\101\032\116\104\105\115\032\076\111\099\097\108\083\099\114\105\112\116\032\105\110\115\105\100\101\032\116\104\101\032\083\112\101\101\100\032\082\117\110\032\084\101\120\116\066\117\116\116\111\110")
-local llO01OlllIll0lO0l904035 = 16
-local lI0I1000IO1O00OlI712362 = 50
+local llO01OlllIll0lO0l904035 = 0x10
+local lI0I1000IO1O00OlI712362 = 0x32
 local enabled = false
 local humanoid
 local speedConnection
 local function updateButton()
 button.Text = enabled and "\083\112\101\101\100\058\032\079\078" or "\083\112\101\101\100\058\032\079\070\070"
-button.TextColor3 = enabled and Color3.fromRGB(1, 244, 253) or Color3.fromRGB(1, 244, 253)
+button.TextColor3 = enabled and Color3.fromRGB(1, 0xf4, 0xfd) or Color3.fromRGB(1, 0xf4, 0xfd)
 end
 local function applySpeed()
 if humanoid and humanoid.Parent then
@@ -1480,7 +1480,7 @@ local l1IlO1l1I01O0IOII523993 = nil
 local l01OO1000I01lll1l313535 = false
 local l0O1IIl0IOI0OO1l0815049 = nil
 local lOO001OOII1O01l11115657 = nil
-local l0I1lI1Oll1llOl1l164137 = 24
+local l0I1lI1Oll1llOl1l164137 = 0x18
 local function humanoid()
 local character = player.Character
 return character and character:FindFirstChildOfClass("\072\117\109\097\110\111\105\100")
@@ -1524,7 +1524,7 @@ end
 end
 local function refresh()
 button.Text = enabled and "\065\078\084\073\045\084\065\090\069\058\032\079\078" or "\065\078\084\073\045\084\065\090\069\058\032\079\070\070"
-button.BackgroundColor3 = enabled and Color3.fromRGB(35,125,85) or Color3.fromRGB(0, 0, 0)
+button.BackgroundColor3 = enabled and Color3.fromRGB(0x23,0x7d,0x55) or Color3.fromRGB(0, 0, 0)
 end
 UserInputService.InputBegan:Connect(function(input, processed)
 if processed then return end
@@ -1594,7 +1594,7 @@ local enabled = false
 local session = 0
 local function updateButton()
 button.Text = enabled and "\065\117\116\111\032\080\105\108\111\116\058\032\079\078" or "\065\117\116\111\032\080\105\108\111\116\058\032\079\070\070"
-button.BackgroundColor3 = enabled and Color3.fromRGB(25, 180, 60) or Color3.fromRGB(0, 0, 0)
+button.BackgroundColor3 = enabled and Color3.fromRGB(0x19, 0xb4, 0x3c) or Color3.fromRGB(0, 0, 0)
 end
 local function wander(mySession)
 while enabled and session == mySession do
@@ -1603,13 +1603,13 @@ local humanoid = character and character:FindFirstChildOfClass("\072\117\109\097
 local root = character and character:FindFirstChild("\072\117\109\097\110\111\105\100\082\111\111\116\080\097\114\116")
 if humanoid and root and humanoid.Health > 0 then
 local angle = rng:NextNumber(0, math.pi * 2)
-local distance = rng:NextNumber(10, 25)
+local distance = rng:NextNumber(0xa, 0x19)
 local offset = Vector3.new(math.cos(angle) * distance, 0, math.sin(angle) * distance)
-local origin = root.Position + offset + Vector3.new(0, 35, 0)
+local origin = root.Position + offset + Vector3.new(0, 0x23, 0)
 local llOOO0OI0lOllOO01486998 = RaycastParams.new()
 llOOO0OI0lOllOO01486998.FilterType = Enum.RaycastFilterType.Exclude
 llOOO0OI0lOllOO01486998.FilterDescendantsInstances = {character}
-local lll1l1II1lOOlIO10524122 = workspace:Raycast(origin, Vector3.new(0, -100, 0), llOOO0OI0lOllOO01486998)
+local lll1l1II1lOOlIO10524122 = workspace:Raycast(origin, Vector3.new(0, -0x64, 0), llOOO0OI0lOllOO01486998)
 local l1O1l1011l11O1IOO816082 = lll1l1II1lOOlIO10524122 and (lll1l1II1lOOlIO10524122.Position + Vector3.new(0, 2, 0)) or (root.Position + offset)
 humanoid:MoveTo(l1O1l1011l11O1IOO816082)
 local start = os.clock()
@@ -1653,7 +1653,7 @@ local RunService = game:GetService("\082\117\110\083\101\114\118\105\099\101")
 local player = Players.LocalPlayer
 local button = script.Parent
 local enabled = false
-local l1I1I0lOO0Ol1O110597693 = 12
+local l1I1I0lOO0Ol1O110597693 = 0xc
 local connection
 local spinningHumanoid
 local savedAutoRotate
@@ -1680,8 +1680,8 @@ stopSpin()
 if not enabled then return end
 character = character or player.Character
 if not character then return end
-local humanoid = character:WaitForChild("\072\117\109\097\110\111\105\100", 10)
-local root = character:WaitForChild("\072\117\109\097\110\111\105\100\082\111\111\116\080\097\114\116", 10)
+local humanoid = character:WaitForChild("\072\117\109\097\110\111\105\100", 0xa)
+local root = character:WaitForChild("\072\117\109\097\110\111\105\100\082\111\111\116\080\097\114\116", 0xa)
 if thisGeneration ~= generation or not enabled or character ~= player.Character then return end
 if not humanoid or not root or humanoid.Health <= 0 then return end
 spinningHumanoid = humanoid
@@ -1692,7 +1692,7 @@ if not enabled or character ~= player.Character or not root.Parent or humanoid.H
 stopSpin()
 return
 end
-root.CFrame = root.CFrame * CFrame.Angles(0, math.rad(360 * l1I1I0lOO0Ol1O110597693) * dt, 0)
+root.CFrame = root.CFrame * CFrame.Angles(0, math.rad(0x168 * l1I1I0lOO0Ol1O110597693) * dt, 0)
 end)
 end
 button.Activated:Connect(function()
@@ -1768,7 +1768,7 @@ end
 local function updateButton()
 button.Text = enabled and "\088\045\082\097\121\032\086\105\115\105\111\110\058\032\079\078" or "\088\045\082\097\121\032\086\105\115\105\111\110\058\032\079\070\070"
 button.BackgroundColor3 = enabled
-and Color3.fromRGB(20, 185, 65)
+and Color3.fromRGB(0x14, 0xb9, 0x41)
 or Color3.fromRGB(0, 0, 0)
 end
 button.Activated:Connect(function()
@@ -1786,9 +1786,9 @@ local RunService = game:GetService("\082\117\110\083\101\114\118\105\099\101")
 local localPlayer = Players.LocalPlayer
 local button = script.Parent
 assert(button:IsA("\071\117\105\066\117\116\116\111\110"), "\080\108\097\099\101\032\116\104\105\115\032\076\111\099\097\108\083\099\114\105\112\116\032\105\110\115\105\100\101\032\116\104\101\032\069\083\080\032\084\101\120\116\066\117\116\116\111\110")
-local lOlOl01l00IOOl1Il265301 = Color3.fromRGB(255,255,255)
-local RED = Color3.fromRGB(255,0,0)
-local lOIl0I0OlI00O00ll495506 = Color3.fromRGB(0,255,70)
+local lOlOl01l00IOOl1Il265301 = Color3.fromRGB(0xff,0xff,0xff)
+local RED = Color3.fromRGB(0xff,0,0)
+local lOIl0I0OlI00O00ll495506 = Color3.fromRGB(0,0xff,0x46)
 local enabled = false
 local llO0IlI0IOlOI1OIO545390 = {}
 local lIOlO0ll0I1I0IIIO821589 = {}
@@ -1799,7 +1799,7 @@ local gui = Instance.new("\083\099\114\101\101\110\071\117\105")
 gui.Name = "\087\097\108\108\069\083\080\095\066\111\120\101\115\095\076\111\099\097\108"
 gui.ResetOnSpawn = false
 gui.IgnoreGuiInset = true
-gui.DisplayOrder = 50
+gui.DisplayOrder = 0x32
 gui.Parent = playerGui
 local lOIIllOOl0IO1Il10287191 = {
 {"\072\101\097\100","\085\112\112\101\114\084\111\114\115\111"}, {"\085\112\112\101\114\084\111\114\115\111","\076\111\119\101\114\084\111\114\115\111"},
@@ -1859,7 +1859,7 @@ lOOl0lO0O0OOI00OO868889.Name = "\072\101\097\108\116\104\066\097\099\107\103\114
 lOOl0lO0O0OOI00OO868889.AnchorPoint = Vector2.new(1,0)
 lOOl0lO0O0OOI00OO868889.Position = UDim2.fromOffset(-5,0)
 lOOl0lO0O0OOI00OO868889.Size = UDim2.new(0,4,1,0)
-lOOl0lO0O0OOI00OO868889.BackgroundColor3 = Color3.fromRGB(15,15,15)
+lOOl0lO0O0OOI00OO868889.BackgroundColor3 = Color3.fromRGB(0xf,0xf,0xf)
 lOOl0lO0O0OOI00OO868889.BorderSizePixel = 0
 lOOl0lO0O0OOI00OO868889.Parent = frame
 local llll0O0O1IO0ll10O580896 = Instance.new("\070\114\097\109\101")
@@ -1878,7 +1878,7 @@ skeleton.BorderSizePixel = 0
 skeleton.Visible = false
 skeleton.Parent = gui
 local bones = {}
-local count = humanoid.RigType == Enum.HumanoidRigType.R15 and #lOIIllOOl0IO1Il10287191 or 10
+local count = humanoid.RigType == Enum.HumanoidRigType.R15 and #lOIIllOOl0IO1Il10287191 or 0xa
 for i = 1,count do bones[i] = lineFrame(skeleton) end
 llO0IlI0IOlOI1OIO545390[other] = {
 highlight = highlight, frame = frame, fill = llll0O0O1IO0ll10O580896,
@@ -1890,7 +1890,7 @@ local function watch(other)
 if other == localPlayer then return end
 if lIOlO0ll0I1I0IIIO821589[other] then lIOlO0ll0I1I0IIIO821589[other]:Disconnect() end
 lIOlO0ll0I1I0IIIO821589[other] = other.CharacterAdded:Connect(function(character)
-character:WaitForChild("\072\117\109\097\110\111\105\100",10)
+character:WaitForChild("\072\117\109\097\110\111\105\100",0xa)
 if enabled and other.Character == character then make(other) end
 end)
 make(other)
@@ -1997,7 +1997,7 @@ end
 end
 local function updateButton()
 button.Text = enabled and "\069\083\080\058\032\079\078" or "\069\083\080\058\032\079\070\070"
-button.BackgroundColor3 = enabled and Color3.fromRGB(25,190,65) or Color3.fromRGB(0,0,0)
+button.BackgroundColor3 = enabled and Color3.fromRGB(0x19,0xbe,0x41) or Color3.fromRGB(0,0,0)
 end
 local l0lOl010Ol0lO01O1747006 = RunService.RenderStepped:Connect(function()
 if not enabled then return end
@@ -2005,7 +2005,7 @@ local camera = workspace.CurrentCamera
 if not camera then return end
 local lOIlO11OllI111l11962764 = camera.ViewportSize
 local center = lOIlO11OllI111l11962764 * 0.5
-local aimedPlayer,closestDistance = nil,35
+local aimedPlayer,closestDistance = nil,0x23
 local lOIIIlII0OIlOlOlO933722 = {}
 for other,entry in pairs(llO0IlI0IOlOI1OIO545390) do
 local humanoid,character,frame = entry.humanoid,entry.character,entry.frame
@@ -2082,7 +2082,7 @@ local localPlayer = Players.LocalPlayer
 local button = script.Parent
 local enabled = false
 local lOlOl11O11I00llO1917958 = true
-local radius = 20
+local radius = 0x14
 local lIlll1I0000OIIl00540957 = 0.01
 local clock = 0
 local ll111l1OIII1O1lll208139 = 0
@@ -2096,7 +2096,7 @@ return character and character:FindFirstChildOfClass("\072\117\109\097\110\111\1
 end
 local function updateButton()
 button.Text = enabled and "\075\105\108\108\032\065\117\114\097\058\032\079\078" or "\075\105\108\108\032\065\117\114\097\058\032\079\070\070"
-button.BackgroundColor3 = enabled and Color3.fromRGB(37, 150, 91) or Color3.fromRGB(0, 0, 0)
+button.BackgroundColor3 = enabled and Color3.fromRGB(0x25, 0x96, 0x5b) or Color3.fromRGB(0, 0, 0)
 end
 button.Activated:Connect(function()
 enabled = not enabled
@@ -2125,7 +2125,7 @@ local lOOl0lI011000Ol0O505412 = humanoid(player)
 local lIOlOIlO000l0I10O364462 = rootPart(player)
 if lOOl0lI011000Ol0O505412 and lOOl0lI011000Ol0O505412.Health > 0 and lIOlOIlO000l0I10O364462
 and not player.Character:FindFirstChild("\070\111\114\099\101\070\105\101\108\100")
-and (llOIOlOl101101l00640839.Position - lIOlOIlO000l0I10O364462.Position).Magnitude <= math.clamp(radius, 3, 15) then
+and (llOIOlOl101101l00640839.Position - lIOlOIlO000l0I10O364462.Position).Magnitude <= math.clamp(radius, 3, 0xf) then
 table.insert(lOlIOlIOI00OlIIl1873056, player)
 end
 end
@@ -2252,22 +2252,22 @@ banner.Name = "\070\108\121\105\110\103\067\097\114\115\067\111\110\116\114\111\
 banner.BackgroundTransparency = 1
 banner.BorderSizePixel = 0
 banner.Position = UDim2.new(0.04, 0, 0.055, 0)
-banner.Size = UDim2.new(0.92, 0, 0, 70)
-banner.ZIndex = 90
+banner.Size = UDim2.new(0.92, 0, 0, 0x46)
+banner.ZIndex = 0x5a
 banner.Parent = llOl11OlllIlO0l0l929985
 local label = Instance.new("\084\101\120\116\076\097\098\101\108")
 label.Name = "\087\101\108\099\111\109\101\084\101\120\116"
 label.BackgroundTransparency = 1
 label.Size = UDim2.fromScale(1, 1)
 label.Font = Enum.Font.SourceSansBold
-label.TextSize = 22
+label.TextSize = 0x16
 label.TextScaled = false
 label.TextWrapped = true
 label.RichText = true
-label.TextStrokeColor3 = Color3.fromRGB(18, 4, 36)
+label.TextStrokeColor3 = Color3.fromRGB(0x12, 4, 0x24)
 label.TextStrokeTransparency = 0.18
-label.TextColor3 = Color3.fromRGB(255, 255, 255)
-label.ZIndex = 91
+label.TextColor3 = Color3.fromRGB(0xff, 0xff, 0xff)
+label.ZIndex = 0x5b
 label.Parent = banner
 local sound = Instance.new("\083\111\117\110\100")
 sound.SoundId = "\114\098\120\097\115\115\101\116\105\100\058\047\047\057\051\056\055\054\049\050\050\052\055\052\055\050\057"
@@ -2288,7 +2288,7 @@ if i > step and c ~= "\032" and c ~= "\124" and c ~= "\047" and c ~= "\061" then
 c = charset:sub(rng:NextInteger(1, #charset), rng:NextInteger(1, #charset))
 end
 if i > step + 7 then c = "\032" end
-local color = l1O10OlO1010llIll502182[math.floor((i - 1) / 17) % #l1O10OlO1010llIll502182 + 1]
+local color = l1O10OlO1010llIll502182[math.floor((i - 1) / 0x11) % #l1O10OlO1010llIll502182 + 1]
 llIO0OI01II1l0IlO775916[#llIO0OI01II1l0IlO775916 + 1] = "\060\102\111\110\116\032\099\111\108\111\114\061\034" .. color .. "\034\062" .. c .. "\060\047\102\111\110\116\062"
 end
 label.Text = table.concat(llIO0OI01II1l0IlO775916)
@@ -2314,7 +2314,7 @@ local _d54c770cf66e = game:GetService("\082\117\110\083\101\114\118\105\099\101"
 local lI11lI01ll1II011l912617 = game:GetService("\085\115\101\114\073\110\112\117\116\083\101\114\118\105\099\101")
 local lI01IIlO011IO1l10841413 = workspace.CurrentCamera
 local ll10l0I11l10l1lO0887975 = lI11lI01ll1II011l912617.TouchEnabled and not lI11lI01ll1II011l912617.KeyboardEnabled
-local _1c2d69e764e2 = { VehicleFly = false, VehicleFlySpeed = 200 }
+local _1c2d69e764e2 = { VehicleFly = false, VehicleFlySpeed = 0xc8 }
 local _12fc75b60e62 = { MobileQuick = { Axis = 0 } }
 local function _414007f12de3(_0c00c8b3dbf3)
 local llOIIlIII1lI0I011254422 = _0c00c8b3dbf3 and _0c00c8b3dbf3.Character
@@ -2348,18 +2348,18 @@ _95021a957be8()
 if not _5b5408f52438 or not _5b5408f52438.Parent then return false end
 local ll011l1IOIOOlll01385741 = _5b5408f52438.AssemblyMass
 if ll011l1IOIOOlll01385741 <= 0 or ll011l1IOIOOlll01385741 == math.huge then return false end
-local l1OlI00I1O0IIOl1I301894 = math.clamp(ll011l1IOIOOlll01385741 * (workspace.Gravity + 300), 20000, 10000000)
+local l1OlI00I1O0IIOl1I301894 = math.clamp(ll011l1IOIOOlll01385741 * (workspace.Gravity + 0x12c), 0x4e20, 0x989680)
 local llOO0OIIOlOIIllIl846001 = Instance.new("\066\111\100\121\086\101\108\111\099\105\116\121")
 llOO0OIIOlOIIllIl846001.Name = "\076\117\100\111\119\105\103\086\101\104\105\099\108\101\070\108\121\086\101\108\111\099\105\116\121"
 llOO0OIIOlOIIllIl846001.MaxForce = Vector3.new(l1OlI00I1O0IIOl1I301894, l1OlI00I1O0IIOl1I301894, l1OlI00I1O0IIOl1I301894)
-llOO0OIIOlOIIllIl846001.P = 8000
+llOO0OIIOlOIIllIl846001.P = 0x1f40
 llOO0OIIOlOIIllIl846001.Velocity = _5b5408f52438.AssemblyLinearVelocity
 llOO0OIIOlOIIllIl846001.Parent = _5b5408f52438
 local ll01O10101l10lOOO903772 = Instance.new("\066\111\100\121\071\121\114\111")
 ll01O10101l10lOOO903772.Name = "\076\117\100\111\119\105\103\086\101\104\105\099\108\101\070\108\121\071\121\114\111"
-ll01O10101l10lOOO903772.MaxTorque = Vector3.new(l1OlI00I1O0IIOl1I301894 * 10, l1OlI00I1O0IIOl1I301894 * 10, l1OlI00I1O0IIOl1I301894 * 10)
-ll01O10101l10lOOO903772.P = 12000
-ll01O10101l10lOOO903772.D = 1200
+ll01O10101l10lOOO903772.MaxTorque = Vector3.new(l1OlI00I1O0IIOl1I301894 * 0xa, l1OlI00I1O0IIOl1I301894 * 0xa, l1OlI00I1O0IIOl1I301894 * 0xa)
+ll01O10101l10lOOO903772.P = 0x2ee0
+ll01O10101l10lOOO903772.D = 0x4b0
 ll01O10101l10lOOO903772.CFrame = _5b5408f52438.CFrame
 ll01O10101l10lOOO903772.Parent = _5b5408f52438
 _48e46b4b592d = _5b5408f52438
@@ -2390,7 +2390,7 @@ end
 local button = script.Parent
 local function updateButton()
 button.Text = _1c2d69e764e2.VehicleFly and "\070\108\121\105\110\103\032\067\097\114\115\058\032\079\078" or "\070\108\121\105\110\103\032\067\097\114\115\058\032\079\070\070"
-button.BackgroundColor3 = _1c2d69e764e2.VehicleFly and Color3.fromRGB(34, 160, 122) or Color3.fromRGB(0, 0, 0)
+button.BackgroundColor3 = _1c2d69e764e2.VehicleFly and Color3.fromRGB(0x22, 0xa0, 0x7a) or Color3.fromRGB(0, 0, 0)
 end
 button.Activated:Connect(function()
 _1c2d69e764e2.VehicleFly = not _1c2d69e764e2.VehicleFly
@@ -2412,7 +2412,7 @@ end
 local l0Ill0Il0IlI101Il512162 = _9e95b871a97d()
 local lII101OIOll0OIll0304363 = l0Ill0Il0IlI101Il512162 * _1c2d69e764e2.VehicleFlySpeed
 local lOl1lO10lI100IIlI920656 = lII101OIOll0OIll0304363 - _d412e71eb165.Velocity
-local llOIOlO0OllO00001675363 = 160 * math.min(_f36afaf0c8d5, 0.1)
+local llOIOlO0OllO00001675363 = 0xa0 * math.min(_f36afaf0c8d5, 0.1)
 if lOl1lO10lI100IIlI920656.Magnitude > llOIOlO0OllO00001675363 then lOl1lO10lI100IIlI920656 = lOl1lO10lI100IIlI920656.Unit * llOIOlO0OllO00001675363 end
 _d412e71eb165.Velocity = _d412e71eb165.Velocity + lOl1lO10lI100IIlI920656
 local lO1I1O1O110OI1I0l451922 = l0Ill0Il0IlI101Il512162.Magnitude > 0 and l0Ill0Il0IlI101Il512162 or (lI01IIlO011IO1l10841413 and lI01IIlO011IO1l10841413.CFrame.LookVector or l01lIOOl1I1I1O10O365650.CFrame.LookVector)
@@ -2469,7 +2469,7 @@ end)
 end)
 local function UpdateButton()
 button.Text = ll1IOIIIOllIO1II0543750.Active and "\082\101\109\111\118\101\032\068\111\111\114\115\058\032\079\078" or "\082\101\109\111\118\101\032\068\111\111\114\115\058\032\079\070\070"
-button.BackgroundColor3 = ll1IOIIIOllIO1II0543750.Active and Color3.fromRGB(35, 150, 85) or Color3.fromRGB(0, 0, 0)
+button.BackgroundColor3 = ll1IOIIIOllIO1II0543750.Active and Color3.fromRGB(0x23, 0x96, 0x55) or Color3.fromRGB(0, 0, 0)
 end
 button.Activated:Connect(function()
 SetDoorsRemoved(not ll1IOIIIOllIO1II0543750.Active)
@@ -2500,7 +2500,7 @@ ShadowSoftness = 0.35,
 EnvironmentDiffuseScale = 1,
 EnvironmentSpecularScale = 1,
 Ambient = Color3.fromRGB(0, 0, 0),
-OutdoorAmbient = Color3.fromRGB(150, 155, 170),
+OutdoorAmbient = Color3.fromRGB(0x96, 0x9b, 0xaa),
 }
 local function makeEffect(className, props)
 local obj = Instance.new(className)
@@ -2517,10 +2517,10 @@ original[property] = l0I10l0I1Il1IlI0l468832
 pcall(function() Lighting[property] = lIOl01OOl0IO01lO0282096 end)
 end
 end
-makeEffect("\066\108\111\111\109\069\102\102\101\099\116", {Intensity = 0.15, Size = 24, Threshold = 1.4})
-makeEffect("\067\111\108\111\114\067\111\114\114\101\099\116\105\111\110\069\102\102\101\099\116", {Brightness = 0.015, Contrast = 0.12, Saturation = 0.1, TintColor = Color3.fromRGB(255, 248, 240)})
+makeEffect("\066\108\111\111\109\069\102\102\101\099\116", {Intensity = 0.15, Size = 0x18, Threshold = 1.4})
+makeEffect("\067\111\108\111\114\067\111\114\114\101\099\116\105\111\110\069\102\102\101\099\116", {Brightness = 0.015, Contrast = 0.12, Saturation = 0.1, TintColor = Color3.fromRGB(0xff, 0xf8, 0xf0)})
 makeEffect("\083\117\110\082\097\121\115\069\102\102\101\099\116", {Intensity = 0.055, Spread = 0.8})
-makeEffect("\065\116\109\111\115\112\104\101\114\101", {Density = 0.28, Offset = 0.05, Color = Color3.fromRGB(200, 215, 235), Decay = Color3.fromRGB(110, 135, 170), Glare = 0.15, Haze = 1.1})
+makeEffect("\065\116\109\111\115\112\104\101\114\101", {Density = 0.28, Offset = 0.05, Color = Color3.fromRGB(0xc8, 0xd7, 0xeb), Decay = Color3.fromRGB(0x6e, 0x87, 0xaa), Glare = 0.15, Haze = 1.1})
 end
 local function disable()
 for _, obj in ipairs(created) do
@@ -2534,7 +2534,7 @@ table.clear(original)
 end
 local function refresh()
 button.Text = enabled and "\072\105\103\104\032\071\114\097\112\104\105\099\115\058\032\079\078" or "\072\105\103\104\032\071\114\097\112\104\105\099\115\058\032\079\070\070"
-button.BackgroundColor3 = enabled and Color3.fromRGB(38, 145, 98) or Color3.fromRGB(0, 0, 0)
+button.BackgroundColor3 = enabled and Color3.fromRGB(0x26, 0x91, 0x62) or Color3.fromRGB(0, 0, 0)
 end
 button.MouseButton1Click:Connect(function()
 enabled = not enabled
@@ -2558,7 +2558,7 @@ local baseColor = button.BackgroundColor3
 local l11lO0IOO0O1IOIOO138530 = Instance.new("\070\114\097\109\101")
 l11lO0IOO0O1IOIOO138530.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\077\097\114\107\101\114"
 l11lO0IOO0O1IOIOO138530.BorderSizePixel = 0
-l11lO0IOO0O1IOIOO138530.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+l11lO0IOO0O1IOIOO138530.BackgroundColor3 = Color3.fromRGB(0, 0xff, 0xff)
 l11lO0IOO0O1IOIOO138530.BackgroundTransparency = 1
 l11lO0IOO0O1IOIOO138530.Position = UDim2.fromOffset(0, 0)
 l11lO0IOO0O1IOIOO138530.Size = UDim2.new(0, 5, 1, 0)
@@ -2567,13 +2567,13 @@ l11lO0IOO0O1IOIOO138530.Parent = button
 local outline = Instance.new("\085\073\083\116\114\111\107\101")
 outline.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\079\117\116\108\105\110\101"
 outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-outline.Color = Color3.fromRGB(174, 70, 255)
+outline.Color = Color3.fromRGB(0xae, 0x46, 0xff)
 outline.Thickness = 1.5
 outline.Transparency = 1
 outline.Parent = button
 local function selectRow(active)
 TweenService:Create(button, info, {
-BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or baseColor
+BackgroundColor3 = active and Color3.fromRGB(0x3f, 0x18, 0x6e) or baseColor
 }):Play()
 TweenService:Create(l11lO0IOO0O1IOIOO138530, info, {
 BackgroundTransparency = active and 0 or 1
@@ -2598,7 +2598,7 @@ local y0ungDareMenuv42 = script:FindFirstAncestorOfClass("\083\099\114\101\101\1
 local Frame = script.Parent
 function dragify(Frame)
 dragToggle = nil
-dragSpeed = 100000
+dragSpeed = 0x186a0
 dragInput = nil
 dragStart = nil
 dragPos = nil
@@ -2660,11 +2660,11 @@ panel.Name = "\083\104\111\111\116\083\111\117\110\100\067\104\097\110\103\101\1
 panel.Parent = Frame
 panel.Size = UDim2.fromScale(1, 1)
 panel.Position = UDim2.fromScale(0, 0)
-panel.BackgroundColor3 = Color3.fromRGB(12, 9, 22)
+panel.BackgroundColor3 = Color3.fromRGB(0xc, 9, 0x16)
 panel.BorderSizePixel = 0
 panel.ClipsDescendants = true
 panel.Visible = false
-panel.ZIndex = 30
+panel.ZIndex = 0x1e
 local previousVisibility = {}
 local glitchLayer
 local function openPanel()
@@ -2678,9 +2678,9 @@ end
 glitchLayer = Frame:FindFirstChild("\074\105\103\103\121\071\108\105\116\099\104\066\097\099\107\103\114\111\117\110\100\095\069\068\073\084\095\072\069\082\069")
 if glitchLayer then
 glitchLayer.Parent = panel
-glitchLayer.ZIndex = 31
+glitchLayer.ZIndex = 0x1f
 for _, part in ipairs(glitchLayer:GetDescendants()) do
-if part:IsA("\071\117\105\079\098\106\101\099\116") then part.ZIndex = 31 end
+if part:IsA("\071\117\105\079\098\106\101\099\116") then part.ZIndex = 0x1f end
 end
 end
 panel.Visible = true
@@ -2707,7 +2707,7 @@ local marker = Instance.new("\070\114\097\109\101")
 marker.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\077\097\114\107\101\114"
 marker.Parent = rowButton
 marker.BorderSizePixel = 0
-marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+marker.BackgroundColor3 = Color3.fromRGB(0, 0xff, 0xff)
 marker.BackgroundTransparency = 1
 marker.Position = UDim2.fromOffset(0, 0)
 marker.Size = UDim2.new(0, 5, 1, 0)
@@ -2716,11 +2716,11 @@ local outline = Instance.new("\085\073\083\116\114\111\107\101")
 outline.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\079\117\116\108\105\110\101"
 outline.Parent = rowButton
 outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-outline.Color = Color3.fromRGB(174, 70, 255)
+outline.Color = Color3.fromRGB(0xae, 0x46, 0xff)
 outline.Thickness = 1.5
 outline.Transparency = 1
 local function setHover(active)
-TweenService:Create(rowButton, hoverInfo, {BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or baseColor}):Play()
+TweenService:Create(rowButton, hoverInfo, {BackgroundColor3 = active and Color3.fromRGB(0x3f, 0x18, 0x6e) or baseColor}):Play()
 TweenService:Create(marker, hoverInfo, {BackgroundTransparency = active and 0 or 1}):Play()
 TweenService:Create(outline, hoverInfo, {Transparency = active and 0 or 1}):Play()
 end
@@ -2735,97 +2735,97 @@ local obj = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 obj.Name = name
 obj.Parent = panel
 obj.Position = UDim2.fromOffset(8, y)
-obj.Size = UDim2.new(1, -16, 0, 20)
-obj.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+obj.Size = UDim2.new(1, -0x10, 0, 0x14)
+obj.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 obj.BackgroundTransparency = 0.82
 obj.BorderSizePixel = 0
 obj.AutoButtonColor = false
 obj.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-obj.TextColor3 = Color3.fromRGB(1, 244, 253)
-obj.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+obj.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+obj.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 obj.TextStrokeTransparency = 0.28
 obj.TextXAlignment = Enum.TextXAlignment.Left
 obj.TextYAlignment = Enum.TextYAlignment.Center
-obj.TextSize = 13
+obj.TextSize = 0xd
 obj.Text = text
-obj.ZIndex = 33
+obj.ZIndex = 0x21
 addRowHover(obj)
 return obj
 end
 local lO11lIOlI0O10I0I1318806 = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 lO11lIOlI0O10I0I1318806.Name = "\067\108\111\115\101\083\104\111\111\116\083\111\117\110\100"
 lO11lIOlI0O10I0I1318806.Parent = panel
-lO11lIOlI0O10I0I1318806.Position = UDim2.new(1, -77, 0, 14)
-lO11lIOlI0O10I0I1318806.Size = UDim2.fromOffset(65, 26)
-lO11lIOlI0O10I0I1318806.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
-lO11lIOlI0O10I0I1318806.TextColor3 = Color3.fromRGB(0, 255, 255)
+lO11lIOlI0O10I0I1318806.Position = UDim2.new(1, -0x4d, 0, 0xe)
+lO11lIOlI0O10I0I1318806.Size = UDim2.fromOffset(0x41, 0x1a)
+lO11lIOlI0O10I0I1318806.BackgroundColor3 = Color3.fromRGB(0x20, 0x14, 0x39)
+lO11lIOlI0O10I0I1318806.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 lO11lIOlI0O10I0I1318806.Font = Enum.Font.SourceSansBold
-lO11lIOlI0O10I0I1318806.TextSize = 15
+lO11lIOlI0O10I0I1318806.TextSize = 0xf
 lO11lIOlI0O10I0I1318806.Text = "\060\032\066\065\067\075"
-lO11lIOlI0O10I0I1318806.ZIndex = 34
+lO11lIOlI0O10I0I1318806.ZIndex = 0x22
 local heading = Instance.new("\084\101\120\116\076\097\098\101\108")
 heading.Name = "\083\104\111\111\116\083\111\117\110\100\072\101\097\100\105\110\103"
 heading.Parent = panel
-heading.Position = UDim2.fromOffset(3, 18)
-heading.Size = UDim2.new(1, -85, 0, 32)
+heading.Position = UDim2.fromOffset(3, 0x12)
+heading.Size = UDim2.new(1, -0x55, 0, 0x20)
 heading.BackgroundTransparency = 1
 heading.Text = "\087\101\097\112\111\110\115"
 heading.Font = Enum.Font.Arcade
 heading.TextScaled = true
-heading.TextSize = 27
-heading.TextColor3 = Color3.fromRGB(245, 244, 255)
-heading.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+heading.TextSize = 0x1b
+heading.TextColor3 = Color3.fromRGB(0xf5, 0xf4, 0xff)
+heading.TextStrokeColor3 = Color3.fromRGB(0x40, 0x28, 0x7d)
 heading.TextStrokeTransparency = 0.25
 heading.TextXAlignment = Enum.TextXAlignment.Left
 heading.TextYAlignment = Enum.TextYAlignment.Top
-heading.ZIndex = 33
+heading.ZIndex = 0x21
 local byline = Instance.new("\084\101\120\116\076\097\098\101\108")
 byline.Name = "\083\104\111\111\116\083\111\117\110\100\066\121\108\105\110\101"
 byline.Parent = panel
-byline.Position = UDim2.fromOffset(3, 49)
-byline.Size = UDim2.new(1, -10, 0, 23)
+byline.Position = UDim2.fromOffset(3, 0x31)
+byline.Size = UDim2.new(1, -0xa, 0, 0x17)
 byline.BackgroundTransparency = 1
 byline.Text = "\066\121\032\064\121\048\117\110\103\100\097\114\101"
 byline.Font = Enum.Font.Arcade
-byline.TextSize = 15
-byline.TextColor3 = Color3.fromRGB(37, 28, 191)
-byline.TextStrokeColor3 = Color3.fromRGB(10, 5, 40)
+byline.TextSize = 0xf
+byline.TextColor3 = Color3.fromRGB(0x25, 0x1c, 0xbf)
+byline.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x28)
 byline.TextStrokeTransparency = 0.3
 byline.TextXAlignment = Enum.TextXAlignment.Left
-byline.ZIndex = 33
-local toggle = makeButton("\083\104\111\111\116\083\111\117\110\100\084\111\103\103\108\101", "\071\117\110\032\083\111\117\110\100\058\032\079\070\070", 79)
-local lIll0OOOOl0lOlOlI613968 = makeButton("\083\104\111\111\116\083\111\117\110\100\068\114\111\112\100\111\119\110", "\071\117\110\032\083\111\117\110\100\058\032" .. sounds[selected][1] .. "\032\032\226\150\188", 99)
+byline.ZIndex = 0x21
+local toggle = makeButton("\083\104\111\111\116\083\111\117\110\100\084\111\103\103\108\101", "\071\117\110\032\083\111\117\110\100\058\032\079\070\070", 0x4f)
+local lIll0OOOOl0lOlOlI613968 = makeButton("\083\104\111\111\116\083\111\117\110\100\068\114\111\112\100\111\119\110", "\071\117\110\032\083\111\117\110\100\058\032" .. sounds[selected][1] .. "\032\032\226\150\188", 0x63)
 addRowHover(_O0Ol001IIIO1OII04)
 local lI0lO0IO01OOlOI0l707865 = Instance.new("\083\099\114\111\108\108\105\110\103\070\114\097\109\101")
 lI0lO0IO01OOlOI0l707865.Name = "\083\104\111\111\116\083\111\117\110\100\079\112\116\105\111\110\115"
 lI0lO0IO01OOlOI0l707865.Parent = panel
-lI0lO0IO01OOlOI0l707865.Position = UDim2.fromOffset(8, 141)
-lI0lO0IO01OOlOI0l707865.Size = UDim2.new(1, -16, 0, 260)
-lI0lO0IO01OOlOI0l707865.BackgroundColor3 = Color3.fromRGB(20, 13, 38)
+lI0lO0IO01OOlOI0l707865.Position = UDim2.fromOffset(8, 0x8d)
+lI0lO0IO01OOlOI0l707865.Size = UDim2.new(1, -0x10, 0, 0x104)
+lI0lO0IO01OOlOI0l707865.BackgroundColor3 = Color3.fromRGB(0x14, 0xd, 0x26)
 lI0lO0IO01OOlOI0l707865.BackgroundTransparency = 0.3
 lI0lO0IO01OOlOI0l707865.BorderSizePixel = 0
 lI0lO0IO01OOlOI0l707865.ScrollBarThickness = 5
-lI0lO0IO01OOlOI0l707865.CanvasSize = UDim2.fromOffset(0, #sounds * 20)
+lI0lO0IO01OOlOI0l707865.CanvasSize = UDim2.fromOffset(0, #sounds * 0x14)
 lI0lO0IO01OOlOI0l707865.Visible = false
-lI0lO0IO01OOlOI0l707865.ZIndex = 40
+lI0lO0IO01OOlOI0l707865.ZIndex = 0x28
 for i, entry in ipairs(sounds) do
 local choice = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 choice.Name = "\083\104\111\111\116\083\111\117\110\100\067\104\111\105\099\101" .. i
 choice.Parent = lI0lO0IO01OOlOI0l707865
-choice.Position = UDim2.fromOffset(0, (i - 1) * 20)
-choice.Size = UDim2.new(1, -7, 0, 20)
-choice.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+choice.Position = UDim2.fromOffset(0, (i - 1) * 0x14)
+choice.Size = UDim2.new(1, -7, 0, 0x14)
+choice.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 choice.BackgroundTransparency = 0.2
 choice.BorderSizePixel = 0
 choice.AutoButtonColor = false
 choice.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-choice.TextColor3 = Color3.fromRGB(1, 244, 253)
-choice.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+choice.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+choice.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 choice.TextStrokeTransparency = 0.28
 choice.TextXAlignment = Enum.TextXAlignment.Left
-choice.TextSize = 13
+choice.TextSize = 0xd
 choice.Text = entry[1]
-choice.ZIndex = 41
+choice.ZIndex = 0x29
 addRowHover(choice)
 choice.MouseButton1Click:Connect(function()
 selected = i
@@ -2835,10 +2835,10 @@ end)
 end
 local laserSettings = {enabled = false, color = "\080\117\114\112\108\101"}
 shared.y0ungDareLaserAttachment = laserSettings
-local l1Il0IIlO0IO0OOOO424401 = makeButton("\076\097\115\101\114\065\116\116\097\099\104\109\101\110\116\084\111\103\103\108\101", "\076\097\115\101\114\032\065\116\116\097\099\104\109\101\110\116\058\032\079\070\070", 191)
+local l1Il0IIlO0IO0OOOO424401 = makeButton("\076\097\115\101\114\065\116\116\097\099\104\109\101\110\116\084\111\103\103\108\101", "\076\097\115\101\114\032\065\116\116\097\099\104\109\101\110\116\058\032\079\070\070", 0xbf)
 local llllIO1I0ll0II1lI190317 = {"\080\117\114\112\108\101", "\082\101\100", "\071\114\101\101\110", "\066\108\117\101"}
 local lllO1l0010IOI00O1222802 = 1
-local l1IOlOOO1I1O0110O836441 = makeButton("\076\097\115\101\114\065\116\116\097\099\104\109\101\110\116\067\111\108\111\114", "\076\097\115\101\114\032\067\111\108\111\114\058\032\080\117\114\112\108\101\032\032\062", 211)
+local l1IOlOOO1I1O0110O836441 = makeButton("\076\097\115\101\114\065\116\116\097\099\104\109\101\110\116\067\111\108\111\114", "\076\097\115\101\114\032\067\111\108\111\114\058\032\080\117\114\112\108\101\032\032\062", 0xd3)
 l1Il0IIlO0IO0OOOO424401.MouseButton1Click:Connect(function()
 laserSettings.enabled = not laserSettings.enabled
 l1Il0IIlO0IO0OOOO424401.Text = "\076\097\115\101\114\032\065\116\116\097\099\104\109\101\110\116\058\032" .. (laserSettings.enabled and "\079\078" or "\079\070\070")
@@ -2850,15 +2850,15 @@ l1IOlOOO1I1O0110O836441.Text = "\076\097\115\101\114\032\067\111\108\111\114\058
 end)
 local lIlO0I0ll00I101I0954037 = {enabled = false}
 shared.y0ungDarePrimaryAppearance = lIlO0I0ll00I101I0954037
-local l10O011Il0ll1l01O202211 = makeButton("\080\114\105\109\097\114\121\065\112\112\101\097\114\097\110\099\101\084\111\103\103\108\101", "\067\104\097\110\103\101\032\071\117\110\032\065\112\112\101\097\114\097\110\099\101\058\032\071\072\088\083\084\032\032\062", 231)
+local l10O011Il0ll1l01O202211 = makeButton("\080\114\105\109\097\114\121\065\112\112\101\097\114\097\110\099\101\084\111\103\103\108\101", "\067\104\097\110\103\101\032\071\117\110\032\065\112\112\101\097\114\097\110\099\101\058\032\071\072\088\083\084\032\032\062", 0xe7)
 local l01O00lO11OOIOlOl593654 = {
-{name = "\071\072\088\083\084", assetId = 106526034195206},
-{name = "\082\097\121\071\117\110", assetId = 119080362579878},
+{name = "\071\072\088\083\084", assetId = 0x60e2866d7306},
+{name = "\082\097\121\071\117\110", assetId = 0x6c4d8eb617a6},
 }
 lIlO0I0ll00I101I0954037.style = l01O00lO11OOIOlOl593654[1].name
 lIlO0I0ll00I101I0954037.assetId = l01O00lO11OOIOlOl593654[1].assetId
 local lOIOlIlOlO0OO1lI0613373 = 1
-local llllllll10IOIOO0I577694 = makeButton("\080\114\105\109\097\114\121\065\112\112\101\097\114\097\110\099\101\083\101\108\101\099\116\111\114", "\071\117\110\032\065\112\112\101\097\114\097\110\099\101\058\032\079\070\070", 252)
+local llllllll10IOIOO0I577694 = makeButton("\080\114\105\109\097\114\121\065\112\112\101\097\114\097\110\099\101\083\101\108\101\099\116\111\114", "\071\117\110\032\065\112\112\101\097\114\097\110\099\101\058\032\079\070\070", 0xfc)
 l10O011Il0ll1l01O202211.MouseButton1Click:Connect(function()
 lOIOlIlOlO0OO1lI0613373 = lOIOlIlOlO0OO1lI0613373 % #l01O00lO11OOIOlOl593654 + 1
 local choice = l01O00lO11OOIOlOl593654[lOIOlIlOlO0OO1lI0613373]
@@ -2873,15 +2873,15 @@ end)
 local lOl110OlIO01l1111907813 = Instance.new("\084\101\120\116\076\097\098\101\108")
 lOl110OlIO01l1111907813.Name = "\080\114\105\109\097\114\121\065\112\112\101\097\114\097\110\099\101\087\101\097\112\111\110\078\111\116\101"
 lOl110OlIO01l1111907813.Parent = panel
-lOl110OlIO01l1111907813.Position = UDim2.fromOffset(12, 275)
-lOl110OlIO01l1111907813.Size = UDim2.new(1, -24, 0, 16)
+lOl110OlIO01l1111907813.Position = UDim2.fromOffset(0xc, 0x113)
+lOl110OlIO01l1111907813.Size = UDim2.new(1, -0x18, 0, 0x10)
 lOl110OlIO01l1111907813.BackgroundTransparency = 1
 lOl110OlIO01l1111907813.Font = Enum.Font.RobotoCondensed
-lOl110OlIO01l1111907813.TextSize = 12
-lOl110OlIO01l1111907813.TextColor3 = Color3.fromRGB(170, 159, 195)
+lOl110OlIO01l1111907813.TextSize = 0xc
+lOl110OlIO01l1111907813.TextColor3 = Color3.fromRGB(0xaa, 0x9f, 0xc3)
 lOl110OlIO01l1111907813.TextXAlignment = Enum.TextXAlignment.Left
 lOl110OlIO01l1111907813.Text = "\077\052\065\049\044\032\070\065\076\044\032\065\075\045\052\055\044\032\077\080\053"
-lOl110OlIO01l1111907813.ZIndex = 33
+lOl110OlIO01l1111907813.ZIndex = 0x21
 button.Activated:Connect(openPanel)
 lO11lIOlI0O10I0I1318806.Activated:Connect(closePanel)
 local function updateSounds()
@@ -2946,7 +2946,7 @@ local enabled = false
 local l1l0O1O01l0lOI0OI868337 = nil
 local function updateButton()
 button.Text = enabled and "\065\078\084\073\045\065\070\075\058\032\079\078" or "\065\078\084\073\045\065\070\075\058\032\079\070\070"
-button.BackgroundColor3 = enabled and Color3.fromRGB(37,160,89) or Color3.fromRGB(0, 0, 0)
+button.BackgroundColor3 = enabled and Color3.fromRGB(0x25,0xa0,0x59) or Color3.fromRGB(0, 0, 0)
 end
 local function stop()
 if l1l0O1O01l0lOI0OI868337 then
@@ -2986,7 +2986,7 @@ local enabled = false
 local generation = 0
 local function refresh()
 button.Text = enabled and "\067\104\097\116\032\083\112\097\109\058\032\079\078" or "\067\104\097\116\032\083\112\097\109\058\032\079\070\070"
-button.BackgroundColor3 = enabled and Color3.fromRGB(32,155,82) or Color3.fromRGB(0, 0, 0)
+button.BackgroundColor3 = enabled and Color3.fromRGB(0x20,0x9b,0x52) or Color3.fromRGB(0, 0, 0)
 end
 local function sendMessage()
 local sent = false
@@ -3109,8 +3109,8 @@ lO110II0I11OI1I1l584654.FilterType=Enum.RaycastFilterType.Exclude
 lO110II0I11OI1I1l584654.FilterDescendantsInstances=l001O1IO1III1O10l957345
 lO110II0I11OI1I1l584654.MaxParts=0
 local l0l0I0IO1O1lll0l1130828=_b24412224049.AssemblyLinearVelocity
-local l0l0OI10I1I1OI1l1343228=Vector3.new(10+math.min(24,math.abs(l0l0I0IO1O1lll0l1130828.X)*.15),
-12+math.min(24,math.abs(l0l0I0IO1O1lll0l1130828.Y)*.15),10+math.min(24,math.abs(l0l0I0IO1O1lll0l1130828.Z)*.15))
+local l0l0OI10I1I1OI1l1343228=Vector3.new(0xa+math.min(0x18,math.abs(l0l0I0IO1O1lll0l1130828.X)*.15),
+0xc+math.min(0x18,math.abs(l0l0I0IO1O1lll0l1130828.Y)*.15),0xa+math.min(0x18,math.abs(l0l0I0IO1O1lll0l1130828.Z)*.15))
 local l01OO1I1I10110Ol1844101={}
 for _ad5bb7e8bec9,_be2ddbe1a198 in ipairs(workspace:GetPartBoundsInBox(CFrame.new(_b24412224049.Position),l0l0OI10I1I1OI1l1343228,lO110II0I11OI1I1l584654)) do
 local l0IO0OOI011O0IIIO556571=false
@@ -3145,7 +3145,7 @@ end
 local button = script.Parent:WaitForChild("\078\111\099\108\105\112\084\111\103\103\108\101")
 local function refresh()
 button.Text = _1c2d69e764e2.Noclip and "\078\111\067\108\105\112\058\032\079\078" or "\078\111\067\108\105\112\058\032\079\070\070"
-button.BackgroundColor3 = _1c2d69e764e2.Noclip and Color3.fromRGB(32,155,82) or Color3.fromRGB(0, 0, 0)
+button.BackgroundColor3 = _1c2d69e764e2.Noclip and Color3.fromRGB(0x20,0x9b,0x52) or Color3.fromRGB(0, 0, 0)
 end
 button.Activated:Connect(function()
 _b34a84b854dd(not _1c2d69e764e2.Noclip)
@@ -3167,12 +3167,12 @@ local llO01lIO0I1OIlIlO280671 = Instance.new("\070\114\097\109\101")
 llO01lIO0I1OIlIlO280671.Name = "\068\101\120\070\097\105\108\117\114\101\080\111\112\117\112"
 llO01lIO0I1OIlIlO280671.AnchorPoint = Vector2.new(0.5, 0.5)
 llO01lIO0I1OIlIlO280671.Position = UDim2.fromScale(0.5, 0.5)
-llO01lIO0I1OIlIlO280671.Size = UDim2.new(0, 350, 0, 145)
+llO01lIO0I1OIlIlO280671.Size = UDim2.new(0, 0x15e, 0, 0x91)
 llO01lIO0I1OIlIlO280671.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 llO01lIO0I1OIlIlO280671.BorderSizePixel = 2
-llO01lIO0I1OIlIlO280671.BorderColor3 = Color3.fromRGB(170, 85, 255)
+llO01lIO0I1OIlIlO280671.BorderColor3 = Color3.fromRGB(0xaa, 0x55, 0xff)
 llO01lIO0I1OIlIlO280671.Visible = false
-llO01lIO0I1OIlIlO280671.ZIndex = 50
+llO01lIO0I1OIlIlO280671.ZIndex = 0x32
 llO01lIO0I1OIlIlO280671.Parent = gui
 local llIOIlll1I0lllI1l147432 = Instance.new("\085\073\067\111\114\110\101\114")
 llIOIlll1I0lllI1l147432.CornerRadius = UDim.new(0, 9)
@@ -3180,25 +3180,25 @@ llIOIlll1I0lllI1l147432.Parent = llO01lIO0I1OIlIlO280671
 local message = Instance.new("\084\101\120\116\076\097\098\101\108")
 message.Name = "\077\101\115\115\097\103\101"
 message.BackgroundTransparency = 1
-message.Position = UDim2.new(0, 14, 0, 12)
-message.Size = UDim2.new(1, -28, 0, 78)
+message.Position = UDim2.new(0, 0xe, 0, 0xc)
+message.Size = UDim2.new(1, -0x1c, 0, 0x4e)
 message.Font = Enum.Font.SourceSansBold
-message.TextSize = 20
+message.TextSize = 0x14
 message.TextWrapped = true
-message.TextColor3 = Color3.fromRGB(255, 0, 0)
+message.TextColor3 = Color3.fromRGB(0xff, 0, 0)
 message.Text = "Failed to open Dark Dex Explorer\nKeep your executor open and attached for Dark Dex to work."
-message.ZIndex = 51
+message.ZIndex = 0x33
 message.Parent = llO01lIO0I1OIlIlO280671
 local lO10I0OOl1O1lllIO838880 = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 lO10I0OOl1O1lllIO838880.Name = "\068\105\115\109\105\115\115"
-lO10I0OOl1O1lllIO838880.Position = UDim2.new(0.5, -55, 1, -44)
-lO10I0OOl1O1lllIO838880.Size = UDim2.new(0, 110, 0, 30)
-lO10I0OOl1O1lllIO838880.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+lO10I0OOl1O1lllIO838880.Position = UDim2.new(0.5, -0x37, 1, -0x2c)
+lO10I0OOl1O1lllIO838880.Size = UDim2.new(0, 0x6e, 0, 0x1e)
+lO10I0OOl1O1lllIO838880.BackgroundColor3 = Color3.fromRGB(0xff, 0, 0)
 lO10I0OOl1O1lllIO838880.TextColor3 = Color3.new(1, 1, 1)
 lO10I0OOl1O1lllIO838880.Font = Enum.Font.SourceSansBold
-lO10I0OOl1O1lllIO838880.TextSize = 18
+lO10I0OOl1O1lllIO838880.TextSize = 0x12
 lO10I0OOl1O1lllIO838880.Text = "\079\075"
-lO10I0OOl1O1lllIO838880.ZIndex = 51
+lO10I0OOl1O1lllIO838880.ZIndex = 0x33
 lO10I0OOl1O1lllIO838880.Parent = llO01lIO0I1OIlIlO280671
 lO10I0OOl1O1lllIO838880.MouseButton1Click:Connect(function()
 llO01lIO0I1OIlIlO280671.Visible = false
@@ -3232,16 +3232,16 @@ local Players = game:GetService("\080\108\097\121\101\114\115")
 local LocalPlayer = Players.LocalPlayer
 local button = script.Parent:WaitForChild("\071\101\116\065\108\108\071\117\110\115")
 local lOl1I1lO1lIl1O0II470601 = {
-["\077\080\053"] = Vector3.new(814, 104, 2230),
-["\082\101\109\105\110\103\116\111\110\032\056\055\048"] = Vector3.new(821, 104, 2230),
-["\077\055\048\048"] = Vector3.new(836, 103, 2230),
-["\077\052\065\049"] = Vector3.new(848, 103, 2229),
+["\077\080\053"] = Vector3.new(0x32e, 0x68, 0x8b6),
+["\082\101\109\105\110\103\116\111\110\032\056\055\048"] = Vector3.new(0x335, 0x68, 0x8b6),
+["\077\055\048\048"] = Vector3.new(0x344, 0x67, 0x8b6),
+["\077\052\065\049"] = Vector3.new(0x350, 0x67, 0x8b5),
 }
 local lIOI1Il101000OI0I845960 = {
-["\082\101\109\105\110\103\116\111\110\032\056\055\048"] = Vector3.new(-938, 98, 2040),
+["\082\101\109\105\110\103\116\111\110\032\056\055\048"] = Vector3.new(-0x3aa, 0x62, 0x7f8),
 ["\065\075\045\052\055"] = Vector3.new(-931.78, 94.37, 2039.39),
 ["\077\055\048\048"] = Vector3.new(836.15, 100.80, 2229.57),
-["\070\065\076"] = Vector3.new(-903, 100, 2048),
+["\070\065\076"] = Vector3.new(-0x387, 0x64, 0x800),
 }
 local lOOO1OIllOlI1111I824465 = 0.15
 local lO1OlOII100Ol1lO0171933 = 0.1
@@ -3310,88 +3310,88 @@ lOl0ll00I0III1lIl959444.Name = "\065\105\109\098\111\116\083\101\116\116\105\110
 lOl0ll00I0III1lIl959444.Parent = frame
 lOl0ll00I0III1lIl959444.Size = UDim2.fromScale(1, 1)
 lOl0ll00I0III1lIl959444.Position = UDim2.fromScale(0, 0)
-lOl0ll00I0III1lIl959444.BackgroundColor3 = Color3.fromRGB(12, 9, 22)
+lOl0ll00I0III1lIl959444.BackgroundColor3 = Color3.fromRGB(0xc, 9, 0x16)
 lOl0ll00I0III1lIl959444.BorderSizePixel = 0
-lOl0ll00I0III1lIl959444.ZIndex = 30
+lOl0ll00I0III1lIl959444.ZIndex = 0x1e
 lOl0ll00I0III1lIl959444.Visible = false
 local l1lI0I1110lO001II696660 = Instance.new("\084\101\120\116\076\097\098\101\108")
 l1lI0I1110lO001II696660.Parent = lOl0ll00I0III1lIl959444
 l1lI0I1110lO001II696660.BackgroundTransparency = 1
-l1lI0I1110lO001II696660.Position = UDim2.fromOffset(3, 18)
-l1lI0I1110lO001II696660.Size = UDim2.new(1, -85, 0, 32)
+l1lI0I1110lO001II696660.Position = UDim2.fromOffset(3, 0x12)
+l1lI0I1110lO001II696660.Size = UDim2.new(1, -0x55, 0, 0x20)
 l1lI0I1110lO001II696660.Font = Enum.Font.Arcade
 l1lI0I1110lO001II696660.Text = "\065\105\109\098\111\116\032\083\101\116\116\105\110\103\115"
-l1lI0I1110lO001II696660.TextColor3 = Color3.fromRGB(245, 244, 255)
-l1lI0I1110lO001II696660.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+l1lI0I1110lO001II696660.TextColor3 = Color3.fromRGB(0xf5, 0xf4, 0xff)
+l1lI0I1110lO001II696660.TextStrokeColor3 = Color3.fromRGB(0x40, 0x28, 0x7d)
 l1lI0I1110lO001II696660.TextStrokeTransparency = 0.25
-l1lI0I1110lO001II696660.TextSize = 23
+l1lI0I1110lO001II696660.TextSize = 0x17
 l1lI0I1110lO001II696660.TextXAlignment = Enum.TextXAlignment.Left
 l1lI0I1110lO001II696660.TextYAlignment = Enum.TextYAlignment.Top
-l1lI0I1110lO001II696660.ZIndex = 33
+l1lI0I1110lO001II696660.ZIndex = 0x21
 local llI10O0Il10110Il0195141 = Instance.new("\084\101\120\116\076\097\098\101\108")
 llI10O0Il10110Il0195141.Name = "\065\105\109\098\111\116\083\101\116\116\105\110\103\115\066\121\108\105\110\101"
 llI10O0Il10110Il0195141.Parent = lOl0ll00I0III1lIl959444
-llI10O0Il10110Il0195141.Position = UDim2.fromOffset(3, 49)
-llI10O0Il10110Il0195141.Size = UDim2.new(1, -10, 0, 23)
+llI10O0Il10110Il0195141.Position = UDim2.fromOffset(3, 0x31)
+llI10O0Il10110Il0195141.Size = UDim2.new(1, -0xa, 0, 0x17)
 llI10O0Il10110Il0195141.BackgroundTransparency = 1
 llI10O0Il10110Il0195141.Font = Enum.Font.Arcade
 llI10O0Il10110Il0195141.Text = "\066\121\032\064\121\048\117\110\103\100\097\114\101"
-llI10O0Il10110Il0195141.TextSize = 15
-llI10O0Il10110Il0195141.TextColor3 = Color3.fromRGB(37, 28, 191)
-llI10O0Il10110Il0195141.TextStrokeColor3 = Color3.fromRGB(10, 5, 40)
+llI10O0Il10110Il0195141.TextSize = 0xf
+llI10O0Il10110Il0195141.TextColor3 = Color3.fromRGB(0x25, 0x1c, 0xbf)
+llI10O0Il10110Il0195141.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x28)
 llI10O0Il10110Il0195141.TextStrokeTransparency = 0.3
 llI10O0Il10110Il0195141.TextXAlignment = Enum.TextXAlignment.Left
-llI10O0Il10110Il0195141.ZIndex = 33
+llI10O0Il10110Il0195141.ZIndex = 0x21
 local back = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 back.Parent = lOl0ll00I0III1lIl959444
 back.Name = "\065\105\109\098\111\116\083\101\116\116\105\110\103\115\066\097\099\107"
-back.Position = UDim2.new(1, -78, 0, 15)
-back.Size = UDim2.fromOffset(66, 28)
-back.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
-back.TextColor3 = Color3.fromRGB(0, 255, 255)
+back.Position = UDim2.new(1, -0x4e, 0, 0xf)
+back.Size = UDim2.fromOffset(0x42, 0x1c)
+back.BackgroundColor3 = Color3.fromRGB(0x20, 0x14, 0x39)
+back.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 back.Font = Enum.Font.SourceSansBold
-back.TextSize = 15
+back.TextSize = 0xf
 back.Text = "\060\032\066\065\067\075"
-back.ZIndex = 33
+back.ZIndex = 0x21
 local toggle = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 toggle.Name = "\065\105\109\098\111\116\084\111\103\103\108\101"
 toggle.Parent = lOl0ll00I0III1lIl959444
-toggle.Position = UDim2.fromOffset(8, 79)
-toggle.Size = UDim2.new(1, -16, 0, 20)
-toggle.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
-toggle.TextColor3 = Color3.fromRGB(0, 255, 255)
+toggle.Position = UDim2.fromOffset(8, 0x4f)
+toggle.Size = UDim2.new(1, -0x10, 0, 0x14)
+toggle.BackgroundColor3 = Color3.fromRGB(0x20, 0x14, 0x39)
+toggle.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 toggle.Font = Enum.Font.SourceSansBold
-toggle.TextSize = 17
-toggle.ZIndex = 33
+toggle.TextSize = 0x11
+toggle.ZIndex = 0x21
 local l00lOI0llIIlOl11l255337 = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 l00lOI0llIIlOl11l255337.Name = "\084\101\097\109\067\104\101\099\107\084\111\103\103\108\101"
 l00lOI0llIIlOl11l255337.Parent = lOl0ll00I0III1lIl959444
-l00lOI0llIIlOl11l255337.Position = UDim2.fromOffset(8, 119)
-l00lOI0llIIlOl11l255337.Size = UDim2.new(1, -16, 0, 20)
-l00lOI0llIIlOl11l255337.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
-l00lOI0llIIlOl11l255337.TextColor3 = Color3.fromRGB(0, 255, 255)
+l00lOI0llIIlOl11l255337.Position = UDim2.fromOffset(8, 0x77)
+l00lOI0llIIlOl11l255337.Size = UDim2.new(1, -0x10, 0, 0x14)
+l00lOI0llIIlOl11l255337.BackgroundColor3 = Color3.fromRGB(0x20, 0x14, 0x39)
+l00lOI0llIIlOl11l255337.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 l00lOI0llIIlOl11l255337.Font = Enum.Font.SourceSansBold
-l00lOI0llIIlOl11l255337.TextSize = 17
-l00lOI0llIIlOl11l255337.ZIndex = 33
+l00lOI0llIIlOl11l255337.TextSize = 0x11
+l00lOI0llIIlOl11l255337.ZIndex = 0x21
 l000O1I1llIl0O0l0177281.Parent = lOl0ll00I0III1lIl959444
 l000O1I1llIl0O0l0177281.AnchorPoint = Vector2.new(0, 0)
-l000O1I1llIl0O0l0177281.Position = UDim2.fromOffset(8, 99)
-l000O1I1llIl0O0l0177281.Size = UDim2.new(1, -16, 0, 20)
-l000O1I1llIl0O0l0177281.ZIndex = 33
+l000O1I1llIl0O0l0177281.Position = UDim2.fromOffset(8, 0x63)
+l000O1I1llIl0O0l0177281.Size = UDim2.new(1, -0x10, 0, 0x14)
+l000O1I1llIl0O0l0177281.ZIndex = 0x21
 llll0lI11OlIl010I745081.Parent = lOl0ll00I0III1lIl959444
 llll0lI11OlIl010I745081.AnchorPoint = Vector2.new(0, 0)
-llll0lI11OlIl010I745081.Position = UDim2.fromOffset(8, 139)
-llll0lI11OlIl010I745081.Size = UDim2.new(1, -16, 0, 20)
-llll0lI11OlIl010I745081.ZIndex = 33
+llll0lI11OlIl010I745081.Position = UDim2.fromOffset(8, 0x8b)
+llll0lI11OlIl010I745081.Size = UDim2.new(1, -0x10, 0, 0x14)
+llll0lI11OlIl010I745081.ZIndex = 0x21
 for _, rowButton in ipairs({toggle, l000O1I1llIl0O0l0177281, l00lOI0llIIlOl11l255337, llll0lI11OlIl010I745081}) do
-rowButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+rowButton.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 rowButton.BackgroundTransparency = 0.82
 rowButton.BorderSizePixel = 0
 rowButton.AutoButtonColor = false
 rowButton.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-rowButton.TextSize = 13
-rowButton.TextColor3 = Color3.fromRGB(1, 244, 253)
-rowButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+rowButton.TextSize = 0xd
+rowButton.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+rowButton.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 rowButton.TextStrokeTransparency = 0.28
 rowButton.TextXAlignment = Enum.TextXAlignment.Left
 rowButton.TextYAlignment = Enum.TextYAlignment.Center
@@ -3403,7 +3403,7 @@ local baseColor = rowButton.BackgroundColor3
 local marker = Instance.new("\070\114\097\109\101")
 marker.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\077\097\114\107\101\114"
 marker.BorderSizePixel = 0
-marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+marker.BackgroundColor3 = Color3.fromRGB(0, 0xff, 0xff)
 marker.BackgroundTransparency = 1
 marker.Position = UDim2.fromOffset(0, 0)
 marker.Size = UDim2.new(0, 5, 1, 0)
@@ -3412,13 +3412,13 @@ marker.Parent = rowButton
 local outline = Instance.new("\085\073\083\116\114\111\107\101")
 outline.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\079\117\116\108\105\110\101"
 outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-outline.Color = Color3.fromRGB(174, 70, 255)
+outline.Color = Color3.fromRGB(0xae, 0x46, 0xff)
 outline.Thickness = 1.5
 outline.Transparency = 1
 outline.Parent = rowButton
 local function setHover(active)
 hoverTween:Create(rowButton, hoverInfo, {
-BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or baseColor
+BackgroundColor3 = active and Color3.fromRGB(0x3f, 0x18, 0x6e) or baseColor
 }):Play()
 hoverTween:Create(marker, hoverInfo, {
 BackgroundTransparency = active and 0 or 1
@@ -3440,9 +3440,9 @@ local layer = frame:FindFirstChild("\074\105\103\103\121\071\108\105\116\099\104
 if not layer then return end
 glitchLayer = layer
 layer.Parent = lOl0ll00I0III1lIl959444
-layer.ZIndex = 31
+layer.ZIndex = 0x1f
 for _, part in ipairs(layer:GetDescendants()) do
-if part:IsA("\071\117\105\079\098\106\101\099\116") then part.ZIndex = 31 end
+if part:IsA("\071\117\105\079\098\106\101\099\116") then part.ZIndex = 0x1f end
 end
 end
 local function restoreGlitch()
@@ -3544,47 +3544,47 @@ local llIOll1IO1I0IllII867341 = Instance.new("\070\114\097\109\101")
 llIOll1IO1I0IllII867341.Name = "\080\108\097\121\101\114\084\097\114\103\101\116\080\105\099\107\101\114"
 llIOll1IO1I0IllII867341.Parent = lOl0ll00I0III1lIl959444
 llIOll1IO1I0IllII867341.AnchorPoint = Vector2.new(0, 0)
-llIOll1IO1I0IllII867341.Position = UDim2.fromOffset(8, 145)
-llIOll1IO1I0IllII867341.Size = UDim2.new(1, -16, 0, 350)
-llIOll1IO1I0IllII867341.BackgroundColor3 = Color3.fromRGB(17, 11, 33)
-llIOll1IO1I0IllII867341.BorderColor3 = Color3.fromRGB(170, 0, 255)
+llIOll1IO1I0IllII867341.Position = UDim2.fromOffset(8, 0x91)
+llIOll1IO1I0IllII867341.Size = UDim2.new(1, -0x10, 0, 0x15e)
+llIOll1IO1I0IllII867341.BackgroundColor3 = Color3.fromRGB(0x11, 0xb, 0x21)
+llIOll1IO1I0IllII867341.BorderColor3 = Color3.fromRGB(0xaa, 0, 0xff)
 llIOll1IO1I0IllII867341.BorderSizePixel = 2
-llIOll1IO1I0IllII867341.ZIndex = 60
+llIOll1IO1I0IllII867341.ZIndex = 0x3c
 llIOll1IO1I0IllII867341.Visible = false
 local heading = Instance.new("\084\101\120\116\076\097\098\101\108")
 heading.Parent = llIOll1IO1I0IllII867341
 heading.BackgroundTransparency = 1
-heading.Position = UDim2.fromOffset(12, 8)
-heading.Size = UDim2.new(1, -24, 0, 28)
+heading.Position = UDim2.fromOffset(0xc, 8)
+heading.Size = UDim2.new(1, -0x18, 0, 0x1c)
 heading.Font = Enum.Font.SourceSansBold
 heading.Text = "\083\069\076\069\067\084\032\080\076\065\089\069\082\032\084\065\082\071\069\084"
-heading.TextColor3 = Color3.fromRGB(0, 255, 255)
-heading.TextSize = 17
+heading.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
+heading.TextSize = 0x11
 heading.TextXAlignment = Enum.TextXAlignment.Left
-heading.ZIndex = 61
+heading.ZIndex = 0x3d
 local l1IIl10OI110OIlII960355 = Instance.new("\084\101\120\116\066\111\120")
 l1IIl10OI110OIlII960355.Name = "\083\101\097\114\099\104\080\108\097\121\101\114"
 l1IIl10OI110OIlII960355.Parent = llIOll1IO1I0IllII867341
-l1IIl10OI110OIlII960355.Position = UDim2.fromOffset(10, 44)
-l1IIl10OI110OIlII960355.Size = UDim2.new(1, -20, 0, 32)
-l1IIl10OI110OIlII960355.BackgroundColor3 = Color3.fromRGB(30, 21, 50)
+l1IIl10OI110OIlII960355.Position = UDim2.fromOffset(0xa, 0x2c)
+l1IIl10OI110OIlII960355.Size = UDim2.new(1, -0x14, 0, 0x20)
+l1IIl10OI110OIlII960355.BackgroundColor3 = Color3.fromRGB(0x1e, 0x15, 0x32)
 l1IIl10OI110OIlII960355.PlaceholderText = "\083\101\097\114\099\104\032\117\115\101\114\110\097\109\101\032\111\114\032\100\105\115\112\108\097\121\032\110\097\109\101\046\046\046"
 l1IIl10OI110OIlII960355.Text = ""
 l1IIl10OI110OIlII960355.ClearTextOnFocus = false
 l1IIl10OI110OIlII960355.Font = Enum.Font.SourceSans
-l1IIl10OI110OIlII960355.TextSize = 16
+l1IIl10OI110OIlII960355.TextSize = 0x10
 l1IIl10OI110OIlII960355.TextColor3 = Color3.new(1, 1, 1)
-l1IIl10OI110OIlII960355.ZIndex = 61
+l1IIl10OI110OIlII960355.ZIndex = 0x3d
 local list = Instance.new("\083\099\114\111\108\108\105\110\103\070\114\097\109\101")
 list.Name = "\080\108\097\121\101\114\115\073\110\071\097\109\101"
 list.Parent = llIOll1IO1I0IllII867341
-list.Position = UDim2.fromOffset(10, 83)
-list.Size = UDim2.new(1, -20, 1, -94)
+list.Position = UDim2.fromOffset(0xa, 0x53)
+list.Size = UDim2.new(1, -0x14, 1, -0x5e)
 list.BackgroundTransparency = 1
 list.BorderSizePixel = 0
 list.ScrollBarThickness = 5
 list.CanvasSize = UDim2.fromOffset(0, 0)
-list.ZIndex = 61
+list.ZIndex = 0x3d
 local l0000lIlI1llI10ll160889 = Instance.new("\085\073\076\105\115\116\076\097\121\111\117\116")
 l0000lIlI1llI10ll160889.Parent = list
 l0000lIlI1llI10ll160889.Padding = UDim.new(0, 5)
@@ -3605,15 +3605,15 @@ if plr ~= player and (l01I1000IOllIllIl582877 == "" or plr.Name:lower():find(l01
 local entry = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 entry.Name = "\080\108\097\121\101\114\095" .. tostring(plr.UserId)
 entry.Parent = list
-entry.Size = UDim2.new(1, -7, 0, 32)
-entry.BackgroundColor3 = plr.UserId == lOlOO0IIOl1l1OlOl706189 and Color3.fromRGB(35, 115, 83) or Color3.fromRGB(34, 21, 57)
+entry.Size = UDim2.new(1, -7, 0, 0x20)
+entry.BackgroundColor3 = plr.UserId == lOlOO0IIOl1l1OlOl706189 and Color3.fromRGB(0x23, 0x73, 0x53) or Color3.fromRGB(0x22, 0x15, 0x39)
 entry.BorderSizePixel = 0
 entry.Font = Enum.Font.SourceSansBold
-entry.TextSize = 15
-entry.TextColor3 = Color3.fromRGB(0, 255, 255)
+entry.TextSize = 0xf
+entry.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 entry.TextXAlignment = Enum.TextXAlignment.Left
 entry.Text = "\032\032" .. plr.DisplayName .. "\032\040\064" .. plr.Name .. "\041"
-entry.ZIndex = 62
+entry.ZIndex = 0x3e
 entry.MouseButton1Click:Connect(function()
 lOlOO0IIOl1l1OlOl706189 = plr.UserId
 l0OIO0OI0OlIIl1I0386312 = #llII1O11l0IIOIOlO684548
@@ -3634,7 +3634,7 @@ task.defer(rebuildPlayers)
 end)
 refresh = function()
 button.Text = l1llI11ll1Ol0I00l604211[l0lO1OOIOIIO1I00I606278] .. (enabled and lO0II00OO11OOllO1767523[l0lO1OOIOIIO1I00I606278] or l1010IlIl00OIl1OI104818[l0lO1OOIOIIO1I00I606278])
-button.BackgroundColor3 = enabled and Color3.fromRGB(0, 105, 50) or Color3.fromRGB(11, 8, 22)
+button.BackgroundColor3 = enabled and Color3.fromRGB(0, 0x69, 0x32) or Color3.fromRGB(0xb, 8, 0x16)
 local caption = llllI1IllIOI11I1O792169[l0OIO0OI0OlIIl1I0386312][l0lO1OOIOIIO1I00I606278]
 if llII1O11l0IIOIOlO684548[l0OIO0OI0OlIIl1I0386312] == "\067\104\111\111\115\101\032\080\108\097\121\101\114" then
 local chosen = lOlOO0IIOl1l1OlOl706189 and Players:GetPlayerByUserId(lOlOO0IIOl1l1OlOl706189)
@@ -3820,12 +3820,12 @@ label.TextWrapped = false
 local llO0O1Il1000OIlIl875855 = Instance.new("\085\073\083\116\114\111\107\101")
 llO0O1Il1000OIlIl875855.Name = "\087\101\108\099\111\109\101\076\105\103\104\116\080\117\114\112\108\101\071\108\111\119"
 llO0O1Il1000OIlIl875855.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
-llO0O1Il1000OIlIl875855.Color = Color3.fromRGB(207, 157, 255)
+llO0O1Il1000OIlIl875855.Color = Color3.fromRGB(0xcf, 0x9d, 0xff)
 llO0O1Il1000OIlIl875855.Thickness = 2.5
 llO0O1Il1000OIlIl875855.Transparency = 0.45
 llO0O1Il1000OIlIl875855.Parent = label
 TweenService:Create(llO0O1Il1000OIlIl875855, TweenInfo.new(0.3), {Transparency = 0.22}):Play()
-frame.Position = UDim2.new(0.04, 0, 0.035, -15)
+frame.Position = UDim2.new(0.04, 0, 0.035, -0xf)
 render(0)
 TweenService:Create(
 frame,
@@ -3880,7 +3880,7 @@ end
 lIlOl00l0lIl110Il658058.BackgroundTransparency = 1
 lIlOl00l0lIl110Il658058.RichText = true
 lIlOl00l0lIl110Il658058.TextTransparency = 1
-lIlOl00l0lIl110Il658058.TextStrokeColor3 = Color3.fromRGB(75, 35, 95)
+lIlOl00l0lIl110Il658058.TextStrokeColor3 = Color3.fromRGB(0x4b, 0x23, 0x5f)
 lIlOl00l0lIl110Il658058.TextStrokeTransparency = 1
 lIlOl00l0lIl110Il658058.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
 lIlOl00l0lIl110Il658058.TextXAlignment = Enum.TextXAlignment.Center
@@ -3900,7 +3900,7 @@ lllOlII1111IOI010649115 = Instance.new("\085\073\083\116\114\111\107\101")
 lllOlII1111IOI010649115.Name = "\080\117\114\112\108\101\071\108\111\119"
 lllOlII1111IOI010649115.ApplyStrokeMode =
 Enum.ApplyStrokeMode.Contextual
-lllOlII1111IOI010649115.Color = Color3.fromRGB(196, 83, 230)
+lllOlII1111IOI010649115.Color = Color3.fromRGB(0xc4, 0x53, 0xe6)
 lllOlII1111IOI010649115.Thickness = 1.5
 lllOlII1111IOI010649115.Transparency = 0.72
 lllOlII1111IOI010649115.Parent = lIlOl00l0lIl110Il658058
@@ -3966,7 +3966,7 @@ TweenService:Create(
 frame,
 lIOl00l1l110IOO11220642,
 {
-Position = UDim2.new(0.04, 0, 0.015, -12)
+Position = UDim2.new(0.04, 0, 0.015, -0xc)
 }
 ):Play()
 TweenService:Create(
@@ -4089,7 +4089,7 @@ TextStrokeTransparency = 1
 task.wait(lO1l0ll1OlOOOIO00993714 + 0.05)
 end
 if replayMode == nil or replayMode == 4 then
-llO0O1Il1000OIlIl875855.Color = Color3.fromRGB(207, 157, 255)
+llO0O1Il1000OIlIl875855.Color = Color3.fromRGB(0xcf, 0x9d, 0xff)
 llO0O1Il1000OIlIl875855.Thickness = 2.5
 local l1lO0011l1I0lII0O240054 = "\064\121\048\117\110\103\100\097\114\101\032\111\110\032\073\071\033"
 local lll0lOl110IOlI1I1285676 = {
@@ -4190,7 +4190,7 @@ local script = Instance.new("\076\111\099\097\108\083\099\114\105\112\116", Ping
 local RunService = game:GetService("\082\117\110\083\101\114\118\105\099\101")
 RunService.RenderStepped:Connect(function(ping)
 local ok, lllI1OlOIOlOI0O0O808242 = pcall(function()
-return game:GetService("\080\108\097\121\101\114\115").LocalPlayer:GetNetworkPing() * 1000
+return game:GetService("\080\108\097\121\101\114\115").LocalPlayer:GetNetworkPing() * 0x3e8
 end)
 if ok then
 l0I1l1l1lIOIOIOl0242493 = lllI1OlOIOlOI0O0O808242
@@ -4218,13 +4218,13 @@ local llOl1lOll11lOI00I408020 = true
 local l0IlII0Illl10OO00266815 = true
 local function getGuns()
 game.Workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["\082\101\109\105\110\103\116\111\110\032\056\055\048"].ITEMPICKUP)
-if (game:GetService("\077\097\114\107\101\116\112\108\097\099\101\083\101\114\118\105\099\101"):UserOwnsGamePassAsync(game.Players.LocalPlayer.UserId, 96651)) then
+if (game:GetService("\077\097\114\107\101\116\112\108\097\099\101\083\101\114\118\105\099\101"):UserOwnsGamePassAsync(game.Players.LocalPlayer.UserId, 0x1798b)) then
 game.Workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["\077\052\065\049"].ITEMPICKUP)
 else
 game.Workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["\065\075\045\052\055"].ITEMPICKUP)
 require(game.Players.LocalPlayer.Backpack:FindFirstChild("\065\075\045\052\055"):FindFirstChild("\071\117\110\083\116\097\116\101\115"))["\070\105\114\101\082\097\116\101"] = 0.09
 end
-if (game:GetService("\077\097\114\107\101\116\112\108\097\099\101\083\101\114\118\105\099\101"):UserOwnsGamePassAsync(game.Players.LocalPlayer.UserId, 96651)) then
+if (game:GetService("\077\097\114\107\101\116\112\108\097\099\101\083\101\114\118\105\099\101"):UserOwnsGamePassAsync(game.Players.LocalPlayer.UserId, 0x1798b)) then
 game.Workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["\065\075\045\052\055"].ITEMPICKUP)
 end
 game.Workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["\077\057"].ITEMPICKUP)
@@ -4327,22 +4327,22 @@ session += 1
 local ll1I00l10l0OO0II1563602 = session
 cleanup()
 if not enabled then return end
-local llI0l101OIlOl011O607088 = character:WaitForChild("\072\117\109\097\110\111\105\100", 10)
-local root = character:WaitForChild("\072\117\109\097\110\111\105\100\082\111\111\116\080\097\114\116", 10)
+local llI0l101OIlOl011O607088 = character:WaitForChild("\072\117\109\097\110\111\105\100", 0xa)
+local root = character:WaitForChild("\072\117\109\097\110\111\105\100\082\111\111\116\080\097\114\116", 0xa)
 if not enabled or session ~= ll1I00l10l0OO0II1563602 or player.Character ~= character then return end
 if not llI0l101OIlOl011O607088 or not root or llI0l101OIlOl011O607088.Health <= 0 then return end
 humanoid = llI0l101OIlOl011O607088
 oldAutoRotate = llI0l101OIlOl011O607088.AutoRotate
 local llOI0I10IIll10IIO446359 = Instance.new("\066\111\100\121\086\101\108\111\099\105\116\121")
 llOI0I10IIll10IIO446359.Name = "\121\048\117\110\103\068\097\114\101\070\108\121\086\101\108\111\099\105\116\121"
-llOI0I10IIll10IIO446359.P = 1000
-llOI0I10IIll10IIO446359.MaxForce = Vector3.new(100000, 100000, 100000)
+llOI0I10IIll10IIO446359.P = 0x3e8
+llOI0I10IIll10IIO446359.MaxForce = Vector3.new(0x186a0, 0x186a0, 0x186a0)
 llOI0I10IIll10IIO446359.Velocity = Vector3.zero
 llOI0I10IIll10IIO446359.Parent = root
 local spin = Instance.new("\066\111\100\121\071\121\114\111")
 spin.Name = "\121\048\117\110\103\068\097\114\101\070\108\121\071\121\114\111"
-spin.P = 10000
-spin.MaxTorque = Vector3.new(1000000, 1000000, 1000000)
+spin.P = 0x2710
+spin.MaxTorque = Vector3.new(0xf4240, 0xf4240, 0xf4240)
 spin.CFrame = root.CFrame
 spin.Parent = root
 velocity = llOI0I10IIll10IIO446359
@@ -4373,8 +4373,8 @@ local lI1OIII0I1O0I010O621152 = Vector3.new(-lI00I01I1111IlO0O797911.Z, 0, lI00I
 local move = llI0l101OIlOl011O607088.MoveDirection
 local l110OI111O1l1I0I0318175 = move:Dot(lI00I01I1111IlO0O797911)
 local l1I10110OlOlOOO11377265 = move:Dot(lI1OIII0I1O0I010O621152)
-local push = l010lOlO0IlOlOOll947917 * (60 * Speed * l110OI111O1l1I0I0318175)
-+ cf.RightVector * (40 * Speed * l1I10110OlOlOOO11377265)
+local push = l010lOlO0IlOlOOll947917 * (0x3c * Speed * l110OI111O1l1I0I0318175)
++ cf.RightVector * (0x28 * Speed * l1I10110OlOlOOO11377265)
 spin.CFrame = CFrame.lookAt(root.Position, root.Position + l010lOlO0IlOlOOll947917)
 llOI0I10IIll10IIO446359.Velocity = llOI0I10IIll10IIO446359.Velocity:Lerp(push, 0.2)
 llI0l101OIlOl011O607088.PlatformStand = true
@@ -4423,11 +4423,11 @@ local function animate(open)
 if busy then return end
 busy = true
 if open then
-playMenuSound(128098671468387, 0.85)
+playMenuSound(0x74814bcf1f63, 0.85)
 main.Visible = true
 main.ClipsDescendants = true
 main.Size = UDim2.new(l1I0OIOOl1OI1O1OI447611.X.Scale, l1I0OIOOl1OI1O1OI447611.X.Offset, 0, 0)
-main.Position = l110lIO0l10O01l11113126 + UDim2.fromOffset(0, -10)
+main.Position = l110lIO0l10O01l11113126 + UDim2.fromOffset(0, -0xa)
 main.BackgroundTransparency = 0.45
 local tween = TweenService:Create(main,
 TweenInfo.new(duration, Enum.EasingStyle.Back, Enum.EasingDirection.Out),
@@ -4437,12 +4437,12 @@ tween:Play()
 tween.Completed:Wait()
 main.ClipsDescendants = false
 else
-playMenuSound(129698661879918, 0.85)
+playMenuSound(0x75f5d2ab506e, 0.85)
 main.ClipsDescendants = true
 local tween = TweenService:Create(main,
 TweenInfo.new(duration, Enum.EasingStyle.Quad, Enum.EasingDirection.In),
 {Size = UDim2.new(l1I0OIOOl1OI1O1OI447611.X.Scale, l1I0OIOOl1OI1O1OI447611.X.Offset, 0, 0),
-Position = l110lIO0l10O01l11113126 + UDim2.fromOffset(0, -10),
+Position = l110lIO0l10O01l11113126 + UDim2.fromOffset(0, -0xa),
 BackgroundTransparency = 0.65})
 tween:Play()
 tween.Completed:Wait()
@@ -4489,7 +4489,7 @@ or UIS:IsKeyDown(Enum.KeyCode.RightControl)
 end
 end)
 RunService:BindToRenderStep("\121\048\117\110\103\068\097\114\101\083\104\105\102\116\076\111\099\107\067\117\114\115\111\114\082\101\099\111\118\101\114\121",
-Enum.RenderPriority.Camera.Value + 10, function()
+Enum.RenderPriority.Camera.Value + 0xa, function()
 if not lO100IOlII000I00I654752 then return end
 if UIS:GetFocusedTextBox() or inFirstPerson() then return end
 local character = localPlayer.Character
@@ -4507,10 +4507,10 @@ do
 local RunService = game:GetService("\082\117\110\083\101\114\118\105\099\101")
 local lOO1IO00O1IIO10OO294513 = 0.70
 local lI000Il11OI0llOlO607061 = 0.045
-local lII10O0IO1l1l0lI0893138 = 20
-local PURPLE = Color3.fromRGB(175, 37, 255)
-local CYAN = Color3.fromRGB(0, 240, 255)
-local lIOll0l111OOO01I0858984 = Color3.fromRGB(255, 38, 158)
+local lII10O0IO1l1l0lI0893138 = 0x14
+local PURPLE = Color3.fromRGB(0xaf, 0x25, 0xff)
+local CYAN = Color3.fromRGB(0, 0xf0, 0xff)
+local lIOll0l111OOO01I0858984 = Color3.fromRGB(0xff, 0x26, 0x9e)
 local layer = Instance.new("\070\114\097\109\101")
 layer.Name = "\074\105\103\103\121\071\108\105\116\099\104\066\097\099\107\103\114\111\117\110\100\095\069\068\073\084\095\072\069\082\069"
 layer.BackgroundTransparency = 1
@@ -4531,13 +4531,13 @@ tint.ZIndex = 3
 tint.Active = false
 tint.Parent = layer
 local lIlO0lIOO1001lOIl135881 = {}
-for i = 1, 38 do
+for i = 1, 0x26 do
 local line = Instance.new("\070\114\097\109\101")
 line.Name = "\083\099\097\110\108\105\110\101\095" .. i
 line.BorderSizePixel = 0
 line.BackgroundColor3 = (i % 3 == 0) and CYAN or PURPLE
 line.BackgroundTransparency = 0.95
-line.Position = UDim2.new(0, 0, (i - 1) / 38, 0)
+line.Position = UDim2.new(0, 0, (i - 1) / 0x26, 0)
 line.Size = UDim2.new(1, 0, 0, 1)
 line.ZIndex = 3
 line.Active = false
@@ -4551,7 +4551,7 @@ lOO10IOO11OOOIOl1263304.Name = "\071\108\105\116\099\104\083\116\114\105\112\095
 lOO10IOO11OOOIOl1263304.BorderSizePixel = 0
 lOO10IOO11OOOIOl1263304.BackgroundColor3 = CYAN
 lOO10IOO11OOOIOl1263304.BackgroundTransparency = 1
-lOO10IOO11OOOIOl1263304.Size = UDim2.fromOffset(60, 2)
+lOO10IOO11OOOIOl1263304.Size = UDim2.fromOffset(0x3c, 2)
 lOO10IOO11OOOIOl1263304.ZIndex = 3
 lOO10IOO11OOOIOl1263304.Active = false
 lOO10IOO11OOOIOl1263304.Parent = layer
@@ -4564,7 +4564,7 @@ band.Name = "\083\111\102\116\073\110\116\101\114\102\101\114\101\110\099\101\06
 band.BorderSizePixel = 0
 band.BackgroundColor3 = i % 2 == 0 and CYAN or PURPLE
 band.BackgroundTransparency = 0.97
-band.Size = UDim2.new(1, 0, 0, i == 1 and 18 or 8)
+band.Size = UDim2.new(1, 0, 0, i == 1 and 0x12 or 8)
 band.ZIndex = 3
 band.Active = false
 band.Parent = layer
@@ -4617,10 +4617,10 @@ end
 local lIlO0OI10lI1OOOOl922181 = lOOI0O1l1II011I10688099:NextNumber() < 0.13
 for _, lOO10IOO11OOOIOl1263304 in ipairs(l1IIOI10IllIIIl0l252749) do
 if lOOI0O1l1II011I10688099:NextNumber() < lOO1IO00O1IIO10OO294513 * (lIlO0OI10lI1OOOOl922181 and 0.85 or 0.35) then
-local width = lOOI0O1l1II011I10688099:NextInteger(18, 280)
+local width = lOOI0O1l1II011I10688099:NextInteger(0x12, 0x118)
 local height = lOOI0O1l1II011I10688099:NextInteger(1, 4)
 lOO10IOO11OOOIOl1263304.Size = UDim2.fromOffset(width, height)
-lOO10IOO11OOOIOl1263304.Position = UDim2.new(0, lOOI0O1l1II011I10688099:NextInteger(-35, 245), 0, lOOI0O1l1II011I10688099:NextInteger(0, 637))
+lOO10IOO11OOOIOl1263304.Position = UDim2.new(0, lOOI0O1l1II011I10688099:NextInteger(-0x23, 0xf5), 0, lOOI0O1l1II011I10688099:NextInteger(0, 0x27d))
 local l01IllIll1Ill0l1I990836 = lOOI0O1l1II011I10688099:NextInteger(1, 3)
 lOO10IOO11OOOIOl1263304.BackgroundColor3 = (l01IllIll1Ill0l1I990836 == 1 and PURPLE) or (l01IllIll1Ill0l1I990836 == 2 and CYAN) or lIOll0l111OOO01I0858984
 lOO10IOO11OOOIOl1263304.BackgroundTransparency = lOOI0O1l1II011I10688099:NextNumber(0.48, 0.85)
@@ -4635,20 +4635,20 @@ local lOIIO1II0I1II11lI895379 = Frame:FindFirstChild("\083\104\111\111\116\083\1
 if lOIIO1II0I1II11lI895379 and _O0Ol001IIIO1OII04 then
 _O0Ol001IIIO1OII04.Parent = lOIIO1II0I1II11lI895379
 _O0Ol001IIIO1OII04.AnchorPoint = Vector2.new(0, 0)
-_O0Ol001IIIO1OII04.Position = UDim2.fromOffset(8, 119)
-_O0Ol001IIIO1OII04.Size = UDim2.new(1, -16, 0, 20)
-_O0Ol001IIIO1OII04.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+_O0Ol001IIIO1OII04.Position = UDim2.fromOffset(8, 0x77)
+_O0Ol001IIIO1OII04.Size = UDim2.new(1, -0x10, 0, 0x14)
+_O0Ol001IIIO1OII04.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 _O0Ol001IIIO1OII04.BackgroundTransparency = 0.82
 _O0Ol001IIIO1OII04.BorderSizePixel = 0
 _O0Ol001IIIO1OII04.AutoButtonColor = false
 _O0Ol001IIIO1OII04.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-_O0Ol001IIIO1OII04.TextColor3 = Color3.fromRGB(1, 244, 253)
-_O0Ol001IIIO1OII04.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+_O0Ol001IIIO1OII04.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+_O0Ol001IIIO1OII04.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 _O0Ol001IIIO1OII04.TextStrokeTransparency = 0.28
 _O0Ol001IIIO1OII04.TextXAlignment = Enum.TextXAlignment.Left
 _O0Ol001IIIO1OII04.TextYAlignment = Enum.TextYAlignment.Center
-_O0Ol001IIIO1OII04.TextSize = 13
-_O0Ol001IIIO1OII04.ZIndex = 33
+_O0Ol001IIIO1OII04.TextSize = 0xd
+_O0Ol001IIIO1OII04.ZIndex = 0x21
 end
 end
 do
@@ -4660,17 +4660,17 @@ if panel then
 local function row(name, label, y)
 local b = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 b.Name, b.Text, b.Parent = name, label, panel
-b.Position, b.Size = UDim2.fromOffset(8, y), UDim2.new(1, -16, 0, 20)
-b.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+b.Position, b.Size = UDim2.fromOffset(8, y), UDim2.new(1, -0x10, 0, 0x14)
+b.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 b.BackgroundTransparency, b.BorderSizePixel = 0.82, 0
 b.AutoButtonColor = false
 b.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-b.TextSize, b.TextColor3 = 13, Color3.fromRGB(1, 244, 253)
-b.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+b.TextSize, b.TextColor3 = 0xd, Color3.fromRGB(1, 0xf4, 0xfd)
+b.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 b.TextStrokeTransparency = 0.28
 b.TextXAlignment = Enum.TextXAlignment.Left
 b.TextYAlignment = Enum.TextYAlignment.Center
-b.ZIndex = 38
+b.ZIndex = 0x26
 local TweenService = game:GetService("\084\119\101\101\110\083\101\114\118\105\099\101")
 local hoverInfo = TweenInfo.new(0.13, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
 local baseColor = b.BackgroundColor3
@@ -4678,7 +4678,7 @@ local marker = Instance.new("\070\114\097\109\101")
 marker.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\077\097\114\107\101\114"
 marker.Parent = b
 marker.BorderSizePixel = 0
-marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+marker.BackgroundColor3 = Color3.fromRGB(0, 0xff, 0xff)
 marker.BackgroundTransparency = 1
 marker.Position = UDim2.fromOffset(0, 0)
 marker.Size = UDim2.new(0, 5, 1, 0)
@@ -4687,12 +4687,12 @@ local outline = Instance.new("\085\073\083\116\114\111\107\101")
 outline.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\079\117\116\108\105\110\101"
 outline.Parent = b
 outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-outline.Color = Color3.fromRGB(174, 70, 255)
+outline.Color = Color3.fromRGB(0xae, 0x46, 0xff)
 outline.Thickness = 1.5
 outline.Transparency = 1
 local function setHover(active)
 TweenService:Create(b, hoverInfo, {
-BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or baseColor
+BackgroundColor3 = active and Color3.fromRGB(0x3f, 0x18, 0x6e) or baseColor
 }):Play()
 TweenService:Create(marker, hoverInfo, {
 BackgroundTransparency = active and 0 or 1
@@ -4710,16 +4710,16 @@ return b
 end
 local area = Instance.new("\070\114\097\109\101")
 area.Name, area.Parent = "\071\117\110\067\097\109\111\115\065\114\101\097", panel
-area.Position, area.Size = UDim2.fromOffset(0, 143), UDim2.new(1, 0, 0, 69)
-area.BackgroundColor3 = Color3.fromRGB(18, 11, 36)
+area.Position, area.Size = UDim2.fromOffset(0, 0x8f), UDim2.new(1, 0, 0, 0x45)
+area.BackgroundColor3 = Color3.fromRGB(0x12, 0xb, 0x24)
 area.BackgroundTransparency = 1
-area.BorderSizePixel, area.ZIndex, area.Visible = 0, 36, true
+area.BorderSizePixel, area.ZIndex, area.Visible = 0, 0x24, true
 local weapon = "\065\075\045\052\055"
 local lI00OO10I1Ill0lI0385089 = {}
 local originals = setmetatable({}, {__mode="\107"})
 local lI0llIO0llIII11lO468552 = {
-FAL = {meshId="\114\098\120\097\115\115\101\116\105\100\058\047\047\057\048\055\055\050\051\050\057\055\055\050\048\056\056", meshName="\070\065\076\047\077\101\115\104\101\115", hide={ ["\083\109\111\111\116\104\032\066\108\111\099\107\032\077\111\100\101\108"]=true, Black=true }, offset=Vector3.new(.05,.2,-.55), rotation=90, size=Vector3.new(.4,.4,.4)},
-M700 = {meshId="\114\098\120\097\115\115\101\116\105\100\058\047\047\049\048\057\050\051\053\055\055\050\054\049\055\051\049\051", meshName="\077\055\048\048\047\077\101\115\104\101\115", hide={ ["\083\109\111\111\116\104\032\066\108\111\099\107\032\077\111\100\101\108"]=true }, offset=Vector3.new(0,.43,-.8), rotation=90, size=Vector3.new(1,1,1)}
+FAL = {meshId="\114\098\120\097\115\115\101\116\105\100\058\047\047\057\048\055\055\050\051\050\057\055\055\050\048\056\056", meshName="\070\065\076\047\077\101\115\104\101\115", hide={ ["\083\109\111\111\116\104\032\066\108\111\099\107\032\077\111\100\101\108"]=true, Black=true }, offset=Vector3.new(.05,.2,-.55), rotation=0x5a, size=Vector3.new(.4,.4,.4)},
+M700 = {meshId="\114\098\120\097\115\115\101\116\105\100\058\047\047\049\048\057\050\051\053\055\055\050\054\049\055\051\049\051", meshName="\077\055\048\048\047\077\101\115\104\101\115", hide={ ["\083\109\111\111\116\104\032\066\108\111\099\107\032\077\111\100\101\108"]=true }, offset=Vector3.new(0,.43,-.8), rotation=0x5a, size=Vector3.new(1,1,1)}
 }
 local l1110lO11II1IllOO305430 = setmetatable({}, {__mode = "\107"})
 local lOlO0OOI0l01OlO00226474 = setmetatable({}, {__mode = "\107"})
@@ -4861,10 +4861,10 @@ local camoPresets = {
 }
 local lI11Il0O0llOl0O0I796195 = 2
 local lOOl1O10OI1O1l1II783838 = row("\071\117\110\067\097\109\111\080\114\101\115\101\116", "\071\117\110\032\067\097\109\111\058\032\071\104\111\115\116\032\032\062", 0)
-lOOl1O10OI1O1l1II783838.Parent, lOOl1O10OI1O1l1II783838.ZIndex = area, 38
-local lI0l1O0OII00I0Oll273183 = row("\071\117\110\067\097\109\111\065\112\112\108\121", "\065\112\112\108\121\032\067\097\109\111", 24)
-lI0l1O0OII00I0Oll273183.Parent, lI0l1O0OII00I0Oll273183.ZIndex = area, 38
-area.Size = UDim2.new(1, -16, 0, 45)
+lOOl1O10OI1O1l1II783838.Parent, lOOl1O10OI1O1l1II783838.ZIndex = area, 0x26
+local lI0l1O0OII00I0Oll273183 = row("\071\117\110\067\097\109\111\065\112\112\108\121", "\065\112\112\108\121\032\067\097\109\111", 0x18)
+lI0l1O0OII00I0Oll273183.Parent, lI0l1O0OII00I0Oll273183.ZIndex = area, 0x26
+area.Size = UDim2.new(1, -0x10, 0, 0x2d)
 lOOl1O10OI1O1l1II783838.Activated:Connect(function()
 lI11Il0O0llOl0O0I796195 = lI11Il0O0llOl0O0I796195 % #camoPresets + 1
 lOOl1O10OI1O1l1II783838.Text = "\071\117\110\032\067\097\109\111\058\032" .. camoPresets[lI11Il0O0llOl0O0I796195].name .. "\032\032\062"
@@ -4937,66 +4937,66 @@ local TweenService = game:GetService("\084\119\101\101\110\083\101\114\118\105\0
 local lI0110OIOOIl0I0lO928453 = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 lI0110OIOOIl0I0lO928453.Name = "\077\097\105\110\077\111\100\115\066\117\116\116\111\110"
 lI0110OIOOIl0I0lO928453.Parent = Frame
-lI0110OIOOIl0I0lO928453.Position = UDim2.fromOffset(8, 69)
-lI0110OIOOIl0I0lO928453.Size = UDim2.new(1, -16, 0, 20)
-lI0110OIOOIl0I0lO928453.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+lI0110OIOOIl0I0lO928453.Position = UDim2.fromOffset(8, 0x45)
+lI0110OIOOIl0I0lO928453.Size = UDim2.new(1, -0x10, 0, 0x14)
+lI0110OIOOIl0I0lO928453.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 lI0110OIOOIl0I0lO928453.BackgroundTransparency = 0.82
 lI0110OIOOIl0I0lO928453.BorderSizePixel = 0
 lI0110OIOOIl0I0lO928453.AutoButtonColor = false
 lI0110OIOOIl0I0lO928453.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-lI0110OIOOIl0I0lO928453.TextColor3 = Color3.fromRGB(1, 244, 253)
-lI0110OIOOIl0I0lO928453.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+lI0110OIOOIl0I0lO928453.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+lI0110OIOOIl0I0lO928453.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 lI0110OIOOIl0I0lO928453.TextStrokeTransparency = 0.28
 lI0110OIOOIl0I0lO928453.TextXAlignment = Enum.TextXAlignment.Left
-lI0110OIOOIl0I0lO928453.TextSize = 13
+lI0110OIOOIl0I0lO928453.TextSize = 0xd
 lI0110OIOOIl0I0lO928453.Text = "\077\097\105\110\032\077\111\100\115"
 lI0110OIOOIl0I0lO928453.ZIndex = 5
 local page = Instance.new("\070\114\097\109\101")
 page.Name = "\077\097\105\110\077\111\100\115\080\097\103\101"
 page.Parent = Frame
 page.Size = UDim2.fromScale(1, 1)
-page.BackgroundColor3 = Color3.fromRGB(12, 9, 22)
+page.BackgroundColor3 = Color3.fromRGB(0xc, 9, 0x16)
 page.BorderSizePixel = 0
 page.ClipsDescendants = true
 page.Visible = false
-page.ZIndex = 30
+page.ZIndex = 0x1e
 local heading = Instance.new("\084\101\120\116\076\097\098\101\108")
 heading.Name = "\077\097\105\110\077\111\100\115\072\101\097\100\105\110\103"
 heading.Parent = page
-heading.Position = UDim2.fromOffset(3, 18)
-heading.Size = UDim2.new(1, -85, 0, 32)
+heading.Position = UDim2.fromOffset(3, 0x12)
+heading.Size = UDim2.new(1, -0x55, 0, 0x20)
 heading.BackgroundTransparency = 1
 heading.Text = "\077\097\105\110\032\077\111\100\115"
 heading.Font = Enum.Font.Arcade
-heading.TextSize = 27
-heading.TextColor3 = Color3.fromRGB(245, 244, 255)
-heading.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+heading.TextSize = 0x1b
+heading.TextColor3 = Color3.fromRGB(0xf5, 0xf4, 0xff)
+heading.TextStrokeColor3 = Color3.fromRGB(0x40, 0x28, 0x7d)
 heading.TextStrokeTransparency = 0.25
 heading.TextXAlignment = Enum.TextXAlignment.Left
-heading.ZIndex = 33
+heading.ZIndex = 0x21
 local byline = Instance.new("\084\101\120\116\076\097\098\101\108")
 byline.Name = "\077\097\105\110\077\111\100\115\066\121\108\105\110\101"
 byline.Parent = page
-byline.Position = UDim2.fromOffset(3, 49)
-byline.Size = UDim2.new(1, -10, 0, 23)
+byline.Position = UDim2.fromOffset(3, 0x31)
+byline.Size = UDim2.new(1, -0xa, 0, 0x17)
 byline.BackgroundTransparency = 1
 byline.Text = "\066\121\032\064\121\048\117\110\103\100\097\114\101"
 byline.Font = Enum.Font.Arcade
-byline.TextSize = 15
-byline.TextColor3 = Color3.fromRGB(37, 28, 191)
+byline.TextSize = 0xf
+byline.TextColor3 = Color3.fromRGB(0x25, 0x1c, 0xbf)
 byline.TextXAlignment = Enum.TextXAlignment.Left
-byline.ZIndex = 33
+byline.ZIndex = 0x21
 local back = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 back.Name = "\077\097\105\110\077\111\100\115\066\097\099\107"
 back.Parent = page
-back.Position = UDim2.new(1, -77, 0, 14)
-back.Size = UDim2.fromOffset(65, 26)
-back.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
-back.TextColor3 = Color3.fromRGB(0, 255, 255)
+back.Position = UDim2.new(1, -0x4d, 0, 0xe)
+back.Size = UDim2.fromOffset(0x41, 0x1a)
+back.BackgroundColor3 = Color3.fromRGB(0x20, 0x14, 0x39)
+back.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 back.Font = Enum.Font.SourceSansBold
-back.TextSize = 15
+back.TextSize = 0xf
 back.Text = "\060\032\066\065\067\075"
-back.ZIndex = 34
+back.ZIndex = 0x22
 local function attachHover(button)
 local marker = button:FindFirstChild("\074\105\103\103\121\083\101\108\101\099\116\105\111\110\077\097\114\107\101\114")
 if not marker then
@@ -5004,7 +5004,7 @@ marker = Instance.new("\070\114\097\109\101")
 marker.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\077\097\114\107\101\114"
 marker.Parent = button
 marker.BorderSizePixel = 0
-marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+marker.BackgroundColor3 = Color3.fromRGB(0, 0xff, 0xff)
 marker.BackgroundTransparency = 1
 marker.Size = UDim2.new(0, 5, 1, 0)
 marker.ZIndex = button.ZIndex + 1
@@ -5015,13 +5015,13 @@ outline = Instance.new("\085\073\083\116\114\111\107\101")
 outline.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\079\117\116\108\105\110\101"
 outline.Parent = button
 outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-outline.Color = Color3.fromRGB(174, 70, 255)
+outline.Color = Color3.fromRGB(0xae, 0x46, 0xff)
 outline.Thickness = 1.5
 outline.Transparency = 1
 end
-local lO0Il1Il010llI00l137626 = Color3.fromRGB(19, 9, 49)
+local lO0Il1Il010llI00l137626 = Color3.fromRGB(0x13, 9, 0x31)
 local function setHover(active)
-TweenService:Create(button, TweenInfo.new(0.09), {BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or lO0Il1Il010llI00l137626}):Play()
+TweenService:Create(button, TweenInfo.new(0.09), {BackgroundColor3 = active and Color3.fromRGB(0x3f, 0x18, 0x6e) or lO0Il1Il010llI00l137626}):Play()
 TweenService:Create(marker, TweenInfo.new(0.09), {BackgroundTransparency = active and 0 or 1}):Play()
 TweenService:Create(outline, TweenInfo.new(0.09), {Transparency = active and 0 or 1}):Play()
 end
@@ -5034,39 +5034,39 @@ local resets = {}
 for index, button in ipairs({l1I1lO1O1IlO0lIlI171747, l0Oll1100OI00000l807953, _OIlO0l0Ol1lIllO112, l0IOO0l1I1l000101586853, lOIO1l0OI00O0l1ll814253, lOOIIO1Ill0OI01Il392524, _Ol10Il1I011lIIl020, l0I0OO11lOO0IO0l0530291, l0I01l0lO1lOOO1Il129310}) do
 button.Parent = page
 button.AnchorPoint = Vector2.new(0, 0)
-button.Position = UDim2.fromOffset(8, 79 + (index - 1) * 20)
-button.Size = UDim2.new(1, -16, 0, 20)
-button.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+button.Position = UDim2.fromOffset(8, 0x4f + (index - 1) * 0x14)
+button.Size = UDim2.new(1, -0x10, 0, 0x14)
+button.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 button.BackgroundTransparency = 0.82
 button.BorderSizePixel = 0
 button.AutoButtonColor = false
 button.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-button.TextColor3 = Color3.fromRGB(1, 244, 253)
-button.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+button.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+button.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 button.TextStrokeTransparency = 0.28
 button.TextXAlignment = Enum.TextXAlignment.Left
-button.TextSize = 13
-button.ZIndex = 33
+button.TextSize = 0xd
+button.ZIndex = 0x21
 local marker = button:FindFirstChild("\074\105\103\103\121\083\101\108\101\099\116\105\111\110\077\097\114\107\101\114")
-if marker then marker.ZIndex = 34 end
+if marker then marker.ZIndex = 0x22 end
 end
 local lIO0IlOI01Il1OI0l244092 = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 lIO0IlOI01Il1OI0l244092.Name = "\082\101\115\112\097\119\110\065\116\068\101\097\116\104\076\111\099\097\116\105\111\110\084\111\103\103\108\101"
 lIO0IlOI01Il1OI0l244092.Parent = page
-lIO0IlOI01Il1OI0l244092.Position = UDim2.fromOffset(8, 79 + 9 * 20)
-lIO0IlOI01Il1OI0l244092.Size = UDim2.new(1, -16, 0, 20)
-lIO0IlOI01Il1OI0l244092.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+lIO0IlOI01Il1OI0l244092.Position = UDim2.fromOffset(8, 0x4f + 9 * 0x14)
+lIO0IlOI01Il1OI0l244092.Size = UDim2.new(1, -0x10, 0, 0x14)
+lIO0IlOI01Il1OI0l244092.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 lIO0IlOI01Il1OI0l244092.BackgroundTransparency = 0.82
 lIO0IlOI01Il1OI0l244092.BorderSizePixel = 0
 lIO0IlOI01Il1OI0l244092.AutoButtonColor = false
 lIO0IlOI01Il1OI0l244092.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-lIO0IlOI01Il1OI0l244092.TextColor3 = Color3.fromRGB(1, 244, 253)
-lIO0IlOI01Il1OI0l244092.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+lIO0IlOI01Il1OI0l244092.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+lIO0IlOI01Il1OI0l244092.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 lIO0IlOI01Il1OI0l244092.TextStrokeTransparency = 0.28
 lIO0IlOI01Il1OI0l244092.TextXAlignment = Enum.TextXAlignment.Left
-lIO0IlOI01Il1OI0l244092.TextSize = 13
+lIO0IlOI01Il1OI0l244092.TextSize = 0xd
 lIO0IlOI01Il1OI0l244092.Text = "\082\101\115\112\097\119\110\032\097\116\032\068\101\097\116\104\032\076\111\099\097\116\105\111\110\058\032\079\070\070"
-lIO0IlOI01Il1OI0l244092.ZIndex = 33
+lIO0IlOI01Il1OI0l244092.ZIndex = 0x21
 attachHover(lIO0IlOI01Il1OI0l244092)
 local LocalPlayer = game:GetService("\080\108\097\121\101\114\115").LocalPlayer
 local l1O0lI0OI100Il0O1233994 = false
@@ -5130,9 +5130,9 @@ end
 glitchLayer = Frame:FindFirstChild("\074\105\103\103\121\071\108\105\116\099\104\066\097\099\107\103\114\111\117\110\100\095\069\068\073\084\095\072\069\082\069")
 if glitchLayer then
 glitchLayer.Parent = page
-glitchLayer.ZIndex = 31
+glitchLayer.ZIndex = 0x1f
 for _, part in ipairs(glitchLayer:GetDescendants()) do
-if part:IsA("\071\117\105\079\098\106\101\099\116") then part.ZIndex = 31 end
+if part:IsA("\071\117\105\079\098\106\101\099\116") then part.ZIndex = 0x1f end
 end
 end
 page.Visible = true
@@ -5158,72 +5158,72 @@ local TweenService = game:GetService("\084\119\101\101\110\083\101\114\118\105\0
 local l0lII1O0llOOl1l10188914 = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 l0lII1O0llOOl1l10188914.Name = "\070\117\110\077\111\100\115\066\117\116\116\111\110"
 l0lII1O0llOOl1l10188914.Parent = Frame
-l0lII1O0llOOl1l10188914.Position = UDim2.fromOffset(8, 129)
-l0lII1O0llOOl1l10188914.Size = UDim2.new(1, -16, 0, 20)
-l0lII1O0llOOl1l10188914.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+l0lII1O0llOOl1l10188914.Position = UDim2.fromOffset(8, 0x81)
+l0lII1O0llOOl1l10188914.Size = UDim2.new(1, -0x10, 0, 0x14)
+l0lII1O0llOOl1l10188914.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 l0lII1O0llOOl1l10188914.BackgroundTransparency = 0.82
 l0lII1O0llOOl1l10188914.BorderSizePixel = 0
 l0lII1O0llOOl1l10188914.AutoButtonColor = false
 l0lII1O0llOOl1l10188914.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-l0lII1O0llOOl1l10188914.TextColor3 = Color3.fromRGB(1, 244, 253)
-l0lII1O0llOOl1l10188914.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+l0lII1O0llOOl1l10188914.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+l0lII1O0llOOl1l10188914.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 l0lII1O0llOOl1l10188914.TextStrokeTransparency = 0.28
 l0lII1O0llOOl1l10188914.TextXAlignment = Enum.TextXAlignment.Left
-l0lII1O0llOOl1l10188914.TextSize = 13
+l0lII1O0llOOl1l10188914.TextSize = 0xd
 l0lII1O0llOOl1l10188914.Text = "\070\117\110\032\077\111\100\115"
 l0lII1O0llOOl1l10188914.ZIndex = 5
 local page = Instance.new("\070\114\097\109\101")
 page.Name = "\070\117\110\077\111\100\115\080\097\103\101"
 page.Parent = Frame
 page.Size = UDim2.fromScale(1, 1)
-page.BackgroundColor3 = Color3.fromRGB(12, 9, 22)
+page.BackgroundColor3 = Color3.fromRGB(0xc, 9, 0x16)
 page.BorderSizePixel = 0
 page.ClipsDescendants = true
 page.Visible = false
-page.ZIndex = 30
+page.ZIndex = 0x1e
 local heading = Instance.new("\084\101\120\116\076\097\098\101\108")
 heading.Name = "\070\117\110\077\111\100\115\072\101\097\100\105\110\103"
 heading.Parent = page
-heading.Position = UDim2.fromOffset(3, 18)
-heading.Size = UDim2.new(1, -85, 0, 32)
+heading.Position = UDim2.fromOffset(3, 0x12)
+heading.Size = UDim2.new(1, -0x55, 0, 0x20)
 heading.BackgroundTransparency = 1
 heading.Text = "\070\117\110\032\077\111\100\115"
 heading.Font = Enum.Font.Arcade
-heading.TextSize = 27
-heading.TextColor3 = Color3.fromRGB(245, 244, 255)
-heading.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+heading.TextSize = 0x1b
+heading.TextColor3 = Color3.fromRGB(0xf5, 0xf4, 0xff)
+heading.TextStrokeColor3 = Color3.fromRGB(0x40, 0x28, 0x7d)
 heading.TextStrokeTransparency = 0.25
 heading.TextXAlignment = Enum.TextXAlignment.Left
-heading.ZIndex = 33
+heading.ZIndex = 0x21
 local byline = Instance.new("\084\101\120\116\076\097\098\101\108")
 byline.Name = "\070\117\110\077\111\100\115\066\121\108\105\110\101"
 byline.Parent = page
-byline.Position = UDim2.fromOffset(3, 49)
-byline.Size = UDim2.new(1, -10, 0, 23)
+byline.Position = UDim2.fromOffset(3, 0x31)
+byline.Size = UDim2.new(1, -0xa, 0, 0x17)
 byline.BackgroundTransparency = 1
 byline.Text = "\066\121\032\064\121\048\117\110\103\100\097\114\101"
 byline.Font = Enum.Font.Arcade
-byline.TextSize = 15
-byline.TextColor3 = Color3.fromRGB(37, 28, 191)
+byline.TextSize = 0xf
+byline.TextColor3 = Color3.fromRGB(0x25, 0x1c, 0xbf)
 byline.TextXAlignment = Enum.TextXAlignment.Left
-byline.ZIndex = 33
+byline.ZIndex = 0x21
 local back = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 back.Name = "\070\117\110\077\111\100\115\066\097\099\107"
 back.Parent = page
-back.Position = UDim2.new(1, -77, 0, 14)
-back.Size = UDim2.fromOffset(65, 26)
-back.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
-back.TextColor3 = Color3.fromRGB(0, 255, 255)
+back.Position = UDim2.new(1, -0x4d, 0, 0xe)
+back.Size = UDim2.fromOffset(0x41, 0x1a)
+back.BackgroundColor3 = Color3.fromRGB(0x20, 0x14, 0x39)
+back.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 back.Font = Enum.Font.SourceSansBold
-back.TextSize = 15
+back.TextSize = 0xf
 back.Text = "\060\032\066\065\067\075"
-back.ZIndex = 34
+back.ZIndex = 0x22
 local function attachHover(button)
 local marker = Instance.new("\070\114\097\109\101")
 marker.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\077\097\114\107\101\114"
 marker.Parent = button
 marker.BorderSizePixel = 0
-marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+marker.BackgroundColor3 = Color3.fromRGB(0, 0xff, 0xff)
 marker.BackgroundTransparency = 1
 marker.Size = UDim2.new(0, 5, 1, 0)
 marker.ZIndex = button.ZIndex + 1
@@ -5231,11 +5231,11 @@ local outline = Instance.new("\085\073\083\116\114\111\107\101")
 outline.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\079\117\116\108\105\110\101"
 outline.Parent = button
 outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-outline.Color = Color3.fromRGB(174, 70, 255)
+outline.Color = Color3.fromRGB(0xae, 0x46, 0xff)
 outline.Thickness = 1.5
 outline.Transparency = 1
 local function setHover(active)
-TweenService:Create(button, TweenInfo.new(0.09), {BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or Color3.fromRGB(19, 9, 49)}):Play()
+TweenService:Create(button, TweenInfo.new(0.09), {BackgroundColor3 = active and Color3.fromRGB(0x3f, 0x18, 0x6e) or Color3.fromRGB(0x13, 9, 0x31)}):Play()
 TweenService:Create(marker, TweenInfo.new(0.09), {BackgroundTransparency = active and 0 or 1}):Play()
 TweenService:Create(outline, TweenInfo.new(0.09), {Transparency = active and 0 or 1}):Play()
 end
@@ -5246,39 +5246,39 @@ attachHover(l0lII1O0llOOl1l10188914)
 for index, button in ipairs({fly, l001ll101Ol0III0l892954, l1010l0011I1111O1495298}) do
 button.Parent = page
 button.AnchorPoint = Vector2.new(0, 0)
-button.Position = UDim2.fromOffset(8, 79 + (index - 1) * 20)
-button.Size = UDim2.new(1, -16, 0, 20)
-button.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+button.Position = UDim2.fromOffset(8, 0x4f + (index - 1) * 0x14)
+button.Size = UDim2.new(1, -0x10, 0, 0x14)
+button.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 button.BackgroundTransparency = 0.82
 button.BorderSizePixel = 0
 button.AutoButtonColor = false
 button.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-button.TextColor3 = Color3.fromRGB(1, 244, 253)
-button.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+button.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+button.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 button.TextStrokeTransparency = 0.28
 button.TextXAlignment = Enum.TextXAlignment.Left
-button.TextSize = 13
-button.ZIndex = 33
+button.TextSize = 0xd
+button.ZIndex = 0x21
 local marker = button:FindFirstChild("\074\105\103\103\121\083\101\108\101\099\116\105\111\110\077\097\114\107\101\114")
-if marker then marker.ZIndex = 34 end
+if marker then marker.ZIndex = 0x22 end
 end
 local l00llO01111ll1llO273550 = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 l00llO01111ll1llO273550.Name = "\068\101\098\117\103\077\111\114\112\104\084\111\103\103\108\101"
 l00llO01111ll1llO273550.Parent = page
-l00llO01111ll1llO273550.Position = UDim2.fromOffset(8, 139)
-l00llO01111ll1llO273550.Size = UDim2.new(1, -16, 0, 20)
-l00llO01111ll1llO273550.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+l00llO01111ll1llO273550.Position = UDim2.fromOffset(8, 0x8b)
+l00llO01111ll1llO273550.Size = UDim2.new(1, -0x10, 0, 0x14)
+l00llO01111ll1llO273550.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 l00llO01111ll1llO273550.BackgroundTransparency = 0.82
 l00llO01111ll1llO273550.BorderSizePixel = 0
 l00llO01111ll1llO273550.AutoButtonColor = false
 l00llO01111ll1llO273550.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-l00llO01111ll1llO273550.TextColor3 = Color3.fromRGB(1, 244, 253)
-l00llO01111ll1llO273550.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+l00llO01111ll1llO273550.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+l00llO01111ll1llO273550.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 l00llO01111ll1llO273550.TextStrokeTransparency = 0.28
 l00llO01111ll1llO273550.TextXAlignment = Enum.TextXAlignment.Left
-l00llO01111ll1llO273550.TextSize = 13
+l00llO01111ll1llO273550.TextSize = 0xd
 l00llO01111ll1llO273550.Text = "\068\101\098\117\103\058\032\079\070\070"
-l00llO01111ll1llO273550.ZIndex = 33
+l00llO01111ll1llO273550.ZIndex = 0x21
 attachHover(l00llO01111ll1llO273550)
 local Players = game:GetService("\080\108\097\121\101\114\115")
 local player = Players.LocalPlayer
@@ -5314,7 +5314,7 @@ if not anchor then return end
 local part = Instance.new("\080\097\114\116")
 part.Name = "\071\114\097\121\066\108\111\099\107"
 part.Size = size
-part.Color = color or Color3.fromRGB(151, 153, 151)
+part.Color = color or Color3.fromRGB(0x97, 0x99, 0x97)
 part.Material = Enum.Material.SmoothPlastic
 part.CanCollide = false
 part.CanTouch = false
@@ -5357,20 +5357,20 @@ originals[obj] = {enabled = obj.Enabled}
 obj.Enabled = false
 end
 end
-local gray = Color3.fromRGB(157, 158, 155)
-local l10lO111lllOI01Ol572394 = Color3.fromRGB(183, 185, 181)
-local dark = Color3.fromRGB(124, 126, 125)
+local gray = Color3.fromRGB(0x9d, 0x9e, 0x9b)
+local l10lO111lllOI01Ol572394 = Color3.fromRGB(0xb7, 0xb9, 0xb5)
+local dark = Color3.fromRGB(0x7c, 0x7e, 0x7d)
 addBlock(morphFolder, torso, Vector3.new(3.25, 2.2, 1.8), Vector3.new(0,0,0), Vector3.new(0,0,-9), gray)
-addBlock(morphFolder, torso, Vector3.new(2.6, 1.2, 2.1), Vector3.new(0,0.25,-0.35), Vector3.new(-13,0,18), l10lO111lllOI01Ol572394)
-addBlock(morphFolder, lower, Vector3.new(2.7, 1.35, 1.8), Vector3.new(0,-0.25,0), Vector3.new(0,0,10), dark)
-addBlock(morphFolder, head, Vector3.new(1.55,1.75,1.65), Vector3.new(0,0,0), Vector3.new(0,18,20), gray)
-addBlock(morphFolder, head, Vector3.new(1.1,0.85,0.95), Vector3.new(0,0.3,-0.3), Vector3.new(-14,20,30), l10lO111lllOI01Ol572394)
-addBlock(morphFolder, llO0IlI1I0l0111ll527089, Vector3.new(1.55,2.4,1.65), Vector3.new(-0.25,-0.45,0), Vector3.new(0,0,-24), gray)
-addBlock(morphFolder, lIlOO1I1O1lOlO1ll440459, Vector3.new(1.6,2.4,1.65), Vector3.new(0.25,-0.45,0), Vector3.new(0,0,24), l10lO111lllOI01Ol572394)
+addBlock(morphFolder, torso, Vector3.new(2.6, 1.2, 2.1), Vector3.new(0,0.25,-0.35), Vector3.new(-0xd,0,0x12), l10lO111lllOI01Ol572394)
+addBlock(morphFolder, lower, Vector3.new(2.7, 1.35, 1.8), Vector3.new(0,-0.25,0), Vector3.new(0,0,0xa), dark)
+addBlock(morphFolder, head, Vector3.new(1.55,1.75,1.65), Vector3.new(0,0,0), Vector3.new(0,0x12,0x14), gray)
+addBlock(morphFolder, head, Vector3.new(1.1,0.85,0.95), Vector3.new(0,0.3,-0.3), Vector3.new(-0xe,0x14,0x1e), l10lO111lllOI01Ol572394)
+addBlock(morphFolder, llO0IlI1I0l0111ll527089, Vector3.new(1.55,2.4,1.65), Vector3.new(-0.25,-0.45,0), Vector3.new(0,0,-0x18), gray)
+addBlock(morphFolder, lIlOO1I1O1lOlO1ll440459, Vector3.new(1.6,2.4,1.65), Vector3.new(0.25,-0.45,0), Vector3.new(0,0,0x18), l10lO111lllOI01Ol572394)
 addBlock(morphFolder, lI1IllOOO1101llIO494977, Vector3.new(1.35,2.75,1.5), Vector3.new(0,-0.55,0), Vector3.new(0,0,-7), dark)
 addBlock(morphFolder, lO1IIlO101lO1I0Il745925, Vector3.new(1.4,2.8,1.5), Vector3.new(0,-0.55,0), Vector3.new(0,0,9), gray)
-addBlock(morphFolder, torso, Vector3.new(1.7,1.0,1.2), Vector3.new(-1.0,0.65,-0.4), Vector3.new(15,-15,32), l10lO111lllOI01Ol572394)
-addBlock(morphFolder, torso, Vector3.new(1.6,0.95,1.25), Vector3.new(1.1,-0.45,-0.4), Vector3.new(-20,10,-23), dark)
+addBlock(morphFolder, torso, Vector3.new(1.7,1.0,1.2), Vector3.new(-1.0,0.65,-0.4), Vector3.new(0xf,-0xf,0x20), l10lO111lllOI01Ol572394)
+addBlock(morphFolder, torso, Vector3.new(1.6,0.95,1.25), Vector3.new(1.1,-0.45,-0.4), Vector3.new(-0x14,0xa,-0x17), dark)
 end
 l00llO01111ll1llO273550.Activated:Connect(function()
 enabled = not enabled
@@ -5384,7 +5384,7 @@ end)
 player.CharacterAdded:Connect(function(char)
 restore()
 if enabled then
-char:WaitForChild("\072\117\109\097\110\111\105\100", 10)
+char:WaitForChild("\072\117\109\097\110\111\105\100", 0xa)
 task.wait(0.6)
 if enabled and player.Character == char then apply(char) end
 end
@@ -5394,20 +5394,20 @@ local glitchLayer
 local christmasButton = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 christmasButton.Name = "\067\104\114\105\115\116\109\097\115\084\104\101\109\101\084\111\103\103\108\101"
 christmasButton.Parent = page
-christmasButton.Position = UDim2.fromOffset(8, 159)
-christmasButton.Size = UDim2.new(1, -16, 0, 20)
-christmasButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+christmasButton.Position = UDim2.fromOffset(8, 0x9f)
+christmasButton.Size = UDim2.new(1, -0x10, 0, 0x14)
+christmasButton.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 christmasButton.BackgroundTransparency = 0.82
 christmasButton.BorderSizePixel = 0
 christmasButton.AutoButtonColor = false
 christmasButton.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-christmasButton.TextColor3 = Color3.fromRGB(1, 244, 253)
-christmasButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+christmasButton.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+christmasButton.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 christmasButton.TextStrokeTransparency = 0.28
 christmasButton.TextXAlignment = Enum.TextXAlignment.Left
-christmasButton.TextSize = 13
+christmasButton.TextSize = 0xd
 christmasButton.Text = "\067\104\114\105\115\116\109\097\115\032\084\104\101\109\101\058\032\079\070\070"
-christmasButton.ZIndex = 33
+christmasButton.ZIndex = 0x21
 attachHover(christmasButton)
 do
 local Players = game:GetService("\080\108\097\121\101\114\115")
@@ -5445,10 +5445,10 @@ local l0Illl1100101IO01981713 = n:find("\103\114\111\117\110\100") or n:find("\1
 if not l0l01110IIIOll0IO778152 and not (l0Illl1100101IO01981713 and part.Size.X >= 6 and part.Size.Z >= 6) then return end
 ll1I00IlOllIOI0l0604510[part] = {Color = part.Color, Material = part.Material, Reflectance = part.Reflectance}
 local shade = math.noise(part.Position.X * 0.018, part.Position.Z * 0.018)
-local lIOl01OOl0IO01lO0282096 = math.clamp(math.floor(229 + shade * 16), 214, 239)
+local lIOl01OOl0IO01lO0282096 = math.clamp(math.floor(0xe5 + shade * 0x10), 0xd6, 0xef)
 pcall(function()
 part.Material = Enum.Material.Snow
-part.Color = Color3.fromRGB(lIOl01OOl0IO01lO0282096, math.min(255, lIOl01OOl0IO01lO0282096 + 5), math.min(255, lIOl01OOl0IO01lO0282096 + 9))
+part.Color = Color3.fromRGB(lIOl01OOl0IO01lO0282096, math.min(0xff, lIOl01OOl0IO01lO0282096 + 5), math.min(0xff, lIOl01OOl0IO01lO0282096 + 9))
 part.Reflectance = 0
 end)
 end
@@ -5464,7 +5464,7 @@ local tree = workspace:FindFirstChild("\076\111\099\097\108\067\104\114\105\115\
 if tree then table.insert(ignore, tree) end
 params.FilterDescendantsInstances = ignore
 params.IgnoreWater = true
-local result = workspace:Raycast(Vector3.new(x, center.Y + 120, z), Vector3.new(0, -350, 0), params)
+local result = workspace:Raycast(Vector3.new(x, center.Y + 0x78, z), Vector3.new(0, -0x15e, 0), params)
 return result and result.Position.Y or center.Y
 end
 local function part(name,size,cf,color,l110O1O1OIlI0O1Ol460288,parent)
@@ -5481,24 +5481,24 @@ model=Instance.new("\077\111\100\101\108")
 model.Name="\076\111\099\097\108\067\104\114\105\115\116\109\097\115\067\097\109\112\102\105\114\101"; model.Parent=workspace
 local floorY = groundAt(center.X, center.Z)
 local base = Vector3.new(center.X, floorY, center.Z)
-local ll0I1OIII01l0IIIO254975=Color3.fromRGB(110,108,104)
-for i=1,12 do
-local angle=2*math.pi*i/12
+local ll0I1OIII01l0IIIO254975=Color3.fromRGB(0x6e,0x6c,0x68)
+for i=1,0xc do
+local angle=2*math.pi*i/0xc
 local x,z=math.cos(angle)*3.15,math.sin(angle)*3.15
 part("\070\105\114\101\082\105\110\103\083\116\111\110\101",Vector3.new(1.5,0.9,1.1),CFrame.new(Vector3.new(base.X+x, groundAt(base.X+x, base.Z+z)+0.35, base.Z+z))*CFrame.Angles(0,-angle,0),ll0I1OIII01l0IIIO254975,Enum.Material.Slate,model)
 end
-part("\069\109\098\101\114\115",Vector3.new(4.8,0.18,4.8),CFrame.new(base+Vector3.new(0,0.10,0)),Color3.fromRGB(38,31,26),Enum.Material.Slate,model).CanCollide=false
+part("\069\109\098\101\114\115",Vector3.new(4.8,0.18,4.8),CFrame.new(base+Vector3.new(0,0.10,0)),Color3.fromRGB(0x26,0x1f,0x1a),Enum.Material.Slate,model).CanCollide=false
 for i=1,5 do
 local a=i*math.pi/5
-part("\070\105\114\101\119\111\111\100",Vector3.new(0.7,0.65,4.5),CFrame.new(base+Vector3.new(0,0.40,0))*CFrame.Angles(0,a,0),Color3.fromRGB(91,48,22),Enum.Material.Wood,model)
+part("\070\105\114\101\119\111\111\100",Vector3.new(0.7,0.65,4.5),CFrame.new(base+Vector3.new(0,0.40,0))*CFrame.Angles(0,a,0),Color3.fromRGB(0x5b,0x30,0x16),Enum.Material.Wood,model)
 end
-local l0OII0l1OOlI0Ill1366388=part("\070\108\097\109\101\069\109\105\116\116\101\114",Vector3.new(0.3,0.3,0.3),CFrame.new(base+Vector3.new(0,0.7,0)),Color3.fromRGB(255,143,26),Enum.Material.Neon,model)
+local l0OII0l1OOlI0Ill1366388=part("\070\108\097\109\101\069\109\105\116\116\101\114",Vector3.new(0.3,0.3,0.3),CFrame.new(base+Vector3.new(0,0.7,0)),Color3.fromRGB(0xff,0x8f,0x1a),Enum.Material.Neon,model)
 l0OII0l1OOlI0Ill1366388.Transparency=1; l0OII0l1OOlI0Ill1366388.CanCollide=false
 local fire=Instance.new("\070\105\114\101")
-fire.Name="\067\097\109\112\102\105\114\101\070\108\097\109\101\115"; fire.Color=Color3.fromRGB(255,177,43); fire.SecondaryColor=Color3.fromRGB(255,69,11)
+fire.Name="\067\097\109\112\102\105\114\101\070\108\097\109\101\115"; fire.Color=Color3.fromRGB(0xff,0xb1,0x2b); fire.SecondaryColor=Color3.fromRGB(0xff,0x45,0xb)
 fire.Heat=9; fire.Size=8; fire.Parent=l0OII0l1OOlI0Ill1366388
 local smoke=Instance.new("\083\109\111\107\101")
-smoke.Color=Color3.fromRGB(115,115,115); smoke.Opacity=0.12; smoke.RiseVelocity=5; smoke.Size=5; smoke.Parent=l0OII0l1OOlI0Ill1366388
+smoke.Color=Color3.fromRGB(0x73,0x73,0x73); smoke.Opacity=0.12; smoke.RiseVelocity=5; smoke.Size=5; smoke.Parent=l0OII0l1OOlI0Ill1366388
 for i=1,4 do
 local angle=(i-1)*math.pi/2
 local llOO01IOI11I0OI01427069=Vector3.new(math.cos(angle),0,math.sin(angle))
@@ -5506,10 +5506,10 @@ local x = base.X + llOO01IOI11I0OI01427069.X*8
 local z = base.Z + llOO01IOI11I0OI01427069.Z*8
 local pos = Vector3.new(x, groundAt(x,z), z)
 local l0O0lI000OI101IOO559374=CFrame.lookAt(pos, Vector3.new(base.X, pos.Y, base.Z))
-local log=part("\083\105\116\076\111\103\095"..i,Vector3.new(5.6,1.25,1.55),l0O0lI000OI101IOO559374*CFrame.new(0,0.58,0),Color3.fromRGB(103,60,30),Enum.Material.Wood,model)
+local log=part("\083\105\116\076\111\103\095"..i,Vector3.new(5.6,1.25,1.55),l0O0lI000OI101IOO559374*CFrame.new(0,0.58,0),Color3.fromRGB(0x67,0x3c,0x1e),Enum.Material.Wood,model)
 log.Shape=Enum.PartType.Cylinder
 for side=-1,1,2 do
-local support=part("\076\111\103\083\117\112\112\111\114\116\095"..i.."\095"..side,Vector3.new(0.9,0.65,1.4),l0O0lI000OI101IOO559374*CFrame.new(side*2.1,0.24,0),Color3.fromRGB(73,42,23),Enum.Material.Wood,model)
+local support=part("\076\111\103\083\117\112\112\111\114\116\095"..i.."\095"..side,Vector3.new(0.9,0.65,1.4),l0O0lI000OI101IOO559374*CFrame.new(side*2.1,0.24,0),Color3.fromRGB(0x49,0x2a,0x17),Enum.Material.Wood,model)
 end
 local seat=Instance.new("\083\101\097\116")
 seat.Name="\067\097\109\112\102\105\114\101\083\101\097\116\095"..i; seat.Size=Vector3.new(3.8,0.3,1.25)
@@ -5536,9 +5536,9 @@ if secondTreeModel then table.insert(ignore, secondTreeModel) end
 params.IgnoreWater = true
 local floorY = nil
 local l1O010011IOlI0I0I621282 = (referenceY or 98.00) + 1.5
-for _ = 1, 35 do
+for _ = 1, 0x23 do
 params.FilterDescendantsInstances = ignore
-local hit = Workspace:Raycast(Vector3.new(x, l1O010011IOlI0I0I621282, z), Vector3.new(0, -160, 0), params)
+local hit = Workspace:Raycast(Vector3.new(x, l1O010011IOlI0I0I621282, z), Vector3.new(0, -0xa0, 0), params)
 if not hit then break end
 local l1OO00IOOO1lIII10901439 = hit.Instance
 local ll0O1IO01000O1l1I631105 = hit.Normal.Y > 0.65 and (
@@ -5552,18 +5552,18 @@ end
 table.insert(ignore, l1OO00IOOO1lIII10901439)
 end
 local base = Vector3.new(x, floorY or ((referenceY or 98.00) - 3), z)
-local llI11Il1lOO11l0I0853473 = part("\084\114\101\101\084\114\117\110\107", Vector3.new(5.2, 1.8, 1.8), CFrame.new(base + Vector3.new(0, 2.6, 0)) * CFrame.Angles(0, 0, math.rad(90)), Color3.fromRGB(80, 49, 30), Enum.Material.Wood, l0lI1I1Ol11l0IlOl808192)
+local llI11Il1lOO11l0I0853473 = part("\084\114\101\101\084\114\117\110\107", Vector3.new(5.2, 1.8, 1.8), CFrame.new(base + Vector3.new(0, 2.6, 0)) * CFrame.Angles(0, 0, math.rad(0x5a)), Color3.fromRGB(0x50, 0x31, 0x1e), Enum.Material.Wood, l0lI1I1Ol11l0IlOl808192)
 llI11Il1lOO11l0I0853473.Shape = Enum.PartType.Cylinder
 local l01I10I0O00OI0l0l748044 = {
-Color3.fromRGB(15, 57, 28),
-Color3.fromRGB(18, 67, 31),
-Color3.fromRGB(12, 48, 25),
+Color3.fromRGB(0xf, 0x39, 0x1c),
+Color3.fromRGB(0x12, 0x43, 0x1f),
+Color3.fromRGB(0xc, 0x30, 0x19),
 }
 local ll11lI11OlI00OIll414733 = 8
 for level = 1, ll11lI11OlI00OIll414733 do
 local height = 5.1 + (level - 1) * 1.45
 local radius = 5.0 - (level - 1) * 0.52
-local count = 12
+local count = 0xc
 for j = 1, count do
 local angle = (j / count) * math.pi * 2 + (level % 2) * 0.18
 local r = radius * 0.52
@@ -5577,14 +5577,14 @@ core.Shape = Enum.PartType.Ball
 core.CanCollide = false
 end
 local l0l10IOOIOlOOOIlO489529 = {
-Color3.fromRGB(255, 43, 55), Color3.fromRGB(35, 140, 255),
-Color3.fromRGB(255, 230, 58), Color3.fromRGB(85, 255, 70),
-Color3.fromRGB(230, 77, 255), Color3.fromRGB(255, 255, 240),
+Color3.fromRGB(0xff, 0x2b, 0x37), Color3.fromRGB(0x23, 0x8c, 0xff),
+Color3.fromRGB(0xff, 0xe6, 0x3a), Color3.fromRGB(0x55, 0xff, 0x46),
+Color3.fromRGB(0xe6, 0x4d, 0xff), Color3.fromRGB(0xff, 0xff, 0xf0),
 }
 for level = 1, 8 do
 local y = 5.4 + (level - 1) * 1.45
 local radius = 5.0 - (level - 1) * 0.52
-local count = math.max(5, 13 - level)
+local count = math.max(5, 0xd - level)
 for j = 1, count do
 local angle = j * (2 * math.pi / count) + level * 0.55
 local pos = base + Vector3.new(math.cos(angle) * radius * 0.94, y, math.sin(angle) * radius * 0.94)
@@ -5602,7 +5602,7 @@ glow.Shadows = false
 glow.Parent = bulb
 end
 end
-local lO0OO0llIOl101lI0814925 = part("\084\114\101\101\084\111\112\076\105\103\104\116", Vector3.new(0.9, 0.9, 0.9), CFrame.new(base + Vector3.new(0, 17.1, 0)), Color3.fromRGB(255, 242, 125), Enum.Material.SmoothPlastic, l0lI1I1Ol11l0IlOl808192)
+local lO0OO0llIOl101lI0814925 = part("\084\114\101\101\084\111\112\076\105\103\104\116", Vector3.new(0.9, 0.9, 0.9), CFrame.new(base + Vector3.new(0, 17.1, 0)), Color3.fromRGB(0xff, 0xf2, 0x7d), Enum.Material.SmoothPlastic, l0lI1I1Ol11l0IlOl808192)
 lO0OO0llIOl101lI0814925.Shape = Enum.PartType.Ball
 lO0OO0llIOl101lI0814925.CanCollide = false
 lO0OO0llIOl101lI0814925.CastShadow = false
@@ -5623,9 +5623,9 @@ stringLightsModel = Instance.new("\077\111\100\101\108")
 stringLightsModel.Name = "\076\111\099\097\108\067\104\114\105\115\116\109\097\115\083\116\114\105\110\103\076\105\103\104\116\115"
 stringLightsModel.Parent = Workspace
 local palette = {
-Color3.fromRGB(255,55,65), Color3.fromRGB(50,225,80),
-Color3.fromRGB(40,170,255), Color3.fromRGB(255,225,65),
-Color3.fromRGB(240,75,255), Color3.fromRGB(255,245,225),
+Color3.fromRGB(0xff,0x37,0x41), Color3.fromRGB(0x32,0xe1,0x50),
+Color3.fromRGB(0x28,0xaa,0xff), Color3.fromRGB(0xff,0xe1,0x41),
+Color3.fromRGB(0xf0,0x4b,0xff), Color3.fromRGB(0xff,0xf5,0xe1),
 }
 local function addColoredGlow(bulb)
 bulb.Material = Enum.Material.Neon
@@ -5660,7 +5660,7 @@ local wire = Instance.new("\080\097\114\116")
 wire.Name = "\067\104\114\105\115\116\109\097\115\083\116\114\105\110\103\087\105\114\101"
 wire.Size = Vector3.new(0.065, 0.065, d.Magnitude)
 wire.CFrame = CFrame.lookAt((a + b) / 2, b)
-wire.Color = Color3.fromRGB(20, 43, 24)
+wire.Color = Color3.fromRGB(0x14, 0x2b, 0x18)
 wire.Material = Enum.Material.SmoothPlastic
 wire.Anchored = true
 wire.CanCollide = false
@@ -5683,7 +5683,7 @@ end
 local candidates = {}
 for _, obj in ipairs(Workspace:GetDescendants()) do
 if obj:IsA("\066\097\115\101\080\097\114\116") and obj.Anchored and obj.Transparency < 0.65
-and obj.Size.X >= 18 and obj.Size.Z >= 18 and obj.Size.Y <= 12
+and obj.Size.X >= 0x12 and obj.Size.Z >= 0x12 and obj.Size.Y <= 0xc
 and math.abs(obj.CFrame.UpVector.Y) > 0.94
 and not obj:IsDescendantOf(stringLightsModel)
 and not (model and obj:IsDescendantOf(model))
@@ -5691,7 +5691,7 @@ and not (treeModel and obj:IsDescendantOf(treeModel)) then
 local name = obj.Name:lower()
 local lOOlIlI1IOlII1IlO637519 = name:find("\099\101\105\108") or name:find("\114\111\111\102") or name:find("\116\111\112")
 local lIl1OI101O1O1OOlO165332 = obj.Position.Y - obj.Size.Y / 2
-if (lOOlIlI1IOlII1IlO637519 or (lIl1OI101O1O1OOlO165332 > 104 and lIl1OI101O1O1OOlO165332 < 165)) and obj.Size.X < 300 and obj.Size.Z < 300 then
+if (lOOlIlI1IOlII1IlO637519 or (lIl1OI101O1O1OOlO165332 > 0x68 and lIl1OI101O1O1OOlO165332 < 0xa5)) and obj.Size.X < 0x12c and obj.Size.Z < 0x12c then
 table.insert(candidates, obj)
 end
 end
@@ -5699,7 +5699,7 @@ end
 table.sort(candidates, function(a,b) return a.Size.X * a.Size.Z > b.Size.X * b.Size.Z end)
 local decorated = 0
 for _, ceiling in ipairs(candidates) do
-if decorated >= 28 then break end
+if decorated >= 0x1c then break end
 local cf = ceiling.CFrame
 local y = -ceiling.Size.Y / 2 - 0.45
 local x = ceiling.Size.X / 2 - 0.7
@@ -5711,16 +5711,16 @@ cf:PointToWorldSpace(Vector3.new(x,y,z)),
 cf:PointToWorldSpace(Vector3.new(-x,y,z)),
 }
 for i = 1, 4 do
-stringBetween(l1O11Ol0l001O1100204684[i], l1O11Ol0l001O1100204684[i % 4 + 1], decorated * 11 + i * 5)
+stringBetween(l1O11Ol0l001O1100204684[i], l1O11Ol0l001O1100204684[i % 4 + 1], decorated * 0xb + i * 5)
 end
 decorated = decorated + 1
 end
 local yard = {
-Vector3.new(736, 111, 2422), Vector3.new(768, 111, 2422),
-Vector3.new(768, 111, 2473), Vector3.new(736, 111, 2473),
+Vector3.new(0x2e0, 0x6f, 0x976), Vector3.new(0x300, 0x6f, 0x976),
+Vector3.new(0x300, 0x6f, 0x9a9), Vector3.new(0x2e0, 0x6f, 0x9a9),
 }
 for i = 1, 4 do
-stringBetween(yard[i], yard[i % 4 + 1], 100 + i * 7)
+stringBetween(yard[i], yard[i % 4 + 1], 0x64 + i * 7)
 end
 end
 local snowmanModel
@@ -5738,9 +5738,9 @@ if model then table.insert(ignore, model) end
 if treeModel then table.insert(ignore, treeModel) end
 params.FilterDescendantsInstances = ignore
 params.IgnoreWater = true
-local l0O1l00Ol1IOO00Il401065 = 98
-for _ = 1, 25 do
-local hit = Workspace:Raycast(Vector3.new(x, 101, z), Vector3.new(0, -100, 0), params)
+local l0O1l00Ol1IOO00Il401065 = 0x62
+for _ = 1, 0x19 do
+local hit = Workspace:Raycast(Vector3.new(x, 0x65, z), Vector3.new(0, -0x64, 0), params)
 if not hit then break end
 if hit.Normal.Y > 0.65 and (hit.Instance:IsA("\084\101\114\114\097\105\110") or
 (hit.Instance:IsA("\066\097\115\101\080\097\114\116") and hit.Instance.CanCollide and hit.Instance.Transparency < 0.9)) then
@@ -5751,8 +5751,8 @@ table.insert(ignore, hit.Instance)
 params.FilterDescendantsInstances = ignore
 end
 local base = Vector3.new(x, l0O1l00Ol1IOO00Il401065, z)
-local l0Ol1ll0O001IlIOO627109 = Color3.fromRGB(239, 245, 248)
-local coal = Color3.fromRGB(22, 24, 28)
+local l0Ol1ll0O001IlIOO627109 = Color3.fromRGB(0xef, 0xf5, 0xf8)
+local coal = Color3.fromRGB(0x16, 0x18, 0x1c)
 local function ball(name, pos, size, color, l110O1O1OIlI0O1Ol460288)
 local p = part(name, size, CFrame.new(base + pos), color, l110O1O1OIlI0O1Ol460288 or Enum.Material.Snow, snowmanModel)
 p.Shape = Enum.PartType.Ball
@@ -5764,7 +5764,7 @@ ball("\077\105\100\100\108\101\083\110\111\119\098\097\108\108", Vector3.new(0, 
 ball("\072\101\097\100\083\110\111\119\098\097\108\108", Vector3.new(0, 6.22, 0), Vector3.new(2.15, 2.15, 2.15), l0Ol1ll0O001IlIOO627109)
 ball("\076\101\102\116\067\111\097\108\069\121\101", Vector3.new(-0.42, 6.46, 0.94), Vector3.new(0.26, 0.26, 0.26), coal, Enum.Material.SmoothPlastic)
 ball("\082\105\103\104\116\067\111\097\108\069\121\101", Vector3.new(0.42, 6.46, 0.94), Vector3.new(0.26, 0.26, 0.26), coal, Enum.Material.SmoothPlastic)
-local nose = part("\067\097\114\114\111\116\078\111\115\101", Vector3.new(0.38, 0.38, 1.18), CFrame.new(base + Vector3.new(0, 6.12, 1.38)), Color3.fromRGB(255, 115, 20), Enum.Material.SmoothPlastic, snowmanModel)
+local nose = part("\067\097\114\114\111\116\078\111\115\101", Vector3.new(0.38, 0.38, 1.18), CFrame.new(base + Vector3.new(0, 6.12, 1.38)), Color3.fromRGB(0xff, 0x73, 0x14), Enum.Material.SmoothPlastic, snowmanModel)
 nose.CanCollide = false
 for i = -2, 2 do
 ball("\083\109\105\108\101\067\111\097\108" .. i, Vector3.new(i * 0.22, 5.73 + 0.065 * i * i, 0.91), Vector3.new(0.15, 0.15, 0.15), coal, Enum.Material.SmoothPlastic)
@@ -5774,12 +5774,12 @@ ball("\067\111\097\116\066\117\116\116\111\110" .. i, Vector3.new(0, y, 1.36), V
 end
 part("\072\097\116\066\114\105\109", Vector3.new(2.45, 0.22, 2.45), CFrame.new(base + Vector3.new(0, 7.25, 0)), coal, Enum.Material.SmoothPlastic, snowmanModel).CanCollide = false
 part("\072\097\116\067\114\111\119\110", Vector3.new(1.6, 1.25, 1.6), CFrame.new(base + Vector3.new(0, 7.93, 0)), coal, Enum.Material.SmoothPlastic, snowmanModel).CanCollide = false
-part("\072\097\116\082\101\100\066\097\110\100", Vector3.new(1.66, 0.24, 1.66), CFrame.new(base + Vector3.new(0, 7.48, 0)), Color3.fromRGB(188, 35, 42), Enum.Material.Fabric, snowmanModel).CanCollide = false
+part("\072\097\116\082\101\100\066\097\110\100", Vector3.new(1.66, 0.24, 1.66), CFrame.new(base + Vector3.new(0, 7.48, 0)), Color3.fromRGB(0xbc, 0x23, 0x2a), Enum.Material.Fabric, snowmanModel).CanCollide = false
 for _, side in ipairs({-1, 1}) do
 local ll0l1OlIIOOIlO0II735891 = base + Vector3.new(side * 1.12, 4.55, 0)
 local l0OIl00I01IO1lIlO305361 = base + Vector3.new(side * 3.1, 5.55, 0)
 local lOOl00I0IlOI1I0lO407899 = (ll0l1OlIIOOIlO0II735891 + l0OIl00I01IO1lIlO305361) / 2
-local arm = part("\084\119\105\103\065\114\109", Vector3.new(0.23, (l0OIl00I01IO1lIlO305361-ll0l1OlIIOOIlO0II735891).Magnitude, 0.23), CFrame.lookAt(lOOl00I0IlOI1I0lO407899, l0OIl00I01IO1lIlO305361) * CFrame.Angles(math.rad(90), 0, 0), Color3.fromRGB(98, 62, 36), Enum.Material.Wood, snowmanModel)
+local arm = part("\084\119\105\103\065\114\109", Vector3.new(0.23, (l0OIl00I01IO1lIlO305361-ll0l1OlIIOOIlO0II735891).Magnitude, 0.23), CFrame.lookAt(lOOl00I0IlOI1I0lO407899, l0OIl00I01IO1lIlO305361) * CFrame.Angles(math.rad(0x5a), 0, 0), Color3.fromRGB(0x62, 0x3e, 0x24), Enum.Material.Wood, snowmanModel)
 arm.CanCollide = false
 end
 local l100Ol1lIOlOIOO00750431 = Vector3.new(753.22, base.Y, 2460.33)
@@ -5800,9 +5800,9 @@ wallDecorModel = Instance.new("\077\111\100\101\108")
 wallDecorModel.Name = "\076\111\099\097\108\067\104\114\105\115\116\109\097\115\087\097\108\108\068\101\099\111\114\097\116\105\111\110\115"
 wallDecorModel.Parent = Workspace
 local root = wallDecorModel
-local red = Color3.fromRGB(205, 32, 46)
-local gold = Color3.fromRGB(244, 194, 57)
-local lI1l01lI1O00Ol111392857 = {Color3.fromRGB(17, 90, 38), Color3.fromRGB(25, 113, 48), Color3.fromRGB(12, 72, 32)}
+local red = Color3.fromRGB(0xcd, 0x20, 0x2e)
+local gold = Color3.fromRGB(0xf4, 0xc2, 0x39)
+local lI1l01lI1O00Ol111392857 = {Color3.fromRGB(0x11, 0x5a, 0x26), Color3.fromRGB(0x19, 0x71, 0x30), Color3.fromRGB(0xc, 0x48, 0x20)}
 local function decorPart(name, size, cf, color, shape, l110O1O1OIlI0O1Ol460288)
 local p = Instance.new("\080\097\114\116")
 p.Name = name
@@ -5820,13 +5820,13 @@ p.Parent = root
 return p
 end
 local function wreath(faceCF, radius)
-local count = 14
+local count = 0xe
 for i = 1, count do
 local a = (i - 1) * math.pi * 2 / count
 local pos = Vector3.new(math.cos(a) * radius, math.sin(a) * radius, 0)
 decorPart("\087\114\101\097\116\104\069\118\101\114\103\114\101\101\110", Vector3.new(0.58, 0.58, 0.58), faceCF * CFrame.new(pos), lI1l01lI1O00Ol111392857[i % #lI1l01lI1O00Ol111392857 + 1], Enum.PartType.Ball)
 end
-for _, i in ipairs({2, 6, 10}) do
+for _, i in ipairs({2, 6, 0xa}) do
 local a = (i - 1) * math.pi * 2 / count
 decorPart("\087\114\101\097\116\104\066\101\114\114\121", Vector3.new(0.23, 0.23, 0.23), faceCF * CFrame.new(math.cos(a)*radius, math.sin(a)*radius, 0.37), red, Enum.PartType.Ball, Enum.Material.Neon)
 end
@@ -5836,7 +5836,7 @@ decorPart("\087\114\101\097\116\104\066\111\119\076\111\111\112", Vector3.new(0.
 end
 end
 local function garland(faceCF, halfWidth, topY, seed)
-local length = math.min(halfWidth * 2 - 1.2, 28)
+local length = math.min(halfWidth * 2 - 1.2, 0x1c)
 if length < 5 then return end
 local lI0IllOlIl0l10I1l830025 = math.max(8, math.floor(length / 0.8))
 for i = 0, lI0IllOlIl0l10I1l830025 do
@@ -5866,7 +5866,7 @@ end
 local candidates = {}
 for _, obj in ipairs(Workspace:GetDescendants()) do
 if obj:IsA("\066\097\115\101\080\097\114\116") and obj.Anchored and obj.Transparency < 0.45
-and obj.Size.Y >= 6 and obj.Size.Y <= 90
+and obj.Size.Y >= 6 and obj.Size.Y <= 0x5a
 and math.abs(obj.CFrame.UpVector.Y) > 0.9
 and not obj:FindFirstAncestor("\076\111\099\097\108\067\104\114\105\115\116\109\097\115\084\114\101\101")
 and not obj:FindFirstAncestor("\076\111\099\097\108\067\104\114\105\115\116\109\097\115\084\114\101\101\083\101\099\111\110\100")
@@ -5888,7 +5888,7 @@ end
 table.sort(candidates, function(a,b) return a.wide > b.wide end)
 local decorated = 0
 for _, entry in ipairs(candidates) do
-if not enabled or generation ~= l0lIll10100l0l1OO732802 or decorated >= 180 then break end
+if not enabled or generation ~= l0lIll10100l0l1OO732802 or decorated >= 0xb4 then break end
 local wall = entry.part
 if wall.Parent then
 local cf = wall.CFrame
@@ -5913,7 +5913,7 @@ wreath(lOOIO1OOO0I000OIO210658 * CFrame.new(0,math.min(1,wall.Size.Y*0.07),0), 1
 end
 bow(lOOIO1OOO0I000OIO210658 * CFrame.new(0,topY-0.4,0.35))
 if lI10I11l01IOI01Ol301901 >= 5 then
-local palette = {red,gold,Color3.fromRGB(45,160,255),Color3.fromRGB(65,210,95)}
+local palette = {red,gold,Color3.fromRGB(0x2d,0xa0,0xff),Color3.fromRGB(0x41,0xd2,0x5f)}
 ornament(lOOIO1OOO0I000OIO210658 * CFrame.new(-lI10I11l01IOI01Ol301901*0.26,topY-0.5,0.5),palette[(section+decorated)%4+1],0.65)
 ornament(lOOIO1OOO0I000OIO210658 * CFrame.new(lI10I11l01IOI01Ol301901*0.26,topY-0.5,0.5),palette[(section+decorated+2)%4+1],1.0)
 end
@@ -5946,8 +5946,8 @@ if wallDecorModel then table.insert(ignore, wallDecorModel) end
 params.FilterDescendantsInstances = ignore
 params.IgnoreWater = true
 for index, floor in ipairs(Workspace:GetDescendants()) do
-if not enabled or generation ~= l0lIll10100l0l1OO732802 or created >= 135 then break end
-if index % 120 == 0 then task.wait() end
+if not enabled or generation ~= l0lIll10100l0l1OO732802 or created >= 0x87 then break end
+if index % 0x78 == 0 then task.wait() end
 if floor:IsA("\066\097\115\101\080\097\114\116") and floor.Anchored and floor.CanCollide and floor.Transparency < 0.45
 and floor.Size.X >= 7 and floor.Size.Z >= 7 and floor.Size.Y <= 8
 and floor.CFrame.UpVector.Y > 0.94
@@ -5968,13 +5968,13 @@ or name:find("\098\097\115\101\112\108\097\116\101") or name:find("\116\101\114\
 if not snow and not llO0111IOIllIOO11431149 then
 local top = floor.Position + floor.CFrame.UpVector * (floor.Size.Y * 0.5)
 params.FilterDescendantsInstances = ignore
-local hit = Workspace:Raycast(top + Vector3.new(0, 0.6, 0), Vector3.new(0, 32, 0), params)
+local hit = Workspace:Raycast(top + Vector3.new(0, 0.6, 0), Vector3.new(0, 0x20, 0), params)
 if hit and hit.Instance ~= floor and hit.Position.Y > top.Y + 3 then
-local key = math.floor(top.X / 12) .. "\058" .. math.floor(top.Z / 12) .. "\058" .. math.floor(top.Y / 8)
+local key = math.floor(top.X / 0xc) .. "\058" .. math.floor(top.Z / 0xc) .. "\058" .. math.floor(top.Y / 8)
 if not seen[key] then
 seen[key] = true
 local width = math.min(floor.Size.X - 1, 7)
-local length = math.min(floor.Size.Z - 1, 24)
+local length = math.min(floor.Size.Z - 1, 0x18)
 if width >= 3 and length >= 4 then
 local lO11O101l10Ol10O0706901 = Instance.new("\080\097\114\116")
 lO11O101l10Ol10O0706901.Name = "\067\104\114\105\115\116\109\097\115\082\101\100\067\097\114\112\101\116"
@@ -5984,7 +5984,7 @@ lO11O101l10Ol10O0706901.CanTouch = false
 lO11O101l10Ol10O0706901.CanQuery = false
 lO11O101l10Ol10O0706901.CastShadow = false
 lO11O101l10Ol10O0706901.Material = Enum.Material.Fabric
-lO11O101l10Ol10O0706901.Color = Color3.fromRGB(156, 18, 31)
+lO11O101l10Ol10O0706901.Color = Color3.fromRGB(0x9c, 0x12, 0x1f)
 lO11O101l10Ol10O0706901.Size = Vector3.new(width, 0.065, length)
 lO11O101l10Ol10O0706901.CFrame = floor.CFrame * CFrame.new(0, floor.Size.Y * 0.5 + 0.038, 0)
 lO11O101l10Ol10O0706901.Parent = carpetModel
@@ -5997,7 +5997,7 @@ trim.CanTouch = false
 trim.CanQuery = false
 trim.CastShadow = false
 trim.Material = Enum.Material.Fabric
-trim.Color = Color3.fromRGB(197, 145, 55)
+trim.Color = Color3.fromRGB(0xc5, 0x91, 0x37)
 trim.Size = Vector3.new(0.11, 0.012, length)
 trim.CFrame = lO11O101l10Ol10O0706901.CFrame * CFrame.new(side * (width / 2 - 0.15), 0.04, 0)
 trim.Parent = carpetModel
@@ -6025,9 +6025,9 @@ lIll000OOlIO01IOI320282.Name = "\080\076\067\104\114\105\115\116\109\097\115\083
 lIll000OOlIO01IOI320282.Parent = Workspace
 table.insert(lOlIOOll1OllI10Il410423, lIll000OOlIO01IOI320282)
 local l0O000011I0O1l01I355253 = {
-{name="\067\108\111\115\101\070\108\117\114\114\105\101\115", width=34, height=4, depth=13, rate=260, size=0.30, fall=5},
-{name="\077\105\100\070\108\117\114\114\105\101\115", width=78, height=13, depth=15, rate=450, size=0.25, fall=6},
-{name="\087\105\100\101\083\110\111\119", width=145, height=25, depth=12, rate=700, size=0.22, fall=7},
+{name="\067\108\111\115\101\070\108\117\114\114\105\101\115", width=0x22, height=4, depth=0xd, rate=0x104, size=0.30, fall=5},
+{name="\077\105\100\070\108\117\114\114\105\101\115", width=0x4e, height=0xd, depth=0xf, rate=0x1c2, size=0.25, fall=6},
+{name="\087\105\100\101\083\110\111\119", width=0x91, height=0x19, depth=0xc, rate=0x2bc, size=0.22, fall=7},
 }
 local lO00100Ol000111l0156241 = {}
 for _, layer in ipairs(l0O000011I0O1l01I355253) do
@@ -6043,7 +6043,7 @@ l0OOlll1II1IIO0ll809679.Parent = lIll000OOlIO01IOI320282
 local emitter = Instance.new("\080\097\114\116\105\099\108\101\069\109\105\116\116\101\114")
 emitter.Name = "\086\105\115\105\098\108\101\070\097\108\108\105\110\103\083\110\111\119"
 emitter.Texture = "\114\098\120\097\115\115\101\116\058\047\047\116\101\120\116\117\114\101\115\047\112\097\114\116\105\099\108\101\115\047\115\112\097\114\107\108\101\115\095\109\097\105\110\046\100\100\115"
-emitter.Color = ColorSequence.new(Color3.fromRGB(247, 250, 255))
+emitter.Color = ColorSequence.new(Color3.fromRGB(0xf7, 0xfa, 0xff))
 emitter.Size = NumberSequence.new(layer.size)
 emitter.Transparency = NumberSequence.new({
 NumberSequenceKeypoint.new(0, 0.08),
@@ -6077,7 +6077,7 @@ end
 end
 followSnowCamera()
 for _, item in ipairs(lO00100Ol000111l0156241) do
-item.emitter:Emit(160)
+item.emitter:Emit(0xa0)
 end
 table.insert(connections, RunService.RenderStepped:Connect(followSnowCamera))
 local ok, err = pcall(makeFire)
@@ -6112,7 +6112,7 @@ for _, part in ipairs(Workspace:GetDescendants()) do
 if not enabled or generation ~= l0lIll10100l0l1OO732802 then break end
 pcall(paint, part)
 count = count + 1
-if count % 100 == 0 then task.wait() end
+if count % 0x64 == 0 then task.wait() end
 end
 end)
 table.insert(connections, Workspace.DescendantAdded:Connect(function(part)
@@ -6152,20 +6152,20 @@ end
 local l11IOIlIl111OlI10987961 = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 l11IOIlIl111OlI10987961.Name = "\086\097\112\101\084\111\103\103\108\101"
 l11IOIlIl111OlI10987961.Parent = page
-l11IOIlIl111OlI10987961.Position = UDim2.fromOffset(8, 179)
-l11IOIlIl111OlI10987961.Size = UDim2.new(1, -16, 0, 20)
-l11IOIlIl111OlI10987961.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+l11IOIlIl111OlI10987961.Position = UDim2.fromOffset(8, 0xb3)
+l11IOIlIl111OlI10987961.Size = UDim2.new(1, -0x10, 0, 0x14)
+l11IOIlIl111OlI10987961.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 l11IOIlIl111OlI10987961.BackgroundTransparency = 0.82
 l11IOIlIl111OlI10987961.BorderSizePixel = 0
 l11IOIlIl111OlI10987961.AutoButtonColor = false
 l11IOIlIl111OlI10987961.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-l11IOIlIl111OlI10987961.TextColor3 = Color3.fromRGB(1, 244, 253)
-l11IOIlIl111OlI10987961.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+l11IOIlIl111OlI10987961.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+l11IOIlIl111OlI10987961.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 l11IOIlIl111OlI10987961.TextStrokeTransparency = 0.28
 l11IOIlIl111OlI10987961.TextXAlignment = Enum.TextXAlignment.Left
-l11IOIlIl111OlI10987961.TextSize = 13
+l11IOIlIl111OlI10987961.TextSize = 0xd
 l11IOIlIl111OlI10987961.Text = "\086\097\112\101\058\032\079\070\070"
-l11IOIlIl111OlI10987961.ZIndex = 33
+l11IOIlIl111OlI10987961.ZIndex = 0x21
 attachHover(l11IOIlIl111OlI10987961)
 do
 local Players = game:GetService("\080\108\097\121\101\114\115")
@@ -6193,11 +6193,11 @@ if prop then prop:Destroy(); prop = nil end
 if smokeAttachment then smokeAttachment:Destroy(); smokeAttachment = nil end
 end
 local function createVape(character, id)
-local humanoid = character:WaitForChild("\072\117\109\097\110\111\105\100", 12)
+local humanoid = character:WaitForChild("\072\117\109\097\110\111\105\100", 0xc)
 if not humanoid or not active or cycleId ~= id then return end
 local l01IOI11l1I0II11O323990 = humanoid.RigType == Enum.HumanoidRigType.R15 and "\082\105\103\104\116\072\097\110\100" or "\082\105\103\104\116\032\065\114\109"
-local hand = character:WaitForChild(l01IOI11l1I0II11O323990, 12)
-local head = character:WaitForChild("\072\101\097\100", 12)
+local hand = character:WaitForChild(l01IOI11l1I0II11O323990, 0xc)
+local head = character:WaitForChild("\072\101\097\100", 0xc)
 if not hand or not head or humanoid.Health <= 0 or not active or cycleId ~= id then return end
 local torso = character:FindFirstChild("\085\112\112\101\114\084\111\114\115\111") or character:FindFirstChild("\084\111\114\115\111")
 shoulder = torso and (torso:FindFirstChild("\082\105\103\104\116\083\104\111\117\108\100\101\114") or torso:FindFirstChild("\082\105\103\104\116\032\083\104\111\117\108\100\101\114"))
@@ -6208,21 +6208,21 @@ prop.Parent = character
 local body = Instance.new("\080\097\114\116")
 body.Name = "\086\097\112\101\066\111\100\121"
 body.Size = Vector3.new(.24, .85, .24)
-body.Color = Color3.fromRGB(27, 29, 35)
+body.Color = Color3.fromRGB(0x1b, 0x1d, 0x23)
 body.Material = Enum.Material.SmoothPlastic
 body.CanCollide = false
 body.CanTouch = false
 body.Massless = true
 local offset = humanoid.RigType == Enum.HumanoidRigType.R15
-and CFrame.new(0, -.16, -.35) * CFrame.Angles(math.rad(90), 0, 0)
-or CFrame.new(0, -.75, -.55) * CFrame.Angles(math.rad(90), 0, 0)
+and CFrame.new(0, -.16, -.35) * CFrame.Angles(math.rad(0x5a), 0, 0)
+or CFrame.new(0, -.75, -.55) * CFrame.Angles(math.rad(0x5a), 0, 0)
 body.CFrame = hand.CFrame * offset
 body.Parent = prop
 local weld = Instance.new("\087\101\108\100\067\111\110\115\116\114\097\105\110\116")
 weld.Part0 = hand; weld.Part1 = body; weld.Parent = body
 local tip = Instance.new("\080\097\114\116")
 tip.Name = "\077\111\117\116\104\112\105\101\099\101"; tip.Size = Vector3.new(.15, .22, .15)
-tip.Material = Enum.Material.Metal; tip.Color = Color3.fromRGB(160, 166, 173)
+tip.Material = Enum.Material.Metal; tip.Color = Color3.fromRGB(0xa0, 0xa6, 0xad)
 tip.CanCollide = false; tip.CanTouch = false; tip.Massless = true
 tip.CFrame = body.CFrame * CFrame.new(0, .51, 0); tip.Parent = prop
 local lIIl1IlO1llllI0II905928 = Instance.new("\087\101\108\100\067\111\110\115\116\114\097\105\110\116")
@@ -6230,7 +6230,7 @@ lIIl1IlO1llllI0II905928.Part0 = body; lIIl1IlO1llllI0II905928.Part1 = tip; lIIl1
 local led = Instance.new("\080\097\114\116")
 led.Name = "\076\069\068"; led.Shape = Enum.PartType.Ball
 led.Size = Vector3.new(.13, .13, .13)
-led.Material = Enum.Material.Neon; led.Color = Color3.fromRGB(70, 175, 255)
+led.Material = Enum.Material.Neon; led.Color = Color3.fromRGB(0x46, 0xaf, 0xff)
 led.CanCollide = false; led.CanTouch = false; led.Massless = true
 led.CFrame = body.CFrame * CFrame.new(0, -.28, -.125); led.Parent = prop
 local lI0IlI11ll110I10O723686 = Instance.new("\087\101\108\100\067\111\110\115\116\114\097\105\110\116")
@@ -6242,7 +6242,7 @@ smokeAttachment.Parent = head
 local smoke = Instance.new("\080\097\114\116\105\099\108\101\069\109\105\116\116\101\114")
 smoke.Name = "\086\097\112\101\069\120\104\097\108\101"
 smoke.Texture = "\114\098\120\097\115\115\101\116\058\047\047\116\101\120\116\117\114\101\115\047\112\097\114\116\105\099\108\101\115\047\115\109\111\107\101\095\109\097\105\110\046\100\100\115"
-smoke.Color = ColorSequence.new(Color3.fromRGB(230, 235, 240))
+smoke.Color = ColorSequence.new(Color3.fromRGB(0xe6, 0xeb, 0xf0))
 smoke.Transparency = NumberSequence.new({
 NumberSequenceKeypoint.new(0, .38), NumberSequenceKeypoint.new(.4, .55), NumberSequenceKeypoint.new(1, 1)
 })
@@ -6251,7 +6251,7 @@ NumberSequenceKeypoint.new(0, .4), NumberSequenceKeypoint.new(.5, 1.2), NumberSe
 })
 smoke.Lifetime = NumberRange.new(1.2, 2.2)
 smoke.Speed = NumberRange.new(1.5, 3)
-smoke.SpreadAngle = Vector2.new(24, 24)
+smoke.SpreadAngle = Vector2.new(0x18, 0x18)
 smoke.Acceleration = Vector3.new(0, 1.5, 0)
 smoke.Rate = 0
 smoke.Parent = smokeAttachment
@@ -6274,13 +6274,13 @@ local smoke = createVape(character, id)
 if not smoke then return end
 while active and cycleId == id and player.Character == character and character.Parent do
 if shoulder and shoulder.Parent and originalC0 then
-local target = originalC0 * CFrame.Angles(math.rad(-75), math.rad(5), math.rad(20))
+local target = originalC0 * CFrame.Angles(math.rad(-0x4b), math.rad(5), math.rad(0x14))
 if not playArmTween(id, target, .5) then break end
 else task.wait(.5) end
 if not active or cycleId ~= id then break end
 task.wait(.65)
 if not active or cycleId ~= id then break end
-if smoke.Parent then smoke:Emit(32) end
+if smoke.Parent then smoke:Emit(0x20) end
 if shoulder and shoulder.Parent and originalC0 then
 if not playArmTween(id, originalC0, .65) then break end
 else task.wait(.65) end
@@ -6331,9 +6331,9 @@ end
 glitchLayer = Frame:FindFirstChild("\074\105\103\103\121\071\108\105\116\099\104\066\097\099\107\103\114\111\117\110\100\095\069\068\073\084\095\072\069\082\069")
 if glitchLayer then
 glitchLayer.Parent = page
-glitchLayer.ZIndex = 31
+glitchLayer.ZIndex = 0x1f
 for _, part in ipairs(glitchLayer:GetDescendants()) do
-if part:IsA("\071\117\105\079\098\106\101\099\116") then part.ZIndex = 31 end
+if part:IsA("\071\117\105\079\098\106\101\099\116") then part.ZIndex = 0x1f end
 end
 end
 page.Visible = true
@@ -6359,72 +6359,72 @@ local TweenService = game:GetService("\084\119\101\101\110\083\101\114\118\105\0
 local lOOIIOIII1l0lO1lO552906 = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 lOOIIOIII1l0lO1lO552906.Name = "\086\105\115\105\111\110\115\066\117\116\116\111\110"
 lOOIIOIII1l0lO1lO552906.Parent = Frame
-lOOIIOIII1l0lO1lO552906.Position = UDim2.fromOffset(8, 189)
-lOOIIOIII1l0lO1lO552906.Size = UDim2.new(1, -16, 0, 20)
-lOOIIOIII1l0lO1lO552906.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+lOOIIOIII1l0lO1lO552906.Position = UDim2.fromOffset(8, 0xbd)
+lOOIIOIII1l0lO1lO552906.Size = UDim2.new(1, -0x10, 0, 0x14)
+lOOIIOIII1l0lO1lO552906.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 lOOIIOIII1l0lO1lO552906.BackgroundTransparency = 0.82
 lOOIIOIII1l0lO1lO552906.BorderSizePixel = 0
 lOOIIOIII1l0lO1lO552906.AutoButtonColor = false
 lOOIIOIII1l0lO1lO552906.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-lOOIIOIII1l0lO1lO552906.TextColor3 = Color3.fromRGB(1, 244, 253)
-lOOIIOIII1l0lO1lO552906.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+lOOIIOIII1l0lO1lO552906.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+lOOIIOIII1l0lO1lO552906.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 lOOIIOIII1l0lO1lO552906.TextStrokeTransparency = 0.28
 lOOIIOIII1l0lO1lO552906.TextXAlignment = Enum.TextXAlignment.Left
-lOOIIOIII1l0lO1lO552906.TextSize = 13
+lOOIIOIII1l0lO1lO552906.TextSize = 0xd
 lOOIIOIII1l0lO1lO552906.Text = "\086\105\115\105\111\110\115"
 lOOIIOIII1l0lO1lO552906.ZIndex = 5
 local page = Instance.new("\070\114\097\109\101")
 page.Name = "\086\105\115\105\111\110\115\080\097\103\101"
 page.Parent = Frame
 page.Size = UDim2.fromScale(1, 1)
-page.BackgroundColor3 = Color3.fromRGB(12, 9, 22)
+page.BackgroundColor3 = Color3.fromRGB(0xc, 9, 0x16)
 page.BorderSizePixel = 0
 page.ClipsDescendants = true
 page.Visible = false
-page.ZIndex = 30
+page.ZIndex = 0x1e
 local heading = Instance.new("\084\101\120\116\076\097\098\101\108")
 heading.Name = "\086\105\115\105\111\110\115\072\101\097\100\105\110\103"
 heading.Parent = page
-heading.Position = UDim2.fromOffset(3, 18)
-heading.Size = UDim2.new(1, -85, 0, 32)
+heading.Position = UDim2.fromOffset(3, 0x12)
+heading.Size = UDim2.new(1, -0x55, 0, 0x20)
 heading.BackgroundTransparency = 1
 heading.Text = "\086\105\115\105\111\110\115"
 heading.Font = Enum.Font.Arcade
-heading.TextSize = 27
-heading.TextColor3 = Color3.fromRGB(245, 244, 255)
-heading.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+heading.TextSize = 0x1b
+heading.TextColor3 = Color3.fromRGB(0xf5, 0xf4, 0xff)
+heading.TextStrokeColor3 = Color3.fromRGB(0x40, 0x28, 0x7d)
 heading.TextStrokeTransparency = 0.25
 heading.TextXAlignment = Enum.TextXAlignment.Left
-heading.ZIndex = 33
+heading.ZIndex = 0x21
 local byline = Instance.new("\084\101\120\116\076\097\098\101\108")
 byline.Name = "\086\105\115\105\111\110\115\066\121\108\105\110\101"
 byline.Parent = page
-byline.Position = UDim2.fromOffset(3, 49)
-byline.Size = UDim2.new(1, -10, 0, 23)
+byline.Position = UDim2.fromOffset(3, 0x31)
+byline.Size = UDim2.new(1, -0xa, 0, 0x17)
 byline.BackgroundTransparency = 1
 byline.Text = "\066\121\032\064\121\048\117\110\103\100\097\114\101"
 byline.Font = Enum.Font.Arcade
-byline.TextSize = 15
-byline.TextColor3 = Color3.fromRGB(37, 28, 191)
+byline.TextSize = 0xf
+byline.TextColor3 = Color3.fromRGB(0x25, 0x1c, 0xbf)
 byline.TextXAlignment = Enum.TextXAlignment.Left
-byline.ZIndex = 33
+byline.ZIndex = 0x21
 local back = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 back.Name = "\086\105\115\105\111\110\115\066\097\099\107"
 back.Parent = page
-back.Position = UDim2.new(1, -77, 0, 14)
-back.Size = UDim2.fromOffset(65, 26)
-back.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
-back.TextColor3 = Color3.fromRGB(0, 255, 255)
+back.Position = UDim2.new(1, -0x4d, 0, 0xe)
+back.Size = UDim2.fromOffset(0x41, 0x1a)
+back.BackgroundColor3 = Color3.fromRGB(0x20, 0x14, 0x39)
+back.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 back.Font = Enum.Font.SourceSansBold
-back.TextSize = 15
+back.TextSize = 0xf
 back.Text = "\060\032\066\065\067\075"
-back.ZIndex = 34
+back.ZIndex = 0x22
 local function attachHover(button)
 local marker = Instance.new("\070\114\097\109\101")
 marker.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\077\097\114\107\101\114"
 marker.Parent = button
 marker.BorderSizePixel = 0
-marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+marker.BackgroundColor3 = Color3.fromRGB(0, 0xff, 0xff)
 marker.BackgroundTransparency = 1
 marker.Size = UDim2.new(0, 5, 1, 0)
 marker.ZIndex = button.ZIndex + 1
@@ -6432,11 +6432,11 @@ local outline = Instance.new("\085\073\083\116\114\111\107\101")
 outline.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\079\117\116\108\105\110\101"
 outline.Parent = button
 outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-outline.Color = Color3.fromRGB(174, 70, 255)
+outline.Color = Color3.fromRGB(0xae, 0x46, 0xff)
 outline.Thickness = 1.5
 outline.Transparency = 1
 local function setHover(active)
-TweenService:Create(button, TweenInfo.new(0.09), {BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or Color3.fromRGB(19, 9, 49)}):Play()
+TweenService:Create(button, TweenInfo.new(0.09), {BackgroundColor3 = active and Color3.fromRGB(0x3f, 0x18, 0x6e) or Color3.fromRGB(0x13, 9, 0x31)}):Play()
 TweenService:Create(marker, TweenInfo.new(0.09), {BackgroundTransparency = active and 0 or 1}):Play()
 TweenService:Create(outline, TweenInfo.new(0.09), {Transparency = active and 0 or 1}):Play()
 end
@@ -6447,21 +6447,21 @@ attachHover(lOOIIOIII1l0lO1lO552906)
 for index, button in ipairs({lO10IlI00IIIl01ll468457, _O0O00O1l10O0l1OI3}) do
 button.Parent = page
 button.AnchorPoint = Vector2.new(0, 0)
-button.Position = UDim2.fromOffset(8, 79 + (index - 1) * 20)
-button.Size = UDim2.new(1, -16, 0, 20)
-button.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+button.Position = UDim2.fromOffset(8, 0x4f + (index - 1) * 0x14)
+button.Size = UDim2.new(1, -0x10, 0, 0x14)
+button.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 button.BackgroundTransparency = 0.82
 button.BorderSizePixel = 0
 button.AutoButtonColor = false
 button.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-button.TextColor3 = Color3.fromRGB(1, 244, 253)
-button.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+button.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+button.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 button.TextStrokeTransparency = 0.28
 button.TextXAlignment = Enum.TextXAlignment.Left
-button.TextSize = 13
-button.ZIndex = 33
+button.TextSize = 0xd
+button.ZIndex = 0x21
 local marker = button:FindFirstChild("\074\105\103\103\121\083\101\108\101\099\116\105\111\110\077\097\114\107\101\114")
-if marker then marker.ZIndex = 34 end
+if marker then marker.ZIndex = 0x22 end
 end
 local Lighting = game:GetService("\076\105\103\104\116\105\110\103")
 local Players = game:GetService("\080\108\097\121\101\114\115")
@@ -6470,11 +6470,11 @@ local l01lIlI0OIIOI1lI0472863 = Instance.new("\083\099\114\101\101\110\071\117\1
 l01lIlI0OIIOI1lI0472863.Name = "\071\114\101\101\110\078\105\103\104\116\086\105\115\105\111\110\082\101\116\105\099\108\101"
 l01lIlI0OIIOI1lI0472863.IgnoreGuiInset = true
 l01lIlI0OIIOI1lI0472863.ResetOnSpawn = false
-l01lIlI0OIIOI1lI0472863.DisplayOrder = 1000
+l01lIlI0OIIOI1lI0472863.DisplayOrder = 0x3e8
 l01lIlI0OIIOI1lI0472863.Parent = playerGui
 local color = Instance.new("\067\111\108\111\114\067\111\114\114\101\099\116\105\111\110\069\102\102\101\099\116")
 color.Name = "\071\114\101\101\110\078\105\103\104\116\086\105\115\105\111\110\095\067\111\108\111\114"
-color.TintColor = Color3.fromRGB(90, 255, 82)
+color.TintColor = Color3.fromRGB(0x5a, 0xff, 0x52)
 color.Brightness = 0.17
 color.Contrast = 0.23
 color.Saturation = -0.28
@@ -6483,14 +6483,14 @@ color.Parent = Lighting
 local ll0l01OOlIIll1000559639 = Instance.new("\066\108\111\111\109\069\102\102\101\099\116")
 ll0l01OOlIIll1000559639.Name = "\071\114\101\101\110\078\105\103\104\116\086\105\115\105\111\110\095\066\108\111\111\109"
 ll0l01OOlIIll1000559639.Intensity = 0.42
-ll0l01OOlIIll1000559639.Size = 26
+ll0l01OOlIIll1000559639.Size = 0x1a
 ll0l01OOlIIll1000559639.Threshold = 0.75
 ll0l01OOlIIll1000559639.Enabled = false
 ll0l01OOlIIll1000559639.Parent = Lighting
 local lI10OIll0Ol100O00525853 = Instance.new("\070\114\097\109\101")
 lI10OIll0Ol100O00525853.Name = "\071\114\101\101\110\079\118\101\114\108\097\121"
 lI10OIll0Ol100O00525853.Size = UDim2.fromScale(1, 1)
-lI10OIll0Ol100O00525853.BackgroundColor3 = Color3.fromRGB(15, 130, 14)
+lI10OIll0Ol100O00525853.BackgroundColor3 = Color3.fromRGB(0xf, 0x82, 0xe)
 lI10OIll0Ol100O00525853.BackgroundTransparency = 0.87
 lI10OIll0Ol100O00525853.BorderSizePixel = 0
 lI10OIll0Ol100O00525853.Visible = false
@@ -6516,19 +6516,19 @@ NumberSequenceKeypoint.new(1, 1)
 grad.Parent = frame
 end
 edge("\076\101\102\116\083\104\097\100\101", UDim2.fromScale(0, 0), UDim2.fromScale(0.22, 1), 0)
-edge("\082\105\103\104\116\083\104\097\100\101", UDim2.fromScale(0.78, 0), UDim2.fromScale(0.22, 1), 180)
-edge("\084\111\112\083\104\097\100\101", UDim2.fromScale(0, 0), UDim2.fromScale(1, 0.18), 90)
-edge("\066\111\116\116\111\109\083\104\097\100\101", UDim2.fromScale(0, 0.82), UDim2.fromScale(1, 0.18), 270)
+edge("\082\105\103\104\116\083\104\097\100\101", UDim2.fromScale(0.78, 0), UDim2.fromScale(0.22, 1), 0xb4)
+edge("\084\111\112\083\104\097\100\101", UDim2.fromScale(0, 0), UDim2.fromScale(1, 0.18), 0x5a)
+edge("\066\111\116\116\111\109\083\104\097\100\101", UDim2.fromScale(0, 0.82), UDim2.fromScale(1, 0.18), 0x10e)
 local llII10O1OlI0000ll691152 = Instance.new("\070\114\097\109\101")
 llII10O1OlI0000ll691152.Name = "\084\097\114\103\101\116\067\117\114\115\111\114"
 llII10O1OlI0000ll691152.AnchorPoint = Vector2.new(0.5, 0.5)
 llII10O1OlI0000ll691152.Position = UDim2.fromScale(0.5, 0.5)
-llII10O1OlI0000ll691152.Size = UDim2.fromOffset(142, 142)
+llII10O1OlI0000ll691152.Size = UDim2.fromOffset(0x8e, 0x8e)
 llII10O1OlI0000ll691152.BackgroundTransparency = 1
 llII10O1OlI0000ll691152.Visible = false
-llII10O1OlI0000ll691152.ZIndex = 10
+llII10O1OlI0000ll691152.ZIndex = 0xa
 llII10O1OlI0000ll691152.Parent = l01lIlI0OIIOI1lI0472863
-local lI001I0I11OO11I10514816 = Color3.fromRGB(154, 255, 153)
+local lI001I0I11OO11I10514816 = Color3.fromRGB(0x9a, 0xff, 0x99)
 local function line(name, x, y, w, h)
 local part = Instance.new("\070\114\097\109\101")
 part.Name = name
@@ -6536,39 +6536,39 @@ part.Position = UDim2.fromOffset(x, y)
 part.Size = UDim2.fromOffset(w, h)
 part.BackgroundColor3 = lI001I0I11OO11I10514816
 part.BorderSizePixel = 0
-part.ZIndex = 11
+part.ZIndex = 0xb
 part.Parent = llII10O1OlI0000ll691152
 return part
 end
-line("\076\101\102\116\072\111\114\105\122\111\110\116\097\108", 17, 70, 30, 3)
-line("\076\101\102\116\086\101\114\116\105\099\097\108", 45, 66, 3, 10)
-line("\082\105\103\104\116\072\111\114\105\122\111\110\116\097\108", 95, 70, 30, 3)
-line("\082\105\103\104\116\086\101\114\116\105\099\097\108", 94, 66, 3, 10)
-line("\084\111\112\086\101\114\116\105\099\097\108", 70, 18, 3, 30)
-line("\084\111\112\072\111\114\105\122\111\110\116\097\108", 66, 46, 10, 3)
-line("\066\111\116\116\111\109\086\101\114\116\105\099\097\108", 70, 95, 3, 30)
-line("\066\111\116\116\111\109\072\111\114\105\122\111\110\116\097\108", 66, 94, 10, 3)
-local dot = line("\067\101\110\116\101\114\068\111\116", 69, 69, 5, 5)
+line("\076\101\102\116\072\111\114\105\122\111\110\116\097\108", 0x11, 0x46, 0x1e, 3)
+line("\076\101\102\116\086\101\114\116\105\099\097\108", 0x2d, 0x42, 3, 0xa)
+line("\082\105\103\104\116\072\111\114\105\122\111\110\116\097\108", 0x5f, 0x46, 0x1e, 3)
+line("\082\105\103\104\116\086\101\114\116\105\099\097\108", 0x5e, 0x42, 3, 0xa)
+line("\084\111\112\086\101\114\116\105\099\097\108", 0x46, 0x12, 3, 0x1e)
+line("\084\111\112\072\111\114\105\122\111\110\116\097\108", 0x42, 0x2e, 0xa, 3)
+line("\066\111\116\116\111\109\086\101\114\116\105\099\097\108", 0x46, 0x5f, 3, 0x1e)
+line("\066\111\116\116\111\109\072\111\114\105\122\111\110\116\097\108", 0x42, 0x5e, 0xa, 3)
+local dot = line("\067\101\110\116\101\114\068\111\116", 0x45, 0x45, 5, 5)
 local _OI0lOll110lOO11I45 = Instance.new("\085\073\067\111\114\110\101\114")
 _OI0lOll110lOO11I45.CornerRadius = UDim.new(1, 0)
 _OI0lOll110lOO11I45.Parent = dot
 local l0OO0I1IOO01I100I284078 = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 l0OO0I1IOO01I100I284078.Name = "\078\105\103\104\116\086\105\115\105\111\110\084\111\103\103\108\101"
 l0OO0I1IOO01I100I284078.Parent = page
-l0OO0I1IOO01I100I284078.Position = UDim2.fromOffset(8, 119)
-l0OO0I1IOO01I100I284078.Size = UDim2.new(1, -16, 0, 20)
-l0OO0I1IOO01I100I284078.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+l0OO0I1IOO01I100I284078.Position = UDim2.fromOffset(8, 0x77)
+l0OO0I1IOO01I100I284078.Size = UDim2.new(1, -0x10, 0, 0x14)
+l0OO0I1IOO01I100I284078.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 l0OO0I1IOO01I100I284078.BackgroundTransparency = 0.82
 l0OO0I1IOO01I100I284078.BorderSizePixel = 0
 l0OO0I1IOO01I100I284078.AutoButtonColor = false
 l0OO0I1IOO01I100I284078.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-l0OO0I1IOO01I100I284078.TextColor3 = Color3.fromRGB(1, 244, 253)
-l0OO0I1IOO01I100I284078.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+l0OO0I1IOO01I100I284078.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+l0OO0I1IOO01I100I284078.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 l0OO0I1IOO01I100I284078.TextStrokeTransparency = 0.28
 l0OO0I1IOO01I100I284078.TextXAlignment = Enum.TextXAlignment.Left
-l0OO0I1IOO01I100I284078.TextSize = 13
+l0OO0I1IOO01I100I284078.TextSize = 0xd
 l0OO0I1IOO01I100I284078.Text = "\078\105\103\104\116\032\086\105\115\105\111\110\058\032\079\070\070"
-l0OO0I1IOO01I100I284078.ZIndex = 33
+l0OO0I1IOO01I100I284078.ZIndex = 0x21
 attachHover(l0OO0I1IOO01I100I284078)
 local lOll0I100O1I111lI906965 = false
 l0OO0I1IOO01I100I284078.Activated:Connect(function()
@@ -6596,9 +6596,9 @@ end
 glitchLayer = Frame:FindFirstChild("\074\105\103\103\121\071\108\105\116\099\104\066\097\099\107\103\114\111\117\110\100\095\069\068\073\084\095\072\069\082\069")
 if glitchLayer then
 glitchLayer.Parent = page
-glitchLayer.ZIndex = 31
+glitchLayer.ZIndex = 0x1f
 for _, part in ipairs(glitchLayer:GetDescendants()) do
-if part:IsA("\071\117\105\079\098\106\101\099\116") then part.ZIndex = 31 end
+if part:IsA("\071\117\105\079\098\106\101\099\116") then part.ZIndex = 0x1f end
 end
 end
 page.Visible = true
@@ -6624,78 +6624,78 @@ local TweenService = game:GetService("\084\119\101\101\110\083\101\114\118\105\0
 local ll1OI0I11l11101I1981398 = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 ll1OI0I11l11101I1981398.Name = "\077\097\112\115\066\117\116\116\111\110"
 ll1OI0I11l11101I1981398.Parent = Frame
-ll1OI0I11l11101I1981398.Position = UDim2.fromOffset(8, 209)
-ll1OI0I11l11101I1981398.Size = UDim2.new(1, -16, 0, 20)
-ll1OI0I11l11101I1981398.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+ll1OI0I11l11101I1981398.Position = UDim2.fromOffset(8, 0xd1)
+ll1OI0I11l11101I1981398.Size = UDim2.new(1, -0x10, 0, 0x14)
+ll1OI0I11l11101I1981398.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 ll1OI0I11l11101I1981398.BackgroundTransparency = 0.82
 ll1OI0I11l11101I1981398.BorderSizePixel = 0
 ll1OI0I11l11101I1981398.AutoButtonColor = false
 ll1OI0I11l11101I1981398.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-ll1OI0I11l11101I1981398.TextColor3 = Color3.fromRGB(1, 244, 253)
-ll1OI0I11l11101I1981398.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+ll1OI0I11l11101I1981398.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+ll1OI0I11l11101I1981398.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 ll1OI0I11l11101I1981398.TextStrokeTransparency = 0.28
 ll1OI0I11l11101I1981398.TextXAlignment = Enum.TextXAlignment.Left
-ll1OI0I11l11101I1981398.TextSize = 13
+ll1OI0I11l11101I1981398.TextSize = 0xd
 ll1OI0I11l11101I1981398.Text = "\077\097\112\115"
 ll1OI0I11l11101I1981398.ZIndex = 5
 local page = Instance.new("\070\114\097\109\101")
 page.Name = "\077\097\112\115\080\097\103\101"
 page.Parent = Frame
 page.Size = UDim2.fromScale(1, 1)
-page.BackgroundColor3 = Color3.fromRGB(12, 9, 22)
+page.BackgroundColor3 = Color3.fromRGB(0xc, 9, 0x16)
 page.BorderSizePixel = 0
 page.ClipsDescendants = true
 page.Visible = false
-page.ZIndex = 30
+page.ZIndex = 0x1e
 local heading = Instance.new("\084\101\120\116\076\097\098\101\108")
 heading.Name = "\077\097\112\115\072\101\097\100\105\110\103"
 heading.Parent = page
-heading.Position = UDim2.fromOffset(3, 18)
-heading.Size = UDim2.new(1, -85, 0, 32)
+heading.Position = UDim2.fromOffset(3, 0x12)
+heading.Size = UDim2.new(1, -0x55, 0, 0x20)
 heading.BackgroundTransparency = 1
 heading.Text = "\077\097\112\115"
 heading.Font = Enum.Font.Arcade
-heading.TextSize = 27
-heading.TextColor3 = Color3.fromRGB(245, 244, 255)
-heading.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+heading.TextSize = 0x1b
+heading.TextColor3 = Color3.fromRGB(0xf5, 0xf4, 0xff)
+heading.TextStrokeColor3 = Color3.fromRGB(0x40, 0x28, 0x7d)
 heading.TextStrokeTransparency = 0.25
 heading.TextXAlignment = Enum.TextXAlignment.Left
-heading.ZIndex = 33
+heading.ZIndex = 0x21
 local byline = Instance.new("\084\101\120\116\076\097\098\101\108")
 byline.Name = "\077\097\112\115\066\121\108\105\110\101"
 byline.Parent = page
-byline.Position = UDim2.fromOffset(3, 49)
-byline.Size = UDim2.new(1, -10, 0, 23)
+byline.Position = UDim2.fromOffset(3, 0x31)
+byline.Size = UDim2.new(1, -0xa, 0, 0x17)
 byline.BackgroundTransparency = 1
 byline.Text = "\066\121\032\064\121\048\117\110\103\100\097\114\101"
 byline.Font = Enum.Font.Arcade
-byline.TextSize = 15
-byline.TextColor3 = Color3.fromRGB(37, 28, 191)
+byline.TextSize = 0xf
+byline.TextColor3 = Color3.fromRGB(0x25, 0x1c, 0xbf)
 byline.TextXAlignment = Enum.TextXAlignment.Left
-byline.ZIndex = 33
+byline.ZIndex = 0x21
 local back = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 back.Name = "\077\097\112\115\066\097\099\107"
 back.Parent = page
-back.Position = UDim2.new(1, -77, 0, 14)
-back.Size = UDim2.fromOffset(65, 26)
-back.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
-back.TextColor3 = Color3.fromRGB(0, 255, 255)
+back.Position = UDim2.new(1, -0x4d, 0, 0xe)
+back.Size = UDim2.fromOffset(0x41, 0x1a)
+back.BackgroundColor3 = Color3.fromRGB(0x20, 0x14, 0x39)
+back.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 back.Font = Enum.Font.SourceSansBold
-back.TextSize = 15
+back.TextSize = 0xf
 back.Text = "\060\032\066\065\067\075"
-back.ZIndex = 34
+back.ZIndex = 0x22
 local christmasButton = Frame:WaitForChild("\070\117\110\077\111\100\115\080\097\103\101"):WaitForChild("\067\104\114\105\115\116\109\097\115\084\104\101\109\101\084\111\103\103\108\101")
 christmasButton.Parent = page
-christmasButton.Position = UDim2.fromOffset(8, 79)
-christmasButton.ZIndex = 33
+christmasButton.Position = UDim2.fromOffset(8, 0x4f)
+christmasButton.ZIndex = 0x21
 local marker = christmasButton:FindFirstChild("\074\105\103\103\121\083\101\108\101\099\116\105\111\110\077\097\114\107\101\114")
-if marker then marker.ZIndex = 34 end
+if marker then marker.ZIndex = 0x22 end
 local l010lOlO0I110I1Il323465 = Frame:FindFirstChild("\070\117\110\077\111\100\115\080\097\103\101")
 if l010lOlO0I110I1Il323465 then
 for _, child in ipairs(l010lOlO0I110I1Il323465:GetChildren()) do
 if child:IsA("\084\101\120\116\066\117\116\116\111\110") and child.Position.X.Scale == 0
-and child.Position.Y.Scale == 0 and child.Position.Y.Offset >= 179 then
-child.Position = UDim2.fromOffset(child.Position.X.Offset, child.Position.Y.Offset - 20)
+and child.Position.Y.Scale == 0 and child.Position.Y.Offset >= 0xb3 then
+child.Position = UDim2.fromOffset(child.Position.X.Offset, child.Position.Y.Offset - 0x14)
 end
 end
 end
@@ -6704,7 +6704,7 @@ local marker = Instance.new("\070\114\097\109\101")
 marker.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\077\097\114\107\101\114"
 marker.Parent = button
 marker.BorderSizePixel = 0
-marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+marker.BackgroundColor3 = Color3.fromRGB(0, 0xff, 0xff)
 marker.BackgroundTransparency = 1
 marker.Size = UDim2.new(0, 5, 1, 0)
 marker.ZIndex = button.ZIndex + 1
@@ -6712,11 +6712,11 @@ local outline = Instance.new("\085\073\083\116\114\111\107\101")
 outline.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\079\117\116\108\105\110\101"
 outline.Parent = button
 outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-outline.Color = Color3.fromRGB(174, 70, 255)
+outline.Color = Color3.fromRGB(0xae, 0x46, 0xff)
 outline.Thickness = 1.5
 outline.Transparency = 1
 local function setHover(active)
-TweenService:Create(button, TweenInfo.new(0.09), {BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or Color3.fromRGB(19, 9, 49)}):Play()
+TweenService:Create(button, TweenInfo.new(0.09), {BackgroundColor3 = active and Color3.fromRGB(0x3f, 0x18, 0x6e) or Color3.fromRGB(0x13, 9, 0x31)}):Play()
 TweenService:Create(marker, TweenInfo.new(0.09), {BackgroundTransparency = active and 0 or 1}):Play()
 TweenService:Create(outline, TweenInfo.new(0.09), {Transparency = active and 0 or 1}):Play()
 end
@@ -6737,9 +6737,9 @@ end
 glitchLayer = Frame:FindFirstChild("\074\105\103\103\121\071\108\105\116\099\104\066\097\099\107\103\114\111\117\110\100\095\069\068\073\084\095\072\069\082\069")
 if glitchLayer then
 glitchLayer.Parent = page
-glitchLayer.ZIndex = 31
+glitchLayer.ZIndex = 0x1f
 for _, part in ipairs(glitchLayer:GetDescendants()) do
-if part:IsA("\071\117\105\079\098\106\101\099\116") then part.ZIndex = 31 end
+if part:IsA("\071\117\105\079\098\106\101\099\116") then part.ZIndex = 0x1f end
 end
 end
 page.Visible = true
@@ -6765,66 +6765,66 @@ local TweenService = game:GetService("\084\119\101\101\110\083\101\114\118\105\0
 local lIl00ll0OO011Il1l423580 = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 lIl00ll0OO011Il1l423580.Name = "\077\101\110\117\083\101\116\116\105\110\103\115\066\117\116\116\111\110"
 lIl00ll0OO011Il1l423580.Parent = Frame
-lIl00ll0OO011Il1l423580.Position = UDim2.fromOffset(8, 89)
-lIl00ll0OO011Il1l423580.Size = UDim2.new(1, -16, 0, 20)
-lIl00ll0OO011Il1l423580.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+lIl00ll0OO011Il1l423580.Position = UDim2.fromOffset(8, 0x59)
+lIl00ll0OO011Il1l423580.Size = UDim2.new(1, -0x10, 0, 0x14)
+lIl00ll0OO011Il1l423580.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 lIl00ll0OO011Il1l423580.BackgroundTransparency = 0.82
 lIl00ll0OO011Il1l423580.BorderSizePixel = 0
 lIl00ll0OO011Il1l423580.AutoButtonColor = false
 lIl00ll0OO011Il1l423580.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-lIl00ll0OO011Il1l423580.TextColor3 = Color3.fromRGB(1, 244, 253)
-lIl00ll0OO011Il1l423580.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+lIl00ll0OO011Il1l423580.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+lIl00ll0OO011Il1l423580.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 lIl00ll0OO011Il1l423580.TextStrokeTransparency = 0.28
 lIl00ll0OO011Il1l423580.TextXAlignment = Enum.TextXAlignment.Left
-lIl00ll0OO011Il1l423580.TextSize = 13
+lIl00ll0OO011Il1l423580.TextSize = 0xd
 lIl00ll0OO011Il1l423580.Text = "\077\101\110\117\032\083\101\116\116\105\110\103\115"
 lIl00ll0OO011Il1l423580.ZIndex = 5
 local page = Instance.new("\070\114\097\109\101")
 page.Name = "\077\101\110\117\083\101\116\116\105\110\103\115\080\097\103\101"
 page.Parent = Frame
 page.Size = UDim2.fromScale(1, 1)
-page.BackgroundColor3 = Color3.fromRGB(12, 9, 22)
+page.BackgroundColor3 = Color3.fromRGB(0xc, 9, 0x16)
 page.BorderSizePixel = 0
 page.ClipsDescendants = true
 page.Visible = false
-page.ZIndex = 30
+page.ZIndex = 0x1e
 local heading = Instance.new("\084\101\120\116\076\097\098\101\108")
 heading.Name = "\077\101\110\117\083\101\116\116\105\110\103\115\072\101\097\100\105\110\103"
 heading.Parent = page
-heading.Position = UDim2.fromOffset(3, 18)
-heading.Size = UDim2.new(1, -85, 0, 32)
+heading.Position = UDim2.fromOffset(3, 0x12)
+heading.Size = UDim2.new(1, -0x55, 0, 0x20)
 heading.BackgroundTransparency = 1
 heading.Text = "\077\101\110\117\032\083\101\116\116\105\110\103\115"
 heading.Font = Enum.Font.Arcade
-heading.TextSize = 23
-heading.TextColor3 = Color3.fromRGB(245, 244, 255)
-heading.TextStrokeColor3 = Color3.fromRGB(64, 40, 125)
+heading.TextSize = 0x17
+heading.TextColor3 = Color3.fromRGB(0xf5, 0xf4, 0xff)
+heading.TextStrokeColor3 = Color3.fromRGB(0x40, 0x28, 0x7d)
 heading.TextStrokeTransparency = 0.25
 heading.TextXAlignment = Enum.TextXAlignment.Left
-heading.ZIndex = 33
+heading.ZIndex = 0x21
 local byline = Instance.new("\084\101\120\116\076\097\098\101\108")
 byline.Name = "\077\101\110\117\083\101\116\116\105\110\103\115\066\121\108\105\110\101"
 byline.Parent = page
-byline.Position = UDim2.fromOffset(3, 49)
-byline.Size = UDim2.new(1, -10, 0, 23)
+byline.Position = UDim2.fromOffset(3, 0x31)
+byline.Size = UDim2.new(1, -0xa, 0, 0x17)
 byline.BackgroundTransparency = 1
 byline.Text = "\066\121\032\064\121\048\117\110\103\100\097\114\101"
 byline.Font = Enum.Font.Arcade
-byline.TextSize = 15
-byline.TextColor3 = Color3.fromRGB(37, 28, 191)
+byline.TextSize = 0xf
+byline.TextColor3 = Color3.fromRGB(0x25, 0x1c, 0xbf)
 byline.TextXAlignment = Enum.TextXAlignment.Left
-byline.ZIndex = 33
+byline.ZIndex = 0x21
 local back = Instance.new("\084\101\120\116\066\117\116\116\111\110")
 back.Name = "\077\101\110\117\083\101\116\116\105\110\103\115\066\097\099\107"
 back.Parent = page
-back.Position = UDim2.new(1, -77, 0, 14)
-back.Size = UDim2.fromOffset(65, 26)
-back.BackgroundColor3 = Color3.fromRGB(32, 20, 57)
-back.TextColor3 = Color3.fromRGB(0, 255, 255)
+back.Position = UDim2.new(1, -0x4d, 0, 0xe)
+back.Size = UDim2.fromOffset(0x41, 0x1a)
+back.BackgroundColor3 = Color3.fromRGB(0x20, 0x14, 0x39)
+back.TextColor3 = Color3.fromRGB(0, 0xff, 0xff)
 back.Font = Enum.Font.SourceSansBold
-back.TextSize = 15
+back.TextSize = 0xf
 back.Text = "\060\032\066\065\067\075"
-back.ZIndex = 34
+back.ZIndex = 0x22
 local function attachHover(button)
 local marker = button:FindFirstChild("\074\105\103\103\121\083\101\108\101\099\116\105\111\110\077\097\114\107\101\114")
 if not marker then
@@ -6832,7 +6832,7 @@ marker = Instance.new("\070\114\097\109\101")
 marker.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\077\097\114\107\101\114"
 marker.Parent = button
 marker.BorderSizePixel = 0
-marker.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+marker.BackgroundColor3 = Color3.fromRGB(0, 0xff, 0xff)
 marker.BackgroundTransparency = 1
 marker.Size = UDim2.new(0, 5, 1, 0)
 end
@@ -6843,12 +6843,12 @@ outline = Instance.new("\085\073\083\116\114\111\107\101")
 outline.Name = "\074\105\103\103\121\083\101\108\101\099\116\105\111\110\079\117\116\108\105\110\101"
 outline.Parent = button
 outline.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-outline.Color = Color3.fromRGB(174, 70, 255)
+outline.Color = Color3.fromRGB(0xae, 0x46, 0xff)
 outline.Thickness = 1.5
 outline.Transparency = 1
 end
 local function setHover(active)
-TweenService:Create(button, TweenInfo.new(0.09), {BackgroundColor3 = active and Color3.fromRGB(63, 24, 110) or Color3.fromRGB(19, 9, 49)}):Play()
+TweenService:Create(button, TweenInfo.new(0.09), {BackgroundColor3 = active and Color3.fromRGB(0x3f, 0x18, 0x6e) or Color3.fromRGB(0x13, 9, 0x31)}):Play()
 TweenService:Create(marker, TweenInfo.new(0.09), {BackgroundTransparency = active and 0 or 1}):Play()
 TweenService:Create(outline, TweenInfo.new(0.09), {Transparency = active and 0 or 1}):Play()
 end
@@ -6859,19 +6859,19 @@ attachHover(lIl00ll0OO011Il1l423580)
 for index, button in ipairs({l11ll1I10OOll000l250481, lll1OOOOl0I10OO1l851339, lIlIlIIO0OI1101l1409025, l1IIlO0lllI11O0ll257142}) do
 button.Parent = page
 button.AnchorPoint = Vector2.new(0, 0)
-button.Position = UDim2.fromOffset(8, 79 + (index - 1) * 20)
-button.Size = UDim2.new(1, -16, 0, 20)
-button.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+button.Position = UDim2.fromOffset(8, 0x4f + (index - 1) * 0x14)
+button.Size = UDim2.new(1, -0x10, 0, 0x14)
+button.BackgroundColor3 = Color3.fromRGB(0x13, 9, 0x31)
 button.BackgroundTransparency = 0.82
 button.BorderSizePixel = 0
 button.AutoButtonColor = false
 button.FontFace = Font.new("\114\098\120\097\115\115\101\116\058\047\047\102\111\110\116\115\047\102\097\109\105\108\105\101\115\047\082\111\098\111\116\111\067\111\110\100\101\110\115\101\100\046\106\115\111\110", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-button.TextColor3 = Color3.fromRGB(1, 244, 253)
-button.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+button.TextColor3 = Color3.fromRGB(1, 0xf4, 0xfd)
+button.TextStrokeColor3 = Color3.fromRGB(0xa, 5, 0x19)
 button.TextStrokeTransparency = 0.28
 button.TextXAlignment = Enum.TextXAlignment.Left
-button.TextSize = 13
-button.ZIndex = 33
+button.TextSize = 0xd
+button.ZIndex = 0x21
 attachHover(button)
 end
 local previousVisibility = {}
@@ -6887,9 +6887,9 @@ end
 glitchLayer = Frame:FindFirstChild("\074\105\103\103\121\071\108\105\116\099\104\066\097\099\107\103\114\111\117\110\100\095\069\068\073\084\095\072\069\082\069")
 if glitchLayer then
 glitchLayer.Parent = page
-glitchLayer.ZIndex = 31
+glitchLayer.ZIndex = 0x1f
 for _, part in ipairs(glitchLayer:GetDescendants()) do
-if part:IsA("\071\117\105\079\098\106\101\099\116") then part.ZIndex = 31 end
+if part:IsA("\071\117\105\079\098\106\101\099\116") then part.ZIndex = 0x1f end
 end
 end
 page.Visible = true
@@ -6919,10 +6919,10 @@ local ReplicatedStorage = game:GetService("\082\101\112\108\105\099\097\116\101\
 local player = Players.LocalPlayer
 local mouse = player:GetMouse()
 local lO0Il100II001Il0l720426 = {
-Purple = Color3.fromRGB(178, 45, 255),
-Red = Color3.fromRGB(255, 35, 45),
-Green = Color3.fromRGB(30, 255, 85),
-Blue = Color3.fromRGB(35, 115, 255),
+Purple = Color3.fromRGB(0xb2, 0x2d, 0xff),
+Red = Color3.fromRGB(0xff, 0x23, 0x2d),
+Green = Color3.fromRGB(0x1e, 0xff, 0x55),
+Blue = Color3.fromRGB(0x23, 0x73, 0xff),
 }
 local laserSettings = shared.y0ungDareLaserAttachment or {enabled = false, color = "\080\117\114\112\108\101"}
 local lO1Oll11OOl0O1lIO921718 = {
@@ -7020,9 +7020,9 @@ local origin = originAttachment.WorldPosition
 local aim = mouse.Hit.Position
 local direction = aim - origin
 if direction.Magnitude < 0.1 then
-direction = originAttachment.WorldCFrame.LookVector * 1000
+direction = originAttachment.WorldCFrame.LookVector * 0x3e8
 end
-direction = direction.Unit * 1000
+direction = direction.Unit * 0x3e8
 local params = RaycastParams.new()
 params.FilterType = Enum.RaycastFilterType.Exclude
 params.FilterDescendantsInstances = {player.Character, endPart}
@@ -7082,7 +7082,7 @@ if not lI1lOOIl0OI1110Il283850.enabled or not tool:IsA("\084\111\111\108") or no
 if tool:FindFirstChild("\121\048\117\110\103\068\097\114\101\082\101\112\108\097\099\101\109\101\110\116\065\112\112\101\097\114\097\110\099\101") then return end
 local handle = tool:FindFirstChild("\072\097\110\100\108\101")
 if not handle or not handle:IsA("\066\097\115\101\080\097\114\116") then return end
-local assetId = lI1lOOIl0OI1110Il283850.assetId or 106526034195206
+local assetId = lI1lOOIl0OI1110Il283850.assetId or 0x60e2866d7306
 local template = loadTemplate(assetId)
 if not template then return end
 local visual = template:Clone()
@@ -7103,8 +7103,8 @@ gripWorld = lO1l1IO1O1l1lOIlO539971.CFrame
 else
 gripWorld = boxCF * CFrame.new(boxSize.X * 0.12, -boxSize.Y * 0.20, 0)
 end
-local l11l01I0l0IO1II1O316491 = assetId == 119080362579878
-local lOO0IO1OO0l010lIl906305 = l11l01I0l0IO1II1O316491 and CFrame.Angles(0, math.rad(180), 0) or CFrame.new()
+local l11l01I0l0IO1II1O316491 = assetId == 0x6c4d8eb617a6
+local lOO0IO1OO0l010lIl906305 = l11l01I0l0IO1II1O316491 and CFrame.Angles(0, math.rad(0xb4), 0) or CFrame.new()
 local lOO1ll0OIIlO01Il1134482 = l11l01I0l0IO1II1O316491 and CFrame.new(0, 0.18, -0.12) or CFrame.new(0, 0.25, 0)
 local lOlIl01IlII0I11I1957492 = handle.CFrame * lOO1ll0OIIlO01Il1134482 * lOO0IO1OO0l010lIl906305
 visual:PivotTo(lOlIl01IlII0I11I1957492 * gripWorld:Inverse() * visual:GetPivot())
