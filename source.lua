@@ -9101,9 +9101,356 @@ do
         end)
     end
 
+    -- Dark Theme: CTGP-7 chrome/red midnight map visuals from the supplied script.
+    do
+        local darkButton = Instance.new("TextButton")
+        darkButton.Name = "DarkThemeToggle"
+        darkButton.Parent = page
+        darkButton.Position = UDim2.fromOffset(8, 199)
+        darkButton.Size = UDim2.new(1, -16, 0, 20)
+        darkButton.BackgroundColor3 = Color3.fromRGB(19, 9, 49)
+        darkButton.BackgroundTransparency = 0.82
+        darkButton.BorderSizePixel = 0
+        darkButton.AutoButtonColor = false
+        darkButton.FontFace = Font.new("rbxasset://fonts/families/RobotoCondensed.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        darkButton.TextColor3 = Color3.fromRGB(1, 244, 253)
+        darkButton.TextStrokeColor3 = Color3.fromRGB(10, 5, 25)
+        darkButton.TextStrokeTransparency = 0.28
+        darkButton.TextXAlignment = Enum.TextXAlignment.Left
+        darkButton.TextSize = 13
+        darkButton.Text = "Dark Theme: OFF"
+        darkButton.ZIndex = 33
+        local darkMusic = Instance.new("Sound")
+        darkMusic.Name = "DarkThemeLoopMusic"
+        darkMusic.SoundId = "rbxassetid://80334540969408"
+        darkMusic.Volume = 0.65
+        darkMusic.Looped = true
+        darkMusic.Parent = game:GetService("SoundService")
+        local Players=game:GetService('Players')
+        local Lighting=game:GetService('Lighting')
+        local Workspace=game:GetService('Workspace')
+        local player=Players.LocalPlayer
+        local enabled=false
+        local originals={}
+        local lightingOriginal={}
+        local created={}
+        local changedConnection
+        local nightConnection
+        local maxPanels=150
+        local panels=0
+        local hiddenSkies={}
+        local cloudBackup=nil
+        local floorTextures={}
+        local floorParts={}
+        local silver=Color3.fromRGB(167,176,190)
+        local charcoal=Color3.fromRGB(18,22,33)
+        local crimson=Color3.fromRGB(211,35,48)
+        local redLight=Color3.fromRGB(255,58,69)
+        local function eligible(p)
+         if not p:IsA('BasePart') or not p.Anchored or p.Size.Magnitude<8 then return false end
+         if Workspace.CurrentCamera and p:IsDescendantOf(Workspace.CurrentCamera) then return false end
+         if p:FindFirstAncestorOfClass('Tool') then return false end
+         local ancestor=p.Parent
+         while ancestor and ancestor~=Workspace do
+          if ancestor:IsA('Model') and ancestor:FindFirstChildOfClass('Humanoid') then return false end
+          ancestor=ancestor.Parent
+         end
+         return true
+        end
+        -- Cover tiled prison flooring too, including smaller floor pieces.
+        local function isFloor(p)
+         if not p:IsA('BasePart') then return false end
+         if not p.Anchored then return false end
+         if Workspace.CurrentCamera and p:IsDescendantOf(Workspace.CurrentCamera) then return false end
+         if p:FindFirstAncestorOfClass('Tool') then return false end
+         local ancestor=p.Parent
+         while ancestor and ancestor~=Workspace do
+          if ancestor:IsA('Model') and ancestor:FindFirstChildOfClass('Humanoid') then return false end
+          ancestor=ancestor.Parent
+         end
+         local sz=p.Size
+         return p.CFrame.UpVector.Y>.86 and sz.Y<=5 and sz.X>=2.5 and sz.Z>=2.5
+        end
+        local function themeFloor(p)
+         if floorParts[p] or not isFloor(p) then return end
+         if not originals[p] then
+          originals[p]={Color=p.Color,Material=p.Material,Reflectance=p.Reflectance}
+         end
+         floorParts[p]=true
+         -- Silver-charcoal metallic floor tiles, subtle red CTGP-7 highlights.
+         local h=math.floor(math.abs(p.Position.X*1.7+p.Position.Z*2.9))
+         p.Color=(h%19==0) and Color3.fromRGB(118,30,43) or
+          ((h%4==0) and Color3.fromRGB(67,74,90) or Color3.fromRGB(32,37,49))
+         p.Material=Enum.Material.Metal
+         p.Reflectance=.12
+         -- Existing tile textures/decal overlays can hide the recolor.
+         for _,obj in ipairs(p:GetChildren()) do
+          if obj:IsA('Decal') or obj:IsA('Texture') then
+           if floorTextures[obj]==nil then floorTextures[obj]=obj.Transparency end
+           obj.Transparency=1
+          end
+         end
+        end
+        local function save(p)
+         if originals[p] or not eligible(p) then return end
+         originals[p]={Color=p.Color,Material=p.Material,Reflectance=p.Reflectance}
+         local hash=math.floor(math.abs(p.Position.X*7+p.Position.Y*11+p.Position.Z*3))
+         if isFloor(p) then
+          themeFloor(p)
+          return
+         elseif p.Size.Y<4 and p.Size.X>12 and p.Size.Z>12 then
+          p.Color=Color3.fromRGB(26,29,40)
+          p.Material=Enum.Material.Asphalt
+         elseif hash%9==0 then
+          p.Color=crimson
+          p.Material=Enum.Material.Metal
+         elseif hash%3==0 then
+          p.Color=silver
+          p.Material=Enum.Material.Metal
+         else
+          p.Color=charcoal
+          p.Material=Enum.Material.SmoothPlastic
+         end
+         p.Reflectance=hash%3==0 and .18 or .04
+        end
+        local function addWallPanel(p,face,number)
+         if panels>=maxPanels then return end
+         panels+=1
+         local gui=Instance.new('SurfaceGui')
+         gui.Name='CTGP7ChromeLogoPanel'
+         gui.Face=face
+         gui.Adornee=p
+         gui.PixelsPerStud=18
+         gui.LightInfluence=.2
+         gui.Parent=p
+         table.insert(created,gui)
+         local root=Instance.new('Frame')
+         root.AnchorPoint=Vector2.new(.5,.5)
+         root.Position=UDim2.fromScale(.5,.5)
+         root.Size=UDim2.fromScale(.68,.43)
+         root.BackgroundColor3=charcoal
+         root.BorderSizePixel=0
+         root.Parent=gui
+         local corner=Instance.new('UICorner',root)
+         corner.CornerRadius=UDim.new(0,6)
+         local outline=Instance.new('UIStroke',root)
+         outline.Color=number%4==0 and crimson or silver
+         outline.Thickness=4
+         local gradient=Instance.new('UIGradient',root)
+         gradient.Color=ColorSequence.new(Color3.fromRGB(7,11,24),Color3.fromRGB(30,35,51))
+         gradient.Rotation=90
+         local logo=Instance.new('TextLabel')
+         logo.BackgroundTransparency=1
+         logo.Position=UDim2.fromScale(.06,.12)
+         logo.Size=UDim2.fromScale(.72,.57)
+         logo.Text='CTGP-'
+         logo.Font=Enum.Font.GothamBlack
+         logo.TextScaled=true
+         logo.TextColor3=Color3.fromRGB(207,214,225)
+         logo.TextStrokeColor3=Color3.fromRGB(3,5,9)
+         logo.TextStrokeTransparency=.1
+         logo.Parent=root
+         local grad=Instance.new('UIGradient',logo)
+         grad.Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(255,255,255)),ColorSequenceKeypoint.new(.5,Color3.fromRGB(109,116,129)),ColorSequenceKeypoint.new(1,Color3.fromRGB(224,228,235))})
+         grad.Rotation=90
+         local seven=Instance.new('TextLabel')
+         seven.BackgroundTransparency=1
+         seven.Position=UDim2.fromScale(.75,.03)
+         seven.Size=UDim2.fromScale(.2,.76)
+         seven.Font=Enum.Font.GothamBlack
+         seven.TextScaled=true
+         seven.Text='7'
+         seven.TextColor3=crimson
+         seven.TextStrokeColor3=Color3.fromRGB(40,5,8)
+         seven.TextStrokeTransparency=.05
+         seven.Parent=root
+         local sub=Instance.new('TextLabel')
+         sub.BackgroundTransparency=1
+         sub.Position=UDim2.fromScale(.08,.78)
+         sub.Size=UDim2.fromScale(.84,.14)
+         sub.Text=number%2==0 and 'MIDNIGHT CIRCUIT  •  07' or 'CHROME EDITION  •  CTGP-7'
+         sub.TextColor3=Color3.fromRGB(197,200,212)
+         sub.Font=Enum.Font.GothamBold
+         sub.TextScaled=true
+         sub.Parent=root
+         for i=1,12 do
+          local dot=Instance.new('Frame')
+          dot.BorderSizePixel=0
+          dot.BackgroundColor3=Color3.fromRGB(221,232,255)
+          dot.Size=UDim2.fromOffset(i%3+1,i%3+1)
+          dot.Position=UDim2.fromScale((i*37%93)/100,(i*53%88)/100)
+          dot.Parent=root
+          Instance.new('UICorner',dot).CornerRadius=UDim.new(1,0)
+         end
+        end
+        local function decorateWalls()
+         local n=0
+         for _,p in ipairs(Workspace:GetDescendants()) do
+          if panels>=maxPanels then break end
+          if eligible(p) and p.Size.Y>=10 and p.Size.Y<=100 then
+           local s=p.Size
+           if s.X>=13 and s.Z<=7 then
+            n+=1
+            addWallPanel(p,Enum.NormalId.Front,n)
+            addWallPanel(p,Enum.NormalId.Back,n+1)
+           elseif s.Z>=13 and s.X<=7 then
+            n+=1
+            addWallPanel(p,Enum.NormalId.Left,n)
+            addWallPanel(p,Enum.NormalId.Right,n+1)
+           end
+          end
+         end
+        end
+        local function addSky()
+         -- A dark, starry atmosphere inspired by the uploaded logo's background.
+         local atmo=Lighting:FindFirstChildOfClass('Atmosphere')
+         if atmo then
+          lightingOriginal.atmosphere=atmo
+          lightingOriginal.atmosphereValues={Color=atmo.Color,Decay=atmo.Decay,Density=atmo.Density,Haze=atmo.Haze,Glare=atmo.Glare,Offset=atmo.Offset}
+         else
+          atmo=Instance.new('Atmosphere')
+          atmo.Name='CTGP7TemporaryAtmosphere'
+          atmo.Parent=Lighting
+          table.insert(created,atmo)
+         end
+         atmo.Color=Color3.fromRGB(40,48,76)
+         atmo.Decay=Color3.fromRGB(8,11,27)
+         atmo.Density=.08
+         atmo.Haze=.25
+         atmo.Glare=0
+         -- Temporarily remove existing skyboxes so they cannot cover the star field.
+         for _,existing in ipairs(Lighting:GetChildren()) do
+          if existing:IsA('Sky') then
+           table.insert(hiddenSkies,existing)
+           existing.Parent=nil
+          end
+         end
+         local terrain=Workspace:FindFirstChildOfClass('Terrain')
+         local clouds=terrain and terrain:FindFirstChildOfClass('Clouds')
+         if clouds then
+          cloudBackup={instance=clouds,cover=clouds.Cover,density=clouds.Density,color=clouds.Color}
+          clouds.Cover=0
+         end
+         local sky=Instance.new('Sky')
+         sky.Name='CTGP7StarrySky'
+         sky.StarCount=3000
+         sky.SunAngularSize=0
+         sky.MoonAngularSize=0
+         sky.SkyboxBk='rbxasset://textures/sky/sky512_bk.tex'
+         sky.SkyboxDn='rbxasset://textures/sky/sky512_dn.tex'
+         sky.SkyboxFt='rbxasset://textures/sky/sky512_ft.tex'
+         sky.SkyboxLf='rbxasset://textures/sky/sky512_lf.tex'
+         sky.SkyboxRt='rbxasset://textures/sky/sky512_rt.tex'
+         sky.SkyboxUp='rbxasset://textures/sky/sky512_up.tex'
+         sky.CelestialBodiesShown=true
+         sky.Parent=Lighting
+         table.insert(created,sky)
+         local cc=Instance.new('ColorCorrectionEffect')
+         cc.Name='CTGP7CinematicTint'
+         cc.TintColor=Color3.fromRGB(193,201,224)
+         cc.Saturation=-.18
+         cc.Contrast=.22
+         cc.Parent=Lighting
+         table.insert(created,cc)
+         local bloom=Instance.new('BloomEffect')
+         bloom.Name='CTGP7RedGlow'
+         bloom.Intensity=.3
+         bloom.Threshold=1.2
+         bloom.Size=20
+         bloom.Parent=Lighting
+         table.insert(created,bloom)
+        end
+        local function start()
+         if enabled then return end
+         enabled=true
+         for _,property in ipairs({'ClockTime','Brightness','Ambient','OutdoorAmbient','FogColor','FogEnd','ColorShift_Top','ColorShift_Bottom','GeographicLatitude'}) do
+          lightingOriginal[property]=Lighting[property]
+         end
+         Lighting.ClockTime=0
+         -- Enforce midnight for as long as the theme is enabled.
+         if nightConnection then nightConnection:Disconnect() end
+         nightConnection=Lighting:GetPropertyChangedSignal('ClockTime'):Connect(function()
+          if enabled and Lighting.ClockTime~=0 then Lighting.ClockTime=0 end
+         end)
+         Lighting.GeographicLatitude=0
+         Lighting.Brightness=1.4
+         Lighting.Ambient=Color3.fromRGB(65,69,94)
+         Lighting.OutdoorAmbient=Color3.fromRGB(30,36,58)
+         Lighting.FogColor=Color3.fromRGB(13,17,35)
+         Lighting.FogEnd=1200
+         Lighting.ColorShift_Top=Color3.fromRGB(42,47,82)
+         Lighting.ColorShift_Bottom=Color3.fromRGB(36,11,25)
+         addSky()
+         for _,p in ipairs(Workspace:GetDescendants()) do
+          if p:IsA("BasePart") then
+           if isFloor(p) then themeFloor(p) else save(p) end
+          end
+         end
+         decorateWalls()
+         changedConnection=Workspace.DescendantAdded:Connect(function(p)
+          if not enabled or not p:IsA('BasePart') then return end
+          task.defer(function() if enabled and p.Parent then
+           if isFloor(p) then themeFloor(p) else save(p) end
+          end end)
+         end)
+        end
+        local function stop()
+         if not enabled then return end
+         enabled=false
+         if changedConnection then changedConnection:Disconnect();changedConnection=nil end
+         if nightConnection then nightConnection:Disconnect();nightConnection=nil end
+         for p,props in pairs(originals) do
+          if p.Parent then pcall(function() p.Color=props.Color;p.Material=props.Material;p.Reflectance=props.Reflectance end) end
+         end
+         table.clear(originals)
+         for texture,transparency in pairs(floorTextures) do
+          if texture.Parent then pcall(function() texture.Transparency=transparency end) end
+         end
+         table.clear(floorTextures)
+         table.clear(floorParts)
+         for _,obj in ipairs(created) do if obj.Parent then obj:Destroy() end end
+         table.clear(created)
+         for _,oldSky in ipairs(hiddenSkies) do
+          if oldSky then oldSky.Parent=Lighting end
+         end
+         table.clear(hiddenSkies)
+         if cloudBackup and cloudBackup.instance and cloudBackup.instance.Parent then
+          cloudBackup.instance.Cover=cloudBackup.cover
+          cloudBackup.instance.Density=cloudBackup.density
+          cloudBackup.instance.Color=cloudBackup.color
+         end
+         cloudBackup=nil
+         local atmo=lightingOriginal.atmosphere
+         if atmo and atmo.Parent and lightingOriginal.atmosphereValues then
+          for k,v in pairs(lightingOriginal.atmosphereValues) do pcall(function() atmo[k]=v end) end
+         end
+         for k,v in pairs(lightingOriginal) do
+          if k~='atmosphere' and k~='atmosphereValues' then pcall(function() Lighting[k]=v end) end
+         end
+         table.clear(lightingOriginal)
+         panels=0
+        end
+
+        darkButton.Activated:Connect(function()
+            if enabled then
+                stop()
+                darkMusic:Stop()
+            else
+                start()
+                darkMusic:Play()
+            end
+            darkButton.Text = enabled and "Dark Theme: ON" or "Dark Theme: OFF"
+        end)
+        y0ungDareMenuv45.Destroying:Connect(function()
+            stop()
+            darkMusic:Stop()
+            darkMusic:Destroy()
+        end)
+    end
+
     -- Give the three added Maps themes the same cyan selection bar,
     -- purple outline and animated hover as the original Christmas row.
-    for _, themeName in ipairs({"PinkThemeToggle", "GlitchedClubThemeToggle", "HalloweenThemeToggle", "CyberPunkCityThemeToggle", "c00lkiddThemeToggle"}) do
+    for _, themeName in ipairs({"PinkThemeToggle", "GlitchedClubThemeToggle", "HalloweenThemeToggle", "CyberPunkCityThemeToggle", "c00lkiddThemeToggle", "DarkThemeToggle"}) do
         local themeButton = page:FindFirstChild(themeName)
         if themeButton then
             themeButton.AutoButtonColor = false
